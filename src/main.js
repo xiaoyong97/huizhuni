@@ -4,7 +4,6 @@ import router from './router'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 
-//console.log('router--',router)
 
 Vue.config.productionTip = false
 

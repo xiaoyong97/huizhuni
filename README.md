@@ -7,7 +7,7 @@
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
-## 安装项目依赖
+### 安装项目依赖
 ```
 cnpm install
 ```
@@ -21,3 +21,6 @@ npm run start
 ```
 npm run build
 ```
+
+### Vant UI 组件地址
+* [Vant](https://youzan.github.io/vant/#/zh-CN/button)
