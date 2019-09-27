@@ -23,4 +23,4 @@ npm run build
 ```
 
 ### Vant UI 组件地址
-* [Vant](https://youzan.github.io/vant/#/zh-CN/button)
+* [Vant](https://youzan.github.io/vant/1.x/#/zh-CN/button)
