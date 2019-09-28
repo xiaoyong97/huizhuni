@@ -104,8 +104,5 @@ export default new Router({
       },
 
 
-
-
-
     ]
   })
