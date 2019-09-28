@@ -102,6 +102,7 @@ export default new Router({
           title: '活动详情已结束'
         },
       },
+
  //咕咕管理
 	  {
 	    name: 'gugu',
@@ -138,5 +139,6 @@ export default new Router({
 	     title: '搜索'
 	    },
 	  },
+
     ]
   })
