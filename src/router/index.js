@@ -12,6 +12,7 @@ export default new Router({
         redirect: { name: 'index' }
       },
 
+
       //主页
       {
         name: 'index',
@@ -66,10 +67,45 @@ export default new Router({
         meta: {
          title: '惠助你'
         },
+
       },
-      
-      
-      
-  
+      {
+        name: 'myPerformance',
+        path: '/myPerformance',
+        component: () => import('@/pages/myPerformance'),
+        meta: {
+          title: 'myPerformance'
+        },
+
+      },
+      {
+        name: 'myActivities',
+        path: '/myActivities',
+        component: () => import('@/pages/myActivities'),
+        meta: {
+          title: 'myActivities'
+        },
+      },
+      {
+        name: 'activityDetailsNotBegin',
+        path: '/activityDetailsNotBegin',
+        component: () => import('@/pages/activityDetailsNotBegin'),
+        meta: {
+          title: '活动详情未开始'
+        },
+      },
+      {
+        name: 'activityDetailsOver',
+        path: '/activityDetailsOver',
+        component: () => import('@/pages/activityDetailsOver'),
+        meta: {
+          title: '活动详情已结束'
+        },
+      },
+
+
+
+
+
     ]
   })
