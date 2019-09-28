@@ -102,10 +102,41 @@ export default new Router({
           title: '活动详情已结束'
         },
       },
-
-
-
-
-
+ //咕咕管理
+	  {
+	    name: 'gugu',
+	    path: '/gugu',
+	    component: () => import('@/pages/gugu'),
+	    meta: {
+	     title: '咕咕管理'
+	    },
+	  },
+      //咕咕管理 添加任务
+      {
+        name: 'add_task',
+        path: '/add_task',
+        component: () => import('@/pages/add_task'),
+        meta: {
+         title: '添加任务'
+        },
+      },
+	  //咕咕管理 新建任务
+	  {
+	    name: 'new_task',
+	    path: '/new_task',
+	    component: () => import('@/pages/add_task'),
+	    meta: {
+	     title: '新建任务'
+	    },
+	  },
+	  //咕咕管理 搜索
+	  {
+	    name: 'search',
+	    path: '/search',
+	    component: () => import('@/pages/search'),
+	    meta: {
+	     title: '搜索'
+	    },
+	  },
     ]
   })
