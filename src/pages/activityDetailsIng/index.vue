@@ -7,7 +7,7 @@
         </van-nav-bar>
 
         <div class="main">
-            <div class="not_start"><p style="font-size: 12px;color: #FFFFFF">未开始</p></div>
+            <div class="not_start"><p style="font-size: 12px;color: #FFFFFF">进行中</p></div>
             <van-swipe  indicator-color="white" >
                 <van-swipe-item><img src="../../assets/images/other/banner.png" class="img_swiper" ></van-swipe-item>
                 <van-swipe-item><img src="../../assets/images/other/banner.png" class="img_swiper" ></van-swipe-item>
@@ -104,30 +104,22 @@
 <!--            </div>-->
             <div class="secend_box" style="height: auto">
                 <van-row class="list_row_top" type="flex" justify="center">
-                    <van-col class="" span="12" style="height: 40px">
+                    <van-col class="" span="8" style="height: 40px">
                         <van-row class="" type="flex" justify="center">
-                            <van-col class="" span="2" ><img src="../../assets/images/38/List@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >查看名单</p></van-col>
+                            <van-col class="" span="4" ><img src="../../assets/images/38/List@2x.png" class="img_right" ></van-col>
+                            <van-col class="" span="20" ><p class="list_test_last" >查看名单</p></van-col>
                         </van-row>
                     </van-col>
-                    <van-col class="" span="12" style="height:40px">
+                    <van-col class="" span="8" style="height:40px">
                         <van-row class="" type="flex" justify="center">
-                            <van-col class="" span="2" ><img src="../../assets/images/38/QRcode@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >报到/签名</p></van-col>
+                            <van-col class="" span="4" ><img src="../../assets/images/38/Upload@2x.png" class="img_right" ></van-col>
+                            <van-col class="" span="20" ><p class="list_test_last" >上传照片</p></van-col>
                         </van-row>
                     </van-col>
-                </van-row>
-                <van-row class="list_row" type="flex" justify="center">
-                    <van-col class="" span="12" style="height:40px">
+                    <van-col class="" span="8" style="height:40px">
                         <van-row class="" type="flex" justify="center">
-                            <van-col class="" span="2" ><img src="../../assets/images/38/Viewreport@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >查看问卷</p></van-col>
-                        </van-row>
-                    </van-col>
-                    <van-col class="" span="12" style="height:40px">
-                        <van-row class="" type="flex" justify="center">
-                            <van-col class="" span="2" ><img src="../../assets/images/38/Viewreport@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >查看报名表</p></van-col>
+                            <van-col class="" span="4" ><img src="../../assets/images/38/Viewreport@2x.png" class="img_right" ></van-col>
+                            <van-col class="" span="20" ><p class="list_test_last" >查看问卷</p></van-col>
                         </van-row>
                     </van-col>
                 </van-row>
@@ -272,7 +264,7 @@
         z-index: 100;
         width: 60px;
         height: 40px;
-        background-color: #f76037;
+        background-color: #f34c83 ;
         position: absolute;
         right: 0;
         top: 20px;

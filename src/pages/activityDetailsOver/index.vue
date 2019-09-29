@@ -9,8 +9,8 @@
         <div class="main">
             <div class="not_start"><p style="font-size: 12px;color: #FFFFFF">已结束</p></div>
             <van-swipe  indicator-color="white" >
-                <van-swipe-item><img src="../../assets/image/my/banner.png" class="img_swiper" ></van-swipe-item>
-                <van-swipe-item><img src="../../assets/image/my/banner.png" class="img_swiper" ></van-swipe-item>
+                <van-swipe-item><img src="../../assets/images/other/banner.png" class="img_swiper" ></van-swipe-item>
+                <van-swipe-item><img src="../../assets/images/other/banner.png" class="img_swiper" ></van-swipe-item>
             </van-swipe>
                 <div class="main_box">
                     <van-row class="list_row_top" >
@@ -124,6 +124,22 @@
                     </van-col>
                 </van-row>
             </div>
+
+            <div class="secend_box" style="height: auto">
+                <van-row class="" type="flex" justify="space-around">
+                    <van-col class="img_box" span="11" ><img src="../../assets/images/other/banner.png" class="img_active" ></van-col>
+                    <van-col class="img_box" span="11" ><img src="../../assets/images/other/banner.png" class="img_active" ></van-col>
+                </van-row>
+                <van-row class="" type="flex" justify="space-around">
+                    <van-col class="img_box" span="11" ><img src="../../assets/images/other/banner.png" class="img_active" ></van-col>
+                    <van-col class="img_box" span="11" ><img src="../../assets/images/other/banner.png" class="img_active" ></van-col>
+                </van-row>
+                <van-row class="" type="flex" justify="space-around">
+                    <van-col class="img_box" span="11" ><img src="../../assets/images/other/banner.png" class="img_active" ></van-col>
+                    <van-col class="img_box" span="11" ></van-col>
+                </van-row>
+                <div style="height: 8px"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -179,6 +195,13 @@
     .img_swiper{
         height: 200px;
         width: auto;
+    }
+    .img_active{
+        height: 100%;
+        width: 100%;
+    }
+    .img_box{
+        padding-top: 8px;
     }
     .main{
         background-color: rgb(238,238,238);
