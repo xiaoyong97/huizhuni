@@ -143,15 +143,10 @@
 						<van-col class="grey" span="8">应还金额（元）</van-col><van-col class="orange" span="16">200,000</van-col>
 						<van-col class="grey" span="8">到期时间</van-col><van-col span="16" class="orange">2019-07-15</van-col>
 					</div>
-
 				</van-cell>
 
 				<van-cell>
-					<van-col span="14">名下待抢单客户</van-col>
-					<van-col span="10">
-						<span class="cell-num"> 8 </span> 条
-						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
-					</van-col>
+					<br>
 				</van-cell>
 
 			</van-cell-group>
@@ -451,5 +446,6 @@
 	border-radius: 16px;
 	font-size: 22px;
 	line-height: 20px;;
+	padding: 0px 8px;
 }
 </style>
