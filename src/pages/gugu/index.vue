@@ -102,11 +102,11 @@
   //声明方法
   methods : {
 	add_task:function  () {
-		localStorage.setItem('type',0);
+		sessionStorage.setItem('type',0);
 	  this.$router.push({name: 'new_task', params: {type: 0}});
 	},
 	new_task:function (){
-		localStorage.setItem('type',1);
+		sessionStorage.setItem('type',1);
 		this.$router.push({name: 'new_task', params: {type: 1}});
 	},
 	gotoSearch:function(){

@@ -307,7 +307,7 @@
   computed: {
 	// 仅读取
 	type: function () {
-	  return localStorage.getItem('type')
+	  return sessionStorage.getItem('type')
 	},
 	card_count:function () {
 		var count = [
@@ -315,8 +315,6 @@
 		];
 		if(this.type == 0){
 			count = JSON.parse(localStorage.getItem('diyawu'))
-			console.log('count')
-			console.log(count)
 		}
 		
 		return count;
