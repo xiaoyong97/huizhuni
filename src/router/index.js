@@ -139,6 +139,14 @@ export default new Router({
 	     title: '搜索'
 	    },
 	  },
+        {
+            name: 'viewList',
+            path: '/viewList',
+            component: () => import('@/pages/viewList'),
+            meta: {
+                title: '我的活动-查看名单'
+            },
+        },
 
     ]
   })

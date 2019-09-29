@@ -77,100 +77,24 @@
 
         <div class="content">
             <van-tabs color="#4c62e7" line-width="50%" line-height=3>
-                <van-tab title="已发布(3)" color="#4c62e7">
+                <van-tab title="报名名单(30)" color="#4c62e7">
                     <div class="card_div" style="" >
                             <van-row style="padding: 16px 12px 0">
-                                <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
-                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col>
-                            </van-row>
-                            <van-row style="padding: 16px 12px 0">
-                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
-                            </van-row>
-                            <van-row style="padding: 16px 12px 8px">
-                                <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
-                                <van-col class="" span="10" style="text-align: right" ><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人签到<span style="color: #4c62e7">21</span>人</p></van-col>
-                            </van-row>
-                        <hr style="size: 1px;width: 100%;color: aliceblue;margin: 0 ;padding: 0"/>
-                            <van-row style="text-align: center;padding: 8px 12px 0">
-                                <van-col class="" span="8" @click="goviewList">
-                                    <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location" ></van-col>
-                                    <van-col class="" span="20"><p class="card_list2_test" >查看名单</p></van-col>
+                                <van-col class="" span="12">
+                                    <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三   女</p>
+                                    <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
                                 </van-col>
-                                <van-col class="" span="8" @click="openOverlay">
-                                    <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location" ></van-col>
-                                    <van-col class="" span="20"><p class="card_list2_test" >签到二维码</p></van-col>
-                                </van-col>
-                                <van-col class="" span="8">
-                                    <van-col class="" span="2"><img src="../../assets/image/my/View report@2x.png" class="img_location" ></van-col>
-                                    <van-col class="" span="20"><p class="card_list2_test" >查看问卷</p></van-col>
+                                <van-col class="" span="12" style="text-align: left">
+                                    <p class="card_list1_test_right">12345678901</p>
+                                    <p class="card_list1_test_right">客户经理</p>
                                 </van-col>
                             </van-row>
-                        </div>
-                    <div class="card_div" style="" >
-                        <van-row style="padding: 16px 12px 0" @click="goactivityDetailsNotBegin">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >支付系統及形式创新</p></van-col>
-                            <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right" style="color: #f76037">未開始...</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 16px 12px 0">
-                            <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 16px 12px 8px">
-                            <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
-                            <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人</p></van-col>
-                        </van-row>
-                        <hr style="size: 1px;width: 100%;color: aliceblue;margin: 0 ;padding: 0"/>
-                        <van-row style="text-align: center;padding: 8px 12px 0" type="flex" justify="center">
-                            <van-col class="" span="8">
-                                <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看名单</p></van-col>
-                            </van-col>
-                            <van-col class="" span="8" @click="openOverlay">
-                                <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >签到二维码</p></van-col>
-                            </van-col>
-                            <van-col class="" span="8">
-                                <van-col class="" span="2"><img src="../../assets/image/my/View report@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看问卷</p></van-col>
-                            </van-col>
-                        </van-row>
+
                     </div>
-                    <div class="card_div" style="" @click="goactivityDetailsOver">
-                        <van-row style="padding: 16px 12px 0" type="flex" justify="center">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >今朝会-创业沙龙第六期</p></van-col>
-                            <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right" style="color: #999999">已結束...</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 16px 12px 0">
-                            <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 16px 12px 8px">
-                            <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
-                            <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">108</span>人签到<span style="color: #4c62e7">102</span>人</p></van-col>
-                        </van-row>
-                        <hr style="size: 1px;width: 100%;color: aliceblue;margin: 0 ;padding: 0"/>
-                        <van-row style="text-align: center;padding: 8px 12px 0" type="flex" justify="center">
-                            <van-col class="" span="8">
-                                <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看名单</p></van-col>
-                            </van-col>
-<!--                            <van-col class="" span="8">-->
-<!--                                <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location" ></van-col>-->
-<!--                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >签到二维码</p></van-col>-->
-<!--                            </van-col>-->
-                            <van-col class="" span="8">
-                                <van-col class="" span="2"><img src="../../assets/image/my/View report@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看问卷</p></van-col>
-                            </van-col>
-                        </van-row>
-                    </div>
+
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab title="待审核(3)" color="#4c62e7">
+                <van-tab title="签到名单" color="#4c62e7">
                     <div class="card_div" style="">
                         <van-row style="padding: 16px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
@@ -287,7 +211,7 @@
 
         data() {
             return {
-                title : '我的活动',
+                title : '查看名单',
                 checked: true,
                 show: false,
                 show1:false,
@@ -314,9 +238,6 @@
             },
             gomyperformance : function(){
                 this.$router.push('./myperformance');
-            },
-            goviewList : function(){
-                this.$router.push('./viewList');
             },
             goactivityDetailsNotBegin : function(){
                 this.$router.push('./activityDetailsNotBegin');
@@ -446,14 +367,12 @@
     .card_list1_test_left{
         color: #333333;
         font-size: 14px;
-        font-weight: bold;
         margin-block-start:0;
         margin-block-end:0;
     }
     .card_list1_test_right{
-        color: #46b948;
+        color: #666666;
         font-size: 14px;
-        font-weight: bold;
         margin-block-start:0;
         margin-block-end:0;
     }

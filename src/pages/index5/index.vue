@@ -8,8 +8,8 @@
         />
 
         <div class="content">
-            <img :src="img1" class="img" @click="gomyActivities">
-            <img :src="img2" class="img" @click="gomyperformance">
+                <img :src="img1" class="img" @click="gomyActivities">
+                <img :src="img2" class="img" @click="gomyperformance">
         </div>
 
 
@@ -32,8 +32,8 @@
         data (){
             return {
                 title : '我的',
-                img1: require('@/assets/image/my/myactive.jpg'),
-                img2: require('@/assets/image/my/myperformance.jpg'),
+                img1: require('@/assets/images/other/wodehuodong.jpg'),
+                img2: require('@/assets/images/other/wodeyeji.jpg'),
                 //  screenWidth: document.body.clientWidth, // 屏幕尺寸
                 //  screenHeight: document.body.clientHeight, // 屏幕尺寸
             }
@@ -85,17 +85,17 @@
 
 <style lang="scss" scoped>
     .img{
+        border-radius: 20px;
         width: 95%;
-        padding:10px 10px 0 10px;
+        padding:8px 12px 0 12px;
     };
     .main{
         background-color: rgb(238,238,238);
-        height: screenHeight;
         margin: 0;
         padding: 0;
     };
     .content{
-        height:100%;
+        height:600px;
         background-color: rgb(238,238,238);
     }
 </style>

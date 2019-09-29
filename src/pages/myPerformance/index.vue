@@ -91,7 +91,8 @@
 									<van-col span="6" >
 										<img :src="chart"  class="" style="height:110px;width: 110px;position: absolute;top: 14px;right: 30px">
 									</van-col>
-									<img :src="pull_down"  class="felx_img" @click="onCilckFlex">
+									<img :src="pull_down"  class="felx_img" @click="onCilckFlex" v-show="step">
+									<img :src="Pullup"  class="felx_img" @click="onCilckFlex" v-show="!step">
 								</van-row>
 							</div>
 							<!--              折叠div-->
@@ -254,6 +255,7 @@
 				successCircle: require('@/assets/image/my/Navigation circle@2x.png'),
 				failCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
 				chart: require('@/assets/images/activity/chart.png'),
+				Pullup: require('@/assets/images/38/Pullup.png'),
 				frame1: require('@/assets/image/my/Picture frame1@2x.png'),
 				frame2: require('@/assets/image/my/Picture frame2@2x.png'),
 				frame3: require('@/assets/image/my/Picture frame3@2x.png'),
