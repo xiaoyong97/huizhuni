@@ -3,12 +3,9 @@ import App from './App'
 import router from './router'
 import Vant from 'vant'
 import 'vant/lib/index.css'
-<<<<<<< HEAD
 import {Grid, GridItem} from 'vant'
-//console.log('router--',router)
-=======
+//import {Grid, GridItem} from 'vant'
 
->>>>>>> 277725795bc75806c7de113f130449b332ae18df
 
 Vue.config.productionTip = false
 
