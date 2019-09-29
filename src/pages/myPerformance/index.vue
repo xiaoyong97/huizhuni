@@ -562,11 +562,11 @@
 	.list_div{
 		margin-top: 8px;
 		background-color: #FFFFFF;
+		padding: 0 12px;
 	};
 	.list_box{
-		border-bottom: #999999 solid 1px;
+		border-bottom: #dddddd solid 1px;
 		height: 65px;
-		padding: 0 6px;
 	};
 	.list_text1{
 		font-size: 15px;
