@@ -5,7 +5,7 @@
 		<van-nav-bar :title="title"  >
 
 		</van-nav-bar>
-
+		<img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
 		<div class="main" style="height: 100%">
 
 				<div class="content" >
