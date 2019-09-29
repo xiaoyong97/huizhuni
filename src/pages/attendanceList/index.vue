@@ -16,7 +16,7 @@
                     </van-col>
                     <van-col class="" span="12" style="text-align: left">
                         <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                        <p class="card_list1_test_right" style="font-size: 15px">客户经理</p>
                     </van-col>
                 </van-row>
                 <div style="height: 15px" v-show="open"></div>
@@ -25,12 +25,12 @@
             <div class="card_div" style="" >
                 <van-row style="padding: 15px 12px 0 ">
                     <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
+                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">2.赵无极  &thinsp; 男</p>
+                        <p class="card_list1_test_left" style="">鲁信创投</p>
                     </van-col>
                     <van-col class="" span="12" style="text-align: left">
                         <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                        <p class="card_list1_test_right" style="font-size: 15px">客户经理</p>
                     </van-col>
                 </van-row>
                 <div style="height: 15px" v-show="open"></div>
@@ -39,12 +39,12 @@
             <div class="card_div" style="" >
                 <van-row style="padding: 15px 12px 0 ">
                     <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
+                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">3.李思思  &thinsp; 男</p>
                         <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
                     </van-col>
                     <van-col class="" span="12" style="text-align: left">
                         <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                        <p class="card_list1_test_right" style="font-size: 15px">客户经理</p>
                     </van-col>
                 </van-row>
                 <div style="height: 15px" v-show="open"></div>
@@ -53,12 +53,12 @@
             <div class="card_div" style="" >
                 <van-row style="padding: 15px 12px 0 ">
                     <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
+                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">4.乔亚  &thinsp; 女</p>
+                        <p class="card_list1_test_left" style="">贵州百灵药业</p>
                     </van-col>
                     <van-col class="" span="12" style="text-align: left">
                         <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                        <p class="card_list1_test_right" style="font-size: 15px">客户经理</p>
                     </van-col>
                 </van-row>
                 <div style="height: 15px" v-show="open"></div>
@@ -67,12 +67,12 @@
             <div class="card_div" style="" >
                 <van-row style="padding: 15px 12px 0 ">
                     <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
+                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">5.李歉  &thinsp; 男</p>
                         <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
                     </van-col>
                     <van-col class="" span="12" style="text-align: left">
                         <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                        <p class="card_list1_test_right" style="font-size: 15px">客户经理</p>
                     </van-col>
                 </van-row>
                 <div style="height: 15px" v-show="open"></div>
@@ -81,12 +81,12 @@
             <div class="card_div" style="" >
                 <van-row style="padding: 15px 12px 0 ">
                     <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
+                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">6.钱云龙  &thinsp; 男</p>
                         <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
                     </van-col>
                     <van-col class="" span="12" style="text-align: left">
                         <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                        <p class="card_list1_test_right" style="font-size: 15px">客户经理</p>
                     </van-col>
                 </van-row>
                 <div style="height: 15px" v-show="open"></div>
@@ -95,82 +95,12 @@
             <div class="card_div" style="" >
                 <van-row style="padding: 15px 12px 0 ">
                     <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
+                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">7.孙战  &thinsp; 女</p>
+                        <p class="card_list1_test_left" style="">湖南中山药机</p>
                     </van-col>
                     <van-col class="" span="12" style="text-align: left">
                         <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
-                    </van-col>
-                </van-row>
-                <div style="height: 15px" v-show="open"></div>
-
-            </div>
-            <div class="card_div" style="" >
-                <van-row style="padding: 15px 12px 0 ">
-                    <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
-                    </van-col>
-                    <van-col class="" span="12" style="text-align: left">
-                        <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
-                    </van-col>
-                </van-row>
-                <div style="height: 15px" v-show="open"></div>
-
-            </div>
-            <div class="card_div" style="" >
-                <van-row style="padding: 15px 12px 0 ">
-                    <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
-                    </van-col>
-                    <van-col class="" span="12" style="text-align: left">
-                        <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
-                    </van-col>
-                </van-row>
-                <div style="height: 15px" v-show="open"></div>
-
-            </div>
-            <div class="card_div" style="" >
-                <van-row style="padding: 15px 12px 0 ">
-                    <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
-                    </van-col>
-                    <van-col class="" span="12" style="text-align: left">
-                        <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
-                    </van-col>
-                </van-row>
-                <div style="height: 15px" v-show="open"></div>
-
-            </div>
-            <div class="card_div" style="" >
-                <van-row style="padding: 15px 12px 0 ">
-                    <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
-                    </van-col>
-                    <van-col class="" span="12" style="text-align: left">
-                        <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
-                    </van-col>
-                </van-row>
-                <div style="height: 15px" v-show="open"></div>
-
-            </div>
-            <div class="card_div" style="" >
-                <van-row style="padding: 15px 12px 0 ">
-                    <van-col class="" span="12">
-                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
-                    </van-col>
-                    <van-col class="" span="12" style="text-align: left">
-                        <p class="card_list1_test_right">12345678901</p>
-                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                        <p class="card_list1_test_right" style="font-size: 15px">客户经理</p>
                     </van-col>
                 </van-row>
                 <div style="height: 15px" v-show="open"></div>
@@ -388,21 +318,20 @@
     .card_list1_test_left{
         color: #333333;
         font-size: 15px;
-        font-weight: bold;
         margin-block-start:0;
         margin-block-end:0;
         line-height: 30px;
     }
     .card_list1_test_right{
-        color: #666666;
-        font-size: 12px;
+        color: #333333;
+        font-size: 15px;
         margin-block-start:0;
         margin-block-end:0;
         line-height: 30px;
     }
     .card_list2_test{
-        color: #666666;
-        font-size: 14px;
+        color: #333333;
+        font-size: 15px;
         margin-block-start:0;
         margin-block-end:0;
         line-height: 30px;

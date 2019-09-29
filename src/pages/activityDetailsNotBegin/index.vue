@@ -106,7 +106,7 @@
             <div class="secend_box" style="height: auto">
                 <van-row class="list_row_top" type="flex" justify="center">
                     <van-col class="" span="12" style="height: 40px">
-                        <van-row class="" type="flex" justify="center">
+                        <van-row class="" type="flex" justify="center" @click="goviewList">
                             <van-col class="" span="2" ><img src="../../assets/images/38/List@2x.png" class="img_right" ></van-col>
                             <van-col class="" span="12" ><p class="list_test_last" >查看名单</p></van-col>
                         </van-row>
@@ -114,7 +114,7 @@
                     <van-col class="" span="12" style="height:40px">
                         <van-row class="" type="flex" justify="center">
                             <van-col class="" span="2" ><img src="../../assets/images/38/QRcode@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >报到/签名</p></van-col>
+                            <van-col class="" span="12" ><p class="list_test_last" >报名/签到</p></van-col>
                         </van-row>
                     </van-col>
                 </van-row>
@@ -170,6 +170,9 @@
             },
             onChange(index) {
                 this.current = index;
+            },
+            goviewList : function(){
+                this.$router.push('./viewList');
             },
         },
 
