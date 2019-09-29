@@ -12,7 +12,6 @@
     <div class="msg">这是一个主页...</div>
     <div style="color:blue;font-weight: bold;text-align:center;padding:20px;" @click="go">跳转</div>
   </div>
-  
     
 
   <!--tabbar-->
