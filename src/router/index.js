@@ -178,6 +178,38 @@ export default new Router({
           title: '消息'
         },
       },
+        {
+            name: 'accountMessage',
+            path: '/index/news/accountMessage',
+            component: () => import('@/pages/index/news/accountMessage'),
+            meta: {
+                title: '状态消息'
+            },
+        },
+        {
+            name: 'unspentLoansMessage',
+            path: '/index/news/unspentLoansMessage',
+            component: () => import('@/pages/index/news/unspentLoansMessage'),
+            meta: {
+                title: '状态消息'
+            },
+        },
+        {
+            name: 'grabMessage',
+            path: '/index/news/grabMessage',
+            component: () => import('@/pages/index/news/grabMessage'),
+            meta: {
+                title: '状态消息'
+            },
+        },
+        {
+            name: 'statusMessage',
+            path: '/index/news/statusMessage',
+            component: () => import('@/pages/index/news/statusMessage'),
+            meta: {
+                title: '状态消息'
+            },
+        },
 		//贷款 征信校验
 		{
 		  name: 'creditCheck',

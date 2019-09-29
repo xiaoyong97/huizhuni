@@ -5,177 +5,10 @@
         <van-nav-bar :title="title" right-text="批量删除" >
 
         </van-nav-bar>
-        <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
+        <img src="../../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <div class="main" style="height: 100%">
 
             <div class="content" >
-                <van-tabs v-model="activeName" line-width=25% line-height=3 color="#4c62e7" title-active-color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
-                    <van-tab title="贷款" >
-
-                        <div class="list_div ">
-
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">信息采集不完整请及时<span>补录</span>，系统将在30天后自动清除</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">18:14</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span></p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">昨天</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户赵仁儿，应于2019年8月29日归还贷款本息200，000元.
-                                    </p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">王长生</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日货款到期，请及时开始续货流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span>. </p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户白马服装有限公司，应于2019年8月29日货款到期，请及时开始续贷流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日货款到期，请及时开始续货流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日<span>贷款到期</span>，请及时开始续贷流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户赵仁儿，应于2019年8月29日<span>归还贷款本息</span>200，000元</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-
-<!--                            <div class="popContainer">-->
-<!--                                <van-row class="list_box" type="flex" justify="center" style="position: relative;rgba(255,255,255,0.5)" >-->
-<!--                                    <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>-->
-<!--                                    <van-col  class="" span="17" >-->
-<!--                                        <p class="list_text2">全选</p>-->
-<!--                                    </van-col>-->
-<!--                                    <van-col  class="" span="5" style="text-align: right">-->
-<!--                                        <div class="delete_box"><p class="list_text_time">删除</p></div>-->
-<!--                                    </van-col>-->
-<!--                                </van-row>-->
-<!--                            </div>-->
-
-                        </div>
-                    </van-tab>
-                    <van-tab title="商机"  >
-                        <div class="content">
-                            <div class="card_div" style="" >
-                                <van-col  span="16"  class="shangji_card" style="width: 70%">
-                                    <p class="card_list1_test_left" style="">您名下客户<span>进入抢单池</span> </p>
-                                </van-col>
-                                <van-col class="view_box_left" span="5"  style="width: 10%;left:73%;;border-left: #dddddd 1px solid" >
-                                    <img src="../../../assets/images/38/View@2x.png" class="img_view"  >
-                                </van-col>
-                                <van-col class="view_box_right"  span="3" style="text-align: left;width: 28%;left:83%;height: 18%" @click="go('grabMessage')">
-                                    <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">查看</p>
-                                </van-col>
-                                <div style="height: 15px" ></div>
-
-                            </div>
-                            <div class="card_div" style="" >
-                                <van-col  span="16"  class="shangji_card" style="width: 70%">
-                                    <p class="card_list1_test_left" style="">已抢单客户<span>状态发生变化    </span> </p>
-                                </van-col>
-                                <van-col class="view_box_left" span="5"  style="width: 10%;left:73%;;border-left: #dddddd 1px solid" >
-                                    <img src="../../../assets/images/38/View@2x.png" class="img_view"  >
-                                </van-col>
-                                <van-col class="view_box_right"  span="3" style="text-align: left;width: 28%;left:83%;height: 18%" @click="go('statusMessage')">
-                                    <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">查看</p>
-                                </van-col>
-                                <div style="height: 15px" ></div>
-                            </div>
-                            <div class="card_div" style="" >
-                                    <van-col  span="16"  class="shangji_card" style="width: 70%">
-                                        <p class="card_list1_test_left" style="">您已抢单客户尚未转化成功 即将 <span>退回</span>商机池 </p>
-                                    </van-col>
-                                    <van-col class="view_box_left" span="5"  style="width: 10%;left:73%;;border-left: #dddddd 1px solid" >
-                                        <img src="../../../assets/images/38/View@2x.png" class="img_view"  >
-                                    </van-col>
-                                    <van-col class="view_box_right"  span="3" style="text-align: left;width: 28%;left:83%;height: 18%">
-                                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">查看</p>
-                                    </van-col>
-                                <div style="height: 15px" ></div>
-
-                            </div>
-                            <div class="card_div" style="" >
-                                <van-col  span="16"  class="shangji_card" style="width: 70%">
-                                    <p class="card_list1_test_left" style="">您管户权及业务权客户签约  <span>尚未支用</span> </p>
-                                </van-col>
-                                <van-col class="view_box_left" span="5"  style="width: 10%;left:73%;;border-left: #dddddd 1px solid" >
-                                    <img src="../../../assets/images/38/View@2x.png" class="img_view"  >
-                                </van-col>
-                                <van-col class="view_box_right"  span="3" style="text-align: left;width: 28%;left:83%;height: 18%" @click="go('unspentLoansMessage')">
-                                    <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">查看</p>
-                                </van-col>
-                                <div style="height: 15px" ></div>
-
-                            </div>
-                            <div class="card_div" style="" >
-                                <van-col  span="16"  class="shangji_card" style="width: 70%">
-                                    <p class="card_list1_test_left" style="">惠懂你  <span>预约开户</span> 商机</p>
-                                </van-col>
-                                <van-col class="view_box_left" span="5"  style="width: 10%;left:73%;;border-left: #dddddd 1px solid" >
-                                    <img src="../../../assets/images/38/View@2x.png" class="img_view"  >
-                                </van-col>
-                                <van-col class="view_box_right"  span="3" style="text-align: left;width: 28%;left:83%;height: 18%" @click="go('accountMessage')">
-                                    <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">查看</p>
-                                </van-col>
-                                <div style="height: 15px" ></div>
-
-                            </div>
-                            <div class="card_div" style="" >
-                                <van-col  span="16"  class="shangji_card" style="width: 70%">
-                                    <p class="card_list1_test_left" style="">未审核<span>业绩通报</span> </p>
-                                </van-col>
-                                <van-col class="view_box_left" span="5"  style="width: 10%;left:73%;;border-left: #dddddd 1px solid" >
-                                    <img src="../../../assets/images/38/View@2x.png" class="img_view"  >
-                                </van-col>
-                                <van-col class="view_box_right"  span="3" style="text-align: left;width: 28%;left:83%;height: 18%">
-                                    <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">查看</p>
-                                </van-col>
-                                <div style="height: 15px" ></div>
-                            </div>
-                            <div style="height: 15px"></div>
-
-                        </div>
-                    </van-tab>
-                    <van-tab title="活动"  >
                         <div class="list_div ">
 
                             <van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -245,13 +78,6 @@
                             <!--                            </div>-->
 
                         </div>
-                    </van-tab>
-                    <van-tab title="系统"  >
-
-                    </van-tab>
-
-                </van-tabs>
-
             </div>
         </div>
     </div>
@@ -280,7 +106,7 @@
         data (){
             return {
                 result:false,
-                title : '消息提醒',
+                title : '状态消息',
                 activeName: 'a',
                 step:false,
                 decrease_img: require('@/assets/image/my/decrease.png'),
@@ -316,8 +142,8 @@
             onClickLeft() {
                 this.$router.go(-1);
             },
-            go : function(url){
-                this.$router.push({name: url})
+            go : function(){
+                this.$router.push('/index5');
             },
             onCilckFlex () {
                 this.step=!this.step
