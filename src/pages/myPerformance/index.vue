@@ -10,7 +10,7 @@
 		<div class="main" style="height: 100%">
 
 				<div class="content" >
-					<van-tabs v-model="activeName" line-width=50% line-height=3 color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
+					<van-tabs v-model="activeName" line-width=50% line-height=3 color="#4c62e7" title-active-color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
 						<van-tab title="我的业绩" name="a" style="margin-top: 0px;padding-top: 0" >
 							<div class="business_box">
 								<div class="business_box1">
