@@ -162,7 +162,6 @@
 	import areaList from '../../area.js';
  export default {
 
-	
   data() {
     return {
       title : '新建任务',
@@ -266,7 +265,7 @@
 			diyawuList: this.card_count,
 			jkr:this.jkr,
 			lxfs:this.lxfs,
-			status:2,
+			status:1,
 			datail:'',
 		}
 		var taskList = this.parseJson(localStorage.getItem('task'));
@@ -316,7 +315,6 @@
 		if(this.type == 0){
 			count = JSON.parse(localStorage.getItem('diyawu'))
 		}
-		
 		return count;
 	}
   },

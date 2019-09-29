@@ -51,9 +51,10 @@
 				</div>
 				
 				<div class="pan-container">
+					<br>
 					<div v-for="(item, index) in task.diyawuList"  v-show="choose == index">
 						<van-cell-group class="bg-grey" v-show="task.status != 0">
-							<div class="line"></div>
+							
 							<van-cell>
 								<van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 								<van-col span="22"><h3>产权证号:{{item.cqzh}}</h3></van-col>
@@ -72,17 +73,72 @@
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">楼盘:</van-col>
-								 <van-col span="12">XXXXXXX</van-col>
+								 <van-col span="12">万科楼盘</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">楼栋号:</van-col>
-								 <van-col span="12">XXXXXXX</van-col>
+								 <van-col span="12">28栋</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">单元号:</van-col>
-								 <van-col span="12">XXXXXXX</van-col>
+								 <van-col span="12">2单元哈</van-col>
 							</van-cell>
-					
+							<van-cell>
+								 <van-col span="12" class="subtext">户号:</van-col>
+								 <van-col span="12">705</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">证载地址:</van-col>
+								 <van-col span="12">{{item.sf}}</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">房屋证载用途:</van-col>
+								 <van-col span="12">住宅</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">建筑面积(㎡):</van-col>
+								 <van-col span="12">98.15㎡</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">登记价(元):</van-col>
+								 <van-col span="12">3，000，000，00</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">竣工日期:</van-col>
+								 <van-col span="12">2019-08-19</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">居室:</van-col>
+								 <van-col span="12">3</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">厅:</van-col>
+								 <van-col span="12">1</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">厨房:</van-col>
+								 <van-col span="12">2</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">卫生间:</van-col>
+								 <van-col span="12">2</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">抵押物价值单价(/㎡):</van-col>
+								 <van-col span="12" class="red">5，000，00</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">抵押价值(元):</van-col>
+								 <van-col span="12" class="red">3，000，000，00</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">抵押净值1(元):</van-col>
+								 <van-col span="12" class="red">3，000，000，00</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="12" class="subtext">抵押净值2(元):</van-col>
+								 <van-col span="12" class="red">3，000，000，00</van-col>
+							</van-cell>
 						</van-cell-group>
 					</div>
 				</div>
@@ -102,6 +158,15 @@
 								 <van-col span="8">联系方式</van-col>
 								 <van-col span="16">13902506869</van-col>
 				</van-cell>
+			</van-cell-group>
+			
+			<van-cell-group class="bg-grey" v-show="task.status == 2">
+				<div class="line"></div>
+					<div class="img-container">
+						<van-col span="8"  v-for="(item, index) in task.diyawuList" class="img-box">
+							<img src="../../assets/images/24/house1.jpeg" alt="">
+						</van-col>
+					</div>
 			</van-cell-group>
 		</div>
     </div>
@@ -158,8 +223,8 @@
 			var id = localStorage.getItem('id');
 			var task = [];
 			for(var i=0; i<tasks.length; i++){
-				if(tasks[0].task_id == id){
-					task = tasks[0];
+				if(tasks[i].task_id == id){
+					task = tasks[i];
 				}
 			}
 			return task;
@@ -176,7 +241,7 @@
 <style lang="scss" scoped>
 .content{
 	padding: 0px;
-	min-height: 700px;
+	min-height: 667px;
 	background-color: rgb(238,238,238);
 }
 .grey{
@@ -276,11 +341,25 @@
 	.pan-container{
 		background-color: #fff;
 		font-size: 12px;
+		margin-bottom: 12px;
+		padding-bottom: 12px;
 	}
 	.subtext{
 		color: #999999;
 	}
 	.pan-container .van-cell{
 		padding: 4px 16px;
+	}
+	.red{
+		color: #f76037;
+	}
+	.img-container{
+		padding: 16px 8px;
+	}
+	.img-box {
+		padding: 0px 4px;
+	}
+	.img-box img{
+		width: 100%;
 	}
 </style>
