@@ -102,7 +102,14 @@ export default new Router({
           title: '活动详情已结束'
         },
       },
-
+        {
+            name: 'activityDetailsIng',
+            path: '/activityDetailsIng',
+            component: () => import('@/pages/activityDetailsIng'),
+            meta: {
+                title: '活动详情进行中'
+            },
+        },
  //咕咕管理
 	  {
 	    name: 'gugu',
@@ -147,6 +154,7 @@ export default new Router({
                 title: '我的活动-查看名单'
             },
         },
+
 
     ]
   })

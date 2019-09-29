@@ -19,7 +19,7 @@
                     </van-row>
                     <van-row class="list_row" >
                         <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test" >活动主题</p></van-col>
-                        <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">小微快贷</p></van-col>
+                        <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">今朝会-创业沙龙第六期</p></van-col>
                     </van-row>
                     <van-row class="list_row" >
                         <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test" >活动开始时间</p></van-col>

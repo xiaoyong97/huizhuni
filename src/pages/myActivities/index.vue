@@ -79,6 +79,7 @@
             <van-tabs color="#4c62e7" line-width="50%" line-height=3>
                 <van-tab title="已发布(3)" color="#4c62e7">
                     <div class="card_div" style="" >
+                        <div @click="goactivityDetailsIng">
                             <van-row style="padding: 16px 12px 0">
                                 <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
                                 <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col>
@@ -92,6 +93,7 @@
                                 <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
                                 <van-col class="" span="10" style="text-align: right" ><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人签到<span style="color: #4c62e7">21</span>人</p></van-col>
                             </van-row>
+                        </div>
                         <hr style="size: 1px;width: 100%;color: aliceblue;margin: 0 ;padding: 0"/>
                             <van-row style="text-align: center;padding: 8px 12px 0">
                                 <van-col class="" span="8" @click="goviewList">
@@ -109,19 +111,21 @@
                             </van-row>
                         </div>
                     <div class="card_div" style="" >
-                        <van-row style="padding: 16px 12px 0" @click="goactivityDetailsNotBegin">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >支付系統及形式创新</p></van-col>
-                            <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right" style="color: #f76037">未開始...</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 16px 12px 0">
-                            <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 16px 12px 8px">
-                            <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
-                            <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人</p></van-col>
-                        </van-row>
+                        <div @click="goactivityDetailsNotBegin" >
+                            <van-row style="padding: 16px 12px 0" @click="goactivityDetailsNotBegin">
+                                <van-col class="" span="12"><p class="card_list1_test_left" >支付系統及形式创新</p></van-col>
+                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right" style="color: #f76037">未開始...</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 0">
+                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 8px">
+                                <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                                <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人</p></van-col>
+                            </van-row>
+                        </div>
                         <hr style="size: 1px;width: 100%;color: aliceblue;margin: 0 ;padding: 0"/>
                         <van-row style="text-align: center;padding: 8px 12px 0" type="flex" justify="center">
                             <van-col class="" span="8">
@@ -139,22 +143,24 @@
                         </van-row>
                     </div>
                     <div class="card_div" style="" @click="goactivityDetailsOver">
-                        <van-row style="padding: 16px 12px 0" type="flex" justify="center">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >今朝会-创业沙龙第六期</p></van-col>
-                            <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right" style="color: #999999">已結束...</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 16px 12px 0">
-                            <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 16px 12px 8px">
-                            <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
-                            <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">108</span>人签到<span style="color: #4c62e7">102</span>人</p></van-col>
-                        </van-row>
+                        <div @click="goactivityDetailsOver" >
+                            <van-row style="padding: 16px 12px 0" type="flex" justify="center">
+                                <van-col class="" span="12"><p class="card_list1_test_left" >今朝会-创业沙龙第六期</p></van-col>
+                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right" style="color: #999999">已結束...</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 0">
+                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 8px">
+                                <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                                <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">108</span>人签到<span style="color: #4c62e7">102</span>人</p></van-col>
+                            </van-row>
+                        </div>
                         <hr style="size: 1px;width: 100%;color: aliceblue;margin: 0 ;padding: 0"/>
                         <van-row style="text-align: center;padding: 8px 12px 0" type="flex" justify="center">
-                            <van-col class="" span="8">
+                            <van-col class="" span="8" @click="goviewList">
                                 <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location" ></van-col>
                                 <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看名单</p></van-col>
                             </van-col>
@@ -321,10 +327,13 @@
             goactivityDetailsNotBegin : function(){
                 this.$router.push('./activityDetailsNotBegin');
             },
-            go : function(){
-                alert()
-                this.$router.push('/index5');
+            goactivityDetailsIng : function(){
+                this.$router.push('./activityDetailsIng');
             },
+            // go : function(){
+            //     alert()
+            //     this.$router.push('/index5');
+            // },
             goactivityDetailsOver : function(){
                 this.$router.push('./activityDetailsOver');
             },
