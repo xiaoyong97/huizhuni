@@ -1,12 +1,11 @@
 <template>
-    <div class="main_box">
+    <div class="main" style="position: relative; ">
 <!--        遮罩层-->
 
         <!--头部导航-->
-
-        <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft">
-
+        <van-nav-bar :title="title"  >
         </van-nav-bar>
+        <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
 
         <div class="content">
             <div class="card_div" style="" >
@@ -193,7 +192,7 @@
 
         data() {
             return {
-                title : '查看名单',
+                title : '签到名单',
                 checked: true,
                 show: false,
                 show1:false,
@@ -362,6 +361,14 @@
         font-size: 14px;
         line-height: 34px;
         color: rgb(51,51,51);
+    }
+    .img_return{
+        position: absolute;
+        top: 14px;
+        left:12px ;
+        height: 18px;
+        width: 18px;
+        z-index: 100;
     }
     .img_open{
         position: absolute;

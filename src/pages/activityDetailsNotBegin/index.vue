@@ -1,11 +1,12 @@
 <template>
-    <div class="main">
+    <div class="main" style="position: relative; ">
 
         <!--头部导航-->
 
-        <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft" >
-        </van-nav-bar>
+        <van-nav-bar :title="title"  >
 
+        </van-nav-bar>
+        <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <div class="main">
             <div class="not_start"><p style="font-size: 12px;color: #FFFFFF">未开始</p></div>
             <van-swipe  indicator-color="white" >
@@ -205,6 +206,14 @@
         margin-block-start:0;
         margin-block-end:0;
         color: rgb(153,153,153);
+    }
+    .img_return{
+        position: absolute;
+        top: 14px;
+        left:12px ;
+        height: 18px;
+        width: 18px;
+        z-index: 100;
     }
     .main_box{
         height: 434px;
