@@ -80,16 +80,16 @@
 									</van-col>
 									<van-col span="10" style="position: relative">
 										<van-row class="" style="position: absolute;top: 20px;width: 130px;left: 20px">
-											<van-col  class="business_box3" span="1"><img :src="navigation"  class="img_navigation" ></van-col>
+											<van-col  class="business_box3" span="1"><img :src="successCircle"  class="img_navigation" ></van-col>
 											<van-col  class="business_box3" span="20"><p class="business_text_success">成功</p></van-col>
 										</van-row>
 										<van-row class="" style="position: absolute;top: 40px;width: 130px;left: 20px">
-											<van-col class="business_box3" span="1"><img :src="navigation"  class="img_navigation" ></van-col>
+											<van-col class="business_box3" span="1"><img :src="failCircle"  class="img_navigation" ></van-col>
 											<van-col class="business_box3" span="20"><p class="business_text_success">未成功</p></van-col>
 										</van-row>
 									</van-col>
 									<van-col span="6" >
-										<img :src="success"  class="" style="height:110px;width: 110px;position: absolute;top: 14px;right: 30px">
+										<img :src="chart"  class="" style="height:110px;width: 110px;position: absolute;top: 14px;right: 30px">
 									</van-col>
 									<img :src="pull_down"  class="felx_img" @click="onCilckFlex">
 								</van-row>
@@ -251,8 +251,9 @@
 				step:false,
 				decrease_img: require('@/assets/image/my/decrease.png'),
 				pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
-				navigation: require('@/assets/image/my/Navigation circle@2x.png'),
-				success: require('@/assets/image/my/wait@2x.png'),
+				successCircle: require('@/assets/image/my/Navigation circle@2x.png'),
+				failCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
+				chart: require('@/assets/images/activity/chart.png'),
 				frame1: require('@/assets/image/my/Picture frame1@2x.png'),
 				frame2: require('@/assets/image/my/Picture frame2@2x.png'),
 				frame3: require('@/assets/image/my/Picture frame3@2x.png'),
