@@ -75,7 +75,7 @@
 										</div>
 										<div >
 											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(51,51,51);padding-left: 20px">67</p></van-col>
-											<van-col span="2" class="business_box3"><p class="business_text_percent">%</p></van-col>
+											<van-col span="2" class="business_box3" style="height: 45px;"><p class="business_text_percent">%</p></van-col>
 										</div>
 									</van-col>
 									<van-col span="10" style="position: relative">
