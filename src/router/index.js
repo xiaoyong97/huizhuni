@@ -123,7 +123,7 @@ export default new Router({
       {
         name: 'add_task',
         path: '/add_task',
-        component: () => import('@/pages/add_task'),
+        component: () => import('@/pages/addTask'),
         meta: {
          title: '添加任务'
         },
@@ -132,11 +132,20 @@ export default new Router({
 	  {
 	    name: 'new_task',
 	    path: '/new_task',
-	    component: () => import('@/pages/add_task'),
+	    component: () => import('@/pages/addTask'),
 	    meta: {
 	     title: '新建任务'
 	    },
 	  },
+	  //咕咕管理 查看任务
+	 	  {
+	 	    name: 'checkTask',
+	 	    path: '/checkTask',
+	 	    component: () => import('@/pages/checkTask'),
+	 	    meta: {
+	 	     title: '查看任务'
+	 	    },
+	 	  },
 	  //咕咕管理 搜索
 	  {
 	    name: 'search',
