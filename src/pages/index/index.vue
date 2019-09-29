@@ -155,11 +155,6 @@
 
 	</van-cell-group>
   </div>
-<<<<<<< HEAD
-    
-=======
->>>>>>> 277725795bc75806c7de113f130449b332ae18df
-
   <!--tabbar-->
   <TabBar/>
 
@@ -311,7 +306,8 @@ export default {
 	height: 20px;
 	display: inline;
 	margin-left: -16px;
-	vertical-align:text-center;
+	vertical-align:top;
+	margin-top:2px;
 }
 .padding-bottom-16{
 	padding-bottom: 32px;;
