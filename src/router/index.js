@@ -154,6 +154,14 @@ export default new Router({
                 title: '我的活动-查看名单'
             },
         },
+      {
+        name: 'attendanceList',
+        path: '/attendanceList',
+        component: () => import('@/pages/attendanceList'),
+        meta: {
+          title: '我的活动-签到名单'
+        },
+      },
 
 
     ]
