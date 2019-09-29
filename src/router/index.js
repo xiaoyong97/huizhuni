@@ -12,7 +12,6 @@ export default new Router({
         redirect: { name: 'index' }
       },
 
-
       //主页
       {
         name: 'index',
@@ -171,7 +170,15 @@ export default new Router({
           title: '我的活动-签到名单'
         },
       },
-
+		//贷款 征信校验
+		{
+		  name: 'creditCheck',
+		  path: '/index3/creditCheck',
+		  component: () => import('@/pages/index3/creditCheck'),
+		  meta: {
+		   title: '征信校验'
+		  },
+		},
 
     ]
   })

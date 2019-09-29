@@ -154,6 +154,10 @@
 
 	</van-cell-group>
   </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b77c80506ba3c636c6641c1ff3807e7bacac109d
   <!--tabbar-->
   <TabBar/>
 
