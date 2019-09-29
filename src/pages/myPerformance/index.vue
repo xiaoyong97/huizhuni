@@ -2,10 +2,9 @@
     <div class="main">
 
      <!--头部导航-->
+		<van-nav-bar :title="title"  >
 
-	 <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft" >
-
-	 </van-nav-bar>
+		</van-nav-bar>
 
 		<div class="main" style="height: 100%">
 
@@ -485,6 +484,14 @@
 		bottom: 0;
 		color: rgb(153,153,153);
 	};
+	.img_return{
+		position: absolute;
+		top: 14px;
+		left:12px ;
+		height: 18px;
+		width: 18px;
+		z-index: 100;
+	}
 	.business_text_success{
 		float: left;
 		font-size:12px;
