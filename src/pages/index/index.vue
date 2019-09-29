@@ -14,7 +14,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">张三</span>进入名单池中，前往 
 				<div class="btn-group">
 				  <span class="rob" @click="go('index2')">抢单</span>
-				  <span class="close" @click="closeNotice" >&times;</span>
+				  <span class="close" @click="closeNotice" >X</span>
 				</div>
 			</div>
 			<van-swipe :autoplay="3000" indicator-color="white" @change="onBannerChange">
@@ -444,8 +444,8 @@
 	background-color: rgb(169,169,169);
 	color: #fff;
 	border-radius: 16px;
-	font-size: 22px;
+	font-size: 14px;
 	line-height: 20px;;
-	padding: 0px 8px;
+	padding: 3px 8px;
 }
 </style>
