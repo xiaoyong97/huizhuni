@@ -130,7 +130,7 @@
 								</van-col>
 								<van-col  class="" span="8" style="position: relative">
 									<img :src="frame1"  class="img_frame" >
-									<img :src="success"  class="img_frame_head" >
+									<img :src="people1"  class="img_frame_head" >
 								</van-col>
 								<van-col span="8">
 									<van-row style="height: 60px">
@@ -148,7 +148,7 @@
 									<van-col  class="" span="1"><p class="list_text1" style="color: rgb(247,96,55)">1.</p></van-col>
 									<van-col  class="" span="4" >
 										<img :src="frame2"  class="img_frame_min" >
-										<img :src="success"  class="img_frame_head_min" >
+										<img :src="people2"  class="img_frame_head_min" >
 									</van-col>
 									<van-col  class="" span="10"><p class="list_text2" >Selina</p></van-col>
 									<van-col  class="text-align_right" span="9"><p class="list_text3">成功<span class="list_text4">47</span>笔</p></van-col>
@@ -157,7 +157,7 @@
 									<van-col  class="" span="1"><p class="list_text1" style="color: rgb(169,168,168)">2.</p></van-col>
 									<van-col  class="" span="4" >
 										<img :src="frame3"  class="img_frame_min" >
-										<img :src="success"  class="img_frame_head_min" >
+										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
 									<van-col  class="" span="10"><p class="list_text2">王长生</p></van-col>
 									<van-col  class="text-align_right" span="9"><p class="list_text3">成功<span class="list_text4">45</span>笔</p></van-col>
@@ -166,7 +166,7 @@
 									<van-col  class="" span="1"><p class="list_text1" style="color: rgb(219,146,65)">3.</p></van-col>
 									<van-col  class="" span="4" >
 										<img :src="frame4"  class="img_frame_min" >
-										<img :src="success"  class="img_frame_head_min" >
+										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
 									<van-col  class="" span="10"><p class="list_text2">赵无极</p></van-col>
 									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">42</span>笔</p></van-col>
@@ -174,34 +174,50 @@
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
 									<van-col  class="" span="1"><p class="list_text1" >4.</p></van-col>
 									<van-col  class="" span="4" >
-										<img :src="success"  class="img_frame_head_min" >
+										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">赵无极</p></van-col>
-									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">42</span>笔</p></van-col>
+									<van-col  class="" span="10"><p class="list_text2">石昊</p></van-col>
+									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">41</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
 									<van-col  class="" span="1"><p class="list_text1" >5.</p></van-col>
 									<van-col  class="" span="4" >
-										<img :src="success"  class="img_frame_head_min" >
+										<img :src="people1"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">赵无极</p></van-col>
-									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">42</span>笔</p></van-col>
+									<van-col  class="" span="10"><p class="list_text2">柳飘飘</p></van-col>
+									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">40</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
 									<van-col  class="" span="1"><p class="list_text1" >6.</p></van-col>
 									<van-col  class="" span="4" >
-										<img :src="success"  class="img_frame_head_min" >
+										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">赵无极</p></van-col>
-									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">42</span>笔</p></van-col>
+									<van-col  class="" span="10"><p class="list_text2">徐琨</p></van-col>
+									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">39</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
 									<van-col  class="" span="1"><p class="list_text1" >7.</p></van-col>
 									<van-col  class="" span="4" >
-										<img :src="success"  class="img_frame_head_min" >
+										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">赵无极</p></van-col>
-									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">42</span>笔</p></van-col>
+									<van-col  class="" span="10"><p class="list_text2">李察</p></van-col>
+									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">39</span>笔</p></van-col>
+								</van-row>
+								<van-row class="list_box" type="flex" justify="center" style="position: relative">
+									<van-col  class="" span="1"><p class="list_text1" >8.</p></van-col>
+									<van-col  class="" span="4" >
+										<img :src="people3"  class="img_frame_head_min" >
+									</van-col>
+									<van-col  class="" span="10"><p class="list_text2">秦广汉</p></van-col>
+									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">37</span>笔</p></van-col>
+								</van-row>
+								<van-row class="list_box" type="flex" justify="center" style="position: relative">
+									<van-col  class="" span="1"><p class="list_text1" >9.</p></van-col>
+									<van-col  class="" span="4" >
+										<img :src="people2"  class="img_frame_head_min" >
+									</van-col>
+									<van-col  class="" span="10"><p class="list_text2">曾李</p></van-col>
+									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">35</span>笔</p></van-col>
 								</van-row>
 
 
@@ -241,6 +257,9 @@
 				frame2: require('@/assets/image/my/Picture frame2@2x.png'),
 				frame3: require('@/assets/image/my/Picture frame3@2x.png'),
 				frame4: require('@/assets/image/my/Picture frame4@2x.png'),
+				people1: require('@/assets/images/activity/people1.png'),
+				people2: require('@/assets/images/activity/people2.png'),
+				people3: require('@/assets/images/activity/people3.png'),
 				medal: require('@/assets/image/my/medal.png'),
 				// medal: require('@/assets/image/my/medal.png'),
 			}
