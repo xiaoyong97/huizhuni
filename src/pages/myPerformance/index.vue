@@ -91,7 +91,8 @@
 									<van-col span="6" >
 										<img :src="success"  class="" style="height:110px;width: 110px;position: absolute;top: 14px;right: 30px">
 									</van-col>
-									<img :src="pull_down"  class="felx_img" @click="onCilckFlex">
+									<img :src="pull_down"  class="felx_img" @click="onCilckFlex" v-show="step">
+									<img :src="Pullup"  class="felx_img" @click="onCilckFlex" v-show="!step">
 								</van-row>
 							</div>
 							<!--              折叠div-->
@@ -251,6 +252,7 @@
 				step:false,
 				decrease_img: require('@/assets/image/my/decrease.png'),
 				pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
+				Pullup: require('@/assets/images/38/Pullup.png'),
 				navigation: require('@/assets/image/my/Navigation circle@2x.png'),
 				success: require('@/assets/image/my/wait@2x.png'),
 				frame1: require('@/assets/image/my/Picture frame1@2x.png'),
