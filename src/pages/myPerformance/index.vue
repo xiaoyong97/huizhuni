@@ -58,7 +58,7 @@
 										</div>
 										<div >
 											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(70,185,72)">6</p></van-col>
-											<van-col span="2" class="business_box3"><img :src="decrease_img"  class="img" ></van-col>
+											<van-col span="2" class="business_box3" style="height:40px"><img :src="decrease_img"  class="img" ></van-col>
 										</div>
 									</van-col>
 								</van-row>
@@ -99,22 +99,22 @@
 							<div v-show="!step" style="height: 100px"></div>
 							<div class="business_box" v-show="step" style="border-top-left-radius: 0;border-top-right-radius: 0;height: auto">
 								<van-row>
-									<p class="business_text_flex" >截止：<span style="color: #4c62e7">09</span>月<span style="color: #4c62e7">01</span>日</p>
+									<p class="business_text_flex" >截止&nbsp;<span style="color: #4c62e7">09</span>&nbsp;月<span style="color: #4c62e7">&nbsp;01&nbsp;</span>日</p>
 								</van-row>
 								<van-row>
 									<van-col span="12"><p class="business_flexbox_text">您名下商机处理情况为</p></van-col>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >成功转换累计笔数：<span style="color: #4c62e7">34</span>笔</p>
+									<p class="business_flexbox_text" >成功转换累计笔数：<span style="color: #4c62e7">34</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >待完成累计笔数：<span style="color: #f76037">5</span>笔</p>
+									<p class="business_flexbox_text" >待完成累计笔数：<span style="color: #f76037">5</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >放弃累计笔数：<span style="color: #f76037">1</span>笔</p>
+									<p class="business_flexbox_text" >放弃累计笔数：<span style="color: #f34c83">1</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >失败累计笔数：<span style="color: #999999">2</span>笔</p>
+									<p class="business_flexbox_text" >失败累计笔数：<span style="color: #46b948">2</span>&nbsp;笔</p>
 								</van-row>
 							</div>
 						</van-tab>
@@ -252,8 +252,8 @@
 				step:false,
 				decrease_img: require('@/assets/image/my/decrease.png'),
 				pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
-				successCircle: require('@/assets/image/my/Navigation circle@2x.png'),
-				failCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
+				successCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
+				failCircle: require('@/assets/images/24/Navigationcircle@2x.png'),
 				chart: require('@/assets/images/activity/chart.png'),
 				Pullup: require('@/assets/images/38/Pullup.png'),
 				frame1: require('@/assets/image/my/Picture frame1@2x.png'),
@@ -429,7 +429,7 @@
 		padding: 0;
 	};
 	.business_box3{
-		height: 48px;
+		height: 43px;
 		margin: 0;
 		padding: 0;
 		position: relative;
