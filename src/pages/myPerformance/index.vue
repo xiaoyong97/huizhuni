@@ -573,6 +573,7 @@
 		line-height: 32px;
 	};
 	.list_text2{
+		margin-left: 10px;
 		font-size: 15px;
 		line-height: 32px;
 		color: rgb(51,51,51);
