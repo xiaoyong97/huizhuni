@@ -171,7 +171,6 @@
 	  is_show_area:false,
 	  areaCellIndex:0,
 	  step:1,
-	  jkr:'',
 	  lxfs:'',
 	  isShowDetail:false,
 		isSubmit:false,
@@ -316,7 +315,14 @@
 			count = JSON.parse(localStorage.getItem('diyawu'))
 		}
 		return count;
-	}
+	},
+	jkr:function(){
+		var name = '';
+		if(this.type == 0){
+			name = localStorage.getItem('jkr')
+		}
+		return name;
+	},
   },
 
   //引入组件

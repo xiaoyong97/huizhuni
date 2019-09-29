@@ -31,12 +31,12 @@
 				 <van-cell class="grey"  > </van-cell>
 				
 				<van-cell>
-								 <van-col span="8">借款人</van-col>
-								 <van-col span="16">{{task.jkr}}</van-col>
+					 <van-col span="8">借款人</van-col>
+					 <van-col span="16">{{task.jkr}}</van-col>
 				</van-cell>
 				<van-cell>
-								 <van-col span="8">联系方式</van-col>
-								 <van-col span="16">{{task.lxfs}}</van-col>
+					 <van-col span="8">联系方式</van-col>
+					 <van-col span="16">{{task.lxfs}}</van-col>
 				</van-cell>
 			</van-cell-group>		
 			<div  v-show="task.status == 2">
@@ -189,11 +189,14 @@
 
 	//网页加载完成
 	mounted : ()=>{
-		var diyawuList = localStorage.getItem('diyawu');
-		console.log(diyawuList)
+		// var diyawuList = localStorage.getItem('diyawu');
+		// console.log(diyawuList)
 		
-		var task = localStorage.getItem('task');
-		console.log(task)
+		// var task = localStorage.getItem('task');
+		// console.log(task)
+		
+		// var tasks = JSON.parse(localStorage.getItem('task'));
+		// console.log(tasks)
 	},
 
 	//声明方法

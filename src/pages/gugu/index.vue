@@ -73,7 +73,7 @@
 
 	Vue.use(Tab).use(Tabs).use(SubmitBar).use(Checkbox);
  export default {
-
+	
   data() {
     return {
       title : '咕咕管理',
@@ -90,7 +90,6 @@
 
   //网页加载完成
   mounted : ()=>{
-    
   },
    watch: {
       // 如果 `question` 发生改变，这个函数就会运行
@@ -103,7 +102,9 @@
   methods : {
 	add_task:function  () {
 		sessionStorage.setItem('type',0);
-	  this.$router.push({name: 'new_task', params: {type: 0}});
+		localStorage.setItem('jkr',this.task[this.task.length-1].jkr);
+		
+	    this.$router.push({name: 'new_task', params: {type: 0}});
 	},
 	new_task:function (){
 		sessionStorage.setItem('type',1);
@@ -125,12 +126,99 @@
   //计算属性
   computed: {
 	diyawuList:function(){
-		console.log(localStorage.getItem('diyawu'))
-		return JSON.parse(localStorage.getItem('diyawu'))
-	},
-	task:function(){
-		console.log(localStorage.getItem('task'))
-		return JSON.parse(localStorage.getItem('task'))
+		var diyawu = JSON.parse(localStorage.getItem('diyawu'));
+		if(diyawu == null || diyawu == undefined ){
+			var obj = [{
+					"id": "15697680360000",
+					"cqzh": "987628221227780861",
+					"sf": " 广东省 广州市 天河区",
+					"xxdz": "ZZ街道AABBBBBBB",
+					"cqr": "张三"
+					},
+					{
+					"id": "15697680360001",
+					"cqzh": "987628221227780861",
+					"sf": " 广东省 广州市 天河区",
+					"xxdz": "ZZ街道AABBBBBBB",
+					"cqr": "张三"
+					}];
+				diyawu = obj;
+				localStorage.setItem('diyawu',JSON.stringify(obj))
+			}
+			
+			return diyawu;
+		},
+		task:function(){
+		var task = JSON.parse(localStorage.getItem('task'));
+		if(task == null || task == undefined ){
+			var obj = [{
+				"task_id": 1569768171000,
+				"diyawuList": [{
+					"id": "15697680360000",
+					"cqzh": "987628221227780861",
+					"sf": " 广东省 广州市 天河区",
+					"xxdz": "ZZ街道AABBBBBBB",
+					"cqr": "张三"
+					},
+					{
+					"id": "15697680360001",
+					"cqzh": "987628221227780862",
+					"sf": " 广东省 广州市 天河区",
+					"xxdz": "ZZ街道AABBBBBBB",
+					"cqr": "张三"
+					}],
+				"jkr": "王小二",
+				"lxfs": "13902506869",
+				"status": 0,
+				"datail": ""
+			},
+			{
+				"task_id": 1569768171001,
+				"diyawuList": [{
+					"id": "15697680360000",
+					"cqzh": "987628221227780861",
+					"sf": " 广东省 广州市 天河区",
+					"xxdz": "ZZ街道AABBBBBBB",
+					"cqr": "张三"
+					},
+					{
+					"id": "15697680360001",
+					"cqzh": "987628221227780861",
+					"sf": " 广东省 广州市 天河区",
+					"xxdz": "ZZ街道AABBBBBBB",
+					"cqr": "张三"
+					}],
+				"jkr": "王小二",
+				"lxfs": "13902506869",
+				"status": 1,
+				"datail": ""
+			},
+			{
+				"task_id": 1569768171002,
+				"diyawuList": [{
+					"id": "15697680360000",
+					"cqzh": "987628221227780861",
+					"sf": " 广东省 广州市 天河区",
+					"xxdz": "ZZ街道AABBBBBBB",
+					"cqr": "张三"
+					},
+					{
+					"id": "15697680360001",
+					"cqzh": "987628221227780861",
+					"sf": " 广东省 广州市 天河区",
+					"xxdz": "ZZ街道AABBBBBBB",
+					"cqr": "张三"
+					}],
+				"jkr": "王小二",
+				"lxfs": "13902506869",
+				"status": 2,
+				"datail": ""
+			}]
+			localStorage.setItem('task',JSON.stringify(obj))
+			task = obj;
+		}
+	
+		return task
 	}
   },
   //引入组件
@@ -220,6 +308,8 @@
 		position: absolute;
 		left: 0px;
 		top:50%;
+		border: 1px solid #4c62e7;
+		border-radius: 15px;
 	}
 	.pan2 .van-cell__value--alone{
 		padding: 4px 8px 4px 8px;;
@@ -276,5 +366,8 @@
 	}
 	.van-nav-bar .van-icon{
 		color: #4c62e7;
+	}
+	.van-checkbox__icon .van-icon{
+		border: 1px solid red;
 	}
 </style>

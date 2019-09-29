@@ -10,11 +10,13 @@
 		<img src="../../assets/images/48/Message@2x.png" class="img_search" @click="go_newspage">
 
 		<div class="content" >
-			<van-notice-bar mode="closeable" :scrollable="true"  color="rgb(0,0,0)"
-							background="rgba(238,238,238,0.7)">
-				客户张三进入名单池中，前往
-				<button >前往</button>
-			</van-notice-bar>
+			<div class="notice-bar" v-show="isShowNoticeBar">
+				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">张三</span>进入名单池中，前往 
+				<div class="btn-group">
+				  <span class="rob" @click="go('index2')">抢单</span>
+				  <span class="close" @click="closeNotice" >&times;</span>
+				</div>
+			</div>
 			<van-swipe :autoplay="3000" indicator-color="white" @change="onBannerChange">
 				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
 				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
@@ -68,8 +70,7 @@
 							<p>咕咕管理</p>
 						</van-grid-item>
 						<van-grid-item icon="photo-o" text="文字">
-							<img src="../../assets/images/84/custom.png"">
-
+							<img src="../../assets/images/84/custom.png">
 						</van-grid-item>
 					</van-grid>
 				</div>
@@ -102,12 +103,12 @@
 					<van-col span="14">名下待抢单客户</van-col>
 					<van-col span="10">
 						<span class="cell-num"> 8 </span> 条
-						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
+						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)" @click="go('index2')">查看</van-button>
 					</van-col>
 				</van-cell>
 			</van-cell-group>
 			<van-cell-group >
-				<van-cell is-link >
+				<van-cell is-link @click="go('index3')">
 					<!-- 使用 title 插槽来自定义标题 -->
 					<template slot="title">
 						<van-tag type="danger" class="left_tag">&nbsp;</van-tag>
@@ -175,6 +176,7 @@
 			return {
 				title : '惠助你',
 				current: 0,
+				isShowNoticeBar:true
 			}
 		},
 
@@ -203,7 +205,10 @@
 			},
 			onBannerChange(index) {
 				this.current = index;
-			}
+			},
+			closeNotice:function(){
+				this.isShowNoticeBar = false
+			},
 
 		},
 
@@ -211,7 +216,6 @@
 		computed: {
 
 		},
-
 
 		components: {
 			TabBar
@@ -415,5 +419,37 @@
 .padding-bottom-16{
 	padding-bottom: 32px;;
 }
-
+.notice-bar{
+	position: absolute;
+	top: 44px;
+	width: 100%;
+	z-index: 100;
+	background-color: rgba(238,238,238,0.9);
+	padding-top: 4px;
+	font-size: 14px;
+	line-height: 30px;;
+}
+.theme_color{
+	color: #4c62e7;
+}
+.btn-group{
+	float:right;
+	margin-right: 12px;
+}
+.btn-group .rob{
+	background-color: #4c62e7;
+	color: #fff;
+	border-radius: 15px;
+	padding: 5px 24px;
+	height: 30px;;
+	margin-right: 8px;
+	
+}
+.btn-group .close{
+	background-color: rgb(169,169,169);
+	color: #fff;
+	border-radius: 16px;
+	font-size: 22px;
+	line-height: 20px;;
+}
 </style>
