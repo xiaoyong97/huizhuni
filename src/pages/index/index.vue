@@ -68,8 +68,7 @@
 			  			   <p>咕咕管理</p>
 			  </van-grid-item>
 			  <van-grid-item icon="photo-o" text="文字">
-			  			 <img src="../../assets/images/84/custom.png"">
-			  			 
+			  			 <img src="../../assets/images/84/custom.png">
 			  </van-grid-item>
 			</van-grid>
 		</div>
