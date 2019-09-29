@@ -19,6 +19,7 @@
 				</van-row>	
 				<van-field label="" placeholder="详细地址"  v-model="item.xxdz"/>
 				<van-field label="产权人"placeholder="" v-model="item.cqr"/>
+		
 			 </van-cell-group>
 			 
 			<van-cell-group class="bg-grey"  v-for="(item, index) in card_count" v-show="type==0" >
@@ -161,15 +162,11 @@
 	import areaList from '../../area.js';
  export default {
 
-	
   data() {
     return {
       title : '新建任务',
 	  nextTitle:'下一步',
-	  card_count:[
-		  {cqzh:'',sf:'',xxdz:'',cqr:''}, 
-		  {cqzh:'',sf:'',xxdz:'',cqr:''},
-	  ],
+	  
 	  areaList: areaList,
 	  is_show_area:false,
 	  areaCellIndex:0,
@@ -177,7 +174,7 @@
 	  jkr:'',
 	  lxfs:'',
 	  isShowDetail:false,
-	 
+		isSubmit:false,
 	  }
   },
 
@@ -189,7 +186,11 @@
 
   //网页加载完成
   mounted : ()=>{
-	
+		var diyawuList = localStorage.getItem('diyawu');
+		console.log(diyawuList)
+		
+		var task = localStorage.getItem('task');
+		console.log(task)
   },
   
   //声明方法
@@ -213,18 +214,14 @@
 		this.is_show_area = false;
 	},
 	addCard:function(){
-		this.checkType();
-		if(this.$route.params.type != undefined){
-			this.type = this.$route.params.type;
-			this.next();
-		}
 		
-		 this.card_count[this.card_count.length] =  {cqzh:'',sf:'',xxdz:'',cqr:''};
+	
+		 this.card_count[this.card_count.length] =  {id:Date.parse(new Date())+this.card_count.length,cqzh:'',sf:'',xxdz:'',cqr:''};
 		 this.$forceUpdate();//并不管用
 	},
 	onClickLeft() {
 		
-		if(this.step==1){
+		if(this.step==1 || this.isSubmit ){
 			this.$router.go(-1);
 			return;
 		}
@@ -234,7 +231,7 @@
 	  
 	},
 	checkType:function(){
-		var type = sessionStorage.getItem('type')
+		var type = localStorage.getItem('type')
 		var that = this;
 		if(type != null && type != undefined){
 					 
@@ -250,15 +247,41 @@
 		if(this.step==3){
 			this.$router.go(-1);
 		}else{
+			if(this.step == 2){
+				this.saveData();
+			}
 			this.step = this.step+1;
 		}
 		this.setTitle();
+	},
+	saveData:function(){
+		var diyawuList = this.parseJson(localStorage.getItem('diyawu'));
+		var all = diyawuList.concat(this.card_count);
+		localStorage.setItem('diyawu',JSON.stringify(all));
+		
+		//add task
+		var task = {
+			task_id : Date.parse(new Date()),
+			diyawuList: this.card_count,
+			jkr:this.jkr,
+			lxfs:this.lxfs,
+			status:1,
+			datail:'',
+		}
+		var taskList = this.parseJson(localStorage.getItem('task'));
+		taskList.push(task);
+		localStorage.setItem('task',JSON.stringify(taskList));
+		this.isSubmit = true;
+	},
+	parseJson:function(str){
+		if(str == null || str == undefined) return [];
+		
+		return JSON.parse(str);
 	},
 	setTitle:function(){
 	
 		switch(this.step){
 			case 1:{
-		
 				this.title= this.type == 1 ? '新建任务' : '发布任务';
 			};
 			break;
@@ -283,9 +306,17 @@
   computed: {
 	// 仅读取
 	type: function () {
-		
 	  return sessionStorage.getItem('type')
 	},
+	card_count:function () {
+		var count = [
+			{id:Date.parse(new Date())+'0',cqzh:'',sf:'',xxdz:'',cqr:''}, 	
+		];
+		if(this.type == 0){
+			count = JSON.parse(localStorage.getItem('diyawu'))
+		}
+		return count;
+	}
   },
 
   //引入组件

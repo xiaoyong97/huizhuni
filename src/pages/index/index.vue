@@ -155,16 +155,9 @@
 
 			</van-cell-group>
 		</div>
-		<<<<<<< HEAD
-
-		=======
-		>>>>>>> 277725795bc75806c7de113f130449b332ae18df
-
 		<!--tabbar-->
 		<TabBar/>
-
 	</div>
-
 </template>
 
 <script>
@@ -328,5 +321,99 @@
 	.padding-bottom-16{
 		padding-bottom: 32px;;
 	}
+.msg{
+  text-align: center;
+  padding:10px;
+}
+.banner{
+	width: 100%;
+}
+.custom-indicator{
+	position: absolute;
+	bottom: 0px;
+	height: 44px;
+	width: 200px;
+	left: 50%;
+	margin-left: -100px;
+	text-align: center;
+	line-height: 44px;
+}
+.indicator{
+	background-color: rgba(255,255,255,0.4);
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+	display: inline-block;
+	margin: 10px 6px;
+}
+.indicator.active{
+	background-color: rgba(255,255,255,1);
+}
+.grid-container{
+	padding: 10px 12px;
+
+	border-radius: 8px;;
+
+}
+.grid-container .box{
+	border: 1px solid rgb(248,248,248);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.15);
+	min-height: 200px;
+	border-radius: 12px;;
+}
+.grid-container .grid{
+	width: 25%;
+	height: 80px;
+	float: left;
+}
+.grid-container img{
+	width: 25%;
+	min-width: 44px;
+	display: block;
+	margin: 0 auto;
+}
+.grid-container p{
+	text-align: center;
+	margin: 2px;;
+	font-size: 14px;;
+}
+.left_tag{
+	background-color: rgb(90,75,234);
+	padding: 0px 4px;
+}
+.cell-num{
+	color: #f76037;
+	font-size: 26px;
+
+}
+.check{
+	background-color: #4c62e7;
+	padding: 0px 16px;
+	border-radius: 14px;
+	float: right;
+}
+.dk-pan{
+	padding: 0px 20px;;
+}
+.dk-pan div{
+	padding: 4px 0px;
+}
+.grey{
+	color: #999999;
+}
+.orange{
+	color: #f76037;
+}
+.company{
+	width: 20px;
+	height: 20px;
+	display: inline;
+	margin-left: -16px;
+	vertical-align:top;
+	margin-top:2px;
+}
+.padding-bottom-16{
+	padding-bottom: 32px;;
+}
 
 </style>

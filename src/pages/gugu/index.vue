@@ -12,50 +12,23 @@
        <van-tabs color="#4c62e7" line-width="50%">
          <van-tab title="任务发布" color="#4c62e7">
 			 <van-cell-group class="bg-grey">
-			 	<van-cell>
-					<div class="checkbox">
-						<van-checkbox  checked-color="#4c62e7" v-model="checked"></van-checkbox>
-					</div>
-			 		<div class="pan-content">
-						<div class=" dk-pan">
-							
-							<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号987628221122778061</div></van-col>
-							<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">XXX省市YY市场CC区域(县区)ZZ街道AABBBBBB</van-col>
-							<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">张三</van-col>
-							<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">王小二</van-col>	
+				 <van-checkbox-group v-model="result">
+					<van-cell v-for="(item, index) in diyawuList">
+						<div class="checkbox">
+							<van-checkbox  checked-color="#4c62e7"  :key="item.id" :name="item.id" ></van-checkbox>
 						</div>
-					</div>
-			 	</van-cell>
-			 <van-cell>
-			 	<div class="checkbox">
-			 		<van-checkbox  checked-color="#4c62e7" v-model="checked"></van-checkbox>
-			 	</div>
-			 	<div class="pan-content">
-			 		<div class=" dk-pan">
-			 		
-			 			<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号987628221122778061</div></van-col>
-			 			<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">XXX省市YY市场CC区域(县区)ZZ街道AABBBBBB</van-col>
-			 			<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">张三</van-col>
-			 			<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">王小二</van-col>	
-			 		</div>
-			 	</div>
-			 </van-cell>
-			 <van-cell>
-			 	<div class="checkbox">
-			 		<van-checkbox  checked-color="#4c62e7" v-model="checked"></van-checkbox>
-			 	</div>
-			 	<div class="pan-content">
-			 		<div class=" dk-pan">
-			 			
-			 			<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号987628221122778061</div></van-col>
-			 			<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">XXX省市YY市场CC区域(县区)ZZ街道AABBBBBB</van-col>
-			 			<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">张三</van-col>
-			 			<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">王小二</van-col>	
-			 		</div>
-			 	</div>
-			 </van-cell>
+						<div class="pan-content">
+							<div class=" dk-pan">
+								<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{item.cqzh}}&nbsp;</div></van-col>
+								<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{item.sf}}{{item.xxdz}}&nbsp;</van-col>
+								<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{item.cqr}}&nbsp;</van-col>
+								<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{task[0].jkr}}&nbsp;</van-col>	
+							</div>
+						</div>
+					</van-cell>
+				</van-checkbox-group>
 			<van-submit-bar
-				:price="400"
+				:price="result.length*100"
 				decimal-length="0"
 				button-text="发布任务" 
 				currency=""  
@@ -67,48 +40,21 @@
 		 </van-tab>
          <van-tab title="任务查看" color="#4c62e7">
 			 <van-cell-group class="bg-grey pan2">
-			  	<van-cell>	
+			  	<van-cell v-for="(item, index) in task">	
 			  		<div class="pan-content">
 			 			<div class=" dk-pan">
-								<img class="pan-tag-img" src="../../assets/images/other/Label7@2x.png" alt="">
-			 				<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号987628221122778061</div></van-col>
-			 				<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">XXX省市YY市场CC区域(县区)ZZ街道AABBBBBB</van-col>
-			 				<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">张三</van-col>
-			 				<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">王小二</van-col>	
-							<van-col span="24" class="detail"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+							<img class="pan-tag-img" src="../../assets/images/other/Label7.0@2x.png" alt="" v-show="item.status == 0">
+							<img class="pan-tag-img" src="../../assets/images/other/Label7@2x.png" alt="" v-show="item.status == 1">
+							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" v-show="item.status == 2">
+			 				<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{item.diyawuList[0].cqzh}}</div></van-col>
+			 				<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{item.diyawuList[0].sf}}{{item.diyawuList[0].xxdz}}</van-col>
+			 				<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{item.diyawuList[0].cqr}}&nbsp;</van-col>
+			 				<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{item.jkr}}&nbsp;</van-col>	
+							<van-col span="24" class="detail" @click="checkTask(item.task_id)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
 						</div>
 			 		</div>
 			  	</van-cell>
-			  <van-cell>	
-			  	<div class="pan-content">
-			  		<div class=" dk-pan">
-			  			<img class="pan-tag-img" src="../../assets/images/other/Label7.0@2x.png" alt="">
-			  			
-			  			<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号987628221122778061</div></van-col>
-			  			<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">XXX省市YY市场CC区域(县区)ZZ街道AABBBBBB</van-col>
-			  			<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">张三</van-col>
-			  			
-						<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">王小二</van-col>	
-			  		<van-col span="24" class="detail"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
-			  		
-					</div>
-			  	</div>
-			  </van-cell>
-			  <van-cell>
 			 
-			  	<div class="pan-content">
-			  		<div class=" dk-pan">
-			  			<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="">
-			  			
-			  			<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号987628221122778061</div></van-col>
-			  			<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">XXX省市YY市场CC区域(县区)ZZ街道AABBBBBB</van-col>
-			  			<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">张三</van-col>
-			  			<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">王小二</van-col>	
-			  		<van-col span="24" class="detail"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
-			  		
-					</div>
-			  	</div>
-			  </van-cell>
 			 </van-submit-bar>
 			  
 			  </van-cell-group>
@@ -131,7 +77,9 @@
   data() {
     return {
       title : '咕咕管理',
-	  checked: true,
+	  checked: 400,
+	  result:[],
+	  count:0
     }
   },
   
@@ -144,39 +92,51 @@
   mounted : ()=>{
     
   },
+   watch: {
+      // 如果 `question` 发生改变，这个函数就会运行
+      result: function (newCount, oldCount) {
+        this.count = newCount.length*100;
+      }
+    },
   
   //声明方法
   methods : {
 	add_task:function  () {
 		sessionStorage.setItem('type',0);
 	  this.$router.push({name: 'new_task', params: {type: 0}});
-	
 	},
 	new_task:function (){
 		sessionStorage.setItem('type',1);
-		
 		this.$router.push({name: 'new_task', params: {type: 1}});
 	},
 	gotoSearch:function(){
 		this.$router.push({name: 'search'});
 		return;
 	},
-	onClickLeft() {
+	onClickLeft:function() {
 	  this.$router.go(-1);
+	},
+	checkTask:function(id){
+		localStorage.setItem('id',id);
+		this.$router.push({name: 'checkTask'});
 	}
   },
   
   //计算属性
   computed: {
-
+	diyawuList:function(){
+		console.log(localStorage.getItem('diyawu'))
+		return JSON.parse(localStorage.getItem('diyawu'))
+	},
+	task:function(){
+		console.log(localStorage.getItem('task'))
+		return JSON.parse(localStorage.getItem('task'))
+	}
   },
-
   //引入组件
   components: {
     NavBar
   }
-
-
  }
 </script>
 
@@ -310,5 +270,11 @@
 	.add{
 		color: #4c62e7;
 		font-size: 24px;
+	}
+	.van-nav-bar__text{
+		color: #4c62e7;
+	}
+	.van-nav-bar .van-icon{
+		color: #4c62e7;
 	}
 </style>

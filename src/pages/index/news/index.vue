@@ -1,0 +1,650 @@
+<template>
+    <div class="main">
+
+        <!--头部导航-->
+        <van-nav-bar :title="title" right-text="批量删除" >
+
+        </van-nav-bar>
+        <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
+        <div class="main" style="height: 100%">
+
+            <div class="content" >
+                <van-tabs v-model="activeName" line-width=25% line-height=3 color="#4c62e7" title-active-color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
+                    <van-tab title="贷款" >
+
+                        <div class="list_div ">
+
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">信息采集不完整请及时<span>补录</span>，系统将在30天后自动清除</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">18:14</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span></p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">昨天</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">客户赵仁儿，应于2019年8月29日归还贷款本息200，000元.
+                                    </p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">王长生</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日货款到期，请及时开始续货流程</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span>. </p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">客户白马服装有限公司，应于2019年8月29日货款到期，请及时开始续贷流程</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日货款到期，请及时开始续货流程</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日<span>贷款到期</span>，请及时开始续贷流程</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">客户赵仁儿，应于2019年8月29日<span>归还贷款本息</span>200，000元</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+
+<!--                            <div class="popContainer">-->
+<!--                                <van-row class="list_box" type="flex" justify="center" style="position: relative;rgba(255,255,255,0.5)" >-->
+<!--                                    <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>-->
+<!--                                    <van-col  class="" span="17" >-->
+<!--                                        <p class="list_text2">全选</p>-->
+<!--                                    </van-col>-->
+<!--                                    <van-col  class="" span="5" style="text-align: right">-->
+<!--                                        <div class="delete_box"><p class="list_text_time">删除</p></div>-->
+<!--                                    </van-col>-->
+<!--                                </van-row>-->
+<!--                            </div>-->
+
+                        </div>
+                    </van-tab>
+                    <van-tab title="商机"  >
+                        <div class="content">
+                            <div class="card_div" style="" >
+                                <van-row style="padding: 15px 12px 0 ">
+                                    <van-col class="" span="12">
+                                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
+                                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
+                                    </van-col>
+                                    <van-col class="" span="12" style="text-align: left">
+                                        <p class="card_list1_test_right">12345678901</p>
+                                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                                    </van-col>
+                                </van-row>
+                                <div style="height: 15px" v-show="open"></div>
+
+                            </div>
+                            <div class="card_div" style="" >
+                                <van-row style="padding: 15px 12px 0 ">
+                                    <van-col class="" span="12">
+                                        <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
+                                        <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
+                                    </van-col>
+                                    <van-col class="" span="12" style="text-align: left">
+                                        <p class="card_list1_test_right">12345678901</p>
+                                        <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
+                                    </van-col>
+                                </van-row>
+                                <div style="height: 15px" v-show="open"></div>
+
+                            </div>
+                        </div>
+                    </van-tab>
+                    <van-tab title="活动"  >
+                        <div class="list_div ">
+
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">XXX活动将于<span>2019年8月12日开始</span>，请提前做好准备</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">15:40</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">您创建的XXX活动已经<span>审批通过</span></p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">14:10</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">XXX活动<span>中止申请已审批通过，</span>请至员工渠道PC端查看详情
+                                    </p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">昨天</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">您创建的<span>XXX活动</span>审批<span>未通过</span></p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/22</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span>. </p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/22</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">XxXX活动将于2019年8月9日开始，请提前做好准备.
+                                    </p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">XXX活动已于2019年8月1日结束</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+
+
+
+                            <!--                            <div class="popContainer">-->
+                            <!--                                <van-row class="list_box" type="flex" justify="center" style="position: relative;rgba(255,255,255,0.5)" >-->
+                            <!--                                    <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>-->
+                            <!--                                    <van-col  class="" span="17" >-->
+                            <!--                                        <p class="list_text2">全选</p>-->
+                            <!--                                    </van-col>-->
+                            <!--                                    <van-col  class="" span="5" style="text-align: right">-->
+                            <!--                                        <div class="delete_box"><p class="list_text_time">删除</p></div>-->
+                            <!--                                    </van-col>-->
+                            <!--                                </van-row>-->
+                            <!--                            </div>-->
+
+                        </div>
+                    </van-tab>
+                    <van-tab title="系统"  >
+
+                    </van-tab>
+
+                </van-tabs>
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    //引入组件首字母大写
+    import TabBar from '@/components/tabBar'
+    // import NavBar from '@/components/tabBar'
+    import Vue from 'vue';
+    import { Tab, Tabs } from 'vant';
+    import { Row, Col } from 'vant';
+    import { Checkbox, CheckboxGroup } from 'vant';
+    import { Cell, CellGroup } from 'vant';
+
+    Vue.use(Cell).use(CellGroup);
+    Vue.use(Checkbox).use(CheckboxGroup);
+    Vue.use(Row).use(Col);
+    Vue.use(Tab).use(Tabs);
+    export default {
+        toggle(index) {
+            this.$refs.checkboxes[index].toggle();
+        },
+        //基础数据存放处
+        data (){
+            return {
+                result:false,
+                title : '消息提醒',
+                activeName: 'a',
+                step:false,
+                decrease_img: require('@/assets/image/my/decrease.png'),
+                pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
+                successCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
+                failCircle: require('@/assets/images/24/Navigationcircle@2x.png'),
+                chart: require('@/assets/images/activity/chart.png'),
+                Pullup: require('@/assets/images/38/Pullup.png'),
+                frame1: require('@/assets/image/my/Picture frame1@2x.png'),
+                frame2: require('@/assets/image/my/Picture frame2@2x.png'),
+                frame3: require('@/assets/image/my/Picture frame3@2x.png'),
+                frame4: require('@/assets/image/my/Picture frame4@2x.png'),
+                people1: require('@/assets/images/activity/people1.png'),
+                people2: require('@/assets/images/activity/people2.png'),
+                people3: require('@/assets/images/activity/people3.png'),
+                medal: require('@/assets/image/my/medal.png'),
+                // medal: require('@/assets/image/my/medal.png'),
+            }
+        },
+
+        //数据预加载
+        created : function(){
+
+        },
+
+        //网页加载完成
+        mounted () {
+
+        },
+
+        //声明方法
+        methods : {
+            onClickLeft() {
+                this.$router.go(-1);
+            },
+            go : function(){
+                this.$router.push('/index5');
+            },
+            onCilckFlex () {
+                this.step=!this.step
+            },
+
+
+        },
+
+        //计算属性
+        computed: {
+
+        },
+
+
+        components: {
+            TabBar
+
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .card_list1_test_left{
+        color: #333333;
+        font-size: 15px;
+        font-weight: bold;
+        margin-block-start:0;
+        margin-block-end:0;
+        line-height: 30px;
+    }
+    .card_list1_test_right{
+        color: #666666;
+        font-size: 12px;
+        margin-block-start:0;
+        margin-block-end:0;
+        line-height: 30px;
+    }
+    .popContainer{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.3);
+        z-index: 100;
+    }
+    .delete_box{
+        background-color: #4c62e7;
+        height: 20px;
+        width:80px ;
+        border-radius: 20px;
+    }
+    .main{
+        width:100%;
+        height: 100%;
+        background-color: rgb(238,238,238);
+    };
+    .img{
+        height: 19px;
+        width:19px;
+        position: absolute;
+        bottom: 0;
+    };
+    .img_medal{
+        height: 28px;
+        width:28px;
+    };
+    .felx_img{
+        height: 19px;
+        width:19px;
+        position: absolute;
+        bottom: 0;
+        left: 48%;
+    };
+    success_img_box{
+        position: relative;
+    };
+    success_img{
+        height: 110px;
+        width:110px;
+        background-color: brown;
+        position: absolute;
+        top: -20px;
+        right: 0;
+    };
+    .img_frame{
+        height: 80px;
+        width:80px;
+        position: absolute;
+        top: 35px;
+        left: 25px;
+        z-index: 3;
+    };
+    .img_frame_head{
+        height: 62px;
+        width:62px;
+        position: absolute;
+        top: 42px;
+        left: 33px;
+        z-index: 2;
+    };
+    .img_frame_min{
+        height: 52px;
+        width:52px;
+        position: absolute;
+        top: 6px;
+        left: 25px;
+        z-index: 3;
+    };
+    .img_frame_head_min{
+        height: 40px;
+        width:40px;
+        position: absolute;
+        top: 11px;
+        left: 31px;
+        z-index: 2;
+    };
+    .img_navigation{
+        height: 12px;
+        width:12px;
+        position: absolute;
+        left: 0px;
+        top:24px;
+    };
+    .content{
+        padding-top: 0;
+        background-color: rgb(238,238,238);
+    };
+
+    .business_box{
+        height:143px;
+        width:96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 8px;
+        background-color: rgb(255,255,255);
+        padding: 0;
+        border-radius: 8px;
+    };
+    .manager_box{
+        width:100%;
+        margin-top: 8px;
+        background-color: rgb(255,255,255);
+    };
+    manager_box1{
+        height:143px;
+        width:100%;
+        margin-top: 8px;
+        padding-left: 11px;
+        padding-top: 11px;
+        background-color: rgb(255,0,0);
+        padding: 0;
+    };
+    .business_box_3{
+        height:143px;
+        width:96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 8px;
+        background-color: rgb(255,255,255);
+        padding: 0;
+        border-radius: 8px;
+        position: relative;
+    };
+    .business_box1{
+        border-radius: 8px;
+        padding: 0;
+    };
+    .business_box2{
+        margin: 0;
+        padding: 0;
+    };
+    .business_box3{
+        height: 43px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    };
+    .business_box4{
+        height: 48px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    };
+    .business_text{
+        font-family: "Plantagenet Cherokee";
+        padding-left:14px ;
+        padding-top: 14px;
+        font-size:16px;
+        font-weight: bold;
+        color:rgb(51,51,51);
+        margin-block-start:0;
+        margin-block-end:0;
+    };
+    .business_text_flex{
+        font-family: "Plantagenet Cherokee";
+        padding-left:14px ;
+        padding-top: 14px;
+        font-size:16px;
+        font-weight: bold;
+        color:rgb(51,51,51);
+        margin-block-start:0;
+        margin-block-end:0;
+    };
+    .card_div{
+        position: relative;
+        width: auto;
+        padding:0px;
+        background-color: white;
+        border-radius: 10px;
+        margin: 8px 10px 0;
+    }
+    .content{
+        padding: 0px ;
+        background-color: rgb(238,238,238);
+        justify-content: center;
+        align-items: center;
+    }
+    .max_num{
+        font-size:42px;
+        font-family: "Palatino Linotype";
+        margin-block-start:0;
+        margin-block-end:0;
+        padding-left: 50px;
+    };
+    .business_text2{
+        font-size:14px;
+        margin-block-start:0;
+        margin-block-end:0;
+        padding-left: 46px;
+        margin-top: 6px;
+    };
+    .business_text3{
+        float: left;
+        font-size:14px;
+        margin-block-start:0;
+        margin-block-end:0;
+        padding-left: 46px;
+        position: absolute;
+        left: -20px;
+        bottom: 0;
+        color: rgb(153,153,153);
+    };
+    .img_return{
+        position: absolute;
+        top: 14px;
+        left:12px ;
+        height: 18px;
+        width: 18px;
+        z-index: 100;
+    }
+    .business_text_success{
+        float: left;
+        font-size:12px;
+        margin-block-start:0;
+        margin-block-end:0;
+        position: absolute;
+        left: 14px;
+        top: 22px;
+        color: rgb(102,102,102);
+    };
+    .tab3_div1_text1{
+        font-weight: bold;
+        font-size:18px;
+        line-height: 18px;
+        margin-block-start:0;
+        margin-block-end:0;
+        color: rgb(51,51,51);
+    };
+    .tab3_div1_box2{
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 115px;
+        background-color: aqua;
+    };
+    .tab3_div1_text2{
+        font-size:14px;
+        margin-block-start:0;
+        margin-block-end:0;
+        color: rgb(102,102,102);
+    };
+    .tab3_div1_text5{
+        font-size:15px;
+        text-align: right;
+        line-height: 24px;
+        margin-block-start:0;
+        margin-block-end:0;
+        color: rgb(102,102,102);
+    };
+    .tab3_div1_text3{
+        font-size:42px;
+        margin-block-start:0;
+        margin-block-end:0;
+        color: rgb(76,98,231);
+        padding-left:10px ;
+        padding-right: 10px;
+    };
+    .business_flexbox_text{
+        float: left;
+        font-size:14px;
+        line-height: 28px;
+        margin-block-start:0;
+        margin-block-end:0;
+        padding-left: 14px;
+        color: rgb(51,51,51);
+    };
+    .business_flexbox_text2{
+        float: left;
+        font-size:14px;
+        line-height: 28px;
+        margin-block-start:0;
+        margin-block-end:0;
+        color: rgb(153,153,153);
+    };
+    .business_text_percent{
+        float: left;
+        font-size:24px;
+        margin-block-start:0;
+        margin-block-end:0;
+        position: absolute;
+        bottom: 0px;
+        padding-left: 10px;
+        color: rgb(51,51,51);
+    };
+    .list_div{
+        margin-top: 8px;
+        background-color: #FFFFFF;
+        padding: 0 12px;
+    };
+    .list_box{
+        border-bottom: #dddddd solid 1px;
+        height: 65px;
+        justify-content: center;
+        vertical-align: center;
+        padding: auto;
+    };
+    .check_box{
+        margin: 22px auto;
+        justify-content: center;
+        vertical-align : middle;
+    }
+    .list_text1{
+        font-size: 15px;
+        line-height: 32px;
+    };
+    .list_text2{
+        font-size: 13px;
+        line-height: 32px;
+        color: rgb(51,51,51);
+        margin-block-start: 0;
+        margin-block-end: 0;
+        /*display: inline-block;*/
+    };
+    .list_text2>span{
+        font-size: 13px;
+        line-height: 32px;
+        color: #4c62e7;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    };
+    .list_text_time{
+        line-height: 32px;
+        font-size: 10px;
+    };
+    .list_text4{
+        font-weight: bold;
+        line-height: 32px;
+        font-size: 15px;
+        color: rgb(76,98,231)
+    };
+    .text-align_right{
+        text-align: right;
+    };
+
+
+
+
+
+</style>
