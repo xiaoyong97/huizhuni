@@ -162,6 +162,14 @@ export default new Router({
           title: '我的活动-签到名单'
         },
       },
+      {
+        name: 'news',
+        path: '/index/news',
+        component: () => import('@/pages/index/news'),
+        meta: {
+          title: '消息'
+        },
+      },
 
 
     ]
