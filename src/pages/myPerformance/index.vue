@@ -2,15 +2,14 @@
     <div class="main">
 
      <!--头部导航-->
+		<van-nav-bar :title="title"  >
 
-	 <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft" >
-
-	 </van-nav-bar>
-
+		</van-nav-bar>
+		<img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
 		<div class="main" style="height: 100%">
 
 				<div class="content" >
-					<van-tabs v-model="activeName" line-width=50% line-height=3 color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
+					<van-tabs v-model="activeName" line-width=50% line-height=3 color="#4c62e7" title-active-color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
 						<van-tab title="我的业绩" name="a" style="margin-top: 0px;padding-top: 0" >
 							<div class="business_box">
 								<div class="business_box1">
@@ -58,7 +57,7 @@
 										</div>
 										<div >
 											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(70,185,72)">6</p></van-col>
-											<van-col span="2" class="business_box3"><img :src="decrease_img"  class="img" ></van-col>
+											<van-col span="2" class="business_box3" style="height:40px"><img :src="decrease_img"  class="img" ></van-col>
 										</div>
 									</van-col>
 								</van-row>
@@ -75,7 +74,7 @@
 										</div>
 										<div >
 											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(51,51,51);padding-left: 20px">67</p></van-col>
-											<van-col span="2" class="business_box3"><p class="business_text_percent">%</p></van-col>
+											<van-col span="2" class="business_box3" style="height: 45px;"><p class="business_text_percent">%</p></van-col>
 										</div>
 									</van-col>
 									<van-col span="10" style="position: relative">
@@ -99,22 +98,22 @@
 							<div v-show="!step" style="height: 100px"></div>
 							<div class="business_box" v-show="step" style="border-top-left-radius: 0;border-top-right-radius: 0;height: auto">
 								<van-row>
-									<p class="business_text_flex" >截止：<span style="color: #4c62e7">09</span>月<span style="color: #4c62e7">01</span>日</p>
+									<p class="business_text_flex" >截止&nbsp;<span style="color: #4c62e7">09</span>&nbsp;月<span style="color: #4c62e7">&nbsp;01&nbsp;</span>日</p>
 								</van-row>
 								<van-row>
 									<van-col span="12"><p class="business_flexbox_text">您名下商机处理情况为</p></van-col>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >成功转换累计笔数：<span style="color: #4c62e7">34</span>笔</p>
+									<p class="business_flexbox_text" >成功转换累计笔数：<span style="color: #4c62e7">34</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >待完成累计笔数：<span style="color: #f76037">5</span>笔</p>
+									<p class="business_flexbox_text" >待完成累计笔数：<span style="color: #f76037">5</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >放弃累计笔数：<span style="color: #f76037">1</span>笔</p>
+									<p class="business_flexbox_text" >放弃累计笔数：<span style="color: #f34c83">1</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >失败累计笔数：<span style="color: #999999">2</span>笔</p>
+									<p class="business_flexbox_text" >失败累计笔数：<span style="color: #46b948">2</span>&nbsp;笔</p>
 								</van-row>
 							</div>
 						</van-tab>
@@ -252,8 +251,8 @@
 				step:false,
 				decrease_img: require('@/assets/image/my/decrease.png'),
 				pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
-				successCircle: require('@/assets/image/my/Navigation circle@2x.png'),
-				failCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
+				successCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
+				failCircle: require('@/assets/images/24/Navigationcircle@2x.png'),
 				chart: require('@/assets/images/activity/chart.png'),
 				Pullup: require('@/assets/images/38/Pullup.png'),
 				frame1: require('@/assets/image/my/Picture frame1@2x.png'),
@@ -429,7 +428,7 @@
 		padding: 0;
 	};
 	.business_box3{
-		height: 48px;
+		height: 43px;
 		margin: 0;
 		padding: 0;
 		position: relative;
@@ -485,6 +484,14 @@
 		bottom: 0;
 		color: rgb(153,153,153);
 	};
+	.img_return{
+		position: absolute;
+		top: 14px;
+		left:12px ;
+		height: 18px;
+		width: 18px;
+		z-index: 100;
+	}
 	.business_text_success{
 		float: left;
 		font-size:12px;
@@ -562,17 +569,18 @@
 	.list_div{
 		margin-top: 8px;
 		background-color: #FFFFFF;
+		padding: 0 12px;
 	};
 	.list_box{
-		border-bottom: #999999 solid 1px;
+		border-bottom: #dddddd solid 1px;
 		height: 65px;
-		padding: 0 6px;
 	};
 	.list_text1{
 		font-size: 15px;
 		line-height: 32px;
 	};
 	.list_text2{
+		margin-left: 10px;
 		font-size: 15px;
 		line-height: 32px;
 		color: rgb(51,51,51);

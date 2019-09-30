@@ -12,7 +12,6 @@ export default new Router({
         redirect: { name: 'index' }
       },
 
-
       //主页
       {
         name: 'index',
@@ -150,7 +149,7 @@ export default new Router({
       {
         name: 'add_task',
         path: '/add_task',
-        component: () => import('@/pages/add_task'),
+        component: () => import('@/pages/addTask'),
         meta: {
          title: '添加任务'
         },
@@ -159,11 +158,20 @@ export default new Router({
 	  {
 	    name: 'new_task',
 	    path: '/new_task',
-	    component: () => import('@/pages/add_task'),
+	    component: () => import('@/pages/addTask'),
 	    meta: {
 	     title: '新建任务'
 	    },
 	  },
+	  //咕咕管理 查看任务
+	 	  {
+	 	    name: 'checkTask',
+	 	    path: '/checkTask',
+	 	    component: () => import('@/pages/checkTask'),
+	 	    meta: {
+	 	     title: '查看任务'
+	 	    },
+	 	  },
 	  //咕咕管理 搜索
 	  {
 	    name: 'search',
@@ -182,7 +190,63 @@ export default new Router({
                 title: '我的活动-查看名单'
             },
         },
-
+      {
+        name: 'attendanceList',
+        path: '/attendanceList',
+        component: () => import('@/pages/attendanceList'),
+        meta: {
+          title: '我的活动-签到名单'
+        },
+      },
+      {
+        name: 'news',
+        path: '/index/news',
+        component: () => import('@/pages/index/news'),
+        meta: {
+          title: '消息'
+        },
+      },
+        {
+            name: 'accountMessage',
+            path: '/index/news/accountMessage',
+            component: () => import('@/pages/index/news/accountMessage'),
+            meta: {
+                title: '状态消息'
+            },
+        },
+        {
+            name: 'unspentLoansMessage',
+            path: '/index/news/unspentLoansMessage',
+            component: () => import('@/pages/index/news/unspentLoansMessage'),
+            meta: {
+                title: '状态消息'
+            },
+        },
+        {
+            name: 'grabMessage',
+            path: '/index/news/grabMessage',
+            component: () => import('@/pages/index/news/grabMessage'),
+            meta: {
+                title: '状态消息'
+            },
+        },
+        {
+            name: 'statusMessage',
+            path: '/index/news/statusMessage',
+            component: () => import('@/pages/index/news/statusMessage'),
+            meta: {
+                title: '状态消息'
+            },
+        },
+		//贷款 征信校验
+		{
+		  name: 'creditCheck',
+		  path: '/index3/creditCheck',
+		  component: () => import('@/pages/index3/creditCheck'),
+		  meta: {
+		   title: '征信校验'
+		  },
+		},
 
     ]
   })

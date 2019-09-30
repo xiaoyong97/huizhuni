@@ -1,11 +1,12 @@
 <template>
-    <div class="main">
+    <div class="main" style="position: relative; ">
 
         <!--头部导航-->
 
-        <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft" >
-        </van-nav-bar>
+        <van-nav-bar :title="title"  >
 
+        </van-nav-bar>
+        <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <div class="main">
             <div class="not_start"><p style="font-size: 12px;color: #FFFFFF">未开始</p></div>
             <van-swipe  indicator-color="white" >
@@ -105,7 +106,7 @@
             <div class="secend_box" style="height: auto">
                 <van-row class="list_row_top" type="flex" justify="center">
                     <van-col class="" span="12" style="height: 40px">
-                        <van-row class="" type="flex" justify="center">
+                        <van-row class="" type="flex" justify="center" @click="goviewList">
                             <van-col class="" span="2" ><img src="../../assets/images/38/List@2x.png" class="img_right" ></van-col>
                             <van-col class="" span="12" ><p class="list_test_last" >查看名单</p></van-col>
                         </van-row>
@@ -113,7 +114,7 @@
                     <van-col class="" span="12" style="height:40px">
                         <van-row class="" type="flex" justify="center">
                             <van-col class="" span="2" ><img src="../../assets/images/38/QRcode@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >报到/签名</p></van-col>
+                            <van-col class="" span="12" ><p class="list_test_last" >报名/签到</p></van-col>
                         </van-row>
                     </van-col>
                 </van-row>
@@ -170,6 +171,9 @@
             onChange(index) {
                 this.current = index;
             },
+            goviewList : function(){
+                this.$router.push('./viewList');
+            },
         },
 
         //计算属性
@@ -205,6 +209,14 @@
         margin-block-start:0;
         margin-block-end:0;
         color: rgb(153,153,153);
+    }
+    .img_return{
+        position: absolute;
+        top: 14px;
+        left:12px ;
+        height: 18px;
+        width: 18px;
+        z-index: 100;
     }
     .main_box{
         height: 434px;
