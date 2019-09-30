@@ -1,49 +1,135 @@
 <template>
-     <div class="main" style="position: relative; ">
-
+    <div class="main_box">
         <!--头部导航-->
-
         <van-nav-bar :title="title"  >
 
         </van-nav-bar>
-
-        <img src="../../../assets/images/38/filter1@2x.png" class="img_fliter" >
-         <img src="../../../assets/images/38/searchfor@2x.png" class="img_search" >
-         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
+        <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
+        <img src="../../../assets/images/48/create@2x.png" class="img_fliter" >
+        <img src="../../../assets/images/38/searchfor@2x.png" class="img_search" >
         <div class="content">
-            <van-tabs color="#4c62e7" line-width="33%" line-height=3 title-active-color="#4c62e7">
+            <van-tabs color="#4c62e7" line-width="50%" line-height=3>
                 <van-tab title="待补录" color="#4c62e7">
-                    <div class="card_div" style="" >
-                        <div @click="goactivityDetailsIng" class="card-bottom-line">
+                    <div class="card_div" style="">
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="18"><p class="card_list2_test" >广州建信信息科技有限公司</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >440108888888</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >张三</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
+                        </van-row>
+                        <div style="height: 6px"></div>
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go_attendanceList">
+                            <van-col class="icon_box" span=""><img src="../../../assets/images/38/Supplement@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #f76037;font-weight: normal">补录</p></van-col>
+                        </van-row>
+                    </div>
+                    <div class="card_div" style="">
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="18"><p class="card_list2_test" >广州琪琪电子商务有限公司</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >440107777777</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >黎四</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
+                        </van-row>
+                        <div style="height: 6px"></div>
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go_attendanceList">
+                            <van-col class="icon_box" span=""><img src="../../../assets/images/38/Supplement@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #f76037;font-weight: normal">补录</p></van-col>
+                        </van-row>
+                    </div>
 
-                            <van-row style="padding: 16px 12px 0">
-                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >广州建信信息科技有限公司</p></van-col>
-                            </van-row>
-                            <van-row style="padding: 16px 12px 0">
-                                <van-col class="" span="2"><p class="card_list1_test_left" ></p></van-col>
-                                <van-col class="" span="10"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
-                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">440108888888</p></van-col>
-                            </van-row>
-                            <van-row style="padding: 16px 12px 0">
-                                <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
-                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">张三</p></van-col>
-                            </van-row>
-                            <van-row style="padding: 16px 12px 0">
-                                <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
-                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">2019-07-22</p></van-col>
-                            </van-row>
-                        </div>
-                            <van-row style="text-align: center;padding: 8px 12px 0">
-                                <van-col class="" span="8">
-                                    <van-col class="" span="2"><img src="../../../assets/image/my/View report@2x.png" class="img_location" ></van-col>
-                                    <van-col class="" span="20"><p class="card_list2_test" >补录</p></van-col>
-                                </van-col>
-                            </van-row>
-                        </div>
 
                     <div style="height: 8px"></div>
                 </van-tab>
+                <van-tab title="已完成" color="#4c62e7">
+                    <div class="card_div" style="">
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="18"><p class="card_list2_test" >广州可可有限公司</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >440729999999</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >黄五</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
+                        </van-row>
+                        <div style="height: 6px"></div>
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go_attendanceList">
+                            <van-col class="" span="12">
+                                <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Signing@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">修改</p></van-col>
+                            </van-col>
+                            <van-col class="" span="12">
+                                <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Viewreport@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">查看详情</p></van-col>
+                            </van-col>
+
+
+                        </van-row>
+                    </div>
+                    <div class="card_div" style="">
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="18"><p class="card_list2_test" >广州老地方有限公司</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >4400111111111</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >黄五</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 4px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
+                        </van-row>
+                        <div style="height: 6px"></div>
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go_attendanceList">
+                            <van-col class="" span="12">
+                                <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Signing@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">修改</p></van-col>
+                            </van-col>
+                            <van-col class="" span="12">
+                                <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Viewreport@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">查看详情</p></van-col>
+                            </van-col>
+
+
+                        </van-row>
+                    </div>
+
+
+                    <div style="height: 8px"></div>
+                </van-tab>
+
+
+
 
 
             </van-tabs>
@@ -69,7 +155,8 @@
                 show1:false,
                 show2:false,
                 openOverlay_title:"",
-
+                open:true,
+                step:'',
             }
         },
 
@@ -91,19 +178,15 @@
             gomyperformance : function(){
                 this.$router.push('./myperformance');
             },
-            goviewList : function(){
-                this.$router.push('./viewList');
-            },
             goactivityDetailsNotBegin : function(){
                 this.$router.push('./activityDetailsNotBegin');
             },
-            goactivityDetailsIng : function(){
-                this.$router.push('./activityDetailsIng');
+            go : function(){
+                this.$router.push('/index5');
             },
-            // go : function(){
-            //     alert()
-            //     this.$router.push('/index5');
-            // },
+            go_attendanceList() {
+                this.$router.push('/attendanceList');
+            },
             goactivityDetailsOver : function(){
                 this.$router.push('./activityDetailsOver');
             },
@@ -125,6 +208,14 @@
                 this.show1 = true;
                 this.show2 = false;
             },
+            changeOpen(i) {
+                this.step= i+1;
+
+            },
+            changeClose(i) {
+                this.step= '';
+            }
+
 
         },
 
@@ -143,65 +234,11 @@
 </script>
 
 <style lang="scss" scoped>
-    .top_bar_main_box{
-        width: 100%;
-        position: absolute;
-        top: 8px;
-        justify-content: center;align-items: center;text-align: center;
-        z-index: 99;
+    .hiddin_box{
+        display: none;
     }
-    .top_bar_box{
-        margin: 0 auto;
-        border: #4c62e7 1px solid;
-        width: 150px;
-        height: 30px;
-
-        border-radius: 8px;
-    }
-    .top_bar_box_col_left{
-        /*background-color: #4c62e7;*/
-        background-color: rgb(76,98,231);
-        border-bottom-left-radius:7px;
-        border-top-left-radius: 7px;
-    }
-    .top_bar_box_text_left{
-        font-size: 14px;
-        line-height: 30px;
-        color: white;
-        margin-block-start:0;
-        margin-block-end:0;
-    }
-    .top_bar_box_text_right{
-        font-size: 14px;
-        line-height: 30px;
-        color: rgb(76,98,231);
-        margin-block-start:0;
-        margin-block-end:0;
-    }
-    .img_fliter{
-        position: absolute;
-        top: 14px;
-        right:40px ;
-        height: 18px;
-        width: 18px;
-        z-index: 100;
-    }
-    .img_search{
-        position: absolute;
-        top: 14px;
-        right:12px ;
-        height: 18px;
-        width: 18px;
-        z-index: 100;
-
-    }
-    .img_return{
-        position: absolute;
-        top: 14px;
-        left:12px ;
-        height: 18px;
-        width: 18px;
-        z-index: 100;
+    .hiddin_box_show{
+        display: block;
     }
     .popContainer{
         position: fixed;
@@ -223,51 +260,30 @@
     }
     .choose_box_text{
         line-height: 40px;
-         color: #999999;
-         font-size: 16px;
-         margin-block-start:0;
-         margin-block-end:0;
-     }
+        color: #999999;
+        font-size: 16px;
+        margin-block-start:0;
+        margin-block-end:0;
+    }
     .blue{
         color: #4c62e7;
     }
-    .choose_box_list{
-        text-align: center;
-        height: 40px;
-        margin: 0;
-        padding: 0;
+    .van_col_box{
+        background-color: rgb(250,250,250);
+        border: rgb(220,220,220) solid 0.5px;
     }
-    .list_test_min{
-        line-height: 30px;
+    .van_col_box_text{
+        padding: 6px 16px;
         font-size: 12px;
         margin-block-start:0;
         margin-block-end:0;
-        color: rgb(102,102,102);
     }
-    .list_row{
-        padding: 0 12px ;margin:0;
+    .van_row_box{
+        margin: 0 12px;
     }
-    .list_test_min_head{
-        line-height: 30px;
-        font-size: 14px;
-        margin-block-start:0;
-        margin-block-end:0;
-        color: rgb(51,51,51);
-    }
-    .list_row_top{
-        padding: 0px 12px;
-    }
-    .img_erweima{
-        height: 120px;
-        width: 120px;
-    }
-    .img_close{
-        height: 20px;
-        width: 20px;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-    }
+
+
+
     .list_right_text{
         margin-block-start:0;
         margin-block-end:0;
@@ -275,6 +291,14 @@
         line-height: 34px;
         color: rgb(51,51,51);
     }
+    .img_open{
+        position: absolute;
+        bottom: 2px;
+        right: 12px;
+        height: 20px;
+        width: 20px;
+    }
+
     // scoped 表示私有样式
     .content{
         padding: 0px ;
@@ -283,57 +307,80 @@
         align-items: center;
     }
     .card_list1_test_left{
-        color: #333333;
+        color: #999999;
         font-size: 14px;
-        font-weight: bold;
         margin-block-start:0;
         margin-block-end:0;
+        line-height: 30px;
+        padding-left: 28px;
+    }
+    .img_return{
+        position: absolute;
+        top: 14px;
+        left:12px ;
+        height: 18px;
+        width: 18px;
+        z-index: 100;
+    }
+    .img_fliter{
+        position: absolute;
+        top: 14px;
+        right:12px ;
+        height: 18px;
+        width: 18px;
+        z-index: 100;
+    }
+    .img_search{
+        position: absolute;
+        top: 14px;
+        right:40px ;
+        height: 18px;
+        width: 18px;
+        z-index: 100;
+
     }
     .card_list1_test_right{
-        color: #46b948;
+        color: #333333;
         font-size: 14px;
-        font-weight: bold;
         margin-block-start:0;
         margin-block-end:0;
+        line-height: 30px;
     }
     .card_list2_test{
-        color: rgb(51,51,51);
+        color: #333333;
         font-size: 14px;
         margin-block-start:0;
         margin-block-end:0;
-    }
-    .img_task{
-        position: absolute;
-        right: 0;
-        top: 16px;
-        height: 28px;
+        line-height: 30px;
     }
     .img_location{
-        height: 19px;
-        width: 19px;
+        height: 18px;
+        width: 18px;
+    }
+    .icon_box{
+        margin-top: 6px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .icon_box2{
+        margin-left: 30%;
+        margin-top: 6px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
     .card_div{
-        max-height: 156px;
-        min-height: 156px;
-        width: auto;
-        padding:0px;
-        background-color: white;
-        border-radius: 10px;
-        margin: 8px 10px 0;
-    }
-    .card_div_examine{
-        min-height: 164px;
-        width: auto;
-        padding:0px;
-        background-color: white;
-        border-radius: 10px;
-        margin: 8px 10px 0;
         position: relative;
+        width: auto;
+        padding:0px;
+        background-color: white;
+        border-radius: 10px;
+        margin: 8px 10px 0;
     }
-    .card-bottom-line {
-        border-bottom: #dddddd solid 1px;
-    }
-    .text-left {
-        text-align: left;
+
+    .title {
+        margin-left: 12px;
+        font-size: 14px;
     }
 </style>
