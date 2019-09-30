@@ -247,6 +247,14 @@ export default new Router({
 		   title: '征信校验'
 		  },
 		},
-
+		//首页 编辑菜单
+		{
+		  name: 'menu',
+		  path: '/menu',
+		  component: () => import('@/pages/menu'),
+		  meta: {
+		   title: '征信校验'
+		  },
+		},
     ]
   })
