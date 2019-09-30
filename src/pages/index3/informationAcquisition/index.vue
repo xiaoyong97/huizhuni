@@ -6,7 +6,7 @@
         </van-nav-bar>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <img src="../../../assets/images/48/create@2x.png" class="img_fliter" >
-        <img src="../../../assets/images/38/searchfor@2x.png" class="img_search" >
+        <img src="../../../assets/images/38/searchfor@2x.png" class="img_search" @click="go('searchInfo')">
         <div class="content">
             <van-tabs color="#4c62e7" line-width="50%" line-height=3>
                 <van-tab title="待补录" color="#4c62e7">
@@ -79,7 +79,7 @@
                             <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
                         </van-row>
                         <div style="height: 6px"></div>
-                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go_attendanceList">
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('infoDetail')">
                             <van-col class="" span="12">
                                 <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Signing@2x.png" class="img_location" ></van-col>
                                 <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">修改</p></van-col>
@@ -110,7 +110,7 @@
                             <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
                         </van-row>
                         <div style="height: 6px"></div>
-                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go_attendanceList">
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('infoDetail')">
                             <van-col class="" span="12">
                                 <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Signing@2x.png" class="img_location" ></van-col>
                                 <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">修改</p></van-col>
@@ -181,8 +181,8 @@
             goactivityDetailsNotBegin : function(){
                 this.$router.push('./activityDetailsNotBegin');
             },
-            go : function(){
-                this.$router.push('/index5');
+            go : function(url){
+                this.$router.push({name: url})
             },
             go_attendanceList() {
                 this.$router.push('/attendanceList');

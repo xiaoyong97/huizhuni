@@ -152,6 +152,7 @@ export default new Router({
 	    },
 	  },
 
+
  //咕咕管理
 	  {
 	    name: 'gugu',
@@ -252,6 +253,22 @@ export default new Router({
             component: () => import('@/pages/index/news/grabMessage'),
             meta: {
                 title: '抢单消息'
+            },
+        },
+        {
+            name: 'searchInfo',
+            path: '/index3/informationAcquisition/searchInfo',
+            component: () => import('@/pages/index3/informationAcquisition/searchInfo'),
+            meta: {
+                title: '信息采集搜索'
+            },
+        },
+        {
+            name: 'infoDetail',
+            path: '/index3/informationAcquisition/infoDetail',
+            component: () => import('@/pages/index3/informationAcquisition/infoDetail'),
+            meta: {
+                title: '信息采集详情'
             },
         },
         {
