@@ -342,7 +342,7 @@
 						<van-col span="12">13800000000</van-col>
 					</van-cell>
 					<van-cell>
-						<van-col span="10">法定代表人地址van-col></van-col>
+						<van-col span="10">法定代表人地址</van-col>
 						<van-col span="12">广州市越秀区法政路XX号</van-col>
 					</van-cell>
 					<van-cell>
