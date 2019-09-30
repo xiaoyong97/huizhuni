@@ -19,9 +19,9 @@
 			</div>
 			<van-swipe :autoplay="3000" indicator-color="white" @change="onBannerChange">
 				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
+				<van-swipe-item><img src="../../assets/images/other/banner3.png" alt="" class="banner"></van-swipe-item>
 				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
-				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
-				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
+				<van-swipe-item><img src="../../assets/images/other/banner3.png" alt="" class="banner"></van-swipe-item>
 				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
 				<div class="custom-indicator" slot="indicator">
 					<ul>
@@ -159,6 +159,7 @@
 
 		//网页加载完成
 		mounted : function(){
+			
 			Dialog.setDefaultOptions({
 				confirmButtonText:'查看',
 				confirmButtonColor:'#4c62e7'
@@ -168,16 +169,19 @@
 				'您名下<span style="color:#4c62e7">8</span>个客户进入商机池<br>请点击查看',
 				'您已抢单客户<span style="color:#4c62e7">王川冰</span>产品额度<br>发生变化，请点击查看',
 				'您已抢单客户<span style="color:#4c62e7">白小飞</span>商机已失效<br>请点击查看',
+				
 			];
-
-			// Dialog.confirm({
-			//   title: '最新消息',
-			//   message: textArray[Math.floor(Math.random()*10)%3]
-			// }).then(() => {
-			//   // on confirm
-			// }).catch(() => {
-			//   // on cancel
-			// });
+			if(Math.floor(Math.random()*10)%8 == 7){
+				
+				Dialog.confirm({
+				  title: '最新消息',
+				  message: textArray[Math.floor(Math.random()*10)%3]
+				}).then(() => {
+				  // on confirm
+				}).catch(() => {
+				  // on cancel
+				});
+			}
 
 		},
 
@@ -207,8 +211,8 @@
 				var arr = JSON.parse(localStorage.getItem('home_menu'));
 				if(arr == null || arr == undefined){
 					arr = [
-						{name:"信息采集",icon:require('../../assets/images/84/InformationCollection@2x.png'),url:'index',isChecked:true},
-						{name:"贷款发起",icon:require('../../assets/images/84/Loaninitiation1@2x.png'),url:'index',isChecked:true},
+						{name:"信息采集",icon:require('../../assets/images/84/InformationCollection@2x.png'),url:'index3/collectOperation',isChecked:true},
+						{name:"贷款发起",icon:require('../../assets/images/84/Loaninitiation1@2x.png'),url:'index3/infoDetail',isChecked:true},
 						{name:"征信校验",icon:require('../../assets/images/84/Creditcheck1@2x.png'),url:'index',isChecked:true},
 						{name:"申贷查询",icon:require('../../assets/images/84/Creditinquiry@2x.png'),url:'index',isChecked:true},
 						{name:"贷后跟踪",icon:require('../../assets/images/84/Post-loantracking@2x.png'),url:'index',isChecked:false},

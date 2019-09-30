@@ -288,5 +288,23 @@ export default new Router({
 		   title: '征信校验'
 		  },
 		},
+		//信息采集-企业信息
+		{
+		  name: 'collectOperation',
+		  path: '/index3/collectOperation',
+		  component: () => import('@/pages/index3/collectOperation'),
+		  meta: {
+		   title: '信息采集-企业信息'
+		  },
+		},
+		//信息详情
+		{
+		  name: 'infoDetail',
+		  path: '/index3/infoDetail',
+		  component: () => import('@/pages/index3/infoDetail'),
+		  meta: {
+		   title: '信息详情'
+		  },
+		},
     ]
   })
