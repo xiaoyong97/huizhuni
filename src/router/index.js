@@ -120,6 +120,14 @@ export default new Router({
         },
       },
       {
+        name: 'grabSingleYi',
+        path: '/grabSingleYi',
+        component: () => import('@/pages/grabSingleYi'),
+        meta: {
+          title: '商机已抢单页'
+        },
+      },
+      {
         name: 'shangParticulars',
         path: '/shangParticulars',
         component: () => import('@/pages/shangParticulars'),
@@ -135,6 +143,14 @@ export default new Router({
           title: '商机管理详情信息'
         },
       },
+	  {
+	    name: 'searchShang',
+	    path: '/searchShang',
+	    component: () => import('@/pages/searchShang'),
+	    meta: {
+	     title: '商机管理搜索导航'
+	    },
+	  },
 
  //咕咕管理
 	  {
