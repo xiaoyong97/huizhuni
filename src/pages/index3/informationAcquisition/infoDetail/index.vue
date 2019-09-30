@@ -38,8 +38,11 @@
                     <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
                     <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >信息采集</p></van-col>
                 </van-row>
+
                 <van-row class="list_row border_botton" @click="goToDetail(0)" >
+
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >企业信息</p></van-col>
+                    <img src="../../../../assets/images/24/Dropright2.png" class="img_Droprighth" @click="go('searchInfo')">
                 </van-row>
                 <van-row class="list_row border_botton"  @click="goToDetail(1)">
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >企业主信息</p></van-col>
@@ -54,6 +57,9 @@
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >抵押人信息</p></van-col>
                 </van-row>
             </div>
+     
+            <div style="height: 8px"></div>
+
         </div>
     </div>
 </template>
@@ -95,10 +101,14 @@
             goviewList : function(){
                 this.$router.push('./viewList');
             },
+
 			goToDetail : function(type){
 				localStorage.setItem('xxcj_type',type);
 				this.$router.push('../infoDetail');
-			}
+			},
+            go : function(url){
+                this.$router.push({name: url})
+            },
         },
 
         //计算属性
@@ -119,7 +129,6 @@
     }
     .main{
         background-color: rgb(238,238,238);
-        position: relative;
     };
     .list_right_text{
         margin-block-start:0;
@@ -137,12 +146,10 @@
         color: rgb(153,153,153);
     }
     .main_box{
-        margin-top: 18px;
+        margin-top: 8px;
         width: 100%;
         background-color: white;
         border-radius: 10px;
-        position: relative;
-        top:-10px
     }
     .list_test{
         line-height: 40px;
@@ -187,6 +194,13 @@
         width: 18px;
         z-index: 100;
     }
+    .img_Droprighth{
+        position: absolute;
+        top: 12px;
+        right:0px ;
+        height: 12px;
+        width: 12px;
+    }
     .list_row{
         padding: 0 12px ;margin:0;
     }
@@ -194,6 +208,7 @@
         border-bottom: #dddddd 1px solid;
         margin: 0 12px;
         padding-left: 0;
+        position: relative;
     }
     .list_left{
         text-align: left;width: 123px;
