@@ -5,7 +5,11 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 import {Grid, GridItem} from 'vant'
 //import {Grid, GridItem} from 'vant'
-
+import BaiduMap from 'vue-baidu-map'
+//baidu map
+Vue.use(BaiduMap, {
+  ak: '0ZNLmv4GF8cGYgL6mQO2CwUUFS1VFLMU'
+})
 
 Vue.config.productionTip = false
 

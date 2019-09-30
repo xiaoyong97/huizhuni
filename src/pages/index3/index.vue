@@ -22,7 +22,7 @@
 			  			  <img src="../../assets/images/84/Creditcheck1@2x.png" alt="">
 			  			   <p>征信校验</p>
 			  </van-grid-item>
-			  <van-grid-item icon="photo-o" text="文字">
+			  <van-grid-item icon="photo-o" text="文字" @click="go('loanLaunch')">
 			  			  	<img src="../../assets/images/84/Loaninitiation1@2x.png" alt="">
 			  			   <p>贷款发起</p>
 			  </van-grid-item>

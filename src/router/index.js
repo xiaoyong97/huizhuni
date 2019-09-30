@@ -246,7 +246,15 @@ export default new Router({
 		  meta: {
 		   title: '征信校验'
 		  },
-		},
+    },
+    {
+      name: 'loanLaunch',
+      path: '/loanLaunch',
+      component: () => import('@/pages/loanLaunch'),
+      meta: {
+      title: '贷款发起'
+      },
+    },
 
     ]
   })
