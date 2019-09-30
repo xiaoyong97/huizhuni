@@ -227,7 +227,7 @@ export default new Router({
             path: '/index/news/accountMessage',
             component: () => import('@/pages/index/news/accountMessage'),
             meta: {
-                title: '状态消息'
+                title: '预约开户'
             },
         },
         {
@@ -235,7 +235,15 @@ export default new Router({
             path: '/index/news/unspentLoansMessage',
             component: () => import('@/pages/index/news/unspentLoansMessage'),
             meta: {
-                title: '状态消息'
+                title: '贷款未支用'
+            },
+        },
+        {
+            name: 'noSuccessMessage',
+            path: '/index/news/noSuccessMessage',
+            component: () => import('@/pages/index/news/noSuccessMessage'),
+            meta: {
+                title: '未转化成功'
             },
         },
         {
@@ -243,7 +251,7 @@ export default new Router({
             path: '/index/news/grabMessage',
             component: () => import('@/pages/index/news/grabMessage'),
             meta: {
-                title: '状态消息'
+                title: '抢单消息'
             },
         },
         {
@@ -252,6 +260,14 @@ export default new Router({
             component: () => import('@/pages/index/news/statusMessage'),
             meta: {
                 title: '状态消息'
+            },
+        },
+        {
+            name: 'informationAcquisition',
+            path: '/index3/informationAcquisition',
+            component: () => import('@/pages/index3/informationAcquisition'),
+            meta: {
+                title: '信息采集'
             },
         },
 		//贷款 征信校验
@@ -263,6 +279,14 @@ export default new Router({
 		   title: '征信校验'
 		  },
 		},
-
+		//首页 编辑菜单
+		{
+		  name: 'menu',
+		  path: '/menu',
+		  component: () => import('@/pages/menu'),
+		  meta: {
+		   title: '征信校验'
+		  },
+		},
     ]
   })

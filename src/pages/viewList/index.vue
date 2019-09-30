@@ -4,79 +4,27 @@
 
         <!--头部导航-->
 
-        <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft">
+        <van-nav-bar :title="title"  >
 
         </van-nav-bar>
+        <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
 
         <div class="content">
             <van-tabs color="#4c62e7" line-width="50%" line-height=3>
                 <van-tab title="报名名单(30)" color="#4c62e7">
-                    <div class="card_div" style="" >
-                            <van-row style="padding: 15px 12px 0 ">
-                                <van-col class="" span="12">
-                                    <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">1.张三三  &thinsp; 女</p>
-                                    <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
-                                </van-col>
-                                <van-col class="" span="12" style="text-align: left">
-                                    <p class="card_list1_test_right">12345678901</p>
-                                    <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">客户经理</p>
-                                </van-col>
-                            </van-row>
-                        <div v-show="!open">
-                            <div style="height: 4px"></div>
-                            <p class="van_col_box_title title" style="">需要接站</p>
-                            <van-row class="van_row_box" style="">
-                                <van-col class="van_col_box" span="12" style="border-top-left-radius: 8px">
-                                    <p class="van_col_box_text" >车次/航班</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-top-right-radius: 8px">
-                                    <p class="van_col_box_text">到达日期</p>
-                                </van-col>
-                            </van-row>
-                            <van-row style="" class="van_row_box">
-                                <van-col class="van_col_box" span="12" style="border-bottom-left-radius: 8px">
-                                    <p class="van_col_box_text" >抵达时间</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-bottom-right-radius: 8px">
-                                    <p class="van_col_box_text">到达地点</p>
-                                </van-col>
-                            </van-row>
-                            <div style="height: 14px"></div>
-                            <p class="van_col_box_title title" style="">需要送站</p>
-                            <van-row class="van_row_box" style="">
-                                <van-col class="van_col_box" span="12" style="border-top-left-radius: 8px">
-                                    <p class="van_col_box_text" >车次/航班</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-top-right-radius: 8px">
-                                    <p class="van_col_box_text">出发日期</p>
-                                </van-col>
-                            </van-row>
-                            <van-row style="" class="van_row_box">
-                                <van-col class="van_col_box" span="12" style="border-bottom-left-radius: 8px">
-                                    <p class="van_col_box_text" >出发时间</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-bottom-right-radius: 8px">
-                                    <p class="van_col_box_text">出发地点</p>
-                                </van-col>
-                            </van-row>
-                            <div style="height: 24px" v-show="!open"></div>
-                        </div>
-                        <div style="height: 15px" v-show="open"></div>
-                        <img src="../../assets/images/24/Collapse@2x.png" class="img_open" v-show="!open" @click="changeOpen">
-                        <img src="../../assets/images/24/Pulldownselect@2x.png" class="img_open" v-show="open" @click="changeOpen">
-                    </div>
-                    <div class="card_div" style="" >
+
+                    <div class="card_div" style="" v-for="(user,i) in list">
                         <van-row style="padding: 15px 12px 0 ">
                             <van-col class="" span="12">
-                                <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">2.赵无极  &thinsp; 男</p>
-                                <p class="card_list1_test_left" style="">鲁信创投</p>
+                                <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">{{i+1}}.  &thinsp; {{user.sex}}</p>
+                                <p class="card_list1_test_left" style="">{{user.company}}</p>
                             </van-col>
                             <van-col class="" span="12" style="text-align: left">
-                                <p class="card_list1_test_right">12345678901</p>
-                                <p class="card_list1_test_right">客户经理</p>
+                                <p class="card_list1_test_right">{{user.phone}}</p>
+                                <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">{{user.job}}</p>
                             </van-col>
                         </van-row>
-                        <div v-show="!open">
+                        <div  v-show="step==i+1">
                             <div style="height: 4px"></div>
                             <p class="van_col_box_title title" style="">需要接站</p>
                             <van-row class="van_row_box" style="">
@@ -113,120 +61,17 @@
                                     <p class="van_col_box_text">出发地点</p>
                                 </van-col>
                             </van-row>
-                            <div style="height: 24px" v-show="!open"></div>
+                            <div style="height: 24px" v-show="step==i+1" ></div>
                         </div>
-                        <div style="height: 15px" v-show="open"></div>
-                        <img src="../../assets/images/24/Collapse@2x.png" class="img_open" v-show="!open" @click="changeOpen">
-                        <img src="../../assets/images/24/Pulldownselect@2x.png" class="img_open" v-show="open" @click="changeOpen">
+                        <div style="height: 15px"  class="hiddin_box_show"></div>
+                        <img src="../../assets/images/24/Collapse@2x.png" class="img_open" v-show="step==i+1" @click="changeClose(i)">
+                        <img src="../../assets/images/24/Pulldownselect@2x.png" class="img_open" v-show="step!==i+1" @click="changeOpen(i)">
                     </div>
-                    <div class="card_div" style="" >
-                        <van-row style="padding: 15px 12px 0 ">
-                            <van-col class="" span="12">
-                                <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">3.李思思  &thinsp; 男</p>
-                                <p class="card_list1_test_left" style="">广州新野模具有限公司</p>
-                            </van-col>
-                            <van-col class="" span="12" style="text-align: left">
-                                <p class="card_list1_test_right">12345678901</p>
-                                <p class="card_list1_test_right">财务总监</p>
-                            </van-col>
-                        </van-row>
-                        <div v-show="!open">
-                            <div style="height: 4px"></div>
-                            <p class="van_col_box_title title" style="">需要接站</p>
-                            <van-row class="van_row_box" style="">
-                                <van-col class="van_col_box" span="12" style="border-top-left-radius: 8px">
-                                    <p class="van_col_box_text" >车次/航班</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-top-right-radius: 8px">
-                                    <p class="van_col_box_text">到达日期</p>
-                                </van-col>
-                            </van-row>
-                            <van-row style="" class="van_row_box">
-                                <van-col class="van_col_box" span="12" style="border-bottom-left-radius: 8px">
-                                    <p class="van_col_box_text" >抵达时间</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-bottom-right-radius: 8px">
-                                    <p class="van_col_box_text">到达地点</p>
-                                </van-col>
-                            </van-row>
-                            <div style="height: 14px"></div>
-                            <p class="van_col_box_title title" style="">需要送站</p>
-                            <van-row class="van_row_box" style="">
-                                <van-col class="van_col_box" span="12" style="border-top-left-radius: 8px">
-                                    <p class="van_col_box_text" >车次/航班</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-top-right-radius: 8px">
-                                    <p class="van_col_box_text">出发日期</p>
-                                </van-col>
-                            </van-row>
-                            <van-row style="" class="van_row_box">
-                                <van-col class="van_col_box" span="12" style="border-bottom-left-radius: 8px">
-                                    <p class="van_col_box_text" >出发时间</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-bottom-right-radius: 8px">
-                                    <p class="van_col_box_text">出发地点</p>
-                                </van-col>
-                            </van-row>
-                            <div style="height: 24px" v-show="!open"></div>
-                        </div>
-                        <div style="height: 15px" v-show="open"></div>
-                        <img src="../../assets/images/24/Collapse@2x.png" class="img_open" v-show="!open" @click="changeOpen">
-                        <img src="../../assets/images/24/Pulldownselect@2x.png" class="img_open" v-show="open" @click="changeOpen">
-                    </div>
-                    <div class="card_div" style="" >
-                        <van-row style="padding: 15px 12px 0 ">
-                            <van-col class="" span="12">
-                                <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">4.乔妹  &thinsp; 女</p>
-                                <p class="card_list1_test_left" style="">贵州百灵药业</p>
-                            </van-col>
-                            <van-col class="" span="12" style="text-align: left">
-                                <p class="card_list1_test_right">12345678901</p>
-                                <p class="card_list1_test_right">客户经理</p>
-                            </van-col>
-                        </van-row>
-                        <div v-show="!open">
-                            <div style="height: 4px"></div>
-                            <p class="van_col_box_title title" style="">需要接站</p>
-                            <van-row class="van_row_box" style="">
-                                <van-col class="van_col_box" span="12" style="border-top-left-radius: 8px">
-                                    <p class="van_col_box_text" >车次/航班</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-top-right-radius: 8px">
-                                    <p class="van_col_box_text">到达日期</p>
-                                </van-col>
-                            </van-row>
-                            <van-row style="" class="van_row_box">
-                                <van-col class="van_col_box" span="12" style="border-bottom-left-radius: 8px">
-                                    <p class="van_col_box_text" >抵达时间</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-bottom-right-radius: 8px">
-                                    <p class="van_col_box_text">到达地点</p>
-                                </van-col>
-                            </van-row>
-                            <div style="height: 14px"></div>
-                            <p class="van_col_box_title title" style="">需要送站</p>
-                            <van-row class="van_row_box" style="">
-                                <van-col class="van_col_box" span="12" style="border-top-left-radius: 8px">
-                                    <p class="van_col_box_text" >车次/航班</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-top-right-radius: 8px">
-                                    <p class="van_col_box_text">出发日期</p>
-                                </van-col>
-                            </van-row>
-                            <van-row style="" class="van_row_box">
-                                <van-col class="van_col_box" span="12" style="border-bottom-left-radius: 8px">
-                                    <p class="van_col_box_text" >出发时间</p>
-                                </van-col>
-                                <van-col class="van_col_box" span="12" style="border-bottom-right-radius: 8px">
-                                    <p class="van_col_box_text">出发地点</p>
-                                </van-col>
-                            </van-row>
-                            <div style="height: 24px" v-show="!open"></div>
-                        </div>
-                        <div style="height: 15px" v-show="open"></div>
-                        <img src="../../assets/images/24/Collapse@2x.png" class="img_open" v-show="!open" @click="changeOpen">
-                        <img src="../../assets/images/24/Pulldownselect@2x.png" class="img_open" v-show="open" @click="changeOpen">
-                    </div>
+
+
+
+
+
                     <div style="height: 8px"></div>
                 </van-tab>
                 <van-tab title="签到名单" color="#4c62e7">
@@ -307,6 +152,13 @@
                 show2:false,
                 openOverlay_title:"",
                 open:true,
+                list:[
+                    {id:1,sex:'女',name:'张三三',phone:'12345678901',job:'客户经理',company:'广州新野模具有限公司'},
+                    {id:2,sex:'男',name:'赵无极',phone:'12345678901',job:'客户经理',company:'鲁信创股'},
+                    {id:3,sex:'男',name:'李思思',phone:'12345678901',job:'财务总监',company:'广州新野模具有限公司'},
+                    {id:4,sex:'女',name:'  乔妹',phone:'12345678901',job:'客户经理',company:'贵州百灵药业'}
+                ],
+                step:'',
             }
         },
 
@@ -358,9 +210,13 @@
                 this.show1 = true;
                 this.show2 = false;
             },
-            changeOpen() {
-                this.open=!this.open
+            changeOpen(i) {
+                this.step= i+1;
+
             },
+            changeClose(i) {
+                this.step= '';
+            }
 
 
         },
@@ -380,7 +236,12 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .hiddin_box{
+         display: none;
+     }
+    .hiddin_box_show{
+        display: block;
+    }
     .popContainer{
         position: fixed;
         top: 0;
@@ -453,6 +314,14 @@
         margin-block-start:0;
         margin-block-end:0;
         line-height: 30px;
+    }
+    .img_return{
+        position: absolute;
+        top: 14px;
+        left:12px ;
+        height: 18px;
+        width: 18px;
+        z-index: 100;
     }
     .card_list1_test_right{
         color: #666666;
