@@ -49,52 +49,25 @@
                             </van-row>
                             <van-row class="list_box" type="flex" justify="center" style="position: relative">
                                 <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span>. </p>
+                                <van-col  class="" span="2" v-show="delete_status==false">
+<!--                                    <div class="read_status_div"></div>-->
                                 </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2 gray_text">信息采集成功，请及时开始<span>征信校验</span>. </p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
                             </van-row>
                             <van-row class="list_box" type="flex" justify="center" style="position: relative">
                                 <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户白马服装有限公司，应于2019年8月29日货款到期，请及时开始续贷流程</p>
+                                <van-col  class="" span="2" v-show="delete_status==false">
+<!--                                    <div class="read_status_div"></div>-->
                                 </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                                 <van-col  class="" span="17" >
-                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日货款到期，请及时开始续货流程</p>
+                                    <p class="list_text2 gray_text">客户白马服装有限公司，应于2019年8月29日货款到期，请及时开始续贷流程</p>
                                 </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
                             </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日<span>贷款到期</span>，请及时开始续贷流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日<span>贷款到期</span>，请及时开始续贷流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日<span>贷款到期</span>，请及时开始续贷流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
+
 
 
 
@@ -143,7 +116,7 @@
                                     <van-col class="view_box_left" span="5"  style="width: 10%;left:73%;;border-left: #dddddd 1px solid" >
                                         <img src="../../../assets/images/38/View@2x.png" class="img_view"  >
                                     </van-col>
-                                    <van-col class="view_box_right"  span="3" style="text-align: left;width: 28%;left:83%;height: 18%">
+                                    <van-col class="view_box_right"  span="3" style="text-align: left;width: 28%;left:83%;height: 18%" @click="go('noSuccessMessage')">
                                         <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">查看</p>
                                     </van-col>
                                 <div style="height: 15px" ></div>
@@ -237,12 +210,14 @@
                             </van-row>
                             <van-row class="list_box" type="flex" justify="center" style="position: relative">
                                 <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false">
+<!--                                    <div class="read_status_div"></div>-->
+                                </van-col>
                                 <van-col  class="" span="17" >
-                                    <p class="list_text2">XxXX活动将于2019年8月9日开始，请提前做好准备.
+                                    <p class="list_text2 gray_text">XxXX活动将于2019年8月9日开始，请提前做好准备.
                                     </p>
                                 </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
                             </van-row>
                             <van-row class="list_box" type="flex" justify="center" style="position: relative">
                                 <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
@@ -787,6 +762,10 @@
         width: 70%;
         /*display: inline-block;*/
     };
+    .gray_text{
+        color: #999999;
+    }
+
     .list_text2>span{
         font-size: 13px;
         line-height: 32px;
@@ -797,6 +776,9 @@
     .list_text_time{
         line-height: 32px;
         font-size: 10px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin: 16px auto;
     };
     .list_text4{
         font-weight: bold;
@@ -807,6 +789,9 @@
     .text-align_right{
         text-align: right;
     };
+    .gray_text>span{
+        color: #999999;
+    }
 
 
 

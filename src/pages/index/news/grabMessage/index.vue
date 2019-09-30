@@ -21,28 +21,32 @@
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false">
+<!--                                    <div class="read_status_div"></div>-->
+                                </van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">您创建的XXX活动已经<span>审批通过</span></p>
+                            <p class="list_text2  gray_text">您创建的XXX活动已经<span>审批通过</span></p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">14:10</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">14:10</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false">
+<!--                                    <div class="read_status_div"></div>-->
+                                </van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">XXX活动<span>中止申请已审批通过，</span>请至员工渠道PC端查看详情
+                            <p class="list_text2 gray_text">XXX活动<span>中止申请已审批通过，</span>请至员工渠道PC端查看详情
                             </p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">昨天</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">昨天</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">您创建的<span>XXX活动</span>审批<span>未通过</span></p>
+                            <p class="list_text2 gray_text">您创建的<span>XXX活动</span>审批<span>未通过</span></p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/22</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/22</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
@@ -54,20 +58,19 @@
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">XxXX活动将于2019年8月9日开始，请提前做好准备.
-                            </p>
+                            <p class="list_text2 gray_text">已抢单客户广州佳人有约直播平台有限公司产品额度发生变化，请查看</p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">XXX活动已于2019年8月1日结束</p>
+                            <p class="list_text2 gray_text">已抢单客户4399游戏平台网络有限公司商机已失效，请查看</p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
                     </van-row>
 
 
@@ -595,6 +598,9 @@
     .list_text_time{
         line-height: 32px;
         font-size: 10px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin: 16px auto;
     };
     .list_text4{
         font-weight: bold;
@@ -605,7 +611,12 @@
     .text-align_right{
         text-align: right;
     };
-
+    .gray_text{
+        color: #999999;
+    }
+    .gray_text>span{
+        color: #999999;
+    }
 
 
 
