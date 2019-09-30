@@ -2,7 +2,7 @@
     <div class="main">
 
         <!--头部导航-->
-        <van-nav-bar :title="title" right-text="批量删除" >
+        <van-nav-bar :title="title" :right-text="right_text" @click-right="batch_deletion">
 
         </van-nav-bar>
         <img src="../../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
@@ -12,21 +12,24 @@
                 <div class="list_div ">
 
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
                             <p class="list_text2">XXX活动将于<span>2019年8月12日开始</span>，请提前做好准备</p>
                         </van-col>
                         <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time">15:40</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
                             <p class="list_text2">您创建的XXX活动已经<span>审批通过</span></p>
                         </van-col>
                         <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">14:10</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
                             <p class="list_text2">XXX活动<span>中止申请已审批通过，</span>请至员工渠道PC端查看详情
                             </p>
@@ -34,21 +37,24 @@
                         <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">昨天</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
                             <p class="list_text2">您创建的<span>XXX活动</span>审批<span>未通过</span></p>
                         </van-col>
                         <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/22</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
                             <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span>. </p>
                         </van-col>
                         <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/22</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
                             <p class="list_text2">XxXX活动将于2019年8月9日开始，请提前做好准备.
                             </p>
@@ -56,7 +62,8 @@
                         <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
                             <p class="list_text2">XXX活动已于2019年8月1日结束</p>
                         </van-col>
@@ -104,10 +111,12 @@
         //基础数据存放处
         data (){
             return {
-                result:false,
+                result:true,
                 title : '预约开户',
+                right_text:'批量删除',
                 activeName: 'a',
                 step:false,
+                delete_status:false,
                 decrease_img: require('@/assets/image/my/decrease.png'),
                 pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
                 successCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
@@ -147,7 +156,14 @@
             onCilckFlex () {
                 this.step=!this.step
             },
-
+            batch_deletion() {
+                this.delete_status = !this.delete_status
+                if (this.delete_status) {
+                    this.right_text = '取消删除'
+                } else {
+                    this.right_text = '批量删除'
+                };
+            },
 
         },
 
@@ -382,6 +398,13 @@
         background-color: rgb(238,238,238);
         justify-content: center;
         align-items: center;
+    }
+    .read_status_div{
+        height: 10px;
+        width: 10px;
+        border-radius: 10px;
+        background-color: #f76037;
+        margin: 27px auto;
     }
     .max_num{
         font-size:42px;
