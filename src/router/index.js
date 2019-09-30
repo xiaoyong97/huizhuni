@@ -120,6 +120,14 @@ export default new Router({
         },
       },
       {
+        name: 'grabSingleYi',
+        path: '/grabSingleYi',
+        component: () => import('@/pages/grabSingleYi'),
+        meta: {
+          title: '商机已抢单页'
+        },
+      },
+      {
         name: 'shangParticulars',
         path: '/shangParticulars',
         component: () => import('@/pages/shangParticulars'),
@@ -135,6 +143,15 @@ export default new Router({
           title: '商机管理详情信息'
         },
       },
+	  {
+	    name: 'searchShang',
+	    path: '/searchShang',
+	    component: () => import('@/pages/searchShang'),
+	    meta: {
+	     title: '商机管理搜索导航'
+	    },
+	  },
+
 
  //咕咕管理
 	  {
@@ -211,7 +228,7 @@ export default new Router({
             path: '/index/news/accountMessage',
             component: () => import('@/pages/index/news/accountMessage'),
             meta: {
-                title: '状态消息'
+                title: '预约开户'
             },
         },
         {
@@ -219,7 +236,15 @@ export default new Router({
             path: '/index/news/unspentLoansMessage',
             component: () => import('@/pages/index/news/unspentLoansMessage'),
             meta: {
-                title: '状态消息'
+                title: '贷款未支用'
+            },
+        },
+        {
+            name: 'noSuccessMessage',
+            path: '/index/news/noSuccessMessage',
+            component: () => import('@/pages/index/news/noSuccessMessage'),
+            meta: {
+                title: '未转化成功'
             },
         },
         {
@@ -227,7 +252,23 @@ export default new Router({
             path: '/index/news/grabMessage',
             component: () => import('@/pages/index/news/grabMessage'),
             meta: {
-                title: '状态消息'
+                title: '抢单消息'
+            },
+        },
+        {
+            name: 'searchInfo',
+            path: '/index3/informationAcquisition/searchInfo',
+            component: () => import('@/pages/index3/informationAcquisition/searchInfo'),
+            meta: {
+                title: '信息采集搜索'
+            },
+        },
+        {
+            name: 'infoDetail',
+            path: '/index3/informationAcquisition/infoDetail',
+            component: () => import('@/pages/index3/informationAcquisition/infoDetail'),
+            meta: {
+                title: '信息采集详情'
             },
         },
         {
@@ -238,15 +279,15 @@ export default new Router({
                 title: '状态消息'
             },
         },
-		//贷款 征信校验
-		{
-		  name: 'creditCheck',
-		  path: '/index3/creditCheck',
-		  component: () => import('@/pages/index3/creditCheck'),
-		  meta: {
-		   title: '征信校验'
-		  },
-    },
+        {
+            name: 'informationAcquisition',
+            path: '/index3/informationAcquisition',
+            component: () => import('@/pages/index3/informationAcquisition'),
+            meta: {
+                title: '信息采集'
+            },
+        },
+        
     {
       name: 'loanLaunch',
       path: '/loanLaunch',
@@ -255,6 +296,41 @@ export default new Router({
       title: '贷款发起'
       },
     },
-
+		//贷款 征信校验
+		{
+		  name: 'creditCheck',
+		  path: '/index3/creditCheck',
+		  component: () => import('@/pages/index3/creditCheck'),
+		  meta: {
+		   title: '征信校验'
+		  },
+		},
+		//首页 编辑菜单
+		{
+		  name: 'menu',
+		  path: '/menu',
+		  component: () => import('@/pages/menu'),
+		  meta: {
+		   title: '征信校验'
+		  },
+		},
+		//信息采集-企业信息
+		{
+		  name: 'collectOperation',
+		  path: '/index3/collectOperation',
+		  component: () => import('@/pages/index3/collectOperation'),
+		  meta: {
+		   title: '信息采集-企业信息'
+		  },
+		},
+		//信息详情
+		{
+		  name: 'infoDetail',
+		  path: '/index3/infoDetail',
+		  component: () => import('@/pages/index3/infoDetail'),
+		  meta: {
+		   title: '信息详情'
+		  },
+		},
     ]
   })

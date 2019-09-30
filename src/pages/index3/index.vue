@@ -46,7 +46,6 @@
 			  			   <p>合同签订</p>
 			  </van-grid-item>
 			  
-			
 			  <van-grid-item >
 			  			
 			  </van-grid-item>
@@ -129,7 +128,7 @@ export default {
     
     go : function(url){
 		
-      this.$router.push({name:url});
+      // this.$router.push({name:url});
     },
 	onBannerChange(index) {
 		this.current = index;

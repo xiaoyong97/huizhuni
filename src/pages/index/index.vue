@@ -7,11 +7,11 @@
 				:title='title'
 				fixed
 		/>
-		<img src="../../assets/images/48/Message@2x.png" class="img_search" @click="go_newspage">
+		<img src="../../assets/images/48/Message@2x.png" class="img_massage" @click="go_newspage">
 
 		<div class="content" >
 			<div class="notice-bar" v-show="isShowNoticeBar">
-				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">张三</span>进入名单池中，前往 
+				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">张三</span>进入名单池中，前往
 				<div class="btn-group">
 				  <span class="rob" @click="go('index2')">抢单</span>
 				  <span class="close" @click="closeNotice" >X</span>
@@ -19,9 +19,9 @@
 			</div>
 			<van-swipe :autoplay="3000" indicator-color="white" @change="onBannerChange">
 				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
+				<van-swipe-item><img src="../../assets/images/other/banner3.png" alt="" class="banner"></van-swipe-item>
 				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
-				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
-				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
+				<van-swipe-item><img src="../../assets/images/other/banner3.png" alt="" class="banner"></van-swipe-item>
 				<van-swipe-item><img src="../../assets/images/other/banner.png" alt="" class="banner"></van-swipe-item>
 				<div class="custom-indicator" slot="indicator">
 					<ul>
@@ -39,37 +39,12 @@
 			<div class="grid-container">
 				<div class="box">
 					<van-grid>
-						<van-grid-item icon="photo-o" text="文字">
-							<img src="../../assets/images/84/InformationCollection@2x.png" alt="">
-							<p>信息采集</p>
+						<van-grid-item v-for="item in menu" @click="go(item.url)" v-show="item.isChecked">
+							<img :src="item.icon" alt="">
+
+							<p>{{item.name}}</p>
 						</van-grid-item>
-						<van-grid-item icon="photo-o" text="文字">
-							<img src="../../assets/images/84/Loaninitiation1@2x.png" alt="">
-							<p>贷款发起</p>
-						</van-grid-item>
-						<van-grid-item icon="photo-o" text="文字">
-							<img src="../../assets/images/84/Creditcheck1@2x.png" alt="">
-							<p>征信校验</p>
-						</van-grid-item>
-						<van-grid-item icon="photo-o" text="文字">
-							<img src="../../assets/images/84/Creditinquiry@2x.png" alt="">
-							<p>审贷查询</p>
-						</van-grid-item>
-					</van-grid>
-					<van-grid>
-						<van-grid-item icon="photo-o" text="文字">
-							<img src="../../assets/images/84/signacontract@2x.png" alt="">
-							<p>合同签订</p>
-						</van-grid-item>
-						<van-grid-item icon="photo-o" text="文字">
-							<img src="../../assets/images/84/Mortgageregistration@2x.png" alt="">
-							<p>抵押登记</p>
-						</van-grid-item>
-						<van-grid-item icon="photo-o" text="文字" @click="go('gugu')">
-							<img src="../../assets/images/84/gugu@2x.png" alt="">
-							<p>咕咕管理</p>
-						</van-grid-item>
-						<van-grid-item icon="photo-o" text="文字">
+						<van-grid-item @click="go('menu')">
 							<img src="../../assets/images/84/custom.png">
 						</van-grid-item>
 					</van-grid>
@@ -160,7 +135,7 @@
 	//引入组件首字母大写
 	import TabBar from '@/components/tabBar';
 	import Vue from 'vue';
-	import { Swipe, SwipeItem,Grid, GridItem,Image,Panel,NoticeBar,Cell, CellGroup,Row, Col } from 'vant';
+	import { Swipe, SwipeItem,Grid, GridItem,Image,Panel,NoticeBar,Cell, CellGroup,Row, Col,Dialog } from 'vant';
 	Vue.use(Swipe).use(SwipeItem).use(Grid).use(GridItem).use(Image)
 			.use(Panel).use(NoticeBar).use(CellGroup).use(Row).use(Col);
 
@@ -184,6 +159,29 @@
 
 		//网页加载完成
 		mounted : function(){
+
+			Dialog.setDefaultOptions({
+				confirmButtonText:'查看',
+				confirmButtonColor:'#4c62e7'
+			})
+
+			var textArray = [
+				'您名下<span style="color:#4c62e7">8</span>个客户进入商机池<br>请点击查看',
+				'您已抢单客户<span style="color:#4c62e7">王川冰</span>产品额度<br>发生变化，请点击查看',
+				'您已抢单客户<span style="color:#4c62e7">白小飞</span>商机已失效<br>请点击查看',
+
+			];
+			if(Math.floor(Math.random()*10)%8 == 7){
+
+				Dialog.confirm({
+				  title: '最新消息',
+				  message: textArray[Math.floor(Math.random()*10)%3]
+				}).then(() => {
+				  // on confirm
+				}).catch(() => {
+				  // on cancel
+				});
+			}
 
 		},
 
@@ -209,7 +207,31 @@
 
 		//计算属性
 		computed: {
+			menu:function(){
+				var arr = JSON.parse(localStorage.getItem('home_menu'));
+				if(arr == null || arr == undefined){
+					arr = [
+						{name:"信息采集",icon:require('../../assets/images/84/InformationCollection@2x.png'),url:'index3/informationAcquisition',isChecked:true},
+						{name:"贷款发起",icon:require('../../assets/images/84/Loaninitiation1@2x.png'),url:'index3/infoDetail',isChecked:true},
+						{name:"征信校验",icon:require('../../assets/images/84/Creditcheck1@2x.png'),url:'index',isChecked:true},
+						{name:"申贷查询",icon:require('../../assets/images/84/Creditinquiry@2x.png'),url:'index',isChecked:true},
+						{name:"贷后跟踪",icon:require('../../assets/images/84/Post-loantracking@2x.png'),url:'index',isChecked:false},
+						{name:"合同签订",icon:require('../../assets/images/84/signacontract@2x.png'),url:'index',isChecked:true},
+						{name:"抵押登记",icon:require('../../assets/images/84/Mortgageregistration@2x.png'),url:'index',isChecked:true},
+						{name:"线下活动",icon:require('../../assets/images/84/off-lineactivity@2x.png'),url:'index',isChecked:false},
+						{name:"业绩展示",icon:require('../../assets/images/84/resultsshow@2x.png'),url:'index',isChecked:false},
+						{name:"客户抢单",icon:require('../../assets/images/84/Custmerrobsingle.png'),url:'index',isChecked:false},
+						{name:"咕咕管理",icon:require('../../assets/images/84/gugu@2x.png'),url:'gugu',isChecked:true},
+						{name:"贷款催收",icon:require('../../assets/images/84/daikuancuishou.png'),url:'index',isChecked:false},
+						{name:"商机管理",icon:require('../../assets/images/84/shangjiguanli.png'),url:'index',isChecked:false},
+						{name:"贷款管理",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index',isChecked:false},
+					]
 
+					localStorage.setItem('home_menu',JSON.stringify(arr));
+				}
+
+				return arr;
+			}
 		},
 
 		components: {
@@ -296,8 +318,8 @@
 	.dk-pan div{
 		padding: 4px 0px;
 	}
-	.img_search{
-		position: absolute;
+	.img_massage{
+		position: fixed;
 		top: 14px;
 		right:12px ;
 		height: 18px;
@@ -438,7 +460,7 @@
 	padding: 5px 24px;
 	height: 30px;;
 	margin-right: 8px;
-	
+
 }
 .btn-group .close{
 	background-color: rgb(169,169,169);

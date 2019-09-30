@@ -6,8 +6,27 @@
       <TabBar/>
       <!--<van-nav-bar :title='title' fixed>
         <van-icon name="search" slot="right" size="24px"/>
-      </van-nav-bar>-->
-      <van-nav-bar title="标2题" left-text="抢单"  @click-left="onClickLeft" @click-right="onClickRight" fixed/>
+      </van-nav-bar> sticky  offset-top=0-->
+      <van-row  gutter="10" class="daohangKuang">
+        <van-col span="7"></van-col>
+        <van-col span="11"><div >
+          <van-tabs class="daoHangQie" v-model="active" type="card" color="#1989fa" >
+            <van-tab >
+              <div slot="title" name="a" @click="onClickLeft" class="navLeft">
+                  抢单
+              </div>
+              <div style="width:375px;">
+              </div>
+            </van-tab>
+            <van-tab> 
+              <div  class="navRight" name="b" @click="onClickRight"  slot="title">
+                已抢单
+              </div>
+            </van-tab>
+          </van-tabs>
+        </div></van-col>
+        <van-col span="6"><van-icon @click="searchBut" name="search" size="22px" style="margin-top:15px;float:right;"/></van-col>
+      </van-row>
     </div>
     
     <div>
@@ -62,58 +81,6 @@
           <van-row  gutter="10">
             <div><div class ="timeKuang" >
               <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
-                <div slot="button" class="custom-button">
-                  {{huaKuaiName}}
-                </div>
-              </van-slider></div>
-              <div class ="huaTime" >2019/08/21 </br><span class="timeSpan">18:21</span></div>
-            </div>
-          </van-row>
-        </div>
-
-        <div class="daiWanCheng">
-          <van-row >
-            <van-col class="qiangDanCol" span="17">
-              <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
-            </van-col>
-            <van-col style="line-height:20px;" span="3">
-              <div class="jingZhuenWan">精准</br>测额</div>
-            </van-col>
-            <van-col style="line-height:20px;" span="4">
-              <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-            </van-col>
-          </van-row>
-          <van-row gutter="15">
-            <van-col class="kuang" span="6">
-              <div class="kuangHang">
-                <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
-              </div>
-            </van-col>
-            <van-col class="kuang" span="6">
-              <div class="kuangHangDi">
-                <div class="kuangTop">抵押快贷</div><div class="kuangBottom">500万</div>
-              </div>
-            </van-col>
-            <van-col class="kuang" span="6">
-              <div class="kuangHang">
-                <div class="kuangTop">交易快贷</div><div class="kuangBottom">300万</div>
-              </div>
-            </van-col>
-            <van-col class="kuang" span="6">
-              <div class="kuangHang">
-                <div class="kuangTop">质押快贷</div><div class="kuangBottom">800万</div>
-              </div>
-            </van-col>
-          </van-row>
-          <van-row  gutter="10">
-            <van-col><div class ="BKuang" >一般户</div></van-col>
-            <van-col><div class ="BKuang" >结算户</div></van-col>
-            <van-col><div class ="BKuang" >企业征信</div></van-col>
-            <van-col><div class ="BKuang" >个人征信</div></van-col>
-          </van-row>
-          <van-row  gutter="10">
-            <div><div class ="timeKuang" >
-              <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
                 <div slot="button" class="custom-button" >
                   {{huaKuaiName}}
                 </div>
@@ -122,7 +89,10 @@
             </div>
           </van-row>
         </div>
+      </div>
 
+      
+      <div class="bac" @click="particularsCardBut">
         <div class="daiWanCheng">
           <van-row >
             <van-col class="qiangDanCol" span="17">
@@ -175,8 +145,6 @@
           </van-row>
         </div>
       </div>
-
-      
       
     </div>
   </div>
@@ -212,6 +180,7 @@ export default {
        ],
        huaKuai: null,
        huaKuaiName: "滑动抢单",
+       active: 'b',
      }
   },
 
@@ -241,7 +210,7 @@ export default {
     },
     //已抢单按钮,跳到抢单页面
     onClickRight(){
-      this.$router.push('/yiGrabTheOrder');
+      this.$router.push('/grabSingleYi');
     },
     //滑动进度变化且结束拖动后触发
     huaKuaiChange(){
@@ -260,7 +229,11 @@ export default {
     //点击信息卡背景打开详情信息
     particularsCardBut(){
       this.$router.push('/shangParticulars');
-    }
+    },
+    //点击打开搜索
+    searchBut(){
+      this.$router.push('/searchShang');
+    },
 
   },
   
@@ -277,12 +250,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .daohangKuang{
+    position: fixed;
+    top:0px;
+    width:100%;
+    height:50px;
+    margin-top:0px;
+    line-height:50px;
+  }
+  .daoHangQie{
+    width:150px;
+    margin-top:10px;
+    padding:0px;
+  }
+  .navLeft{ 
+    border-bottom-left-radius:17px;
+    border-top-left-radius: 17px;
+  }
+  .navRight{ 
+    border-radius: 10px;
+    border-bottom-right-radius:
+    7px;border-top-right-radius: 7px;
+  }
   .bac{
     width: 100%;
     height: 100%;
     margin: 0px;
     padding-top: 1px;
-    padding-bottom: 58px;
+    padding-bottom: 8px;
     background-color: #E7EAF5;
   }
   .daiWanCheng{
@@ -300,7 +295,7 @@ export default {
   }
   .qiangDanCol .qiangGongSi{
     float: left;
-    max-width:170px;
+    max-width:180px;
     font-weight:bold;
     font-size:15px;
     color: rgb(51,51,51);
