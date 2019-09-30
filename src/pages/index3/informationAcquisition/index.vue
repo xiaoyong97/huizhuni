@@ -5,7 +5,7 @@
 
         </van-nav-bar>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
-        <img src="../../../assets/images/48/create@2x.png" class="img_fliter" >
+        <img src="../../../assets/images/48/create@2x.png" class="img_fliter" @click="go('collectOperation')" >
         <img src="../../../assets/images/38/searchfor@2x.png" class="img_search" @click="go('searchInfo')">
         <div class="content">
             <van-tabs color="#4c62e7" line-width="50%" line-height=3>

@@ -30,12 +30,6 @@
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test gray_text" >采集时间</p></van-col>
                     <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">2019-07-22</p></van-col>
                 </van-row>
-
-
-
-
-
-
             </div>
 
             <div class="main_box">
@@ -44,30 +38,22 @@
                     <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
                     <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >信息采集</p></van-col>
                 </van-row>
-                <van-row class="list_row border_botton" >
+                <van-row class="list_row border_botton" @click="goToDetail(0)" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >企业信息</p></van-col>
                 </van-row>
-                <van-row class="list_row border_botton" >
+                <van-row class="list_row border_botton"  @click="goToDetail(1)">
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >企业主信息</p></van-col>
                 </van-row>
-                <van-row class="list_row border_botton" >
+                <van-row class="list_row border_botton"  @click="goToDetail(2)">
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >关联人信息</p></van-col>
                 </van-row>
-                <van-row class="list_row border_botton" >
+                <van-row class="list_row border_botton"  @click="goToDetail(3)">
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >抵押物信息</p></van-col>
                 </van-row>
-                <van-row class="list_row border_botton" >
+                <van-row class="list_row border_botton" @click="goToDetail(4)" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >抵押人信息</p></van-col>
                 </van-row>
-
-
-
-
-
-
             </div>
-
-
         </div>
     </div>
 </template>
@@ -109,6 +95,10 @@
             goviewList : function(){
                 this.$router.push('./viewList');
             },
+			goToDetail : function(type){
+				localStorage.setItem('xxcj_type',type);
+				this.$router.push('../infoDetail');
+			}
         },
 
         //计算属性

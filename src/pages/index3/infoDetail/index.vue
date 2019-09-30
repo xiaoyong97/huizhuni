@@ -104,7 +104,66 @@
 				</div>
 			 </van-cell-group>
 		</div>
-    </div>
+		<div v-show='type==2'>
+				<van-cell-group class="bg-grey"  >
+					<div >
+						<van-cell>
+							 <van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
+							 <van-col span="23"><h3>企业主信息</h3></van-col>		
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">企业主身份证:</van-col>
+							 <van-col span="12"><img class="yyzz" src="../../../assets/images/idcard/sfz.png" alt=""></van-col>
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">姓名:</van-col>
+							 <van-col span="12">张三</van-col>
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">性别:</van-col>
+							 <van-col span="12">男</van-col>
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">民族:</van-col>
+							 <van-col span="12">汉</van-col>
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">出生日期:</van-col>
+							 <van-col span="12">1988-01-01</van-col>
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">住址:</van-col>
+							 <van-col span="12">广州市越秀区法政路XX号</van-col>
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">公民身份证号码:</van-col>
+							 <van-col span="12">440103198801017543</van-col>
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">有效期限:</van-col>
+							 <van-col span="12">2030-01-10</van-col>
+						</van-cell>
+						<van-cell>
+							 <van-col span="10">学历:</van-col>
+							 <van-col span="12">研究生或以上</van-col>
+						</van-cell><van-cell>
+							 <van-col span="10">手机号码:</van-col>
+							 <van-col span="12">2030-01-10</van-col>
+						</van-cell><van-cell>
+							 <van-col span="10">工作单位:</van-col>
+							 <van-col span="12">广州乐乐科技有限公司</van-col>
+						</van-cell><van-cell>
+							 <van-col span="10">婚烟情况:</van-col>
+							 <van-col span="12">已婚有子女</van-col>
+						</van-cell><van-cell>
+							 <van-col span="10">家庭人数:</van-col>
+							 <van-col span="12">3</van-col>
+						</van-cell>
+					</div>
+				 </van-cell-group>
+			</div>
+		
+	</div>
         
     </div>
 </template>
@@ -146,7 +205,7 @@
   computed: {
 	 title :function  () {
 			var type = localStorage.getItem('xxcj_type');
-			type = 1;
+			
 			switch (type){
 				case 0:
 					return '信息详情';
@@ -155,7 +214,13 @@
 					return '信息采集详情';
 					break;
 				case 2:
-					return '信息详情';
+					return '关联人信息';
+					break;
+				case 3:
+					return '抵押物信息';
+					break;
+				case 4:
+					return '抵押人信息';
 					break;
 				default:
 					return '信息详情';
@@ -164,7 +229,7 @@
 		},
 		type:function(){
 			var type = localStorage.getItem('xxcj_type');
-			type = 1;
+			
 			return type ? type : 0;
 		}
   },

@@ -211,7 +211,7 @@
 				var arr = JSON.parse(localStorage.getItem('home_menu'));
 				if(arr == null || arr == undefined){
 					arr = [
-						{name:"信息采集",icon:require('../../assets/images/84/InformationCollection@2x.png'),url:'index3/collectOperation',isChecked:true},
+						{name:"信息采集",icon:require('../../assets/images/84/InformationCollection@2x.png'),url:'index3/informationAcquisition',isChecked:true},
 						{name:"贷款发起",icon:require('../../assets/images/84/Loaninitiation1@2x.png'),url:'index3/infoDetail',isChecked:true},
 						{name:"征信校验",icon:require('../../assets/images/84/Creditcheck1@2x.png'),url:'index',isChecked:true},
 						{name:"申贷查询",icon:require('../../assets/images/84/Creditinquiry@2x.png'),url:'index',isChecked:true},
