@@ -40,18 +40,22 @@
                 <van-row class="list_row border_botton" @click="goToDetail(0)" >
 
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >企业信息</p></van-col>
-                    <img src="../../../../assets/images/24/Dropright2.png" class="img_Droprighth" @click="go('searchInfo')">
+                    <img src="../../../../assets/images/24/Dropright2.png" class="img_Droprighth" >
                 </van-row>
                 <van-row class="list_row border_botton"  @click="goToDetail(1)">
+                    <img src="../../../../assets/images/24/Dropright2.png" class="img_Droprighth" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >企业主信息</p></van-col>
                 </van-row>
                 <van-row class="list_row border_botton"  @click="goToDetail(2)">
+                    <img src="../../../../assets/images/24/Dropright2.png" class="img_Droprighth" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >关联人信息</p></van-col>
                 </van-row>
                 <van-row class="list_row border_botton"  @click="goToDetail(3)">
+                    <img src="../../../../assets/images/24/Dropright2.png" class="img_Droprighth" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >抵押物信息</p></van-col>
                 </van-row>
                 <van-row class="list_row border_botton" @click="goToDetail(4)" >
+                    <img src="../../../../assets/images/24/Dropright2.png" class="img_Droprighth" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >抵押人信息</p></van-col>
                 </van-row>
             </div>
