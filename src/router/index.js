@@ -246,6 +246,14 @@ export default new Router({
                 title: '状态消息'
             },
         },
+        {
+            name: 'informationAcquisition',
+            path: '/index/news/informationAcquisition',
+            component: () => import('@/pages/index/news/informationAcquisition'),
+            meta: {
+                title: '信息采集'
+            },
+        },
 		//贷款 征信校验
 		{
 		  name: 'creditCheck',
