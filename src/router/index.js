@@ -248,8 +248,8 @@ export default new Router({
         },
         {
             name: 'informationAcquisition',
-            path: '/index/news/informationAcquisition',
-            component: () => import('@/pages/index/news/informationAcquisition'),
+            path: '/index3/informationAcquisition',
+            component: () => import('@/pages/index3/informationAcquisition'),
             meta: {
                 title: '信息采集'
             },
