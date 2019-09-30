@@ -7,11 +7,11 @@
 				:title='title'
 				fixed
 		/>
-		<img src="../../assets/images/48/Message@2x.png" class="img_search" @click="go_newspage">
+		<img src="../../assets/images/48/Message@2x.png" class="img_massage" @click="go_newspage">
 
 		<div class="content" >
 			<div class="notice-bar" v-show="isShowNoticeBar">
-				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">张三</span>进入名单池中，前往 
+				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">张三</span>进入名单池中，前往
 				<div class="btn-group">
 				  <span class="rob" @click="go('index2')">抢单</span>
 				  <span class="close" @click="closeNotice" >X</span>
@@ -41,9 +41,9 @@
 					<van-grid>
 						<van-grid-item v-for="item in menu" @click="go(item.url)" v-show="item.isChecked">
 							<img :src="item.icon" alt="">
-						
+
 							<p>{{item.name}}</p>
-						</van-grid-item>	
+						</van-grid-item>
 						<van-grid-item @click="go('menu')">
 							<img src="../../assets/images/84/custom.png">
 						</van-grid-item>
@@ -163,13 +163,13 @@
 				confirmButtonText:'查看',
 				confirmButtonColor:'#4c62e7'
 			})
-			
+
 			var textArray = [
 				'您名下<span style="color:#4c62e7">8</span>个客户进入商机池<br>请点击查看',
 				'您已抢单客户<span style="color:#4c62e7">王川冰</span>产品额度<br>发生变化，请点击查看',
 				'您已抢单客户<span style="color:#4c62e7">白小飞</span>商机已失效<br>请点击查看',
 			];
-			
+
 			// Dialog.confirm({
 			//   title: '最新消息',
 			//   message: textArray[Math.floor(Math.random()*10)%3]
@@ -178,7 +178,7 @@
 			// }).catch(() => {
 			//   // on cancel
 			// });
-			
+
 		},
 
 		//声明方法
@@ -189,7 +189,7 @@
 				this.$router.push({name:'news'})
 			},
 			go : function(url){
-				
+
 				this.$router.push('/'+url)
 			},
 			onBannerChange(index) {
@@ -198,7 +198,7 @@
 			closeNotice:function(){
 				this.isShowNoticeBar = false
 			},
-			
+
 		},
 
 		//计算属性
@@ -222,10 +222,10 @@
 						{name:"商机管理",icon:require('../../assets/images/84/shangjiguanli.png'),url:'index',isChecked:false},
 						{name:"贷款管理",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index',isChecked:false},
 					]
-					
+
 					localStorage.setItem('home_menu',JSON.stringify(arr));
 				}
-				
+
 				return arr;
 			}
 		},
@@ -314,8 +314,8 @@
 	.dk-pan div{
 		padding: 4px 0px;
 	}
-	.img_search{
-		position: absolute;
+	.img_massage{
+		position: fixed;
 		top: 14px;
 		right:12px ;
 		height: 18px;
@@ -456,7 +456,7 @@
 	padding: 5px 24px;
 	height: 30px;;
 	margin-right: 8px;
-	
+
 }
 .btn-group .close{
 	background-color: rgb(169,169,169);
