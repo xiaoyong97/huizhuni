@@ -110,6 +110,33 @@ export default new Router({
                 title: '活动详情进行中'
             },
         },
+
+      //商机部分
+      {
+        name: 'grabSingle',
+        path: '/grabSingle',
+        component: () => import('@/pages/grabSingle'),
+        meta: {
+          title: '商机抢单页'
+        },
+      },
+      {
+        name: 'shangParticulars',
+        path: '/shangParticulars',
+        component: () => import('@/pages/shangParticulars'),
+        meta: {
+          title: '商机详情信息'
+        },
+      },
+      {
+        name: 'managementParticulars',
+        path: '/managementParticulars',
+        component: () => import('@/pages/managementParticulars'),
+        meta: {
+          title: '商机管理详情信息'
+        },
+      },
+
  //咕咕管理
 	  {
 	    name: 'gugu',
@@ -146,6 +173,7 @@ export default new Router({
 	     title: '搜索'
 	    },
 	  },
+
         {
             name: 'viewList',
             path: '/viewList',
