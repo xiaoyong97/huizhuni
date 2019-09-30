@@ -3,9 +3,7 @@
 
         <!--头部导航-->
 
-        <van-nav-bar :title="title"  >
-
-        </van-nav-bar>
+        <van-nav-bar :title="title"  ></van-nav-bar>
         <img src="../../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <div class="main">
             <div class="main_box">
@@ -57,7 +55,7 @@
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_right_text" >抵押人信息</p></van-col>
                 </van-row>
             </div>
-     
+
             <div style="height: 8px"></div>
 
         </div>

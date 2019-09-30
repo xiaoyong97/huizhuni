@@ -1,15 +1,16 @@
 <template>
-    <div class="main">
-     
+    <div class="main" style="position: relative">
+
      <!--头部导航-->
-     <NavBar :title="title"/>
+		<van-nav-bar :title="title"  ></van-nav-bar>
+		<img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
     <div class="content">
 		<div v-show='type==0'>
 			<van-cell-group class="bg-grey"  >
 				<div >
 					<van-cell>
 						 <van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
-						 <van-col span="23"><h3>广州老地方有限公司</h3></van-col>		
+						 <van-col span="23"><h3>广州老地方有限公司</h3></van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">全业法人营业执照:</van-col>
@@ -51,7 +52,7 @@
 				<div >
 					<van-cell>
 						 <van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
-						 <van-col span="23"><h3>企业主信息</h3></van-col>		
+						 <van-col span="23"><h3>企业主信息</h3></van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">企业主身份证:</van-col>
@@ -106,10 +107,34 @@
 		</div>
 		<div v-show='type==2'>
 				<van-cell-group class="bg-grey"  >
-					<div >
+					<div class="grey_bg"> </div>
+					<div class="">
+						<van-cell>
+							<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
+							<van-col span="23"><h3>关联人信息1</h3></van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">关系</van-col>
+							<van-col span="12">其他（默认）</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">企业主身份证:</van-col>
+							<van-col span="12"><img class="yyzz" src="../../../assets/images/idcard/sfz.png" alt=""></van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">姓名:</van-col>
+							<van-col span="12">张唔唔</van-col>
+						</van-cell>
+						<van-cell @click="show_3" v-show="show3">
+							<div class="blue_bg_box"><p class="list_text_open">展开详情<van-icon name="arrow-down" /></p></div>
+						</van-cell>
+
+					</div>
+					<div class="grey_bg"> </div>
+					<div v-show="!show3">
 						<van-cell>
 							 <van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
-							 <van-col span="23"><h3>企业主信息</h3></van-col>		
+							 <van-col span="23"><h3>关联人信息2</h3></van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">企业主身份证:</van-col>
@@ -117,11 +142,11 @@
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">姓名:</van-col>
-							 <van-col span="12">张三</van-col>
+							 <van-col span="12">张三妻</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">性别:</van-col>
-							 <van-col span="12">男</van-col>
+							 <van-col span="12">女</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">民族:</van-col>
@@ -129,7 +154,7 @@
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">出生日期:</van-col>
-							 <van-col span="12">1988-01-01</van-col>
+							 <van-col span="12">1990-11-21</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">住址:</van-col>
@@ -137,7 +162,7 @@
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">公民身份证号码:</van-col>
-							 <van-col span="12">440103198801017543</van-col>
+							 <van-col span="12">440103199011215555</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">有效期限:</van-col>
@@ -148,7 +173,7 @@
 							 <van-col span="12">研究生或以上</van-col>
 						</van-cell><van-cell>
 							 <van-col span="10">手机号码:</van-col>
-							 <van-col span="12">2030-01-10</van-col>
+							 <van-col span="12">138002111111</van-col>
 						</van-cell><van-cell>
 							 <van-col span="10">工作单位:</van-col>
 							 <van-col span="12">广州乐乐科技有限公司</van-col>
@@ -159,12 +184,189 @@
 							 <van-col span="10">家庭人数:</van-col>
 							 <van-col span="12">3</van-col>
 						</van-cell>
+						<van-cell @click="show_3">
+							<div class="blue_bg_box"><p class="list_text_open">收起<van-icon name="arrow-up" /></p></div>
+						</van-cell>
 					</div>
 				 </van-cell-group>
 			</div>
-		
+		<div v-show='type==3'>
+			<van-cell-group class="bg-grey"  >
+				<div class="grey_bg"> </div>
+				<div class="">
+					<van-cell>
+						<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
+						<van-col span="23"><h3>抵押物信息1</h3></van-col>
+					</van-cell>
+
+					<van-cell>
+						<van-col span="10">不动产权证:</van-col>
+						<van-col span="12"><img class="yyzz" src="../../../assets/images/other/budongchan.png" alt=""></van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">权利人:</van-col>
+						<van-col span="12">张三</van-col>
+					</van-cell>
+					<van-cell @click="show_4" v-show="show4" >
+						<img src="../../../assets/images/38/Pulldown3@2x.png"  class="felx_img" v-show="show4">
+					</van-cell>
+
+				</div>
+				<div class="grey_bg"> </div>
+				<div v-show="!show4">
+					<van-cell>
+						<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
+						<van-col span="23"><h3>抵押物信息2</h3></van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">企业法人：</van-col>
+						<van-col span="12"><img class="yyzz" src="../../../assets/images/idcard/sfz.png" alt=""></van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">新一代客户编号:</van-col>
+						<van-col span="12">44099999999</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">统一社会信用代码:</van-col>
+						<van-col span="12">xxxxxxx</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">企业名称:</van-col>
+						<van-col span="12">广州老地方有限公司</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">企业地址:</van-col>
+						<van-col span="12">广州市越秀区法政路XX号</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">法定代表人:</van-col>
+						<van-col span="12">广州市越秀区法政路XX号</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">公民身份证号码:</van-col>
+						<van-col span="12">张三</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">有效期限:</van-col>
+						<van-col span="12">2030-01-10</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">法定代表人电话:</van-col>
+						<van-col span="12">13800000000</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">法定代表人地址van-col></van-col>
+						<van-col span="12">广州市越秀区法政路XX号</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">抵押人1联系方式:</van-col>
+						<van-col span="12">138000000000</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10"></van-col>
+						<van-col span="12">FC2384239482392</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10"></van-col>
+						<van-col span="12">FC7717626617263</van-col>
+					</van-cell>
+					<van-cell @click="show_4" v-show="!show4" style="position: relative">
+						<img src="../../../assets/images/38/Pullup__.png"  class="felx_img" v-show="!show4">
+					</van-cell>
+
+				</div>
+			</van-cell-group>
+		</div>
+		<div v-show='type==4'>
+			<van-cell-group class="bg-grey"  >
+				<div class="grey_bg"> </div>
+				<div class="">
+					<van-cell>
+						<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
+						<van-col span="23"><h3>抵押人信息1</h3></van-col>
+					</van-cell>
+
+					<van-cell>
+						<van-col span="10">不动产权证:</van-col>
+						<van-col span="12"><img class="yyzz" src="../../../assets/images/other/budongchan.png" alt=""></van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">权利人:</van-col>
+						<van-col span="12">张三</van-col>
+					</van-cell>
+					<van-cell @click="show_4" v-show="show4" >
+						<img src="../../../assets/images/38/Pulldown3@2x.png"  class="felx_img" v-show="show4">
+					</van-cell>
+
+				</div>
+				<div class="grey_bg"> </div>
+				<div v-show="!show4">
+					<van-cell>
+						<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
+						<van-col span="23"><h3>抵押人信息2</h3></van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">企业法人：</van-col>
+						<van-col span="12"><img class="yyzz" src="../../../assets/images/idcard/sfz.png" alt=""></van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">新一代客户编号:</van-col>
+						<van-col span="12">44099999999</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">统一社会信用代码:</van-col>
+						<van-col span="12">xxxxxxx</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">企业名称:</van-col>
+						<van-col span="12">广州老地方有限公司</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">企业地址:</van-col>
+						<van-col span="12">广州市越秀区法政路XX号</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">法定代表人:</van-col>
+						<van-col span="12">广州市越秀区法政路XX号</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">公民身份证号码:</van-col>
+						<van-col span="12">张三</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">有效期限:</van-col>
+						<van-col span="12">2030-01-10</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">法定代表人电话:</van-col>
+						<van-col span="12">13800000000</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">法定代表人地址van-col></van-col>
+						<van-col span="12">广州市越秀区法政路XX号</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10">抵押人1联系方式:</van-col>
+						<van-col span="12">138000000000</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10"></van-col>
+						<van-col span="12">FC2384239482392</van-col>
+					</van-cell>
+					<van-cell>
+						<van-col span="10"></van-col>
+						<van-col span="12">FC7717626617263</van-col>
+					</van-cell>
+					<van-cell @click="show_4" v-show="!show4" style="position: relative">
+						<img src="../../../assets/images/38/Pullup__.png"  class="felx_img" v-show="!show4">
+					</van-cell>
+
+				</div>
+			</van-cell-group>
+		</div>
+
 	</div>
-        
+
     </div>
 </template>
 
@@ -177,35 +379,43 @@
 
   data() {
     return {
-      
-	
+		show3:true,
+		show4:true,
     }
   },
-  
-  
+
+
   //数据预加载
   created : ()=>{
 
-    
+
 
   },
 
   //网页加载完成
   mounted : ()=>{
-   
+
   },
-  
+
   //声明方法
   methods : {
+  	show_3 () {
+  		this.show3 = !this.show3
+	},
+	  show_4 () {
+		  this.show4=!this.show4
+	  },
 
-
+	  onClickLeft() {
+		  this.$router.go(-1);
+	  },
   },
-  
+
   //计算属性
   computed: {
 	 title :function  () {
 			var type = localStorage.getItem('xxcj_type');
-			
+
 			switch (type){
 				case 0:
 					return '信息详情';
@@ -229,7 +439,7 @@
 		},
 		type:function(){
 			var type = localStorage.getItem('xxcj_type');
-			
+
 			return type ? type : 0;
 		}
   },
@@ -248,7 +458,12 @@
 	padding: 0px;
 	background-color: rgb(238,238,238);
 	min-height: 640px;
-	
+
+}
+.box_div{
+	border-radius: 10px;
+	margin: 18px 0;
+	background-color: #f76037;
 }
 #grad {
   background: -webkit-linear-gradient(red, blue); /* Safari 5.1 - 6.0 */
@@ -278,6 +493,27 @@
 	margin-top: -6px;
 	padding-bottom: 12px;;
 }
+.blue_bg_box{
+	margin: 0px auto;
+	height: 30px;
+	width: 100px;
+	border-radius: 24px ;
+	border: #4c62e7 1px solid;
+	text-align: center;
+}
+.list_text_open{
+	font-size: 14px;
+	line-height: 30px;
+	color: #4c62e7;
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+.felx_img{
+	height: 19px;
+	width:19px;
+	position: relative;
+	left: 48%;
+};
 .success{
 		width: 25%;
 		display: block;
@@ -328,6 +564,14 @@
 			background-color: #fff;
 			position: relative;
 		}
+	.img_return{
+		position: absolute;
+		top: 14px;
+		left:12px ;
+		height: 18px;
+		width: 18px;
+		z-index: 100;
+	}
 		.jyButton{
 			color: #fff;
 			width: 260px;
@@ -341,7 +585,7 @@
 			left: 50%;
 			margin-left: -130px;
 			font-weight: bold;
-			
+
 		}
 		.left_tag{
 			background-color: rgb(90,75,234);
@@ -351,5 +595,9 @@
 		}
 		.yyzz{
 			width: 100%;
+		}
+		.grey_bg{
+			background-color: rgb(238,238,238);
+			height: 8px;
 		}
 </style>

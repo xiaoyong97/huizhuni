@@ -159,7 +159,7 @@
 
 		//网页加载完成
 		mounted : function(){
-			
+
 			Dialog.setDefaultOptions({
 				confirmButtonText:'查看',
 				confirmButtonColor:'#4c62e7'
@@ -169,10 +169,10 @@
 				'您名下<span style="color:#4c62e7">8</span>个客户进入商机池<br>请点击查看',
 				'您已抢单客户<span style="color:#4c62e7">王川冰</span>产品额度<br>发生变化，请点击查看',
 				'您已抢单客户<span style="color:#4c62e7">白小飞</span>商机已失效<br>请点击查看',
-				
+
 			];
 			if(Math.floor(Math.random()*10)%8 == 7){
-				
+
 				Dialog.confirm({
 				  title: '最新消息',
 				  message: textArray[Math.floor(Math.random()*10)%3]
