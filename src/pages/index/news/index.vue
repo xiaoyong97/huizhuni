@@ -83,24 +83,30 @@
                                 <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
                                 <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                                 <van-col  class="" span="17" >
-                                    <p class="list_text2">客户赵仁儿，应于2019年8月29日<span>归还贷款本息</span>200，000元</p>
+                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日<span>贷款到期</span>，请及时开始续贷流程</p>
+                                </van-col>
+                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
+                            </van-row>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日<span>贷款到期</span>，请及时开始续贷流程</p>
                                 </van-col>
                                 <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
                             </van-row>
 
-<!--                            <div class="popContainer">-->
-<!--                                <van-row class="list_box" type="flex" justify="center" style="position: relative;rgba(255,255,255,0.5)" >-->
-<!--                                    <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>-->
-<!--                                    <van-col  class="" span="17" >-->
-<!--                                        <p class="list_text2">全选</p>-->
-<!--                                    </van-col>-->
-<!--                                    <van-col  class="" span="5" style="text-align: right">-->
-<!--                                        <div class="delete_box"><p class="list_text_time">删除</p></div>-->
-<!--                                    </van-col>-->
-<!--                                </van-row>-->
-<!--                            </div>-->
 
+
+                        </div>
+                        <div class="popContainer" v-show="delete_status==true">
+                            <van-row class="botton_box" type="flex" justify="center" style="">
+                                <van-col  class="" span="2" ><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2" style="font-size: 16px">全选</p>
+                                </van-col>
+                                <van-col  class="blue_bg_box" span="5" style="text-align: center"><p class="list_text_delete">删除</p></van-col>
+                            </van-row>
                         </div>
                     </van-tab>
                     <van-tab title="商机" name="商机" >
@@ -248,20 +254,15 @@
                             </van-row>
 
 
-
-                            <!--                            <div class="popContainer">-->
-                            <!--                                <van-row class="list_box" type="flex" justify="center" style="position: relative;rgba(255,255,255,0.5)" >-->
-                            <!--                                    <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>-->
-                            <!--                                    <van-col  class="" span="17" >-->
-                            <!--                                        <p class="list_text2">全选</p>-->
-                            <!--                                    </van-col>-->
-                            <!--                                    <van-col  class="" span="5" style="text-align: right">-->
-                            <!--                                        <div class="delete_box"><p class="list_text_time">删除</p></div>-->
-                            <!--                                    </van-col>-->
-                            <!--                                </van-row>-->
-                            <!--                            </div>-->
-
+                        </div>
+                        <div class="popContainer" v-show="delete_status==true">
+                            <van-row class="botton_box" type="flex" justify="center" style="">
+                                <van-col  class="" span="2" ><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="17" >
+                                    <p class="list_text2" style="font-size: 16px">全选</p>
+                                </van-col>
+                                <van-col  class="blue_bg_box" span="5" style="text-align: center"><p class="list_text_delete">删除</p></van-col>
+                            </van-row>
                         </div>
                     </van-tab>
                     <van-tab title="系统"  name="系统">
@@ -297,7 +298,7 @@
         //基础数据存放处
         data (){
             return {
-                result:true,
+                result:false,
                 right_text:'批量删除',
                 title : '消息提醒',
                 activeName: '贷款',
@@ -329,6 +330,7 @@
         //网页加载完成
         mounted () {
             this.activeName = sessionStorage.getItem("activeName");
+            this.right_text = sessionStorage.getItem("right_text");
         },
 
         //声明方法
@@ -358,8 +360,10 @@
                 sessionStorage.setItem("activeName", name);
                 this.activeName = name;
                 if (name=="商机" | name=="系统") {
+                    sessionStorage.setItem("right_text", '');
                     this.right_text = ''
                 } else {
+                    sessionStorage.setItem("right_text", '批量删除');
                     this.right_text = '批量删除'
                 }
             },
@@ -418,12 +422,12 @@
         line-height: 30px;
     }
     .popContainer{
+        border-top: #dddddd 1px solid;
+        height: 80px;
+        width: 100%;
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
         bottom: 0;
-        background: rgba(0,0,0,0.3);
+        background-color: rgba(255,255,255,0.8);
         z-index: 100;
     }
     .delete_box{
@@ -735,12 +739,32 @@
     };
     .list_box{
         border-bottom: #dddddd solid 1px;
+
+    };
+    .botton_box{
         height: 64px;
         justify-content: center;
         vertical-align: center;
         padding: auto;
         position: relative;
-    };
+        position: relative;
+        margin: 9px 12px
+    }
+    .blue_bg_box{
+        margin: 17px auto;
+        height: 30px;
+        width: 100px;
+        background-color: #4c62e7;
+        border-radius: 24px;
+        margin-right: 12px;
+    }
+    .list_text_delete{
+        font-size: 14px;
+        line-height: 30px;
+        color: #ffffff;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
     .check_box{
         margin: 22px auto;
         justify-content: center;

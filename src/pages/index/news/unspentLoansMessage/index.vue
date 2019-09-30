@@ -70,19 +70,15 @@
                         <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
                     </van-row>
 
-
-                    <!--                            <div class="popContainer">-->
-                    <!--                                <van-row class="list_box" type="flex" justify="center" style="position: relative;rgba(255,255,255,0.5)" >-->
-                    <!--                                    <van-col  class="" span="2"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>-->
-                    <!--                                    <van-col  class="" span="17" >-->
-                    <!--                                        <p class="list_text2">全选</p>-->
-                    <!--                                    </van-col>-->
-                    <!--                                    <van-col  class="" span="5" style="text-align: right">-->
-                    <!--                                        <div class="delete_box"><p class="list_text_time">删除</p></div>-->
-                    <!--                                    </van-col>-->
-                    <!--                                </van-row>-->
-                    <!--                            </div>-->
-
+                </div>
+                <div class="popContainer" v-show="delete_status==true">
+                    <van-row class="botton_box" type="flex" justify="center" style="">
+                        <van-col  class="" span="2" ><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="17" >
+                            <p class="list_text2" style="font-size: 16px">全选</p>
+                        </van-col>
+                        <van-col  class="blue_bg_box" span="5" style="text-align: center"><p class="list_text_delete">删除</p></van-col>
+                    </van-row>
                 </div>
             </div>
         </div>
@@ -190,6 +186,39 @@
 
         margin: 24px 0;
     }
+    .popContainer{
+        border-top: #dddddd 1px solid;
+        height: 80px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: rgba(255,255,255,0.8);
+        z-index: 100;
+    }
+    .botton_box{
+        height: 64px;
+        justify-content: center;
+        vertical-align: center;
+        padding: auto;
+        position: relative;
+        position: relative;
+        margin: 9px 12px
+    }
+    .blue_bg_box{
+        margin: 17px auto;
+        height: 30px;
+        width: 100px;
+        background-color: #4c62e7;
+        border-radius: 24px;
+        margin-right: 12px;
+    }
+    .list_text_delete{
+        font-size: 14px;
+        line-height: 30px;
+        color: #ffffff;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
     .view_box_right{
         position: absolute;
         right: 24px;
@@ -217,15 +246,7 @@
         margin-block-end:0;
         line-height: 30px;
     }
-    .popContainer{
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0,0,0,0.3);
-        z-index: 100;
-    }
+
     .delete_box{
         background-color: #4c62e7;
         height: 20px;
