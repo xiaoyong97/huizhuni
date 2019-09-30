@@ -2,8 +2,14 @@
     <div class="main">
      
      <!--头部导航-->
-     <NavBar :title="title"/>
-
+   
+	<van-nav-bar
+	  :title=this.title
+	  right-text="下一步"
+	  left-arrow
+	  @click-left="onClickLeft()"
+	  @click-right="nextStep()"
+	/>
 
     <div class="content">
         <div class="grid-container">
@@ -34,7 +40,7 @@
 
   data() {
     return {
-      title : '自定义功能',
+      title :'自定义功能'
     }
   },
   
@@ -47,6 +53,22 @@
   //网页加载完成
   //计算属性
   computed: {
+	  ctitle : function(){
+		  
+		  var arr = JSON.parse(localStorage.getItem('home_menu'));
+		  
+		  if(arr == null || arr == undefined){
+			  return '自定义功能(7/7)'
+		  }
+		  var index = 0;
+		  for(var i = 0; i<arr.length; i++){
+		  	if(arr[i].isChecked){
+		  		index++;
+		  	}
+		  }
+		  this.title = '自定义功能('+index+'/7)';
+		 return '自定义功能('+index+'/7)';
+	  },
  	menu:function(){
  		var arr = JSON.parse(localStorage.getItem('home_menu'));
 		
@@ -71,37 +93,46 @@
 			
  			localStorage.setItem('home_menu',JSON.stringify(arr));
  		}
- 		var index = 0;
- 		for(var i = 0; i<arr.length; i++){
- 			if(arr[i].isChecked){
- 				index++;
- 			}
- 		}
-		
+ 	
  		return arr;
- 	}
+ 	},
+	onClickLeft:function() {
+	  this.$router.go(-1);
+	},
+	nextStep:function(){
+		localStorage.setItem('home_menu',JSON.stringify(this.menu))
+		 this.$router.go(-1);
+	}
   },
   
   //声明方法
   methods : {
 		toggleMenu:function(index){
-			
+			var tip = 0;
+			for(var i = 0; i<this.menu.length; i++){
+				if(this.menu[i].isChecked){
+					tip++;
+				}
+			}
 			if(this.menu[index].isChecked){
 				this.menu[index].isChecked = !this.menu[index].isChecked;
 				this.$forceUpdate()
+				tip--;
 			} else{
-				var tip = 0;
-				for(var i = 0; i<this.menu.length; i++){
-					if(this.menu[i].isChecked){
-						tip++;
-					}
-				}
+				
 				if(tip>=7){
 					return;
 				}
 				this.menu[index].isChecked = !this.menu[index].isChecked;
 				this.$forceUpdate()
-			}		
+				tip ++;
+				
+			}	
+			this.title = '自定义功能('+tip+'/7)';
+			
+		},
+		next:function(){
+			
 		}
   },
  
