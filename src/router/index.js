@@ -287,7 +287,7 @@ export default new Router({
                 title: '信息采集'
             },
         },
-        
+
     {
       name: 'loanLaunch',
       path: '/loanLaunch',
@@ -313,6 +313,22 @@ export default new Router({
 		   title: '征信校验'
 		  },
 		},
+        {
+            name: 'nextCreditCheck',
+            path: '/index3/creditCheck/nextCreditCheck',
+            component: () => import('@/pages/index3/creditCheck/nextCreditCheck'),
+            meta: {
+                title: '征信校验'
+            },
+        },
+        {
+            name: 'creditCheckResult',
+            path: '/index3/creditCheck/nextCreditCheck/creditCheckResult',
+            component: () => import('@/pages/index3/creditCheck/nextCreditCheck/creditCheckResult'),
+            meta: {
+                title: '征信校验'
+            },
+        },
 		//首页 编辑菜单
 		{
 		  name: 'menu',
