@@ -1,20 +1,20 @@
 <template>
-  
+
   <div class="main">
-   
+
    <!--头部-->
    <van-nav-bar
     :title='title'
     fixed
    />
-	
- 
+
+
   <div class="content" >
-	
+
 	<div class="grid-container">
 		<div class="box">
 			<van-grid>
-			  <van-grid-item icon="photo-o" text="文字" style="background-color: red;">
+			  <van-grid-item icon="photo-o" text="文字" style="background-color: red;" @click="go('informationAcquisition')">
 				  <img src="../../assets/images/84/InformationCollection@2x.png" alt="">
 				   <p>信息采集</p>
 			  </van-grid-item>
@@ -26,7 +26,7 @@
 			  			  	<img src="../../assets/images/84/Loaninitiation1@2x.png" alt="">
 			  			   <p>贷款发起</p>
 			  </van-grid-item>
-			  
+
 			  <van-grid-item icon="photo-o" text="文字">
 			  			 <img src="../../assets/images/84/Creditinquiry@2x.png" alt="">
 			  			   <p>审贷查询</p>
@@ -45,9 +45,9 @@
 			  		<img src="../../assets/images/84/signacontract@2x.png" alt="">
 			  			   <p>合同签订</p>
 			  </van-grid-item>
-			  
+
 			  <van-grid-item >
-			  			
+
 			  </van-grid-item>
 			</van-grid>
 		</div>
@@ -90,7 +90,7 @@
   <TabBar/>
 
   </div>
-  
+
 </template>
 
 <script>
@@ -115,27 +115,27 @@ export default {
   created : function(){
 
     console.log('hello world');
-    
+
   },
 
   //网页加载完成
   mounted : function(){
-   
+
   },
-  
+
   //声明方法
   methods : {
-    
+
     go : function(url){
-		
-      // this.$router.push({name:url});
+
+      this.$router.push({name:url});
     },
 	onBannerChange(index) {
 		this.current = index;
 	}
 
   },
-  
+
   //计算属性
   computed: {
 
@@ -184,9 +184,9 @@ export default {
 }
 .grid-container{
 	padding: 10px 16px 0px 16px;
-	
+
 	border-radius: 12px;;
-	
+
 }
 .grid-container .box{
 	border: 1px solid rgb(248,248,248);
@@ -219,7 +219,7 @@ export default {
 .cell-num{
 	color: #f76037;
 	font-size: 26px;
-	
+
 }
 .check{
 	background-color: #4c62e7;
@@ -230,7 +230,7 @@ export default {
 .dk-pan{
 	font-size: 13px;;
 	padding: 0px 20px;;
-	
+
 }
 .dk-pan div{
 	padding: 4px 0px;
