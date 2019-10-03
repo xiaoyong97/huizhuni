@@ -35,7 +35,6 @@
 
 			</van-swipe>
 
-
 			<div class="grid-container">
 				<div class="box">
 					<van-grid>
@@ -140,7 +139,6 @@
 			.use(Panel).use(NoticeBar).use(CellGroup).use(Row).use(Col);
 
 	export default {
-
 		//基础数据存放处
 		data (){
 			return {
@@ -152,9 +150,7 @@
 
 		//数据预加载
 		created : function(){
-
 			console.log('hello world');
-
 		},
 
 		//网页加载完成
@@ -187,14 +183,15 @@
 
 		//声明方法
 		methods : {
-
 			go_newspage : function(){
-
 				this.$router.push({name:'news'})
+				
 			},
 			go : function(url){
-
-				this.$router.push('/'+url)
+				
+				 // this.$router.push({ name: 'informationAcquisition', params: { userId: 123 }});
+				this.$router.push({path:'/'+url, query: { userId: 123 }})
+				
 			},
 			onBannerChange(index) {
 				this.current = index;
@@ -202,7 +199,6 @@
 			closeNotice:function(){
 				this.isShowNoticeBar = false
 			},
-
 		},
 
 		//计算属性
@@ -226,10 +222,8 @@
 						{name:"商机管理",icon:require('../../assets/images/84/shangjiguanli.png'),url:'index',isChecked:false},
 						{name:"贷款管理",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index',isChecked:false},
 					]
-
 					localStorage.setItem('home_menu',JSON.stringify(arr));
 				}
-
 				return arr;
 			}
 		},
@@ -342,132 +336,132 @@
 	.padding-bottom-16{
 		padding-bottom: 32px;;
 	}
-.msg{
-  text-align: center;
-  padding:10px;
-}
-.banner{
-	width: 100%;
-}
-.custom-indicator{
-	position: absolute;
-	bottom: 0px;
-	height: 44px;
-	width: 200px;
-	left: 50%;
-	margin-left: -100px;
-	text-align: center;
-	line-height: 44px;
-}
-.indicator{
-	background-color: rgba(255,255,255,0.4);
-	width: 12px;
-	height: 12px;
-	border-radius: 6px;
-	display: inline-block;
-	margin: 10px 6px;
-}
-.indicator.active{
-	background-color: rgba(255,255,255,1);
-}
-.grid-container{
-	padding: 10px 12px;
+	.msg{
+	  text-align: center;
+	  padding:10px;
+	}
+	.banner{
+		width: 100%;
+	}
+	.custom-indicator{
+		position: absolute;
+		bottom: 0px;
+		height: 44px;
+		width: 200px;
+		left: 50%;
+		margin-left: -100px;
+		text-align: center;
+		line-height: 44px;
+	}
+	.indicator{
+		background-color: rgba(255,255,255,0.4);
+		width: 12px;
+		height: 12px;
+		border-radius: 6px;
+		display: inline-block;
+		margin: 10px 6px;
+	}
+	.indicator.active{
+		background-color: rgba(255,255,255,1);
+	}
+	.grid-container{
+		padding: 10px 12px;
 
-	border-radius: 8px;;
+		border-radius: 8px;;
 
-}
-.grid-container .box{
-	border: 1px solid rgb(248,248,248);
-	box-shadow: 0 2px 2px 0 rgba(0,0,0,.15);
-	min-height: 200px;
-	border-radius: 12px;;
-}
-.grid-container .grid{
-	width: 25%;
-	height: 80px;
-	float: left;
-}
-.grid-container img{
-	width: 25%;
-	min-width: 44px;
-	display: block;
-	margin: 0 auto;
-}
-.grid-container p{
-	text-align: center;
-	margin: 2px;;
-	font-size: 14px;;
-}
-.left_tag{
-	background-color: rgb(90,75,234);
-	padding: 0px 4px;
-}
-.cell-num{
-	color: #f76037;
-	font-size: 26px;
+	}
+	.grid-container .box{
+		border: 1px solid rgb(248,248,248);
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,.15);
+		min-height: 200px;
+		border-radius: 12px;;
+	}
+	.grid-container .grid{
+		width: 25%;
+		height: 80px;
+		float: left;
+	}
+	.grid-container img{
+		width: 25%;
+		min-width: 44px;
+		display: block;
+		margin: 0 auto;
+	}
+	.grid-container p{
+		text-align: center;
+		margin: 2px;;
+		font-size: 14px;;
+	}
+	.left_tag{
+		background-color: rgb(90,75,234);
+		padding: 0px 4px;
+	}
+	.cell-num{
+		color: #f76037;
+		font-size: 26px;
 
-}
-.check{
-	background-color: #4c62e7;
-	padding: 0px 16px;
-	border-radius: 14px;
-	float: right;
-}
-.dk-pan{
-	padding: 0px 20px;;
-}
-.dk-pan div{
-	padding: 4px 0px;
-}
-.grey{
-	color: #999999;
-}
-.orange{
-	color: #f76037;
-}
-.company{
-	width: 20px;
-	height: 20px;
-	display: inline;
-	margin-left: -16px;
-	vertical-align:top;
-	margin-top:2px;
-}
-.padding-bottom-16{
-	padding-bottom: 32px;;
-}
-.notice-bar{
-	position: absolute;
-	top: 44px;
-	width: 100%;
-	z-index: 100;
-	background-color: rgba(238,238,238,0.9);
-	padding-top: 4px;
-	font-size: 14px;
-	line-height: 30px;;
-}
-.theme_color{
-	color: #4c62e7;
-}
-.btn-group{
-	float:right;
-	margin-right: 12px;
-}
-.btn-group .rob{
-	background-color: #4c62e7;
-	color: #fff;
-	border-radius: 15px;
-	padding: 5px 24px;
-	height: 30px;;
-	margin-right: 8px;
+	}
+	.check{
+		background-color: #4c62e7;
+		padding: 0px 16px;
+		border-radius: 14px;
+		float: right;
+	}
+	.dk-pan{
+		padding: 0px 20px;;
+	}
+	.dk-pan div{
+		padding: 4px 0px;
+	}
+	.grey{
+		color: #999999;
+	}
+	.orange{
+		color: #f76037;
+	}
+	.company{
+		width: 20px;
+		height: 20px;
+		display: inline;
+		margin-left: -16px;
+		vertical-align:top;
+		margin-top:2px;
+	}
+	.padding-bottom-16{
+		padding-bottom: 32px;;
+	}
+	.notice-bar{
+		position: absolute;
+		top: 44px;
+		width: 100%;
+		z-index: 100;
+		background-color: rgba(238,238,238,0.9);
+		padding-top: 4px;
+		font-size: 14px;
+		line-height: 30px;;
+	}
+	.theme_color{
+		color: #4c62e7;
+	}
+	.btn-group{
+		float:right;
+		margin-right: 12px;
+	}
+	.btn-group .rob{
+		background-color: #4c62e7;
+		color: #fff;
+		border-radius: 15px;
+		padding: 5px 24px;
+		height: 30px;;
+		margin-right: 8px;
 
-}
-.btn-group .close{
-	background-color: rgb(169,169,169);
-	color: #fff;
-	border-radius: 16px;
-	font-size: 14px;
-	line-height: 20px;;
-	padding: 3px 8px;
-}
+	}
+	.btn-group .close{
+		background-color: rgb(169,169,169);
+		color: #fff;
+		border-radius: 16px;
+		font-size: 14px;
+		line-height: 20px;;
+		padding: 3px 8px;
+	}
 </style>

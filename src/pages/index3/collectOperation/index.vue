@@ -2,23 +2,206 @@
     <div class="main">
      
      <!--头部导航-->
-     <NavBar :title="title"/>
-
+     <!--头部导航-->
+     <van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" >
+     </van-nav-bar>
 
     <div class="content">
-		<div class="step-container"  v-show='step!=7'>
-			<div class="step-title-pan" >
-				<div class="text-center step-text-pan active">企业信息</div>
-				<div class="text-center step-text-pan">企业住信息</div>
-				<div span="4" class="text-center step-text-pan">关联人信息</div>
-				<div span="4" class="text-center step-text-pan">抵押物信息</div>
-				<div span="4" class="text-center step-text-pan">抵押人信息</div>
+		<progressBar :step="this.step" :stepArray="stepArray" v-show="step!=5"></progressBar>
+		<div class="input-contianer" v-show="step==0">
+			<div>
+				<h4>企业营业执照</h4>
+				<div class="idCard">
+					<div class="idCard_shadow_button"></div>
+					<p>点击拍摄/上传企业营业执照</p>
+				</div>
+			</div>
+			<van-cell-group class="bg-grey">
+				<van-field label="新一代客户编号"placeholder="请输入新一代客户编号" v-model="info.company_info.customer_id" clearable label-width="120"/>
+				<van-field label="统一社会信用代码" placeholder="统一社会信用代码"  v-model="info.company_info.unified_social_credit_code" clearable label-width="120"/>
+				<van-field label="企业名称" placeholder="企业名称" v-model="info.company_info.company_name" clearable label-width="120"/>
+				<van-field label="企业地址"placeholder="请输企业地址" v-model="info.company_info.enterprise_address" clearable label-width="120"/>
+				<van-field label="法定代表人" placeholder="法定代表人"  v-model="info.company_info.legal_representative" clearable label-width="120"/>
+				<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="info.company_info.mobile" clearable label-width="120"/>
+				<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="info.company_info.legal_representative_address" clearable label-width="120" label-color="red"/>
+			</van-cell-group>
+		</div> 
+		<div class="input-contianer" v-show="step==1">
+			<div>
+				<h4>企业业主身份证</h4>
+				<div class="idCard_front">
+					<div class="idCard_shadow_button"></div>
+					<p>点击拍摄/上传人像面</p>
+				</div>
+				<div class="idCard_back">
+					<div class="idCard_shadow_button"></div>
+					<p>点击拍摄/上传国徽面</p>
+				</div>
 			</div>
 			
+			<van-cell-group class="bg-grey">
+				<van-field label="姓名"placeholder="请输入姓名" v-model="info.company_main_info.name" clearable label-width="120"/>
+				<van-field label="性别" placeholder="性别"  v-model="info.company_main_info.sex" clearable label-width="120"/>
+				<van-field label="民族" placeholder="请输入民族" v-model="info.company_main_info.ethnic" clearable label-width="120"/>
+				<van-field label="出生日期"placeholder="请输入企业地址" v-model="info.company_main_info.birth" clearable label-width="120"/>
+				<van-field label="住址" placeholder="住址"  v-model="info.company_main_info.address" clearable label-width="120"/>
+				<van-field label="公民身份证号" placeholder="公民身份证号" v-model="info.company_main_info.idcard" clearable label-width="120"/>
+				<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="info.company_main_info.validity_period" clearable label-width="120" label-color="red"/>
+				<van-field label="学历" placeholder="法定代表人电话" v-model="info.company_main_info.record_of_formal_schooling" clearable label-width="120"/>
+					<van-field label="电话号码"placeholder="请输入电话号码" v-model="info.company_main_info.mobile" clearable label-width="120" label-color="red"/>
+				
+				<van-field label="工作单位"placeholder="请输入工作单位" v-model="info.company_main_info.work" clearable label-width="120" label-color="red"/>
+				<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="info.company_main_info.marriage_status" clearable label-width="120"/>
+				<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="info.company_main_info.households" clearable label-width="120" label-color="red"/>
+
+			</van-cell-group>
+		</div> 
+		<div class="input-contianer" v-show="step==2">
+			<div v-for="(item,index) in info.associates">
+				<h4 class="cell-hearder">关联人{{index+1}}</h4>
+				
+				<div>
+					<van-field label="关系"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
+					
+					<div class="idCard_front">
+						<div class="idCard_shadow_button"></div>
+						<p>点击拍摄/上传人像面</p>
+					</div>
+					<div class="idCard_back">
+						<div class="idCard_shadow_button"></div>
+						<p>点击拍摄/上传国徽面</p>
+					</div>
+				</div>
+				
+				<van-cell-group class="bg-grey">
+					<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
+					<van-field label="性别" placeholder="性别"  v-model="item.sex" clearable label-width="120"/>
+					<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
+					<van-field label="出生日期"placeholder="请输入企业地址" v-model="item.birth" clearable label-width="120"/>
+					<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
+					<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
+					<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
+					<van-field label="学历" placeholder="法定代表人电话" v-model="item.record_of_formal_schooling" clearable label-width="120"/>
+						<van-field label="电话号码"placeholder="请输入电话号码" v-model="item.mobile" clearable label-width="120" label-color="red"/>
+					
+					<van-field label="工作单位"placeholder="请输入工作单位" v-model="item.work" clearable label-width="120" label-color="red"/>
+					<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="item.marriage_status" clearable label-width="120"/>
+						<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="item.households" clearable label-width="120" label-color="red"/>
+						
+				</van-cell-group>
+				
+			</div>
+			
+		</div> 
+		
+		<div class="input-contianer" v-show="step==3">
+			<div v-for="(item,index) in info.mortgaged">
+				<h4 class="cell-hearder">抵押物{{index+1}}</h4>
+				<div>
+					<van-field label="关系"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
+					
+					<div class="idCard_front">
+						<div class="idCard_shadow_button"></div>
+						<p>点击拍摄/上传人像面</p>
+					</div>
+					<div class="idCard_back">
+						<div class="idCard_shadow_button"></div>
+						<p>点击拍摄/上传国徽面</p>
+					</div>
+				</div>
+				
+				<van-cell-group class="bg-grey">
+					<van-field label="权利人"placeholder="请输入权利人" v-model="item.holder" clearable label-width="120"/>
+					<van-field label="共有情况" placeholder="共有情况"  v-model="item.situations" clearable label-width="120"/>
+					<van-field label="地址" placeholder="地址" v-model="item.address" clearable label-width="120"/>
+					<van-field label="不动产单元号"placeholder="请输入不动产单元号" v-model="item.number" clearable label-width="120"/>
+					<van-field label="权利类型" placeholder="权利类型"  v-model="item.type" clearable label-width="120"/>
+					<van-field label="权利性质" placeholder="权利性质" v-model="item.nature" clearable label-width="120"/>
+					<van-field label="用途"placeholder="请输入用途" v-model="item.use" clearable label-width="120" label-color="red"/>
+					<van-field label="面积" placeholder="面积" v-model="item.area" clearable label-width="120"/>
+					<van-field label="权利其他情况"placeholder="请输入权利其他情况" v-model="item.Other" clearable label-width="120" label-color="red"/>
+					<van-field label="房产证号"placeholder="请输入房产证号" v-model="item.house_nubmer" clearable label-width="120" label-color="red"/>			
+				</van-cell-group>
+				
+			</div>
+			
+		</div> 
+		<div class="input-contianer" v-show="step==4">
+			<div v-for="(item,index) in info.mortgagor">
+				<h4 class="cell-hearder">抵押人{{index+1}}</h4>
+
+				<van-cell-group class="bg-grey">
+					<div v-show="item.type==0">
+						<div>
+							<van-field label="关系 自然人" placeholder="请输入姓名"  clearable label-width="120"/>
+							
+							<div class="idCard_front">
+								<div class="idCard_shadow_button"></div>
+								<p>点击拍摄/上传人像面</p>
+							</div>
+							<div class="idCard_back">
+								<div class="idCard_shadow_button"></div>
+								<p>点击拍摄/上传国徽面</p>
+							</div>
+						</div>
+						
+						<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
+						<van-field label="性别" placeholder="性别"  v-model="item.sex" clearable label-width="120"/>
+						<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
+						<van-field label="出生日期"placeholder="请输入企业地址" v-model="item.birth" clearable label-width="120"/>
+						<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
+						<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
+						<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
+						<van-field label="抵押人联系方式" placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
+					</div>
+					<div v-show="item.type==1">
+						<div>
+							<van-field label="企业法人" placeholder="请输入姓名" v-model="item.type" clearable label-width="120"/>
+							
+							<div class="idCard">
+								<div class="idCard_shadow_button"></div>
+								<p>点击拍摄/上传企业营业执照</p>
+							</div>
+						</div>
+						<van-field label="新一代客户编号"placeholder="请输入新一代客户编号" v-model="item.customer_id" clearable label-width="120"/>
+						<van-field label="统一社会信用代码" placeholder="统一社会信用代码"  v-model="item.unified_social_credit_code" clearable label-width="120"/>
+						<van-field label="企业名称" placeholder="企业名称" v-model="item.company_name" clearable label-width="120"/>
+						<van-field label="企业地址"placeholder="请输企业地址" v-model="item.enterprise_address" clearable label-width="120"/>
+						<van-field label="法定代表人" placeholder="法定代表人"  v-model="item.legal_representative" clearable label-width="120"/>
+						<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="item.mobile" clearable label-width="120"/>
+						<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="item.legal_representative_address" clearable label-width="120" label-color="red"/>
+					</div>
+					
+					<div class='cell'>请选择关联抵押物(可多选)</div>
+					<van-checkbox-group v-model="result">
+					  <van-cell-group>
+					    <van-cell
+					      v-for="(item, index) in info.mortgaged"
+					      clickable
+					      :key="item"
+					      :title="`房产证号 ${item.house_nubmer}`"
+					      @click="toggle(index)"
+					    >
+					      <van-checkbox
+					        :name="item.house_nubmer"
+					        ref="checkboxes"
+					        slot="right-icon"
+					      />
+					    </van-cell>
+					  </van-cell-group>
+					</van-checkbox-group>
+				</van-cell-group>
+				
+			</div>
+			
+		</div> 
+		
+		<div class="btn_group" v-show='step!=5'>
+			<p v-show="step>1" class="add_asso" @click="add_item"><span class="add">&nbsp;+&nbsp;</span>添加关联人</p>
+			<div class="save_button" @click="save">保存并退出</div>
+			<div class="next_button" @click="addStep">下一步</div>
 		</div>
-		 
-		 
-		<div v-show='step==7'>
+		<div v-show='step==5'>
 			<div class="success-pan">
 				<img class="success" src="../../../assets/images/other/success@2x.png" alt="">
 				<p class="success-tip"> 信息采集成功</p>
@@ -27,27 +210,27 @@
 					<div >
 						<van-cell ><div class="grey">查看详情</div></van-cell>
 						<van-cell>
-							 <van-col span="3"><img class="logo" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-							 <van-col span="21"><h3>广州老地方有限公司</h3></van-col>		
+							<van-col span="3"><img class="logo" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
+							<van-col span="21"><h3>广州老地方有限公司</h3></van-col>		
 						</van-cell>
 						<van-cell>
-							 <van-col span="2"></van-col>
-							 <van-col span="10">统一社会信用代码:</van-col>
-							 <van-col span="12">44000111111111</van-col>
+							<van-col span="2"></van-col>
+							<van-col span="10">统一社会信用代码:</van-col>
+							<van-col span="12">44000111111111</van-col>
 						</van-cell>
 						<van-cell>
-							  <van-col span="2"></van-col>
-							 <van-col span="10">企业主姓名</van-col>
-							 <van-col span="12">黄五</van-col>
+							<van-col span="2"></van-col>
+							<van-col span="10">企业主姓名</van-col>
+							<van-col span="12">黄五</van-col>
 						</van-cell>
 						<van-cell>
-							 <van-col span="2"></van-col>
-							 <van-col span="10">采集时间:</van-col>
-							 <van-col span="12">2019-07-22</van-col>
+							<van-col span="2"></van-col>
+							<van-col span="10">采集时间:</van-col>
+							<van-col span="12">2019-07-22</van-col>
 						</van-cell>
 					</div>
-				 </van-cell-group>
-				 <div class="jyButton">征信校验</div>
+				</van-cell-group>
+				<div class="jyButton" @click="addStep">征信校验</div>
 			</div>
 		</div>
     </div>
@@ -58,51 +241,229 @@
 <script>
 
 	import NavBar from '@/components/navBar'
+	import progressBar from '@/components/progressBar'
 	import Vue from 'vue';
 	import { Swipe, SwipeItem,Grid, GridItem,Image,Panel,NoticeBar,Cell, CellGroup,Row, Col,Dialog } from 'vant';
 	export default {
 
   data() {
     return {
-      title : '信息采集',
-	  step:7,
+      title : [
+		'信息采集-企业信息',
+		'信息采集-企业主信息',
+		'信息采集-关联人信息',
+		'信息采集-抵押物信息',
+		'信息采集-抵押人信息',
+	  ],
+		step:0,
+		stepArray:[
+			'企业信息',
+			'企业住信息',
+			'关联人信息',
+			'抵押物信息',
+			'企业信息',		 
+		],
+		info:{
+			company_info:{
+				customer_id:'',
+				unified_social_credit_code:'',
+				company_name:'',
+				enterprise_address:'',
+				legal_representative:'',
+				mobile:'',
+				legal_representative_address:'',
+			},
+			company_main_info:{
+				name:'',
+				sex:'',
+				ethnic:'',
+				birth:'',
+				address:'',
+				idcard:'', 
+				validity_period:'' ,//有效期
+				record_of_formal_schooling : '', //学历
+				mobile:'',
+				work:'',
+				marriage_status:'',
+				households:'',
+			},
+			associates:[   //关联人
+				{
+					name:'',
+					sex:'',
+					ethnic:'',
+					birth:'',
+					address:'',
+					idcard:'', 
+					validity_period:'' ,//有效期
+					record_of_formal_schooling : '', //学历
+					mobile:'',
+					work:'',
+					marriage_status:'',
+					households:'',
+				}
+			],
+			mortgaged:[
+				{
+					holder:'',
+					situations:'',
+					address:'',
+					number:'',
+					type:'',
+					nature:'',
+					use:'',
+					area:'',
+					Other:'',
+					house_nubmer:'',
+				}
+			],
+			mortgagor:[  
+				{
+					type:'0', //0=自然人， 1=  企业法人
+					name:'',
+					sex:'',
+					ethnic:'',
+					birth:'',
+					address:'',
+					idcard:'', 
+					validity_period:'' , //有效期
+					diyaren_mobile:'',
+					diyawu:[],
+					customer_id:'',
+					unified_social_credit_code:'',
+					company_name:'',
+					enterprise_address:'',
+					legal_representative:'',
+					mobile:'',
+				},
+				{
+					type:'1', //0=自然人， 1=  企业法人
+					name:'',
+					sex:'',
+					ethnic:'',
+					birth:'',
+					address:'',
+					idcard:'', 
+					validity_period:'' , //有效期
+					diyaren_mobile:'',
+					diyawu:[],
+					customer_id:'',
+					unified_social_credit_code:'',
+					company_name:'',
+					enterprise_address:'',
+					legal_representative:'',
+					mobile:'',
+				}
+			]
+		},
+		result:[],
     }
   },
   
-  
   //数据预加载
   created : ()=>{
-
-    
-
   },
 
   //网页加载完成
   mounted : ()=>{
-    
   },
   
   //声明方法
   methods : {
-
-
+	addStep:function(){
+		if(this.step == 5 ){
+			this.$router.go(-1);
+			return;
+		}
+		this.step ++;
+	},
+	onClickLeft:function() {
+		if(this.step == 0 ){
+			this.$router.go(-1);
+			return;
+		}
+		this.step=this.step-1;
+	},
+	add_item:function(){
+		switch(this.step){
+			case 2:{
+				this.info.associates.push({
+						name:'',
+						sex:'',
+						ethnic:'',
+						birth:'',
+						address:'',
+						idcard:'', 
+						validity_period:'' ,//有效期
+						record_of_formal_schooling : '', //学历
+						mobile:'',
+						work:'',
+						marriage_status:'',
+						households:'',
+					}) 
+			}
+			break;
+			case 3:{
+				this.info.mortgaged.push({
+					holder:'',
+					situations:'',
+					address:'',
+					number:'',
+					type:'',
+					nature:'',
+					use:'',
+					area:'',
+					Other:'',
+					house_nubmer:'',
+				}) 
+			}
+			break;	
+			case 4:{
+				this.info.mortgagor.push({
+						type:'0', //0=自然人， 1=  企业法人
+						name:'',
+						sex:'',
+						ethnic:'',
+						birth:'',
+						address:'',
+						idcard:'', 
+						validity_period:'' , //有效期
+						diyaren_mobile:'',
+						diyawu:[],
+						customer_id:'',
+						unified_social_credit_code:'',
+						company_name:'',
+						enterprise_address:'',
+						legal_representative:'',
+						mobile:'',
+					})
+			}
+			break;
+		}
+	},
+	toggle:function (index) {
+	  this.$refs.checkboxes[index].toggle();
+	},
+	save:function(){
+		this.$router.go(-1);
+	}
   },
   
   //计算属性
   computed: {
-
   },
 
   //引入组件
   components: {
-    NavBar
+	progressBar,
+	NavBar,
+	
   }
-
-
  }
 </script>
 
 <style lang="scss" scoped>
+	
 .content{
 	padding: 0px;
 	background-color: rgb(238,238,238);
@@ -119,7 +480,8 @@
 }
 .step-container{
 	padding: 12px;
-	min-height: 30px;
+	height: 54px;
+	background-color: #fff;
 }
 .step-text-pan{
 	font-size: 10px;
@@ -135,6 +497,9 @@
 	color: #fff;
 	margin-top: -6px;
 	padding-bottom: 12px;;
+}
+.step-text-pan.more{
+	color: #4c62e7;
 }
 .success{
 		width: 25%;
@@ -198,7 +563,120 @@
 			bottom: -60px;
 			left: 50%;
 			margin-left: -130px;
-			font-weight: bold;
-			
+			font-weight: bold;	
 		}
+		.line-pan{
+			margin-top: 30px;
+			margin-left: 8%;
+			margin-right: 8%;
+		}
+		.point{
+			width: 16px;
+			height: 16px;
+			background-color: #999999;
+		
+			border-radius: 8px;
+			float: left;
+		}
+		.point.active{
+			width: 16px;
+			height: 16px;
+			background-image: url(../../../assets/images/24/Navigationcircle@2x.png);
+			background-size: 100%;
+			border-radius: 8px;
+			float: left;
+		}
+		
+		.progress{
+			background-color: #999999;
+			float: left;
+			width: 18%;
+			height: 2px;
+			margin: 7px 0px;
+		}
+		.progress.active{
+			background-image: url(../../../assets/images/Label2@2x.png);
+			background-size: 100%;
+		}
+		.idCard{
+			background-image: url(../../../assets/images/idcard/bg_dyw@2x.png);
+			background-size: 100% 100%;
+			height: 110px;
+			width: 256px;
+			margin: 16px auto;
+			border-radius: 8px;;
+			padding-top: 36px;;
+			box-shadow: 0px 0px 12px 2px rgba(0,0,0,.15);
+		}
+		.idCard_front,.idCard_back{
+			padding-top: 16px;
+			background-size: 100% 100%;
+			width: 46%;
+			margin: 0 2%;
+			display: inline-block;
+			height: 80px;
+		}
+		.idCard_front{
+			background-image: url(../../../assets/images/idcard/bg_sfz_front@2x.png);
+		}
+		.idCard_back{
+			background-image: url(../../../assets/images/idcard/bg_sfz_reverse@2x.png);
+		}
+		.input-contianer{
+			margin-top: 8px;
+			background-color: #fff;
+		}
+		.idCard_shadow_button{
+			background-image: url(../../../assets/images/84/Shooting@2x.png);
+			background-size: 100% 100%;
+			height: 40px;
+			width: 40px;
+			margin: 0px auto ;
+		}
+		.idCard p,.idCard_front p,.idCard_back p{
+			text-align: center;
+			color: #4c62e7;
+			font-size: 12px;
+		}
+		.input-contianer h4{
+			padding: 8px 16px;
+		}
+		.btn_group{
+			background: rgb(238,238,238);
+			padding: 16px;
+			text-align: center;
+		}
+		.btn_group div{
+			width: 100px;
+			display: inline-block;
+			border-radius: 16px;
+			text-align: center;
+			padding: 4px 16px;
+			margin: 0px 16px;
+		}
+		.btn_group .save_button{
+			background-color: #fff;
+			border: 1px solid #4c62e7;
+			color: #4c62e7;
+		}
+		.btn_group .next_button{
+			background-image: url(../../../assets/images/other/Doublebutton@2x.png);
+			background-size: 100% 100%;
+			color: #fff;
+			padding-bottom: 10px;
+			line-height: 24px;
+		}
+		.cell-hearder{
+			background-color: rgb(238,238,238);
+		}
+		.add_asso{
+			text-align: center;
+			color: #4c62e7;
+			margin-top: -6px;
+		}
+		.cell{
+			height: 24px;
+			padding: 10px 16px;
+		}
+		
 </style>
