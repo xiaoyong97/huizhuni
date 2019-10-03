@@ -52,7 +52,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 					<van-cell class="cell-box">
@@ -61,7 +61,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 					<van-cell class="cell-box">
@@ -70,7 +70,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 					<van-cell class="cell-box">
@@ -79,7 +79,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 					<van-cell class="cell-box">
@@ -88,7 +88,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 					<van-cell class="cell-box">
@@ -97,7 +97,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 					<van-cell class="cell-box">
@@ -106,7 +106,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 					<van-cell class="cell-box">
@@ -115,7 +115,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 				</div>
@@ -162,6 +162,10 @@
   
   //声明方法
   methods : {
+	  
+    go:function(url){
+      this.$router.push({name:url});
+    },
 	add_task:function  () {
 		sessionStorage.setItem('type',0);
 		localStorage.setItem('jkr',this.task[this.task.length-1].jkr);
