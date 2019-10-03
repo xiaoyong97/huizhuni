@@ -296,6 +296,14 @@ export default new Router({
       title: '贷款发起'
       },
     },
+    {
+      name: 'launchDetails',
+      path: '/launchDetails',
+      component: () => import('@/pages/launchDetails'),
+      meta: {
+      title: '贷款详情'
+      },
+    },
 		//贷款 征信校验
 		{
 		  name: 'creditCheck',
