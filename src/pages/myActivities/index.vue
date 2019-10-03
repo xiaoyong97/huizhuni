@@ -82,12 +82,32 @@
          </div>
 
         <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" >
-         <img src="../../assets/images/38/searchfor@2x.png" class="img_search" >
+         <img src="../../assets/images/38/searchfor@2x.png" class="img_search" @click="tset">
          <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
+<!--         下拉菜单-->
+         <div class='menu_popContainer'  v-show="menu==1">
+             <div  class="menu1_choose_box" >
+                 <van-row class="choose_box_list" @click="menuChoose(0)">
+                     <p class="menu1_choose_box_text " :class="menu_choose == 0 ? 'blue' : '' ">已发布</p>
+                 </van-row>
+                 <van-row class="choose_box_list" @click="menuChoose(1)">
+                     <p class="menu1_choose_box_text " :class="menu_choose == 1 ? 'blue' : '' ">未开始</p>
+                 </van-row>
+                 <van-row class="choose_box_list" @click="menuChoose(2)">
+                     <p class="menu1_choose_box_text " :class="menu_choose == 2 ? 'blue' : '' ">进行中</p>
+                 </van-row>
+                 <van-row class="choose_box_list" @click="menuChoose(3)">
+                     <p class="menu1_choose_box_text " :class="menu_choose == 3 ? 'blue' : '' ">已结束</p>
+                 </van-row>
+             </div>
+
+         </div>
         <div class="content">
-            <van-tabs color="#4c62e7" line-width="33%" line-height=3 title-active-color="#4c62e7">
+            <van-tabs color="#4c62e7"  line-height=3 title-active-color="#4c62e7" v-show="identity=='management'" style="position: relative">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open" v-show="menu!==1" @click="openMenu(1)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open" v-show="menu==1" @click="closeMenu">
                 <van-tab title="已发布(3)" color="#4c62e7">
-                    <div class="card_div" style="" >
+                    <div class="card_div" v-show="menu_choose==2|menu_choose==0">
                         <div @click="goactivityDetailsIng" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0">
                                 <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
@@ -118,6 +138,214 @@
                                 </van-col>
                             </van-row>
                         </div>
+                    <div class="card_div" v-show="menu_choose==1|menu_choose==0">
+                        <div @click="goactivityDetailsNotBegin" class="card-bottom-line">
+                            <van-row style="padding: 16px 12px 0" @click="goactivityDetailsNotBegin">
+                                <van-col class="" span="12"><p class="card_list1_test_left" >支付系統及形式创新</p></van-col>
+                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right" style="color: #f76037">未开始</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 0">
+                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 8px">
+                                <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                                <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人</p></van-col>
+                            </van-row>
+                        </div>
+                        <van-row style="text-align: center;padding: 8px 12px 0" type="flex" justify="center">
+                            <van-col class="" span="8" @click="goviewList">
+                                <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看名单</p></van-col>
+                            </van-col>
+                            <van-col class="" span="8" @click="openOverlay">
+                                <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="22" style="text-align: center"><p class="card_list2_test" >报名/签到</p></van-col>
+                            </van-col>
+                            <van-col class="" span="8">
+                                <van-col class="" span="2"><img src="../../assets/image/my/View report@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看问卷</p></van-col>
+                            </van-col>
+                        </van-row>
+                    </div>
+                    <div class="card_div" v-show="menu_choose==3|menu_choose==0" >
+                        <div @click="goactivityDetailsOver" class="card-bottom-line">
+                            <van-row style="padding: 16px 12px 0" type="flex" justify="center">
+                                <van-col class="" span="12"><p class="card_list1_test_left" >今朝会-创业沙龙第六期</p></van-col>
+                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right" style="color: #999999">已结束</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 0">
+                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 8px">
+                                <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                                <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">98</span>人/签到<span style="color: #4c62e7">92</span>人</p></van-col>
+                            </van-row>
+                        </div>
+                        <van-row style="text-align: center;padding: 8px 12px 0" type="flex" justify="center">
+                            <van-col class="" span="8" @click="goviewList">
+                                <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看名单</p></van-col>
+                            </van-col>
+                            <van-col class="" span="8">
+                                <van-col class="" span="2"><img src="../../assets/images/38/Upload@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >上传照片</p></van-col>
+                            </van-col>
+                            <van-col class="" span="8">
+                                <van-col class="" span="2"><img src="../../assets/image/my/View report@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看问卷</p></van-col>
+                            </van-col>
+                        </van-row>
+                    </div>
+                    <div style="height: 8px"></div>
+                </van-tab>
+                <van-tab title="待审核(4)" color="#4c62e7">
+                    <!--                    任务新建-->
+                    <div class="card_div_examine" style="">
+                        <van-row style="padding: 16px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 16px 12px 0">
+                            <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 16px 12px 8px">
+                            <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                            <van-col class="" span="10" style="text-align: right"></van-col>
+                        </van-row>
+                        <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                            <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                            <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                        </van-row>
+                        <img  src="../../assets/images/other/Label3@2x.png" class="img_task" >
+                    </div>
+                    <!--                    任务中止-->
+                    <div class="card_div_examine" style="">
+                        <van-row style="padding: 16px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 16px 12px 0">
+                            <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 16px 12px 8px">
+                            <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                            <van-col class="" span="10" style="text-align: right"></van-col>
+                        </van-row>
+                        <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                            <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                            <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                        </van-row>
+                        <img  src="../../assets/images/other/Label5@2x.png" class="img_task" >
+                    </div>
+                    <!--                    任务变更-->
+                    <div class="card_div_examine" style="">
+                        <van-row style="padding: 16px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 16px 12px 0">
+                            <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 16px 12px 8px">
+                            <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                            <van-col class="" span="10" style="text-align: right"></van-col>
+                        </van-row>
+                        <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                            <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                            <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                        </van-row>
+                        <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
+                    </div>
+                    <!--                    名单补录-->
+                    <div class="card_div_examine" style="">
+                        <van-row style="padding: 16px 12px 0">
+                            <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 16px 12px 0">
+                            <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                        </van-row>
+                        <van-row style="padding: 16px 12px 8px">
+                            <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                            <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                            <van-col class="" span="10" style="text-align: right"></van-col>
+                        </van-row>
+                        <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                            <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                            <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                        </van-row>
+                        <img  src="../../assets/images/activity/Label14@2x.png" class="img_task" >
+                    </div>
+
+
+                    <div style="height: 8px"></div>
+                </van-tab>
+				<!-- 已拒绝 -->
+				<van-tab title="已拒绝(1)"  color="#4c62e7">
+                    <div class="card_div" >
+                        <div>
+                            <van-row style="padding: 16px 12px 0">
+                                <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 0">
+                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 8px">
+                                <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                            </van-row>
+                        </div>
+                        <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                            <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                            <van-col class="text-left" span="12"><p class="card_list2_test">审核人<font color="#4c62e7">张三</font>已拒绝</p></van-col>
+                        </van-row>
+                    </div>
+
+                    <div style="height: 8px"></div>
+				</van-tab>
+
+            </van-tabs>
+            <van-tabs color="#4c62e7"  line-height=3 title-active-color="#4c62e7" v-show="identity=='handle'">
+                <van-tab title="已发布(3)" color="#4c62e7">
+                    <div class="card_div" style="" >
+                        <div @click="goactivityDetailsIng" class="card-bottom-line">
+                            <van-row style="padding: 16px 12px 0">
+                                <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
+                                <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 0">
+                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                            </van-row>
+                            <van-row style="padding: 16px 12px 8px">
+                                <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                                <van-col class="" span="10" style="text-align: right" ><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人/签到<span style="color: #4c62e7">21</span>人</p></van-col>
+                            </van-row>
+                        </div>
+                        <van-row style="text-align: center;padding: 8px 12px 0">
+                            <van-col class="" span="8" @click="goviewList">
+                                <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="20"><p class="card_list2_test" >查看名单</p></van-col>
+                            </van-col>
+                            <van-col class="" span="8" @click="openOverlay">
+                                <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="22"><p class="card_list2_test" >报名/签到</p></van-col>
+                            </van-col>
+                            <van-col class="" span="8">
+                                <van-col class="" span="2"><img src="../../assets/image/my/View report@2x.png" class="img_location" ></van-col>
+                                <van-col class="" span="20"><p class="card_list2_test" >查看问卷</p></van-col>
+                            </van-col>
+                        </van-row>
+                    </div>
                     <div class="card_div" style="" >
                         <div @click="goactivityDetailsNotBegin" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0" @click="goactivityDetailsNotBegin">
@@ -267,32 +495,6 @@
 
                     <div style="height: 8px"></div>
                 </van-tab>
-				
-				<!-- 已拒绝 -->
-				<van-tab title="已拒绝(1)" color="#4c62e7">
-                    <div class="card_div" style="" >
-                        <div>
-                            <van-row style="padding: 16px 12px 0">
-                                <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
-                            </van-row>
-                            <van-row style="padding: 16px 12px 0">
-                                <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
-                            </van-row>
-                            <van-row style="padding: 16px 12px 8px">
-                                <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
-                            </van-row>
-                        </div>
-                        <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
-                            <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                            <van-col class="text-left" span="12"><p class="card_list2_test">审核人<font color="#4c62e7">张三</font>已拒绝</p></van-col>
-                        </van-row>
-                    </div>
-
-                    <div style="height: 8px"></div>
-				</van-tab>
-
             </van-tabs>
         </div>
 
@@ -303,9 +505,9 @@
 
     import NavBar from '@/components/navBar'
     import Vue from 'vue';
-    import { Tab, Tabs ,SubmitBar, } from 'vant';
+    import { Tab, Tabs ,SubmitBar, Dialog} from 'vant';
 
-    Vue.use(Tab).use(Tabs).use(SubmitBar);
+    Vue.use(Tab).use(Tabs).use(SubmitBar).use(Dialog);
     export default {
 
         data() {
@@ -316,6 +518,10 @@
                 show1:false,
                 show2:false,
                 openOverlay_title:"",
+                timer: '',
+                menu:[],  // 1:已发布，2.待审核，3.已拒绝
+                menu_choose :0,
+
 
             }
         },
@@ -323,15 +529,18 @@
 
         //数据预加载
         created : ()=>{
-        },
 
-        //网页加载完成
-        mounted : ()=>{
 
         },
+
+
 
         //声明方法
         methods : {
+            menuChoose(i) {
+                this.menu_choose = i;
+                this.menu = 0;
+            },
             onClickLeft() {
                 this.$router.go(-1);
             },
@@ -347,10 +556,12 @@
             goactivityDetailsIng : function(){
                 this.$router.push('./activityDetailsIng');
             },
-            // go : function(){
-            //     alert()
-            //     this.$router.push('/index5');
-            // },
+            openMenu (i){
+                this.menu = i;
+            },
+            closeMenu (){
+                this.menu = 0;
+            },
             goactivityDetailsOver : function(){
                 this.$router.push('./activityDetailsOver');
             },
@@ -372,12 +583,28 @@
                 this.show1 = true;
                 this.show2 = false;
             },
+            tset() {
+                console.log(this.identity);
+            }
+
 
         },
+        //网页加载完成
+        mounted : ()=>{
 
+        },
         //计算属性
         computed: {
+            identity:function () {
+                var value = sessionStorage.getItem('identity')
+                console.log(value);
+                if (value) {
+                    return value
+                } else {
+                    return "management";
+                }
 
+            },
         },
 
         //引入组件
@@ -396,6 +623,21 @@
         top: 8px;
         justify-content: center;align-items: center;text-align: center;
         z-index: 99;
+    }
+    .menu1_open{
+        height: 18px;
+        width: 18px;
+        position: absolute;
+        left: 25%;
+        top:12px;
+        z-index: 100;
+    }
+    .menu1_choose_box_text{
+        line-height: 34px;
+        color: #999999;
+        font-size: 16px;
+        margin-block-start:0;
+        margin-block-end:0;
     }
     .top_bar_box{
         margin: 0 auto;
@@ -417,6 +659,11 @@
         color: white;
         margin-block-start:0;
         margin-block-end:0;
+    }
+    .menu1_choose_box{
+        width: 33%;
+        text-align: center;
+        background-color: white;
     }
     .top_bar_box_text_right{
         font-size: 14px;
@@ -459,6 +706,15 @@
         background: rgba(0,0,0,0.3);
         z-index: 100;
     }
+    .menu_popContainer{
+        position: fixed;
+        top: 90px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.3);
+        z-index: 100;
+    }
     .choose_box{
         height: 281px;
         position: absolute;
@@ -475,9 +731,7 @@
          margin-block-start:0;
          margin-block-end:0;
      }
-    .blue{
-        color: #4c62e7;
-    }
+
     .choose_box_list{
         text-align: center;
         height: 40px;
@@ -582,5 +836,8 @@
     }
     .text-left {
         text-align: left;
+    }
+    .blue{
+        color: #4c62e7;
     }
 </style>

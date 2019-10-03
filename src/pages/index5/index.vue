@@ -25,7 +25,9 @@
 
     //引入组件首字母大写
     import TabBar from '@/components/tabBar';
-
+    import { Dialog} from 'vant';
+    import Vue from 'vue';
+    Vue.use(Dialog);
     export default {
 
         //基础数据存放处
@@ -62,7 +64,18 @@
         methods : {
 
             gomyActivities : function(){
-                this.$router.push('/myActivities');
+                Dialog.confirm({
+                    message: "请选择身份",
+                    confirmButtonText: "管理岗", //改变确认按钮上显示的文字
+                    cancelButtonText: "经办岗" //改变取消按钮上显示的文字
+                }).then(()=> {
+                    sessionStorage.setItem("identity","management")
+                    this.$router.push('/myActivities');
+                }).catch(() => {
+                    sessionStorage.setItem("identity","handle")
+                    this.$router.push('/myActivities');
+                })
+
             },
             gomyperformance : function(){
                 this.$router.push('./myperformance');

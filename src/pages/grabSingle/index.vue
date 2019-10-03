@@ -136,7 +136,7 @@
           <van-row  gutter="10">
             <div><div class ="timeKuang" >
               <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
-                <div  class="custom-button" >
+                <div slot="button" class="custom-button" >
                   {{huaKuaiName}}
                 </div>
               </van-slider></div>
