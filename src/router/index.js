@@ -109,7 +109,14 @@ export default new Router({
                 title: '活动详情进行中'
             },
         },
-
+        {
+            name: 'uploadImage',
+            path: '/uploadImage',
+            component: () => import('@/pages/myActivities/uploadImage'),
+            meta: {
+                title: '上传图片'
+            },
+        },
       //商机部分
       {
         name: 'grabSingle',
