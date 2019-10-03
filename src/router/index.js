@@ -321,6 +321,32 @@ export default new Router({
                 title: '征信校验'
             },
         },
+        //申贷查询
+        {
+            name: 'applyQuery',
+            path: '/index3/applyQuery',
+            component: () => import('@/pages/index3/applyQuery'),
+            meta: {
+                title: '申贷查询'
+            },
+        },
+        {
+            name: 'applyQueryResult',
+            path: '/index3/applyQuery/applyQueryResult',
+            component: () => import('@/pages/index3/applyQuery/applyQueryResult'),
+            meta: {
+                title: '申贷结果查询'
+            },
+        },
+        //申贷查询
+        {
+            name: 'mortgageRegistration',
+            path: '/index3/mortgageRegistration',
+            component: () => import('@/pages/index3/mortgageRegistration'),
+            meta: {
+                title: '抵押登记'
+            },
+        },
 		//首页 编辑菜单
 		{
 		  name: 'menu',

@@ -27,13 +27,13 @@
 			  			   <p>贷款发起</p>
 			  </van-grid-item>
 
-			  <van-grid-item icon="photo-o" text="文字">
+			  <van-grid-item icon="photo-o" text="文字" @click="go('applyQuery')">
 			  			 <img src="../../assets/images/84/Creditinquiry@2x.png" alt="">
-			  			   <p>审贷查询</p>
+			  			   <p>申贷查询</p>
 			  </van-grid-item>
 			</van-grid>
 			<van-grid>
-			<van-grid-item icon="photo-o" text="文字">
+			<van-grid-item icon="photo-o" text="文字" @click="go('mortgageRegistration')">
 						<img src="../../assets/images/84/Mortgageregistration@2x.png" alt="">
 						   <p>抵押登记</p>
 			</van-grid-item>
