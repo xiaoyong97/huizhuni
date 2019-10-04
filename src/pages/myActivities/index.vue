@@ -568,7 +568,6 @@
             </van-tabs>
 
 			<div class="query_container" v-show="type==2">
-
 						<div >
 							<div class="line_grey"></div>
 							<div class="header_text">
@@ -601,6 +600,73 @@
 							<van-col class="btn-item" @click="sort(3)" span="8">按次数 &nbsp;<span class="sort"><span class="top">&nbsp;</span><span class="down active">&nbsp;</span></span></van-col>
 						</van-row>
 							 <div id="myChart" ></div>
+				<div >
+					<div class="line_grey"></div>
+					<div class="header_text">
+						<h3>"普惠金融百万创业者培训计划"</h3>
+						 <h3>开展情况会中表</h3>
+					</div>
+					 <van-row class="cell">
+						 <van-col class="cell-header" span="6">机构名称</van-col>
+						 <van-col class="cell-content" span="16">
+							 <select name="" id="">
+								 <option value="" selected>中国建设银行总行</option>
+							 </select>
+						 </van-col>
+					 </van-row>
+
+					 <van-row class="cell">
+						<van-col class="cell-header" span="6">报告期</van-col>
+						<van-col class="cell-content" span="16">
+							<input type="text" v-model="date" readonly="" @click="chooseDate">
+						</van-col>
+					 </van-row>
+					 <div class="line_grey"></div>
+				</div>
+
+				<van-row class="btn-group ">
+					<van-col class="btn-item" @click="sort(1)" span="8">按字母 &nbsp;<span class="sort"><span class="top active">&nbsp;</span><span class="down">&nbsp;</span></span></van-col>
+					<van-col class="btn-item" @click="sort(2)" span="8">按人数 &nbsp;<span class="sort"><span class="top active">&nbsp;</span><span class="down">&nbsp;</span></span></van-col>
+					<van-col class="btn-item" @click="sort(3)" span="8">按次数 &nbsp;<span class="sort"><span class="top">&nbsp;</span><span class="down active">&nbsp;</span></span></van-col>
+				</van-row>
+				<div id="myChart" ></div>
+				<van-popup v-model="date_picker">
+					<div class="date_container">
+						<div class="date_input_container">
+							<h3>请设置需要查询的报告时间段</h3>
+							<van-cell-group class="input-conatiner">
+							  <van-field
+							    v-model="start_date"
+							    clearable
+								class="border"
+							 >
+							  <img slot="button" class="calendar" src="../../assets/images/38/calendar@2x.png" alt="">
+							 </van-field>
+							<div class="zhi">至</div>
+							  <van-field
+							    v-model="end_date"
+							    type="password"
+								  class="border"
+							  >
+
+							  <img  slot="button" class="calendar" src="../../assets/images/38/calendar2.png" alt="">
+							  </van-field>
+							</van-cell-group>
+							<div class="btn-group">
+								<button class="cancel-btn" @click="cancel_choose">取消</button> |
+								<button class="btn-sure" @click="sure">确定</button>
+							</div>
+						</div>
+
+						<van-datetime-picker
+						  v-model="currentDate"
+						  type="date"
+						  :min-date="minDate"
+						  class="datetime-picker"
+						/>
+					</div>
+
+				</van-popup>
 			</div>
 		</div>
 
@@ -611,7 +677,7 @@
 
     import NavBar from '@/components/navBar'
     import Vue from 'vue';
-    import { Tab, Tabs ,SubmitBar, } from 'vant';
+    import { Tab, Tabs ,SubmitBar,Popup,DatetimePicker,Dialog,Field } from 'vant';
 	let echarts = require('echarts/lib/echarts')
 	// 引入柱状图组件
 	require('echarts/lib/chart/bar')
@@ -630,11 +696,11 @@
                 fliter:false,
                 currentDate1: new Date(),//1:开始日期  2 结束日期
                 currentDate2: new Date(),
-                timeValue1: '',
+                timeValue1: '',//按确认后显示的日期  1：开始日期  2：结束日期
                 timeValue2: '',
                 endData:'',
                 minDate: new Date(2018, 10, 1),
-                time_Picker_Statue:0, //0：不显示 1：显示开始日期 2：显示结束日期
+                time_Picker_Statue:0, //0：不显示 1：显示开始日期控件 2：显示结束日期控件
                 active:0,
                 tab1Title:'已发布(3)',
                 tab2Title:'待审核(4)',
@@ -646,6 +712,15 @@
                 openOverlay_title:"",
 				type:1,
 				myChart:null,
+				date_picker:false,
+				date:'2019.01.01-2019.07.01',
+
+				minDate: new Date(),
+				maxDate: new Date(2019, 10, 1),
+				currentDate: new Date(),
+				date_show:true,
+				end_date:'',
+				start_date:'',
             }
         },
 
@@ -897,7 +972,18 @@
 			},
 			sort:function(type){
 
+
 			},
+
+			chooseDate:function(){
+				this.date_picker = true;
+			},
+			cancel_choose:function(){
+				this.date_picker = false;
+			},
+			sure:function(){
+				this.date_picker = false;
+			}
 
         },
 
@@ -1318,6 +1404,7 @@
 		width: 100%;
 		height:600px;
 	}
+
     .width_half{
         width: 50%;
     }
@@ -1326,4 +1413,65 @@
         position: relative;
         left: 50%;
     }
+
+	.date_container{
+		width:414px;
+		min-height: 736px;
+
+	}
+	.border{
+		border: 1px solid grey;
+		border-radius: 30px;
+	}
+	.date_input_container{
+		width: 76%;
+		margin: 100px auto 30px auto;
+		background-color: #fff;
+		border-radius: 16px;
+	}
+	.date_input_container h3{
+		padding-top: 16px;
+		height: 44px;
+		line-height: 44px;
+		text-align: center;
+	}
+
+	.input-conatiner{
+		width: 80%;
+		margin: 16px auto 16px auto;
+	}
+	.van-popup{
+		background-color: rgba(0,0,0,0);
+	}
+	.datetime-picker{
+		position: absolute;
+		bottom:0px;
+		width: 100%;
+	}
+	.btn-group{
+		height: 44px;
+		border-top: 1px solid #dddddd;
+	}
+	.btn-group .cancel-btn{
+		width: 47%;
+		height: 44px;
+
+	}
+	.btn-group .btn-sure{
+		width: 47%;
+		height: 44px;
+		color: #4c62e7;
+	}
+	.zhi{
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		font-size: 16px;
+	}
+	.calendar{
+		width: 24px;
+		height: 24px;
+		line-height: 24px;
+	}
+
 </style>
