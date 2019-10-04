@@ -111,10 +111,26 @@ export default new Router({
         },
         {
             name: 'uploadImage',
-            path: '/uploadImage',
+            path: '/myActivities/uploadImage',
             component: () => import('@/pages/myActivities/uploadImage'),
             meta: {
                 title: '上传图片'
+            },
+        },
+        {
+            name: 'replenishmentDetails',
+            path: '/myActivities/replenishmentDetails',
+            component: () => import('@/pages/myActivities/replenishmentDetails'),
+            meta: {
+                title: '补录详情'
+            },
+        },
+        {
+            name: 'checkList',
+            path: '/activityDetailsNotBegin/checkList',
+            component: () => import('@/pages/activityDetailsNotBegin/checkList'),
+            meta: {
+                title: '查看报名表'
             },
         },
       //商机部分

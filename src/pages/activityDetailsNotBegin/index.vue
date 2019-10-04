@@ -1,6 +1,74 @@
 <template>
     <div class="main" style="position: relative; ">
+        <!--        遮罩层-->
+        <div class='popContainer' v-show="show" >
 
+            <div  class="choose_box" v-show="show1">
+                <van-row class="choose_box_list" style="border-bottom: solid #dddddd 1px;" type="flex" justify="end">
+                    <van-col class="choose_box_text" span="8" style="text-align: center"><p class="choose_box_text" style="font-size: 18px;color: #333333">报名/签到</p></van-col>
+                    <van-col class="list_title" span="8" style="text-align: right"><p class="choose_box_text" style="padding-right: 10px" @click="closeOverlay">取消</p></van-col>
+                </van-row>
+                <van-row class="choose_box_list" >
+                    <p class="choose_box_text" >报名二维码</p>
+                </van-row>
+                <van-row class="choose_box_list" @click="openSecendOverlay">
+                    <p class="choose_box_text" >支付系统及形式创新001</p>
+                </van-row>
+                <van-row class="choose_box_list" @click="openSecendOverlay">
+                    <p class="choose_box_text blue" >支付系统及形式创新002</p>
+                </van-row>
+                <van-row class="choose_box_list" @click="openSecendOverlay">
+                    <p class="choose_box_text blue" >支付系统及形式创新003</p>
+                </van-row>
+                <van-row class="choose_box_list" @click="openSecendOverlay">
+                    <p class="choose_box_text blue" >支付系统及形式创新004</p>
+                </van-row>
+                <van-row class="choose_box_list" @click="openSecendOverlay">
+                    <p class="choose_box_text blue" >支付系统及形式创新005</p>
+                </van-row>
+
+
+            </div>
+            <div  class="choose_box" style="height: auto;" v-show="show2">
+                <div style="height: 10px;position: relative"><img @click="gobackOverlay" src="../../assets/images/24/Empty@2x.png" class="img_close" ></div>
+                <van-row class="choose_box_list" >
+                    <p class="choose_box_text" style="color: #333333;">{{openOverlay_title}}</p>
+                </van-row>
+                <van-row class="" style="justify-content: center;align-items: center;text-align:center" >
+                    <img src="../../assets/images/other/erweima.png" class="img_erweima" >
+                </van-row>
+                <div class=""  style="background-color: #4c62e7;width: 120px;height: 5px;margin: 0px auto;"></div>
+                <van-row class="choose_box_list" >
+                    <p class="choose_box_text" >签到二维码</p>
+                </van-row>
+                <van-row class="list_row_top" >
+                    <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
+                    <van-col class=""  style="text-align: left"><p class="list_right_text" style="font-weight: bold">日程信息</p></van-col>
+                </van-row>
+                <van-row class="list_row" >
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min_head" >日程名称</p></van-col>
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min_head" >主讲人</p></van-col>
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min_head" >日程时间</p></van-col>
+                    <van-col class=""  span="4" style="text-align: center;"><p class="list_test_min_head" >地点</p></van-col>
+                    <van-col class=""  span="5"  style="text-align: center"><p class="list_test_min_head" >日程时长</p></van-col>
+                </van-row>
+                <van-row class="list_row" >
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min" >信用快贷</p></van-col>
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min" >李四</p></van-col>
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min" >9:00-13:00</p></van-col>
+                    <van-col class=""  span="4" style="text-align: center;"><p class="list_test_min" >901</p></van-col>
+                    <van-col class=""  span="5"  style="text-align: center"><p class="list_test_min" >120分钟</p></van-col>
+                </van-row>
+                <van-row class="list_row" >
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min" >抵押快贷</p></van-col>
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min" >李四</p></van-col>
+                    <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min" >9:00-13:00</p></van-col>
+                    <van-col class=""  span="4" style="text-align: center;"><p class="list_test_min" >901</p></van-col>
+                    <van-col class=""  span="5"  style="text-align: center"><p class="list_test_min" >120分钟</p></van-col>
+                </van-row>
+
+            </div>
+        </div>
         <!--头部导航-->
 
         <van-nav-bar :title="title"  >
@@ -92,7 +160,7 @@
                 </van-row>
             </div>
 
-<!--            <div class="secend_box" style="height: auto">-->
+<!--            <div class="secend_box" style="height: auto" v-show="status_==1">-->
 <!--                <van-row class="list_row_top" >-->
 <!--                    <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>-->
 <!--                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >请选择审核人</p></van-col>-->
@@ -112,7 +180,7 @@
                         </van-row>
                     </van-col>
                     <van-col class="" span="12" style="height:40px">
-                        <van-row class="" type="flex" justify="center">
+                        <van-row class="" type="flex" justify="center" @click="openOverlay">
                             <van-col class="" span="2" ><img src="../../assets/images/38/QRcode@2x.png" class="img_right" ></van-col>
                             <van-col class="" span="12" ><p class="list_test_last" >报名/签到</p></van-col>
                         </van-row>
@@ -126,7 +194,7 @@
                         </van-row>
                     </van-col>
                     <van-col class="" span="12" style="height:40px">
-                        <van-row class="" type="flex" justify="center">
+                        <van-row class="" type="flex" justify="center" @click="goPsge('checkList')">
                             <van-col class="" span="2" ><img src="../../assets/images/38/Viewreport@2x.png" class="img_right" ></van-col>
                             <van-col class="" span="12" ><p class="list_test_last" >查看报名表</p></van-col>
                         </van-row>
@@ -152,6 +220,10 @@
                 title : '活动详情',
                 activeName: 'a',
                 current: 0,
+                show: false,
+                show1:false,
+                show2:false,
+                openOverlay_title:"",
             }
         },
 
@@ -174,6 +246,27 @@
             goviewList : function(){
                 this.$router.push('./viewList');
             },
+            goPsge(url) {
+                this.$router.push({name:url});
+            },
+            openOverlay : function(){
+                this.show = true;
+                this.show1 = true;
+            },
+            closeOverlay : function(){
+                this.show = false;
+                this.show1 = false;
+            },
+            openSecendOverlay (e){
+                this.show2 = true;
+                this.show1 = false;
+                this.openOverlay_title = e.target.innerHTML
+            },
+            gobackOverlay : function(){
+                this.show = true;
+                this.show1 = true;
+                this.show2 = false;
+            },
         },
 
         //计算属性
@@ -188,6 +281,51 @@
 </script>
 
 <style lang="scss" scoped>
+    .popContainer{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.3);
+        z-index: 100;
+    }
+    .img_erweima{
+        height: 120px;
+        width: 120px;
+    }
+    .img_close{
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+    .choose_box{
+        height: 281px;
+        position: absolute;
+        bottom: 0;
+        background-color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+    }
+    .choose_box_text{
+        line-height: 40px;
+        color: #999999;
+        font-size: 16px;
+        margin-block-start:0;
+        margin-block-end:0;
+    }
+    .blue{
+        color: #4c62e7;
+    }
+    .choose_box_list{
+        text-align: center;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+    }
     .img_swiper{
         height: 200px;
         width: auto;
