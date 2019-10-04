@@ -8,7 +8,10 @@
         </van-nav-bar>
         <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <div class="main">
-            <div class="not_start"><p style="font-size: 12px;color: #FFFFFF">进行中</p></div>
+            <div class="not_start" :class="status_==1?'blue_bg':''">
+                <p style="font-size: 12px;color: #FFFFFF" v-show="status_==0">进行中</p>
+                <p style="font-size: 12px;color: #FFFFFF" v-show="status_==1">任务新建</p>
+            </div>
             <van-swipe  indicator-color="white" >
                 <van-swipe-item><img src="../../assets/images/other/banner.png" class="img_swiper" ></van-swipe-item>
                 <van-swipe-item><img src="../../assets/images/other/banner.png" class="img_swiper" ></van-swipe-item>
@@ -91,48 +94,59 @@
                     <van-col class=""  span="5"  style="text-align: center"><p class="list_test_min" >120分钟</p></van-col>
                 </van-row>
             </div>
+            <div v-show="status_==1">
+                <div class="secend_box" style="height: auto" v-show="identity=='management'">
+                    <van-row class="list_row_top" >
+                        <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
+                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >请选择审核人</p></van-col>
+                    </van-row>
+                    <van-row class="list_row" >
+                        <van-col class=""  span="8" style="text-align: left;"><p class="list_test_examine" style="color: #333333">审核人</p></van-col>
+                        <van-col class=""  span="14" style="text-align: left;"><p class="list_test_examine" >请选择</p></van-col>
+                        <van-col class=""  span="2" style="text-align: left;"><img src="../../assets/images/24/more@2x.png" class="img_right" ></van-col>
+                    </van-row>
+                </div>
+            </div>
 
-<!--            <div class="secend_box" style="height: auto">-->
-<!--                <van-row class="list_row_top" >-->
-<!--                    <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>-->
-<!--                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >请选择审核人</p></van-col>-->
+<!--            <div class="secend_box" style="height: auto" v-show="status_==0">-->
+<!--                <van-row class="list_row_top" type="flex" justify="center">-->
+<!--                    <van-col class="" span="12" style="height: 40px">-->
+<!--                        <van-row class="" type="flex" justify="center" @click="goviewList">-->
+<!--                            <van-col class="" span="2" ><img src="../../assets/images/38/List@2x.png" class="img_right" ></van-col>-->
+<!--                            <van-col class="" span="12" ><p class="list_test_last" >查看名单</p></van-col>-->
+<!--                        </van-row>-->
+<!--                    </van-col>-->
+<!--                    <van-col class="" span="12" style="height:40px">-->
+<!--                        <van-row class="" type="flex" justify="center">-->
+<!--                            <van-col class="" span="2" ><img src="../../assets/images/38/QRcode@2x.png" class="img_right" ></van-col>-->
+<!--                            <van-col class="" span="12" ><p class="list_test_last" >报名/签到</p></van-col>-->
+<!--                        </van-row>-->
+<!--                    </van-col>-->
 <!--                </van-row>-->
-<!--                <van-row class="list_row" >-->
-<!--                    <van-col class=""  span="8" style="text-align: left;"><p class="list_test_examine" style="color: #333333">审核人</p></van-col>-->
-<!--                    <van-col class=""  span="14" style="text-align: left;"><p class="list_test_examine" >请选择</p></van-col>-->
-<!--                    <van-col class=""  span="2" style="text-align: left;"><img src="../../assets/images/24/more@2x.png" class="img_right" ></van-col>-->
+<!--                <van-row class="list_row" type="flex" justify="center">-->
+<!--                    <van-col class="" span="12" style="height:40px">-->
+<!--                        <van-row class="" type="flex" justify="center">-->
+<!--                            <van-col class="" span="2" ><img src="../../assets/images/38/Viewreport@2x.png" class="img_right" ></van-col>-->
+<!--                            <van-col class="" span="12" ><p class="list_test_last" >查看问卷</p></van-col>-->
+<!--                        </van-row>-->
+<!--                    </van-col>-->
+<!--                    <van-col class="" span="12" style="height:40px">-->
+<!--                        <van-row class="" type="flex" justify="center" @click="goPsge('checkList')">-->
+<!--                            <van-col class="" span="2" ><img src="../../assets/images/38/Viewreport@2x.png" class="img_right" ></van-col>-->
+<!--                            <van-col class="" span="12" ><p class="list_test_last" >查看报名表</p></van-col>-->
+<!--                        </van-row>-->
+<!--                    </van-col>-->
 <!--                </van-row>-->
 <!--            </div>-->
-            <div class="secend_box" style="height: auto">
-                <van-row class="list_row_top" type="flex" justify="center">
-                    <van-col class="" span="12" style="height: 40px">
-                        <van-row class="" type="flex" justify="center" @click="goviewList">
-                            <van-col class="" span="2" ><img src="../../assets/images/38/List@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >查看名单</p></van-col>
-                        </van-row>
-                    </van-col>
-                    <van-col class="" span="12" style="height:40px">
-                        <van-row class="" type="flex" justify="center">
-                            <van-col class="" span="2" ><img src="../../assets/images/38/QRcode@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >报名/签到</p></van-col>
-                        </van-row>
-                    </van-col>
+            <div v-show="identity=='management'">
+                <van-row type="flex" justify="center" class="choose_row" v-show="status_==1">
+                    <van-col class="reject_col"  span="9" ><p class="reject_col_test">拒绝创建</p></van-col>
+                    <van-col class=""  span="2" ></van-col>
+                    <van-col class="agree_col"   span="9" ><p class="agree_col_test" >同意创建</p></van-col>
                 </van-row>
-                <van-row class="list_row" type="flex" justify="center">
-                    <van-col class="" span="12" style="height:40px">
-                        <van-row class="" type="flex" justify="center">
-                            <van-col class="" span="2" ><img src="../../assets/images/38/Viewreport@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >查看问卷</p></van-col>
-                        </van-row>
-                    </van-col>
-                    <van-col class="" span="12" style="height:40px">
-                        <van-row class="" type="flex" justify="center">
-                            <van-col class="" span="2" ><img src="../../assets/images/38/Viewreport@2x.png" class="img_right" ></van-col>
-                            <van-col class="" span="12" ><p class="list_test_last" >查看报名表</p></van-col>
-                        </van-row>
-                    </van-col>
-                </van-row>
+                <div class="null_box" v-show="status_==1"></div>
             </div>
+
         </div>
     </div>
 </template>
@@ -152,6 +166,8 @@
                 title : '活动详情',
                 activeName: 'a',
                 current: 0,
+                status_:0,//0：活动未开始  1:任务新建
+                identity:'',
             }
         },
 
@@ -161,6 +177,13 @@
 
         //网页加载完成
         mounted () {
+            console.log(this.$route.params.status_)
+            this.status_ = this.$route.params.status_
+            var value = sessionStorage.getItem('identity')
+            if (value == "management") {
+                this.identity = 'management'
+            }
+
         },
 
         //声明方法
@@ -174,6 +197,9 @@
             goviewList : function(){
                 this.$router.push('./viewList');
             },
+            goPsge(url) {
+                this.$router.push({name:url});
+            }
         },
 
         //计算属性
@@ -218,6 +244,39 @@
         border-top-left-radius: 8px;
         position: relative;
         top:-10px
+    }
+    .reject_col{
+        border: #4c62e7 1px solid;
+        border-radius: 40px;
+        text-align: center;
+        height: 34px;
+    }
+    .choose_row{
+        margin: 12px auto;
+    }
+    .null_box{
+        height: 12px;
+    }
+    .reject_col_test{
+        padding: 0;
+        margin: 0;
+        line-height: 34px;
+        font-size: 14px;
+        color: #4c62e7;
+    }
+    .agree_col{
+        border: #4c62e7 1px solid;
+        border-radius: 40px;
+        background-color: #4c62e7;
+        height: 34px;
+        text-align: center;
+    }
+    .agree_col_test{
+        padding: 0;
+        margin: 0;
+        line-height: 34px;
+        font-size: 14px;
+        color: #fff;
     }
     .list_test{
         line-height: 40px;
@@ -291,6 +350,9 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+    }
+    .blue_bg{
+        background-color: #4c62e7;
     }
 
 

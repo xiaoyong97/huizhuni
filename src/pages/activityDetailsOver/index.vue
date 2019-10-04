@@ -104,12 +104,12 @@
             <div class="secend_box" style="height: auto">
                 <van-row class="list_row_top" type="flex" justify="center">
                     <van-col class="" span="8" style="height: 40px">
-                        <van-row class="" type="flex" justify="center" @click="goviewList">
+                        <van-row class="" type="flex" justify="center" @click="goPage('viewList')">
                             <van-col class="" span="4" ><img src="../../assets/images/38/List@2x.png" class="img_right" ></van-col>
                             <van-col class="" span="20" ><p class="list_test_last" >查看名单</p></van-col>
                         </van-row>
                     </van-col>
-                    <van-col class="" span="8" style="height:40px">
+                    <van-col class="" span="8" style="height:40px" @click="goPage('uploadImage')">
                         <van-row class="" type="flex" justify="center">
                             <van-col class="" span="4" ><img src="../../assets/images/38/Upload@2x.png" class="img_right" ></van-col>
                             <van-col class="" span="20" ><p class="list_test_last" >上传照片</p></van-col>
@@ -177,8 +177,8 @@
             onChange(index) {
                 this.current = index;
             },
-            goviewList : function(){
-                this.$router.push('./viewList');
+            goPage : function(url){
+                this.$router.push({name:url});
             },
         },
 

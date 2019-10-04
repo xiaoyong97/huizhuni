@@ -20,6 +20,7 @@
 
         </van-nav-bar>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
+        <img src="../../../assets/images/48/create@2x.png" class="img_fliter" @click="go('collectOperation')" >
         <img src="../../../assets/images/38/searchfor@2x.png" class="img_search" @click="go('searchInfo')">
         <div class="content">
             <van-tabs color="#4c62e7" @click="onTabClick" v-model="active" line-width="50%" line-height=3 style="position: relative" title-active-color="#4c62e7">
@@ -389,7 +390,7 @@
     .img_search{
         position: absolute;
         top: 14px;
-        right:12px ;
+        right:40px ;
         height: 18px;
         width: 18px;
         z-index: 100;
