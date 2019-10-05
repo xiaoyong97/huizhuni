@@ -217,7 +217,7 @@
   //声明方法
   methods : {
 	onClickLeft:function(){
-			this.$router.go(-1);
+		this.$router.go(-1);
 	},
 	createChart:function(){
 		var that = this;
@@ -948,7 +948,7 @@
 	.content{
 		padding: 8px;
 		background-color: rgb(238,238,238);
-		min-height: 736px;
+		// min-height: 736px;
 	}
 	.theme_color{
 		background-color: rgb(56,155,246);
