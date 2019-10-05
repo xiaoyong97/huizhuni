@@ -71,16 +71,13 @@
         </div>
         <!--头部导航-->
 
-        <van-nav-bar :title="title"  >
-
-        </van-nav-bar>
+        <van-nav-bar :title="title"  ></van-nav-bar>
          <div class="top_bar_main_box" >
              <van-row class="top_bar_box" style="">
                  <van-col :class="type!==2?'active':''" class="top_bar_box_col top_bar_box_col_left " span="12"><p class="top_bar_box_text_left" @click="changeType(1)">我的活动</p></van-col>
                  <van-col :class="type==2?'active':''" class="top_bar_box_col " span="12"><p class="top_bar_box_text_right" @click="changeType(2)">报表查询</p></van-col>
              </van-row>
          </div>
-
          <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" @click="open_fliter">
          <img src="../../assets/images/38/searchfor@2x.png" class="img_search" >
          <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
@@ -168,8 +165,7 @@
                 <!--                待审核下拉图标-->
                 <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open menu2_open" v-show="menu!==1" @click="openMenu(1)">
                 <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open menu2_open" v-show="menu==1" @click="closeMenu">
-
-                <van-tab :title="tab1Title" color="#4c62e7" >
+                <van-tab :title="tab1Title" name="已发布" color="#4c62e7" >
                     <div class="card_div" v-show="menu_choose==2|menu_choose==0">
                         <div @click="goPage('activityDetailsIng',{status_:0})" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0">
@@ -265,7 +261,7 @@
                     </div>
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab :title="tab2Title" color="#4c62e7" >
+                <van-tab :title="tab2Title" name="待审核" color="#4c62e7" >
                     <!--                    任务新建-->
                     <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityDetailsIng',{status_:1})">
                         <van-row style="padding: 16px 12px 0">
@@ -350,7 +346,6 @@
 
                     <div style="height: 8px"></div>
                 </van-tab>
-
 				<!-- 已拒绝 -->
 				<van-tab title="已拒绝(1)" color="#4c62e7" >
                     <div class="card_div" style="" >
@@ -375,16 +370,15 @@
 
                     <div style="height: 8px"></div>
 				</van-tab>
-
             </van-tabs>
-            <van-tabs color="#4c62e7" v-model="active" line-width="50%" line-height=3 title-active-color="#4c62e7" v-show="type==0" class="relative" @click="onTabClick">
+            <van-tabs color="#4c62e7" v-model="active2" line-width="50%" line-height=3 title-active-color="#4c62e7" v-show="type==0" class="relative" @click="onTabClick2">
                 <!--                已发布下拉图标-->
                 <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open" v-show="menu!==0" @click="openMenu(0)">
                 <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open" v-show="menu==0" @click="closeMenu">
                 <!--                待审核下拉图标-->
                 <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu!==1" @click="openMenu(1)">
                 <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu==1" @click="closeMenu">
-                <van-tab :title="tab1Title" color="#4c62e7" >
+                <van-tab :title="tab1Title" name="已发布" color="#4c62e7" >
                     <div class="card_div" v-show="menu_choose==2|menu_choose==0" style="" >
                         <div @click="goPage('activityDetailsIng',{status_:0})" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0">
@@ -480,7 +474,7 @@
                     </div>
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab :title="tab2Title" color="#4c62e7" >
+                <van-tab :title="tab2Title" name="待审核" color="#4c62e7" >
                     <!--                    任务新建-->
                     <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityDetailsIng',{status_:1})" >
                         <van-row style="padding: 16px 12px 0">
@@ -566,7 +560,6 @@
                     <div style="height: 8px"></div>
                 </van-tab>
 
-                </van-tab>
             </van-tabs>
 
 			<div class="query_container" v-show="type==2">
@@ -671,7 +664,6 @@
         data() {
             return {
                 hidden:false,
-                activeName:'已发布',
                 menu:-1,  //-1:不显示 0:已发布，1.待审核，2.已拒绝,9筛选
                 menu_choose :0,
                 menu2_choose :0,//tab审核的菜单选择 1：新建2：中止3：变更4：名单补录
@@ -684,7 +676,8 @@
                 endData:'',
                 minDate: new Date(2018, 10, 1),
                 time_Picker_Statue:0, //0：不显示 1：显示开始日期控件 2：显示结束日期控件
-                active:0,
+                active:1,
+                active2:1,
                 tab1Title:'已发布(3)',
                 tab2Title:'待审核(4)',
                 title : '',
@@ -710,17 +703,20 @@
         //数据预加载
         created  (){
             this.menu = -1;
-            var avtiveValue = sessionStorage.getItem("myActivityTabActive");
-            if (avtiveValue!==null) {
-                this.active = avtiveValue
-            }
+
         },
 
         //网页加载完成
         mounted (){
             var avtiveValue = sessionStorage.getItem("myActivityTabActive");
+            var avtiveValue2 = sessionStorage.getItem("myActivityTabActive2");
             if (avtiveValue!==null) {
+                console.log(avtiveValue)
                 this.active = avtiveValue
+            }
+            if (avtiveValue2!==null) {
+                console.log(avtiveValue2)
+                this.active2 = avtiveValue2
             }
             var value = sessionStorage.getItem('identity')
             if (value == "management") {
@@ -780,11 +776,18 @@
                 this.active = index;
                 sessionStorage.setItem("myActivityTabActive",index)
             },
+            onTabClick2(index) {
+                console.log(index+'tabclick')
+                this.active2 = index;
+                sessionStorage.setItem("myActivityTabActive2",index)
+            },
             timePickerStatue(i) {
                 this.time_Picker_Statue = i;
             },
             onClickLeft() {
                 this.$router.go(-1);
+                sessionStorage.setItem("myActivityTabActive",'已发布');
+                sessionStorage.setItem("myActivityTabActive2",'已发布')
             },
             seleteTime(i) {
                 this.time_choose = i;
@@ -793,7 +796,10 @@
                 this.$router.push({name:url,params:param});
             },
             openMenu (i){
-                if(this.active==i) {
+                if (i== 0 && (this.active=='已发布' || this.active2=='已发布')) {
+                    this.menu = i;
+                }
+                if (i== 1 && (this.active=='待审核' || this.active2=='待审核')) {
                     this.menu = i;
                 }
             },

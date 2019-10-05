@@ -20,7 +20,6 @@
 
         </van-nav-bar>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
-        <img src="../../../assets/images/48/create@2x.png" class="img_fliter" @click="go('collectOperation')" >
         <img src="../../../assets/images/38/searchfor@2x.png" class="img_search" @click="go('searchInfo')">
         <div class="content">
             <van-tabs color="#4c62e7" @click="onTabClick" v-model="active" line-width="50%" line-height=3 style="position: relative" title-active-color="#4c62e7">
@@ -200,8 +199,10 @@
                             <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
                             <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019/08/15</p></van-col>
                         </van-row>
-                        <div style="height: 6px"></div>
+
                     </div>
+
+                    <div class="null_box"></div>
                 </van-tab>
 
 
@@ -298,6 +299,9 @@
     .hiddin_box_show{
         display: block;
     }
+    .null_box{
+        height: 8px;
+    }
     .popContainer{
         position: fixed;
         top: 90px;
@@ -390,7 +394,7 @@
     .img_search{
         position: absolute;
         top: 14px;
-        right:40px ;
+        right:12px ;
         height: 18px;
         width: 18px;
         z-index: 100;

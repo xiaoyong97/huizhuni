@@ -64,12 +64,12 @@
                     <p  v-show="is_show==2" class="list_test"  style="font-size: 12px;line-height: 24px">您上传的征信查询授权存在缺失页</p>
                 </div>
             </div>
-            <div style="background-color: #ffffff">
+            <div class="result_box" >
                 <van-row class="list_row_top" >
                     <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
                     <van-col class="list_title"  style="text-align: left"><p class="list_right_text " >录入调查结果</p></van-col>
                 </van-row>
-                <div style="margin: 0 2%;background-color: rgb(228,228,228);padding:6px 12px;height: 100px">
+                <div style="background-color: rgb(228,228,228);padding:6px 12px;height: 100px">
                     <p class="list_right_text grey" style="line-height: 30px">该客户贷款逾期，不良情况属实**********，股权质押时间即将结束</p>
                 </div>
                 <div class="save_box">
@@ -159,7 +159,10 @@
         text-align: center;
         background-color: white;
     }
-
+    .result_box{
+        background-color: white;
+        padding: 0 12px;
+    }
     .list_right_text{
         margin-block-start:0;
         margin-block-end:0;
@@ -179,6 +182,7 @@
     }
     .white{
         color: white;
+        line-height: 28px;
     }
     .list_test{
         margin-block-start:0;

@@ -285,15 +285,66 @@
 						<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
 						<van-col span="23"><h3>抵押人信息1</h3></van-col>
 					</van-cell>
+					<div >
 
-					<van-cell>
-						<van-col span="10">不动产权证:</van-col>
-						<van-col span="12"><img class="yyzz" src="../../../assets/images/other/budongchan.png" alt=""></van-col>
-					</van-cell>
-					<van-cell>
-						<van-col span="10">权利人:</van-col>
-						<van-col span="12">张三</van-col>
-					</van-cell>
+						<van-cell>
+							<van-col span="10">企业法人：</van-col>
+							<van-col span="12"><img class="yyzz" src="../../../assets/images/idcard/sfz.png" alt=""></van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">新一代客户编号:</van-col>
+							<van-col span="12">44099999999</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">统一社会信用代码:</van-col>
+							<van-col span="12">xxxxxxx</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">企业名称:</van-col>
+							<van-col span="12">广州老地方有限公司</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">企业地址:</van-col>
+							<van-col span="12">广州市越秀区法政路XX号</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">法定代表人:</van-col>
+							<van-col span="12">广州市越秀区法政路XX号</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">公民身份证号码:</van-col>
+							<van-col span="12">张三</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">有效期限:</van-col>
+							<van-col span="12">2030-01-10</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">法定代表人电话:</van-col>
+							<van-col span="12">13800000000</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">法定代表人地址</van-col>
+							<van-col span="12">广州市越秀区法政路XX号</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10">抵押人1联系方式:</van-col>
+							<van-col span="12">138000000000</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10"></van-col>
+							<van-col span="12">FC2384239482392</van-col>
+						</van-cell>
+						<van-cell>
+							<van-col span="10"></van-col>
+							<van-col span="12">FC7717626617263</van-col>
+						</van-cell>
+						<van-cell @click="show_4" v-show="!show4" style="position: relative">
+							<img src="../../../assets/images/38/Pullup__.png"  class="felx_img" v-show="!show4">
+						</van-cell>
+
+					</div>
+
 					<van-cell @click="show_4" v-show="show4" >
 						<img src="../../../assets/images/38/Pulldown3@2x.png"  class="felx_img" v-show="show4">
 					</van-cell>
@@ -307,7 +358,7 @@
 					</van-cell>
 					<van-cell>
 						<van-col span="10">企业法人：</van-col>
-						<van-col span="12"><img class="yyzz" src="../../../assets/images/idcard/sfz.png" alt=""></van-col>
+						<van-col span="12"><img class="yyzz" src="../../../assets/images/other/yyzz.png" alt=""></van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">新一代客户编号:</van-col>

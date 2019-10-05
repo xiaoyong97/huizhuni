@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-     
+
      <!--头部导航-->
      <!--头部导航-->
      <van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" >
@@ -25,7 +25,7 @@
 				<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="info.company_info.mobile" clearable label-width="120"/>
 				<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="info.company_info.legal_representative_address" clearable label-width="120" label-color="red"/>
 			</van-cell-group>
-		</div> 
+		</div>
 		<div class="input-contianer" v-show="step==1">
 			<div>
 				<h4>企业业主身份证</h4>
@@ -38,7 +38,7 @@
 					<p>点击拍摄/上传国徽面</p>
 				</div>
 			</div>
-			
+
 			<van-cell-group class="bg-grey">
 				<van-field label="姓名"placeholder="请输入姓名" v-model="info.company_main_info.name" clearable label-width="120"/>
 				<van-field label="性别" placeholder="性别"  v-model="info.company_main_info.sex" clearable label-width="120"/>
@@ -49,20 +49,27 @@
 				<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="info.company_main_info.validity_period" clearable label-width="120" label-color="red"/>
 				<van-field label="学历" placeholder="法定代表人电话" v-model="info.company_main_info.record_of_formal_schooling" clearable label-width="120"/>
 					<van-field label="电话号码"placeholder="请输入电话号码" v-model="info.company_main_info.mobile" clearable label-width="120" label-color="red"/>
-				
+					<van-dropdown-menu class="xialakuang">
+						<van-dropdown-item v-model="TheSorting1" :options="TheSortings1" />
+					</van-dropdown-menu>
 				<van-field label="工作单位"placeholder="请输入工作单位" v-model="info.company_main_info.work" clearable label-width="120" label-color="red"/>
 				<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="info.company_main_info.marriage_status" clearable label-width="120"/>
 				<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="info.company_main_info.households" clearable label-width="120" label-color="red"/>
 
 			</van-cell-group>
-		</div> 
+		</div>
+		<van-cell-group>
+		<van-dropdown-menu class="xialakuang">
+			<van-dropdown-item v-model="TheSorting1" :options="TheSortings1" />
+		</van-dropdown-menu>
+		</van-cell-group>
 		<div class="input-contianer" v-show="step==2">
 			<div v-for="(item,index) in info.associates">
 				<h4 class="cell-hearder">关联人{{index+1}}</h4>
-				
+
 				<div>
 					<van-field label="关系"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
-					
+
 					<div class="idCard_front">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
@@ -72,8 +79,9 @@
 						<p>点击拍摄/上传国徽面</p>
 					</div>
 				</div>
-				
+				<!--style="position: fixed;top: 34px; width:100%;"-->
 				<van-cell-group class="bg-grey">
+
 					<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
 					<van-field label="性别" placeholder="性别"  v-model="item.sex" clearable label-width="120"/>
 					<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
@@ -83,23 +91,40 @@
 					<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
 					<van-field label="学历" placeholder="法定代表人电话" v-model="item.record_of_formal_schooling" clearable label-width="120"/>
 						<van-field label="电话号码"placeholder="请输入电话号码" v-model="item.mobile" clearable label-width="120" label-color="red"/>
-					
+<!--					<van-dropdown-menu class="xialakuang">-->
+<!--						<van-dropdown-item v-model="TheSorting1" :options="TheSortings1" />-->
+<!--					</van-dropdown-menu>-->
+					<van-dropdown-menu class="xialakuang">
+						<van-dropdown-item v-model="value" :options="option" />
+						<van-dropdown-item title="筛选" ref="item">
+							<van-switch-cell v-model="switch1" title="包邮" />
+							<van-switch-cell v-model="switch2" title="团购" />
+							<van-button block type="info" @click="onConfirm">确认</van-button>
+						</van-dropdown-item>
+					</van-dropdown-menu>
 					<van-field label="工作单位"placeholder="请输入工作单位" v-model="item.work" clearable label-width="120" label-color="red"/>
 					<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="item.marriage_status" clearable label-width="120"/>
 						<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="item.households" clearable label-width="120" label-color="red"/>
-						
+
 				</van-cell-group>
-				
+
 			</div>
-			
-		</div> 
-		
+
+		</div>
+		<van-dropdown-menu class="xialakuang">
+			<van-dropdown-item v-model="value" :options="option" />
+			<van-dropdown-item title="筛选" ref="item">
+				<van-switch-cell v-model="switch1" title="包邮" />
+				<van-switch-cell v-model="switch2" title="团购" />
+				<van-button block type="info" @click="onConfirm">确认</van-button>
+			</van-dropdown-item>
+		</van-dropdown-menu>
 		<div class="input-contianer" v-show="step==3">
 			<div v-for="(item,index) in info.mortgaged">
 				<h4 class="cell-hearder">抵押物{{index+1}}</h4>
 				<div>
 					<van-field label="关系"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
-					
+
 					<div class="idCard_front">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
@@ -109,7 +134,7 @@
 						<p>点击拍摄/上传国徽面</p>
 					</div>
 				</div>
-				
+
 				<van-cell-group class="bg-grey">
 					<van-field label="权利人"placeholder="请输入权利人" v-model="item.holder" clearable label-width="120"/>
 					<van-field label="共有情况" placeholder="共有情况"  v-model="item.situations" clearable label-width="120"/>
@@ -120,12 +145,12 @@
 					<van-field label="用途"placeholder="请输入用途" v-model="item.use" clearable label-width="120" label-color="red"/>
 					<van-field label="面积" placeholder="面积" v-model="item.area" clearable label-width="120"/>
 					<van-field label="权利其他情况"placeholder="请输入权利其他情况" v-model="item.Other" clearable label-width="120" label-color="red"/>
-					<van-field label="房产证号"placeholder="请输入房产证号" v-model="item.house_nubmer" clearable label-width="120" label-color="red"/>			
+					<van-field label="房产证号"placeholder="请输入房产证号" v-model="item.house_nubmer" clearable label-width="120" label-color="red"/>
 				</van-cell-group>
-				
+
 			</div>
-			
-		</div> 
+
+		</div>
 		<div class="input-contianer" v-show="step==4">
 			<div v-for="(item,index) in info.mortgagor">
 				<h4 class="cell-hearder">抵押人{{index+1}}</h4>
@@ -134,7 +159,7 @@
 					<div v-show="item.type==0">
 						<div>
 							<van-field label="关系 自然人" placeholder="请输入姓名"  clearable label-width="120"/>
-							
+
 							<div class="idCard_front">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传人像面</p>
@@ -144,9 +169,10 @@
 								<p>点击拍摄/上传国徽面</p>
 							</div>
 						</div>
-						
+
 						<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
 						<van-field label="性别" placeholder="性别"  v-model="item.sex" clearable label-width="120"/>
+
 						<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
 						<van-field label="出生日期"placeholder="请输入企业地址" v-model="item.birth" clearable label-width="120"/>
 						<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
@@ -157,7 +183,7 @@
 					<div v-show="item.type==1">
 						<div>
 							<van-field label="企业法人" placeholder="请输入姓名" v-model="item.type" clearable label-width="120"/>
-							
+
 							<div class="idCard">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传企业营业执照</p>
@@ -171,7 +197,7 @@
 						<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="item.mobile" clearable label-width="120"/>
 						<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="item.legal_representative_address" clearable label-width="120" label-color="red"/>
 					</div>
-					
+
 					<div class='cell'>请选择关联抵押物(可多选)</div>
 					<van-checkbox-group v-model="result">
 					  <van-cell-group>
@@ -191,11 +217,11 @@
 					  </van-cell-group>
 					</van-checkbox-group>
 				</van-cell-group>
-				
+
 			</div>
-			
-		</div> 
-		
+
+		</div>
+
 		<div class="btn_group" v-show='step!=5'>
 			<p v-show="step>1" class="add_asso" @click="add_item"><span class="add">&nbsp;+&nbsp;</span>添加关联人</p>
 			<div class="save_button" @click="save">保存并退出</div>
@@ -211,7 +237,7 @@
 						<van-cell ><div class="grey">查看详情</div></van-cell>
 						<van-cell>
 							<van-col span="3"><img class="logo" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-							<van-col span="21"><h3>广州老地方有限公司</h3></van-col>		
+							<van-col span="21"><h3>广州老地方有限公司</h3></van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="2"></van-col>
@@ -234,7 +260,7 @@
 			</div>
 		</div>
     </div>
-        
+
     </div>
 </template>
 
@@ -243,11 +269,31 @@
 	import NavBar from '@/components/navBar'
 	import progressBar from '@/components/progressBar'
 	import Vue from 'vue';
-	import { Swipe, SwipeItem,Grid, GridItem,Image,Panel,NoticeBar,Cell, CellGroup,Row, Col,Dialog } from 'vant';
+	import { DropdownMenu, DropdownItem,Grid, GridItem,Image,Panel,NoticeBar,Cell, CellGroup,Row, Col,Dialog } from 'vant';
+	Vue.use(DropdownMenu).use(DropdownItem);
 	export default {
-
   data() {
     return {
+		value: 0,
+		switch1: false,
+		switch2: false,
+		option: [
+			{ text: '全部商品', value: 0 },
+			{ text: '新款商品', value: 1 },
+			{ text: '活动商品', value: 2 }
+		],
+		TheSorting1: 0,
+		TheSorting2: 'a',
+		TheSortings1: [
+			{ text: '默认排序', value: 0 },
+			{ text: '发布时间排序', value: 1 },
+			{ text: '距离排序', value: 2 },
+		],
+		TheSortings2: [
+			{ text: '筛选', value: "a" },
+			{ text: '新款商品', value: "b" },
+			{ text: '活动商品', value: "c" }
+		],
       title : [
 		'信息采集-企业信息',
 		'信息采集-企业主信息',
@@ -258,20 +304,20 @@
 		step:0,
 		stepArray:[
 			'企业信息',
-			'企业住信息',
+			'企业主信息',
 			'关联人信息',
 			'抵押物信息',
-			'企业信息',		 
+			'企业信息',
 		],
 		info:{
 			company_info:{
-				customer_id:'',
-				unified_social_credit_code:'',
-				company_name:'',
-				enterprise_address:'',
-				legal_representative:'',
-				mobile:'',
-				legal_representative_address:'',
+				customer_id:'44099999999',
+				unified_social_credit_code:'xxxxxxxxxx',
+				company_name:'XXXX有限公司',
+				enterprise_address:'广州市越秀区法政路XX号',
+				legal_representative:'张三',
+				mobile:'13800000000',
+				legal_representative_address:'广州市越秀区法政路XX号',
 			},
 			company_main_info:{
 				name:'',
@@ -279,7 +325,7 @@
 				ethnic:'',
 				birth:'',
 				address:'',
-				idcard:'', 
+				idcard:'',
 				validity_period:'' ,//有效期
 				record_of_formal_schooling : '', //学历
 				mobile:'',
@@ -294,7 +340,7 @@
 					ethnic:'',
 					birth:'',
 					address:'',
-					idcard:'', 
+					idcard:'',
 					validity_period:'' ,//有效期
 					record_of_formal_schooling : '', //学历
 					mobile:'',
@@ -317,7 +363,7 @@
 					house_nubmer:'',
 				}
 			],
-			mortgagor:[  
+			mortgagor:[
 				{
 					type:'0', //0=自然人， 1=  企业法人
 					name:'',
@@ -325,7 +371,7 @@
 					ethnic:'',
 					birth:'',
 					address:'',
-					idcard:'', 
+					idcard:'',
 					validity_period:'' , //有效期
 					diyaren_mobile:'',
 					diyawu:[],
@@ -343,7 +389,7 @@
 					ethnic:'',
 					birth:'',
 					address:'',
-					idcard:'', 
+					idcard:'',
 					validity_period:'' , //有效期
 					diyaren_mobile:'',
 					diyawu:[],
@@ -359,17 +405,27 @@
 		result:[],
     }
   },
-  
+
   //数据预加载
   created : ()=>{
   },
 
   //网页加载完成
-  mounted : ()=>{
+  mounted () {
+  	var value1 = this.$route.params.step;
+	  console.log(value1);
+	  console.log('12312312');
+
+	  if (value1) {
+	  	this.step = value1;
+	  }
   },
-  
+
   //声明方法
   methods : {
+	  onConfirm() {
+		  this.$refs.item.toggle();
+	  },
 	addStep:function(){
 		if(this.step == 5 ){
 			this.$router.go(-1);
@@ -393,14 +449,14 @@
 						ethnic:'',
 						birth:'',
 						address:'',
-						idcard:'', 
+						idcard:'',
 						validity_period:'' ,//有效期
 						record_of_formal_schooling : '', //学历
 						mobile:'',
 						work:'',
 						marriage_status:'',
 						households:'',
-					}) 
+					})
 			}
 			break;
 			case 3:{
@@ -415,9 +471,9 @@
 					area:'',
 					Other:'',
 					house_nubmer:'',
-				}) 
+				})
 			}
-			break;	
+			break;
 			case 4:{
 				this.info.mortgagor.push({
 						type:'0', //0=自然人， 1=  企业法人
@@ -426,7 +482,7 @@
 						ethnic:'',
 						birth:'',
 						address:'',
-						idcard:'', 
+						idcard:'',
 						validity_period:'' , //有效期
 						diyaren_mobile:'',
 						diyawu:[],
@@ -448,7 +504,7 @@
 		this.$router.go(-1);
 	}
   },
-  
+
   //计算属性
   computed: {
   },
@@ -457,13 +513,16 @@
   components: {
 	progressBar,
 	NavBar,
-	
+
   }
  }
 </script>
 
 <style lang="scss" scoped>
-	
+.xialakuang{
+	background-color: #4c62e7;
+	width: 50%;
+}
 .content{
 	padding: 0px;
 	background-color: rgb(238,238,238);
@@ -563,7 +622,7 @@
 			bottom: -60px;
 			left: 50%;
 			margin-left: -130px;
-			font-weight: bold;	
+			font-weight: bold;
 		}
 		.line-pan{
 			margin-top: 30px;
@@ -574,7 +633,7 @@
 			width: 16px;
 			height: 16px;
 			background-color: #999999;
-		
+
 			border-radius: 8px;
 			float: left;
 		}
@@ -586,7 +645,7 @@
 			border-radius: 8px;
 			float: left;
 		}
-		
+
 		.progress{
 			background-color: #999999;
 			float: left;
@@ -678,5 +737,5 @@
 			height: 24px;
 			padding: 10px 16px;
 		}
-		
+
 </style>

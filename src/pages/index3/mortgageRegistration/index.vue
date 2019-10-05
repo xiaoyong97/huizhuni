@@ -12,10 +12,10 @@
             <van-tabs color="#4c62e7" @click="onTabClick" v-model="active" line-width="25%" line-height=3 style="position: relative" title-active-color="#4c62e7">
                 <van-tab title="接单" color="#4c62e7">
                     <van-row  class="width_max">
-                        <van-swipe-cell :right-width="right_width" class="swipe-cell" v-for="(item ) in list">
+                        <van-swipe-cell :right-width="right_width" class="swipe-cell" v-for="(item ,i) in list" >
                             <van-col  class=" checkbox_and_card_div" >
                                 <div class="check_box">
-                                    <van-checkbox v-show="delete_status"   checked-color="#4c62e7" v-model="result"></van-checkbox>
+                                    <van-checkbox v-show="delete_status"  class="radio" checked-color="#4c62e7" v-model="item.radio1"></van-checkbox>
                                 </div>
                                 <div class="card_div" >
                                     <van-row style="padding: 4px 12px 0">
@@ -23,32 +23,32 @@
                                         <van-col class="" span="22"><p class="card_list2_test" >抵押物：{{item.name}}</p></van-col>
                                     </van-row>
                                     <van-row style="padding: 4px 12px 0">
-                                        <van-col class="" span="12"><p class="card_list1_test_left" >企业主</p></van-col>
-                                        <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >张三</p></van-col>
+                                        <van-col class="" span="8"><p class="card_list1_test_left" >企业主</p></van-col>
+                                        <van-col class="" span="16" style="text-align: left"><p class="card_list1_test_right" >张三</p></van-col>
                                     </van-row>
                                     <van-row style="padding: 4px 12px 0">
-                                        <van-col class="" span="12"><p class="card_list1_test_left" >房产证号</p></van-col>
-                                        <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
+                                        <van-col class="" span="8"><p class="card_list1_test_left" >房产证号</p></van-col>
+                                        <van-col class="" span="16" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                     </van-row>
                                     <div class="slider_content" >
-                                        <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#ffffff" >
+                                        <van-slider @change="huaKuaiChange(1,i)" class="sliderHua" v-model="item.huakuai_value" bar-height="10px" active-color="#ffffff" >
                                             <div slot="button" class="custom-button" >
-                                                {{huaKuaiName}}
+                                                {{item.huakuai_title}}
                                             </div>
                                         </van-slider>
                                     </div>
                                 </div>
                             </van-col>
-                            <span slot="right" class="van-swipe-cell__right">忽略</span>
+                            <span slot="right" class="van-swipe-cell__right" @click="hulue(i)">忽略</span>
                         </van-swipe-cell>
                     </van-row>
                     <div class="null_div_8px" ></div>
                 </van-tab>
                 <van-tab title="待送件" color="#4c62e7">
                     <van-row  class="width_max">
-                        <van-col  class=" checkbox_and_card_div"  v-for="(item ) in list">
+                        <van-col  class=" checkbox_and_card_div"  v-for="(item ,i) in list">
                             <div class="check_box">
-                                    <van-checkbox v-show="delete_status"   checked-color="#4c62e7" v-model="result"></van-checkbox>
+                                <van-checkbox v-show="delete_status"  class="radio" checked-color="#4c62e7" v-model="item.radio2"></van-checkbox>
                             </div>
                             <div class="card_div" >
                                 <van-row style="padding: 4px 12px 0">
@@ -64,9 +64,9 @@
                                     <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                 </van-row>
                                 <div class="slider_content" >
-                                    <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#ffffff" >
+                                    <van-slider @change="huaKuaiChange(2,i)" class="sliderHua" v-model="item.huakuai_value1" bar-height="10px" active-color="#ffffff" >
                                         <div slot="button" class="custom-button" >
-                                            {{confirmSend}}
+                                            {{item.confirmSend}}
                                         </div>
                                     </van-slider>
                                 </div>
@@ -78,9 +78,9 @@
                 </van-tab>
                 <van-tab title="待取件" color="#4c62e7">
                     <van-row  class="width_max">
-                        <van-col  class=" checkbox_and_card_div"  v-for="(item ) in list">
+                        <van-col  class=" checkbox_and_card_div"  v-for="(item ,i) in list">
                             <div class="check_box">
-                                    <van-checkbox v-show="delete_status"   checked-color="#4c62e7" v-model="result"></van-checkbox>
+                                <van-checkbox v-show="delete_status"  class="radio" checked-color="#4c62e7" v-model="item.radio3"></van-checkbox>
                             </div>
                             <div class="card_div" >
                                 <van-row style="padding: 4px 12px 0">
@@ -96,9 +96,9 @@
                                     <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                 </van-row>
                                 <div class="slider_content" >
-                                    <van-slider @change="huaKuaiChange(1)" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#ffffff" >
+                                    <van-slider @change="huaKuaiChange(3,i)" class="sliderHua" v-model="item.huakuai_value2" bar-height="10px" active-color="#ffffff" >
                                         <div slot="button" class="custom-button" >
-                                            {{confirmGet}}
+                                            {{item.confirmGet}}
                                         </div>
                                     </van-slider>
                                 </div>
@@ -158,12 +158,12 @@
         </div>
         <div class="popContainer" v-show="delete_status==true">
             <van-row class="botton_box" type="flex" justify="center" style="">
-                <van-col  class="" span="2" ><van-checkbox class="all_check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                <van-col  class="" span="12" >
+                <van-col  class="" span="2" ><van-checkbox class="all_check_box" @click="allChoose" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                <van-col  class="" span="12" @click="allChoose">
                     <p class="all_text" style="">全选</p>
                 </van-col>
-                <van-col  class="blue_bg_box" span="5" style=""><p class="list_text_delete">接单</p></van-col>
-                <van-col  class="orange_bg_box" span="5" v-show="active==0"><p class="list_text_delete">忽略</p></van-col>
+                <van-col  class="blue_bg_box" span="5" style=""><p class="list_text_delete">{{allChooseTitle}}</p></van-col>
+                <van-col  class="orange_bg_box" span="5" v-show="active==0"><p class="list_text_delete" @click="hulueAll">忽略</p></van-col>
             </van-row>
         </div>
     </div>
@@ -191,14 +191,15 @@
                 confirmGet:'确认取件',
                 confirmSend:'确认送件',
                 right_text:'多选',
+                allChooseTitle:'接单',
                 delete_status:false,
                 right_width:65,
-                result:[],
+                result:0,
                 list:[
-                    {name:'北京市丰台区南三环西路10号'},
-                    {name:'北京市朝阳区三里屯马家大院'},
-                    {name:'北京市丰台区南三环西路10号'},
-                    {name:'北京市朝阳区三里屯马家大院'},
+                    {name:'北京市丰台区南三环西路10号',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
+                    {name:'北京市朝阳区三里屯马家大院',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
+                    {name:'北京市丰台区南三环西路10号',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
+                    {name:'北京市朝阳区三里屯马家大院',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
                 ]
             }
         },
@@ -219,6 +220,7 @@
                 this.$router.go(-1);
             },
             batch_choose() {
+                this.result = 0;
                 this.delete_status = !this.delete_status
                 if (this.delete_status) {
                     this.right_text = '取消多选';
@@ -236,23 +238,93 @@
                     this.is_open = !this.is_open;
                 }
             },
-            huaKuaiChange(){
-                if(this.huaKuai==100){
-                    this.huaKuaiName="确认中...";
-                    this.confirmGet="确认中..."
-                    this.confirmSend="确认中..."
-                    Dialog.alert({
-                        title: '',
-                        message: '抢单成功'
-                    }).then(() => {
-                        // on close
-                    });
-                }else{
-                    this.huaKuaiName="滑动抢单";
-                    this.confirmGet="确认取件";
-                    this.confirmSend = '确认送件';
+            allChoose() {
+                if (this.result == 0) {
+                    for (var i = 0; i < this.list.length; i++) {
+                        switch (this.active) {
+                            case 0:
+                                this.list[i].radio1 = 1;
+                                break;
+                            case 1:
+                                this.list[i].radio2 = 1;
+                                break;
+                            case 2:
+                                this.list[i].radio3 = 1;
+                                break;
+                            default:
+                                break;
+
+                        }
+                    }
+                    this.result = 1;
+                } else {
+                    for (var j = 0; j < this.list.length; j++) {
+                        switch (this.active) {
+                            case 0:
+                                this.list[j].radio1 = 0;
+                                break;
+                            case 1:
+                                this.list[j].radio2 = 0;
+                                break;
+                            case 2:
+                                this.list[j].radio3 = 0;
+                                break;
+                            default:
+                                break;
+                        }
+                        this.result = 0;
+                    }
                 }
+
             },
+            huaKuaiChange(num,i){
+                switch (num) {
+                    case 1:
+                        if(this.list[i].huakuai_value==100){
+                            this.list[i].huakuai_title="确认中...";
+                            Dialog.alert({
+                                title: '',
+                                message: '抢单成功'
+                            }).then(() => {
+                                // on close
+                            });
+                        }else{
+                            this.list[i].huakuai_title="滑动抢单";
+                        }
+                        break;
+                    case 2:
+                        if(this.list[i].huakuai_value1==100){
+                            this.list[i].confirmSend="确认中...";
+                            Dialog.alert({
+                                title: '',
+                                message: '抢单成功'
+                            }).then(() => {
+                                // on close
+                            });
+                        }else{
+                            this.list[i].huakuai_title="确认取件";
+                        }
+                        break;
+                    case 3:
+                        if(this.list[i].huakuai_value2==100){
+                            this.list[i].confirmGet="确认中...";
+                            Dialog.alert({
+                                title: '',
+                                message: '抢单成功'
+                            }).then(() => {
+                                // on close
+                            });
+                        }else{
+                            this.list[i].huakuai_title="确认送件";
+                        }
+                        break;
+                    default:
+                            break;
+
+                }
+
+            },
+
             choose(i) {
                 if ( i == 1) {
                     this.tab2 = '通过';
@@ -266,10 +338,32 @@
                 this.type = i;
             },
             onTabClick(index) {
-                this.active = index
-            }
-
-
+                this.delete_status = false ;
+                this.right_text = '多选'
+                this.right_width = 65;
+                this.active = index;
+                switch (index) {
+                    case 0:
+                        this.allChooseTitle = '接单';
+                        break;
+                    case 1:
+                        this.allChooseTitle = '送件';
+                        break;
+                    case 2:
+                        this.allChooseTitle = '取件';
+                        break;
+                    default:
+                        break;
+                }
+            },
+            hulue(i) {
+                this.list.splice(i,1);
+            },
+            hulueAll() {
+                if (this.result == 1 ) {
+                    this.list=[];
+                }
+            },
         },
 
         //计算属性
@@ -399,7 +493,7 @@
     }
     .all_check_box{
         position: relative;
-        top:20px
+        top:22px;
     }
     .popContainer{
         border-top: #dddddd 1px solid;
@@ -465,6 +559,11 @@
         background-color: rgb(238,238,238);
         /*justify-content: center;*/
         /*align-items: center;*/
+    }
+    .radio{
+        background-color: white;
+        width: 20px;
+        border-radius: 20px;
     }
     .card_list1_test_left{
         color: #999999;
@@ -562,6 +661,7 @@
         position: relative;
         left:3.5%;
         top:80px;
+
     }
 
     .title {
