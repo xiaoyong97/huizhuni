@@ -11,7 +11,7 @@
            <van-row>
              <van-col span="10"></van-col>
             <van-col>
-              <div class="navLeft">抢单</div>
+              <div class="navLeft" @click="openKeQun">抢单</div>
             </van-col>
             <van-col>
               <div  class="navRight"  @click="onClickRight">已抢单</div>
@@ -138,6 +138,30 @@
           </van-row>
         </div>
       </div>
+
+      <!--惠点通上拉菜单-->
+      <van-action-sheet class="hui_Action_ke" :round="false" :safe-area-inset-bottom="false" v-model="huiShow" title="客群筛选">
+        <div class="hui_bac">
+          <van-row >
+            <van-col  span="5">
+              <div class="keQunText">客群类别：</div>
+            </van-col>
+            <van-col span="19" >
+              <div class="keQunTabes"> 
+
+                <van-checkbox-group v-model="customerType" >
+                  <van-checkbox class="keQunCheckbox" v-for="item in customerTypeS" :key="item.value" :name="item.name" >
+                    {{ item.name }}
+                  </van-checkbox>
+                </van-checkbox-group>
+
+              </div>
+            </van-col>
+          </van-row>
+        </div>
+      </van-action-sheet>
+
+
       
     </div>
   </div>
@@ -154,6 +178,18 @@ export default {
   //基础数据存放处
   data (){
      return {
+      //惠点通上拉菜单使用
+      huiShow:false,
+      customerType: [],//客群类型选中
+      customerTypeS: [//客群类型数据
+         { name: '核心客群', value: 1 },
+         { name: '主力客群', value: 2 },
+         { name: '大众客群', value: 3 },
+         { name: '核心客群', value: 1 },
+         { name: '主力客群', value: 2 },
+         { name: '大众客群', value: 3 },
+      ],
+
        title : '商2机',
        activeName: 'a',
        activeTabs:'a',
@@ -187,7 +223,10 @@ export default {
   
   //声明方法
   methods : {
-    
+    //打开惠点通上拉菜单
+    openKeQun(){
+      this.huiShow=true;
+    },
     go : function(){
       this.$router.push('/more');
     },
@@ -242,8 +281,46 @@ export default {
   #shaiLeft .van-dropdown-menu__item:nth-of-type(1){
     border-bottom:3px solid #4c62e7;
   }
+
+  .hui_Action_ke .van-action-sheet__header{
+    background-color: #379BF6;
+    color: white;
+  }
+   .hui_Action_ke .van-icon{
+    color: white;
+  }
+  .keQunTabes .van-icon-success{
+    width: 14px;
+    height:14px;
+    line-height: 14px;
+    border-radius: 0px;
+    border:1px solid #C2C2C2;
+    margin:0px;
+  }
 </style>
 <style lang="scss" scoped>
+  //惠点通上拉菜单
+    .hui_Action_ke{
+      height:60%;
+    }
+    .hui_bac{
+      font-size: 13px;
+      height: auto;
+      padding:20px 20px;
+    }
+    .keQunText{
+      text-align: right;
+    }
+    .keQunTabes{
+      width:100%;
+    }
+    .keQunCheckbox{
+      float: left;
+      line-height: 30px;
+      margin-left: 10px;
+    }
+  //结束
+
   //头部导航
   .daohangKuang{
     position: fixed;

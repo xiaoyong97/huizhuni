@@ -27,6 +27,9 @@
     <div>
       <!--style="position: fixed;top: 34px; width:100%;"-->
       <van-tabs class="qiangDanTabs" v-model="activeName" line-width="33%" color="#1989fa"> 
+        <!--                待审核下拉图标-->
+        <img src="../../assets/images/24/Pulldown@2x.png" class="menu1_open" v-show="menu!==1" @click="openMenu(1)">
+        <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open" v-show="menu==1" @click="closeMenu">
         <van-tab title="全部" name="a">
          <div class="bac">
             <div class="daiWanCheng">
@@ -77,7 +80,7 @@
           </div>
         </van-tab>
 
-        <van-tab title="已抢单(2)" name="b" >
+        <van-tab title="待完成(2)" name="b" >
           <div class="bac">
             
             <div class="daiWanCheng">
@@ -129,9 +132,10 @@
           </div>
         </van-tab>
 
+
         <van-tab title="历史名单(4)" name="c">
           <div class="bac">
-            <div class="daiWanCheng">
+            <div class="daiWanCheng" v-show="menu2_choose==1|menu2_choose==0">
               <van-row >
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
@@ -176,7 +180,8 @@
               </van-row>
             </div>
             
-            <div class="yiShiXiao">
+            
+            <div class="daiWanCheng"  v-show="menu2_choose==2|menu2_choose==0">
               <van-row >
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
@@ -217,12 +222,13 @@
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
               <van-row  gutter="10">
-                <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangGray" >已失效</div></div>
+                <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangOrange" >已退回</div></div>
               </van-row>
             </div>
 
+
             
-            <div class="daiWanCheng">
+            <div class="daiWanCheng"  v-show="menu2_choose==3|menu2_choose==0">
               <van-row >
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
@@ -268,7 +274,7 @@
             </div>
 
             
-            <div class="daiWanCheng">
+            <div class="yiShiXiao"  v-show="menu2_choose==4|menu2_choose==0">
               <van-row >
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
@@ -309,9 +315,10 @@
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
               <van-row  gutter="10">
-                <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangOrange" >已退回</div></div>
+                <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangGray" >已失效</div></div>
               </van-row>
             </div>
+
 
             
           </div>
@@ -328,7 +335,26 @@
         <van-radio class="fangButClass" name="3">客户条件不符合</van-radio>
       </van-radio-group>
     </van-dialog>
-
+         <!--         历史名单下拉菜单-->
+    <div class='menu_popContainer'  v-show="menu!==-1">
+        <div  class="menu1_choose_box" :class="type==1?'':'width_half_right'" v-show="menu==1">
+            <van-row class="choose_box_list" @click="menu2Choose(0)">
+                <p class="menu1_choose_box_text " :class="menu2_choose == 0 ? 'blue' : '' ">全部历史</p>
+            </van-row>
+            <van-row class="choose_box_list" @click="menu2Choose(1)">
+                <p class="menu1_choose_box_text " :class="menu2_choose == 1 ? 'blue' : '' ">已完成</p>
+            </van-row>
+            <van-row class="choose_box_list" @click="menu2Choose(2)">
+                <p class="menu1_choose_box_text " :class="menu2_choose == 2 ? 'blue' : '' ">已退回</p>
+            </van-row>
+            <van-row class="choose_box_list" @click="menu2Choose(3)">
+                <p class="menu1_choose_box_text " :class="menu2_choose == 3 ? 'blue' : '' ">已放弃</p>
+            </van-row>
+            <van-row class="choose_box_list" @click="menu2Choose(4)">
+                <p class="menu1_choose_box_text " :class="menu2_choose == 4 ? 'blue' : '' ">已失效</p>
+            </van-row>
+        </div>
+    </div>
 
   </div>
   
@@ -345,6 +371,9 @@ export default {
   data (){
      return {
        title : '商2机',
+       menu:-1,  //-1:不显示
+       active:0,
+       menu2_choose:0,
        activeName: 'a',
        activeTabs:'a',
        fangQiButShow: false,
@@ -383,6 +412,38 @@ export default {
     go : function(){
       this.$router.push('/more');
     },
+    //图标下拉
+    openMenu (i){
+      this.menu = i;
+    },
+    //图标上拉
+    closeMenu (){
+        this.menu = -1;
+    },
+    //下拉列表中列得点击事件
+    menu2Choose(i){
+        // switch (i) {
+        //     case 0 :
+        //         this.tab2Title = '待审核(4)';
+        //         break;
+        //     case 1 :
+        //         this.tab2Title = '任务新建(1)';
+        //         break;
+        //     case 2 :
+        //         this.tab2Title = '任务中止(1)';
+        //         break;
+        //     case 3 :
+        //         this.tab2Title = '任务变更(1)';
+        //         break;
+        //     case 4 :
+        //         this.tab2Title = '名单补录(1)';
+        //         break;
+        //     default:
+        //         break;
+        // }
+        this.menu2_choose = i;
+        this.menu = -1;
+    },
     //已抢单中放弃按钮
     fangQiBut(){
       this.fangQiButShow = true
@@ -417,6 +478,7 @@ export default {
     searchBut(){
       this.$router.push('/searchShang');
     },
+
     activeB(){
       this.active="b"
     }
@@ -472,6 +534,40 @@ export default {
     color: white;
     background-color: #4c62e7;
   }
+  //结束
+  //下拉图标及菜单
+  .menu1_open{
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      left: 93%;
+      top:14px;
+      z-index: 100;
+  }
+  .menu_popContainer{
+      position: fixed;
+      top: 90px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 101;
+  }
+  .menu1_choose_box{
+      position: relative;
+      top:0px;
+      left:67%;
+      width: 33%;
+      text-align: center;
+      background-color: white;
+  }
+    .menu1_choose_box_text{
+        line-height: 36px;
+        color: #999999;
+        font-size: 16px;
+        margin-block-start:0;
+        margin-block-end:0;
+    }
   //结束
   .qiangDanTabs{
     padding-bottom: 50px;
