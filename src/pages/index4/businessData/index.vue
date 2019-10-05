@@ -961,7 +961,7 @@
 		box-shadow: 0 2px 2px 0 rgba(0,0,0,.15);
 	}
 	.header{
-		width: 200px;
+		width: 230px;
 		margin: 0px auto;
 	}
 	.header_left{
@@ -980,6 +980,8 @@
 		font-size: 16px;
 		padding-left: 0px;
 		padding-right: 0px;
+		width: 82%;
+		text-align: center;
 	}
 	.header_right{
 		border-top:18px solid rgb(56,155,246);
