@@ -79,7 +79,7 @@
                 <div style="height: 15px" v-show="open"></div>
 
             </div>
-            <van-row type="flex" justify="center" class="choose_row"  v-show="identity=='handle'">
+            <van-row type="flex" justify="center" class="choose_row"  v-show="identity!=='handle'">
                 <van-col class="reject_col"  span="8" ><p class="reject_col_test">拒绝补录</p></van-col>
                 <van-col class=""  span="2" ></van-col>
                 <van-col class="agree_col"   span="8" ><p class="agree_col_test" >同意补录</p></van-col>

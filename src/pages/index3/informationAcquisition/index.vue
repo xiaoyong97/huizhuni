@@ -28,7 +28,7 @@
                             <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
                         </van-row>
                         <div style="height: 6px"></div>
-                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('collectOperation')">
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('collectOperation',{step:1})">
                             <van-col class="icon_box" span=""><img src="../../../assets/images/38/Supplement@2x.png" class="img_location" ></van-col>
                             <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #f76037;font-weight: normal">补录</p></van-col>
                         </van-row>
@@ -51,7 +51,7 @@
                             <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
                         </van-row>
                         <div style="height: 6px"></div>
-                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center">
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('collectOperation',{step:1})">
                             <van-col class="icon_box" span=""><img src="../../../assets/images/38/Supplement@2x.png" class="img_location" ></van-col>
                             <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #f76037;font-weight: normal">补录</p></van-col>
                         </van-row>
@@ -80,7 +80,7 @@
                         </van-row>
                         <div style="height: 6px"></div>
                         <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center">
-                            <van-col class="" span="12">
+                            <van-col class="" span="12" @click="go('collectOperation')">
                                 <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Signing@2x.png" class="img_location" ></van-col>
                                 <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">修改</p></van-col>
                             </van-col>
@@ -111,7 +111,7 @@
                         </van-row>
                         <div style="height: 6px"></div>
                         <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center">
-                            <van-col class="" span="12">
+                            <van-col class="" span="12" @click="go('collectOperation')">
                                 <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Signing@2x.png" class="img_location" ></van-col>
                                 <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">修改</p></van-col>
                             </van-col>
@@ -182,9 +182,7 @@
                 this.$router.push('./activityDetailsNotBegin');
             },
             go : function(url,param){
-                if (url=='collectOperation'&&param) {
-                    var num = Math.floor(Math.random()*5+1)
-                    param = {step:num}
+                if (param) {
                     this.$router.push({name:url,params:param});
                 }
                 this.$router.push({name: url})
