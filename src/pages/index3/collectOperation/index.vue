@@ -41,28 +41,20 @@
 
 			<van-cell-group class="bg-grey">
 				<van-field label="姓名"placeholder="请输入姓名" v-model="info.company_main_info.name" clearable label-width="120"/>
-				<van-field label="性别" placeholder="性别"  v-model="info.company_main_info.sex" clearable label-width="120"/>
+				<van-field label="性别" placeholder="请输入性别" @click-right-icon="openPicker(3)" v-model="info.company_main_info.sex" clearable label-width="120" right-icon="arrow-down"/>
 				<van-field label="民族" placeholder="请输入民族" v-model="info.company_main_info.ethnic" clearable label-width="120"/>
-				<van-field label="出生日期"placeholder="请输入企业地址" v-model="info.company_main_info.birth" clearable label-width="120"/>
-				<van-field label="住址" placeholder="住址"  v-model="info.company_main_info.address" clearable label-width="120"/>
-				<van-field label="公民身份证号" placeholder="公民身份证号" v-model="info.company_main_info.idcard" clearable label-width="120"/>
-				<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="info.company_main_info.validity_period" clearable label-width="120" label-color="red"/>
-				<van-field label="学历" placeholder="法定代表人电话" v-model="info.company_main_info.record_of_formal_schooling" clearable label-width="120"/>
-					<van-field label="电话号码"placeholder="请输入电话号码" v-model="info.company_main_info.mobile" clearable label-width="120" label-color="red"/>
-					<van-dropdown-menu class="xialakuang">
-						<van-dropdown-item v-model="TheSorting1" :options="TheSortings1" />
-					</van-dropdown-menu>
+				<van-field label="出生日期"placeholder="请输入出生日期" @click-right-icon="openPicker(1)" v-model="info.company_main_info.birth" clearable label-width="120" right-icon="arrow-down"/>
+				<van-field label="住址" placeholder="请输入住址"  v-model="info.company_main_info.address" clearable label-width="120"/>
+				<van-field label="公民身份证号" placeholder="请输入公民身份证号" v-model="info.company_main_info.idcard" clearable label-width="120"/>
+				<van-field label="有效期限"placeholder="请输入有效期限" @click-right-icon="openPicker(2)" v-model="info.company_main_info.validity_period" clearable right-icon="arrow-down" label-width="120" label-color="red"/>
+				<van-field label="学历" placeholder="请输入学历" @click-right-icon="openPicker(4)" v-model="info.company_main_info.record_of_formal_schooling" clearable right-icon="arrow-down" label-width="120"/>
+				<van-field label="电话号码"placeholder="请输入电话号码" v-model="info.company_main_info.mobile" clearable label-width="120" label-color="red"/>
 				<van-field label="工作单位"placeholder="请输入工作单位" v-model="info.company_main_info.work" clearable label-width="120" label-color="red"/>
-				<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="info.company_main_info.marriage_status" clearable label-width="120"/>
-				<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="info.company_main_info.households" clearable label-width="120" label-color="red"/>
-
+				<van-field label="婚姻情况" placeholder="请输入婚姻情况" @click-right-icon="openPicker(5)" v-model="info.company_main_info.marriage_status" clearable label-width="120" right-icon="arrow-down"/>
+				<van-field label="家庭人数"placeholder="请输入家庭人数" @click-right-icon="openPicker(6)" v-model="info.company_main_info.households" clearable right-icon="arrow-down" label-width="120" label-color="red"/>
 			</van-cell-group>
 		</div>
-		<van-cell-group>
-		<van-dropdown-menu class="xialakuang">
-			<van-dropdown-item v-model="TheSorting1" :options="TheSortings1" />
-		</van-dropdown-menu>
-		</van-cell-group>
+
 		<div class="input-contianer" v-show="step==2">
 			<div v-for="(item,index) in info.associates">
 				<h4 class="cell-hearder">关联人{{index+1}}</h4>
@@ -83,42 +75,24 @@
 				<van-cell-group class="bg-grey">
 
 					<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
-					<van-field label="性别" placeholder="性别"  v-model="item.sex" clearable label-width="120"/>
+					<van-field label="性别" placeholder="性别"  v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
-					<van-field label="出生日期"placeholder="请输入企业地址" v-model="item.birth" clearable label-width="120"/>
+					<van-field label="出生日期"placeholder="请输入企业地址" v-model="item.birth" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
 					<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
-					<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
-					<van-field label="学历" placeholder="法定代表人电话" v-model="item.record_of_formal_schooling" clearable label-width="120"/>
+					<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" right-icon="arrow-down" label-color="red"/>
+					<van-field label="学历" placeholder="法定代表人电话" v-model="item.record_of_formal_schooling" clearable label-width="120" right-icon="arrow-down"/>
 						<van-field label="电话号码"placeholder="请输入电话号码" v-model="item.mobile" clearable label-width="120" label-color="red"/>
-<!--					<van-dropdown-menu class="xialakuang">-->
-<!--						<van-dropdown-item v-model="TheSorting1" :options="TheSortings1" />-->
-<!--					</van-dropdown-menu>-->
-					<van-dropdown-menu class="xialakuang">
-						<van-dropdown-item v-model="value" :options="option" />
-						<van-dropdown-item title="筛选" ref="item">
-							<van-switch-cell v-model="switch1" title="包邮" />
-							<van-switch-cell v-model="switch2" title="团购" />
-							<van-button block type="info" @click="onConfirm">确认</van-button>
-						</van-dropdown-item>
-					</van-dropdown-menu>
 					<van-field label="工作单位"placeholder="请输入工作单位" v-model="item.work" clearable label-width="120" label-color="red"/>
-					<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="item.marriage_status" clearable label-width="120"/>
-						<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="item.households" clearable label-width="120" label-color="red"/>
+					<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="item.marriage_status" clearable label-width="120" right-icon="arrow-down"/>
+						<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="item.households" clearable label-width="120" label-color="red" right-icon="arrow-down"/>
 
 				</van-cell-group>
 
 			</div>
 
 		</div>
-		<van-dropdown-menu class="xialakuang">
-			<van-dropdown-item v-model="value" :options="option" />
-			<van-dropdown-item title="筛选" ref="item">
-				<van-switch-cell v-model="switch1" title="包邮" />
-				<van-switch-cell v-model="switch2" title="团购" />
-				<van-button block type="info" @click="onConfirm">确认</van-button>
-			</van-dropdown-item>
-		</van-dropdown-menu>
+
 		<div class="input-contianer" v-show="step==3">
 			<div v-for="(item,index) in info.mortgaged">
 				<h4 class="cell-hearder">抵押物{{index+1}}</h4>
@@ -138,7 +112,7 @@
 				<van-cell-group class="bg-grey">
 					<van-field label="权利人"placeholder="请输入权利人" v-model="item.holder" clearable label-width="120"/>
 					<van-field label="共有情况" placeholder="共有情况"  v-model="item.situations" clearable label-width="120"/>
-					<van-field label="地址" placeholder="地址" v-model="item.address" clearable label-width="120"/>
+					<van-field label="地址" placeholder="地址" v-model="item.address" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="不动产单元号"placeholder="请输入不动产单元号" v-model="item.number" clearable label-width="120"/>
 					<van-field label="权利类型" placeholder="权利类型"  v-model="item.type" clearable label-width="120"/>
 					<van-field label="权利性质" placeholder="权利性质" v-model="item.nature" clearable label-width="120"/>
@@ -260,7 +234,23 @@
 			</div>
 		</div>
     </div>
+<!--		选择器遮罩层-->
+		<div class="pop_picker" v-show="time_Picker_Statue!==0">
+			<van-picker :columns="columns"  show-toolbar @cancel="onCancel" @confirm="confirmBtn(0)" v-show="time_Picker_Statue==3"   class="picker"/>
 
+			<van-datetime-picker v-show="time_Picker_Statue==1" class="picker"
+								 v-model="currentDate1"
+								 type="date"
+								 :min-date="minDate"
+								 @confirm="confirmBtn(1)" @cancel="onCancel()"
+			/>
+			<van-datetime-picker v-show="time_Picker_Statue==2" class="picker"
+								 v-model="currentDate2"
+								 type="date"
+								 :min-date="minDate"
+								 @confirm="confirmBtn(2)" @cancel="onCancel()"
+			/>
+		</div>
     </div>
 </template>
 
@@ -274,26 +264,14 @@
 	export default {
   data() {
     return {
-		value: 0,
-		switch1: false,
-		switch2: false,
-		option: [
-			{ text: '全部商品', value: 0 },
-			{ text: '新款商品', value: 1 },
-			{ text: '活动商品', value: 2 }
-		],
-		TheSorting1: 0,
-		TheSorting2: 'a',
-		TheSortings1: [
-			{ text: '默认排序', value: 0 },
-			{ text: '发布时间排序', value: 1 },
-			{ text: '距离排序', value: 2 },
-		],
-		TheSortings2: [
-			{ text: '筛选', value: "a" },
-			{ text: '新款商品', value: "b" },
-			{ text: '活动商品', value: "c" }
-		],
+		zidingyi:3,//3性别4学历5婚姻6家庭人数
+		currentDate1: new Date(),//1:开始日期  2 结束日期
+		currentDate2: new Date(),
+		timeValue1: '',//按确认后显示的日期  1：开始日期  2：结束日期
+		timeValue2: '',
+		time_Picker_Statue:0, //0：不显示 1：显示开始日期控件 2：显示结束日期控件  3：自定义控件：默认性别
+		columns:['男', '女'],//默认自定义picker数据
+
       title : [
 		'信息采集-企业信息',
 		'信息采集-企业主信息',
@@ -403,6 +381,8 @@
 			]
 		},
 		result:[],
+
+
     }
   },
 
@@ -423,6 +403,56 @@
 
   //声明方法
   methods : {
+	  openPicker(i) {//0：不显示 1：显示开始日期控件 2：显示结束日期控件  3:自定义控件：  3性别4学历5婚姻6家庭人数
+	  	switch (i) {
+			case 0:
+				this.time_Picker_Statue = 0;
+				break;
+			case 1:
+				this.time_Picker_Statue = 1;
+				break;
+			case 2:
+				this.time_Picker_Statue = 2;
+				break;
+			case 3:
+				this.time_Picker_Statue = 3;
+				this.columns = ['男', '女'];
+				break;
+			case 4:
+				this.time_Picker_Statue = 3;
+				this.columns = ['研究生以上', '本科','大专','高中'];
+				break;
+			case 5:
+				this.time_Picker_Statue = 3;
+				this.columns = ['已婚', '未婚','离异'];
+				break;
+			case 6:
+				this.time_Picker_Statue = 3;
+				this.columns = [4, 3,2,1];
+				break;
+			default:
+				break;
+
+		}
+
+	  },
+	  //自定义以及日期---取消键
+	  onCancel() {
+		  this.time_Picker_Statue = 0;
+	  },
+	  //自定义以及日期----确定键
+	  confirmBtn(i) { // 确定按钮TODO
+	  	if (i==0) {
+
+		} else {
+			if (i==1) {
+
+			} else {
+
+			}
+		}
+	  this.time_Picker_Statue = 0;
+	  },
 	  onConfirm() {
 		  this.$refs.item.toggle();
 	  },
@@ -519,9 +549,21 @@
 </script>
 
 <style lang="scss" scoped>
-.xialakuang{
-	background-color: #4c62e7;
-	width: 50%;
+.pop_picker{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.3);
+}
+.bg-grey{
+	position: relative;
+}
+.picker{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 .content{
 	padding: 0px;
