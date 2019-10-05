@@ -112,7 +112,7 @@
 				<van-cell-group class="bg-grey">
 					<van-field label="权利人"placeholder="请输入权利人" v-model="item.holder" clearable label-width="120"/>
 					<van-field label="共有情况" placeholder="共有情况"  v-model="item.situations" clearable label-width="120"/>
-					<van-field label="地址" placeholder="地址" @click-right-icon="openPicker(7)" v-model="item.address" clearable label-width="120" right-icon="arrow-down"/>
+					<van-field label="坐落" placeholder="坐落" @click-right-icon="openPicker(7)" v-model="item.address" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="不动产单元号"placeholder="请输入不动产单元号" v-model="item.number" clearable label-width="120"/>
 					<van-field label="权利类型" placeholder="权利类型"  v-model="item.type" clearable label-width="120"/>
 					<van-field label="权利性质" placeholder="权利性质" v-model="item.nature" clearable label-width="120"/>
@@ -477,6 +477,10 @@
 		this.step ++;
 	},
 	onClickLeft:function() {
+		if(this.step == 5 ){
+			this.$router.push({name:'index3'});
+			return;
+		}
 		if(this.step == 0 ){
 			this.$router.go(-1);
 			return;
