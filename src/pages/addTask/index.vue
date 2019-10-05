@@ -45,9 +45,7 @@
 			 </van-cell>
 				
 			 </van-cell-group>			
-						
-						
-					
+							
 			<van-cell-group class="bg-grey">
 				<van-cell class="grey addCard" v-show="type==1" @click="addCard"><van-icon name="add" />添加抵押物</van-cell>
 				<van-cell class="grey addCard" v-show="type==0" ></van-cell>

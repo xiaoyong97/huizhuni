@@ -14,8 +14,6 @@
         >
     </van-tabbar-item>
     </van-tabbar>
-    
-
 </template>
 
 <script>

@@ -9,8 +9,11 @@
 		<div class="main" style="height: 100%">
 
 				<div class="content" >
+
 					<van-tabs v-model="activeName" line-width=50% line-height=3 color="#4c62e7" title-active-color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
+
 						<van-tab title="我的业绩" name="a" style="margin-top: 0px;padding-top: 0" >
+
 							<div class="business_box">
 								<div class="business_box1">
 									<p class="business_text">商机完成情况</p>
@@ -77,23 +80,24 @@
 											<van-col span="2" class="business_box3" style="height: 45px;"><p class="business_text_percent">%</p></van-col>
 										</div>
 									</van-col>
-									<van-col span="10" style="position: relative">
-										<van-row class="" style="position: absolute;top: 20px;width: 130px;left: 20px">
-											<van-col  class="business_box3" span="1"><img :src="successCircle"  class="img_navigation" ></van-col>
-											<van-col  class="business_box3" span="20"><p class="business_text_success">成功</p></van-col>
-										</van-row>
-										<van-row class="" style="position: absolute;top: 40px;width: 130px;left: 20px">
-											<van-col class="business_box3" span="1"><img :src="failCircle"  class="img_navigation" ></van-col>
-											<van-col class="business_box3" span="20"><p class="business_text_success">未成功</p></van-col>
-										</van-row>
-									</van-col>
-									<van-col span="6" >
-										<img :src="chart"  class="" style="height:110px;width: 110px;position: absolute;top: 14px;right: 30px">
+<!--									<van-col span="10" style="position: relative">-->
+<!--										<van-row class="" style="position: absolute;top: 20px;width: 130px;left: 20px">-->
+<!--											<van-col  class="business_box3" span="1"><img :src="successCircle"  class="img_navigation" ></van-col>-->
+<!--											<van-col  class="business_box3" span="20"><p class="business_text_success">成功</p></van-col>-->
+<!--										</van-row>-->
+<!--										<van-row class="" style="position: absolute;top: 40px;width: 130px;left: 20px">-->
+<!--											<van-col class="business_box3" span="1"><img :src="failCircle"  class="img_navigation" ></van-col>-->
+<!--											<van-col class="business_box3" span="20"><p class="business_text_success">未成功</p></van-col>-->
+<!--										</van-row>-->
+<!--									</van-col>-->
+									<van-col span="16" >
+										<div id="myChart"></div>
 									</van-col>
 									<img :src="pull_down"  class="felx_img" @click="onCilckFlex" v-show="step">
 									<img :src="Pullup"  class="felx_img" @click="onCilckFlex" v-show="!step">
 								</van-row>
 							</div>
+
 							<!--              折叠div-->
 							<div v-show="!step" style="height: 100px"></div>
 							<div class="business_box" v-show="step" style="border-top-left-radius: 0;border-top-right-radius: 0;height: auto">
@@ -125,7 +129,7 @@
 										<van-col span=""><p class="tab3_div1_text1" >光荣榜</p></van-col>
 									</van-row>
 									<van-row span="24" style="text-align: center;">
-										<p class="tab3_div1_text2">第<span class="tab3_div1_text3" >12</span>笔</p>
+										<p class="tab3_div1_text2">第<span class="tab3_div1_text3" >12</span>名</p>
 									</van-row>
 								</van-col>
 								<van-col  class="" span="8" style="position: relative">
@@ -241,6 +245,10 @@
 
 	Vue.use(Row).use(Col);
 	Vue.use(Tab).use(Tabs);
+	let echarts = require('echarts/lib/echarts');
+	require('echarts/lib/chart/pie');
+	require('echarts/lib/component/title');
+	require('echarts/lib/component/legend')
 	export default {
 
 		//基础数据存放处
@@ -249,6 +257,7 @@
 				title : '业绩展示',
 				activeName: 'a',
 				step:false,
+				myChart:null,
 				decrease_img: require('@/assets/image/my/decrease.png'),
 				pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
 				successCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
@@ -274,6 +283,10 @@
 
 		//网页加载完成
 		mounted () {
+			var that = this ;
+			setTimeout(function () {
+				that.createChart();
+			},100)
 
 		},
 
@@ -287,6 +300,55 @@
 			},
 			onCilckFlex () {
             	this.step=!this.step
+			},
+			createChart: function() {
+				console.log('666')
+				if(this.myChart == null){
+					console.log('123')
+					// 基于准备好的dom，初始化echarts实例
+					this.myChart = echarts.init(document.getElementById('myChart'))
+					let option = {
+						color:['#4c62e7','#f34c83'],
+						legend: {
+							orient: 'vertical',
+							x: '10',
+							y:'50',
+							icon: "circle",
+							data:['未成功','成功'],
+							selectedMode:false,
+						},
+						series: [
+							{
+								name:'访问来源',
+								type:'pie',
+								radius: ['30%', '100%'],
+								label: {
+
+									normal: {
+										position: 'inner',
+										formatter: ' {per|{d}%}  ',
+										rich: {
+											per: {
+												color: '#fff',
+												padding: [2, 4],
+												fontSize: 14,
+
+											}
+										}
+									}
+								},
+								data:[
+									{value:33, name:'未成功'},
+									{value:67, name:'成功'},
+
+								]
+							}
+						]
+					};
+
+					// 绘制图表
+					this.myChart.setOption(option);
+				}
 			},
 
 
@@ -598,7 +660,13 @@
 	.text-align_right{
 		text-align: right;
 	};
+	#myChart{
+		width: 120%;
+		height:110px;
+		position: relative;
+		top:-18px
 
+	}
 
 
 
