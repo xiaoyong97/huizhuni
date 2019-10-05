@@ -430,5 +430,13 @@ export default new Router({
                 title: '宏观经济'
             },
         },
+		{
+		    name: 'businessData',
+		    path: '/index4/businessData',
+		    component: () => import('@/pages/index4/businessData'),
+		    meta: {
+		        title: '经营数据'
+		    },
+		},
     ]
   })
