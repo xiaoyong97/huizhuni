@@ -1,8 +1,7 @@
 <template>
     <div class="main_box">
         <!--头部导航-->
-        <van-nav-bar :title="title" class="top_bar"></van-nav-bar>
-        <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
+        <van-nav-bar :title="title"  class="theme_color" left-arrow   @click-left="onClickLeft"></van-nav-bar>
         <van-row class="location_div" >
             <van-col class="relative" span="1" >
                 <img src="../../../assets/images/huidiantong/location@12.jpg" class="img_location"  >
@@ -69,7 +68,7 @@
         data() {
             return {
                 title : '宏观经济数据',
-                pickerShow:true,
+                pickerShow:false,
                 locationTitle:'全国',
                 list_:[
                     {title1:'GDP',num1:21342.8,unit1:'亿元', title2:'GDP同比',num2:6.8,unit2:'%'},
@@ -166,6 +165,9 @@
         height: 20px;
         width: 14px;
     }
+    /*.van-nav-bar__title,.van-icon.van-icon-arrow-left.van-nav-bar__arrow{*/
+    /*    color:#fff;*/
+    /*}*/
     .img_lianzi1{
         position: absolute;
         top: 94px;
@@ -193,6 +195,12 @@
     }
     .left_top_col{
         width: 65%;
+    }
+    .theme_color{
+        background-color: rgb(56,155,246);
+    }
+    .van-nav-bar__title,.van-icon.van-icon-arrow-left.van-nav-bar__arrow{
+        color:#fff;
     }
     .right_top_col{
         border-radius: 4px;

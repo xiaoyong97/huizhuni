@@ -536,7 +536,7 @@
 		this.$router.go(-1);
 	},
 	  go : function(url){
-		 
+
 		  this.$router.push({name: url})
 	  },
   },
