@@ -199,7 +199,7 @@
 		<div class="btn_group" v-show='step!=5'>
 			<p v-show="step>1" class="add_asso" @click="add_item"><span class="add">&nbsp;+&nbsp;</span>添加关联人</p>
 			<div class="save_button" @click="save">保存并退出</div>
-			<div class="next_button" @click="addStep">下一步</div>
+			<div class="next_button" @click="addStep">{{next}}</div>
 		</div>
 		<div v-show='step==5'>
 			<div class="success-pan">
@@ -266,6 +266,7 @@
 	export default {
   data() {
     return {
+		next:'下一步',
 		areaList:areaList,
 		zidingyi:3,//3性别4学历5婚姻6家庭人数
 		currentDate1: new Date(),//1:开始日期  2 结束日期
@@ -464,6 +465,11 @@
 		  this.$refs.item.toggle();
 	  },
 	addStep:function(){
+		if(this.step == 3 ){
+			this.next = '确认提交';
+		} else {
+			this.next = '下一步';
+		}
 		if(this.step == 5 ){
 			this.$router.go(-1);
 			return;
