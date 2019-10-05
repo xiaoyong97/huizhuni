@@ -570,7 +570,7 @@
 			<div class="query_container" v-show="type==2">
 						<div >
 							<div class="line_grey"></div>
-							<div class="header_text">
+							<div class="header_text" >
 								<h3>"普惠金融百万创业者培训计划"</h3>
 								 <h3>开展情况会中表</h3>
 							</div>
@@ -583,7 +583,7 @@
 								 </van-col>
 							 </van-row>
 
-							 <van-row class="cell">
+							 <van-row class="cell" @click="chooseDate">
 								<van-col class="cell-header" span="6">报告期</van-col>
 								<van-col class="cell-content" span="16">
 									<select name="" id="">
@@ -600,36 +600,6 @@
 							<van-col class="btn-item" @click="sort(3)" span="8">按次数 &nbsp;<span class="sort"><span class="top">&nbsp;</span><span class="down active">&nbsp;</span></span></van-col>
 						</van-row>
 							 <div id="myChart" ></div>
-				<div >
-					<div class="line_grey"></div>
-					<div class="header_text">
-						<h3>"普惠金融百万创业者培训计划"</h3>
-						 <h3>开展情况会中表</h3>
-					</div>
-					 <van-row class="cell">
-						 <van-col class="cell-header" span="6">机构名称</van-col>
-						 <van-col class="cell-content" span="16">
-							 <select name="" id="">
-								 <option value="" selected>中国建设银行总行</option>
-							 </select>
-						 </van-col>
-					 </van-row>
-
-					 <van-row class="cell">
-						<van-col class="cell-header" span="6">报告期</van-col>
-						<van-col class="cell-content" span="16">
-							<input type="text" v-model="date" readonly="" @click="chooseDate">
-						</van-col>
-					 </van-row>
-					 <div class="line_grey"></div>
-				</div>
-
-				<van-row class="btn-group ">
-					<van-col class="btn-item" @click="sort(1)" span="8">按字母 &nbsp;<span class="sort"><span class="top active">&nbsp;</span><span class="down">&nbsp;</span></span></van-col>
-					<van-col class="btn-item" @click="sort(2)" span="8">按人数 &nbsp;<span class="sort"><span class="top active">&nbsp;</span><span class="down">&nbsp;</span></span></van-col>
-					<van-col class="btn-item" @click="sort(3)" span="8">按次数 &nbsp;<span class="sort"><span class="top">&nbsp;</span><span class="down active">&nbsp;</span></span></van-col>
-				</van-row>
-				<div id="myChart" ></div>
 				<van-popup v-model="date_picker">
 					<div class="date_container">
 						<div class="date_input_container">
@@ -640,16 +610,16 @@
 							    clearable
 								class="border"
 							 >
-							  <img slot="button" class="calendar" src="../../assets/images/38/calendar@2x.png" alt="">
+							  <img slot="button" @click="timePickerStatue(1)" class="calendar" src="../../assets/images/38/calendar@2x.png" alt="">
 							 </van-field>
 							<div class="zhi">至</div>
 							  <van-field
 							    v-model="end_date"
-							    type="password"
+                                clearable
 								  class="border"
 							  >
 
-							  <img  slot="button" class="calendar" src="../../assets/images/38/calendar2.png" alt="">
+							  <img  slot="button" @click="timePickerStatue(2)" class="calendar" src="../../assets/images/38/calendar2.png" alt="">
 							  </van-field>
 							</van-cell-group>
 							<div class="btn-group">
@@ -657,13 +627,22 @@
 								<button class="btn-sure" @click="sure">确定</button>
 							</div>
 						</div>
+                        <div style="width: 100%">
+                            <van-datetime-picker v-show="time_Picker_Statue==1" class="datetime-picker"
+                                                 v-model="currentDate1"
+                                                 type="date"
+                                                 :min-date="minDate"
+                                                 @change="changeFn(1)" @confirm="confirmBtn(1)" @cancel="cancelFn()"
+                            />
+                            <van-datetime-picker v-show="time_Picker_Statue==2" class="datetime-picker"
+                                                 v-model="currentDate2"
+                                                 type="date"
+                                                 :min-date="minDate"
+                                                 @change="changeFn(2)" @confirm="confirmBtn(2)" @cancel="cancelFn()"
+                            />
+                        </div>
 
-						<van-datetime-picker
-						  v-model="currentDate"
-						  type="date"
-						  :min-date="minDate"
-						  class="datetime-picker"
-						/>
+
 					</div>
 
 				</van-popup>
@@ -810,7 +789,8 @@
             open_fliter() {
                 if (this.menu == 9) {
                     this.menu = 0;
-                } else {
+                }
+                if(this.type !== 2) {
                     this.menu = 9;
                 }
             },
@@ -820,10 +800,18 @@
                 this.time_choose = 0;
             },
             confirmBtn(i) { // 确定按钮
-                if (i==1) {
-                    this.timeValue1 = this.timeFormat(this.currentDate1);
+                if(this.type !== 2) {
+                    if (i==1) {
+                        this.timeValue1 = this.timeFormat(this.currentDate1);
+                    } else {
+                        this.timeValue2 = this.timeFormat(this.currentDate2);
+                    }
                 } else {
-                    this.timeValue2 = this.timeFormat(this.currentDate2);
+                    if (i==1) {
+                        this.start_date = this.timeFormat(this.currentDate1);
+                    } else {
+                        this.end_date = this.timeFormat(this.currentDate2);
+                    }
                 }
                 this.time_Picker_Statue = 0;
             },
@@ -841,6 +829,9 @@
                 let year = time.getFullYear();
                 let month = time.getMonth() + 1;
                 let day = time.getDate();
+                if (this.type == 2) {
+                    return year + '年' + month + '月' + day +'日'
+                }
                 return year + '/' + month + '/' + day
             },
             openOverlay : function(){
@@ -969,20 +960,21 @@
 					}
 				},100)
 			},
-			sort:function(type){
-
-
-			},
-
-			chooseDate:function(){
+			chooseDate (){
 				this.date_picker = true;
 			},
 			cancel_choose:function(){
 				this.date_picker = false;
+                this.time_Picker_Statue = 0;
 			},
 			sure:function(){
 				this.date_picker = false;
-			}
+                this.time_Picker_Statue = 0;
+			},
+            sort:function(type){
+
+
+            },
 
         },
 
@@ -1414,7 +1406,7 @@
     }
 
 	.date_container{
-		width:414px;
+		width:100%;
 		min-height: 736px;
 
 	}
@@ -1441,6 +1433,7 @@
 	}
 	.van-popup{
 		background-color: rgba(0,0,0,0);
+        width: 100%;
 	}
 	.datetime-picker{
 		position: absolute;
@@ -1454,12 +1447,17 @@
 	.btn-group .cancel-btn{
 		width: 47%;
 		height: 44px;
-
+        background-color: white;
+        border: 0px;
+        border-radius: 10px;
 	}
 	.btn-group .btn-sure{
 		width: 47%;
 		height: 44px;
 		color: #4c62e7;
+        background-color: white;
+        border: 0px;
+        border-radius: 10px;
 	}
 	.zhi{
 		height: 40px;
