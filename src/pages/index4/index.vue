@@ -1,7 +1,7 @@
 <template>
-  
+
   <div class="main">
-   
+
    <!-- <van-nav-bar
     :title='title'
     fixed
@@ -25,14 +25,14 @@
       <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
     </baidu-map>
   </div>
-  
-    
+
+
 
 
   <BottomBar/>
 
   </div>
-  
+
 </template>
 
 <script>
@@ -69,12 +69,12 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+
   },
-  
+
   //声明方法
   methods : {
-    
+
     go : function(){
       this.$router.push('/more');
     },
@@ -96,10 +96,10 @@ export default {
     infoWindowOpen (marker) {
       this.markers[marker].showFlag = true
     },
-    
+
 
   },
-  
+
   //计算属性
   computed: {
 

@@ -405,5 +405,13 @@ export default new Router({
 		   title: '信息详情'
 		  },
 		},
+        {
+            name: 'macroeconomics',
+            path: '/index4/macroeconomics',
+            component: () => import('@/pages/index4/macroeconomics'),
+            meta: {
+                title: '宏观经济'
+            },
+        },
     ]
   })

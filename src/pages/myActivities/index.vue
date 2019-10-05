@@ -682,7 +682,7 @@
 	// 引入柱状图组件
 	require('echarts/lib/chart/bar')
 	// 引入提示框和title组件
-	require('echarts/lib/component/tooltip')
+    require('echarts/lib/component/tooltip')
 	require('echarts/lib/component/title')
     Vue.use(Tab).use(Tabs).use(SubmitBar);
     export default {
@@ -715,7 +715,6 @@
 				date_picker:false,
 				date:'2019.01.01-2019.07.01',
 
-				minDate: new Date(),
 				maxDate: new Date(2019, 10, 1),
 				currentDate: new Date(),
 				date_show:true,
