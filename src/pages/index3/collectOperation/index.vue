@@ -112,7 +112,7 @@
 				<van-cell-group class="bg-grey">
 					<van-field label="权利人"placeholder="请输入权利人" v-model="item.holder" clearable label-width="120"/>
 					<van-field label="共有情况" placeholder="共有情况"  v-model="item.situations" clearable label-width="120"/>
-					<van-field label="地址" placeholder="地址" @click-right-icon="openPicker(10)" v-model="item.address" clearable label-width="120" right-icon="arrow-down"/>
+					<van-field label="地址" placeholder="地址" @click-right-icon="openPicker(7)" v-model="item.address" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="不动产单元号"placeholder="请输入不动产单元号" v-model="item.number" clearable label-width="120"/>
 					<van-field label="权利类型" placeholder="权利类型"  v-model="item.type" clearable label-width="120"/>
 					<van-field label="权利性质" placeholder="权利性质" v-model="item.nature" clearable label-width="120"/>
@@ -236,8 +236,10 @@
     </div>
 <!--		选择器遮罩层-->
 		<div class="pop_picker" v-show="time_Picker_Statue!==0">
+<!--			自定义选择器-->
 			<van-picker :columns="columns"  show-toolbar @cancel="onCancel" @confirm="confirmBtn(0)" v-show="time_Picker_Statue==3"   class="picker"/>
-			<van-area :area-list="areaList" :columns-num="3" v-show="time_Picker_Statue==10" @confirm="confirmBtn(10)"  @cancel="onCancel"/>
+<!--			地址选择器-->
+			<van-area :area-list="areaList" :columns-num="3" v-show="time_Picker_Statue==7" @confirm="confirmBtn(10)"  @cancel="onCancel" class="picker"/>
 			<van-datetime-picker v-show="time_Picker_Statue==1" class="picker"
 								 v-model="currentDate1"
 								 type="date"
@@ -286,7 +288,7 @@
 			'企业主信息',
 			'关联人信息',
 			'抵押物信息',
-			'企业信息',
+			'抵押人信息',
 		],
 		info:{
 			company_info:{
@@ -430,6 +432,9 @@
 			case 6:
 				this.time_Picker_Statue = 3;
 				this.columns = [4, 3,2,1];
+				break;
+			case 7:
+				this.time_Picker_Statue = 7;
 				break;
 			default:
 				break;
