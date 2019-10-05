@@ -3,7 +3,7 @@
     <!--头部导航-->
     <van-nav-bar class="vnavbar" :title="title"></van-nav-bar>
     <img src="../../assets/images/38/return@2x.png" class="img_return" @click="onClickLeft" />
-    <span class="more_choose">预览</span>
+    <span class="more_choose">确认</span>
     <div class="main">
       <div class="main_box">
         <van-row class="list_row_top">
@@ -121,7 +121,7 @@
         <van-collapse v-model="activeName" accordion>
           <van-collapse-item name="1">
               <div class="letdiv" slot="title">企业信息</div>
-              <div slot="value" class="lockcol" @click="lockCli(0)">查看</div>
+              <div slot="value" class="lockcol" @click="lockCli">查看</div>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
                         <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
@@ -276,7 +276,7 @@ export default {
   //基础数据存放处
   data() {
     return {
-      title: "贷款详情",
+      title: "确认贷款信息",
       activeName: "a",
       current: 0
     };
@@ -290,9 +290,8 @@ export default {
 
   //声明方法
   methods: {
-    lockCli(item,type){
-				localStorage.setItem('ckywj_type',type);
-        this.$router.push('./launchDetails/lookOriginalFile/loanBusinessOwner');
+    lockCli(){
+        this.$router.push("./viewList");
     },
     onClickLeft() {
       this.$router.go(-1);

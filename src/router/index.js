@@ -327,6 +327,23 @@ export default new Router({
       title: '贷款详情'
       },
     },
+    {
+      name: 'confirmLoanInformation',
+      path: '/confirmLoanInformation',
+      component: () => import('@/pages/confirmLoanInformation'),
+      meta: {
+      title: '确认贷款信息'
+      },
+    },
+    {
+      name: 'loanBusinessOwner',
+      path: '/launchDetails/lookOriginalFile/loanBusinessOwner',
+      component: () => import('@/pages/launchDetails/lookOriginalFile/loanBusinessOwner'),
+      meta: {
+          title: '企业主信息'
+      },
+    },
+    
 		//贷款 征信校验
 		{
 		  name: 'creditCheck',
