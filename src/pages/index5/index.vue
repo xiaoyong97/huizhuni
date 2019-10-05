@@ -67,7 +67,8 @@
                 Dialog.confirm({
                     message: "请选择身份",
                     confirmButtonText: "管理岗", //改变确认按钮上显示的文字
-                    cancelButtonText: "经办岗" //改变取消按钮上显示的文字
+                    cancelButtonText: "经办岗" ,//改变取消按钮上显示的文字
+                    cancelButtonColor:"#1989fa",
                 }).then(()=> {
                     sessionStorage.setItem("identity","management")
                     this.$router.push('/myActivities');

@@ -85,8 +85,8 @@
          <img src="../../assets/images/38/searchfor@2x.png" class="img_search" >
          <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
          <!--         下拉菜单-->
-         <div class='menu_popContainer'  v-show="menu!==0">
-             <div  class="menu1_choose_box" :class="active==1?'width_half':''" v-show="menu==1">
+         <div class='menu_popContainer'  v-show="menu!==-1">
+             <div  class="menu1_choose_box" :class="type==0?'width_half':''" v-show="menu==0">
                  <van-row class="choose_box_list" @click="menuChoose(0)">
                      <p class="menu1_choose_box_text " :class="menu_choose == 0 ? 'blue' : '' ">已发布</p>
                  </van-row>
@@ -100,7 +100,7 @@
                      <p class="menu1_choose_box_text " :class="menu_choose == 3 ? 'blue' : '' ">已结束</p>
                  </van-row>
              </div>
-             <div  class="menu1_choose_box position_center" :class="active==1?'':'width_half_right'" v-show="menu==2">
+             <div  class="menu1_choose_box position_center" :class="type==1?'':'width_half_right'" v-show="menu==1">
                  <van-row class="choose_box_list" @click="menu2Choose(0)">
                      <p class="menu1_choose_box_text " :class="menu2_choose == 0 ? 'blue' : '' ">全部</p>
                  </van-row>
@@ -161,15 +161,15 @@
              </div>
          </div>
         <div class="content">
-            <van-tabs color="#4c62e7" line-width="33%" line-height=3 title-active-color="#4c62e7" v-show="type==1" class="relative" @click="onTabClick">
+            <van-tabs color="#4c62e7" v-model="active" line-width="33%" line-height=3 title-active-color="#4c62e7" v-show="type==1" class="relative" @click="onTabClick">
                 <!--                已发布下拉图标-->
-                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open" v-show="menu!==1" @click="openMenu(1)">
-                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open" v-show="menu==1" @click="closeMenu">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open" v-show="menu!==0" @click="openMenu(0)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open" v-show="menu==0" @click="closeMenu">
                 <!--                待审核下拉图标-->
-                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open menu2_open" v-show="menu!==2" @click="openMenu(2)">
-                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open menu2_open" v-show="menu==2" @click="closeMenu">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open menu2_open" v-show="menu!==1" @click="openMenu(1)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open menu2_open" v-show="menu==1" @click="closeMenu">
 
-                <van-tab :title="tab1Title" color="#4c62e7">
+                <van-tab :title="tab1Title" color="#4c62e7" >
                     <div class="card_div" v-show="menu_choose==2|menu_choose==0">
                         <div @click="goPage('activityDetailsIng',{status_:0})" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0">
@@ -265,7 +265,7 @@
                     </div>
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab :title="tab2Title" color="#4c62e7">
+                <van-tab :title="tab2Title" color="#4c62e7" >
                     <!--                    任务新建-->
                     <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityDetailsIng',{status_:1})">
                         <van-row style="padding: 16px 12px 0">
@@ -327,7 +327,7 @@
                         <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
                     </div>
                     <!--                    名单补录-->
-                    <div class="card_div_examine" v-show="menu2_choose==4|menu2_choose==0" style="">
+                    <div class="card_div_examine" v-show="menu2_choose==4|menu2_choose==0" style=""  @click="goPage('replenishmentDetails')">
                         <van-row style="padding: 16px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                         </van-row>
@@ -352,7 +352,7 @@
                 </van-tab>
 
 				<!-- 已拒绝 -->
-				<van-tab title="已拒绝(1)" color="#4c62e7">
+				<van-tab title="已拒绝(1)" color="#4c62e7" >
                     <div class="card_div" style="" >
                         <div>
                             <van-row style="padding: 16px 12px 0">
@@ -377,14 +377,14 @@
 				</van-tab>
 
             </van-tabs>
-            <van-tabs color="#4c62e7" line-width="50%" line-height=3 title-active-color="#4c62e7" v-show="type==0" class="relative" @click="onTabClick">
+            <van-tabs color="#4c62e7" v-model="active" line-width="50%" line-height=3 title-active-color="#4c62e7" v-show="type==0" class="relative" @click="onTabClick">
                 <!--                已发布下拉图标-->
-                <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open" v-show="menu!==1" @click="openMenu(1)">
-                <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open" v-show="menu==1" @click="closeMenu">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open" v-show="menu!==0" @click="openMenu(0)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open" v-show="menu==0" @click="closeMenu">
                 <!--                待审核下拉图标-->
-                <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu!==2" @click="openMenu(2)">
-                <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu==2" @click="closeMenu">
-                <van-tab :title="tab1Title" color="#4c62e7">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu!==1" @click="openMenu(1)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu==1" @click="closeMenu">
+                <van-tab :title="tab1Title" color="#4c62e7" >
                     <div class="card_div" v-show="menu_choose==2|menu_choose==0" style="" >
                         <div @click="goPage('activityDetailsIng',{status_:0})" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0">
@@ -447,7 +447,7 @@
                             </van-col>
                         </van-row>
                     </div>
-                    <div class="card_div" v-show="menu_choose==3|menu_choose==0" style="" @click="goPage('activityDetailsOver')">
+                    <div class="card_div" v-show="menu_choose==3|menu_choose==0" style="" >
                         <div @click="goPage('activityDetailsOver')" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0" type="flex" justify="center">
                                 <van-col class="" span="12"><p class="card_list1_test_left" >今朝会-创业沙龙第六期</p></van-col>
@@ -480,7 +480,7 @@
                     </div>
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab :title="tab2Title" color="#4c62e7">
+                <van-tab :title="tab2Title" color="#4c62e7" >
                     <!--                    任务新建-->
                     <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityDetailsIng',{status_:1})" >
                         <van-row style="padding: 16px 12px 0">
@@ -542,7 +542,7 @@
                         <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
                     </div>
                     <!--                    名单补录-->
-                    <div class="card_div_examine" v-show="menu2_choose==4|menu2_choose==0" style="" @click="goPage('replenishmentDetails')">
+                    <div class="card_div_examine" v-show="menu2_choose==4|menu2_choose==0" @click="goPage('replenishmentDetails')">
                         <van-row style="padding: 16px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                         </van-row>
@@ -564,6 +564,8 @@
 
 
                     <div style="height: 8px"></div>
+                </van-tab>
+
                 </van-tab>
             </van-tabs>
 
@@ -668,7 +670,9 @@
 
         data() {
             return {
-                menu:9,  // 1:已发布，2.待审核，3.已拒绝,9筛选
+                hidden:false,
+                activeName:'已发布',
+                menu:-1,  //-1:不显示 0:已发布，1.待审核，2.已拒绝,9筛选
                 menu_choose :0,
                 menu2_choose :0,//tab审核的菜单选择 1：新建2：中止3：变更4：名单补录
                 time_choose :0,
@@ -705,16 +709,24 @@
 
         //数据预加载
         created  (){
-            this.menu = 0;
+            this.menu = -1;
+            var avtiveValue = sessionStorage.getItem("myActivityTabActive");
+            if (avtiveValue!==null) {
+                this.active = avtiveValue
+            }
         },
 
         //网页加载完成
         mounted (){
+            var avtiveValue = sessionStorage.getItem("myActivityTabActive");
+            if (avtiveValue!==null) {
+                this.active = avtiveValue
+            }
             var value = sessionStorage.getItem('identity')
             if (value == "management") {
-                this.type = 1
+                this.type = 0
             } else {
-                this.type = 0;
+                this.type = 1;
             }
         },
 
@@ -738,7 +750,7 @@
                         break;
                 }
                 this.menu_choose = i;
-                this.menu = 0;
+                this.menu = -1;
             },
             menu2Choose(i){
                 switch (i) {
@@ -761,10 +773,12 @@
                         break;
                 }
                 this.menu2_choose = i;
-                this.menu = 0;
+                this.menu = -1;
             },
             onTabClick(index) {
-                this.active = index+1;
+                console.log(index+'tabclick')
+                this.active = index;
+                sessionStorage.setItem("myActivityTabActive",index)
             },
             timePickerStatue(i) {
                 this.time_Picker_Statue = i;
@@ -784,15 +798,20 @@
                 }
             },
             closeMenu (){
-                this.menu = 0;
+                this.menu = -1;
             },
             open_fliter() {
-                if (this.menu == 9) {
-                    this.menu = 0;
-                }
                 if(this.type !== 2) {
-                    this.menu = 9;
+                    if (this.menu == 9) {
+                        this.menu = -1;
+                    } else {
+                        this.menu = 9
+                    }
+                } else {
+                    this.menu = -1;
                 }
+
+
             },
             clearAll() {
                 this.timeValue1 = '';
@@ -1014,7 +1033,7 @@
         z-index: 100;
     }
     .menu2_open{
-        left: 58%;
+        left: 60%;
     }
     .tabs2_menu2_open{
         left: 85%;

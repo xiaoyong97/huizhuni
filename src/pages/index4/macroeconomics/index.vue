@@ -1,7 +1,7 @@
 <template>
     <div class="main_box">
         <!--头部导航-->
-        <van-nav-bar :title="title" ></van-nav-bar>
+        <van-nav-bar :title="title" class="top_bar"></van-nav-bar>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <van-row class="location_div" >
             <van-col class="relative" span="1" >
@@ -133,6 +133,10 @@
     .blue{
         color: #4c62e7;
         font-weight: bold;
+    }
+    .top_bar{
+        background-color:rgb(56,155,246);
+        color: white;
     }
     .main_box{
         background-color: rgb(238,238,238);

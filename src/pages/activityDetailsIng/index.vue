@@ -19,7 +19,7 @@
                 <div class="main_box">
                     <van-row class="list_row_top" >
                         <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
-                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >活动信息</p></van-col>
+                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text bold" >活动信息</p></van-col>
                     </van-row>
                     <van-row class="list_row" >
                         <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test" >活动主题</p></van-col>
@@ -70,7 +70,7 @@
             <div class="secend_box">
                 <van-row class="list_row_top" >
                     <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
-                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >课程表信息</p></van-col>
+                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text bold" >日程信息</p></van-col>
                 </van-row>
                 <van-row class="list_row" style="border-bottom:1px solid #333333;">
                     <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min_head" >课程名称</p></van-col>
@@ -94,19 +94,19 @@
                     <van-col class=""  span="5"  style="text-align: center"><p class="list_test_min" >120分钟</p></van-col>
                 </van-row>
             </div>
-            <div v-show="status_==1">
-                <div class="secend_box" style="height: auto" v-show="identity=='management'">
-                    <van-row class="list_row_top" >
-                        <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
-                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >请选择审核人</p></van-col>
-                    </van-row>
-                    <van-row class="list_row" >
-                        <van-col class=""  span="8" style="text-align: left;"><p class="list_test_examine" style="color: #333333">审核人</p></van-col>
-                        <van-col class=""  span="14" style="text-align: left;"><p class="list_test_examine" >请选择</p></van-col>
-                        <van-col class=""  span="2" style="text-align: left;"><img src="../../assets/images/24/more@2x.png" class="img_right" ></van-col>
-                    </van-row>
-                </div>
-            </div>
+<!--            <div v-show="status_==1">-->
+<!--                <div class="secend_box" style="height: auto" v-show="identity=='management'">-->
+<!--                    <van-row class="list_row_top" >-->
+<!--                        <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>-->
+<!--                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >请选择审核人</p></van-col>-->
+<!--                    </van-row>-->
+<!--                    <van-row class="list_row" >-->
+<!--                        <van-col class=""  span="8" style="text-align: left;"><p class="list_test_examine" style="color: #333333">审核人</p></van-col>-->
+<!--                        <van-col class=""  span="14" style="text-align: left;"><p class="list_test_examine" >请选择</p></van-col>-->
+<!--                        <van-col class=""  span="2" style="text-align: left;"><img src="../../assets/images/24/more@2x.png" class="img_right" ></van-col>-->
+<!--                    </van-row>-->
+<!--                </div>-->
+<!--            </div>-->
 
 <!--            <div class="secend_box" style="height: auto" v-show="status_==0">-->
 <!--                <van-row class="list_row_top" type="flex" justify="center">-->
@@ -138,7 +138,7 @@
 <!--                    </van-col>-->
 <!--                </van-row>-->
 <!--            </div>-->
-            <div v-show="identity=='management'">
+            <div v-show="identity!=='management'">
                 <van-row type="flex" justify="center" class="choose_row" v-show="status_==1">
                     <van-col class="reject_col"  span="9" ><p class="reject_col_test">拒绝创建</p></van-col>
                     <van-col class=""  span="2" ></van-col>
@@ -177,7 +177,6 @@
 
         //网页加载完成
         mounted () {
-            console.log(this.$route.params.status_)
             this.status_ = this.$route.params.status_
             var value = sessionStorage.getItem('identity')
             if (value == "management") {
@@ -353,6 +352,9 @@
     }
     .blue_bg{
         background-color: #4c62e7;
+    }
+    .bold{
+        font-weight: bold;
     }
 
 
