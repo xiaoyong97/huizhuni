@@ -16,10 +16,10 @@
 			<van-popup v-model="show" position="bottom" :style="{ height: '44%' }" >
 				<div class="popup-title">请选择机构 <span class="close" @click="close">&times;</span></div>
 				<van-grid class="level_conainter">
-					<van-grid-item class="item" v-show="level>0"><div slot="default" class="level1" >一级</div></van-grid-item>
-					<van-grid-item class="item"  v-show="level>1"><div slot="default" class="level2">二级</div></van-grid-item>
-					<van-grid-item class="item" v-show="level>2"><div slot="default" class="level3" >三级</div></van-grid-item>
-					<van-grid-item class="item" v-show="level>3"><div slot="default"class="level4" >四级</div></van-grid-item>
+					<van-grid-item class="item" v-show="level>=0"><div slot="default" class="level1" @click="chooseLevel(0)">一级</div></van-grid-item>
+					<van-grid-item class="item"  v-show="level>=1"><div slot="default" class="level2" @click="chooseLevel(1)">二级</div></van-grid-item>
+					<van-grid-item class="item" v-show="level>=2"><div slot="default" class="level3" @click="chooseLevel(2)">三级</div></van-grid-item>
+					<van-grid-item class="item" v-show="level>=3"><div slot="default"class="level4" @click="chooseLevel(3)">四级</div></van-grid-item>
 				</van-grid>
 				<van-checkbox-group v-model="result" class="item_container" >
 					 <van-cell-group>
@@ -92,7 +92,7 @@
 	  myChart7:null,
 	  myChart8:null,
 	  myChart9:null,
-	  show: true,
+	  show: false,
 	  banks:[ 
 		  {
 			  name:'中国建设银行总行',
@@ -190,11 +190,12 @@
 	  ],
 	  lists:[],
 	  result:[],
+	  history:[],
 	  icon: {
 	        active: 'https://img.yzcdn.cn/vant/user-active.png',
 	        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png'
 	      },
-	 level:1,	
+	 level:0,	
 	  bank_title:'建行厦门金山支行',
 	 
     }
@@ -900,12 +901,14 @@
 		var that = this;
 		setTimeout(function(){
 			that.bank_title = that.lists[index].name
-				if(that.level<4){
+				if(that.level<3){
+					that.history[that.level] = that.lists;	
 					that.level ++;
-					that.lists = that.lists[index].sub
+					that.lists = that.lists[index].sub;
+					
 				}else{
 					that.close();
-					that.level = 1;
+					that.level = 0;
 					that.lists = that.banks;
 				}
 				
@@ -914,6 +917,15 @@
 	},
 	close:function(){
 			this.show = false;  
+			this.level = 0;
+			this.lists = this.banks;
+	},
+	chooseLevel:function(level){
+		if(level != this.level){
+			this.level = level;
+			
+			this.lists = this.history[level];
+		}
 	}
   },
   
@@ -936,6 +948,7 @@
 	.content{
 		padding: 8px;
 		background-color: rgb(238,238,238);
+		min-height: 736px;
 	}
 	.theme_color{
 		background-color: rgb(56,155,246);
