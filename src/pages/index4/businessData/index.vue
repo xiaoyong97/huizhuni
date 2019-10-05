@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="main businessData">
      
      <!--头部导航-->
      <van-nav-bar class="theme_color" :title="title"  left-arrow @click-left="onClickLeft" >
@@ -10,10 +10,39 @@
 		<div class="container">
 			<van-row class="header">
 			  <van-col  class="header_left"></van-col>
-			  <van-col  class="header_center">建行厦门金山支行</van-col>
+			  <van-col  class="header_center" @click="choose_bank">{{bank_title}}</van-col>
 			  <van-col  class="header_right"></van-col>
 			</van-row>
-			
+			<van-popup v-model="show" position="bottom" :style="{ height: '44%' }" >
+				<div class="popup-title">请选择机构 <span class="close" @click="close">&times;</span></div>
+				<van-grid class="level_conainter">
+					<van-grid-item class="item" v-show="level>0"><div slot="default" class="level1" >一级</div></van-grid-item>
+					<van-grid-item class="item"  v-show="level>1"><div slot="default" class="level2">二级</div></van-grid-item>
+					<van-grid-item class="item" v-show="level>2"><div slot="default" class="level3" >三级</div></van-grid-item>
+					<van-grid-item class="item" v-show="level>3"><div slot="default"class="level4" >四级</div></van-grid-item>
+				</van-grid>
+				<van-checkbox-group v-model="result" class="item_container" >
+					 <van-cell-group>
+					    <van-cell
+					      v-for="(item, index) in lists"
+					      clickable
+					      :key="item.name"
+					      is-link
+					      @click="toggle(index)"
+					    >
+					    <van-checkbox 
+						:key="item.name"
+						    :name="item.name"
+						>
+					      {{item.name}}  
+					    </van-checkbox>
+					    </van-cell>
+					  </van-cell-group>
+				   
+				  </van-checkbox>
+				</van-checkbox-group>
+				
+			</van-popup>
 			<van-collapse v-model="activeName" accordion @change="createChart">
 			<van-collapse-item  name="1"><div slot="title"><img class="icon" src="../../../assets/images/48/01_gskhjg.png" alt="">工商客户结构</div><div id="myChart1" ></div></van-collapse-item>
 			<van-collapse-item  name="2"><div slot="title"><img class="icon" src="../../../assets/images/48/02_whkhjg.png" alt="">我行客户结构</div><div id="myChart2" ></div></van-collapse-item>
@@ -35,7 +64,8 @@
 
  import NavBar from '@/components/navBar'
 	import Vue from 'vue';
-	import { Cell, CellGroup,Row, Col ,Collapse, CollapseItem} from 'vant';
+	import { Cell, CellGroup,Row, Col ,Collapse, CollapseItem,Popup,Grid, GridItem } from 'vant';
+	import "../../../assets/resetui.scss";
 	let echarts = require('echarts/lib/echarts')
 	// 引入柱状图组件
 	require('echarts/lib/chart/bar')
@@ -62,6 +92,110 @@
 	  myChart7:null,
 	  myChart8:null,
 	  myChart9:null,
+	  show: true,
+	  banks:[ 
+		  {
+			  name:'中国建设银行总行',
+			  sub:[
+				  {
+					name:'建行北京市分行',
+					sub:[
+						{
+							name:'建总行营业部',
+							sub:[
+								{
+									name:'建行北京新航城支行',
+									sub:[
+										
+									],
+								},
+								{
+									name:'建行北京朝阳北路支行',
+									sub:[
+										
+									],
+								},
+								{
+									name:'建行北京双桥支行',
+									sub:[
+										
+									],
+								},
+								{
+									name:'建行北京双桥南路支行',
+									sub:[
+										
+									],
+								},
+								{
+									name:'建行北京东三环中路支行ßß',
+									sub:[
+										
+									],
+								},
+							],
+						},
+						{
+							name:'建行北京保利支行私人银行（汇总）',
+							sub:[
+								
+							],
+						},
+						{
+							name:'建行北京华贸支行（汇总）',
+							sub:[
+								
+							],
+						},
+						{
+							name:'建行北京望京支行（汇总）',
+							sub:[
+								
+							],
+						},
+						{
+							name:'建行北京东大街支行（汇总）',
+							sub:[
+								
+							],
+						},
+					],
+				  },
+				  {
+					name:'建行河北省分行',
+					sub:[
+					  
+					],
+				  },
+				  {
+					name:'建行天津市分行',
+					sub:[
+					  
+					],
+				  },
+				  {
+					name:'建行山西市分行',
+					sub:[
+					  
+					],
+				  },
+				  {
+					name:'建行内蒙古自治区分行',
+					sub:[
+					  
+					],
+				  }
+			  ],
+		  }
+	  ],
+	  lists:[],
+	  result:[],
+	  icon: {
+	        active: 'https://img.yzcdn.cn/vant/user-active.png',
+	        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png'
+	      },
+	 level:1,	
+	  bank_title:'建行厦门金山支行',
 	 
     }
   },
@@ -69,16 +203,14 @@
   
   //数据预加载
   created : ()=>{
-
-    
-
   },
 
   //网页加载完成
   mounted (){
 	  
 	  this.createChart1();
-	 
+	  
+		this.lists = this.banks;
   },
   
   //声明方法
@@ -215,8 +347,8 @@
 					{
 						name: '访问来源',
 						type: 'pie',
-						radius : '80%',
-						center: ['50%', '60%'],
+						radius : '72%',
+						center: ['53%', '60%'],
 						data:[
 							{value:19904, name:'未分类客户数'},
 							{value:138742, name:'我行小微客户数'},	
@@ -761,7 +893,28 @@
 			this.myChart9.setOption(option);		　
 		}
 	},
-	
+	choose_bank:function(){
+		this.show = true;
+	},
+	toggle:function(index){
+		var that = this;
+		setTimeout(function(){
+			that.bank_title = that.lists[index].name
+				if(that.level<4){
+					that.level ++;
+					that.lists = that.lists[index].sub
+				}else{
+					that.close();
+					that.level = 1;
+					that.lists = that.banks;
+				}
+				
+		},200)
+		
+	},
+	close:function(){
+			this.show = false;  
+	}
   },
   
   //计算属性
@@ -785,7 +938,7 @@
 		background-color: rgb(238,238,238);
 	}
 	.theme_color{
-		background-color: #4c62e7;
+		background-color: rgb(56,155,246);
 	}
 	.van-nav-bar__title,.van-icon.van-icon-arrow-left.van-nav-bar__arrow{
 		color:#fff;
@@ -799,31 +952,31 @@
 		margin: 0px auto;
 	}
 	.header_left{
-		border-top:18px solid #4c62e7;
-		border-right:8px solid #4c62e7;
+		border-top:18px solid rgb(56,155,246);
+		border-right:8px solid rgb(56,155,246);
 		border-left:8px solid rgba(0,0,0,0);
 		border-bottom:18px solid rgba(0,0,0,0);
 		height: 0px;;
 		width: 11px;
 	}
 	.header_center{
-		background-color: #4c62e7;
+		background-color: rgb(56,155,246);
 		color: #fff;
 		height: 36px;
 		line-height: 36px;
 		font-size: 16px;
-		padding-left: 16px;
-		padding-right: 16px;
+		padding-left: 0px;
+		padding-right: 0px;
 	}
 	.header_right{
-		border-top:18px solid #4c62e7;
-		border-left:8px solid #4c62e7;
+		border-top:18px solid rgb(56,155,246);
+		border-left:8px solid rgb(56,155,246);
 		border-right:8px solid rgba(0,0,0,0);
 		border-bottom:18px solid rgba(0,0,0,0);
 		height: 0px;;
 		width: 11px;
 	}
-	#myChart1,#myChart2{
+	#myChart1{
 		width: 100%;
 		height:160px;
 	}
@@ -831,7 +984,7 @@
 		width: 100%;
 		height:260px;
 	}
-	#myChart7,#myChart8{
+	#myChart2,#myChart7,#myChart8{
 		width: 100%;
 		height:200px;
 	}
@@ -839,5 +992,36 @@
 		width: 20px;
 		margin-right: 8px;
 		vertical-align: middle;
+	}
+	.popup-title{
+		background-color: rgb(56,155,246);
+		height: 44px;
+		line-height: 44px;
+		color:#fff;
+		text-align: center;
+	}
+	.close{
+		float: right;
+		margin-right: 16px;
+		font-size: 26px;
+	}
+	.level_conainter{
+		height: 30px;
+		// border-bottom: 1px solid rgb(127,127,127);
+	}
+	.level1,.level2,.level3,.level4{
+		height: 30px;;
+		// border-right: 1px solid lightgray;
+	}
+	.van-grid-item__content{
+		// border-right: 1px solid red;
+		padding: 0px;
+	}
+	.splice{
+		
+	}
+	.item_container{
+		margin-top: 12px;;
+		border-top: 1px solid #dddddd;
 	}
 </style>
