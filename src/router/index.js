@@ -469,6 +469,7 @@ export default new Router({
 		   title: '信息详情'
 		  },
     },
+    //贷后跟踪
     {
       name: 'loanTracking',
       path: '/loanTracking',
@@ -477,6 +478,7 @@ export default new Router({
         title: '贷后跟踪'
       }
     },
+    //贷后跟踪详情
     {
       name: 'loanTrackingDetail',
       path: '/loanTracking/detail',
@@ -485,6 +487,7 @@ export default new Router({
         title: '贷后跟踪'
       }
     },
+    //合同签订列表
     {
       name: 'contractSign',
       path: '/contractSign',
@@ -493,6 +496,7 @@ export default new Router({
         title: '合同签订'
       }
     },
+    //合同签约
     {
       name: 'sign',
       path: '/contractSign/sign',
@@ -501,6 +505,7 @@ export default new Router({
         title: '合同签订'
       }
     },
+    //合同签约结果
     {
       name: 'contractSignResult',
       path: '/contractSign/sign/result',
@@ -509,6 +514,7 @@ export default new Router({
         title: '合同签订'
       }
     },
+    //已签约详情
     {
       name: 'contractDetail',
       path: '/contractSign/contractDetail',
@@ -517,6 +523,7 @@ export default new Router({
         title: '已签约详情'
       }
     },
+    //合同搜索
     {
       name: 'contractSearch',
       path: '/contractSign/search',
