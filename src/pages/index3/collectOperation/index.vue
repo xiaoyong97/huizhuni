@@ -229,7 +229,7 @@
 						</van-cell>
 					</div>
 				</van-cell-group>
-				<div class="jyButton" @click="go('creditCheck')">征信校验</div>
+				<div class="jyButton" @click="go('creditCollectionInfo')">征信校验</div>
 			</div>
 		</div>
     </div>
@@ -470,8 +470,7 @@
 			this.next = '下一步';
 		}
 		if(this.step == 5 ){
-			//this.$router.go(-1);
-			this.$router.push('/creditCollectionInfo');//征信采集信息
+			this.$router.go(-1);
 			return;
 		}
 		this.step ++;

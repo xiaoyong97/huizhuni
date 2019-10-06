@@ -4,49 +4,59 @@
      <!--头部导航-->
      <van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" >
      </van-nav-bar>
-	 <span class="more_choose" @click="addStep">下一步</span>
+	 <span v-show="step==2" class="more_choose" @click="addStep">发起校验</span>
+	 <span v-show="step!=2" class="more_choose" @click="addStep">下一步</span>
 
     <div class="content">
 		<progressNavBar :step="this.step" :stepArray="stepArray" v-show="step!=3"></progressNavBar>
 		<div class="input-contianer" v-show="step==0">
 			<div>
-				<h4>请上传征信查询授权协议</h4>
-				<div class="idCard">
+				<div class="title-top">请上传征信查询授权协议</div>
+				<img class="success" src="../../assets/images/other/bg_zxcxsqxy.png" alt="">
+				<div class="idCard_back">
 					<div class="idCard_shadow_button"></div>
-					<p>点击拍摄/上传企业营业执照</p>
+					<p>点击拍摄</p>
 				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div>
+				<div class="title-top">请上传客户手持征信查询授权协议的映像</div>
+				<div class="idCard_back">
+					<div class="idCard_shadow_button"></div>
+					<p>点击拍摄</p>
+				</div>
+				<div style="clear:both;"></div>
 			</div>
 			
 		</div> 
 		<div class="input-contianer" v-show="step==1">
 			<div>
-				<h4>企业业主身份证</h4>
-				<div class="idCard_front">
-					<div class="idCard_shadow_button"></div>
-					<p>点击拍摄/上传人像面</p>
-				</div>
+				<div class="title-top">请上传业务申请书</div>
+				<img class="success" src="../../assets/images/other/bg_zxcxsqxy.png" alt="">
 				<div class="idCard_back">
 					<div class="idCard_shadow_button"></div>
-					<p>点击拍摄/上传国徽面</p>
+					<p>点击拍摄</p>
 				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div>
+				<div class="title-top">请上传客户手持业务申请书的映像</div>
+				<div class="idCard_back">
+					<div class="idCard_shadow_button"></div>
+					<p>点击拍摄</p>
+				</div>
+				<div style="clear:both;"></div>
 			</div>
 
 		</div> 
 		<div class="input-contianer" v-show="step==2">
-			<div v-for="(item,index) in info.associates">
-				
-				<div>
-					<h4>企业营业执照</h4>
-					<div class="idCard_front">
-						<div class="idCard_shadow_button"></div>
-						<p>点击拍摄/上传人像面</p>
-					</div>
-					<div class="idCard_back">
-						<div class="idCard_shadow_button"></div>
-						<p>点击拍摄/上传国徽面</p>
-					</div>
+			<div>
+				<div class="title-top">请上传企业主手持本人身份证的映像</div>
+				<div class="idCard_back">
+					<div class="idCard_shadow_button"></div>
+					<p>点击拍摄</p>
 				</div>
-				
+				<div style="clear:both;"></div>
 			</div>
 			
 		</div>
@@ -185,8 +195,8 @@
   //声明方法
   methods : {
 	addStep:function(){
-		if(this.step == 5 ){
-			this.$router.go(-1);
+		if(this.step == 2 ){
+			this.$router.push('/index3/creditCheck/nextCreditCheck/creditCheckResult');
 			return;
 		}
 		this.step ++;
@@ -218,6 +228,14 @@
 </script>
 
 <style lang="scss" scoped>
+.title-top{
+	max-width: 92%;
+    margin: 0 auto;
+	padding: 12px 0px;
+    color: #323233;
+    font-weight: 500;
+    font-size: 16px;
+}
 .more_choose{
     position: absolute;
     top: 15px;
@@ -229,7 +247,7 @@
 .content{
 	padding: 0px;
 	background-color: rgb(238,238,238);
-	min-height: 600px;
+	min-height: 620px;
 }
 #grad {
   background: -webkit-linear-gradient(red, blue); /* Safari 5.1 - 6.0 */
@@ -264,9 +282,10 @@
 	color: #4c62e7;
 }
 .success{
-		width: 25%;
+	float:left;
+		width: 26%;
 		display: block;
-		margin: 72px auto 10px;
+		margin:5px 10px 0px 15px;
 	}
 	.success-tip{
 		text-align: center;
@@ -357,16 +376,14 @@
 		.idCard_front,.idCard_back{
 			padding-top: 16px;
 			background-size: 100% 100%;
-			width: 46%;
-			margin: 0 2%;
+			width: 25%;
+			margin: 7px 0px 15px 18px;
 			display: inline-block;
-			height: 80px;
+			height: 105px;
+			border: 1px #0062B3 dashed;
 		}
 		.idCard_front{
 			background-image: url(../../assets/images/idcard/bg_sfz_front@2x.png);
-		}
-		.idCard_back{
-			background-image: url(../../assets/images/idcard/bg_sfz_reverse@2x.png);
 		}
 		.input-contianer{
 			margin-top: 8px;
@@ -385,7 +402,7 @@
 			font-size: 12px;
 		}
 		.input-contianer h4{
-			padding: 8px 16px;
+			padding: 15px 16px 8px 16px;
 		}
 		.cell-hearder{
 			background-color: rgb(238,238,238);
