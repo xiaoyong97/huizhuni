@@ -40,16 +40,16 @@
       </span>
     </div>
 
-    <div class="region-module" style="padding:0px 2px;" v-show="value1==2">
-      <span class="region-modulespan" style="margin-right:2px;">
+    <div class="region-module" style="padding:0px 3px;" v-show="value1==2">
+      <span class="region-modulespan" style="margin-right:3px;">
         <img class="region-module-icon" src="../../assets/images/huidiantong/1_0001s_0006.png" alt />
         <p class="module-p">优质</p>
       </span>
-      <span class="region-modulespan" style="margin-right:2px;">
+      <span class="region-modulespan" style="margin-right:3px;">
         <img class="region-module-icon" src="../../assets/images/huidiantong/1_0001s_0004.png" alt />
         <p class="module-p">良好</p>
       </span>
-      <span class="region-modulespan" style="margin-right:2px;">
+      <span class="region-modulespan" style="margin-right:3px;">
         <img class="region-module-icon" src="../../assets/images/huidiantong/1_0001s_0007.png" alt />
         <p class="module-p">一般</p>
       </span>
@@ -75,7 +75,7 @@
             </bm-info-window>
           </bm-marker>
         </div>
-        <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+        <!-- <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation> -->
       </baidu-map>
     </div>
     <!--底部导航-->
@@ -265,7 +265,7 @@ export default {
 .region-slectModule{
   position: fixed;
   top: 58px;
-  right: 48px;
+  right: 10px;
   height: 30px;
   line-height: 30px;
   text-align: center;
@@ -273,7 +273,7 @@ export default {
   border:solid 0.5px #eeeeee;  
   border-radius: 8px;
   z-index: 1;
-  padding:0px 15px 0px 10px;
+  padding:0px 10px 0px 8px;
 }
 #slectModule .van-dropdown-item--down {
     width: 170px !important;
