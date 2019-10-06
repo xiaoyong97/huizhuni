@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-     
+
      <!--头部导航-->
      <van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" >
      </van-nav-bar>
@@ -24,7 +24,7 @@
 				<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="info.company_info.mobile" clearable label-width="120"/>
 				<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="info.company_info.legal_representative_address" clearable label-width="120" label-color="red"/>
 			</van-cell-group>
-		</div> 
+		</div>
 		<div class="input-contianer" v-show="step==1">
 			<div>
 				<h4>企业业主身份证</h4>
@@ -37,31 +37,30 @@
 					<p>点击拍摄/上传国徽面</p>
 				</div>
 			</div>
-			
+
 			<van-cell-group class="bg-grey">
 				<van-field label="姓名"placeholder="请输入姓名" v-model="info.company_main_info.name" clearable label-width="120"/>
-				<van-field label="性别" placeholder="性别"  v-model="info.company_main_info.sex" clearable label-width="120"/>
+				<van-field label="性别" placeholder="请输入性别" @click-right-icon="openPicker(3)" v-model="info.company_main_info.sex" clearable label-width="120" right-icon="arrow-down"/>
 				<van-field label="民族" placeholder="请输入民族" v-model="info.company_main_info.ethnic" clearable label-width="120"/>
-				<van-field label="出生日期"placeholder="请输入企业地址" v-model="info.company_main_info.birth" clearable label-width="120"/>
-				<van-field label="住址" placeholder="住址"  v-model="info.company_main_info.address" clearable label-width="120"/>
-				<van-field label="公民身份证号" placeholder="公民身份证号" v-model="info.company_main_info.idcard" clearable label-width="120"/>
-				<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="info.company_main_info.validity_period" clearable label-width="120" label-color="red"/>
-				<van-field label="学历" placeholder="法定代表人电话" v-model="info.company_main_info.record_of_formal_schooling" clearable label-width="120"/>
-					<van-field label="电话号码"placeholder="请输入电话号码" v-model="info.company_main_info.mobile" clearable label-width="120" label-color="red"/>
-				
+				<van-field label="出生日期"placeholder="请输入出生日期" @click-right-icon="openPicker(1)" v-model="info.company_main_info.birth" clearable label-width="120" right-icon="arrow-down"/>
+				<van-field label="住址" placeholder="请输入住址"  v-model="info.company_main_info.address" clearable label-width="120"/>
+				<van-field label="公民身份证号" placeholder="请输入公民身份证号" v-model="info.company_main_info.idcard" clearable label-width="120"/>
+				<van-field label="有效期限"placeholder="请输入有效期限" @click-right-icon="openPicker(2)" v-model="info.company_main_info.validity_period" clearable right-icon="arrow-down" label-width="120" label-color="red"/>
+				<van-field label="学历" placeholder="请输入学历" @click-right-icon="openPicker(4)" v-model="info.company_main_info.record_of_formal_schooling" clearable right-icon="arrow-down" label-width="120"/>
+				<van-field label="电话号码"placeholder="请输入电话号码" v-model="info.company_main_info.mobile" clearable label-width="120" label-color="red"/>
 				<van-field label="工作单位"placeholder="请输入工作单位" v-model="info.company_main_info.work" clearable label-width="120" label-color="red"/>
-				<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="info.company_main_info.marriage_status" clearable label-width="120"/>
-				<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="info.company_main_info.households" clearable label-width="120" label-color="red"/>
-
+				<van-field label="婚姻情况" placeholder="请输入婚姻情况" @click-right-icon="openPicker(5)" v-model="info.company_main_info.marriage_status" clearable label-width="120" right-icon="arrow-down"/>
+				<van-field label="家庭人数"placeholder="请输入家庭人数" @click-right-icon="openPicker(6)" v-model="info.company_main_info.households" clearable right-icon="arrow-down" label-width="120" label-color="red"/>
 			</van-cell-group>
-		</div> 
+		</div>
+
 		<div class="input-contianer" v-show="step==2">
 			<div v-for="(item,index) in info.associates">
 				<h4 class="cell-hearder">关联人{{index+1}}</h4>
-				
+
 				<div>
 					<van-field label="关系"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
-					
+
 					<div class="idCard_front">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
@@ -71,34 +70,34 @@
 						<p>点击拍摄/上传国徽面</p>
 					</div>
 				</div>
-				
+				<!--style="position: fixed;top: 34px; width:100%;"-->
 				<van-cell-group class="bg-grey">
+
 					<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
-					<van-field label="性别" placeholder="性别"  v-model="item.sex" clearable label-width="120"/>
+					<van-field label="性别" placeholder="性别" @click-right-icon="openPicker(3)" v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
-					<van-field label="出生日期"placeholder="请输入企业地址" v-model="item.birth" clearable label-width="120"/>
+					<van-field label="出生日期"placeholder="请输入企业地址" @click-right-icon="openPicker(1)" v-model="item.birth" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
 					<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
-					<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
-					<van-field label="学历" placeholder="法定代表人电话" v-model="item.record_of_formal_schooling" clearable label-width="120"/>
+					<van-field label="有效期限"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(2)" v-model="item.validity_period" clearable label-width="120" right-icon="arrow-down" label-color="red"/>
+					<van-field label="学历" placeholder="法定代表人电话" @click-right-icon="openPicker(4)" v-model="item.record_of_formal_schooling" clearable label-width="120" right-icon="arrow-down"/>
 						<van-field label="电话号码"placeholder="请输入电话号码" v-model="item.mobile" clearable label-width="120" label-color="red"/>
-					
 					<van-field label="工作单位"placeholder="请输入工作单位" v-model="item.work" clearable label-width="120" label-color="red"/>
-					<van-field label="婚姻情况" placeholder="法定代表人电话" v-model="item.marriage_status" clearable label-width="120"/>
-						<van-field label="家庭人数"placeholder="请输入法定代表人地址" v-model="item.households" clearable label-width="120" label-color="red"/>
-						
+					<van-field label="婚姻情况" placeholder="法定代表人电话" @click-right-icon="openPicker(5)" v-model="item.marriage_status" clearable label-width="120" right-icon="arrow-down"/>
+						<van-field label="家庭人数"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(6)" v-model="item.households" clearable label-width="120" label-color="red" right-icon="arrow-down"/>
+
 				</van-cell-group>
-				
+
 			</div>
-			
-		</div> 
-		
+
+		</div>
+
 		<div class="input-contianer" v-show="step==3">
 			<div v-for="(item,index) in info.mortgaged">
 				<h4 class="cell-hearder">抵押物{{index+1}}</h4>
 				<div>
 					<van-field label="关系"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
-					
+
 					<div class="idCard_front">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
@@ -108,23 +107,23 @@
 						<p>点击拍摄/上传国徽面</p>
 					</div>
 				</div>
-				
+
 				<van-cell-group class="bg-grey">
 					<van-field label="权利人"placeholder="请输入权利人" v-model="item.holder" clearable label-width="120"/>
 					<van-field label="共有情况" placeholder="共有情况"  v-model="item.situations" clearable label-width="120"/>
-					<van-field label="地址" placeholder="地址" v-model="item.address" clearable label-width="120"/>
+					<van-field label="坐落" placeholder="坐落" @click-right-icon="openPicker(7)" v-model="item.address" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="不动产单元号"placeholder="请输入不动产单元号" v-model="item.number" clearable label-width="120"/>
 					<van-field label="权利类型" placeholder="权利类型"  v-model="item.type" clearable label-width="120"/>
 					<van-field label="权利性质" placeholder="权利性质" v-model="item.nature" clearable label-width="120"/>
 					<van-field label="用途"placeholder="请输入用途" v-model="item.use" clearable label-width="120" label-color="red"/>
 					<van-field label="面积" placeholder="面积" v-model="item.area" clearable label-width="120"/>
 					<van-field label="权利其他情况"placeholder="请输入权利其他情况" v-model="item.Other" clearable label-width="120" label-color="red"/>
-					<van-field label="房产证号"placeholder="请输入房产证号" v-model="item.house_nubmer" clearable label-width="120" label-color="red"/>			
+					<van-field label="房产证号"placeholder="请输入房产证号" v-model="item.house_nubmer" clearable label-width="120" label-color="red"/>
 				</van-cell-group>
-				
+
 			</div>
-			
-		</div> 
+
+		</div>
 		<div class="input-contianer" v-show="step==4">
 			<div v-for="(item,index) in info.mortgagor">
 				<h4 class="cell-hearder">抵押人{{index+1}}</h4>
@@ -133,7 +132,7 @@
 					<div v-show="item.type==0">
 						<div>
 							<van-field label="关系 自然人" placeholder="请输入姓名"  clearable label-width="120"/>
-							
+
 							<div class="idCard_front">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传人像面</p>
@@ -143,20 +142,21 @@
 								<p>点击拍摄/上传国徽面</p>
 							</div>
 						</div>
-						
+
 						<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
-						<van-field label="性别" placeholder="性别"  v-model="item.sex" clearable label-width="120"/>
+						<van-field label="性别" placeholder="性别" @click-right-icon="openPicker(3)" v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
+
 						<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
-						<van-field label="出生日期"placeholder="请输入企业地址" v-model="item.birth" clearable label-width="120"/>
+						<van-field label="出生日期"placeholder="请输入企业地址" @click-right-icon="openPicker(1)"v-model="item.birth" clearable label-width="120" right-icon="arrow-down"/>
 						<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
 						<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
-						<van-field label="有效期限"placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
+						<van-field label="有效期限"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(2)" right-icon="arrow-down" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
 						<van-field label="抵押人联系方式" placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
 					</div>
 					<div v-show="item.type==1">
 						<div>
 							<van-field label="企业法人" placeholder="请输入姓名" v-model="item.type" clearable label-width="120"/>
-							
+
 							<div class="idCard">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传企业营业执照</p>
@@ -170,7 +170,7 @@
 						<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="item.mobile" clearable label-width="120"/>
 						<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="item.legal_representative_address" clearable label-width="120" label-color="red"/>
 					</div>
-					
+
 					<div class='cell'>请选择关联抵押物(可多选)</div>
 					<van-checkbox-group v-model="result">
 					  <van-cell-group>
@@ -190,15 +190,15 @@
 					  </van-cell-group>
 					</van-checkbox-group>
 				</van-cell-group>
-				
+
 			</div>
-			
-		</div> 
-		
+
+		</div>
+
 		<div class="btn_group" v-show='step!=5'>
 			<p v-show="step>1" class="add_asso" @click="add_item"><span class="add">&nbsp;+&nbsp;</span>添加关联人</p>
 			<div class="save_button" @click="save">保存并退出</div>
-			<div class="next_button" @click="addStep">下一步</div>
+			<div class="next_button" @click="addStep">{{next}}</div>
 		</div>
 		<div v-show='step==5'>
 			<div class="success-pan">
@@ -210,7 +210,7 @@
 						<van-cell ><div class="grey">查看详情</div></van-cell>
 						<van-cell>
 							<van-col span="3"><img class="logo" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-							<van-col span="21"><h3>广州老地方有限公司</h3></van-col>		
+							<van-col span="21"><h3>广州老地方有限公司</h3></van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="2"></van-col>
@@ -229,24 +229,52 @@
 						</van-cell>
 					</div>
 				</van-cell-group>
-				<div class="jyButton" @click="addStep">征信校验</div>
+				<div class="jyButton" @click="go('creditCheck')">征信校验</div>
 			</div>
 		</div>
     </div>
-        
+<!--		选择器遮罩层-->
+		<div class="pop_picker" v-show="time_Picker_Statue!==0">
+<!--			自定义选择器-->
+			<van-picker :columns="columns"  show-toolbar @cancel="onCancel" @confirm="confirmBtn(0)" v-show="time_Picker_Statue==3"   class="picker"/>
+<!--			地址选择器-->
+			<van-area :area-list="areaList" :columns-num="3" v-show="time_Picker_Statue==7" @confirm="confirmBtn(10)"  @cancel="onCancel" class="picker"/>
+			<van-datetime-picker v-show="time_Picker_Statue==1" class="picker"
+								 v-model="currentDate1"
+								 type="date"
+								 :min-date="minDate"
+								 @confirm="confirmBtn(1)" @cancel="onCancel()"
+			/>
+			<van-datetime-picker v-show="time_Picker_Statue==2" class="picker"
+								 v-model="currentDate2"
+								 type="date"
+								 :min-date="minDate"
+								 @confirm="confirmBtn(2)" @cancel="onCancel()"
+			/>
+		</div>
     </div>
 </template>
 
 <script>
-
+	import areaList from '../../../area.js';
 	import NavBar from '@/components/navBar'
 	import progressBar from '@/components/progressBar'
 	import Vue from 'vue';
-	import { Swipe, SwipeItem,Grid, GridItem,Image,Panel,NoticeBar,Cell, CellGroup,Row, Col,Dialog } from 'vant';
+	import { DropdownMenu, DropdownItem,Grid, GridItem,Image,Panel,NoticeBar,Cell, CellGroup,Row, Col,Dialog } from 'vant';
+	Vue.use(DropdownMenu).use(DropdownItem);
 	export default {
-
   data() {
     return {
+		next:'下一步',
+		areaList:areaList,
+		zidingyi:3,//3性别4学历5婚姻6家庭人数
+		currentDate1: new Date(),//1:开始日期  2 结束日期
+		currentDate2: new Date(),
+		timeValue1: '',//按确认后显示的日期  1：开始日期  2：结束日期
+		timeValue2: '',
+		time_Picker_Statue:0, //0：不显示 1：显示开始日期控件 2：显示结束日期控件  3：自定义控件：默认性别
+		columns:['男', '女'],//默认自定义picker数据
+
       title : [
 		'信息采集-企业信息',
 		'信息采集-企业主信息',
@@ -257,20 +285,20 @@
 		step:0,
 		stepArray:[
 			'企业信息',
-			'企业住信息',
+			'企业主信息',
 			'关联人信息',
 			'抵押物信息',
-			'企业信息',		 
+			'抵押人信息',
 		],
 		info:{
 			company_info:{
-				customer_id:'',
-				unified_social_credit_code:'',
-				company_name:'',
-				enterprise_address:'',
-				legal_representative:'',
-				mobile:'',
-				legal_representative_address:'',
+				customer_id:'44099999999',
+				unified_social_credit_code:'xxxxxxxxxx',
+				company_name:'XXXX有限公司',
+				enterprise_address:'广州市越秀区法政路XX号',
+				legal_representative:'张三',
+				mobile:'13800000000',
+				legal_representative_address:'广州市越秀区法政路XX号',
 			},
 			company_main_info:{
 				name:'',
@@ -278,7 +306,7 @@
 				ethnic:'',
 				birth:'',
 				address:'',
-				idcard:'', 
+				idcard:'',
 				validity_period:'' ,//有效期
 				record_of_formal_schooling : '', //学历
 				mobile:'',
@@ -293,7 +321,7 @@
 					ethnic:'',
 					birth:'',
 					address:'',
-					idcard:'', 
+					idcard:'',
 					validity_period:'' ,//有效期
 					record_of_formal_schooling : '', //学历
 					mobile:'',
@@ -316,7 +344,7 @@
 					house_nubmer:'',
 				}
 			],
-			mortgagor:[  
+			mortgagor:[
 				{
 					type:'0', //0=自然人， 1=  企业法人
 					name:'',
@@ -324,7 +352,7 @@
 					ethnic:'',
 					birth:'',
 					address:'',
-					idcard:'', 
+					idcard:'',
 					validity_period:'' , //有效期
 					diyaren_mobile:'',
 					diyawu:[],
@@ -342,7 +370,7 @@
 					ethnic:'',
 					birth:'',
 					address:'',
-					idcard:'', 
+					idcard:'',
 					validity_period:'' , //有效期
 					diyaren_mobile:'',
 					diyawu:[],
@@ -356,20 +384,91 @@
 			]
 		},
 		result:[],
+
+
     }
   },
-  
+
   //数据预加载
   created : ()=>{
   },
 
   //网页加载完成
-  mounted : ()=>{
+  mounted () {
+  	var value1 = this.$route.params.step;
+	  console.log(value1);
+	  console.log('12312312');
+
+	  if (value1) {
+	  	this.step = value1;
+	  }
   },
-  
+
   //声明方法
   methods : {
+	  openPicker(i) {//0：不显示 1：显示开始日期控件 2：显示结束日期控件  3:自定义控件：  3性别4学历5婚姻6家庭人数
+	  	switch (i) {
+			case 0:
+				this.time_Picker_Statue = 0;
+				break;
+			case 1:
+				this.time_Picker_Statue = 1;
+				break;
+			case 2:
+				this.time_Picker_Statue = 2;
+				break;
+			case 3:
+				this.time_Picker_Statue = 3;
+				this.columns = ['男', '女'];
+				break;
+			case 4:
+				this.time_Picker_Statue = 3;
+				this.columns = ['研究生以上', '本科','大专','高中'];
+				break;
+			case 5:
+				this.time_Picker_Statue = 3;
+				this.columns = ['已婚', '未婚','离异'];
+				break;
+			case 6:
+				this.time_Picker_Statue = 3;
+				this.columns = [4, 3,2,1];
+				break;
+			case 7:
+				this.time_Picker_Statue = 7;
+				break;
+			default:
+				break;
+
+		}
+
+	  },
+	  //自定义以及日期picker---取消键
+	  onCancel() {
+		  this.time_Picker_Statue = 0;
+	  },
+	  //自定义以及日期picker----确定键
+	  confirmBtn(i) { // 确定按钮TODO
+
+	  this.time_Picker_Statue = 0;
+	  },
+	  timeFormat(time) { // 时间格式化 2019-09-08
+		  let year = time.getFullYear();
+		  let month = time.getMonth() + 1;
+		  let day = time.getDate();
+		  if (this.type == 2) {
+			  return year + '年' + month + '月' + day +'日'
+		  }
+		  return year + '-' + month + '-' + day
+	  },
+	  onConfirm() {
+		  this.$refs.item.toggle();
+	  },
 	addStep:function(){
+		if(this.step == 3 ){
+			this.next = '确认提交';
+		} else {
+			this.next = '下一步';
+		}
 		if(this.step == 5 ){
 			//this.$router.go(-1);
 			this.$router.push('/creditCollectionInfo');//征信采集信息
@@ -378,6 +477,10 @@
 		this.step ++;
 	},
 	onClickLeft:function() {
+		if(this.step == 5 ){
+			this.$router.push({name:'index3'});
+			return;
+		}
 		if(this.step == 0 ){
 			this.$router.go(-1);
 			return;
@@ -393,14 +496,14 @@
 						ethnic:'',
 						birth:'',
 						address:'',
-						idcard:'', 
+						idcard:'',
 						validity_period:'' ,//有效期
 						record_of_formal_schooling : '', //学历
 						mobile:'',
 						work:'',
 						marriage_status:'',
 						households:'',
-					}) 
+					})
 			}
 			break;
 			case 3:{
@@ -415,9 +518,9 @@
 					area:'',
 					Other:'',
 					house_nubmer:'',
-				}) 
+				})
 			}
-			break;	
+			break;
 			case 4:{
 				this.info.mortgagor.push({
 						type:'0', //0=自然人， 1=  企业法人
@@ -426,7 +529,7 @@
 						ethnic:'',
 						birth:'',
 						address:'',
-						idcard:'', 
+						idcard:'',
 						validity_period:'' , //有效期
 						diyaren_mobile:'',
 						diyawu:[],
@@ -446,9 +549,13 @@
 	},
 	save:function(){
 		this.$router.go(-1);
-	}
+	},
+	  go : function(url){
+
+		  this.$router.push({name: url})
+	  },
   },
-  
+
   //计算属性
   computed: {
   },
@@ -457,13 +564,28 @@
   components: {
 	progressBar,
 	NavBar,
-	
+
   }
  }
 </script>
 
 <style lang="scss" scoped>
-	
+.pop_picker{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.3);
+}
+.bg-grey{
+	position: relative;
+}
+.picker{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
 .content{
 	padding: 0px;
 	background-color: rgb(238,238,238);
@@ -563,7 +685,7 @@
 			bottom: -60px;
 			left: 50%;
 			margin-left: -130px;
-			font-weight: bold;	
+			font-weight: bold;
 		}
 		.line-pan{
 			margin-top: 30px;
@@ -574,7 +696,7 @@
 			width: 16px;
 			height: 16px;
 			background-color: #999999;
-		
+
 			border-radius: 8px;
 			float: left;
 		}
@@ -586,7 +708,7 @@
 			border-radius: 8px;
 			float: left;
 		}
-		
+
 		.progress{
 			background-color: #999999;
 			float: left;
@@ -678,5 +800,5 @@
 			height: 24px;
 			padding: 10px 16px;
 		}
-		
+
 </style>

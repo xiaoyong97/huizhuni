@@ -6,6 +6,7 @@
         <van-nav-bar :title="title"  ></van-nav-bar>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
                 <div class="main_box">
+                    <div class="null_box"></div>
                     <van-row class="list_row" >
                         <van-col span="6" class="van-col_left"  ><p class="left_text">姓名</p></van-col>
                         <van-col span="18" class=" "  > <div class="input_box"></div> </van-col>
@@ -93,6 +94,7 @@
                                          @change="changeFn(2)" @confirm="confirmBtn(2)" @cancel="cancelFn()"
                     />
                 </div>
+                    <div class="null_box"></div>
             </div>
         <div class="main_box">
             <van-row class="van_row" >
@@ -104,6 +106,7 @@
             <van-row class="van_row" >
                 <div class="border_box"> <p class="share_text" >分享二维码</p></div>
             </van-row>
+            <div class="null_box"></div>
         </div>
     </div>
 </template>
@@ -235,6 +238,9 @@
     .img_erweima{
         height: 120px;
         width: 120px;
+    }
+    .null_box{
+        height: 8px;
     }
     .time_picker{
         position: absolute;

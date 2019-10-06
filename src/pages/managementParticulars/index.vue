@@ -3,7 +3,6 @@
   <div class="main">
    
     <div class="content">
-      <TabBar/>
       <van-nav-bar :title='title' @click-left="onClickLeft" fixed>
         <van-icon name="arrow-left" slot="left"  size="24px" />
       </van-nav-bar>

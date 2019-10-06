@@ -43,13 +43,13 @@ import icon5_1 from '../../../src/assets/images/48/Myselected@2x.png'
         normal: icon2,
         active: icon2_1,
         name : '宏观经济',
-        route : '/index'
+        route : '/index4/macroeconomics'
         },
         {
         normal: icon2,
         active: icon2_1,
         name : '经营数据',
-        route : '/index2'
+        route : '/index4/businessData'
         },
         {
         normal: icon3,

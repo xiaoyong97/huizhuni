@@ -2,36 +2,20 @@
     <div class="main" >
 
         <!--头部导航-->
-        <van-nav-bar :title="title"  >
+        <van-nav-bar :title="title"  right-text="保存">
         </van-nav-bar>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
             <div class="secend_box" style="height: auto">
                 <van-row >
-                    <van-col class="img_box" span="12" >
-                        <img src="../../../assets/images/activity/activitypic1.jpg" class="img_active" >
-                        <img src="../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img" >
-                    </van-col>
-                    <van-col class="img_box" span="12" >
-                        <img src="../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img" >
-                        <img src="../../../assets/images/activity/activitypic2.jpg" class="img_active" >
+                    <van-col class="img_box" span="12" v-for="(item,i) in list_img">
+                        <img :src="item.img" class="img_active" >
+                        <img src="../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(i)" >
                     </van-col>
 
-                    <van-col class="img_box" span="12" >
-                        <img src="../../../assets/images/24/Empty@2x.png" class="img_close" >
-                        <img src="../../../assets/images/activity/activitypic3.jpg" class="img_active" >
-                    </van-col>
-                    <van-col class="img_box" span="12" >
-                        <img src="../../../assets/images/24/Empty@2x.png" class="img_close" >
-                        <img src="../../../assets/images/activity/activitypic4.jpg" class="img_active" >
-                    </van-col>
-
-                    <van-col class="img_box" span="12" >
-                        <img src="../../../assets/images/24/Empty@2x.png" class="img_close" >
-                        <img src="../../../assets/images/activity/activitypic5.jpg" class="img_active" >
-                    </van-col>
-                    <van-col class="img_box" span="12" >
+                    <van-col class="img_box" span="12" @click="add_img">
                         <div class="add_box">
                             <img src="../../../assets/images/other/add@123.png" class="img_add" >
+                            <p class="add_text">还可上传<span class="blue">{{5-this.list_img.length}}</span>张照片</p>
                         </div>
                     </van-col>
                 </van-row>
@@ -43,10 +27,10 @@
 
     //引入组件首字母大写
     import TabBar from '@/components/tabBar'
-    import { Tab, Tabs,Swipe, SwipeItem, Row, Col  } from 'vant';
+    import { Tab, Tabs,Swipe, SwipeItem, Row, Col ,Dialog } from 'vant';
     import Vue from 'vue';
 
-    Vue.use(Swipe).use(SwipeItem).use(Col).use(Row).use(Tab).use(Tabs);
+    Vue.use(Swipe).use(SwipeItem).use(Col).use(Row).use(Tab).use(Tabs).use(Dialog);
     export default {
         //基础数据存放处
         data (){
@@ -54,6 +38,13 @@
                 title : '上传图片',
                 activeName: 'a',
                 current: 0,
+                list_img:[
+                    {img:require('../../../assets/images/activity/activitypic1.jpg')},
+                    {img:require('../../../assets/images/activity/activitypic2.jpg')},
+                    {img:require('../../../assets/images/activity/activitypic3.jpg')},
+                    {img:require('../../../assets/images/activity/activitypic4.jpg')},
+                    {img:require('../../../assets/images/activity/activitypic5.jpg')},
+                ]
             }
         },
 
@@ -76,8 +67,21 @@
             goviewList : function(){
                 this.$router.push('./viewList');
             },
-            remove_img() {
+            remove_img(i) {
+                Dialog.confirm({
+                    message: "是否删除照片",
+                    confirmButtonText: "确定", //改变确认按钮上显示的文字
+                }).then(()=> {
+                    this.list_img.splice(i,1)
+                }).catch(() => {
 
+                });
+
+            },
+            add_img() {
+                if (this.list_img.length < 5) {
+                    this.list_img.push({img:require('../../../assets/images/activity/activitypic5.jpg')})
+                }
             },
         },
 
@@ -106,7 +110,13 @@
         width: 100%;
         height: 100%;
         border: #999999 1px dashed;
-        position: relative;
+        text-align: center;
+    }
+    .add_text{
+        margin: 0;
+        line-height: 24px;
+        font-size: 14px;
+        color: #999999;
     }
     .main{
         background-color: rgb(238,238,238);
@@ -125,16 +135,14 @@
         z-index: 10;
     }
     .img_add{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-top: -20px; /* 高度的一半 */
-        margin-left: -20px; /* 宽度的一半 */
+       margin-top: 12px;
         height: 40px;
         width: 40px;
 
     }
-
+    .blue{
+        color: #4c62e7;
+    }
     .img_return{
         position: absolute;
         top: 14px;

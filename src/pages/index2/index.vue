@@ -1,36 +1,258 @@
 <template>
-  
+  <!--抢单页-->
   <div class="main">
+    <!--底部路由-->
+    <TabBar/>
    
-    <div class="content">
-      <TabBar/>
-      <!--<van-nav-bar :title='title' left-text="抢单" right-text="已抢单" @click-left="onClickLeft"  @click-right="onClickRight" fixed/>-->
-      <!--<van-nav-bar title="标题" left-text="抢单" right-text="已抢单" @click-left="onClickLeft" @click-right="onClickRight" fixed/>-->
-      
+    <div class="content"> 
+      <!--头部导航-->
       <van-row  gutter="10" class="daohangKuang">
-        <van-col span="7"></van-col>
-        <van-col span="11"><div >
-          <van-tabs class="daoHangQie" type="card" color="#1989fa">
-            <van-tab >
-              <div slot="title" @click="onClickLeft" class="navLeft">
-                  抢单
-              </div>
-              <div style="width:375px;">
-              </div>
-            </van-tab>
-            <van-tab> 
-              <div  class="navRight" @click="onClickRight" slot="title">
-                已抢单
-              </div>
-            </van-tab>
-          </van-tabs>
-        </div></van-col>
-        <van-col span="6"><van-icon  @click="searchBut" name="search" size="22px" style="margin-top:15px;float:right;"/></van-col>
+        <van-col class="skipCaiDan">
+           <van-row>
+             <van-col span="10"></van-col>
+            <van-col>
+              <div class="navLeft" @click="openKeQun">抢单</div>
+            </van-col>
+            <van-col>
+              <div  class="navRight"  @click="onClickRight">已抢单</div>
+            </van-col>
+          </van-row>
+        </van-col>
+        <van-col>
+          <van-icon @click="searchBut" name="search" size="24px" color="#4c62e7"/>
+        </van-col>
       </van-row>
-     
     </div>
- 
+    
+    <div>
+      <van-dropdown-menu id="shaiLeft" >
+        <van-dropdown-item v-model="TheSorting1" :options="TheSortings1"/>
+        <van-dropdown-item v-model="TheSorting2" :options="TheSortings2" />
+        <div class="shaiXuanLeft" @click="shaixuanBut"></div>
+      </van-dropdown-menu>
+      
+      
+      <div class="bac" >
+        <div class="daiWanCheng" @click="particularsCardBut">
+          <van-row >
+            <van-col class="qiangDanCol" span="17">
+              <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
+            </van-col>
+            <van-col style="line-height:20px;" span="3">
+              <div class="jingZhuenWan">精准</br>测额</div>
+            </van-col>
+            <van-col style="line-height:20px;" span="4">
+              <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+            </van-col>
+          </van-row>
+          <van-row gutter="15">
+            <van-col class="kuang" span="6">
+              <div class="kuangHang">
+                <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
+              </div>
+            </van-col>
+            <van-col class="kuang" span="6">
+              <div class="kuangHangDi">
+                <div class="kuangTop">抵押快贷</div><div class="kuangBottom">500万</div>
+              </div>
+            </van-col>
+            <van-col class="kuang" span="6">
+              <div class="kuangHang">
+                <div class="kuangTop">交易快贷</div><div class="kuangBottom">300万</div>
+              </div>
+            </van-col>
+            <van-col class="kuang" span="6">
+              <div class="kuangHang">
+                <div class="kuangTop">质押快贷</div><div class="kuangBottom">800万</div>
+              </div>
+            </van-col>
+          </van-row>
+          <van-row  gutter="10">
+            <van-col><div class ="BKuang" >一般户</div></van-col>
+            <van-col><div class ="BKuang" >结算户</div></van-col>
+            <van-col><div class ="BKuang" >企业征信</div></van-col>
+            <van-col><div class ="BKuang" >个人征信</div></van-col>
+          </van-row>
+          <van-row  gutter="10">
+            <div><div class ="timeKuang" >
+              <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
+                <div slot="button" class="custom-button" >
+                  {{huaKuaiName}}
+                </div>
+              </van-slider></div>
+              <div class ="huaTime" >2019/08/21 </br><span class="timeSpan">18:21</span></div>
+            </div>
+          </van-row>
+        </div>
 
+      
+        <div class="daiWanCheng">
+          <van-row >
+            <van-col class="qiangDanCol" span="17">
+              <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
+            </van-col>
+            <van-col style="line-height:20px;" span="3">
+              <div class="jingZhuenWan">精准</br>测额</div>
+            </van-col>
+            <van-col style="line-height:20px;" span="4">
+              <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+            </van-col>
+          </van-row>
+          <van-row gutter="15">
+            <van-col class="kuang" span="6">
+              <div class="kuangHang">
+                <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
+              </div>
+            </van-col>
+            <van-col class="kuang" span="6">
+              <div class="kuangHangDi">
+                <div class="kuangTop">抵押快贷</div><div class="kuangBottom">500万</div>
+              </div>
+            </van-col>
+            <van-col class="kuang" span="6">
+              <div class="kuangHang">
+                <div class="kuangTop">交易快贷</div><div class="kuangBottom">300万</div>
+              </div>
+            </van-col>
+            <van-col class="kuang" span="6">
+              <div class="kuangHang">
+                <div class="kuangTop">质押快贷</div><div class="kuangBottom">800万</div>
+              </div>
+            </van-col>
+          </van-row>
+          <van-row  gutter="10">
+            <van-col><div class ="BKuang" >一般户</div></van-col>
+            <van-col><div class ="BKuang" >结算户</div></van-col>
+            <van-col><div class ="BKuang" >企业征信</div></van-col>
+            <van-col><div class ="BKuang" >个人征信</div></van-col>
+          </van-row>
+          <van-row  gutter="10">
+            <div><div class ="timeKuang" >
+              <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
+                <div slot="button" class="custom-button" >
+                  {{huaKuaiName}}
+                </div>
+              </van-slider></div>
+              <div class ="huaTime" >2019/08/21 </br><span class="timeSpan">18:21</span></div>
+            </div>
+          </van-row>
+        </div>
+      </div>
+
+      <!--惠点通上拉菜单-->
+      <van-action-sheet class="hui_Action_ke" :overlay="false" :round="false" :close-on-click-overlay="false" v-model="huiShow" title="客群筛选">
+        <div class="hui_bac">
+
+          <van-row class="keQunRow">
+            <van-col  span="5">
+              <div class="keQunText">客群类别：</div>
+            </van-col>
+            <van-col span="19" >
+              <div class="keQunTabes"> 
+                <van-checkbox-group v-model="customerType" >
+                  <van-checkbox class="keQunCheckbox" v-for="item in customerTypeS" :key="item.value" :name="item.name" >
+                    {{ item.name }}
+                  </van-checkbox>
+                </van-checkbox-group>
+              </div>
+            </van-col>
+          </van-row>
+          <van-row  class="keQunRow">
+            <van-col  span="5">
+              <div class="keQunText">客群平台：</div>
+            </van-col>
+            <van-col span="19" >
+              <div class="keQunTabes"> 
+                <van-checkbox-group v-model="platform" >
+                  <van-checkbox class="keQunCheckbox" v-for="item in platformS" :key="item.value" :name="item.name" >
+                    {{ item.name }}
+                  </van-checkbox>
+                </van-checkbox-group>
+              </div>
+            </van-col>
+          </van-row>
+          <van-row  class="keQunRow">
+            <van-col  span="9">
+              <div class="keQunText">小微企业客户群编号：</div>
+            </van-col>
+            <van-col span="15" >
+              <div class="keQunTabes"> 
+                <van-field class="keQunField" v-model="clientId" placeholder="请输入" />
+              </div>
+            </van-col>
+          </van-row>
+          <van-row  class="keQunRow">
+            <van-col  span="9">
+              <div class="keQunText">小微企业客户群名称：</div>
+            </van-col>
+            <van-col span="15" >
+              <div class="keQunTabes"> 
+                <van-field class="keQunField" v-model="clientName" placeholder="请输入" />
+              </div>
+            </van-col>
+          </van-row>
+          <van-row  class="keQunRow">
+            <van-col  span="9">
+              <div class="keQunText">标签编号：</div>
+            </van-col>
+            <van-col span="15" >
+              <div class="keQunTabes"> 
+                <van-field class="keQunField" v-model="tagId" placeholder="请输入" />
+              </div>
+            </van-col>
+          </van-row>
+          <van-row  class="keQunRow">
+            <van-col  span="9">
+              <div class="keQunText">标签名称：</div>
+            </van-col>
+            <van-col span="15" >
+              <div class="keQunTabes"> 
+                <van-field class="keQunField" v-model="tagName" placeholder="请输入" />
+              </div>
+            </van-col>
+          </van-row>
+          <van-row  class="keQunRow">
+            <van-col  span="9">
+              <div class="keQunText">客群层级：</div>
+            </van-col>
+            <van-col span="10" >
+              <div class="keQunTabes"> 
+                <van-field class="keQunCengField" v-model="clientHierarchy" placeholder="请输入" />
+              </div>
+            </van-col>
+            <van-col  span="5">
+              <van-button class="keQunCengBut" type="info">选择</van-button>
+            </van-col>
+          </van-row>
+          <van-row  class="keQunRow">
+            <van-col  span="9">
+              <div class="keQunText">标签层级：</div>
+            </van-col>
+            <van-col span="10" >
+              <div class="keQunTabes"> 
+                <van-field class="keQunCengField" v-model="tagHierarchy" placeholder="请输入" />
+              </div>
+            </van-col>
+            <van-col  span="5">
+              <van-button class="keQunCengBut" type="info">选择</van-button>
+            </van-col>
+          </van-row>
+          
+        </div>
+        <van-row class="keQunButRow">
+          <van-col  span="11" class="keQunButLeft">
+              <van-button class="keQunCengBut" type="info">确认</van-button>
+          </van-col>
+          <van-col span="2" > </van-col>
+          <van-col span="11" >
+              <van-button class="keQunCengBut" type="primary" @click="keQunResetBut">重置</van-button>
+          </van-col>
+        </van-row>
+      </van-action-sheet>
+
+
+      
+    </div>
   </div>
   
 </template>
@@ -45,8 +267,46 @@ export default {
   //基础数据存放处
   data (){
      return {
-       
-       
+      //惠点通上拉菜单使用
+      huiShow:false,
+      customerType: [],//客群类型选中
+      customerTypeS: [//客群类型数据
+         { name: '核心客群', value: 1 },
+         { name: '主力客群', value: 2 },
+         { name: '大众客群', value: 3 },
+      ],
+      platform: [],//客群平台选中
+      platformS: [//客群平台数据
+         { name: '商业聚类', value: 1 },
+         { name: '政府聚类', value: 2 },
+         { name: '内部聚类', value: 3 },
+         { name: '数据驱动聚类', value: 4 },
+      ],
+      clientId: null,//小微企业客户群编号
+      clientName: '',//小微企业客户群名称
+      tagId: null,//标签id
+      tagName: '',//标签名称
+      clientHierarchy: '',//客群层级
+      tagHierarchy: '',//标签层级
+
+       title : '商2机',
+       activeName: 'a',
+       activeTabs:'a',
+       TheSorting1: 1,
+       TheSorting2: 1,
+       TheSortings1: [
+         { text: '默认排序', value: 1 },
+         { text: '发布时间排序', value: 2 },
+         { text: '距离排序', value: 3 },
+       ],
+       TheSortings2: [
+         { text: '筛选', value: 1 },
+         { text: '新款商品', value: 2 },
+         { text: '活动商品', value: 3 }
+       ],
+       huaKuai: null,
+       huaKuaiName: "滑动抢单",
+       active: 'b',
      }
   },
 
@@ -57,28 +317,63 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    this.onClickLeft()
+    
   },
   
   //声明方法
   methods : {
-    
+    //打开惠点通上拉菜单
+    openKeQun(){
+      this.huiShow=true;
+    },
+    //客群筛选重置按钮
+    keQunResetBut(){
+      this.customerType=[];//客群类型选中
+      this.platform=[];//客群平台选中
+      this.clientId= null;//小微企业客户群编号
+      this.clientName= '';//小微企业客户群名称
+      this.tagId= null;//标签id
+      this.tagName= '';//标签名称
+      this.clientHierarchy= '';//客群层级
+      this.tagHierarchy= '';//标签层级
+    },
     go : function(){
       this.$router.push('/more');
     },
-    //抢单按钮,跳到抢单页面
-    onClickLeft(){
-      this.$router.push('/grabSingle');
+    //已抢单中放弃按钮
+    fangQiBut(){
+      this.fangQiButShow = true
     },
     //已抢单按钮,跳到抢单页面
     onClickRight(){
       this.$router.push('/grabSingleYi');
     },
+    //滑动进度变化且结束拖动后触发
+    huaKuaiChange(){
+      if(this.huaKuai==100){
+        this.huaKuaiName="抢单中..."
+        Dialog.alert({
+          message: '抢单成功'
+        }).then(() => {
+          // on close
+        });
+      }else{
+        this.huaKuaiName="滑动抢单"
+      }
+    },
+    //点击信息卡背景打开详情信息
+    particularsCardBut(){
+      this.$router.push('/shangParticulars');
+    },
     //点击打开搜索
     searchBut(){
       this.$router.push('/searchShang');
-    }
+    },
 
+    //点击打开筛选页
+    shaixuanBut(){
+      this.$router.push('/filtrateYe');
+    },
   },
   
   //计算属性
@@ -92,42 +387,141 @@ export default {
   }
 }
 </script>
+<style>
+  #shaiLeft .van-dropdown-menu__item:nth-of-type(1){
+    border-bottom:3px solid #4c62e7;
+  }
 
+  .hui_Action_ke .van-action-sheet__header{
+    line-height: 40px;
+    font-size: 15px;
+    background-color: #379BF6;
+    color: white;
+  }
+   .hui_Action_ke .van-icon{
+    color: white;
+  }
+  .keQunTabes .van-icon-success{
+    width: 14px;
+    height:14px;
+    line-height: 14px;
+    border-radius: 0px;
+    margin-top:5px;
+    border:1px solid #737373
+  }
+  .keQunTabes .van-checkbox__label{
+      color:#737373;
+  }
+</style>
 <style lang="scss" scoped>
+  //惠点通上拉菜单
+    .hui_Action_ke{
+      position:absolute ;
+      bottom:50px;
+    }
+    .hui_bac{
+      font-size: 13px;
+      height: auto;
+      padding:10px 10px;
+    }
+    .keQunRow{
+      margin-bottom:13px;
+    }
+    .keQunText{
+      text-align: right;
+      color:#737373;
+      margin-top:5px;
+    }
+    .keQunTabes{
+      width:100%;
+    }
+    .keQunCheckbox{
+      float: left;
+      height: 26px;
+      margin-right: 19px;
+    }
+    .keQunField{
+      width:90%;
+      height: 24px;
+      line-height: 24px;
+      font-size: 13px;
+      padding:0px 10px;
+      border:1px solid #737373
+    }
+    .keQunCengField{
+      width:98%;
+      height: 24px;
+      line-height: 24px;
+      font-size: 13px;
+      padding:0px 10px;
+      border:1px solid #737373
+    }
+    .keQunCengBut{
+      width:53px;;
+      height: 24px;
+      line-height: 24px;
+      padding:0px;
+      font-size: 13px;
+    }
+    .keQunButRow{
+      height: 24px;
+      line-height: 24px;
+      margin-bottom: 15px;
+    }
+    .keQunButLeft .keQunCengBut{
+      border:1px solid;
+      float: right;
+    }
+  //结束
+
+  //头部导航
   .daohangKuang{
     position: fixed;
     top:0px;
     width:100%;
-    height:50px;
+    height:44px;
+    line-height:44px;
     margin-top:0px;
-    line-height:50px;
+    padding-top:10px;
   }
-  .daoHangQie{
-    width:150px;
-    margin-top:10px;
-    padding:0px;
+  .skipCaiDan{
+    width: 90%;
+    margin:auto;
   }
   .navLeft{ 
-    border-bottom-left-radius:17px;
-    border-top-left-radius: 17px;
+    width:60px;
+    height:30px;
+    line-height: 30px;
+    font-size: 13px;
+    text-align: center;
+    border-bottom-left-radius:7px;
+    border-top-left-radius: 7px;
+    border:1px solid #4c62e7;
+    color: white;
+    background-color: #4c62e7;
   }
   .navRight{ 
-    border-radius: 10px;
-    border-bottom-right-radius:
-    7px;border-top-right-radius: 7px;
+    width:60px;
+    height:30px;
+    line-height: 30px;
+    font-size: 13px;
+    text-align: center;
+    border-bottom-right-radius:7px;
+    border-top-right-radius: 7px;
+    border:1px solid #4c62e7;
+    color: #4c62e7;
   }
-  .qiangDanTabs{
-    padding-bottom: 50px;
-  }
-  .qiangDanTabs .bac{
+  //结束
+
+  .bac{
     width: 100%;
-    height: auto;
+    height: 509px;
     margin: 0px;
     padding-top: 1px;
     padding-bottom: 8px;
     background-color: #E7EAF5;
   }
-  .qiangDanTabs .daiWanCheng{
+  .daiWanCheng{
     width: 90%;
     height:174px;
     margin: 8px auto 0px auto;
@@ -136,13 +530,20 @@ export default {
     padding-right: 10px;
     background-color: white;
   }
+  .shaiXuanLeft{
+    width:50%;
+    height:50px;
+    position:absolute;
+    right:0px;
+    top:0px; 
+  }
   .daiWanCheng .qiangDanCol{
     line-height:20px;
     margin-top:15px;
   }
   .qiangDanCol .qiangGongSi{
     float: left;
-    max-width:170px;
+    max-width:180px;
     font-weight:bold;
     font-size:15px;
     color: rgb(51,51,51);
@@ -175,25 +576,22 @@ export default {
     background-image: url(../../assets/images/Label2@2x.png);
     background-size: 100%;
   }
+  .kuangHang{
+    height: 42px;
+    border-radius: 5px;
+    border:1px dashed rgb(76,98,232);
+  }
+  .kuangHangDi{
+    height: 42px;
+    border-radius: 5px;
+    border:1px dashed orange;
+  }
   .kuang {
     font-weight: bold;
     height:36px;
     margin-top:12px;
     margin-bottom:5px;
     padding:auto;
-  }
-  .kuang .kuangHang{
-    height: 42px;
-    border-radius: 5px;
-    border:1px dashed rgb(76,98,232);
-  }
-  .kuang .kuangHangDi{
-    height: 42px;
-    border-radius: 5px;
-    border:1px dashed orange;
-  }
-  .kuang .kuangHangDi .kuangBottom{
-    color: orange;
   }
   .kuang .kuangTop{
     width:100%;
@@ -230,23 +628,6 @@ export default {
   .daiWanCheng .timeKuang span{
     font-size: 14px;
   }
-  .daiWanCheng .isKuang{
-    float:right;
-    line-height:40px;
-    padding-right: 15px;
-    font-size: 16px;
-    color: green;
-  }
-  .daiWanCheng .isKuang .kuangFangBut{
-    height: 25px;;
-    line-height: 25px;
-    width:100px;
-    font-size: 14px;
-  }
-  .fangButClass{
-    margin: 15px 0px 10px 80px ;
-  }
-
   //部分
   .huaTime{
     float: right;
@@ -274,5 +655,4 @@ export default {
     background-color: rgb(76,98,232);
     color: white;
   }
-
 </style>

@@ -84,7 +84,7 @@
                 <div class="main_box">
                     <van-row class="list_row_top" >
                         <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
-                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >活动信息</p></van-col>
+                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text bold" >活动信息</p></van-col>
                     </van-row>
                     <van-row class="list_row" >
                         <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test" >活动主题</p></van-col>
@@ -135,7 +135,7 @@
             <div class="secend_box">
                 <van-row class="list_row_top" >
                     <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
-                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >课程表信息</p></van-col>
+                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text bold" >日程信息</p></van-col>
                 </van-row>
                 <van-row class="list_row" style="border-bottom:1px solid #333333;">
                     <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min_head" >课程名称</p></van-col>
@@ -429,6 +429,9 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+    }
+    .bold{
+        font-weight: bold;
     }
 
 

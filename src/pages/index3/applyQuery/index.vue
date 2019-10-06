@@ -7,10 +7,13 @@
                     <p class="choose_box_text " :class="type == 0 ? 'blue' : '' ">全部</p>
                 </van-row>
                 <van-row class="choose_box_list" @click="choose(1)">
-                    <p class="choose_box_text " :class="type == 1 ? 'blue' : '' ">通过</p>
+                    <p class="choose_box_text " :class="type == 1 ? 'blue' : '' ">录入复核</p>
                 </van-row>
                 <van-row class="choose_box_list" @click="choose(2)">
-                    <p class="choose_box_text " :class="type == 2 ? 'blue' : '' ">不通过</p>
+                    <p class="choose_box_text " :class="type == 2 ? 'blue' : '' ">合规审查</p>
+                </van-row>
+                <van-row class="choose_box_list" @click="choose(3)">
+                    <p class="choose_box_text " :class="type == 3 ? 'blue' : '' ">贷款审批</p>
                 </van-row>
             </div>
 
@@ -19,12 +22,12 @@
         <van-nav-bar :title="title" >
 
         </van-nav-bar>
-        <span class="righttop_text">贷款状态</span>
+        <span class="righttop_text" @click="openOverlay">{{right_text}}</span>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <div class="content">
             <img src="../../../assets/images/24/Pulldownselect@2x.png" class="img_is_open" v-show="!is_open" @click="openOverlay">
             <img src="../../../assets/images/24/Pullupselect@12x.png" class="img_is_open" v-show="is_open" @click="openOverlay">
-            <div class="card_div" style="">
+            <div class="card_div" v-show="type==0|type==1">
                 <van-row style="padding: 4px 12px 0">
                     <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
                     <van-col class="" span="18"><p class="card_list2_test" >北京京东金融有限公司</p></van-col>
@@ -49,7 +52,7 @@
                 </van-row>
                 <div style="height: 6px"></div>
             </div>
-            <div class="card_div" style="">
+            <div class="card_div" v-show="type==0|type==2">
                 <van-row style="padding: 4px 12px 0">
                     <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
                     <van-col class="" span="18"><p class="card_list2_test" >北京京东金融有限公司</p></van-col>
@@ -79,7 +82,7 @@
                 </van-row>
                 <img src="../../../assets/images/other/Label9@2x.png" class="img_ispass" >
             </div>
-            <div class="card_div" style="">
+            <div class="card_div" v-show="type==0|type==3">
                 <van-row style="padding: 4px 12px 0">
                     <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
                     <van-col class="" span="18"><p class="card_list2_test" >北京京东金融有限公司</p></van-col>
@@ -124,6 +127,7 @@
         data() {
             return {
                 title : '申贷查询',
+                right_text:'贷款状态',
                 open:true,
                 is_open:false,
                 type:0,
@@ -150,19 +154,19 @@
             go : function(url){
                 this.$router.push({name: url})
             },
-            openOverlay : function(){
-                if(this.active == 1) {
-                    this.is_open = !this.is_open;
-                }
+            openOverlay  (){
+                this.is_open = !this.is_open;
             },
 
             choose(i) {
-                if ( i == 1) {
-                    this.tab2 = '通过';
-                } else if ( i == 2) {
-                    this.tab2 = '未通过';
+                if ( i == 0) {
+                    this.right_text = '贷款状态 ';
+                } else if ( i == 1) {
+                    this.right_text = '录入复核';
+                } else if( i == 2) {
+                    this.right_text = '合规审查';
                 } else {
-                    this.tab2 = '已校验';
+                    this.right_text = '贷款审批';
                 }
 
                 this.is_open = false;
@@ -198,7 +202,7 @@
     }
     .popContainer{
         position: fixed;
-        top: 90px;
+        top: 46px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -215,7 +219,7 @@
     .choose_box{
         float: right;
         background-color: white;
-        width: 50%;
+        width: 25%;
     }
     .choose_box_list{
         text-align: center;
@@ -261,11 +265,12 @@
         height: 20px;
         width: 20px;
     }
-
+    .main_box{
+        background-color: rgb(238,238,238);
+    }
     // scoped 表示私有样式
     .content{
         padding: 0px ;
-        background-color: rgb(238,238,238);
         justify-content: center;
         align-items: center;
     }

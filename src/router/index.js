@@ -135,14 +135,6 @@ export default new Router({
         },
       //商机部分
       {
-        name: 'grabSingle',
-        path: '/grabSingle',
-        component: () => import('@/pages/grabSingle'),
-        meta: {
-          title: '商机抢单页'
-        },
-      },
-      {
         name: 'grabSingleYi',
         path: '/grabSingleYi',
         component: () => import('@/pages/grabSingleYi'),
@@ -166,14 +158,22 @@ export default new Router({
           title: '商机管理详情信息'
         },
       },
-	  {
-	    name: 'searchShang',
-	    path: '/searchShang',
-	    component: () => import('@/pages/searchShang'),
-	    meta: {
-	     title: '商机管理搜索导航'
-	    },
-	  },
+      {
+        name: 'searchShang',
+        path: '/searchShang',
+        component: () => import('@/pages/searchShang'),
+        meta: {
+        title: '商机管理搜索导航'
+        },
+      },
+      {
+        name: 'filtrateYe',
+        path: '/filtrateYe',
+        component: () => import('@/pages/filtrateYe'),
+        meta: {
+        title: '商机管理筛选页'
+        },
+      },
 
 
  //咕咕管理
@@ -468,6 +468,22 @@ export default new Router({
 		  meta: {
 		   title: '信息详情'
 		  },
+		},
+        {
+            name: 'macroeconomics',
+            path: '/index4/macroeconomics',
+            component: () => import('@/pages/index4/macroeconomics'),
+            meta: {
+                title: '宏观经济'
+            },
+        },
+		{
+		    name: 'businessData',
+		    path: '/index4/businessData',
+		    component: () => import('@/pages/index4/businessData'),
+		    meta: {
+		        title: '经营数据'
+		    },
 		},
     ]
   })

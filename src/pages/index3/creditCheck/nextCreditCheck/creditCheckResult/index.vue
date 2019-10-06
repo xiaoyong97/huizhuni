@@ -3,7 +3,7 @@
         <!--头部导航-->
         <van-nav-bar :title="title"  :right-text="right_text" @click-right="gocommit" v-show="step==1"></van-nav-bar>
         <van-nav-bar :title="title"  right-text="发起贷款" @click-right="go('loanLaunch')" v-show="step==2"></van-nav-bar>
-        <van-nav-bar :title="title"  right-text="回到首页" @click-right="go('index')" v-show="step==3"></van-nav-bar>
+        <van-nav-bar :title="title"  right-text="返回首页" @click-right="go('index')" v-show="step==3"></van-nav-bar>
         <img src="../../../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <div class="content">
             <div class="popContainer" v-show="step==1">
@@ -17,7 +17,7 @@
 
             <div class="popContainer" v-show="step==3">
                 <img src="../../../../../assets/images/other/failure@2x.png" class="img_cmarea2" >
-                <p class="black_text">征信校验通过</p>
+                <p class="black_text">征信校验失败</p>
             </div>
             <div class="div_errmsg" v-show="step==3">
                 <van-row class="list_row_top" >

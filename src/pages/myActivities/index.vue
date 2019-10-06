@@ -71,22 +71,19 @@
         </div>
         <!--头部导航-->
 
-        <van-nav-bar :title="title"  >
-
-        </van-nav-bar>
+        <van-nav-bar :title="title"  ></van-nav-bar>
          <div class="top_bar_main_box" >
              <van-row class="top_bar_box" style="">
                  <van-col :class="type!==2?'active':''" class="top_bar_box_col top_bar_box_col_left " span="12"><p class="top_bar_box_text_left" @click="changeType(1)">我的活动</p></van-col>
                  <van-col :class="type==2?'active':''" class="top_bar_box_col " span="12"><p class="top_bar_box_text_right" @click="changeType(2)">报表查询</p></van-col>
              </van-row>
          </div>
-
          <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" @click="open_fliter">
          <img src="../../assets/images/38/searchfor@2x.png" class="img_search" >
          <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
          <!--         下拉菜单-->
-         <div class='menu_popContainer'  v-show="menu!==0">
-             <div  class="menu1_choose_box" :class="active==1?'width_half':''" v-show="menu==1">
+         <div class='menu_popContainer'  v-show="menu!==-1">
+             <div  class="menu1_choose_box" :class="type==0?'width_half':''" v-show="menu==0">
                  <van-row class="choose_box_list" @click="menuChoose(0)">
                      <p class="menu1_choose_box_text " :class="menu_choose == 0 ? 'blue' : '' ">已发布</p>
                  </van-row>
@@ -100,7 +97,7 @@
                      <p class="menu1_choose_box_text " :class="menu_choose == 3 ? 'blue' : '' ">已结束</p>
                  </van-row>
              </div>
-             <div  class="menu1_choose_box position_center" :class="active==1?'':'width_half_right'" v-show="menu==2">
+             <div  class="menu1_choose_box position_center" :class="type==1?'':'width_half_right'" v-show="menu==1">
                  <van-row class="choose_box_list" @click="menu2Choose(0)">
                      <p class="menu1_choose_box_text " :class="menu2_choose == 0 ? 'blue' : '' ">全部</p>
                  </van-row>
@@ -161,15 +158,14 @@
              </div>
          </div>
         <div class="content">
-            <van-tabs color="#4c62e7" line-width="33%" line-height=3 title-active-color="#4c62e7" v-show="type==1" class="relative" @click="onTabClick">
+            <van-tabs color="#4c62e7" v-model="active" line-width="33%" line-height=3 title-active-color="#4c62e7" v-show="type==1" class="relative" @click="onTabClick">
                 <!--                已发布下拉图标-->
-                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open" v-show="menu!==1" @click="openMenu(1)">
-                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open" v-show="menu==1" @click="closeMenu">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open" v-show="menu!==0" @click="openMenu(0)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open" v-show="menu==0" @click="closeMenu">
                 <!--                待审核下拉图标-->
-                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open menu2_open" v-show="menu!==2" @click="openMenu(2)">
-                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open menu2_open" v-show="menu==2" @click="closeMenu">
-
-                <van-tab :title="tab1Title" color="#4c62e7">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="menu1_open menu2_open" v-show="menu!==1" @click="openMenu(1)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open menu2_open" v-show="menu==1" @click="closeMenu">
+                <van-tab :title="tab1Title" name="已发布" color="#4c62e7" >
                     <div class="card_div" v-show="menu_choose==2|menu_choose==0">
                         <div @click="goPage('activityDetailsIng',{status_:0})" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0">
@@ -265,7 +261,7 @@
                     </div>
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab :title="tab2Title" color="#4c62e7">
+                <van-tab :title="tab2Title" name="待审核" color="#4c62e7" >
                     <!--                    任务新建-->
                     <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityDetailsIng',{status_:1})">
                         <van-row style="padding: 16px 12px 0">
@@ -327,7 +323,7 @@
                         <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
                     </div>
                     <!--                    名单补录-->
-                    <div class="card_div_examine" v-show="menu2_choose==4|menu2_choose==0" style="">
+                    <div class="card_div_examine" v-show="menu2_choose==4|menu2_choose==0" style=""  @click="goPage('replenishmentDetails')">
                         <van-row style="padding: 16px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                         </van-row>
@@ -350,9 +346,8 @@
 
                     <div style="height: 8px"></div>
                 </van-tab>
-
 				<!-- 已拒绝 -->
-				<van-tab title="已拒绝(1)" color="#4c62e7">
+				<van-tab title="已拒绝(1)" color="#4c62e7" >
                     <div class="card_div" style="" >
                         <div>
                             <van-row style="padding: 16px 12px 0">
@@ -375,16 +370,15 @@
 
                     <div style="height: 8px"></div>
 				</van-tab>
-
             </van-tabs>
-            <van-tabs color="#4c62e7" line-width="50%" line-height=3 title-active-color="#4c62e7" v-show="type==0" class="relative" @click="onTabClick">
+            <van-tabs color="#4c62e7" v-model="active2" line-width="50%" line-height=3 title-active-color="#4c62e7" v-show="type==0" class="relative" @click="onTabClick2">
                 <!--                已发布下拉图标-->
-                <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open" v-show="menu!==1" @click="openMenu(1)">
-                <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open" v-show="menu==1" @click="closeMenu">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open" v-show="menu!==0" @click="openMenu(0)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open" v-show="menu==0" @click="closeMenu">
                 <!--                待审核下拉图标-->
-                <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu!==2" @click="openMenu(2)">
-                <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu==2" @click="closeMenu">
-                <van-tab :title="tab1Title" color="#4c62e7">
+                <img src="../../assets/images/24/Pulldownselect@2x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu!==1" @click="openMenu(1)">
+                <img src="../../assets/images/24/Pullupselect@12x.png" class="tabs2_menu1_open tabs2_menu2_open" v-show="menu==1" @click="closeMenu">
+                <van-tab :title="tab1Title" name="已发布" color="#4c62e7" >
                     <div class="card_div" v-show="menu_choose==2|menu_choose==0" style="" >
                         <div @click="goPage('activityDetailsIng',{status_:0})" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0">
@@ -447,7 +441,7 @@
                             </van-col>
                         </van-row>
                     </div>
-                    <div class="card_div" v-show="menu_choose==3|menu_choose==0" style="" @click="goPage('activityDetailsOver')">
+                    <div class="card_div" v-show="menu_choose==3|menu_choose==0" style="" >
                         <div @click="goPage('activityDetailsOver')" class="card-bottom-line">
                             <van-row style="padding: 16px 12px 0" type="flex" justify="center">
                                 <van-col class="" span="12"><p class="card_list1_test_left" >今朝会-创业沙龙第六期</p></van-col>
@@ -480,7 +474,7 @@
                     </div>
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab :title="tab2Title" color="#4c62e7">
+                <van-tab :title="tab2Title" name="待审核" color="#4c62e7" >
                     <!--                    任务新建-->
                     <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityDetailsIng',{status_:1})" >
                         <van-row style="padding: 16px 12px 0">
@@ -542,7 +536,7 @@
                         <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
                     </div>
                     <!--                    名单补录-->
-                    <div class="card_div_examine" v-show="menu2_choose==4|menu2_choose==0" style="" @click="goPage('replenishmentDetails')">
+                    <div class="card_div_examine" v-show="menu2_choose==4|menu2_choose==0" @click="goPage('replenishmentDetails')">
                         <van-row style="padding: 16px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                         </van-row>
@@ -565,12 +559,13 @@
 
                     <div style="height: 8px"></div>
                 </van-tab>
+
             </van-tabs>
 
 			<div class="query_container" v-show="type==2">
 						<div >
 							<div class="line_grey"></div>
-							<div class="header_text">
+							<div class="header_text" >
 								<h3>"普惠金融百万创业者培训计划"</h3>
 								 <h3>开展情况会中表</h3>
 							</div>
@@ -583,7 +578,7 @@
 								 </van-col>
 							 </van-row>
 
-							 <van-row class="cell">
+							 <van-row class="cell" @click="chooseDate">
 								<van-col class="cell-header" span="6">报告期</van-col>
 								<van-col class="cell-content" span="16">
 									<select name="" id="">
@@ -600,36 +595,6 @@
 							<van-col class="btn-item" @click="sort(3)" span="8">按次数 &nbsp;<span class="sort"><span class="top">&nbsp;</span><span class="down active">&nbsp;</span></span></van-col>
 						</van-row>
 							 <div id="myChart" ></div>
-				<div >
-					<div class="line_grey"></div>
-					<div class="header_text">
-						<h3>"普惠金融百万创业者培训计划"</h3>
-						 <h3>开展情况会中表</h3>
-					</div>
-					 <van-row class="cell">
-						 <van-col class="cell-header" span="6">机构名称</van-col>
-						 <van-col class="cell-content" span="16">
-							 <select name="" id="">
-								 <option value="" selected>中国建设银行总行</option>
-							 </select>
-						 </van-col>
-					 </van-row>
-
-					 <van-row class="cell">
-						<van-col class="cell-header" span="6">报告期</van-col>
-						<van-col class="cell-content" span="16">
-							<input type="text" v-model="date" readonly="" @click="chooseDate">
-						</van-col>
-					 </van-row>
-					 <div class="line_grey"></div>
-				</div>
-
-				<van-row class="btn-group ">
-					<van-col class="btn-item" @click="sort(1)" span="8">按字母 &nbsp;<span class="sort"><span class="top active">&nbsp;</span><span class="down">&nbsp;</span></span></van-col>
-					<van-col class="btn-item" @click="sort(2)" span="8">按人数 &nbsp;<span class="sort"><span class="top active">&nbsp;</span><span class="down">&nbsp;</span></span></van-col>
-					<van-col class="btn-item" @click="sort(3)" span="8">按次数 &nbsp;<span class="sort"><span class="top">&nbsp;</span><span class="down active">&nbsp;</span></span></van-col>
-				</van-row>
-				<div id="myChart" ></div>
 				<van-popup v-model="date_picker">
 					<div class="date_container">
 						<div class="date_input_container">
@@ -640,16 +605,16 @@
 							    clearable
 								class="border"
 							 >
-							  <img slot="button" class="calendar" src="../../assets/images/38/calendar@2x.png" alt="">
+							  <img slot="button" @click="timePickerStatue(1)" class="calendar" src="../../assets/images/38/calendar@2x.png" alt="">
 							 </van-field>
 							<div class="zhi">至</div>
 							  <van-field
 							    v-model="end_date"
-							    type="password"
+                                clearable
 								  class="border"
 							  >
 
-							  <img  slot="button" class="calendar" src="../../assets/images/38/calendar2.png" alt="">
+							  <img  slot="button" @click="timePickerStatue(2)" class="calendar" src="../../assets/images/38/calendar2.png" alt="">
 							  </van-field>
 							</van-cell-group>
 							<div class="btn-group">
@@ -657,13 +622,22 @@
 								<button class="btn-sure" @click="sure">确定</button>
 							</div>
 						</div>
+                        <div style="width: 100%">
+                            <van-datetime-picker v-show="time_Picker_Statue==1" class="datetime-picker"
+                                                 v-model="currentDate1"
+                                                 type="date"
+                                                 :min-date="minDate"
+                                                 @change="changeFn(1)" @confirm="confirmBtn(1)" @cancel="cancelFn()"
+                            />
+                            <van-datetime-picker v-show="time_Picker_Statue==2" class="datetime-picker"
+                                                 v-model="currentDate2"
+                                                 type="date"
+                                                 :min-date="minDate"
+                                                 @change="changeFn(2)" @confirm="confirmBtn(2)" @cancel="cancelFn()"
+                            />
+                        </div>
 
-						<van-datetime-picker
-						  v-model="currentDate"
-						  type="date"
-						  :min-date="minDate"
-						  class="datetime-picker"
-						/>
+
 					</div>
 
 				</van-popup>
@@ -682,14 +656,15 @@
 	// 引入柱状图组件
 	require('echarts/lib/chart/bar')
 	// 引入提示框和title组件
-	require('echarts/lib/component/tooltip')
+    require('echarts/lib/component/tooltip')
 	require('echarts/lib/component/title')
     Vue.use(Tab).use(Tabs).use(SubmitBar);
     export default {
 
         data() {
             return {
-                menu:9,  // 1:已发布，2.待审核，3.已拒绝,9筛选
+                hidden:false,
+                menu:-1,  //-1:不显示 0:已发布，1.待审核，2.已拒绝,9筛选
                 menu_choose :0,
                 menu2_choose :0,//tab审核的菜单选择 1：新建2：中止3：变更4：名单补录
                 time_choose :0,
@@ -701,7 +676,8 @@
                 endData:'',
                 minDate: new Date(2018, 10, 1),
                 time_Picker_Statue:0, //0：不显示 1：显示开始日期控件 2：显示结束日期控件
-                active:0,
+                active:1,
+                active2:1,
                 tab1Title:'已发布(3)',
                 tab2Title:'待审核(4)',
                 title : '',
@@ -715,7 +691,6 @@
 				date_picker:false,
 				date:'2019.01.01-2019.07.01',
 
-				minDate: new Date(),
 				maxDate: new Date(2019, 10, 1),
 				currentDate: new Date(),
 				date_show:true,
@@ -727,16 +702,27 @@
 
         //数据预加载
         created  (){
-            this.menu = 0;
+            this.menu = -1;
+
         },
 
         //网页加载完成
         mounted (){
+            var avtiveValue = sessionStorage.getItem("myActivityTabActive");
+            var avtiveValue2 = sessionStorage.getItem("myActivityTabActive2");
+            if (avtiveValue!==null) {
+                console.log(avtiveValue)
+                this.active = avtiveValue
+            }
+            if (avtiveValue2!==null) {
+                console.log(avtiveValue2)
+                this.active2 = avtiveValue2
+            }
             var value = sessionStorage.getItem('identity')
             if (value == "management") {
-                this.type = 1
+                this.type = 0
             } else {
-                this.type = 0;
+                this.type = 1;
             }
         },
 
@@ -760,7 +746,7 @@
                         break;
                 }
                 this.menu_choose = i;
-                this.menu = 0;
+                this.menu = -1;
             },
             menu2Choose(i){
                 switch (i) {
@@ -783,16 +769,25 @@
                         break;
                 }
                 this.menu2_choose = i;
-                this.menu = 0;
+                this.menu = -1;
             },
             onTabClick(index) {
-                this.active = index+1;
+                console.log(index+'tabclick')
+                this.active = index;
+                sessionStorage.setItem("myActivityTabActive",index)
+            },
+            onTabClick2(index) {
+                console.log(index+'tabclick')
+                this.active2 = index;
+                sessionStorage.setItem("myActivityTabActive2",index)
             },
             timePickerStatue(i) {
                 this.time_Picker_Statue = i;
             },
             onClickLeft() {
                 this.$router.go(-1);
+                sessionStorage.setItem("myActivityTabActive",'已发布');
+                sessionStorage.setItem("myActivityTabActive2",'已发布')
             },
             seleteTime(i) {
                 this.time_choose = i;
@@ -801,19 +796,28 @@
                 this.$router.push({name:url,params:param});
             },
             openMenu (i){
-                if(this.active==i) {
+                if (i== 0 && (this.active=='已发布' || this.active2=='已发布')) {
+                    this.menu = i;
+                }
+                if (i== 1 && (this.active=='待审核' || this.active2=='待审核')) {
                     this.menu = i;
                 }
             },
             closeMenu (){
-                this.menu = 0;
+                this.menu = -1;
             },
             open_fliter() {
-                if (this.menu == 9) {
-                    this.menu = 0;
+                if(this.type !== 2) {
+                    if (this.menu == 9) {
+                        this.menu = -1;
+                    } else {
+                        this.menu = 9
+                    }
                 } else {
-                    this.menu = 9;
+                    this.menu = -1;
                 }
+
+
             },
             clearAll() {
                 this.timeValue1 = '';
@@ -821,10 +825,18 @@
                 this.time_choose = 0;
             },
             confirmBtn(i) { // 确定按钮
-                if (i==1) {
-                    this.timeValue1 = this.timeFormat(this.currentDate1);
+                if(this.type !== 2) {
+                    if (i==1) {
+                        this.timeValue1 = this.timeFormat(this.currentDate1);
+                    } else {
+                        this.timeValue2 = this.timeFormat(this.currentDate2);
+                    }
                 } else {
-                    this.timeValue2 = this.timeFormat(this.currentDate2);
+                    if (i==1) {
+                        this.start_date = this.timeFormat(this.currentDate1);
+                    } else {
+                        this.end_date = this.timeFormat(this.currentDate2);
+                    }
                 }
                 this.time_Picker_Statue = 0;
             },
@@ -842,6 +854,9 @@
                 let year = time.getFullYear();
                 let month = time.getMonth() + 1;
                 let day = time.getDate();
+                if (this.type == 2) {
+                    return year + '年' + month + '月' + day +'日'
+                }
                 return year + '/' + month + '/' + day
             },
             openOverlay : function(){
@@ -970,20 +985,21 @@
 					}
 				},100)
 			},
-			sort:function(type){
-
-
-			},
-
-			chooseDate:function(){
+			chooseDate (){
 				this.date_picker = true;
 			},
 			cancel_choose:function(){
 				this.date_picker = false;
+                this.time_Picker_Statue = 0;
 			},
 			sure:function(){
 				this.date_picker = false;
-			}
+                this.time_Picker_Statue = 0;
+			},
+            sort:function(type){
+
+
+            },
 
         },
 
@@ -1023,7 +1039,7 @@
         z-index: 100;
     }
     .menu2_open{
-        left: 58%;
+        left: 60%;
     }
     .tabs2_menu2_open{
         left: 85%;
@@ -1415,7 +1431,7 @@
     }
 
 	.date_container{
-		width:414px;
+		width:100%;
 		min-height: 736px;
 
 	}
@@ -1442,6 +1458,7 @@
 	}
 	.van-popup{
 		background-color: rgba(0,0,0,0);
+        width: 100%;
 	}
 	.datetime-picker{
 		position: absolute;
@@ -1455,12 +1472,17 @@
 	.btn-group .cancel-btn{
 		width: 47%;
 		height: 44px;
-
+        background-color: white;
+        border: 0px;
+        border-radius: 10px;
 	}
 	.btn-group .btn-sure{
 		width: 47%;
 		height: 44px;
 		color: #4c62e7;
+        background-color: white;
+        border: 0px;
+        border-radius: 10px;
 	}
 	.zhi{
 		height: 40px;
