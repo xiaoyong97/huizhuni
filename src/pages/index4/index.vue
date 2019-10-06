@@ -1,38 +1,36 @@
 <template>
-  
+
   <div class="main">
-   
-   <!-- <van-nav-bar
-    :title='title'
-    fixed
-   /> -->
-  <div class="menu-sc">
-    <van-search placeholder="请输入客户名称" class="vv-search"/>
-    <van-button style="margin:5px;" size="small" type="default">搜索</van-button>
-    <van-icon name="location" />思明区
-  </div>
-  <div class="content">
-    <!-- <div class="msg">惠点通</div> -->
-    <baidu-map id="container" :mapClick="false" :center="center" :zoom="zoom" @ready="handler">
-      <div v-for="(marker, i) of markers" :key="i">
-        <bm-marker :position="{lng: subSSS(marker.center,0), lat: subSSS(marker.center,1)}" @click="infoWindowOpen(i)" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
-          <bm-info-window :title="marker.pname" :show="marker.showFlag" @close="infoWindowClose(i)" @open="infoWindowOpen(i)">
-            <div class="fosize">项目名称：{{marker.pname}}</div>
-            <div class="fosize">设备数量：{{marker.devices}}</div>
-          </bm-info-window>
-        </bm-marker>
-      </div>
-      <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
-    </baidu-map>
-  </div>
-  
-    
 
-
-  <BottomBar/>
+    <!-- <van-nav-bar
+      :title='title'
+      fixed
+    /> -->
+    <div class="menu-sc">
+      <van-search style="height:25px;" placeholder="请输入客户名称" class="vv-search"/>
+      <van-button class="vbtn-small" size="small" type="default">搜索</van-button>
+      <img class="dy-icon" src="../../assets/images/huidiantong/1_0001s_0003.png" alt="">
+      <!-- <van-icon class="dy-icon" name="location" /> --><span class="span-dw">思明区</span>
+    </div>
+    <div class="content">
+      <!-- <div class="msg">惠点通</div> -->
+      <baidu-map id="container" :mapClick="false" :center="center" :zoom="zoom" @ready="handler">
+        <div v-for="(marker, i) of markers" :key="i">
+          <bm-marker :position="{lng: subSSS(marker.center,0), lat: subSSS(marker.center,1)}" @click="infoWindowOpen(i)" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
+            <bm-info-window :title="marker.pname" :show="marker.showFlag" @close="infoWindowClose(i)" @open="infoWindowOpen(i)">
+              <div class="fosize">项目名称：{{marker.pname}}</div>
+              <div class="fosize">设备数量：{{marker.devices}}</div>
+            </bm-info-window>
+          </bm-marker>
+        </div>
+        <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+      </baidu-map>
+    </div>
+    <!--底部导航-->
+    <BottomBar/>
 
   </div>
-  
+
 </template>
 
 <script>
@@ -59,6 +57,7 @@ export default {
         center: {lng: 113.27147, lat: 23.131669},
         zoom: 3,
         show: true,
+       
      }
   },
 
@@ -69,12 +68,12 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+
   },
-  
+
   //声明方法
   methods : {
-    
+
     go : function(){
       this.$router.push('/more');
     },
@@ -96,10 +95,10 @@ export default {
     infoWindowOpen (marker) {
       this.markers[marker].showFlag = true
     },
-    
+
 
   },
-  
+
   //计算属性
   computed: {
 
@@ -111,9 +110,18 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
-
+.dy-icon{position: relative;top:3px;width: 13px;margin-right:3px;}
+.span-dw{color:#ffffff; font-size: 15px;}
+.van-cell{line-height: 28px !important;}
+.vbtn-small{margin:10px 5px 0px 0px;border-radius:3px;height:28px;line-height:28px;}
+.van-search__content{
+  height: 28px;
+  line-height: 28px;
+}
+.van-search .van-cell{
+  padding: 0px 8px 0px 0px;
+}
 .menu-sc{
  position:fixed;
  top:0px;
@@ -122,7 +130,7 @@ export default {
  height:46px;
  line-height:46px;
  text-align:center;
- background-color:#fff;
+ background-color:#379BF6;
  z-index:1;
 }
 #near{
@@ -138,9 +146,13 @@ export default {
 }
 .vv-search{
   width: auto;
-  min-width: 63%;
+  min-width: 60%;
   float: left;
-  line-height: 46px;
-  height: 46px;
+  line-height: 28px;
+  height: 28px;
+  margin:11px 0px 0px 12px;
+  padding: 0px;
+  border-radius: 15px;
 }
+
 </style>

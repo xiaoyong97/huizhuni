@@ -14,7 +14,7 @@
                 <div class="main_box">
                     <van-row class="list_row_top" >
                         <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
-                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >活动信息</p></van-col>
+                        <van-col class="list_title"  style="text-align: left"><p class="list_right_text bold" >活动信息</p></van-col>
                     </van-row>
                     <van-row class="list_row" >
                         <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test" >活动主题</p></van-col>
@@ -65,7 +65,7 @@
             <div class="secend_box">
                 <van-row class="list_row_top" >
                     <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
-                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >课程表信息</p></van-col>
+                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text bold" >日程信息</p></van-col>
                 </van-row>
                 <van-row class="list_row" style="border-bottom:1px solid #333333;">
                     <van-col class=""  span="5" style="text-align: center;"><p class="list_test_min_head" >课程名称</p></van-col>
@@ -104,12 +104,12 @@
             <div class="secend_box" style="height: auto">
                 <van-row class="list_row_top" type="flex" justify="center">
                     <van-col class="" span="8" style="height: 40px">
-                        <van-row class="" type="flex" justify="center" @click="goviewList">
+                        <van-row class="" type="flex" justify="center" @click="goPage('viewList')">
                             <van-col class="" span="4" ><img src="../../assets/images/38/List@2x.png" class="img_right" ></van-col>
                             <van-col class="" span="20" ><p class="list_test_last" >查看名单</p></van-col>
                         </van-row>
                     </van-col>
-                    <van-col class="" span="8" style="height:40px">
+                    <van-col class="" span="8" style="height:40px" @click="goPage('uploadImage')">
                         <van-row class="" type="flex" justify="center">
                             <van-col class="" span="4" ><img src="../../assets/images/38/Upload@2x.png" class="img_right" ></van-col>
                             <van-col class="" span="20" ><p class="list_test_last" >上传照片</p></van-col>
@@ -177,8 +177,8 @@
             onChange(index) {
                 this.current = index;
             },
-            goviewList : function(){
-                this.$router.push('./viewList');
+            goPage : function(url){
+                this.$router.push({name:url});
             },
         },
 
@@ -304,6 +304,9 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+    }
+    .bold{
+        font-weight: bold;
     }
 
 

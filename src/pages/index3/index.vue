@@ -1,20 +1,20 @@
 <template>
-  
+
   <div class="main">
-   
+
    <!--头部-->
    <van-nav-bar
     :title='title'
     fixed
    />
-	
- 
+
+
   <div class="content" >
-	
+
 	<div class="grid-container">
 		<div class="box">
 			<van-grid>
-			  <van-grid-item icon="photo-o" text="文字" style="background-color: red;">
+			  <van-grid-item icon="photo-o" text="文字" style="background-color: red;" @click="go('informationAcquisition')">
 				  <img src="../../assets/images/84/InformationCollection@2x.png" alt="">
 				   <p>信息采集</p>
 			  </van-grid-item>
@@ -26,14 +26,14 @@
 			  			  	<img src="../../assets/images/84/Loaninitiation1@2x.png" alt="">
 			  			   <p>贷款发起</p>
 			  </van-grid-item>
-			  
-			  <van-grid-item icon="photo-o" text="文字">
+
+			  <van-grid-item icon="photo-o" text="文字" @click="go('applyQuery')">
 			  			 <img src="../../assets/images/84/Creditinquiry@2x.png" alt="">
-			  			   <p>审贷查询</p>
+			  			   <p>申贷查询</p>
 			  </van-grid-item>
 			</van-grid>
 			<van-grid>
-			<van-grid-item icon="photo-o" text="文字">
+			<van-grid-item icon="photo-o" text="文字" @click="go('mortgageRegistration')">
 						<img src="../../assets/images/84/Mortgageregistration@2x.png" alt="">
 						   <p>抵押登记</p>
 			</van-grid-item>
@@ -45,9 +45,9 @@
 			  		<img src="../../assets/images/84/signacontract@2x.png" alt="">
 			  			   <p>合同签订</p>
 			  </van-grid-item>
-			  
+
 			  <van-grid-item >
-			  			
+
 			  </van-grid-item>
 			</van-grid>
 		</div>
@@ -55,9 +55,9 @@
 	<img src="../../assets/images/other/banner2.png" alt="" class="banner">
 
 	<van-cell-group >
-		<van-cell is-link >
+		<van-cell is-link @click="go('loanLaunch')">
 		  <!-- 使用 title 插槽来自定义标题 -->
-		  <template slot="title">
+		  <template slot="title" >
 			    <van-tag type="danger" class="left_tag">&nbsp;</van-tag>
 				<span class="custom-title">&nbsp;&nbsp;贷款发起</span>
 		  </template>
@@ -70,7 +70,7 @@
 					<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 					<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 					<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-					<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
+					<van-col span="24" class="detail" @click="go('loanLaunch')"><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
 				</div>
 			</van-cell>
 			<van-cell class="cell-box">
@@ -79,7 +79,7 @@
 					<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 					<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 					<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-					<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
+					<van-col span="24" class="detail"  @click="go('loanLaunch')"><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
 				</div>
 			</van-cell>
 		</div>
@@ -90,7 +90,7 @@
   <TabBar/>
 
   </div>
-  
+
 </template>
 
 <script>
@@ -115,19 +115,18 @@ export default {
   created : function(){
 
     console.log('hello world');
-    
+
   },
 
   //网页加载完成
   mounted : function(){
-   
+
   },
-  
+
   //声明方法
   methods : {
-    
+
     go : function(url){
-		
       this.$router.push({name:url});
     },
 	onBannerChange(index) {
@@ -135,7 +134,7 @@ export default {
 	}
 
   },
-  
+
   //计算属性
   computed: {
 
@@ -184,9 +183,9 @@ export default {
 }
 .grid-container{
 	padding: 10px 16px 0px 16px;
-	
+
 	border-radius: 12px;;
-	
+
 }
 .grid-container .box{
 	border: 1px solid rgb(248,248,248);
@@ -219,7 +218,7 @@ export default {
 .cell-num{
 	color: #f76037;
 	font-size: 26px;
-	
+
 }
 .check{
 	background-color: #4c62e7;
@@ -230,7 +229,7 @@ export default {
 .dk-pan{
 	font-size: 13px;;
 	padding: 0px 20px;;
-	
+
 }
 .dk-pan div{
 	padding: 4px 0px;
@@ -260,7 +259,7 @@ export default {
 }
 .cell-container .cell-box{
 	border-radius: 8px;
-	margin-bottom: 16px;;
+	margin-bottom: 16px;
 }
 .subText{
 	font-size: 12px;

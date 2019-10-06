@@ -1,7 +1,7 @@
 <template>
   <!--抢单页-->
   <div class="main">
-   
+
     <div class="content">
       <TabBar/>
       <!--<van-nav-bar :title='title' fixed>
@@ -18,7 +18,7 @@
               <div style="width:375px;">
               </div>
             </van-tab>
-            <van-tab> 
+            <van-tab>
               <div  class="navRight" name="b" @click="onClickRight"  slot="title">
                 已抢单
               </div>
@@ -28,15 +28,15 @@
         <van-col span="6"><van-icon @click="searchBut" name="search" size="22px" style="margin-top:15px;float:right;"/></van-col>
       </van-row>
     </div>
-    
+
     <div>
       <!--style="position: fixed;top: 34px; width:100%;"-->
       <van-dropdown-menu>
         <van-dropdown-item v-model="TheSorting1" :options="TheSortings1" />
         <van-dropdown-item v-model="TheSorting2" :options="TheSortings2" />
       </van-dropdown-menu>
-      
-      
+
+
       <div class="bac" @click="particularsCardBut">
         <div class="daiWanCheng">
           <van-row >
@@ -91,7 +91,7 @@
         </div>
       </div>
 
-      
+
       <div class="bac" @click="particularsCardBut">
         <div class="daiWanCheng">
           <van-row >
@@ -145,10 +145,10 @@
           </van-row>
         </div>
       </div>
-      
+
     </div>
   </div>
-  
+
 </template>
 
 <script>
@@ -191,12 +191,12 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+
   },
-  
+
   //声明方法
   methods : {
-    
+
     go : function(){
       this.$router.push('/more');
     },
@@ -236,7 +236,7 @@ export default {
     },
 
   },
-  
+
   //计算属性
   computed: {
 
@@ -263,11 +263,11 @@ export default {
     margin-top:10px;
     padding:0px;
   }
-  .navLeft{ 
+  .navLeft{
     border-bottom-left-radius:17px;
     border-top-left-radius: 17px;
   }
-  .navRight{ 
+  .navRight{
     border-radius: 10px;
     border-bottom-right-radius:
     7px;border-top-right-radius: 7px;

@@ -109,16 +109,31 @@ export default new Router({
                 title: '活动详情进行中'
             },
         },
-
-      //商机部分
-      {
-        name: 'grabSingle',
-        path: '/grabSingle',
-        component: () => import('@/pages/grabSingle'),
-        meta: {
-          title: '商机抢单页'
+        {
+            name: 'uploadImage',
+            path: '/myActivities/uploadImage',
+            component: () => import('@/pages/myActivities/uploadImage'),
+            meta: {
+                title: '上传图片'
+            },
         },
-      },
+        {
+            name: 'replenishmentDetails',
+            path: '/myActivities/replenishmentDetails',
+            component: () => import('@/pages/myActivities/replenishmentDetails'),
+            meta: {
+                title: '补录详情'
+            },
+        },
+        {
+            name: 'checkList',
+            path: '/activityDetailsNotBegin/checkList',
+            component: () => import('@/pages/activityDetailsNotBegin/checkList'),
+            meta: {
+                title: '查看报名表'
+            },
+        },
+      //商机部分
       {
         name: 'grabSingleYi',
         path: '/grabSingleYi',
@@ -143,14 +158,22 @@ export default new Router({
           title: '商机管理详情信息'
         },
       },
-	  {
-	    name: 'searchShang',
-	    path: '/searchShang',
-	    component: () => import('@/pages/searchShang'),
-	    meta: {
-	     title: '商机管理搜索导航'
-	    },
-	  },
+      {
+        name: 'searchShang',
+        path: '/searchShang',
+        component: () => import('@/pages/searchShang'),
+        meta: {
+        title: '商机管理搜索导航'
+        },
+      },
+      {
+        name: 'filtrateYe',
+        path: '/filtrateYe',
+        component: () => import('@/pages/filtrateYe'),
+        meta: {
+        title: '商机管理筛选页'
+        },
+      },
 
 
  //咕咕管理
@@ -287,13 +310,85 @@ export default new Router({
                 title: '信息采集'
             },
         },
-        
+
     {
       name: 'loanLaunch',
       path: '/loanLaunch',
       component: () => import('@/pages/loanLaunch'),
       meta: {
       title: '贷款发起'
+      },
+    },
+    {
+      name: 'launchDetails',
+      path: '/launchDetails',
+      component: () => import('@/pages/launchDetails'),
+      meta: {
+      title: '贷款详情'
+      },
+    },
+    {
+      name: 'confirmLoanInformation',
+      path: '/confirmLoanInformation',
+      component: () => import('@/pages/confirmLoanInformation'),
+      meta: {
+      title: '确认贷款信息'
+      },
+    },
+    {
+      name: 'loanBusinessOwner',
+      path: '/launchDetails/lookOriginalFile/loanBusinessOwner',
+      component: () => import('@/pages/launchDetails/lookOriginalFile/loanBusinessOwner'),
+      meta: {
+          title: '企业主信息'
+      },
+    },
+    {
+      name: 'selectCollectInfo',
+      path: '/loanLaunch/selectCollectInfo',
+      component: () => import('@/pages/loanLaunch/selectCollectInfo'),
+      meta: {
+          title: '选择采集信息'
+      },
+    },
+    {
+      name: 'inputLoanScheme',
+      path: '/loanLaunch/inputLoanScheme',
+      component: () => import('@/pages/loanLaunch/inputLoanScheme'),
+      meta: {
+          title: '录入贷款计划'
+      },
+    },
+    {
+      name: 'creditCollectionInfo',
+      path: '/creditCollectionInfo',
+      component: () => import('@/pages/creditCollectionInfo'),
+      meta: {
+          title: '征信采集信息'
+      },
+    },
+    {
+      name: 'customerScreening',
+      path: '/index4/customerScreening',
+      component: () => import('@/pages/index4/customerScreening'),
+      meta: {
+          title: '客户筛选'
+      },
+    },
+    {
+      name: 'customerScreening',
+      path: '/index4/customerGroupScreening',
+      component: () => import('@/pages/index4/customerGroupScreening'),
+      meta: {
+          title: '客群筛选'
+      },
+    },
+    {
+      name: 'ourInstitution',
+      path: '/index4/ourInstitution',
+      component: () => import('@/pages/index4/ourInstitution'),
+      meta: {
+          title: '我行机构'
       },
     },
 		//贷款 征信校验
@@ -305,6 +400,48 @@ export default new Router({
 		   title: '征信校验'
 		  },
 		},
+        {
+            name: 'nextCreditCheck',
+            path: '/index3/creditCheck/nextCreditCheck',
+            component: () => import('@/pages/index3/creditCheck/nextCreditCheck'),
+            meta: {
+                title: '征信校验'
+            },
+        },
+        {
+            name: 'creditCheckResult',
+            path: '/index3/creditCheck/nextCreditCheck/creditCheckResult',
+            component: () => import('@/pages/index3/creditCheck/nextCreditCheck/creditCheckResult'),
+            meta: {
+                title: '征信校验'
+            },
+        },
+        //申贷查询
+        {
+            name: 'applyQuery',
+            path: '/index3/applyQuery',
+            component: () => import('@/pages/index3/applyQuery'),
+            meta: {
+                title: '申贷查询'
+            },
+        },
+        {
+            name: 'applyQueryResult',
+            path: '/index3/applyQuery/applyQueryResult',
+            component: () => import('@/pages/index3/applyQuery/applyQueryResult'),
+            meta: {
+                title: '申贷结果查询'
+            },
+        },
+        //申贷查询
+        {
+            name: 'mortgageRegistration',
+            path: '/index3/mortgageRegistration',
+            component: () => import('@/pages/index3/mortgageRegistration'),
+            meta: {
+                title: '抵押登记'
+            },
+        },
 		//首页 编辑菜单
 		{
 		  name: 'menu',
@@ -388,5 +525,21 @@ export default new Router({
         title: '合同搜索'
       }
     },
+    {
+        name: 'macroeconomics',
+        path: '/index4/macroeconomics',
+        component: () => import('@/pages/index4/macroeconomics'),
+        meta: {
+            title: '宏观经济'
+        },
+    },
+		{
+		    name: 'businessData',
+		    path: '/index4/businessData',
+		    component: () => import('@/pages/index4/businessData'),
+		    meta: {
+		        title: '经营数据'
+		    },
+		},
     ]
   })
