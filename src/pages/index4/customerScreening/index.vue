@@ -47,8 +47,54 @@
           </van-col>
           <van-col span="19" >
             <div class="keQunTabes"> 
-              <van-checkbox-group v-model="distanceS" >
+              <van-checkbox-group v-model="distance" >
                 <van-checkbox class="keQunCheckbox" v-for="item in distanceS" :key="item.value" :name="item.name" >
+                  {{ item.name }}
+                </van-checkbox>
+              </van-checkbox-group>
+            </div>
+          </van-col>
+        </van-row>
+        <van-row  class="keQunRow">
+          <van-col  span="5">
+            <div class="keQunText">行业：</div>
+          </van-col>
+          <van-col span="12" >
+            <div class="keQunTabes"> 
+              <van-field class="keQunCengField" v-model="industry"/>
+            </div>
+          </van-col>
+          <van-col  span="7">
+            <van-button class="keQunCengBut" type="info">选择</van-button>
+          </van-col>
+        </van-row>
+        <van-row  class="keQunRow">
+          <van-col  span="5">
+            <div class="keQunText">注册资本：</div>
+          </van-col>
+          <van-col span="6" >
+            <div class="keQunTabes"> 
+              <van-field class="keQunCengField" v-model="minimumMoney"/>
+            </div>
+          </van-col>
+          <van-col span="2" >
+            <div style="width:15px;height:12px;border-bottom:1px solid;margin:auto"></div>
+          </van-col>
+          <van-col span="6" >
+            <div class="keQunTabes"> 
+              <van-field class="keQunCengField" v-model="maxMoney"/>
+            </div>
+          </van-col>
+          <van-col  span="5" style="padding-left:5px;line-height:24px;" > 万元</van-col>
+        </van-row>
+        <van-row class="keQunRow">
+          <van-col  span="5">
+            <div class="keQunText">距离：</div>
+          </van-col>
+          <van-col span="19" >
+            <div class="keQunTabes"> 
+              <van-checkbox-group v-model="identification" >
+                <van-checkbox class="keQunCheckbox" v-for="item in identificationS" :key="item.value" :name="item.name" >
                   {{ item.name }}
                 </van-checkbox>
               </van-checkbox-group>
@@ -58,6 +104,7 @@
 
 
       </div>
+      
     </van-popup>
   </div>
 
@@ -94,6 +141,15 @@ export default {
           { name: '500米', value: 1 },
           { name: '1公里', value: 2 },
           { name: '3公里', value: 3 },
+        ],
+        industry: '',//行业
+        minimumMoney: null,//注册资本最低
+        maxMoney: null,//注册资本最高
+        identification: [],//客户标识
+        identificationS:[//客户标识数据
+          { name: '工商小散客户', value: 1 },
+          { name: '我行客户', value: 2 },
+          { name: '我行小散客户', value: 3 },
         ],
      }
   },
@@ -151,31 +207,15 @@ export default {
   }
 }
 </script>
-
 <style>
   
-<style>
-  .right_popup_mes_bac .van-action-sheet__header{
-    line-height: 40px;
-    font-size: 15px;
-    background-color: #379BF6;
-    color: white;
-  }
-   .right_popup_mes_bac .van-icon{
-    color: white;
-  }
-  .keQunTabes .van-icon-success{
+  .right_popup_mes_bac .keQunCheckbox .van-icon-success{
     width: 14px;
     height:14px;
     line-height: 14px;
-    border-radius: 0px;
-    margin-top:5px;
+    margin-top:3px;
     border:1px solid #737373
   }
-  .keQunTabes .van-checkbox__label{
-      color:#737373;
-  }
-</style>
 </style>
 <style lang="scss" scoped>
 
@@ -238,25 +278,36 @@ export default {
 .right_popup_mes_bac{
   width: 100%;
   height:90%;
-  margin:10px;
+  font-size: 12px;
+  padding:15px 10px;
   border:1px solid;
 }
 .keQunRow{
   margin-bottom:13px;
 }
 .keQunText{
-  text-align: right;
-  color:#737373;
-  margin-top:5px;
-}
-.keQunTabes{
-  width:100%;
-  border:1px solid;
+  float: right;
+    margin-top:1px;
 }
 .keQunCheckbox{
   float: left;
-  height: 26px;
-  margin-right: 19px;
+  margin-bottom:5px;
+  margin-right:20px;
+}
+.keQunCengField{
+  width:98%;
+  height: 24px;
+  line-height: 24px;
+  font-size: 13px;
+  padding:0px 10px;
+  border:1px solid #737373
+}
+.keQunCengBut{
+  width:53px;;
+  height: 24px;
+  line-height: 24px;
+  padding:0px;
+  font-size: 13px;
 }
 //覆盖底部导航
 .botBarFuGaiDiv{
