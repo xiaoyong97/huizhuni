@@ -34,7 +34,8 @@
       </van-row>
     </div>
     <!--客户筛选右侧弹出菜单-->
-    <van-popup class="right_popup_bac" v-model="huiPopupShow" position="right">
+    <van-popup class="right_popup_bac" :overlay="false" v-model="huiPopupShow" position="right">
+      <!--菜单头部-->
       <div class="headerTitleLan">
         <div class="headerIcon"><van-icon size="20px" name="arrow-left"/></div>
         <div class="headerTitle">客户筛选</div>
@@ -48,7 +49,7 @@
           <van-col span="19" >
             <div class="keQunTabes"> 
               <van-checkbox-group v-model="distance" >
-                <van-checkbox class="keQunCheckbox" v-for="item in distanceS" :key="item.value" :name="item.name" >
+                <van-checkbox id="yuanCheckbox" class="keQunCheckbox" v-for="item in distanceS" :key="item.value" :name="item.name" >
                   {{ item.name }}
                 </van-checkbox>
               </van-checkbox-group>
@@ -89,12 +90,54 @@
         </van-row>
         <van-row class="keQunRow">
           <van-col  span="5">
-            <div class="keQunText">距离：</div>
+            <div class="keQunText">客户标识：</div>
           </van-col>
           <van-col span="19" >
             <div class="keQunTabes"> 
               <van-checkbox-group v-model="identification" >
-                <van-checkbox class="keQunCheckbox" v-for="item in identificationS" :key="item.value" :name="item.name" >
+                <van-checkbox id="fangCheckbox" class="keQunCheckbox" v-for="item in identificationS" :key="item.value" :name="item.name" >
+                  {{ item.name }}
+                </van-checkbox>
+              </van-checkbox-group>
+            </div>
+          </van-col>
+        </van-row>
+        <van-row class="keQunRow">
+          <van-col  span="5">
+            <div class="keQunText">纳税信用：</div>
+          </van-col>
+          <van-col span="19" >
+            <div class="keQunTabes"> 
+              <van-checkbox-group v-model="credit" >
+                <van-checkbox id="fangCheckbox" class="keQunCheckbox" v-for="item in creditS" :key="item.value" :name="item.name" >
+                  {{ item.name }}
+                </van-checkbox>
+              </van-checkbox-group>
+            </div>
+          </van-col>
+        </van-row>
+        <van-row class="keQunRow">
+          <van-col  span="5">
+            <div class="keQunText">客户需求：</div>
+          </van-col>
+          <van-col span="19" >
+            <div class="keQunTabes"> 
+              <van-checkbox-group v-model="demand" >
+                <van-checkbox id="fangCheckbox" class="keQunCheckbox" v-for="item in demandS" :key="item.value" :name="item.name" >
+                  {{ item.name }}
+                </van-checkbox>
+              </van-checkbox-group>
+            </div>
+          </van-col>
+        </van-row>
+        <van-row class="keQunRow">
+          <van-col  span="5">
+            <div class="keQunText">客户分层：</div>
+          </van-col>
+          <van-col span="19" >
+            <div class="keQunTabes"> 
+              <van-checkbox-group v-model="hierarchy" >
+                <van-checkbox id="fangCheckbox" class="keQunCheckbox" v-for="item in hierarchyS" :key="item.value" :name="item.name" >
                   {{ item.name }}
                 </van-checkbox>
               </van-checkbox-group>
@@ -102,8 +145,17 @@
           </van-col>
         </van-row>
 
-
       </div>
+
+      <van-row class="keQunButRow">
+        <van-col  span="11" class="keQunButLeft">
+            <van-button class="keQunCengBut" type="info">确认</van-button>
+        </van-col>
+        <van-col span="2" > </van-col>
+        <van-col span="11" >
+            <van-button class="keQunCengBut" type="primary">取消</van-button>
+        </van-col>
+      </van-row>
       
     </van-popup>
   </div>
@@ -150,6 +202,33 @@ export default {
           { name: '工商小散客户', value: 1 },
           { name: '我行客户', value: 2 },
           { name: '我行小散客户', value: 3 },
+          { name: '非不良资产核销客户', value: 4 },
+          { name: '非黑名单客户', value: 5 },
+          { name: '高新技术企业', value: 6 },
+          { name: '小微快贷客户', value: 7 },
+          { name: '科创企业', value: 8 },
+          { name: '科技型企业', value: 9 },
+          { name: '我行缴税企业', value: 10 },
+          { name: '持有国家高新技术企业证书', value: 11 },
+        ],
+        credit:[],//纳税信用
+        creditS: [//纳税信用数据
+          { name: 'A', value: 1 },
+          { name: 'B', value: 2 },
+          { name: 'C', value: 3 },
+          { name: 'D', value: 4 },
+        ],
+        demand: [],//客户需求
+        demandS: [//客户需求数据
+          { name: '强', value: 1 },
+          { name: '中', value: 2 },
+          { name: '弱', value: 3 },
+        ],
+        hierarchy: [],//客户分层
+        hierarchyS: [//客户分层数据
+          { name: '优质', value: 1 },
+          { name: '良好', value: 2 },
+          { name: '一般', value: 3 },
         ],
      }
   },
@@ -209,10 +288,18 @@ export default {
 </script>
 <style>
   
-  .right_popup_mes_bac .keQunCheckbox .van-icon-success{
+  .right_popup_mes_bac #yuanCheckbox .van-icon-success{
     width: 14px;
     height:14px;
     line-height: 14px;
+    margin-top:3px;
+    border:1px solid #737373
+  }
+  .right_popup_mes_bac #fangCheckbox .van-icon-success{
+    width: 14px;
+    height:14px;
+    line-height: 14px;
+    border-radius: 0px;
     margin-top:3px;
     border:1px solid #737373
   }
@@ -251,8 +338,9 @@ export default {
 //客户筛选右侧弹出菜单
 .right_popup_bac{
   height:93%;
-  width: 80%;
+  width: 85%;
   position: fixed;
+  color:#737373;
   top: 0px !important;
   -webkit-transform: translate3d(0,0%,0) !important;
   transform: translate3d(0,0%,0) !important;
@@ -277,10 +365,8 @@ export default {
 }
 .right_popup_mes_bac{
   width: 100%;
-  height:90%;
   font-size: 12px;
   padding:15px 10px;
-  border:1px solid;
 }
 .keQunRow{
   margin-bottom:13px;
@@ -292,7 +378,7 @@ export default {
 .keQunCheckbox{
   float: left;
   margin-bottom:5px;
-  margin-right:20px;
+  margin-right:10px;
 }
 .keQunCengField{
   width:98%;
@@ -320,5 +406,13 @@ export default {
 .botBarFuGai{
   width:100%;
   height: 50px;
+}
+.keQunButRow{
+  height: 24px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+.keQunButLeft .keQunCengBut{
+  float: right;
 }
 </style>
