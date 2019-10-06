@@ -149,7 +149,7 @@
 
       <van-row class="keQunButRow">
         <van-col  span="11" class="keQunButLeft">
-            <van-button class="keQunCengBut" type="info">确认</van-button>
+            <van-button class="keQunCengBut" type="info" @click="closeHuiPopupShow">确认</van-button>
         </van-col>
         <van-col span="2" > </van-col>
         <van-col span="11" >
@@ -271,6 +271,10 @@ export default {
     opencustomer(){
       this.huiPopupShow=true;
     },
+    //点击确定关闭页面
+    closeHuiPopupShow(){
+      this.huiPopupShow=false;
+    }
 
 
   },
