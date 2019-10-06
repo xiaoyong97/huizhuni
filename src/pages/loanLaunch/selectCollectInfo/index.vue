@@ -2,129 +2,18 @@
   <div class="main" style="position: relative;">
     <!--头部导航-->
     <van-nav-bar class="vnavbar" :title="title"></van-nav-bar>
-    <img src="../../assets/images/38/return@2x.png" class="img_return" @click="onClickLeft" />
-    <span class="more_choose">预览</span>
-    <div class="main">
-      <div class="main_box">
-        <van-row class="list_row_top">
-          <van-col
-            class
-            style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"
-          ></van-col>
-          <van-col class="list_title" style="text-align: left">
-            <p class="list_right_text">企业基本信息</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">企业名称</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">北京京东金融有限公司</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">企业主</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">张三</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">统一信用社会编码</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">1237892584697</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">采集时间</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">2019-8-15</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">ID</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">1237892584697</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row_top">
-          <van-col
-            class
-            style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"
-          ></van-col>
-          <van-col class="list_title" style="text-align: left">
-            <p class="list_right_text">贷款计划</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">产品计划</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">9613</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">币种</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">人民币</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">借款金额(元)</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">2,000,000</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">借款金额大写</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">贰百万元整</p>
-          </van-col>
-        </van-row>
-        <van-row class="list_row">
-          <van-col class="list_left" style="text-align: left;width: 132px;">
-            <p class="list_test">借款期限</p>
-          </van-col>
-          <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">12个月</p>
-          </van-col>
-        </van-row>
-      </div>
-    </div>
+    <img src="../../../assets/images/38/return@2x.png" class="img_return" @click="onClickLeft" />
+    <span class="more_choose" @click="go">确认</span>
 
     <div class="main">
       <div class="main_box">
-        <van-row class="list_row_top">
-          <van-col
-            class
-            style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"
-          ></van-col>
-          <van-col class="list_title" style="text-align: left">
-            <p class="list_right_text">企业基本信息</p>
-          </van-col>
-        </van-row>
-        <van-collapse v-model="activeName" accordion>
+        
+        <van-collapse v-model="activeName">
           <van-collapse-item name="1">
               <div class="letdiv" slot="title">企业信息</div>
-              <div slot="value" class="lockcol" @click="lockCli(0)">查看</div>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
+                        <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
                         <p class="list_test" style="color:#323233;">关联人1</p>
                     </van-col>
                 </van-row>
@@ -145,7 +34,7 @@
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
+                        <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
                         <p class="list_test" style="color:#323233;">关联人2</p>
                     </van-col>
                 </van-row>
@@ -167,10 +56,9 @@
             </van-collapse-item>
           <van-collapse-item name="2">
               <div class="letdiv" slot="title">企业主信息</div>
-              <div slot="value" class="lockcol" @click="lockCli(1)">查看</div>
               <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
+                        <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
                         <p class="list_test" style="color:#323233;">关联人1</p>
                     </van-col>
                 </van-row>
@@ -192,10 +80,9 @@
             </van-collapse-item>
           <van-collapse-item name="3">
               <div class="letdiv" slot="title">关联人信息</div>
-              <div slot="value" class="lockcol" @click="lockCli(2)">查看</div>
               <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
+                        <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
                         <p class="list_test" style="color:#323233;">关联人1</p>
                     </van-col>
                 </van-row>
@@ -216,7 +103,7 @@
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
+                        <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
                         <p class="list_test" style="color:#323233;">关联人2</p>
                     </van-col>
                 </van-row>
@@ -238,10 +125,10 @@
             </van-collapse-item>
           <van-collapse-item name="4">
               <div class="letdiv" slot="title">抵押物及抵押人信息</div>
-              <div slot="value" class="lockcol" @click="lockCli(3)">查看</div>
+              
               <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
+                        <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
                         <p class="list_test" style="color:#323233;">抵押物1</p>
                     </van-col>
                 </van-row>
@@ -257,7 +144,7 @@
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
+                        <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
                         <p class="list_test" style="color:#323233;">抵押人1</p>
                     </van-col>
                 </van-row>
@@ -296,8 +183,8 @@ export default {
   //基础数据存放处
   data() {
     return {
-      title: "贷款详情",
-      activeName: "a",
+      title: "选择采集信息",
+      activeName: ['3','4'],
       current: 0
     };
   },
@@ -320,8 +207,8 @@ export default {
     onChange(index) {
       this.current = index;
     },
-    goviewList: function() {
-      this.$router.push("./viewList");
+    go: function() {
+      this.$router.push("inputLoanScheme");
     }
   },
 
@@ -347,7 +234,7 @@ export default {
   float: left;
   position: absolute;
   left: -22px;
-  top:10px; 
+  top:11px; 
 }
 .van-cell__right-icon{
     position: absolute !important;

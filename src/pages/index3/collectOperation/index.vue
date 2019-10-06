@@ -2,7 +2,6 @@
     <div class="main">
      
      <!--头部导航-->
-     <!--头部导航-->
      <van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" >
      </van-nav-bar>
 
@@ -372,7 +371,8 @@
   methods : {
 	addStep:function(){
 		if(this.step == 5 ){
-			this.$router.go(-1);
+			//this.$router.go(-1);
+			this.$router.push('/creditCollectionInfo');//征信采集信息
 			return;
 		}
 		this.step ++;

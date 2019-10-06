@@ -3,7 +3,7 @@
     <!--头部导航-->
     <van-nav-bar class="vnavbar" :title="title"></van-nav-bar>
     <img src="../../assets/images/38/return@2x.png" class="img_return" @click="onClickLeft" />
-    <span class="more_choose">确认</span>
+    <span class="more_choose" @click="go">确认</span>
     <div class="main">
       <div class="main_box">
         <van-row class="list_row_top">
@@ -292,6 +292,9 @@ export default {
   methods: {
     lockCli(){
         this.$router.push("./viewList");
+    },
+    go(){
+      this.$router.push('/loanLaunch');
     },
     onClickLeft() {
       this.$router.go(-1);

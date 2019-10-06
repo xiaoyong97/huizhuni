@@ -18,7 +18,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" ><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
+							<van-col span="24" class="detail"  @click="go('selectCollectInfo')"><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
 						</div>
 					</van-cell>
 					<van-cell class="cell-box">
@@ -166,12 +166,7 @@
     go:function(url){
       this.$router.push({name:url});
     },
-	add_task:function  () {
-		sessionStorage.setItem('type',0);
-		localStorage.setItem('jkr',this.task[this.task.length-1].jkr);
-		
-	    this.$router.push({name: 'new_task', params: {type: 0}});
-	},
+
 	new_task:function (){
 		sessionStorage.setItem('type',1);
 		this.$router.push({name: 'new_task', params: {type: 1}});

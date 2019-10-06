@@ -343,7 +343,54 @@ export default new Router({
           title: '企业主信息'
       },
     },
-    
+    {
+      name: 'selectCollectInfo',
+      path: '/loanLaunch/selectCollectInfo',
+      component: () => import('@/pages/loanLaunch/selectCollectInfo'),
+      meta: {
+          title: '选择采集信息'
+      },
+    },
+    {
+      name: 'inputLoanScheme',
+      path: '/loanLaunch/inputLoanScheme',
+      component: () => import('@/pages/loanLaunch/inputLoanScheme'),
+      meta: {
+          title: '录入贷款计划'
+      },
+    },
+    {
+      name: 'creditCollectionInfo',
+      path: '/creditCollectionInfo',
+      component: () => import('@/pages/creditCollectionInfo'),
+      meta: {
+          title: '征信采集信息'
+      },
+    },
+    {
+      name: 'customerScreening',
+      path: '/index4/customerScreening',
+      component: () => import('@/pages/index4/customerScreening'),
+      meta: {
+          title: '客户筛选'
+      },
+    },
+    {
+      name: 'customerScreening',
+      path: '/index4/customerGroupScreening',
+      component: () => import('@/pages/index4/customerGroupScreening'),
+      meta: {
+          title: '客群筛选'
+      },
+    },
+    {
+      name: 'ourInstitution',
+      path: '/index4/ourInstitution',
+      component: () => import('@/pages/index4/ourInstitution'),
+      meta: {
+          title: '我行机构'
+      },
+    },
 		//贷款 征信校验
 		{
 		  name: 'creditCheck',

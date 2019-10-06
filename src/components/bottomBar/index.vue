@@ -55,19 +55,19 @@ import icon5_1 from '../../../src/assets/images/48/Myselected@2x.png'
         normal: icon3,
         active: icon3_1,
         name : '客群筛选',
-        route : '/index3'
+        route : '/index4/customerGroupScreening'
         },
         {
         normal: icon4,
         active: icon4_1,
         name : '我行机构',
-        route : '/index4'
+        route : '/index4/ourInstitution'
         },
         {
         normal: icon5,
         active: icon5_1,
         name : '客户筛选',
-        route : '/index5'
+        route : '/index4/customerScreening'
         },
       ]
     }
