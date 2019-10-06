@@ -216,7 +216,7 @@
 						{name:"征信校验",icon:require('../../assets/images/84/Creditcheck1@2x.png'),url:'index',isChecked:true},
 						{name:"申贷查询",icon:require('../../assets/images/84/Creditinquiry@2x.png'),url:'index',isChecked:true},
 						{name:"贷后跟踪",icon:require('../../assets/images/84/Post-loantracking@2x.png'),url:'index',isChecked:false},
-						{name:"合同签订",icon:require('../../assets/images/84/signacontract@2x.png'),url:'index',isChecked:true},
+						{name:"合同签订",icon:require('../../assets/images/84/signacontract@2x.png'),url:'contractSign',isChecked:true},
 						{name:"抵押登记",icon:require('../../assets/images/84/Mortgageregistration@2x.png'),url:'index',isChecked:true},
 						{name:"线下活动",icon:require('../../assets/images/84/off-lineactivity@2x.png'),url:'index',isChecked:false},
 						{name:"业绩展示",icon:require('../../assets/images/84/resultsshow@2x.png'),url:'index',isChecked:false},

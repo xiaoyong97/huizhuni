@@ -37,11 +37,11 @@
 						<img src="../../assets/images/84/Mortgageregistration@2x.png" alt="">
 						   <p>抵押登记</p>
 			</van-grid-item>
-			<van-grid-item icon="photo-o" text="文字">
+			<van-grid-item icon="photo-o" text="文字" @click="go('loanTracking')">
 						 <img src="../../assets/images/84/Post-loantracking@2x.png" alt="">
 						   <p>贷后跟踪</p>
 			</van-grid-item>
-			  <van-grid-item icon="photo-o" text="文字">
+			  <van-grid-item icon="photo-o" text="文字" @click="go('contractSign')">
 			  		<img src="../../assets/images/84/signacontract@2x.png" alt="">
 			  			   <p>合同签订</p>
 			  </van-grid-item>
@@ -128,7 +128,7 @@ export default {
     
     go : function(url){
 		
-      // this.$router.push({name:url});
+      this.$router.push({name:url});
     },
 	onBannerChange(index) {
 		this.current = index;

@@ -331,6 +331,62 @@ export default new Router({
 		  meta: {
 		   title: '信息详情'
 		  },
-		},
+    },
+    {
+      name: 'loanTracking',
+      path: '/loanTracking',
+      component: () => import('@/pages/loanTracking'),
+      meta: {
+        title: '贷后跟踪'
+      }
+    },
+    {
+      name: 'loanTrackingDetail',
+      path: '/loanTracking/detail',
+      component: () => import('@/pages/loanTracking/detail'),
+      meta: {
+        title: '贷后跟踪'
+      }
+    },
+    {
+      name: 'contractSign',
+      path: '/contractSign',
+      component: () => import('@/pages/contractSign'),
+      meta: {
+        title: '合同签订'
+      }
+    },
+    {
+      name: 'sign',
+      path: '/contractSign/sign',
+      component: () => import('@/pages/contractSign/sign'),
+      meta: {
+        title: '合同签订'
+      }
+    },
+    {
+      name: 'contractSignResult',
+      path: '/contractSign/sign/result',
+      component: () => import('@/pages/contractSign/sign/result'),
+      meta: {
+        title: '合同签订'
+      }
+    },
+    {
+      name: 'contractDetail',
+      path: '/contractSign/contractDetail',
+      component: () => import('@/pages/contractSign/contractDetail'),
+      meta: {
+        title: '已签约详情'
+      }
+    },
+    {
+      name: 'contractSearch',
+      path: '/contractSign/search',
+      component: () => import('@/pages/contractSign/search'),
+      meta: {
+        title: '合同搜索'
+      }
+    },
     ]
   })
