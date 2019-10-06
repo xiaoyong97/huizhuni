@@ -1,38 +1,66 @@
 <template>
-  
+
   <div class="main">
-   
-   <!-- <van-nav-bar
-    :title='title'
-    fixed
-   /> -->
-  <div class="menu-sc">
-    <van-search placeholder="请输入客户名称" class="vv-search"/>
-    <van-button style="margin:5px;" size="small" type="default">搜索</van-button>
-    <van-icon name="location" />思明区
-  </div>
-  <div class="content">
-    <!-- <div class="msg">惠点通</div> -->
-    <baidu-map id="container" :mapClick="false" :center="center" :zoom="zoom" @ready="handler">
-      <div v-for="(marker, i) of markers" :key="i">
-        <bm-marker :position="{lng: subSSS(marker.center,0), lat: subSSS(marker.center,1)}" @click="infoWindowOpen(i)" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
-          <bm-info-window :title="marker.pname" :show="marker.showFlag" @close="infoWindowClose(i)" @open="infoWindowOpen(i)">
-            <div class="fosize">项目名称：{{marker.pname}}</div>
-            <div class="fosize">设备数量：{{marker.devices}}</div>
-          </bm-info-window>
-        </bm-marker>
+
+    <!-- <van-nav-bar
+      :title='title'
+      fixed
+    /> -->
+    <div class="menu-sc">
+      <van-search placeholder="请输入客户名称" class="vv-search"/>
+      <van-button style="margin:5px;" size="small" type="default">搜索</van-button>
+      <van-icon name="location" />思明区
+    </div>
+    <div class="content">
+      <!-- <div class="msg">惠点通</div> -->
+      <baidu-map id="container" :mapClick="false" :center="center" :zoom="zoom" @ready="handler">
+        <div v-for="(marker, i) of markers" :key="i">
+          <bm-marker :position="{lng: subSSS(marker.center,0), lat: subSSS(marker.center,1)}" @click="infoWindowOpen(i)" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
+            <bm-info-window :title="marker.pname" :show="marker.showFlag" @close="infoWindowClose(i)" @open="infoWindowOpen(i)">
+              <div class="fosize">项目名称：{{marker.pname}}</div>
+              <div class="fosize">设备数量：{{marker.devices}}</div>
+            </bm-info-window>
+          </bm-marker>
+        </div>
+        <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+      </baidu-map>
+    </div>
+    <!--底部导航-->
+    <BottomBar/>
+    <!--覆盖底部导航-->
+    <div class="botBarFuGaiDiv">
+      <van-row >
+        <van-col span="5" class="botBarFuGai" @click="opencustomer"></van-col>
+      </van-row>
+    </div>
+    <!--客户筛选右侧弹出菜单-->
+    <van-popup class="right_popup_bac" v-model="huiPopupShow" position="right">
+      <div class="headerTitleLan">
+        <div class="headerIcon"><van-icon size="20px" name="arrow-left"/></div>
+        <div class="headerTitle">客户筛选</div>
       </div>
-      <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
-    </baidu-map>
+
+      <div class="right_popup_mes_bac">
+        <van-row class="keQunRow">
+          <van-col  span="5">
+            <div class="keQunText">距离：</div>
+          </van-col>
+          <van-col span="19" >
+            <div class="keQunTabes"> 
+              <van-checkbox-group v-model="distanceS" >
+                <van-checkbox class="keQunCheckbox" v-for="item in distanceS" :key="item.value" :name="item.name" >
+                  {{ item.name }}
+                </van-checkbox>
+              </van-checkbox-group>
+            </div>
+          </van-col>
+        </van-row>
+
+
+      </div>
+    </van-popup>
   </div>
-  
-    
 
-
-  <BottomBar/>
-
-  </div>
-  
 </template>
 
 <script>
@@ -59,6 +87,14 @@ export default {
         center: {lng: 113.27147, lat: 23.131669},
         zoom: 3,
         show: true,
+        //惠点通右侧弹出菜单使用
+        huiPopupShow:true,
+        distance: [],//距离选中
+        distanceS: [//距离数据
+          { name: '500米', value: 1 },
+          { name: '1公里', value: 2 },
+          { name: '3公里', value: 3 },
+        ],
      }
   },
 
@@ -69,12 +105,12 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+
   },
-  
+
   //声明方法
   methods : {
-    
+
     go : function(){
       this.$router.push('/more');
     },
@@ -96,10 +132,14 @@ export default {
     infoWindowOpen (marker) {
       this.markers[marker].showFlag = true
     },
-    
+    //点击打开客户筛选右侧弹出菜单
+    opencustomer(){
+      this.huiPopupShow=true;
+    },
+
 
   },
-  
+
   //计算属性
   computed: {
 
@@ -112,6 +152,31 @@ export default {
 }
 </script>
 
+<style>
+  
+<style>
+  .right_popup_mes_bac .van-action-sheet__header{
+    line-height: 40px;
+    font-size: 15px;
+    background-color: #379BF6;
+    color: white;
+  }
+   .right_popup_mes_bac .van-icon{
+    color: white;
+  }
+  .keQunTabes .van-icon-success{
+    width: 14px;
+    height:14px;
+    line-height: 14px;
+    border-radius: 0px;
+    margin-top:5px;
+    border:1px solid #737373
+  }
+  .keQunTabes .van-checkbox__label{
+      color:#737373;
+  }
+</style>
+</style>
 <style lang="scss" scoped>
 
 .menu-sc{
@@ -142,5 +207,67 @@ export default {
   float: left;
   line-height: 46px;
   height: 46px;
+}
+//客户筛选右侧弹出菜单
+.right_popup_bac{
+  height:93%;
+  width: 80%;
+  position: fixed;
+  top: 0px !important;
+  -webkit-transform: translate3d(0,0%,0) !important;
+  transform: translate3d(0,0%,0) !important;
+}
+.headerTitleLan{
+  width:100%;
+  height:40px;
+  line-height:40px;
+  background-color:#379BF6;
+  color:white;
+}
+.headerIcon{
+  float: left;
+  width:10%;
+  padding-left: 10px;
+  padding-top: 3px;
+}
+.headerTitle{
+  float: left;
+  width:80%;
+  text-align:center;
+}
+.right_popup_mes_bac{
+  width: 100%;
+  height:90%;
+  margin:10px;
+  border:1px solid;
+}
+.keQunRow{
+  margin-bottom:13px;
+}
+.keQunText{
+  text-align: right;
+  color:#737373;
+  margin-top:5px;
+}
+.keQunTabes{
+  width:100%;
+  border:1px solid;
+}
+.keQunCheckbox{
+  float: left;
+  height: 26px;
+  margin-right: 19px;
+}
+//覆盖底部导航
+.botBarFuGaiDiv{
+  width:20%;
+  position: fixed;
+  bottom:0px;
+  left:80%;
+  z-index:1;
+}
+.botBarFuGai{
+  width:100%;
+  height: 50px;
 }
 </style>
