@@ -25,7 +25,6 @@
       <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
     </baidu-map>
   </div>
-  
     
 
 
@@ -122,7 +121,7 @@ export default {
  height:46px;
  line-height:46px;
  text-align:center;
- background-color:#fff;
+ background-color:#379BF6;
  z-index:1;
 }
 #near{
@@ -138,9 +137,13 @@ export default {
 }
 .vv-search{
   width: auto;
-  min-width: 63%;
+  min-width: 60%;
   float: left;
-  line-height: 46px;
-  height: 46px;
+  line-height: 28px;
+  height: 28px;
+  margin:11px 0px 0px 12px;
+  padding: 0px;
+  border-radius: 15px;
 }
+
 </style>
