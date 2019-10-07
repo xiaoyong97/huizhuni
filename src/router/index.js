@@ -391,6 +391,15 @@ export default new Router({
           title: '我行机构'
       },
     },
+    {
+      name: 'customerInfo',
+      path: '/customerInfo',
+      component: () => import('@/pages/customerInfo'),
+      meta: {
+          title: '客户信息'
+      },
+    },
+    
 		//贷款 征信校验
 		{
 		  name: 'creditCheck',
