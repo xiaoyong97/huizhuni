@@ -25,7 +25,7 @@
     </div>
     
     <div>
-      <van-dropdown-menu id="shaiLeft" >
+      <van-dropdown-menu id="shaiLeft" style="height:44px;">
         <van-dropdown-item v-model="TheSorting1" :options="TheSortings1"/>
         <van-dropdown-item v-model="TheSorting2" :options="TheSortings2" />
         <div class="shaiXuanLeft" @click="shaixuanBut"></div>
@@ -36,7 +36,7 @@
         <div class="daiWanCheng" @click="particularsCardBut">
           <van-row >
             <van-col class="qiangDanCol" span="17">
-              <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
+              <div class="qiangGongSi">{{enterprise|textJue(textJueIsOk)}}</div><div class="qiangGongLu">(<20KM)</div>
             </van-col>
             <van-col style="line-height:20px;" span="3">
               <div class="jingZhuenWan">精准</br>测额</div>
@@ -75,7 +75,7 @@
           </van-row>
           <van-row  gutter="10">
             <div><div class ="timeKuang" >
-              <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
+              <van-slider @change="huaKuaiChange()" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
                 <div slot="button" class="custom-button" >
                   {{huaKuaiName}}
                 </div>
@@ -86,10 +86,10 @@
         </div>
 
       
-        <div class="daiWanCheng">
+        <div class="daiWanCheng" @click="particularsCardBut">
           <van-row >
             <van-col class="qiangDanCol" span="17">
-              <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
+              <div class="qiangGongSi">{{enterpriseTwo|textJue(textJueIsOkTwo)}}</div><div class="qiangGongLu">(<20KM)</div>
             </van-col>
             <van-col style="line-height:20px;" span="3">
               <div class="jingZhuenWan">精准</br>测额</div>
@@ -128,9 +128,9 @@
           </van-row>
           <van-row  gutter="10">
             <div><div class ="timeKuang" >
-              <van-slider @change="huaKuaiChange" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
+              <van-slider @change="huaKuaiChangeTwo()" class="sliderHua" v-model="huaKuaitwo" bar-height="10px" active-color="#e5e5e5" >
                 <div slot="button" class="custom-button" >
-                  {{huaKuaiName}}
+                  {{huaKuaiNameTwo}}
                 </div>
               </van-slider></div>
               <div class ="huaTime" >2019/08/21 </br><span class="timeSpan">18:21</span></div>
@@ -157,6 +157,8 @@ export default {
      return {
 
        title : '商2机',
+       enterprise:'新野摸具制造有限公司',
+       enterpriseTwo:'新野摸具制造有限公司分公司',
        activeName: 'a',
        activeTabs:'a',
        TheSorting1: 1,
@@ -172,8 +174,12 @@ export default {
          { text: '活动商品', value: 3 }
        ],
        huaKuai: null,
+       huaKuaitwo: null,
        huaKuaiName: "滑动抢单",
+       huaKuaiNameTwo: "滑动抢单",
        active: 'b',
+       textJueIsOk: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第一个
+       textJueIsOkTwo: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第二个
      }
   },
 
@@ -184,7 +190,20 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+    this.textJue()
+  },
+  //vue过滤器
+  filters: {
+    //文字抢单前字体截取
+    textJue(value,isOk){
+      if(isOk==false){
+        if (value.length > 2) {
+          return value.slice(0,2) + '*********'
+        }
+        return value
+      }
+      return value
+    },
   },
   
   //声明方法
@@ -200,17 +219,34 @@ export default {
     onClickRight(){
       this.$router.push('/grabSingleYi');
     },
-    //滑动进度变化且结束拖动后触发
+    //滑动进度变化且结束拖动后触发1
     huaKuaiChange(){
       if(this.huaKuai==100){
         this.huaKuaiName="抢单中..."
         Dialog.alert({
           message: '抢单成功'
         }).then(() => {
-          // on close
+          this.huaKuaiName="抢单成功"
+          this.textJueIsOk=true
         });
       }else{
         this.huaKuaiName="滑动抢单"
+        this.textJueIsOk=false
+      }
+    },
+    //滑动进度变化且结束拖动后触发2
+    huaKuaiChangeTwo(huaNum,huaText){
+      if(this.huaKuaitwo==100){
+        this.huaKuaiNameTwo="抢单中..."
+        Dialog.alert({
+          message: '抢单成功'
+        }).then(() => {
+          this.huaKuaiNameTwo="抢单成功"
+          this.textJueIsOkTwo=true
+        });
+      }else{
+        this.textJueIsOkTwo=false
+        this.huaKuaiNameTwo="滑动抢单"
       }
     },
     //点击信息卡背景打开详情信息
@@ -226,6 +262,14 @@ export default {
     shaixuanBut(){
       this.$router.push('/filtrateYe');
     },
+    //     //文字抢单前字体截取
+    // textJue(){
+    //   alert(this.enterprise.length)
+    //   if (this.enterprise.length > 2) {
+    //     this.enterprise=this.enterprise.slice(0,2) + '*********'
+    //     alert(this.enterprise)
+    //   }
+    // },
   },
   
   //计算属性

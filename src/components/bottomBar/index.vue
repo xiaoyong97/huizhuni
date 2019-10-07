@@ -41,8 +41,8 @@ import icon5 from '../../../src/assets/images/huidiantong/1_0002s_0006.png'
       active: 0,
       iconList : [
         {
-        normal: icon2,
-        active: icon2_1,
+        normal: icon1,
+        active: icon1_1,
         name : '宏观经济',
         route : '/index4/macroeconomics'
         },

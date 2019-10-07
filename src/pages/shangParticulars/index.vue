@@ -23,7 +23,7 @@
             <div class="xinXi">
               <div>
                 <van-col span="17">
-                  <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">企业纤细信息</div></div>
+                  <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">企业详细信息</div></div>
                 </van-col>
                 <van-col style="line-height:20px;" span="3">
                   <div class="jingZhuenWan">精准</br>测额</div>
@@ -35,15 +35,15 @@
               <div class="mesKang">
                 <van-row>
                   <van-col class="mesKangLeft" span="8">企业名称</van-col>
-                  <van-col class="mesKangRight" span="16">新野摸具制造有限公司</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.companyName|qianDanText(textJueIsOk)}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">联系人</van-col>
-                  <van-col class="mesKangRight" span="16">李某某</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.principalName|principaText(textJueIsOk)}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">联系电话</van-col>
-                  <van-col class="mesKangRight" span="16">13527283736</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.phone|phoneText(textJueIsOk)}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">企业联系地址</van-col>
@@ -97,9 +97,19 @@
                 </van-row>
               </div>
             </div>
-            <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingQianDan">{{qianDanBut}}</van-button></div>
+            <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingQianDan" v-if="qianDanIsOk">抢单</van-button></div>
+            <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingFangQi" v-if="fansQiIsOk">放弃</van-button></div>
            
           </div>
+          
+        <!--dialog已抢单放弃按钮弹出框-->
+        <van-dialog v-model="fangQiButShow" title="请选择放弃原因" :confirm="fangQiConfirm" show-cancel-button>
+          <van-radio-group v-model="fangQiRadio">
+            <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
+            <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
+            <van-radio class="fangButClass" name="3">客户条件不符合</van-radio>
+          </van-radio-group>
+        </van-dialog>
       </div>
   </div>
   
@@ -115,8 +125,17 @@ export default {
   //基础数据存放处
   data (){
      return {
-       title : '新野摸具制造有限公司',
-       qianDanBut: '抢单',
+       title : '商机详情',
+       qianDanIsOk: true,
+       fansQiIsOk: false,
+       fangQiButShow: false,
+       fangQiRadio: 1,
+       enterprise:{
+         companyName: '新野摸具制造有限公司',
+         principalName: '李某某',
+         phone: '13527283736',
+       },
+       textJueIsOk: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true
      }
   },
 
@@ -138,11 +157,35 @@ export default {
     },
     //商机详情抢单按钮
     xiangQingQianDan(){
-       Dialog.alert({
+      Dialog.alert({
         title: '',
         message: '抢单成功'
       }).then(() => {
-        this.qianDanBut="放弃"
+        this.qianDanIsOk= false
+        this.fansQiIsOk= true
+        this.textJueIsOk=true
+      });
+    },
+    //商机详情放弃按钮
+    xiangQingFangQi(){
+      //this.fangQiButShow = true
+      Dialog.alert({
+        title: '',
+        message: '放弃成功'
+      }).then(() => {
+        this.qianDanIsOk= true
+        this.fansQiIsOk= false
+        this.textJueIsOk=false
+      });
+    },
+    //放弃弹窗确定按钮
+    fangQiConfirm(){
+      Dialog.alert({
+        title: '',
+        message: '已放弃订单'
+      }).then(() => {
+        this.qianDanIsOk= true
+        this.fansQiIsOk= false
       });
     },
     //返回上一级
@@ -150,6 +193,35 @@ export default {
       this.$router.go(-1);
     }
 
+  },
+  //vue过滤器
+  filters: {
+    //文字抢单前公司字体截取
+    qianDanText(value,isOk){
+      if(isOk==false){
+        if (value.length > 2) {
+          return value.slice(0,2) + '**********'
+        }
+        return value
+      }
+      return value
+    },
+    //文字抢单前负责人字体截取
+    principaText(value,isOk){
+      if(isOk==false){
+        return value.slice(0,1) + '**'
+        return value
+      }
+      return value
+    },
+    //文字抢单前电话字体截取
+    phoneText(value,isOk){
+      if(isOk==false){
+        return value.slice(0,3) + '****' +value.slice(7,11) 
+        return value
+      }
+      return value
+    },
   },
   
   //计算属性
@@ -395,5 +467,9 @@ export default {
     height:35px;
     line-height:35px;
     width:250px;
+  }
+  //放弃弹窗
+  .fangButClass{
+    margin: 15px 0px 10px 80px ;
   }
 </style>

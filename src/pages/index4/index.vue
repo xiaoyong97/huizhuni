@@ -70,8 +70,10 @@
         <div v-for="(marker, i) of markers" :key="i">
           <bm-marker :position="{lng: subSSS(marker.center,0), lat: subSSS(marker.center,1)}" @click="infoWindowOpen(i)" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
             <bm-info-window :width="60" :title="marker.pname" :show="marker.showFlag" @close="infoWindowClose(i)" @open="infoWindowOpen(i)">
-              <div class="fosize">客户需求：中</div>
-              <div class="fosize">客户分层：一般</div>
+              <div @click="cllFunc">
+                <div class="fosize">客户需求：中</div>
+                <div class="fosize">客户分层：一般</div>
+              </div>
             </bm-info-window>
           </bm-marker>
         </div>
@@ -291,6 +293,9 @@ export default {
       })
       this.coordinateList1[index].show = true;
       console.log(index)
+    },
+    cllFunc(){
+      this.$router.push("customerInfo");
     },
     chaVal(){
       console.log(this.value1)
