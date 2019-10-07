@@ -336,7 +336,7 @@ export default {
     right:0px;
     top:5px; 
     width:50%;
-    height:44px;
+    height:36px;
     border-bottom: 3px solid #4c62e7;
   }
   .shaiHang .van-dropdown-menu__item:nth-of-type(2) .van-dropdown-menu__title::after{
@@ -387,6 +387,7 @@ export default {
   }
   //结束
   .shaiHang{
+    height:44px;
     position: fixed;
     top:46px;
     width: 100%;
