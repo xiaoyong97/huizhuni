@@ -97,9 +97,13 @@
                   </van-row>
                 </div><div class="eDu">
                 <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">企业关系图谱</div></div>
+                  
+                <div class="guanXiDiv">
+                  <img class="guanXiImg" src="../../assets/images/1570483597(1).png" alt />
+                </div>
+                  <!--<img class="guanXiImg" src="../../assets/images/1570483597(1).png" alt />-->
                 
-                
-              </div>
+              </div>  
             </div>
             <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingQianDan">放弃</van-button></div>
            
@@ -371,6 +375,17 @@ export default {
   .logoHang .logoRight{
     margin-left: 25px;
     padding-top: 3px;
+  }
+  .guanXiDiv{
+    width:100%;
+    height:100px;
+    line-height:100px;
+    padding-left:10%;
+    padding-top:15px;
+  }
+  .guanXiImg{
+    width:80%;
+    height:70px;
   }
   .biaoQianLie .BKuang{
     width: 55px;
