@@ -65,8 +65,8 @@
       </van-dropdown-menu>
     </div>
 
-    <div class="content">
-      <baidu-map id="container" :mapClick="false" :center="center" :zoom="zoom" @ready="handler">
+    <div class="map-content">
+      <!-- <baidu-map id="container" :mapClick="false" :center="center" :zoom="zoom" @ready="handler">
         <div v-for="(marker, i) of markers" :key="i">
           <bm-marker :position="{lng: subSSS(marker.center,0), lat: subSSS(marker.center,1)}" @click="infoWindowOpen(i)" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
             <bm-info-window :width="60" :title="marker.pname" :show="marker.showFlag" @close="infoWindowClose(i)" @open="infoWindowOpen(i)">
@@ -77,8 +77,27 @@
             </bm-info-window>
           </bm-marker>
         </div>
-        <!-- <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation> -->
-      </baidu-map>
+        <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+      </baidu-map> -->
+
+      <div class="map-bg"><img :src="bgImg" alt=""></div>
+      <div class="coordinate" v-for="(item, index) in coordinateList1" :style="item.style" @click="showTips(index)">
+        <img :src="item.img" alt="">
+        <div class="popup-box" v-show="item.show" :style="item.style">
+          <template v-if="item.type == 2">
+            <div>厦门象屿股份有限公司</div>
+            <div>客户需求：强</div>
+            <div>客户分层：优质</div>
+          </template>
+          <template v-if="item.type == 1">
+            <div class="bank">
+              <img class="bank-img" :src="bankImg" alt="">
+              <div>建行厦门金路支行</div>
+            </div>
+          </template>
+        </div>
+      </div>
+
     </div>
     <!--底部导航-->
     <BottomBar />
@@ -88,6 +107,15 @@
 //引入组件首字母大写
 import BottomBar from "@/components/bottomBar";
 import iconCar from '../../assets/images/huidiantong/1_0001s_0003.png'; //以import的方式导入图片文件
+import bankImg from '@/assets/images/huidiantong/bank-img.jpg';
+import bgImg from '@/assets/images/huidiantong/bg.jpg';
+import img1 from '@/assets/images/huidiantong/coordinate1.png';
+import img2 from '@/assets/images/huidiantong/coordinate2.png';
+import img3 from '@/assets/images/huidiantong/coordinate3.png';
+import img4 from '@/assets/images/huidiantong/coordinate4.png';
+import img5 from '@/assets/images/huidiantong/coordinate5.png';
+import img6 from '@/assets/images/huidiantong/coordinate6.png';
+
 export default {
   //基础数据存放处
   data() {
@@ -140,7 +168,101 @@ export default {
       ],
       center: { lng: 113.27147, lat: 23.131669 },
       zoom: 3,
-      show: true
+      show: true,
+      bankImg,
+      bgImg,
+      coordinateList1: [
+        {
+          img: img1,
+          style: {
+            top: '200px',
+            left: '100px'
+          },
+          show: false,
+          type: 1
+        },
+        {
+          img: img2,
+          style: {
+            top: '240px',
+            left: '160px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img1,
+          style: {
+            top: '320px',
+            left: '80px'
+          },
+          show: false,
+          type: 1
+        },
+        {
+          img: img2,
+          style: {
+            top: '236px',
+            left: '286px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img2,
+          style: {
+            top: '400px',
+            left: '100px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img1,
+          style: {
+            top: '300px',
+            left: '300px'
+          },
+          show: false,
+          type: 1
+        },
+        {
+          img: img2,
+          style: {
+            top: '344px',
+            left: '208px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img1,
+          style: {
+            top: '500px',
+            left: '102px'
+          },
+          show: false,
+          type: 1
+        },
+        {
+          img: img2,
+          style: {
+            top: '460px',
+            left: '198px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img1,
+          style: {
+            top: '500px',
+            left: '188px'
+          },
+          show: false,
+          type: 1
+        },
+      ],
     };
   },
 
@@ -165,11 +287,110 @@ export default {
 
   //声明方法
   methods: {
+    showTips(index) {
+      this.coordinateList1.forEach((item) => {
+        item.show = false;
+      })
+      this.coordinateList1[index].show = true;
+      console.log(index)
+    },
     cllFunc(){
       this.$router.push("customerInfo");
     },
     chaVal(){
       console.log(this.value1)
+      this.coordinateList1 = [
+        {
+          img: this.value1 == 0 ? img1 : img3,
+          style: {
+            top: '200px',
+            left: '100px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : this.value1 == 2 ? img4 : img5,
+          style: {
+            top: '240px',
+            left: '160px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img1 : this.value1 == 0 ? img5 : img4,
+          style: {
+            top: '320px',
+            left: '80px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : img6,
+          style: {
+            top: '236px',
+            left: '286px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : img6,
+          style: {
+            top: '400px',
+            left: '100px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img1 : img5,
+          style: {
+            top: '300px',
+            left: '300px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : this.value1 == 2 ? img4 : img5,
+          style: {
+            top: '344px',
+            left: '208px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img1 : img3,
+          style: {
+            top: '500px',
+            left: '102px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : this.value1 == 2 ? img5 : img4,
+          style: {
+            top: '460px',
+            left: '198px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img1 : img4,
+          style: {
+            top: '500px',
+            left: '188px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+      ]
     },
     go: function() {
       this.$router.push("/more");
@@ -203,6 +424,39 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.map-content{
+  position: relative;
+  img{
+    display: block;
+    width: 100%;
+  }
+  .map-bg{
+    width: 375px;
+  }
+  .popup-box{
+    width: 150px;
+    padding: 8px;
+    padding-left: 12px;
+    background-color: rgba(255, 255, 255, .8);
+    z-index: 2;
+    transform: translate(-50%, -140%);
+    font-size: 14px;
+  }
+  .bank{
+    display: flex;
+    align-items: center;
+  }
+  .bank-img{
+    width: 22px;
+    height: 18px;
+  }
+  .coordinate{
+    position: absolute;
+    width: 19px;
+    height: 28px;
+    z-index: 1;
+  }
+}
 .region-modulespan{
   float: left;
 }

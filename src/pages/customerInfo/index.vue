@@ -445,14 +445,333 @@
             <img src="../../assets/images/huidiantong/longxin-bg.png" class="gx_bg">
           </div>
         </van-tab>
-        <van-tab title="纳税信息">纳税信息</van-tab>
-        <van-tab title="持有产品">持有产品</van-tab>
-        <van-tab title="客群信息">客群信息</van-tab>
-        <van-tab title="海关信息">海关信息</van-tab>
-        <van-tab title="我行业务信息">我行业务信息</van-tab>
-        <van-tab title="黑名单信息">黑名单信息</van-tab>
-        <van-tab title="商机信息">商机信息</van-tab>
-        <van-tab title="客户管理团队信息">客户管理团队信息</van-tab>
+        <van-tab title="龙信商评分">龙信商评分</van-tab>
+        <van-tab title="纳税信息">
+          <div class="main_box qmdlb"  style="min-height:550px;">
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">是否我行代缴税客户：是</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">缴税信用等级：A</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">纳税金额：8万元</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">违约标志：否</p>
+              </van-col>
+            </van-row>
+          </div>
+        </van-tab>
+
+        <van-tab title="持有产品">
+          <div class="main_box qmdlb" style="min-height:550px;">
+            <div class="cloudMtxTable_body">
+              <table class="cloudTable"  style="table-layout:fixed">
+                <colgroup >
+                  <col width="20%;">
+                  <col width="20%;">
+                  <col width="30%;">
+                  <col width="">
+                </colgroup>
+                <tbody class="cloudTable_body ">
+                  <tr style="background-color:#F7F7F7;color:#323233;">
+                    <!--<td>客户名称</td>
+                    <td class="data-cell"><span>性质</span></td>
+                    <td class="data-cell">综合评分</td>
+                    <td>是否我行客户</td>-->
+                    <td>产品线名称</td>
+                    <td>产品组名称</td>
+                    <td>基础产品名称</td>
+                    <td>可售产品名称</td>
+                  </tr>
+                  <tr>
+                    <td>存款</td>
+                    <td>存款</td>
+                    <td>活期存款</td>
+                    <td>单位活期存款</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </van-tab>
+
+        <van-tab title="客群信息">
+          <div class="main_box qmdlb" style="min-height:550px;">
+            <div class="cloudMtxTable_body">
+              <table class="cloudTable"  style="table-layout:fixed">
+                <colgroup >
+                  <col width="40%;">
+                  <col width="30%;">
+                  <col width="">
+                </colgroup>
+                <tbody class="cloudTable_body ">
+                  <tr style="background-color:#F7F7F7;color:#323233;">
+                    <!--<td>客户名称</td>
+                    <td class="data-cell"><span>性质</span></td>
+                    <td class="data-cell">综合评分</td>
+                    <td>是否我行客户</td>-->
+                    <td>客群名称</td>
+                    <td>客群规模分类</td>
+                    <td>客群平台分类</td>
+                  </tr>
+                  <tr>
+                    <td>厦门高新技术产业客群</td>
+                    <td>主力客群</td>
+                    <td>商业聚类</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </van-tab>
+        
+        <van-tab title="海关信息">
+          <div class="main_box qmdlb">
+            <van-row class="list_row"  style="min-height:550px;">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">海关贸易国家：美国</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">海关贸易方式：境外劳务合作</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">海关金额USD：30000</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">海关贸易方向：出口</p>
+              </van-col>
+            </van-row>
+          </div>
+        </van-tab>
+
+        <van-tab title="我行业务信息">
+          <div class="main_box qmdlb"  style="min-height:550px;">
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">账户类型（存款账户类型）：基本户</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">开户行所在网点名称：建行厦门金山路支行</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">信贷客户标志：是</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">小微快贷客户：是</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">持有国家高新技术企业证书：是</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">科技型企业：是</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">科创企业：是</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">客户持有我行产品个数：5</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">上市公司类型（A/B/C/D）：/</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">战略型客户：否</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">债转股客户：否</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">不良资产核销客户：否</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">建行关联方：否</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">高新技术企业：是</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test">项目法人：否</p>
+              </van-col>
+            </van-row>
+          </div>
+        </van-tab>
+
+        <van-tab title="黑名单信息">
+          <div class="main_box qmdlb" style="min-height:550px;">
+            <div class="cloudMtxTable_body">
+              <table class="cloudTable"  style="table-layout:fixed">
+                <colgroup >
+                  <col width="50%;">
+                  <col width="">
+                </colgroup>
+                <tbody class="cloudTable_body ">
+                  <tr style="background-color:#F7F7F7;color:#323233;">
+                    <!--<td>客户名称</td>
+                    <td class="data-cell"><span>性质</span></td>
+                    <td class="data-cell">综合评分</td>
+                    <td>是否我行客户</td>-->
+                    <td>是否黑名单客户</td>
+                    <td><span>所属黑名单名称</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <van-radio-group v-model="heiMingDan" style="font-size:14px;">
+                        <van-radio class="heiRadioGroup" name="1">是</van-radio>
+                        <van-radio name="2">否</van-radio>
+                      </van-radio-group>
+                    </td>
+                    <td>/</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <van-radio-group v-model="heiMingDanTwo"  style="font-size:14px;">
+                        <van-radio class="heiRadioGroup" name="1">是</van-radio>
+                        <van-radio name="2">否</van-radio>
+                      </van-radio-group>
+                    </td>
+                    <td>/</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </van-tab>
+
+        <van-tab title="商机信息">
+          <div class="main_box qmdlb" style="min-height:550px;">
+            <div class="cloudMtxTable_body">
+              <table class="cloudTable"  style="table-layout:fixed">
+                <colgroup >
+                  <col width="80px;">
+                  <col width="85px">
+                  <col width="60px">
+                  <col width="60px">
+                  <col width="">
+                </colgroup>
+                <tbody class="cloudTable_body ">
+                  <tr style="background-color:#F7F7F7;color:#323233;">
+                    <!--<td>客户名称</td>
+                    <td class="data-cell"><span>性质</span></td>
+                    <td class="data-cell">综合评分</td>
+                    <td>是否我行客户</td>-->
+                    <td>商机名称</td>
+                    <td><span>商机编号</span></td>
+                    <td>商机来源</td>
+                    <td>商机状态</td>
+                    <td>商机阶段</td>
+                  </tr>
+                  <tr>
+                    <td>小微快贷商机</td>
+                    <td style="font-size:6px">020190820393890</td>
+                    <td>模型挖掘</td>
+                    <td>正常</td>
+                    <td>商机初判</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </van-tab>
+
+        <van-tab title="客户管理团队信息">
+          <div class="main_box qmdlb" style="min-height:550px;">
+            <div class="cloudMtxTable_body">
+              <table class="cloudTable"  style="table-layout:fixed">
+                <colgroup >
+                  <col width="50px;">
+                  <col width="90px">
+                  <col width="120px">
+                  <col width="">
+                </colgroup>
+                <tbody class="cloudTable_body ">
+                  <tr style="background-color:#F7F7F7;color:#323233;">
+                    <!--<td>客户名称</td>
+                    <td class="data-cell"><span>性质</span></td>
+                    <td class="data-cell">综合评分</td>
+                    <td>是否我行客户</td>-->
+                    <td>姓名</td>
+                    <td><span>管理类型</span></td>
+                    <td>所属机构</td>
+                    <td>联系方式</td>
+                  </tr>
+                  <tr>
+                    <td>吕昌荣</td>
+                    <td>管护权客户经理</td>
+                    <td>建行厦门金山路支行</td>
+                    <td>13950186993</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </van-tab>
       </van-tabs>
     
     </div>
@@ -503,6 +822,8 @@ export default {
       ],
       myChart1:null,
       activeName:'1',
+      heiMingDan: 1,//黑名单单选1行
+      heiMingDanTwo: 1,//黑名单单选2行
     };
   },
 
@@ -676,6 +997,8 @@ export default {
   width: 100%;
   height:200px;
 }
+
+
 .region-slectModule{
   width: 130px;
   height: 30px;
@@ -957,5 +1280,13 @@ table {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+
+
+.heiRadioGroup{
+  float: left;
+  margin-left:40px;
+  margin-right: 20px;
 }
 </style>
