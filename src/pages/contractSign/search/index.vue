@@ -3,7 +3,7 @@
         <div class="search-box">
             <div class="search">
                 <img class="search-img" src="../../../assets/images/38/searchfor@2x.png" alt="" @click="onSearch">
-                <input v-model="value" type="text" placeholder="搜索">
+                <input class="search-input" v-model="value" type="text" placeholder="搜索">
             </div>
             <span class="cancel-btn" @click="onCancel">取消</span>
         </div>
@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+input{
+    outline: none;
+    border: 0;
+}
 .search-box{
     display: flex;
     justify-content: space-between;
@@ -50,11 +54,15 @@ export default {
     display: flex;
     align-items: center;
     padding-left: 10px;
+    padding-right: 10px;
 }
 .search-img{
     width: 19px;
     height: 19px;
     margin-right: 6px;
+}
+.search-input{
+    flex: 1;
 }
 .cancel-btn{
     padding-left: 12px;
