@@ -2,10 +2,10 @@
   <div class="main" style="position:absolute;top:0px;height:100%;width:100%;">
     <!--头部导航-->
     <van-nav-bar class="vnavbar" :title="title" left-arrow  @click-left="onClickLeft"></van-nav-bar>
-    <img src="../../assets/images/huidiantong/1_0000s_0007.png" class="img_location">
+    <img src="../../assets/images/huidiantong/1_0000s_0007.png" @click="goviewList" class="img_location">
     
     <div class="main">
-      <van-tabs v-model="active" title-active-color="#ffffff">
+      <van-tabs id="tabls" :ellipsis="false" v-model="active" title-active-color="#ffffff" @change="createChart">
         <!--基本信息-->
         <van-tab title="基本信息">
           <div class="main_box">
@@ -436,10 +436,15 @@
         <!--资产负债-->
         <van-tab title="资产负债">
           <div class="main_box qmdlb" style="min-height:568px;">
-            <!-- <div id="myChart1" ></div> -->
+            <div id="myChart1"></div>
           </div>
         </van-tab>
-        <van-tab title="龙信商评分">龙信商评分</van-tab>
+        <!--龙信商评分-->
+        <van-tab title="龙信商评分">
+          <div class="main_box gxtp" style="min-height:568px;">
+            <img src="../../assets/images/huidiantong/longxin-bg.png" class="gx_bg">
+          </div>
+        </van-tab>
         <van-tab title="纳税信息">纳税信息</van-tab>
         <van-tab title="持有产品">持有产品</van-tab>
         <van-tab title="客群信息">客群信息</van-tab>
@@ -497,6 +502,7 @@ export default {
         { text: '上下游关系', value: 6 }
       ],
       myChart1:null,
+      activeName:'1',
     };
   },
 
@@ -505,11 +511,22 @@ export default {
 
   //网页加载完成
   mounted() {
-    this.createChart1();
   },
 
   //声明方法
   methods: {
+    createChart:function(){
+      var that = this;
+      //必须延迟加载才会不报错
+      setTimeout(function(){
+          
+        switch(that.active){
+          case 6:
+            that.createChart1();
+          break;
+        }
+      },100)
+	  },
     onClickLeft() {
         this.$router.go(-1);
     },
@@ -524,75 +541,103 @@ export default {
       this.current = index;
     },
     goviewList: function() {
-      this.$router.push("./viewList");
+      this.$router.push("index4");
     },
 
     createChart1: function() {
-      /* if(this.myChart1 == null){
+      if(this.myChart1 == null){
         // 基于准备好的dom，初始化echarts实例
             this.myChart1 = echarts.init(document.getElementById('myChart1'))
-            var colors = [ '#FAED5B', '#7EDCEE'];
+            var colors = ['#6CDBEF','#389BF6'];
     
-            let option = {
-      
-            legend: {
-              orient: 'vertical',
-              left: 'left',
-              data: ['非工商小微客户数','工商小微客户数']
-            },
-            
-            color:colors,
-            label: {
-              formatter: "{b}\n{c}",	
-              normal: {
-                  textStyle: {
-                    color: '#666666'
-                  },
-              }
-            },
-            series : [
-              {
-                name: '访问来源',
-                type: 'pie',
-                radius : '80%',
-                center: ['50%', '60%'],
-                data:[
-                  {value:126207, name:'非工商小微客户数'},
-                  {value:654745, name:'工商小微客户数'},					
-                ],
-                itemStyle: {
-                  emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                  }
-                },
-                labelLine: {
-                  normal: {
-                    lineStyle: {
+            /* let option = {
+              legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['企业在我行存款','企业在我行贷款']
+              },
+              color:colors,
+              label: {
+                formatter: "{b}\n{c}",	
+                normal: {
+                    textStyle: {
                       color: '#666666'
                     },
-                    smooth: 0.2,
-                    length: 4,
-                    length2: 20
-                  }
-                },
-                label: {
-                  formatter: "{b}\n{c}",	
-                  normal: {
-                      textStyle: {
+                }
+              },
+              series : [
+                {
+                  name: '访问来源',
+                  type: 'pie',
+                  radius : '80%',
+                  center: ['50%', '50%'],
+                  data:[
+                    {value:126207, name:'企业在我行存款'},
+                    {value:654745, name:'企业在我行贷款'},					
+                  ],
+                  itemStyle: {
+                    emphasis: {
+                      shadowBlur: 10,
+                      shadowOffsetX: 0,
+                      shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                  },
+                  labelLine: {
+                    normal: {
+                      lineStyle: {
                         color: '#666666'
                       },
-                  }
-                },
-              }
-            ]
+                      smooth: 0.2,
+                      length: 4,
+                      length2: 20
+                    }
+                  },
+                  label: {
+                    formatter: "{b}\n{c}",	
+                    normal: {
+                        textStyle: {
+                          color: '#666666'
+                        },
+                    }
+                  },
+                }
+              ]
+            }; */
+            var option = {
+              color:colors,
+              legend: {},
+              tooltip: {},
+              dataset: {
+                  source: [
+                      ['product', '2012'],
+                      ['企业在我行贷款', 25],
+                      ['企业在我行存款', 95]
+                  ]
+              },
+              series: [{
+                  type: 'pie',
+                  radius: 70,
+                  center: ['50%', '50%'],
+                  encode: {
+                      itemName: 'product',
+                      value: '2012'
+                  },
+                  data:[
+                    {value:50, name:'企业在我行贷款'},
+                    {value:100, name:'企业在我行存款'},					
+                  ],
+                  /* label: {
+                      normal: {
+                          position: 'inner'
+                      }
+                  }, */
+              }]
           };
         
           // 绘制图表
           this.myChart1.setOption(option);
         　　
-      } */
+      }
     },
   },
 
@@ -604,8 +649,33 @@ export default {
   }
 };
 </script>
-<style lang="postcss">
+<style>
+#tabls .van-tabs__line{
+  background-color: #ffffff !important;
+  width: 35.5px !important;
+}
+#tabls .van-tab{
+  color: #ffffff;
+}
+#tabls .van-tabs__nav{
+  background-color: #389bf6;
+}
+#tabls .van-tab--active {
+    color: #389bf6 !important;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 7px;
+}
+</style>
+<style lang="postcss" scoped>
 
+#myChart1{
+  margin-top: 50px;
+  width: 100%;
+  height:200px;
+}
 .region-slectModule{
   width: 130px;
   height: 30px;
@@ -619,16 +689,6 @@ export default {
 }
 .gx_bg{
   width:100%;
-}
-.van-tabs__line{
-  background-color: #ffffff;
-  width: 35.5px !important;
-}
-.van-tabs__nav{
-  background-color: #389bf6;
-}
-.van-tab{
-  color: #ffffff;
 }
 .van-hairline--bottom::after {
     border-bottom-width: 0px;
@@ -718,8 +778,8 @@ table {
 
 .img_location{
     position: fixed;
-    bottom: 5px;
-    left:8px;
+    bottom: 8px;
+    left:20px;
     height: 30px;
     width: 30px;
     z-index: 2;
