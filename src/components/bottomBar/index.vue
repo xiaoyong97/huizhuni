@@ -20,15 +20,16 @@
 
 <script>
 
-import icon1 from '../../../src/assets/images/48/Myunselected@2x.png'
-import icon2 from '../../../src/assets/images/48/Myunselected@2x.png'
-import icon2_1 from '../../../src/assets/images/48/Myselected@2x.png'
-import icon3 from '../../../src/assets/images/48/Myunselected@2x.png'
-import icon3_1 from '../../../src/assets/images/48/Myselected@2x.png'
-import icon4 from '../../../src/assets/images/48/Myunselected@2x.png'
-import icon4_1 from '../../../src/assets/images/48/Myselected@2x.png'
-import icon5 from '../../../src/assets/images/48/Myunselected@2x.png'
-import icon5_1 from '../../../src/assets/images/48/Myselected@2x.png'
+import icon1_1 from '../../../src/assets/images/48/Myunselected@2x.png'
+import icon1 from '../../../src/assets/images/huidiantong/1_0002s_0004.png'
+import icon2_1 from '../../../src/assets/images/48/Myunselected@2x.png'
+import icon2 from '../../../src/assets/images/huidiantong/1_0002s_0005.png'
+import icon3_1 from '../../../src/assets/images/huidiantong/1_0002s_0001.png'
+import icon3 from '../../../src/assets/images/huidiantong/1_0002s_0003.png'
+import icon4_1 from '../../../src/assets/images/huidiantong/1_0002s_0000.png'
+import icon4 from '../../../src/assets/images/huidiantong/1_0002s_0007.png'
+import icon5_1 from '../../../src/assets/images/huidiantong/1_0002s_0002.png'
+import icon5 from '../../../src/assets/images/huidiantong/1_0002s_0006.png'
 
  
  export default {
@@ -102,5 +103,11 @@ import icon5_1 from '../../../src/assets/images/48/Myselected@2x.png'
 img.big{
     width: 32px;
     height: 32px;
+}
+.van-tabbar-item{
+  color: #1989fa !important;
+}
+.van-tabbar-item--active {
+    color: #7d7e80 !important;
 }
 </style>
