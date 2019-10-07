@@ -65,7 +65,7 @@
       </van-dropdown-menu>
     </div>
 
-    <div class="content">
+    <!-- <div class="content">
       <baidu-map id="container" :mapClick="false" :center="center" :zoom="zoom" @ready="handler">
         <div v-for="(marker, i) of markers" :key="i">
           <bm-marker :position="{lng: subSSS(marker.center,0), lat: subSSS(marker.center,1)}" @click="infoWindowOpen(i)" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
@@ -75,9 +75,45 @@
             </bm-info-window>
           </bm-marker>
         </div>
-        <!-- <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation> -->
       </baidu-map>
+    </div> -->
+    <div class="map-content">
+      <div class="map-bg"><img :src="bgImg" alt=""></div>
+      <div class="coordinate" v-for="(item, index) in coordinateList1" :style="item.style" @click="showTips(index)">
+        <img :src="item.img" alt="">
+        <div class="popup-box" v-show="item.show" :style="item.style">
+          <template v-if="item.type == 2">
+            <div>厦门象屿股份有限公司</div>
+            <div>客户需求：强</div>
+            <div>客户分层：优质</div>
+          </template>
+          <template v-if="item.type == 1">
+            <div class="bank">
+              <img class="bank-img" :src="bankImg" alt="">
+              <div>建行厦门金路支行</div>
+            </div>
+          </template>
+        </div>
+      </div>
     </div>
+
+    <van-action-sheet class="select-box" :overlay="false" :round="false" :close-on-click-overlay="false" v-model="listShow" title="选择机构">
+      <div class="nav">
+        <div class="nav-item" v-for="item in navList">{{item}}级</div>
+      </div>
+      <div>
+        <div class="cell" v-for="(item, index) in cellList" @click="select(index)">
+          <div class="cell-left">
+            <div class="point" :class="[active == index? 'active' : '']"></div>
+            <div>{{item}}</div>
+          </div>
+          <div class="more">
+            <img src="../../../assets/images/24/more@2x.png" alt="">
+          </div>
+        </div>
+      </div>
+    </van-action-sheet>
+
     <!--底部导航-->
     <BottomBar />
     
@@ -87,6 +123,15 @@
 //引入组件首字母大写
 import BottomBar from "@/components/bottomBar";
 import iconCar from '../../../assets/images/huidiantong/1_0001s_0003.png'; //以import的方式导入图片文件
+import bankImg from '@/assets/images/huidiantong/bank-img.jpg';
+import bgImg from '@/assets/images/huidiantong/bg.jpg';
+import img1 from '@/assets/images/huidiantong/coordinate1.png';
+import img2 from '@/assets/images/huidiantong/coordinate2.png';
+import img3 from '@/assets/images/huidiantong/coordinate3.png';
+import img4 from '@/assets/images/huidiantong/coordinate4.png';
+import img5 from '@/assets/images/huidiantong/coordinate5.png';
+import img6 from '@/assets/images/huidiantong/coordinate6.png';
+
 export default {
   //基础数据存放处
   data() {
@@ -140,6 +185,106 @@ export default {
       center: { lng: 113.27147, lat: 23.131669 },
       zoom: 3,
       show: true,
+      bankImg,
+      bgImg,
+      coordinateList1: [
+        {
+          img: img1,
+          style: {
+            top: '200px',
+            left: '100px'
+          },
+          show: false,
+          type: 1
+        },
+        {
+          img: img2,
+          style: {
+            top: '240px',
+            left: '160px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img1,
+          style: {
+            top: '320px',
+            left: '80px'
+          },
+          show: false,
+          type: 1
+        },
+        {
+          img: img2,
+          style: {
+            top: '236px',
+            left: '286px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img2,
+          style: {
+            top: '400px',
+            left: '100px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img1,
+          style: {
+            top: '300px',
+            left: '300px'
+          },
+          show: false,
+          type: 1
+        },
+        {
+          img: img2,
+          style: {
+            top: '344px',
+            left: '208px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img1,
+          style: {
+            top: '500px',
+            left: '102px'
+          },
+          show: false,
+          type: 1
+        },
+        {
+          img: img2,
+          style: {
+            top: '460px',
+            left: '198px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: img1,
+          style: {
+            top: '500px',
+            left: '188px'
+          },
+          show: false,
+          type: 1
+        },
+      ],
+      listShow: true,
+      navList: ['一'],
+      cellList: [
+        '中国建设银行总行'
+      ],
+      active: -1,
     };
   },
 
@@ -164,8 +309,154 @@ export default {
 
   //声明方法
   methods: {
+    select(index) {
+      this.active = index;
+      setTimeout(() => {
+        this.active = -1;
+        switch (this.navList.length) {
+          case 1:
+            this.navList.push('二');
+            this.cellList = [
+              '建行北京市分行',
+              '建行河北市分行',
+              '建行天津市分行',
+              '建行山西市分行',
+            ]
+            break;
+          case 2:
+            this.navList.push('三');
+            this.cellList = [
+              '建行总营业部',
+              '建行北京华贸支行（汇总）',
+              '建行北京华贸支行（汇总）2',
+              '建行北京华贸支行（汇总）3',
+              '建行北京华贸支行（汇总）4',
+            ]
+            break;
+          case 3:
+            this.navList.push('四');
+            this.cellList = [
+              '建行北京新航城支行',
+              '建行北京朝阳北路支行',
+              '建行北京双桥支行',
+              '建行北京双桥南路支行',
+              '建行北京东二环中路支行',
+            ]
+            break;
+          case 4:
+            this.coordinateList1.splice(1, 1);
+            this.coordinateList1.splice(3, 1);
+            this.coordinateList1.splice(6, 1);
+            this.listShow = false;
+            this.navList = ['一'];
+            this.cellList = ['中国建设银行总行'];
+          default:
+            break;
+        }
+        
+      }, 100)
+    },
+    showTips(index) {
+      this.coordinateList1.forEach((item) => {
+        item.show = false;
+      })
+      this.coordinateList1[index].show = true;
+      console.log(index)
+    },
     chaVal(){
       console.log(this.value1)
+      this.coordinateList1 = [
+        {
+          img: this.value1 == 0 ? img1 : img3,
+          style: {
+            top: '200px',
+            left: '100px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : this.value1 == 2 ? img4 : img5,
+          style: {
+            top: '240px',
+            left: '160px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img1 : this.value1 == 0 ? img5 : img4,
+          style: {
+            top: '320px',
+            left: '80px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : img6,
+          style: {
+            top: '236px',
+            left: '286px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : img6,
+          style: {
+            top: '400px',
+            left: '100px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img1 : img5,
+          style: {
+            top: '300px',
+            left: '300px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : this.value1 == 2 ? img4 : img5,
+          style: {
+            top: '344px',
+            left: '208px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img1 : img3,
+          style: {
+            top: '500px',
+            left: '102px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+        {
+          img: this.value1 == 0 ? img2 : this.value1 == 2 ? img5 : img4,
+          style: {
+            top: '460px',
+            left: '198px'
+          },
+          show: false,
+          type: 2
+        },
+        {
+          img: this.value1 == 0 ? img1 : img4,
+          style: {
+            top: '500px',
+            left: '188px'
+          },
+          show: false,
+          type: this.value1 == 0 ? 1 : 2
+        },
+      ]
     },
     go: function() {
       this.$router.push("/more");
@@ -199,6 +490,114 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.map-content{
+  position: relative;
+  img{
+    display: block;
+    width: 100%;
+  }
+  .map-bg{
+    width: 375px;
+  }
+  .popup-box{
+    width: 150px;
+    padding: 8px;
+    padding-left: 12px;
+    background-color: rgba(255, 255, 255, .8);
+    z-index: 2;
+    transform: translate(-50%, -140%);
+    font-size: 14px;
+  }
+  .bank{
+    display: flex;
+    align-items: center;
+  }
+  .bank-img{
+    width: 22px;
+    height: 18px;
+  }
+  .coordinate{
+    position: absolute;
+    width: 19px;
+    height: 28px;
+    z-index: 1;
+  }
+}
+.select-box{
+  height: 300px;
+  position:absolute ;
+  bottom:50px;
+  .van-action-sheet__header{
+    line-height: 40px;
+    font-size: 15px;
+    background-color: #379BF6;
+    color: white;
+  }
+  .van-icon{
+    color: white;
+  }
+  .cell{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    &:not(:last-child){
+      border-bottom: 1px solid #cccccc;
+    }
+    .cell-left{
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      position: relative;
+      .point{
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        border: 1px solid #379BF6;
+      }
+      .active{
+        &::after{
+          content: '';
+          position: absolute;
+          left: 2px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: #379BF6;
+        }
+      }
+    }
+    .more{
+      width: 12px;
+      height: 12px;
+      img{
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+  .nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cccccc;
+    .nav-item{
+      flex: 1;
+      text-align: center;
+    }
+    .nav-item:not(:first-child){
+      border-left: 1px solid #999999;
+    }
+  }
+}
 .region-modulespan{
   float: left;
 }
