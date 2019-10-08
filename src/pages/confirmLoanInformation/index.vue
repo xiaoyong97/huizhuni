@@ -20,7 +20,7 @@
             <p class="list_test">企业名称</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">北京京东金融有限公司</p>
+            <p class="list_test" style="color: rgb(51,51,51)">广州市睿智防水电器股份有限公司</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -28,7 +28,7 @@
             <p class="list_test">企业主</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">张三</p>
+            <p class="list_test" style="color: rgb(51,51,51)">艾仲华</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -36,7 +36,7 @@
             <p class="list_test">统一信用社会编码</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">1237892584697</p>
+            <p class="list_test" style="color: rgb(51,51,51)">91120116MA07K2307A</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -52,7 +52,7 @@
             <p class="list_test">ID</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">1237892584697</p>
+            <p class="list_test" style="color: rgb(51,51,51)">120106197010204098</p>
           </van-col>
         </van-row>
         <van-row class="list_row_top">
@@ -85,7 +85,7 @@
             <p class="list_test">借款金额(元)</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">2,000,000</p>
+            <p class="list_test" style="color: rgb(51,51,51)">8,500,000</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -93,7 +93,7 @@
             <p class="list_test">借款金额大写</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">贰百万元整</p>
+            <p class="list_test" style="color: rgb(51,51,51)">八百伍拾万元整</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -101,7 +101,7 @@
             <p class="list_test">借款期限</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">12个月</p>
+            <p class="list_test" style="color: rgb(51,51,51)">3年</p>
           </van-col>
         </van-row>
       </div>
@@ -120,142 +120,210 @@
         </van-row>
         <van-collapse v-model="activeName" accordion>
           <van-collapse-item name="1">
-              <div class="letdiv" slot="title">企业信息</div>
-              <div slot="value" class="lockcol" @click="lockCli">查看</div>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
-                        <p class="list_test" style="color:#323233;">关联人1</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">关系：其他</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">姓名：张三</p>
-                    </van-col>
-                </van-row>
-                    <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">身份证号：430522199011201150</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
-                        <p class="list_test" style="color:#323233;">关联人2</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">关系：其他</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">姓名：张三</p>
-                    </van-col>
-                </van-row>
-                    <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">身份证号：430522199011201150</p>
-                    </van-col>
-                </van-row>
-            </van-collapse-item>
+            <div class="letdiv" slot="title">企业信息</div>
+            <div slot="value" class="lockcol" @click="lockCli(0)">查看</div>
+
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt />
+                <p class="list_test">新一代客户编号：252841000000526649</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">统一社会信用代码：91120116MA07K2307A</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">企业名称：广州市睿智防水电器股份有限公司</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">企业地址：广州市高新技术产业开发区迎宾大道188号</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">企业法定代表人：艾仲华</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">法定代表人电话：13702137765</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">法定代表人地址：广州市高新技术产业开发区迎宾大道188号</p>
+              </van-col>
+            </van-row>
+          </van-collapse-item>
           <van-collapse-item name="2">
-              <div class="letdiv" slot="title">企业主信息</div>
-              <div slot="value" class="lockcol" @click="lockCli">查看</div>
-              企业主信息
-            </van-collapse-item>
+            <div class="letdiv" slot="title">企业主信息</div>
+            <div slot="value" class="lockcol" @click="lockCli(1)">查看</div>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt />
+                <p class="list_test">姓名：艾仲华</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">性别：女</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">民族：汉族</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">出生日期：1976.8.1</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">住址：广州市天河朱景新城中花城大道中海花城湾4号楼3们201</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">公民身份证号：120106197608016578</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">有效期：2030.1.1</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">学历：研究生</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">手机号：13702137765</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">工作单位：广州市睿智防水电器股份有限公司</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">婚姻状况：已婚</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">家庭人数：3</p>
+              </van-col>
+            </van-row>
+          </van-collapse-item>
           <van-collapse-item name="3">
-              <div class="letdiv" slot="title">关联人信息</div>
-              <div slot="value" class="lockcol" @click="lockCli">查看</div>
-              <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
-                        <p class="list_test" style="color:#323233;">关联人1</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">关系：其他</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">姓名：张三</p>
-                    </van-col>
-                </van-row>
-                    <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">身份证号：430522199011201150</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
-                        <p class="list_test" style="color:#323233;">关联人2</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">关系：其他</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">姓名：张三</p>
-                    </van-col>
-                </van-row>
-                    <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">身份证号：430522199011201150</p>
-                    </van-col>
-                </van-row>
-            </van-collapse-item>
+            <div class="letdiv" slot="title">关联人信息</div>
+            <div slot="value" class="lockcol" @click="lockCli(2)">查看</div>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt />
+                <p class="list_test" style="color:#323233;">姓名：李天明</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">性别：男</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">民族：汉族</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">出生日期：1970.10.20</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">住址：广州市天河朱景新城中花城大道中海花城湾4号楼3们201</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">公民身份证号：120106197010204098</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">有效期：2030.1.1</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">学历：研究生</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">手机号：13439078656</p>
+              </van-col>
+            </van-row>
+          </van-collapse-item>
           <van-collapse-item name="4">
-              <div class="letdiv" slot="title">抵押物及抵押人信息</div>
-              <div slot="value" class="lockcol" @click="lockCli">查看</div>
-              <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
-                        <p class="list_test" style="color:#323233;">抵押物1</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">坐落：北京市丰台区南三环西路10号</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">单元号：102C</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt="">
-                        <p class="list_test" style="color:#323233;">抵押人1</p>
-                    </van-col>
-                </van-row>
-                <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">姓名：张三</p>
-                    </van-col>
-                </van-row>
-                    <van-row class="list_row">
-                    <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">身份证号：430522199011201150</p>
-                    </van-col>
-                </van-row>
-            </van-collapse-item>
+            <div class="letdiv" slot="title">抵押物及抵押人信息</div>
+            <div slot="value" class="lockcol" @click="lockCli(3)">查看</div>
+
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <img class="img24_chosen" src="../../assets/images/24/chosen@2x.png" alt />
+                <p class="list_test" style="color:#323233;">权力人：艾仲华</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">共有情况：自由</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                <p class="list_test2">坐落：广东省广州市天河区花城大道中海花城湾4号楼3门201</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test2">不动产号：0130031024</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test2">权力性质：自有</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test2">用途：住宅</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test2">建筑面积：120.4</p>
+              </van-col>
+            </van-row>
+            <van-row class="list_row">
+              <van-col class="list_left" style="text-align: left;width:100%;">
+                <p class="list_test2">权力其他情况：无</p>
+              </van-col>
+            </van-row>
+          </van-collapse-item>
         </van-collapse>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -290,11 +358,12 @@ export default {
 
   //声明方法
   methods: {
-    lockCli(){
-        this.$router.push("./viewList");
+    lockCli(type) {
+      localStorage.setItem("ckywj_type", type);
+      this.$router.push("./launchDetails/lookOriginalFile/loanBusinessOwner");
     },
-    go(){
-      this.$router.push('/loanLaunch');
+    go() {
+      this.$router.push("/loanLaunch");
     },
     onClickLeft() {
       this.$router.go(-1);
@@ -316,41 +385,41 @@ export default {
 };
 </script>
 <style lang="postcss">
-.more_choose{
-    position: fixed;
-    top: 15px;
-    right: 12px;
-    color: #4c62e7;
-    font-size: 14px;
-    z-index: 100;
+.more_choose {
+  position: fixed;
+  top: 15px;
+  right: 12px;
+  color: #4c62e7;
+  font-size: 14px;
+  z-index: 100;
 }
-.img24_chosen{
+.img24_chosen {
   width: 16px;
   float: left;
   position: absolute;
   left: -22px;
-  top:10px; 
+  top: 10px;
 }
-.van-cell__right-icon{
-    position: absolute !important;
-    left: 10px;
+.van-cell__right-icon {
+  position: absolute !important;
+  left: 10px;
 }
 .van-collapse-item__content {
-    padding: 0px 50px 20px 50px;
+  padding: 0px 50px 20px 50px;
 }
 </style>
 
 <style lang="scss" scoped>
-.letdiv{
-    padding-left: 25px;
+.letdiv {
+  padding-left: 25px;
 }
-.vnavbar{
-    position: fixed;
-    top: 0px;
-    width: 100%;
+.vnavbar {
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
-.lockcol{
-    color:#0062B3;
+.lockcol {
+  color: #0062b3;
 }
 .img_swiper {
   height: 200px;
@@ -408,7 +477,7 @@ export default {
 }
 
 .list_test2 {
-  line-height:25px;
+  line-height: 25px;
   margin-block-start: 0;
   margin-block-end: 0;
   color: rgb(102, 102, 102);

@@ -4,7 +4,7 @@
     <van-nav-bar class="vnavbar" :title="title"></van-nav-bar>
     <img src="../../../assets/images/38/return@2x.png" class="img_return" @click="onClickLeft" />
     <span class="more_choose" @click="go('/confirmLoanInformation')">下一步</span>
-    <div class="main">
+    <div class="main" id="mainLur">
       <div class="main_box">
         
         <van-row class="list_row" style="padding-top:10px;">
@@ -14,9 +14,14 @@
             <p class="list_test paddingLeft">产品代码</p>
           </van-col>
           <van-col class="list_right" style="text-align:left;width:250px;">
-            <span class="inptSpan">
+            <!-- <span class="inptSpan">
               <input class="inptmodel" type="text" value="9613">
-            </span>
+            </span> -->
+            <div class="slectModule2" style="width:90%;">
+              <van-dropdown-menu :overlay="false" style="height:35px;">
+                <van-dropdown-item style="height:170px;" v-model="value3" :options="option3" />
+              </van-dropdown-menu>
+            </div>
           </van-col>
           
         </van-row>
@@ -25,7 +30,7 @@
             <p class="list_test paddingLeft">产品名称</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">抵押快贷</p>
+            <p class="list_test" style="color: rgb(51,51,51)">小微企业抵押快贷额度</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -72,7 +77,7 @@
           </van-col>
           <van-col class="list_right" style="text-align:left;width:250px;">
             <span class="inptSpan">
-              <input class="inptmodel" type="text" value="200,000">
+              <input class="inptmodel" type="text" value="8,500,000">
             </span>
           </van-col>
         </van-row>
@@ -89,7 +94,7 @@
             <p class="list_test paddingLeft">借款金额大写</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">贰拾万元整</p>
+            <p class="list_test" style="color: rgb(51,51,51)">八百五拾万元整</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -99,7 +104,7 @@
           <van-col class="list_right" style="text-align: left;width:250px;">
             <p class="list_test" style="color: rgb(51,51,51);width:112px;float:left;margin-right:10px;">
               <span class="inptSpan">
-                <input class="inptmodel" type="text" value="12">
+                <input class="inptmodel" type="text" value="3">
               </span>
               <!-- <select class="slectmodel" name="ymdSelect" id="ymdSelect">
                 <option>年</option>
@@ -143,7 +148,7 @@ export default {
       current: 0,
       info:{
         cpCode:'9613',
-        mmmey:'200,000',
+        mmmey:'8,500,000',
       },
       value: '',
       showPicker: false,
@@ -152,16 +157,16 @@ export default {
       value1: 0,
       option1: [
         { text: '人民币', value: 0 },
-        { text: '港币', value: 1 },
-        { text: '澳门币', value: 2 },
-        { text: '美元', value: 3 },
-        { text: '英镑', value: 4 }
       ],
       value2: 0,
       option2: [
         { text: '年', value: 0 },
         { text: '月', value: 1 },
         { text: '日', value: 2 }
+      ],
+      value3: 0,
+      option3: [
+        { text: '9613', value: 0 },
       ],
     };
   },
@@ -201,6 +206,8 @@ export default {
 };
 </script>
 <style lang="postcss">
+html{background-color: #eeeeee;}
+#mainLur .van-dropdown-menu__title{width:95%;text-align:left;}
 .slectModule2{
   width: 108px;
   height: 35px;
@@ -217,7 +224,7 @@ export default {
 }
 option{width: 125px;}
 .inptmodel{border:none;height:25px;width:90%;position:relative;top:2px;float: left;}
-.inptSpan{border:1px solid #eeeeee;border-radius:30px;width:90%;height:32px;float:left;padding-left:15px;margin-top: 3px;}
+.inptSpan{border:1px solid #eeeeee;border-radius:30px;width:90%;height:34px;float:left;padding-left:15px;margin-top: 3px;}
 .slectmodel{margin-top:3px;height:35px;width:50%;float:left;border-radius:30px;padding-left:35px;text-align:center;}
 .paddingLeft{
   padding-left: 15px;

@@ -18,31 +18,31 @@
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">新一代客户编号:</van-col>
-						 <van-col span="12">44099999999</van-col>
+						 <van-col span="12">252841000000526649</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">统一社会信用代码:</van-col>
-						 <van-col span="12">xxxxxxxxxxx</van-col>
+						 <van-col span="12">91120116MA07K2307A</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">企业名称:</van-col>
-						 <van-col span="12">xxxx有限公司</van-col>
+						 <van-col span="12">广州市睿智防水电器股份有限公司</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">企业地址:</van-col>
-						 <van-col span="12">广州市越秀区法政路xx号</van-col>
+						 <van-col span="12">广州市高新技术产业开发区迎宾大道188号</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人:</van-col>
-						 <van-col span="12">张三</van-col>
+						 <van-col span="12">艾仲华</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人电话:</van-col>
-						 <van-col span="12">13800000000</van-col>
+						 <van-col span="12">13702137765</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人地址:</van-col>
-						 <van-col span="12">广州市越秀区法政路xx号</van-col>
+						 <van-col span="12">广州市高新技术产业开发区迎宾大道188号</van-col>
 					</van-cell>
 				</div>
 			 </van-cell-group>
@@ -60,11 +60,11 @@
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">姓名:</van-col>
-						 <van-col span="12">张三</van-col>
+						 <van-col span="12">艾仲华</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">性别:</van-col>
-						 <van-col span="12">男</van-col>
+						 <van-col span="12">女</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">民族:</van-col>
@@ -72,32 +72,32 @@
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">出生日期:</van-col>
-						 <van-col span="12">1988-01-01</van-col>
+						 <van-col span="12">1976.8.1</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">住址:</van-col>
-						 <van-col span="12">广州市越秀区法政路XX号</van-col>
+						 <van-col span="12">广州市天河朱景新城中花城大道中海花城湾4号楼3们201</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">公民身份证号码:</van-col>
-						 <van-col span="12">440103198801017543</van-col>
+						 <van-col span="12">120106197608016578</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">有效期限:</van-col>
-						 <van-col span="12">2030-01-10</van-col>
+						 <van-col span="12">2030.1.1</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">学历:</van-col>
-						 <van-col span="12">研究生或以上</van-col>
+						 <van-col span="12">研究生</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">手机号码:</van-col>
-						 <van-col span="12">2030-01-10</van-col>
+						 <van-col span="12">13702137765</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">工作单位:</van-col>
-						 <van-col span="12">广州乐乐科技有限公司</van-col>
+						 <van-col span="12">广州市睿智防水电器股份有限公司</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">婚烟情况:</van-col>
-						 <van-col span="12">已婚有子女</van-col>
+						 <van-col span="12">已婚</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">家庭人数:</van-col>
 						 <van-col span="12">3</van-col>
@@ -111,7 +111,7 @@
 					<div class="">
 						<van-cell>
 							<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
-							<van-col span="23"><h3>关联人信息1</h3></van-col>
+							<van-col span="23"><h3>关联人信息</h3></van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="10">关系</van-col>
@@ -123,7 +123,7 @@
 						</van-cell>
 						<van-cell>
 							<van-col span="10">姓名:</van-col>
-							<van-col span="12">张唔唔</van-col>
+							<van-col span="12">艾仲华</van-col>
 						</van-cell>
 						<!-- <van-cell @click="show_3" v-show="show3">
 							<div class="blue_bg_box"><p class="list_text_open">展开详情<van-icon name="arrow-down" /></p></div>
@@ -145,11 +145,11 @@
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">姓名:</van-col>
-							 <van-col span="12">张三妻</van-col>
+							 <van-col span="12">李天明</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">性别:</van-col>
-							 <van-col span="12">女</van-col>
+							 <van-col span="12">男</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">民族:</van-col>
@@ -157,36 +157,37 @@
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">出生日期:</van-col>
-							 <van-col span="12">1990-11-21</van-col>
+							 <van-col span="12">1970.10.20</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">住址:</van-col>
-							 <van-col span="12">广州市越秀区法政路XX号</van-col>
+							 <van-col span="12">广州市天河朱景新城中花城大道中海花城湾4号楼3们201</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">公民身份证号码:</van-col>
-							 <van-col span="12">440103199011215555</van-col>
+							 <van-col span="12">120106197010204098</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">有效期限:</van-col>
-							 <van-col span="12">2030-01-10</van-col>
+							 <van-col span="12">2030.1.1</van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">学历:</van-col>
-							 <van-col span="12">研究生或以上</van-col>
+							 <van-col span="12">研究生</van-col>
 						</van-cell><van-cell>
 							 <van-col span="10">手机号码:</van-col>
-							 <van-col span="12">138002111111</van-col>
-						</van-cell><van-cell>
+							 <van-col span="12">13439078656</van-col>
+						</van-cell>
+						<!-- <van-cell>
 							 <van-col span="10">工作单位:</van-col>
-							 <van-col span="12">广州乐乐科技有限公司</van-col>
+							 <van-col span="12">广州市睿智防水电器股份有限公司</van-col>
 						</van-cell><van-cell>
 							 <van-col span="10">婚烟情况:</van-col>
 							 <van-col span="12">已婚有子女</van-col>
 						</van-cell><van-cell>
 							 <van-col span="10">家庭人数:</van-col>
 							 <van-col span="12">3</van-col>
-						</van-cell>
+						</van-cell> -->
 						<!-- <van-cell @click="show_3">
 							<div class="blue_bg_box"><p class="list_text_open">收起<van-icon name="arrow-up" /></p></div>
 						</van-cell> -->
@@ -198,7 +199,7 @@
 				 </van-cell-group>
 			</div>
 		<div v-show='type==3'>
-			<van-cell-group class="bg-grey"  >
+			<!-- <van-cell-group class="bg-grey"  >
 				<div class="grey_bg"> </div>
 				<div class="">
 					<van-cell>
@@ -212,7 +213,7 @@
 					</van-cell>
 					<van-cell>
 						<van-col span="10">权利人:</van-col>
-						<van-col span="12">张三</van-col>
+						<van-col span="12">艾仲华</van-col>
 					</van-cell>
 					<van-cell @click="show_4" >
 						<img src="../../../../assets/images/38/Pulldown3@2x.png"  class="felx_img">
@@ -282,7 +283,52 @@
 					</van-cell>
 
 				</div>
-			</van-cell-group>
+			</van-cell-group> -->
+			<van-cell-group class="bg-grey">
+				<div >
+					<van-cell>
+						<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
+						<van-col span="23"><h3>抵押物信息</h3></van-col>
+					</van-cell>
+
+					<van-cell>
+						<van-col span="10">不动产权证:</van-col>
+						<van-col span="12"><img class="yyzz" src="../../../../assets/images/other/budongchan.png" alt=""></van-col>
+					</van-cell>
+					<van-cell>
+						 <van-col span="10">权力人:</van-col>
+						 <van-col span="12">艾仲华</van-col>
+					</van-cell>
+					<van-cell>
+						 <van-col span="10">共有情况:</van-col>
+						 <van-col span="12">自由</van-col>
+					</van-cell>
+					<van-cell>
+						 <van-col span="10">坐落:</van-col>
+						 <van-col span="12">广东省广州市天河区花城大道中海花城湾4号楼3门201</van-col>
+					</van-cell>
+					<van-cell>
+						 <van-col span="10">不动产号：</van-col>
+						 <van-col span="12">0130031024</van-col>
+					</van-cell>
+					<van-cell>
+						 <van-col span="10">权力性质：</van-col>
+						 <van-col span="12">自有</van-col>
+					</van-cell>
+					<van-cell>
+						 <van-col span="10">用途:</van-col>
+						 <van-col span="12">住宅</van-col>
+					</van-cell>
+					<van-cell>
+						 <van-col span="10">建筑面积：</van-col>
+						 <van-col span="12">120.4</van-col>
+					</van-cell>
+					<van-cell>
+						 <van-col span="10">权力其他情况：</van-col>
+						 <van-col span="12">无</van-col>
+					</van-cell>
+				</div>
+			 </van-cell-group>
 		</div>
 		<div v-show='type==4'>
 			<van-cell-group class="bg-grey"  >
