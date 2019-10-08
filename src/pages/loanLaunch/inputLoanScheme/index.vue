@@ -33,11 +33,16 @@
             <p class="list_test paddingLeft">币种</p>
           </van-col>
           <van-col class="list_right" style="text-align: left;width:250px;">
-            <p class="list_test" style="color: rgb(51,51,51)">
+            <!-- <p class="list_test" style="color: rgb(51,51,51)">
               <select class="slectmodel" name="ymdSelect" id="ymdSelect">
                 <option>人民币</option>
               </select>
-            </p>
+            </p> -->
+            <div class="slectModule2">
+              <van-dropdown-menu id="slectModule" :overlay="false" style="height:35px;">
+                <van-dropdown-item style="height:170px;" v-model="value1" :options="option1" />
+              </van-dropdown-menu>
+            </div>
           </van-col>
           <!-- <van-col class="list_left" id="fieldSelect" style="text-align: left;width:100%">
             <van-field style="paddin-left:0px;"
@@ -92,16 +97,21 @@
             <p class="list_test paddingLeft">借款期限</p>
           </van-col>
           <van-col class="list_right" style="text-align: left;width:250px;">
-            <p class="list_test" style="color: rgb(51,51,51)">
-              <span class="inptSpan" style="width:43%;">
+            <p class="list_test" style="color: rgb(51,51,51);width:112px;float:left;margin-right:10px;">
+              <span class="inptSpan">
                 <input class="inptmodel" type="text" value="12">
               </span>
-              <select class="slectmodel" name="ymdSelect" id="ymdSelect">
+              <!-- <select class="slectmodel" name="ymdSelect" id="ymdSelect">
                 <option>年</option>
                 <option>月</option>
                 <option>日</option>
-              </select>
+              </select> -->
             </p>
+            <div class="slectModule2">
+              <van-dropdown-menu :overlay="false" style="height:35px;">
+                <van-dropdown-item style="height:170px;" v-model="value2" :options="option2" />
+              </van-dropdown-menu>
+            </div>
           </van-col>
         </van-row>
         
@@ -137,7 +147,22 @@ export default {
       },
       value: '',
       showPicker: false,
-      columns: ['人民币', '港币', '澳门币', '美元', '英镑']
+      columns: ['人民币', '港币', '澳门币', '美元', '英镑'],
+      //切换模式
+      value1: 0,
+      option1: [
+        { text: '人民币', value: 0 },
+        { text: '港币', value: 1 },
+        { text: '澳门币', value: 2 },
+        { text: '美元', value: 3 },
+        { text: '英镑', value: 4 }
+      ],
+      value2: 0,
+      option2: [
+        { text: '年', value: 0 },
+        { text: '月', value: 1 },
+        { text: '日', value: 2 }
+      ],
     };
   },
 
@@ -176,9 +201,23 @@ export default {
 };
 </script>
 <style lang="postcss">
+.slectModule2{
+  width: 108px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background-color: #ffffff;
+  border:solid 0.5px #eeeeee;  
+  border-radius: 15px;
+  z-index: 1;
+  padding:0px 10px 0px 8px;
+  text-align: center;
+  float: left;
+  margin-top: 3px;
+}
 option{width: 125px;}
 .inptmodel{border:none;height:25px;width:90%;position:relative;top:2px;float: left;}
-.inptSpan{border:1px solid #666666;border-radius:30px;width:90%;height:32px;float:left;padding-left:15px;margin-top: 3px;}
+.inptSpan{border:1px solid #eeeeee;border-radius:30px;width:90%;height:32px;float:left;padding-left:15px;margin-top: 3px;}
 .slectmodel{margin-top:3px;height:35px;width:50%;float:left;border-radius:30px;padding-left:35px;text-align:center;}
 .paddingLeft{
   padding-left: 15px;
@@ -212,7 +251,7 @@ option{width: 125px;}
 </style>
 
 <style lang="scss" scoped>
-
+body{background-color: #eeeeee;}
 .van-cell:not(:last-child)::after{
   border: none;
 }
