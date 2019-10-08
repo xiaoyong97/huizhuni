@@ -183,7 +183,7 @@
         </van-tab>
         <!--亲密度列表-->
         <van-tab title="亲密度列表">
-          <div class="main_box qmdlb" style="min-height:550px;">
+          <div class="main_box qmdlb" style="min-height:568px;">
             <div class="cloudMtxTable_body">
               <table class="cloudTable"  style="table-layout:fixed">
                 <colgroup >
@@ -445,7 +445,6 @@
             <img src="../../assets/images/huidiantong/longxin-bg.png" class="gx_bg">
           </div>
         </van-tab>
-        <van-tab title="龙信商评分">龙信商评分</van-tab>
         <van-tab title="纳税信息">
           <div class="main_box qmdlb"  style="min-height:550px;">
             <van-row class="list_row">
@@ -546,8 +545,8 @@
         </van-tab>
         
         <van-tab title="海关信息">
-          <div class="main_box qmdlb">
-            <van-row class="list_row"  style="min-height:550px;">
+          <div class="main_box qmdlb" style="min-height:568px;">
+            <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
                 <p class="list_test">海关贸易国家：美国</p>
               </van-col>
@@ -571,7 +570,7 @@
         </van-tab>
 
         <van-tab title="我行业务信息">
-          <div class="main_box qmdlb"  style="min-height:550px;">
+          <div class="main_box qmdlb"  style="min-height:568px;">
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
                 <p class="list_test">账户类型（存款账户类型）：基本户</p>
@@ -651,7 +650,7 @@
         </van-tab>
 
         <van-tab title="黑名单信息">
-          <div class="main_box qmdlb" style="min-height:550px;">
+          <div class="main_box qmdlb" style="min-height:568px;">
             <div class="cloudMtxTable_body">
               <table class="cloudTable"  style="table-layout:fixed">
                 <colgroup >
@@ -692,7 +691,7 @@
         </van-tab>
 
         <van-tab title="商机信息">
-          <div class="main_box qmdlb" style="min-height:550px;">
+          <div class="main_box qmdlb" style="min-height:568px;">
             <div class="cloudMtxTable_body">
               <table class="cloudTable"  style="table-layout:fixed">
                 <colgroup >
@@ -735,7 +734,7 @@
         </van-tab>
 
         <van-tab title="客户管理团队信息">
-          <div class="main_box qmdlb" style="min-height:550px;">
+          <div class="main_box qmdlb" style="min-height:568px;">
             <div class="cloudMtxTable_body">
               <table class="cloudTable"  style="table-layout:fixed">
                 <colgroup >
@@ -822,8 +821,8 @@ export default {
       ],
       myChart1:null,
       activeName:'1',
-      heiMingDan: 1,//黑名单单选1行
-      heiMingDanTwo: 1,//黑名单单选2行
+      heiMingDan: "2",//黑名单单选1行
+      heiMingDanTwo: "2",//黑名单单选2行
     };
   },
 
@@ -989,6 +988,7 @@ export default {
     line-height: 30px;
     margin-top: 7px;
 }
+
 </style>
 <style lang="postcss" scoped>
 
@@ -997,8 +997,6 @@ export default {
   width: 100%;
   height:200px;
 }
-
-
 .region-slectModule{
   width: 130px;
   height: 30px;
@@ -1141,13 +1139,6 @@ table {
 .letdiv{
     padding-left: 25px;
 }
-.vnavbar{
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    background-color: rgb(56,155,246);
-    z-index: 99;
-}
 .lockcol{
     color:#0062B3;
 }
@@ -1207,6 +1198,13 @@ table {
     width: 100%;
     z-index: 1;
 } */
+.vnavbar{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color: rgb(56,155,246);
+    z-index: 99 !important;
+}
 .list_test {
   line-height: 30px;
   margin-block-start: 0;

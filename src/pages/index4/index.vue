@@ -83,7 +83,7 @@
       <div class="map-bg"><img :src="bgImg" alt=""></div>
       <div class="coordinate" v-for="(item, index) in coordinateList1" :style="item.style" @click="showTips(index)">
         <img :src="item.img" alt="">
-        <div class="popup-box" v-show="item.show" :style="item.style">
+        <div  @click="cllFunc" class="popup-box" v-show="item.show" :style="item.style">
           <template v-if="item.type == 2">
             <div>厦门象屿股份有限公司</div>
             <div>客户需求：强</div>
