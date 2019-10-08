@@ -59,8 +59,8 @@
 				<h4 class="cell-hearder">关联人{{index+1}}</h4>
 
 				<div>
-					<van-field label="关系"placeholder="请选择" v-model="item.name" clearable label-width="120"/>
-
+					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>
+						
 					<div class="idCard_front">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
@@ -72,7 +72,6 @@
 				</div>
 				<!--style="position: fixed;top: 34px; width:100%;"-->
 				<van-cell-group class="bg-grey">
-
 					<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
 					<van-field label="性别" placeholder="性别" @click-right-icon="openPicker(7,index)" v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
@@ -85,9 +84,7 @@
 					<van-field label="工作单位"placeholder="请输入工作单位" v-model="item.work" clearable label-width="120" label-color="red"/>
 					<van-field label="婚姻情况" placeholder="法定代表人电话" @click-right-icon="openPicker(5,index)" v-model="item.marriage_status" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="家庭人数"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(6,index)" v-model="item.households" clearable label-width="120" label-color="red" right-icon="arrow-down"/>
-
 				</van-cell-group>
-
 			</div>
 
 		</div>
@@ -96,7 +93,7 @@
 			<div v-for="(item,index) in info.mortgaged">
 				<h4 class="cell-hearder">抵押物{{index+1}}</h4>
 				<div>
-					<van-field label="关系"placeholder="请选择" v-model="item.name" clearable label-width="120"/>
+					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>
 
 					<div class="idCard_front">
 						<div class="idCard_shadow_button"></div>
@@ -131,8 +128,7 @@
 				<van-cell-group class="bg-grey">
 					<div v-show="item.type==0">
 						<div>
-							<van-field label="关系 自然人" placeholder="请选择"  clearable label-width="120"/>
-
+							<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
 							<div class="idCard_front">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传人像面</p>
@@ -292,39 +288,39 @@
 		],
 		info:{
 			company_info:{
-				customer_id:'44099999999',
-				unified_social_credit_code:'xxxxxxxxxx',
-				company_name:'XXXX有限公司',
-				enterprise_address:'广州市越秀区法政路XX号',
-				legal_representative:'张三',
-				mobile:'13800000000',
-				legal_representative_address:'广州市越秀区法政路XX号',
+				customer_id:'252841000000526649',
+				unified_social_credit_code:'91120116MA07K2307A',
+				company_name:'广州市睿智防水电器股份有限公司',
+				enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+				legal_representative:'艾仲华',
+				mobile:'13702137765',
+				legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
 			},
 			company_main_info:{
-				name:'',
-				sex:'',
-				ethnic:'',
-				birth:'',
-				address:'',
-				idcard:'',
-				validity_period:'' ,//有效期
-				record_of_formal_schooling : '', //学历
-				mobile:'',
-				work:'',
-				marriage_status:'',
-				households:'',
+				name:'艾仲华',
+				sex:'女',
+				ethnic:'汉族',
+				birth:'1976.8.1',
+				address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+				idcard:'120106197608016578',
+				validity_period:'2030.1.1' ,//有效期
+				record_of_formal_schooling : '研究生', //学历
+				mobile:'13702137765',
+				work:'广州市睿智防水电器股份有限公司',
+				marriage_status:'已婚',
+				households:'3',
 			},
 			associates:[   //关联人
 				{
-					name:'',
-					sex:'',
-					ethnic:'',
-					birth:'',
-					address:'',
-					idcard:'',
-					validity_period:'' ,//有效期
-					record_of_formal_schooling : '', //学历
-					mobile:'',
+					name:'李天明',
+					sex:'男',
+					ethnic:'汉族',
+					birth:'1970.10.20',
+					address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+					idcard:'120106197010204098',
+					validity_period:'2030.1.1' ,//有效期
+					record_of_formal_schooling : '研究生', //学历
+					mobile:'13439078656',
 					work:'',
 					marriage_status:'',
 					households:'',
@@ -346,7 +342,7 @@
 			],
 			mortgagor:[
 				{
-					type:'0', //0=自然人， 1=  企业法人
+					relationship:'0', //0=自然人， 1=  企业法人
 					name:'',
 					sex:'',
 					ethnic:'',
@@ -364,7 +360,7 @@
 					mobile:'',
 				},
 				{
-					type:'1', //0=自然人， 1=  企业法人
+					relationship:'1', //0=自然人， 1=  企业法人
 					name:'',
 					sex:'',
 					ethnic:'',
@@ -396,9 +392,6 @@
   //网页加载完成
   mounted () {
   	var value1 = this.$route.params.step;
-	  console.log(value1);
-	  console.log('12312312');
-
 	  if (value1) {
 	  	this.step = value1;
 	  }
@@ -425,6 +418,10 @@
 				// this.time_Picker_Statue = 7;
 				this.columns = ['男', '女'];
 				break;
+			case 8:
+				// this.time_Picker_Statue = 7;
+				this.columns = ['自然人', '配偶'];
+				break;
 			default:
 				break;
 		}
@@ -438,7 +435,6 @@
 	  },
 	  //自定义以及日期picker----确定键
 	  confirmBtn(picker, value, index) { // 确定按钮TODO
-		alert(this.step+' '+this.time_Picker_Statue)
 		
 		switch (this.time_Picker_Statue){
 			case 1:{
@@ -524,8 +520,22 @@
 						this.info.mortgagor[this.current_index].sex = this.columns[value];
 						break;
 				}
+			}
+				break;
+			case 8:{
 				
-				
+				switch(this.step){
+					case 1:
+						this.info.company_main_info.sex = this.columns[value];
+						break;
+					case 2:
+						this.info.associates[this.current_index].relationship = this.columns[value];
+						break;
+					case 3:
+					
+						this.info.mortgaged[this.current_index].relationship = this.columns[value];
+						break;
+				}
 			}
 				break;
 			default:
@@ -606,7 +616,7 @@
 			break;
 			case 4:{
 				this.info.mortgagor.push({
-						type:'0', //0=自然人， 1=  企业法人
+						relationship:'0', //0=自然人， 1=  企业法人
 						name:'',
 						sex:'',
 						ethnic:'',
