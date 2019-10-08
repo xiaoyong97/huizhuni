@@ -41,6 +41,16 @@
                 <img src="../../../assets/images/face/init.png" alt="">
             </div>
             <p class="tips">签约人人脸识别</p>
+            <div class="info-box">
+                <div class="name-box van-hairline--bottom">
+                    <label for="name">姓名</label>
+                    <input id="name" type="text" placeholder="请输入姓名">
+                </div>
+                <div class="id-box van-hairline--bottom">
+                    <label for="id">身份证号</label>
+                    <input id="id" type="number" placeholder="请输入身份证号">
+                </div>
+            </div>
             <div class="btn" @click="start">开始识别</div>
         </div>
 
@@ -158,6 +168,11 @@ export default {
 </script> 
 
 <style lang="scss" scoped>
+input{
+    outline: none;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
 p{
     margin-block-start: 0;
     margin-block-end: 0;
@@ -249,6 +264,31 @@ img{
     text-align: center;
     font-size: 18px;
     color: #000;
+}
+.info-box{
+    margin-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    .name-box,
+    .id-box{
+        display: flex;
+        align-items: center;
+        padding-left: 12px;
+        padding-right: 4px;
+        line-height: 32px;
+        font-size: 14px;
+        label{
+            width: 100px;
+        }
+        input{
+            flex: 1;
+        }
+    }
+    .name-box{
+        input{
+            // text-align: right;
+        }
+    }
 }
 .btn{
     background-color: #4c62e7;

@@ -190,7 +190,7 @@
                         userName: '孙二九',
                         productCode: '0063',
                         amount: '1010.00',
-                        date: '2019-10-12'
+                        date: '2019-10-30'
                     },
                     {
                         company: '广州市睿智防水电器股份有限公司',

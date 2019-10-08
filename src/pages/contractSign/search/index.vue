@@ -38,6 +38,7 @@ export default {
 input{
     outline: none;
     border: 0;
+    background-color: rgba(0, 0, 0, 0);
 }
 .search-box{
     display: flex;
