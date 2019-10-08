@@ -86,7 +86,7 @@
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">待还本金（元）</van-col>
-                    <van-col class="text orange">50,000</van-col>
+                    <van-col class="text orange">0</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">待还利息（元）</van-col>
@@ -94,7 +94,7 @@
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">贷款到期日</van-col>
-                    <van-col class="text orange">2019-09-01</van-col>
+                    <van-col class="text orange">2019-09-10</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">贷款状态</van-col>

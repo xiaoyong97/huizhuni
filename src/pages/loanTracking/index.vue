@@ -186,25 +186,18 @@
                 ],
                 tabList3: [
                     {
-                        company: '广州可可有限公司',
-                        userName: '张三',
-                        productCode: 9613,
-                        amount: '200,000',
-                        date: '2019-07-15'
+                        company: '公司三安',
+                        userName: '孙二九',
+                        productCode: '0063',
+                        amount: '1010.00',
+                        date: '2019-10-12'
                     },
                     {
-                        company: '北京京东金融有限公司',
-                        userName: '张三',
+                        company: '广州市睿智防水电器股份有限公司',
+                        userName: '艾仲华',
                         productCode: 9613,
-                        amount: '200,000',
-                        date: '2019-08-08'
-                    },
-                    {
-                        company: '广州可可有限公司',
-                        userName: '张三',
-                        productCode: 9613,
-                        amount: '200,000',
-                        date: '2019-09-01'
+                        amount: '5000',
+                        date: '2019-11-01'
                     }
                 ],
             }
