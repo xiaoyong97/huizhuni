@@ -112,7 +112,7 @@
 
       
     <!--dialog已抢单放弃按钮弹出框-->
-    <van-dialog v-model="fangQiButShow" title="请选择放弃原因" show-cancel-button>
+    <van-dialog v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true">
       <van-radio-group v-model="fangQiRadio">
         <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
         <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
@@ -159,18 +159,11 @@ export default {
     //商机管理放弃按钮
     xiangQingQianDan(){
       this.fangQiButShow = true
-      // Dialog.alert({
-      //   title: '',
-      //   message: '放弃订单成功'
-      // }).then(() => {
-      //   // on close
-      // });
     },
     //返回上一级
     onClickLeft() {
       this.$router.go(-1);
-    }
-
+    },
   },
   
   //计算属性

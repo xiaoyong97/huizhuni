@@ -13,11 +13,7 @@
             <div class="biaoQian">
               <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">企业标签</div></div>
               <van-row  class="biaoQianLie" gutter="10">
-                <van-col span="2"></van-col>
-                <van-col><div class ="BKuang" >一般户</div></van-col>
-                <van-col><div class ="BKuang" >结算户</div></van-col>
-                <van-col><div class ="BKuang" >企业征信</div></van-col>
-                <van-col><div class ="BKuang" >个人征信</div></van-col>
+                <van-col  v-for="item in enterprise.EnterpriseLabel"><div class ="BKuang" >{{item.name}}</div></van-col>
               </van-row>
             </div>
             <div class="xinXi">
@@ -25,11 +21,9 @@
                 <van-col span="17">
                   <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">企业详细信息</div></div>
                 </van-col>
+                <van-col style="line-height:20px;" span="4"></van-col>
                 <van-col style="line-height:20px;" span="3">
                   <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
                 </van-col>
               </div>
               <div class="mesKang">
@@ -46,28 +40,32 @@
                   <van-col class="mesKangRight" span="16">{{enterprise.phone|phoneText(textJueIsOk)}}</van-col>
                 </van-row>
                 <van-row>
-                  <van-col class="mesKangLeft" span="8">企业联系地址</van-col>
-                  <van-col class="mesKangRight" span="16">北京市朝阳区建国路1号科贸大厦</van-col>
+                  <van-col class="mesKangLeft" span="8">企业注册地址</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.address}}</van-col>
+                </van-row>
+                <van-row>
+                  <van-col class="mesKangLeft" span="8">所属行业</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.Subordinate}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">经营范围</van-col>
-                  <van-col class="mesKangRight" span="16">北京市朝阳区建国路1号科贸大厦北京市朝阳区建国路1号科贸大厦</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.scopeBusiness}}</van-col>
                 </van-row>
                 <van-row>
-                  <van-col class="mesKangLeft" span="8">成立年限</van-col>
-                  <van-col class="mesKangRight" span="16">4年</van-col>
+                  <van-col class="mesKangLeft" span="8">成立日期</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.establishTime}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">是否存量客户</van-col>
-                  <van-col class="mesKangRight" span="16">是</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.whether}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">精准测额时间</van-col>
-                  <van-col class="mesKangRight" span="16">2019/08/15</van-col>
+                  <van-col class="mesKangRightTime" span="16">{{enterprise.accurateTime}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">申贷意向时间</van-col>
-                  <van-col class="mesKangRight" span="16">2019/07/21</van-col>
+                  <van-col class="mesKangRightTime" span="16">{{enterprise.CreditTime}}</van-col>
                 </van-row>
               </div>
               <div class="eDu">
@@ -75,23 +73,35 @@
                 <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">产品额度</div></div>
                 <van-row gutter="15">
                   <van-col class="kuang" span="6">
-                    <div class="kuangHang">
-                      <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
+                    <div class="kuangHangDi" v-if="statusOne"><!--橘色状态-->
+                      <div class="kuangTop">信用快贷</div><div class="kuangBottom">{{enterprise.moneyOne}}</div>
+                    </div>
+                    <div class="kuangHang" v-if="!statusOne">
+                      <div class="kuangTop">信用快贷</div><div class="kuangBottom">{{enterprise.moneyOne}}</div>
                     </div>
                   </van-col>
                   <van-col class="kuang" span="6">
-                    <div class="kuangHangDi">
-                      <div class="kuangTop">抵押快贷</div><div class="kuangBottom">500万</div>
+                    <div class="kuangHangDi" v-if="statusTwo"><!--橘色状态-->
+                      <div class="kuangTop">抵押快贷</div><div class="kuangBottom">{{enterprise.moneyTwo}}</div>
+                    </div>
+                    <div class="kuangHang" v-if="!statusTwo">
+                      <div class="kuangTop">抵押快贷</div><div class="kuangBottom">{{enterprise.moneyTwo}}</div>
                     </div>
                   </van-col>
                   <van-col class="kuang" span="6">
-                    <div class="kuangHang">
-                      <div class="kuangTop">交易快贷</div><div class="kuangBottom">300万</div>
+                    <div class="kuangHangDi" v-if="statusThree"><!--橘色状态-->
+                      <div class="kuangTop">交易快贷</div><div class="kuangBottom">{{enterprise.moneyThree}}</div>
+                    </div>
+                    <div class="kuangHang" v-if="!statusThree">
+                      <div class="kuangTop">交易快贷</div><div class="kuangBottom">{{enterprise.moneyThree}}</div>
                     </div>
                   </van-col>
                   <van-col class="kuang" span="6">
-                    <div class="kuangHang">
-                      <div class="kuangTop">质押快贷</div><div class="kuangBottom">800万</div>
+                    <div class="kuangHangDi" v-if="statusFour"><!--橘色状态-->
+                      <div class="kuangTop">质押快贷</div><div class="kuangBottom">{{enterprise.moneyFour}}</div>
+                    </div>
+                    <div class="kuangHang" v-if="!statusFour">
+                      <div class="kuangTop">质押快贷</div><div class="kuangBottom">{{enterprise.moneyFour}}</div>
                     </div>
                   </van-col>
                 </van-row>
@@ -103,7 +113,7 @@
           </div>
           
         <!--dialog已抢单放弃按钮弹出框-->
-        <van-dialog v-model="fangQiButShow" title="请选择放弃原因" :confirm="fangQiConfirm" show-cancel-button>
+        <van-dialog v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true" confirm="fangQiConfirm()">
           <van-radio-group v-model="fangQiRadio">
             <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
             <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
@@ -126,16 +136,73 @@ export default {
   data (){
      return {
        title : '商机详情',
+       id:this.$route.params.id,//跳转参数id
        qianDanIsOk: true,
        fansQiIsOk: false,
        fangQiButShow: false,
        fangQiRadio: 1,
-       enterprise:{
-         companyName: '新野摸具制造有限公司',
-         principalName: '李某某',
-         phone: '13527283736',
+       enterprise:[],//接受显示数据
+       enterpriseOne:{
+         EnterpriseLabel:[//企业标签
+           {name:'法定代表人'},
+           {name:'个人征信'},
+           {name:'绑定惠懂你'},
+           {name:'联系电话'},
+           {name:'精准测额'},
+           {name:'信贷准入'},
+           {name:'申贷意愿'},
+         ],
+         companyName: '青岛智慧科技有限公司', //公司名称
+         principalName: '王光明',//联系人
+         phone: '13818886688',//联系电话
+         address: '山东省青岛市城阳区惜福镇王沙路1616号',//企业注册地址
+         Subordinate: '软件和信息技术服务行业',//所属行业
+         scopeBusiness: '计算机软硬件的技术开发，技术咨询，技术转让，技术服务，数据库处理，经济信息咨询，经营电子商务，计算机编程',//经营范围
+         establishTime: "2012年9月20日",//成立日期
+         whether: '否',//是否存量客户
+         accurateTime: '2019年10月12日',//精准测额时间
+         CreditTime: '2019年10月12日',//申贷意愿时间
+         moneyOne:'188万',
+         moneyTwo:'850万',
+         moneyThree:'300万',
+         moneyFour:'800万',
+       },
+       enterpriseTwo:{
+         EnterpriseLabel:[//企业标签
+           {name:'法定代表人'},
+           {name:'个人征信'},
+           {name:'企业征信'},
+           {name:'基本户'},
+           {name:'一般户'},
+           {name:'绑定惠懂你'},
+           {name:'联系电话'},
+           {name:'企业网银'},
+           {name:'个人网银'},
+           {name:'手机银行'},
+           {name:'精准测额'},
+           {name:'申贷意愿'},
+         ],
+         companyName: '广州市睿智防水电器股份有限公司', //公司名称
+         principalName: '艾仲华',//联系人
+         phone: '13702137765',//联系电话
+         address: '广州市高新技术产业开发区迎宾大道188号',//企业注册地址
+         Subordinate: '计算机，通信和其他电子设备制造业',//所属行业
+         scopeBusiness: '电子元件及组件制造：货物进出口：电子元器件批发：技术进出口：电器辅件',//经营范围
+         establishTime: "2009年3月12日",//成立日期
+         whether: '是',//是否存量客户
+         accurateTime: '2019年10月12日',//精准测额时间
+         CreditTime: '2019年10月12日',//申贷意愿时间
+         moneyOne:'188万',
+         moneyTwo:'850万',
+         moneyThree:'300万',
+         moneyFour:'800万',
        },
        textJueIsOk: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true
+       //四个快贷状态,true为橘色
+       statusOne: false,//1信用快贷
+       statusTwo: false,//2抵押快贷
+       statusThree: false,//3交易快贷
+       statusFour: false,//4质押快贷
      }
   },
 
@@ -146,7 +213,7 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+    this.GetDateList()//初始化数据
   },
   
   //声明方法
@@ -154,6 +221,22 @@ export default {
     
     go : function(){
       this.$router.push('/more');
+    },
+    //获取初始化数据
+    GetDateList(){
+      if(this.id==1){
+        this.enterprise=this.enterpriseOne
+        this.statusOne=true//1信用快贷
+        this.statusTwo=true//2抵押快贷
+        this.statusThree=false//3交易快贷
+        this.statusFour=false//4质押快贷
+      }else if(this.id==2){
+        this.enterprise=this.enterpriseTwo
+        this.statusOne=false//1信用快贷
+        this.statusTwo=true//2抵押快贷
+        this.statusThree=false//3交易快贷
+        this.statusFour=false//4质押快贷
+      }
     },
     //商机详情抢单按钮
     xiangQingQianDan(){
@@ -171,7 +254,7 @@ export default {
       //this.fangQiButShow = true
       Dialog.alert({
         title: '',
-        message: '放弃成功'
+        message: '已放弃订单'
       }).then(() => {
         this.qianDanIsOk= true
         this.fansQiIsOk= false
@@ -180,13 +263,14 @@ export default {
     },
     //放弃弹窗确定按钮
     fangQiConfirm(){
-      Dialog.alert({
-        title: '',
-        message: '已放弃订单'
-      }).then(() => {
-        this.qianDanIsOk= true
-        this.fansQiIsOk= false
-      });
+      // Dialog.alert({
+      //   title: '',
+      //   message: '已放弃订单'
+      // }).then(() => {
+      //   this.qianDanIsOk= true
+      //   this.fansQiIsOk= false
+      //   this.textJueIsOk=false
+      // });
     },
     //返回上一级
     onClickLeft() {
@@ -199,10 +283,7 @@ export default {
     //文字抢单前公司字体截取
     qianDanText(value,isOk){
       if(isOk==false){
-        if (value.length > 2) {
-          return value.slice(0,2) + '**********'
-        }
-        return value
+        return value.slice(0,2) + '**********'
       }
       return value
     },
@@ -210,7 +291,6 @@ export default {
     principaText(value,isOk){
       if(isOk==false){
         return value.slice(0,1) + '**'
-        return value
       }
       return value
     },
@@ -218,7 +298,6 @@ export default {
     phoneText(value,isOk){
       if(isOk==false){
         return value.slice(0,3) + '****' +value.slice(7,11) 
-        return value
       }
       return value
     },
@@ -328,12 +407,14 @@ export default {
     font-size: 13px;
   }
   .BKuang{
-    width: 55px;
+    min-width: 40px;
     line-height:20px;
     margin-top:14px;
     font-size: 10px;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
+    padding-left:5px;
+    padding-right:5px;
     color: rgb(76,98,232);;
     box-shadow:0 0 1px rgb(76,98,232);
     border:1px solid rgb(76,98,232);
@@ -404,10 +485,10 @@ export default {
   }
   .xiangQingBac .biaoQian{
     width: 90%;
-    height:78px;
+    min-height:78px;
     margin: 8px auto 0px auto;
     border-radius: 10px;
-    padding-left: 10px;
+    padding-left: 10px ;
     padding-right: 10px;
     background-color: white;
   }
@@ -427,23 +508,17 @@ export default {
     margin-left: 25px;
     padding-top: 3px;
   }
-  .biaoQianLie .BKuang{
-    width: 55px;
-    line-height:20px;
-    margin-top:14px;
-    font-size: 10px;
-    border-radius: 15px;
-    text-align: center;
-    color: rgb(76,98,232);;
-    box-shadow:0 0 1px rgb(76,98,232);
-    border:1px solid rgb(76,98,232);
+  .biaoQianLie {
+    padding-left: 10px;
+    padding-bottom: 10px;
   }
   .xiangQingBac .xinXi{
     width: 90%;
-    height:406px;
+    height:auto;
     margin: 8px auto 0px auto;
     border-radius: 10px;
     padding-left: 10px;
+    padding-bottom: 30px;
     padding-right: 10px;
     background-color: white;
   }
@@ -457,6 +532,12 @@ export default {
     line-height: 20px;
     margin-top:5px;
     font-size: 13px;
+  }
+  .mesKangRightTime{
+    line-height: 20px;
+    margin-top:5px;
+    font-size: 13px;
+    color:red;
   }
   .botButDiv{
     line-height:40px;

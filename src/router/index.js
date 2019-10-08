@@ -144,7 +144,7 @@ export default new Router({
       },
       {
         name: 'shangParticulars',
-        path: '/shangParticulars',
+        path: '/shangParticulars/:id',
         component: () => import('@/pages/shangParticulars'),
         meta: {
           title: '商机详情信息'

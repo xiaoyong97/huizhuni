@@ -33,27 +33,28 @@
       
       
       <div class="bac" >
-        <div class="daiWanCheng" @click="particularsCardBut">
+        <div class="daiWanCheng" @click="particularsCardBut(1)">
           <van-row >
             <van-col class="qiangDanCol" span="17">
               <div class="qiangGongSi">{{enterprise|textJue(textJueIsOk)}}</div><div class="qiangGongLu">(<20KM)</div>
             </van-col>
+            <van-col style="line-height:20px;" span="4"></van-col>
             <van-col style="line-height:20px;" span="3">
               <div class="jingZhuenWan">精准</br>测额</div>
             </van-col>
-            <van-col style="line-height:20px;" span="4">
+            <van-col v-if="false" style="line-height:20px;" span="4">
               <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
             </van-col>
           </van-row>
           <van-row gutter="15">
             <van-col class="kuang" span="6">
-              <div class="kuangHang">
-                <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
+              <div class="kuangHangOrange">
+                <div class="kuangTop">信用快贷</div><div class="kuangBottom">188万</div>
               </div>
             </van-col>
             <van-col class="kuang" span="6">
-              <div class="kuangHangDi">
-                <div class="kuangTop">抵押快贷</div><div class="kuangBottom">500万</div>
+              <div class="kuangHangOrange">
+                <div class="kuangTop">抵押快贷</div><div class="kuangBottom">300万</div>
               </div>
             </van-col>
             <van-col class="kuang" span="6">
@@ -68,9 +69,7 @@
             </van-col>
           </van-row>
           <van-row  gutter="10">
-            <van-col><div class ="BKuang" >一般户</div></van-col>
-            <van-col><div class ="BKuang" >结算户</div></van-col>
-            <van-col><div class ="BKuang" >企业征信</div></van-col>
+            <van-col><div class ="BKuang" >法人</div></van-col>
             <van-col><div class ="BKuang" >个人征信</div></van-col>
           </van-row>
           <van-row  gutter="10">
@@ -80,33 +79,31 @@
                   {{huaKuaiName}}
                 </div>
               </van-slider></div>
-              <div class ="huaTime" >2019/08/21 </br><span class="timeSpan">18:21</span></div>
+              <div class ="huaTime" >2019/10/12 </br><span class="timeSpan">18:21</span></div>
             </div>
           </van-row>
         </div>
 
       
-        <div class="daiWanCheng" @click="particularsCardBut">
+        <div class="daiWanCheng" @click="particularsCardBut(2)">
           <van-row >
             <van-col class="qiangDanCol" span="17">
               <div class="qiangGongSi">{{enterpriseTwo|textJue(textJueIsOkTwo)}}</div><div class="qiangGongLu">(<20KM)</div>
             </van-col>
+            <van-col style="line-height:20px;" span="4"></van-col>
             <van-col style="line-height:20px;" span="3">
               <div class="jingZhuenWan">精准</br>测额</div>
-            </van-col>
-            <van-col style="line-height:20px;" span="4">
-              <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
             </van-col>
           </van-row>
           <van-row gutter="15">
             <van-col class="kuang" span="6">
               <div class="kuangHang">
-                <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
+                <div class="kuangTop">信用快贷</div><div class="kuangBottom">188万</div>
               </div>
             </van-col>
             <van-col class="kuang" span="6">
-              <div class="kuangHangDi">
-                <div class="kuangTop">抵押快贷</div><div class="kuangBottom">500万</div>
+              <div class="kuangHangOrange">
+                <div class="kuangTop">抵押快贷</div><div class="kuangBottom">850万</div>
               </div>
             </van-col>
             <van-col class="kuang" span="6">
@@ -121,8 +118,8 @@
             </van-col>
           </van-row>
           <van-row  gutter="10">
-            <van-col><div class ="BKuang" >一般户</div></van-col>
-            <van-col><div class ="BKuang" >结算户</div></van-col>
+            <van-col><div class ="BKuang" >基本户</div></van-col>
+            <van-col><div class ="BKuang" >法人</div></van-col>
             <van-col><div class ="BKuang" >企业征信</div></van-col>
             <van-col><div class ="BKuang" >个人征信</div></van-col>
           </van-row>
@@ -133,7 +130,7 @@
                   {{huaKuaiNameTwo}}
                 </div>
               </van-slider></div>
-              <div class ="huaTime" >2019/08/21 </br><span class="timeSpan">18:21</span></div>
+              <div class ="huaTime" >2019/10/12 </br><span class="timeSpan">18:21</span></div>
             </div>
           </van-row>
         </div>
@@ -157,8 +154,8 @@ export default {
      return {
 
        title : '商2机',
-       enterprise:'新野摸具制造有限公司',
-       enterpriseTwo:'新野摸具制造有限公司分公司',
+       enterprise:'青岛摸具制造有限公司',
+       enterpriseTwo:'广州市睿智防水电器股份有限公司',
        activeName: 'a',
        activeTabs:'a',
        TheSorting1: 1,
@@ -190,7 +187,7 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    this.textJue()
+    
   },
   //vue过滤器
   filters: {
@@ -235,7 +232,7 @@ export default {
       }
     },
     //滑动进度变化且结束拖动后触发2
-    huaKuaiChangeTwo(huaNum,huaText){
+    huaKuaiChangeTwo(){
       if(this.huaKuaitwo==100){
         this.huaKuaiNameTwo="抢单中..."
         Dialog.alert({
@@ -250,8 +247,8 @@ export default {
       }
     },
     //点击信息卡背景打开详情信息
-    particularsCardBut(){
-      this.$router.push('/shangParticulars');
+    particularsCardBut(id){
+      this.$router.push('/shangParticulars/'+id);
     },
     //点击打开搜索
     searchBut(){
@@ -333,6 +330,7 @@ export default {
   .bac{
     width: 100%;
     height: 509px;
+    overflow:auto;
     margin: 0px;
     padding-top: 1px;
     padding-bottom: 8px;
@@ -398,11 +396,6 @@ export default {
     border-radius: 5px;
     border:1px dashed rgb(76,98,232);
   }
-  .kuangHangDi{
-    height: 42px;
-    border-radius: 5px;
-    border:1px dashed orange;
-  }
   .kuang {
     font-weight: bold;
     height:36px;
@@ -423,6 +416,14 @@ export default {
     text-align: center;
     line-height: 15px;
     font-size: 13px;
+  }
+  .kuangHangOrange{
+    height: 42px;
+    border-radius: 5px;
+    border:1px dashed orange;
+  }
+  .kuangHangOrange .kuangBottom{
+    color: orange;
   }
   .BKuang{
     width: 55px;
