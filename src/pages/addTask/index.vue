@@ -3,7 +3,7 @@
      
      <!--头部导航-->
     <van-nav-bar :title="title"  left-arrow @click-left="onClickLeft" @click-right="next">
-	<van-button slot="right" class="theme_color"  >{{nextTitle}}</van-button>
+	<van-button slot="right" class="theme_color next_button"  >{{nextTitle}}</van-button>
 	</van-nav-bar>
 
 
@@ -47,7 +47,7 @@
 			 </van-cell-group>			
 							
 			<van-cell-group class="bg-grey">
-				<van-cell class="grey addCard" v-show="type==1" @click="addCard"><van-icon name="add" />添加抵押物</van-cell>
+				<van-cell class="grey " v-show="type==1" @click="addCard"><div class="addCard"><van-icon name="add-o" />添加抵押物</div></van-cell>
 				<van-cell class="grey addCard" v-show="type==0" ></van-cell>
 				<van-field label="借款人"placeholder=""  v-model="jkr"/>
 				<van-field label="联系方式" placeholder=""  v-model="lxfs"/>
@@ -61,8 +61,8 @@
 			<van-cell-group class="bg-grey"  v-for="(item, index) in card_count" >
 			 <van-cell class="grey">抵押物{{index+1}}</van-cell>
 			 <van-cell>
-				 <van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-				 <van-col span="22"><h3>产权证号:{{item.cqzh}}</h3></van-col>
+				 <van-col span="2"><img class="logo" src="../../assets/images/38/Propertycertificatenumber@2x.png" alt=""></van-col>
+				 <van-col span="22" ><h3>产权证号:{{item.cqzh}}</h3></van-col>
 			 </van-cell>
 			 <van-cell>
 				 <van-col span="2"></van-col>
@@ -170,6 +170,7 @@
 	  areaCellIndex:0,
 	  step:1,
 	  lxfs:'',
+	  jkr:'',
 	  isShowDetail:false,
 		isSubmit:false,
 	  }
@@ -182,12 +183,16 @@
   },
 
   //网页加载完成
-  mounted : ()=>{
+  mounted(){
 		var diyawuList = localStorage.getItem('diyawu');
 		console.log(diyawuList)
 		
 		var task = localStorage.getItem('task');
 		console.log(task)
+		
+		if(this.type == 0){
+			this.name = localStorage.getItem('jkr')
+		}
   },
   
   //声明方法
@@ -314,13 +319,6 @@
 		}
 		return count;
 	},
-	jkr:function(){
-		var name = '';
-		if(this.type == 0){
-			name = localStorage.getItem('jkr')
-		}
-		return name;
-	},
   },
 
   //引入组件
@@ -354,6 +352,10 @@
 }
 .theme_color{
 	color:#4c62e7;
+	
+}
+.next_button,.next_button:hover{
+	border: 0px;
 }
 .logo{
 		width: 22px;
@@ -387,5 +389,19 @@
 		margin: 0 auto 20px;;
 		display: block;
 		
+	}
+	.addCard{
+		text-align: center;
+		color:#4c62e7;
+		font-size: 16px;
+	}
+	.addCard .van-icon{
+		font-size: 18px;
+		font-weight: bold;
+		margin-right: 4px;
+		vertical-align: text-top;
+	}
+	.border-container{
+		border: 1px solid #cccccc;
 	}
 </style>
