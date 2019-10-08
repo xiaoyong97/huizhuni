@@ -126,9 +126,9 @@
 				<h4 class="cell-hearder">抵押人{{index+1}}</h4>
 
 				<van-cell-group class="bg-grey">
-					<div v-show="item.type==0">
+					<div v-show="item.relationship=='自然人'">
 						<div>
-							<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
+							<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
 							<div class="idCard_front">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传人像面</p>
@@ -147,11 +147,11 @@
 						<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
 						<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
 						<van-field label="有效期限"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(2,index)" right-icon="arrow-down" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
-						<van-field label="抵押人联系方式" placeholder="请输入法定代表人地址" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
+						<van-field label="抵押人联系方式" placeholder="请输入法定代表人地址" v-model="item.diyaren_mobile" clearable label-width="120" label-color="red"/>
 					</div>
-					<div v-show="item.type==1">
+					<div v-show="item.relationship=='企业法人'">
 						<div>
-							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.type" clearable label-width="120"/>
+							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>
 
 							<div class="idCard">
 								<div class="idCard_shadow_button"></div>
@@ -206,22 +206,22 @@
 						<van-cell ><div class="grey">查看详情</div></van-cell>
 						<van-cell>
 							<van-col span="3"><img class="logo" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-							<van-col span="21"><h3>广州老地方有限公司</h3></van-col>
+							<van-col span="21"><h3>{{info.company_info.company_name}}</h3></van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="2"></van-col>
 							<van-col span="10">统一社会信用代码:</van-col>
-							<van-col span="12">44000111111111</van-col>
+							<van-col span="12">{{info.company_info.unified_social_credit_code}}</van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="2"></van-col>
 							<van-col span="10">企业主姓名</van-col>
-							<van-col span="12">黄五</van-col>
+							<van-col span="12">{{info.company_info.legal_representative}}</van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="2"></van-col>
 							<van-col span="10">采集时间:</van-col>
-							<van-col span="12">2019-07-22</van-col>
+							<van-col span="12">2019-10-09</van-col>
 						</van-cell>
 					</div>
 				</van-cell-group>
@@ -311,7 +311,8 @@
 				households:'3',
 			},
 			associates:[   //关联人
-				{
+				{	
+					relationship:'其他', //0=自然人， 1=  企业法人
 					name:'李天明',
 					sex:'男',
 					ethnic:'汉族',
@@ -321,36 +322,37 @@
 					validity_period:'2030.1.1' ,//有效期
 					record_of_formal_schooling : '研究生', //学历
 					mobile:'13439078656',
-					work:'',
-					marriage_status:'',
-					households:'',
+					work:'无',
+					marriage_status:'已婚',
+					households:'3',
 				}
 			],
 			mortgaged:[
 				{
-					holder:'',
-					situations:'',
-					address:'',
-					number:'',
-					type:'',
-					nature:'',
-					use:'',
-					area:'',
-					Other:'',
-					house_nubmer:'',
+					relationship:'其他', //0=自然人， 1=  企业法人
+					holder:'艾仲华',
+					situations:'自由',
+					address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+					number:'0130031024',
+					type:'自有',
+					nature:'自有',
+					use:'住宅',
+					area:'120.4',
+					Other:'无',
+					house_nubmer:'0188192319',
 				}
 			],
 			mortgagor:[
 				{
-					relationship:'0', //0=自然人， 1=  企业法人
-					name:'',
-					sex:'',
-					ethnic:'',
-					birth:'',
-					address:'',
-					idcard:'',
-					validity_period:'' , //有效期
-					diyaren_mobile:'',
+					relationship:'自然人', //0=自然人， 1=  企业法人
+					name:'艾仲华',
+					sex:'女',
+					ethnic:'汉族',
+					birth:'1976.8.1',
+					address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+					idcard:'120106197608016578',
+					validity_period:'2030.1.1' , //有效期
+					diyaren_mobile:'13702137765',
 					diyawu:[],
 					customer_id:'',
 					unified_social_credit_code:'',
@@ -360,8 +362,8 @@
 					mobile:'',
 				},
 				{
-					relationship:'1', //0=自然人， 1=  企业法人
-					name:'',
+					relationship:'企业法人', //0=自然人， 1=  企业法人
+					name:'艾仲华',
 					sex:'',
 					ethnic:'',
 					birth:'',
@@ -370,12 +372,14 @@
 					validity_period:'' , //有效期
 					diyaren_mobile:'',
 					diyawu:[],
-					customer_id:'',
-					unified_social_credit_code:'',
-					company_name:'',
-					enterprise_address:'',
-					legal_representative:'',
-					mobile:'',
+					customer_id:'252841000000526649',
+					unified_social_credit_code:'91120116MA07K2307A',
+					company_name:'广州市睿智防水电器股份有限公司',
+					enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+					legal_representative:'艾仲华',
+					mobile:'13702137765',
+					legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+		
 				}
 			]
 		},
@@ -420,7 +424,10 @@
 				break;
 			case 8:
 				// this.time_Picker_Statue = 7;
-				this.columns = ['自然人', '配偶'];
+				this.columns = ['其他','自然人', '配偶'];
+				break;
+			case 9:
+				this.columns = ['自然人', '企业法人'];
 				break;
 			default:
 				break;
@@ -538,6 +545,15 @@
 				}
 			}
 				break;
+			case 9:{
+				
+				switch(this.step){
+					case 4:
+						this.info.mortgagor[this.current_index].relationship = this.columns[value];
+						break;
+				}
+			}
+				break;
 			default:
 				break;
 		}
@@ -616,7 +632,7 @@
 			break;
 			case 4:{
 				this.info.mortgagor.push({
-						relationship:'0', //0=自然人， 1=  企业法人
+						relationship:'其他', //0=自然人， 1=  企业法人
 						name:'',
 						sex:'',
 						ethnic:'',
