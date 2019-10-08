@@ -24,12 +24,12 @@
 				 <van-col span="6">产权人:</van-col>
 				 <van-col span="16">{{item.cqr}}</van-col>
 			 </van-cell>
-				
+
 			 </van-cell-group>
-					
+
 			<van-cell-group class="bg-grey" v-show="task.status == 1">
 				 <van-cell class="grey"  > </van-cell>
-				
+
 				<van-cell>
 					 <van-col span="8">借款人</van-col>
 					 <van-col span="16">{{task.jkr}}</van-col>
@@ -38,7 +38,7 @@
 					 <van-col span="8">联系方式</van-col>
 					 <van-col span="16">{{task.lxfs}}</van-col>
 				</van-cell>
-			</van-cell-group>		
+			</van-cell-group>
 			<div  v-show="task.status == 2">
 				<div class="tqm">
 					<p class="subtext">电子评估报告提取码</p>
@@ -49,19 +49,19 @@
 						抵押物{{index+1}}
 					</button>
 				</div>
-				
+
 				<div class="pan-container">
 					<br>
 					<div v-for="(item, index) in task.diyawuList"  v-show="choose == index">
 						<van-cell-group class="bg-grey" v-show="task.status != 0">
-							
+
 							<van-cell>
 								<van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 								<van-col span="22"><h3>产权证号:{{item.cqzh}}</h3></van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">项目名称:</van-col>
-								 <van-col span="12">XXXXXXX</van-col>
+								 <van-col span="12">中海花城湾4号楼3门201</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">城市:</van-col>
@@ -69,27 +69,28 @@
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">行政区域:</van-col>
-								 <van-col span="12">XXXXXXX</van-col>
+								 <van-col span="12">天河区</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">楼盘:</van-col>
-								 <van-col span="12">万科楼盘</van-col>
+								 <van-col span="12">中海花城湾</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">楼栋号:</van-col>
-								 <van-col span="12">28栋</van-col>
+								 <van-col span="12">4号楼</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">单元号:</van-col>
-								 <van-col span="12">2单元哈</van-col>
+								 <van-col span="12">3单元</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">户号:</van-col>
-								 <van-col span="12">705</van-col>
+								 <van-col span="12">201</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">证载地址:</van-col>
-								 <van-col span="12">{{item.sf}}</van-col>
+<!--								<van-col span="12">{{item.sf}}</van-col>-->
+								<van-col span="12">广东省广州市天河区花城大道中海花城湾4号楼3门201</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">房屋证载用途:</van-col>
@@ -97,15 +98,15 @@
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">建筑面积(㎡):</van-col>
-								 <van-col span="12">98.15㎡</van-col>
+								 <van-col span="12">120.4</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">登记价(元):</van-col>
-								 <van-col span="12">3，000，000，00</van-col>
+								 <van-col span="12">——</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">竣工日期:</van-col>
-								 <van-col span="12">2019-08-19</van-col>
+								 <van-col span="12">20150530</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">居室:</van-col>
@@ -117,7 +118,7 @@
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">厨房:</van-col>
-								 <van-col span="12">2</van-col>
+								 <van-col span="12">1</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">卫生间:</van-col>
@@ -125,25 +126,25 @@
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">抵押物价值单价(/㎡):</van-col>
-								 <van-col span="12" class="red">5，000，00</van-col>
+								 <van-col span="12" class="red">107974</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">抵押价值(元):</van-col>
-								 <van-col span="12" class="red">3，000，000，00</van-col>
+								 <van-col span="12" class="red">13000069.6</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">抵押净值1(元):</van-col>
-								 <van-col span="12" class="red">3，000，000，00</van-col>
+								 <van-col span="12" class="red">11700062.64</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">抵押净值2(元):</van-col>
-								 <van-col span="12" class="red">3，000，000，00</van-col>
+								 <van-col span="12" class="red">11050059.16</van-col>
 							</van-cell>
 						</van-cell-group>
 					</div>
 				</div>
 			</div>
-			
+
 			<van-cell-group class="bg-grey" v-show="task.status != 0">
 				<div class="line"></div>
 				<van-cell>
@@ -159,7 +160,7 @@
 								 <van-col span="16">13902506869</van-col>
 				</van-cell>
 			</van-cell-group>
-			
+
 			<van-cell-group class="bg-grey" v-show="task.status == 2">
 				<div class="line"></div>
 					<div class="img-container">
@@ -191,10 +192,10 @@
 	mounted : ()=>{
 		// var diyawuList = localStorage.getItem('diyawu');
 		// console.log(diyawuList)
-		
+
 		// var task = localStorage.getItem('task');
 		// console.log(task)
-		
+
 		// var tasks = JSON.parse(localStorage.getItem('task'));
 		// console.log(tasks)
 	},
@@ -206,7 +207,7 @@
 		},
 		parseJson:function(str){
 			if(str == null || str == undefined) return [];
-			
+
 			return JSON.parse(str);
 		},
 		chooseTab:function(index){
@@ -222,7 +223,7 @@
 		},
 		task:function () {
 			var tasks = JSON.parse(localStorage.getItem('task'));
-			
+
 			var id = localStorage.getItem('id');
 			var task = [];
 			for(var i=0; i<tasks.length; i++){
@@ -299,7 +300,7 @@
 		line-height: 30px;
 		margin: 0 auto 20px;;
 		display: block;
-		
+
 	}
 	.line{
 		border-bottom: 1px solid #dddddd;
@@ -329,8 +330,8 @@
 		border: 0px;
 		margin-right: 10px;
 		white-space:nowrap;
-		text-overflow:clip; 
-		-o-text-overflow:clip; 
+		text-overflow:clip;
+		-o-text-overflow:clip;
 		overflow: hidden;
 		-webkit-line-clamp: 1; //在第几行后开始省略
 		direction: rtl;
@@ -339,7 +340,7 @@
 	}
 	.btn-container button.active{
 		width: auto;
-		
+
 	}
 	.pan-container{
 		background-color: #fff;
