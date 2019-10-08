@@ -7,11 +7,8 @@
 		</van-nav-bar>
 		<img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
 		<div class="main" style="height: 100%">
-
 				<div class="content" >
-
-					<van-tabs v-model="activeName" line-width=50% line-height=3 color="#4c62e7" title-active-color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
-
+					<van-tabs v-model="activeName" line-width=33% line-height=3 color="#4c62e7" title-active-color="#4c62e7" style="margin-bottom: 0px;padding-bottom: 0">
 						<van-tab title="我的业绩" name="a" style="margin-top: 0px;padding-top: 0" >
 
 							<div class="business_box">
@@ -121,6 +118,7 @@
 								</van-row>
 							</div>
 						</van-tab>
+						<van-tab title="机构业绩" name="b" style="margin-top: 0px;padding-top: 0" ></van-tab>
 						<van-tab title="客户经理排行榜" name="c" >
 							<van-row style="position: relative;margin-top: 8px;background-color: #FFFFFF;max-height: 143px;padding: 11px 10px">
 								<van-col span="8">

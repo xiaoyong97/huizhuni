@@ -78,8 +78,9 @@
                  <van-col :class="type==2?'active':''" class="top_bar_box_col " span="12"><p class="top_bar_box_text_right" @click="changeType(2)">报表查询</p></van-col>
              </van-row>
          </div>
-         <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" @click="open_fliter">
-         <img src="../../assets/images/38/searchfor@2x.png" class="img_search" >
+         <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" v-show="type!==2" @click="open_fliter">
+         <img src="../../assets/images/38/searchfor@2x.png" class="img_search" v-show="type!==2" >
+         <span class="top_tight_text" v-show="type==2">查看附件</span>
          <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
          <!--         下拉菜单-->
          <div class='menu_popContainer'  v-show="menu!==-1">
@@ -1185,6 +1186,14 @@
         right:40px ;
         height: 18px;
         width: 18px;
+        z-index: 100;
+    }
+    .top_tight_text{
+        position: absolute;
+        top: 14px;
+        right:12px ;
+        color: #4c62e7;
+        font-size: 14px;
         z-index: 100;
     }
     .img_search{

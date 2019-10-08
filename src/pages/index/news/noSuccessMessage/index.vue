@@ -12,50 +12,37 @@
                 <div class="list_div ">
 
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                       <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">XXX活动将于<span>2019年8月12日开始</span>，请提前做好准备</p>
+                            <p class="list_text2">您已抢单客户<span>广州清竹酒业有限公司</span>尚未转化成功，即将于<span>2019年8月30日</span>退回，请尽快处理。</p>
                         </van-col>
-                        <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time">15:40</p></van-col>
+                        <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time">14:20</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                       <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==false"> <div class=" read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">您已抢客户<span>乐田文化传媒有限公司</span>尚未转化成功，即将于<span>2019年8月29日</span>退回，请尽快处理</p>
+                            <p class="list_text2">您已抢单客户<span>乐田文化传媒有限公司</span>尚未转化成功，即将于<span>2019年8月29日</span>退回，请尽快处理。</p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">14:10</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2019/08/21</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                       <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">XXX活动<span>中止申请已审批通过，</span>请至员工渠道PC端查看详情
-                            </p>
+                            <p class="list_text2 gray_text">您已抢单客户<span>佛山尚佛友文化传播有限公司</span>尚未转化成功，即将于<span>2019年8月28日</span>退回，请尽快处理。</p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">昨天</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/21</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                       <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> </van-col>
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==false"> <div class=" "></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2 gray_text">您已抢客户佛山尚佛友文化传播有限公司尚未转化成功，即将于2019年8月28日退回，请尽快处理</p>
+                            <p class="list_text2 gray_text">您已抢单客户<span>广州佳人有约直播平台有限公司</span>尚未转化成功，即将于<span>2019年8月28日</span>退回，请尽快处理。</p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/22</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/21</p></van-col>
                     </van-row>
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                       <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false">
-                                </van-col>
-                        <van-col  class="" span="17" >
-                            <p class="list_text2 gray_text">您已抢客户广州佳人有约直播平台有限公司尚未转化成功，即将于2019年8月28日退回请尽快处理
-                            </p>
-                        </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
-                    </van-row>
-
-
                 </div>
                 <div class="popContainer" v-show="delete_status==true">
                     <van-row class="botton_box" type="flex" justify="center" style="">
@@ -583,6 +570,7 @@
         line-height: 32px;
         font-size: 10px;
         margin: 32px auto;
+        color: #999999;
     };
     .list_text4{
         font-weight: bold;

@@ -15,28 +15,27 @@
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
                                 <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">XXX活动将于<span>2019年8月12日开始</span>，请提前做好准备</p>
+                            <p class="list_text2">客户<span>广州可可里服装有限公司</span>进入抢单池，前往抢单</p>
                         </van-col>
-                        <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time">15:40</p></van-col>
+                        <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time gray_text">14:20</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
                                 <van-col  class="" span="2" v-show="delete_status==false">
-<!--                                    <div class="read_status_div"></div>-->
+                                    <div class="read_status_div"></div>
                                 </van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2  gray_text">您创建的XXX活动已经<span>审批通过</span></p>
+                            <p class="list_text2">客户<span>广州清竹酒业有限公司</span>进入抢单池，前往抢单</p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">14:10</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">13:36</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
                                 <van-col  class="" span="2" v-show="delete_status==false">
-<!--                                    <div class="read_status_div"></div>-->
+                                    <div class="read_status_div"></div>
                                 </van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2 gray_text">XXX活动<span>中止申请已审批通过，</span>请至员工渠道PC端查看详情
-                            </p>
+                            <p class="list_text2">客户<span>尚佛友文化传播有限公司</span>进入抢单池，前往抢单</p>
                         </van-col>
                         <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">昨天</p></van-col>
                     </van-row>
@@ -44,35 +43,26 @@
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
                                 <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2 gray_text">您创建的<span>XXX活动</span>审批<span>未通过</span></p>
+                            <p class="list_text2 gray_text">客户<span class="gray_text">乐田文化传媒有限公司</span>进入抢单池，前往抢单</p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/22</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">昨天</p></van-col>
+                    </van-row>
+                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
+                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
+                        <van-col  class="" span="17" >
+                            <p class="list_text2 gray_text">客户<span class="gray_text">4399游戏平台网络有限公司</span>进入抢单池，前往抢单</p>
+                        </van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">昨天</p></van-col>
                     </van-row>
                     <van-row class="list_box" type="flex" justify="center" style="position: relative">
                         <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
                                 <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span>. </p>
+                            <p class="list_text2">客户<span>广州佳人有约直播平台有限公司</span>进入抢单池，前往抢单</p>
                         </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/22</p></van-col>
+                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/12</p></van-col>
                     </van-row>
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
-                        <van-col  class="" span="17" >
-                            <p class="list_text2 gray_text">已抢单客户广州佳人有约直播平台有限公司产品额度发生变化，请查看</p>
-                        </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
-                    </van-row>
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
-                        <van-col  class="" span="17" >
-                            <p class="list_text2 gray_text">已抢单客户4399游戏平台网络有限公司商机已失效，请查看</p>
-                        </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
-                    </van-row>
-
 
                 </div>
 

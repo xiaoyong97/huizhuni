@@ -1,5 +1,5 @@
 <template>
-    <div class="main" style="position: relative; ">
+    <div class="main">
 <!--        遮罩层-->
 
         <!--头部导航-->
@@ -271,6 +271,7 @@
         margin-block-end:0;
         color: rgb(51,51,51);
     }
+
     .list_row_top{
         padding: 0px 12px;
     }
@@ -311,9 +312,14 @@
     // scoped 表示私有样式
     .content{
         padding: 0px ;
-        background-color: rgb(238,238,238);
+        /*background-color: rgb(238,238,238);*/
         justify-content: center;
         align-items: center;
+        margin-top: 8px;
+    }
+    .main{
+        padding: 0px;
+        background-color: rgb(238,238,238);
     }
     .card_list1_test_left{
         color: #333333;
