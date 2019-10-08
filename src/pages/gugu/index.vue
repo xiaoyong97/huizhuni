@@ -1,10 +1,10 @@
 <template>
     <div class="main">
-     
+
      <!--头部导航-->
-   
+
 	 <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="new_task">
-		 
+
 	 <van-icon name="add"  slot="right" class="add"/>
 	 </van-nav-bar>
 	<van-icon name="search" class="search" @click="gotoSearch()"  />
@@ -22,7 +22,7 @@
 								<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{item.cqzh}}&nbsp;</div></van-col>
 								<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{item.sf}}{{item.xxdz}}&nbsp;</van-col>
 								<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{item.cqr}}&nbsp;</van-col>
-								<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{task[0].jkr}}&nbsp;</van-col>	
+								<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{task[0].jkr}}&nbsp;</van-col>
 							</div>
 						</div>
 					</van-cell>
@@ -30,38 +30,40 @@
 			<van-submit-bar
 				:price="result.length*100"
 				decimal-length="0"
-				button-text="发布任务" 
-				currency=""  
+				button-text="发布任务"
+				currency=""
 				@submit="add_task"
 			>
 			</van-submit-bar>
-			 
+
 			 </van-cell-group>
 		 </van-tab>
          <van-tab title="任务查看" color="#4c62e7">
 			 <van-cell-group class="bg-grey pan2">
-			  	<van-cell v-for="(item, index) in task">	
+			  	<van-cell v-for="(item, index) in task">
 			  		<div class="pan-content">
 			 			<div class=" dk-pan">
 							<img class="pan-tag-img" src="../../assets/images/other/Label7.0@2x.png" alt="" v-show="item.status == 0">
 							<img class="pan-tag-img" src="../../assets/images/other/Label7@2x.png" alt="" v-show="item.status == 1">
 							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" v-show="item.status == 2">
+<!--							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" v-show="item.status == 1">-->
+<!--							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" v-show="item.status == 2">-->
 			 				<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{item.diyawuList[0].cqzh}}</div></van-col>
 			 				<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{item.diyawuList[0].sf}}{{item.diyawuList[0].xxdz}}</van-col>
 			 				<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{item.diyawuList[0].cqr}}&nbsp;</van-col>
-			 				<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{item.jkr}}&nbsp;</van-col>	
+			 				<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{item.jkr}}&nbsp;</van-col>
 							<van-col span="24" class="detail" @click="checkTask(item.task_id)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
 						</div>
 			 		</div>
 			  	</van-cell>
-			 
+
 			 </van-submit-bar>
-			  
+
 			  </van-cell-group>
 		 </van-tab>
        </van-tabs>
     </div>
-      
+
     </div>
 </template>
 
@@ -73,7 +75,7 @@
 
 	Vue.use(Tab).use(Tabs).use(SubmitBar).use(Checkbox);
  export default {
-	
+
   data() {
     return {
       title : '咕咕管理',
@@ -82,8 +84,8 @@
 	  count:0
     }
   },
-  
-  
+
+
   //数据预加载
   created : ()=>{
   },
@@ -97,13 +99,13 @@
         this.count = newCount.length*100;
       }
     },
-  
+
   //声明方法
   methods : {
 	add_task:function  () {
 		sessionStorage.setItem('type',0);
 		localStorage.setItem('jkr',this.task[this.task.length-1].jkr);
-		
+
 	    this.$router.push({name: 'new_task', params: {type: 0}});
 	},
 	new_task:function (){
@@ -122,7 +124,7 @@
 		this.$router.push({name: 'checkTask'});
 	}
   },
-  
+
   //计算属性
   computed: {
 	diyawuList:function(){
@@ -130,22 +132,22 @@
 		if(diyawu == null || diyawu == undefined ){
 			var obj = [{
 					"id": "15697680360000",
-					"cqzh": "987628221227780861",
+					"cqzh": "0130031024",
 					"sf": " 广东省 广州市 天河区",
-					"xxdz": "ZZ街道AABBBBBBB",
-					"cqr": "张三"
+					"xxdz": "花城大道中海花城湾4号楼3门201",
+					"cqr": "艾仲华"
 					},
 					{
 					"id": "15697680360001",
-					"cqzh": "987628221227780861",
+					"cqzh": "0130031024",
 					"sf": " 广东省 广州市 天河区",
-					"xxdz": "ZZ街道AABBBBBBB",
-					"cqr": "张三"
+					"xxdz": "花城大道中海花城湾4号楼3门201",
+					"cqr": "艾仲华"
 					}];
 				diyawu = obj;
 				localStorage.setItem('diyawu',JSON.stringify(obj))
 			}
-			
+
 			return diyawu;
 		},
 		task:function(){
@@ -155,17 +157,17 @@
 				"task_id": 1569768171000,
 				"diyawuList": [{
 					"id": "15697680360000",
-					"cqzh": "987628221227780861",
+					"cqzh": "0130031024",
 					"sf": " 广东省 广州市 天河区",
-					"xxdz": "ZZ街道AABBBBBBB",
-					"cqr": "张三"
+					"xxdz": "花城大道中海花城湾4号楼3门201",
+					"cqr": "艾仲华"
 					},
 					{
 					"id": "15697680360001",
 					"cqzh": "987628221227780862",
 					"sf": " 广东省 广州市 天河区",
-					"xxdz": "ZZ街道AABBBBBBB",
-					"cqr": "张三"
+					"xxdz": "花城大道中海花城湾4号楼3门201",
+					"cqr": "艾仲华"
 					}],
 				"jkr": "王小二",
 				"lxfs": "13902506869",
@@ -176,17 +178,17 @@
 				"task_id": 1569768171001,
 				"diyawuList": [{
 					"id": "15697680360000",
-					"cqzh": "987628221227780861",
+					"cqzh": "0130031024",
 					"sf": " 广东省 广州市 天河区",
-					"xxdz": "ZZ街道AABBBBBBB",
-					"cqr": "张三"
+					"xxdz": "花城大道中海花城湾4号楼3门201",
+					"cqr": "艾仲华"
 					},
 					{
 					"id": "15697680360001",
-					"cqzh": "987628221227780861",
+					"cqzh": "0130031024",
 					"sf": " 广东省 广州市 天河区",
-					"xxdz": "ZZ街道AABBBBBBB",
-					"cqr": "张三"
+					"xxdz": "花城大道中海花城湾4号楼3门201",
+					"cqr": "艾仲华"
 					}],
 				"jkr": "王小二",
 				"lxfs": "13902506869",
@@ -197,17 +199,17 @@
 				"task_id": 1569768171002,
 				"diyawuList": [{
 					"id": "15697680360000",
-					"cqzh": "987628221227780861",
+					"cqzh": "0130031024",
 					"sf": " 广东省 广州市 天河区",
-					"xxdz": "ZZ街道AABBBBBBB",
-					"cqr": "张三"
+					"xxdz": "花城大道中海花城湾4号楼3门201",
+					"cqr": "艾仲华"
 					},
 					{
 					"id": "15697680360001",
-					"cqzh": "987628221227780861",
+					"cqzh": "0130031024",
 					"sf": " 广东省 广州市 天河区",
-					"xxdz": "ZZ街道AABBBBBBB",
-					"cqr": "张三"
+					"xxdz": "花城大道中海花城湾4号楼3门201",
+					"cqr": "艾仲华"
 					}],
 				"jkr": "王小二",
 				"lxfs": "13902506869",
@@ -217,7 +219,7 @@
 			localStorage.setItem('task',JSON.stringify(obj))
 			task = obj;
 		}
-	
+
 		return task
 	}
   },
@@ -229,7 +231,7 @@
 </script>
 
 <style lang="scss" scoped>
-	
+
 // scoped 表示私有样式
 	.content{
 		padding: 0px;
@@ -237,7 +239,7 @@
 	.van-submit-bar__text{
 		text-align: left;
 		padding-left: 44px;
-		
+
 	}
 	.van-submit-bar__button{
 		background-color: #4c62e7;
@@ -270,7 +272,7 @@
 	    display:table;
 	    clear:both;
 	}
-	
+
 	.bg-grey{
 		background-color: rgb(238,238,238);
 		padding: 0px;
@@ -284,7 +286,7 @@
 	}
 	.van-cell__value--alone{
 		padding: 4px 8px 4px 30px;;
-		
+
 	}
 	.company{
 		width: 18px;
@@ -303,7 +305,7 @@
 		margin-top: 8px;;
 		margin-bottom: 8px;;
 	}
-	
+
 	.checkbox{
 		position: absolute;
 		left: 0px;
@@ -314,7 +316,7 @@
 	.pan2 .van-cell__value--alone{
 		padding: 4px 8px 4px 8px;;
 	}
-	
+
 	.pan2 .company{
 		width: 18px;
 		height: 18px;
@@ -322,7 +324,7 @@
 		top:16px;
 		left: 18px;;
 	}
-	
+
 	.pan2 .van-cell{
 		background-color: rgba(0,0,0,0);
 		padding-left: 4px;;
@@ -346,7 +348,7 @@
 	}
 	.detail-img{
 		width: 18px;;
-		
+
 	}
 	.search{
 		position: absolute;
