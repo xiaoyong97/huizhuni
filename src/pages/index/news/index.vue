@@ -13,72 +13,22 @@
                     <van-tab title="贷款" name="贷款">
 
                         <div class="list_div ">
-
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative" v-for="(item,i) in list">
+                                <van-col  class="" span="2" v-show="delete_status==!item.checkbox_status"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="item.result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==item.checkbox_status"> <div v-show="!item.read" class="read_status_div"></div></van-col>
                                 <van-col  class="" span="17" >
-                                    <p class="list_text2">信息采集不完整请及时<span>补录</span>，系统将在30天后自动清除</p>
+                                    <p class="list_text2" :class="item.read?'gray_text':''">{{item.text1}}<span>{{item.text2}}</span>{{item.text3}}</p>
                                 </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">18:14</p></van-col>
+                                <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time gray_text">{{item.text4}}</p></van-col>
                             </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span></p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">昨天</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户赵仁儿，应于2019年8月29日归还贷款本息200，000元.
-                                    </p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">王长生</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">客户广州可可里服装有限公司，应于2019年8月29日货款到期，请及时开始续货流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false">
-<!--                                    <div class="read_status_div"></div>-->
-                                </van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2 gray_text">信息采集成功，请及时开始<span>征信校验</span>. </p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false">
-<!--                                    <div class="read_status_div"></div>-->
-                                </van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2 gray_text">客户白马服装有限公司，应于2019年8月29日货款到期，请及时开始续贷流程</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
-                            </van-row>
-
-
-
-
                         </div>
                         <div class="popContainer" v-show="delete_status==true">
                             <van-row class="botton_box" type="flex" justify="center" style="">
-                                <van-col  class="" span="2" ><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2" style="font-size: 16px">全选</p>
+                                <van-col  class="" span="2" @click="all_choose"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="15" >
+                                    <p class="list_text2 all_choose_text"  >全选</p>
                                 </van-col>
-                                <van-col  class="blue_bg_box" span="5" style="text-align: center"><p class="list_text_delete">删除</p></van-col>
+                                <van-col  class="blue_bg_box" span="7" style="text-align: center" @click="delete_msg"><p class="list_text_delete">删除</p></van-col>
                             </van-row>
                         </div>
                     </van-tab>
@@ -166,77 +116,22 @@
                     </van-tab>
                     <van-tab title="活动"  name="活动">
                         <div class="list_div ">
-
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                            <van-row class="list_box" type="flex" justify="center" style="position: relative" v-for="(item,i) in list2">
+                                <van-col  class="" span="2" v-show="delete_status==!item.checkbox_status"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="item.result"></van-checkbox></van-col>
+                                <van-col  class="" span="2" v-show="delete_status==item.checkbox_status"> <div v-show="!item.read" class="read_status_div"></div></van-col>
                                 <van-col  class="" span="17" >
-                                    <p class="list_text2">XXX活动将于<span>2019年8月12日开始</span>，请提前做好准备</p>
+                                    <p class="list_text2" :class="item.read?'gray_text':''">{{item.text1}}<span>{{item.text2}}</span>{{item.text3}}<span>{{item.text5}}</span>{{item.text6}}</p>
                                 </van-col>
-                                <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time">15:40</p></van-col>
+                                <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time gray_text">{{item.text4}}</p></van-col>
                             </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">您创建的XXX活动已经<span>审批通过</span></p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">14:10</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">XXX活动<span>中止申请已审批通过，</span>请至员工渠道PC端查看详情
-                                    </p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">昨天</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">您创建的<span>XXX活动</span>审批<span>未通过</span></p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/22</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">信息采集成功，请及时开始<span>征信校验</span>. </p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/22</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false">
-<!--                                    <div class="read_status_div"></div>-->
-                                </van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2 gray_text">XxXX活动将于2019年8月9日开始，请提前做好准备.
-                                    </p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/20</p></van-col>
-                            </van-row>
-                            <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                                <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2">XXX活动已于2019年8月1日结束</p>
-                                </van-col>
-                                <van-col  class="" span="5" style="text-align: right"><p class="list_text_time">2018/08/20</p></van-col>
-                            </van-row>
-
-
                         </div>
                         <div class="popContainer" v-show="delete_status==true">
                             <van-row class="botton_box" type="flex" justify="center" style="">
-                                <van-col  class="" span="2" ><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="17" >
-                                    <p class="list_text2" style="font-size: 16px">全选</p>
+                                <van-col  class="" span="2" @click="all_choose(2)"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                                <van-col  class="" span="15" >
+                                    <p class="list_text2 all_choose_text" >全选</p>
                                 </van-col>
-                                <van-col  class="blue_bg_box" span="5" style="text-align: center"><p class="list_text_delete">删除</p></van-col>
+                                <van-col  class="blue_bg_box" span="7" style="text-align: center" @click="delete_msg(2)"><p class="list_text_delete">删除</p></van-col>
                             </van-row>
                         </div>
                     </van-tab>
@@ -281,19 +176,26 @@
                 step:false,
                 decrease_img: require('@/assets/image/my/decrease.png'),
                 pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
-                successCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
-                failCircle: require('@/assets/images/24/Navigationcircle@2x.png'),
                 chart: require('@/assets/images/activity/chart.png'),
                 Pullup: require('@/assets/images/38/Pullup.png'),
-                frame1: require('@/assets/image/my/Picture frame1@2x.png'),
-                frame2: require('@/assets/image/my/Picture frame2@2x.png'),
-                frame3: require('@/assets/image/my/Picture frame3@2x.png'),
-                frame4: require('@/assets/image/my/Picture frame4@2x.png'),
-                people1: require('@/assets/images/activity/people1.png'),
-                people2: require('@/assets/images/activity/people2.png'),
-                people3: require('@/assets/images/activity/people3.png'),
                 medal: require('@/assets/image/my/medal.png'),
-                // medal: require('@/assets/image/my/medal.png'),
+                list:[
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'信息采集不完整请及时',text2:'补录',text3:'，系统将在30天后自动清除',text4:'18:14',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'信息采集成功，请及时开始',text2:'征信校验',text3:' ',text4:'昨天',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'客户赵仁儿，应于2019年8月29日归还贷款本息200，000元.',text2:'',text3:' ',text4:'昨天',},
+                    {checkbox_status:false,delete_status:false,result:0,read:true,text1:'客户广州可可里服装有限公司，应于2019年8月29日货款到期，请及时开始续货流程',text2:'',text3:'',text4:'2018/08/20',},
+                    {checkbox_status:false,delete_status:false,result:0,read:true,text1:'信息采集成功，请及时开始征信校验',text2:'',text3:'',text4:'2018/08/20',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'客户白马服装有限公司，应于2019年8月29日货款到期，请及时开始续贷流程',text2:'',text3:'',text4:'2018/08/20',},
+                ],
+                list2:[
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'xxx活动将于',text2:'2019年8月12日',text3:'开始，请提前做好准备',text4:'13:36',text5:'',text6:'',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'您创建的XXX活动已经',text2:'审批通过',text3:'',text4:'2018/08/21',text5:'',text6:'',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'xXx活动',text2:'中止申请已审通过',text3:'，请至员工渠道PC端查看详情',text4:'2018/08/21',text5:'未通过',text6:'',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'您创建的',text2:'xXX活动',text3:'审批',text4:'2018/08/21',text5:'',text6:'',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'信息采集成功，请及时开始',text2:'征信校验',text3:'',text4:'2018/08/21',text5:'',text6:'',},
+                    {checkbox_status:false,delete_status:false,result:0,read:true,text1:'XxXX活动将于2019年8月9日开始，请提前做好准备',text2:'',text3:'',text4:'2018/08/21',text5:'',text6:'',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'XXx活动已于2019年8月1日结束，请提前做好准备',text2:'',text3:'',text4:'2018/08/21',text5:'',text6:'',},
+                ],
             }
         },
 
@@ -342,6 +244,49 @@
                     this.right_text = '批量删除'
                 }
             },
+            all_choose(i) {
+                var self = this;
+                if (i==2) {
+                    if (this.result == false) {
+                        for (var i=0;i<self.list2.length;i++) {
+                            self.list2[i].result = true;
+                        }
+                    } else {
+                        for (var i=0;i<self.list2.length;i++) {
+                            self.list2[i].result = false;
+                        }
+                    }
+                } else {
+                    if (this.result == false) {
+                        for (var i=0;i<self.list.length;i++) {
+                            self.list[i].result = true;
+                        }
+                    } else {
+                        for (var i=0;i<self.list.length;i++) {
+                            self.list[i].result = false;
+                        }
+                    }
+                }
+
+            },
+            delete_msg(i) {
+                var self = this;
+                if (i==2) {
+                    for (var  i=self.list2.length-1;i>=0;i--) {
+                        if(self.list2[i].result == true) {
+                            self.list2.splice(i,1);
+                        }
+                    }
+                } else {
+                    for (var  i=self.list.length-1;i>=0;i--) {
+                        if(self.list[i].result == true) {
+                            self.list.splice(i,1);
+                        }
+                    }
+                }
+
+                this.delete_status = !this.delete_status;
+            }
 
 
         },
@@ -791,6 +736,10 @@
     };
     .gray_text>span{
         color: #999999;
+    }
+    .all_choose_text{
+        font-size: 16px;
+        width: 50%;
     }
 
 
