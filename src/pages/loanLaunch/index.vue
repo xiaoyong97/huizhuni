@@ -12,13 +12,13 @@
 			 <van-cell-group class="bg-grey pan2">
 			  	<div class="cell-container">
 					<br>
-					<van-cell class="cell-box">
-						<div class=" dk-pan">
-							<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;广州市睿智防水电器股份有限公司</van-col>
-							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
-							<van-col class="grey" span="9">企业主</van-col><van-col span="15">艾仲华</van-col>
-							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91120116MA07K2307A</van-col>
-							<van-col span="24" class="detail"  @click="go('selectCollectInfo')"><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
+					<van-cell class="cell-box" v-for="(item,index) in infos" v-step="item.step==2">
+						<div class="dk-pan">
+							<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;{{item.company_info.company_name}}</van-col>
+							<van-col span="9" class="subText">采集:{{item.collect_time}} </van-col>
+							<van-col class="grey" span="9">企业主</van-col><van-col span="15">{{item.company_info.legal_representative}}</van-col>
+							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;{{item.company_info.unified_social_credit_code}}</van-col>
+							<van-col span="24" class="detail"  @click="createLoan('selectCollectInfo',item.unid)"><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
 						</div>
 					</van-cell>
 					<!-- <van-cell class="cell-box">
@@ -96,7 +96,8 @@
       title : '贷款发起',
 	  checked: 400,
 	  result:[],
-	  count:0
+	  count:0,
+	  infos:[],
     }
   },
   
@@ -106,7 +107,11 @@
   },
 
   //网页加载完成
-  mounted : ()=>{
+  mounted (){
+	  var infos =  sessionStorage.getItem('userinfo')
+	  if(null != infos && undefined != infos && '' != infos){
+	  	this.infos = JSON.parse(infos)
+	  }
   },
    watch: {
       // 如果 `question` 发生改变，这个函数就会运行
@@ -136,6 +141,9 @@
 	checkTask:function(id){
 		localStorage.setItem('id',id);
 		this.$router.push({name: 'checkTask'});
+	},
+	createLoan:function(url,id){
+		this.$router.push({name: url,query:{unid:id}})
 	}
   },
   

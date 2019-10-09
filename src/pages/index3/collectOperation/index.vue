@@ -381,11 +381,15 @@
 					legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
 		
 				}
-			]
+			],
+			unid:'',
+			collect_time:'',
+			step:0,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+			isPass:true,
+			loan:{}
 		},
 		result:[],
 		current_index:0,
-
     }
   },
 
@@ -411,19 +415,15 @@
 				this.columns = ['研究生以上', '本科','大专','高中'];
 				break;
 			case 5:
-				// this.time_Picker_Statue = 3;
 				this.columns = ['已婚', '未婚','离异'];
 				break;
 			case 6:
-				// this.time_Picker_Statue = 3;
 				this.columns = [4, 3,2,1];
 				break;
 			case 7:
-				// this.time_Picker_Statue = 7;
 				this.columns = ['男', '女'];
 				break;
 			case 8:
-				// this.time_Picker_Statue = 7;
 				this.columns = ['其他','自然人', '配偶'];
 				break;
 			case 9:
@@ -478,7 +478,6 @@
 					case 3:
 						this.info.mortgaged[this.current_index].address = picker[0].name+' '+picker[1].name+' '+picker[2].name
 						break;
-					
 				}
 			}
 				break;
@@ -557,7 +556,6 @@
 			default:
 				break;
 		}
-		
 		//关闭选择器
 		this.time_Picker_Statue = 0;
 	  },
@@ -578,6 +576,19 @@
 			this.next = '确认提交';
 		} else {
 			this.next = '下一步';
+		}
+		if(this.step == 4 ){
+			var jsonStr = sessionStorage.getItem('userinfo');
+			var infos = [];
+			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
+				infos = JSON.parse(jsonStr);
+			}
+			
+			this.info.unid = Date.parse(new Date());
+			this.info.collect_time = (new Date()).toLocaleDateString()
+			this.info.step = 1;
+			infos.push(this.info);
+			sessionStorage.setItem('userinfo',JSON.stringify(infos))
 		}
 		if(this.step == 5 ){
 			this.$router.go(-1);
@@ -654,15 +665,14 @@
 		}
 	},
 	toggle:function (index) {
-	  this.$refs.checkboxes[index].toggle();
+	    this.$refs.checkboxes[index].toggle();
 	},
 	save:function(){
 		this.$router.go(-1);
 	},
-	  go : function(url){
-
-		  this.$router.push({name: url})
-	  },
+	go : function(url){
+	  this.$router.push({name: url})
+	},
   },
 
   //计算属性

@@ -3,7 +3,7 @@
     <!--头部导航-->
     <van-nav-bar class="vnavbar" :title="title"></van-nav-bar>
     <img src="../../../assets/images/38/return@2x.png" class="img_return" @click="onClickLeft" />
-    <span class="more_choose" @click="go('/confirmLoanInformation')">下一步</span>
+    <span class="more_choose" @click="go('confirmLoanInformation')">下一步</span>
     <div class="main" id="mainLur">
       <div class="main_box">
         
@@ -77,7 +77,7 @@
           </van-col>
           <van-col class="list_right" style="text-align:left;width:250px;">
             <span class="inptSpan">
-              <input class="inptmodel" type="text" value="8,500,000">
+              <input class="inptmodel" type="text" v-model="info.mmmey">
             </span>
           </van-col>
         </van-row>
@@ -94,7 +94,7 @@
             <p class="list_test paddingLeft">借款金额大写</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">八百五拾万元整</p>
+            <p class="list_test" style="color: rgb(51,51,51)" >  {{info.capitalMoney}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -104,7 +104,7 @@
           <van-col class="list_right" style="text-align: left;width:250px;">
             <p class="list_test" style="color: rgb(51,51,51);width:112px;float:left;margin-right:10px;">
               <span class="inptSpan">
-                <input class="inptmodel" type="text" value="3">
+                <input class="inptmodel" type="text" v-model="limit">
               </span>
               <!-- <select class="slectmodel" name="ymdSelect" id="ymdSelect">
                 <option>年</option>
@@ -149,6 +149,7 @@ export default {
       info:{
         cpCode:'9613',
         mmmey:'8,500,000',
+		capitalMoney:'八百五拾万元整',
       },
       value: '',
       showPicker: false,
@@ -164,10 +165,12 @@ export default {
         { text: '月', value: 1 },
         { text: '日', value: 2 }
       ],
+	  limit:3,
       value3: 0,
       option3: [
         { text: '9613', value: 0 },
       ],
+	  
     };
   },
 
@@ -175,7 +178,8 @@ export default {
   created: function() {},
 
   //网页加载完成
-  mounted() {},
+  mounted() {
+  },
 
   //声明方法
   methods: {
@@ -184,7 +188,28 @@ export default {
       this.showPicker = false;
     },
     go(goName){
-        this.$router.push(goName);
+		
+		var infos =  sessionStorage.getItem('userinfo')
+		
+		if(null != infos && infos != undefined && '' != infos){
+			 infos = JSON.parse(infos)
+				 var unid = this.$route.query.unid;
+				 for(var i=0;i<infos.length;i++){
+					 if(unid == infos[i].unid){
+						 
+						infos[i].loan.plan_code = this.option3[this.value3].text;
+						infos[i].loan.product_name = '小微企业抵押快贷额度';
+						infos[i].loan.currency = this.option1[this.value1].text;
+						infos[i].loan.borrowing_amount = this.info.mmmey;
+						infos[i].loan.capital_money = this.info.capitalMoney;
+						infos[i].loan.time_limit = this.limit+this.option2[this.value2].text;
+						sessionStorage.setItem('userinfo',JSON.stringify(infos))
+						break;
+					 }
+				 }
+		}
+		
+        this.$router.push({name:goName,query:{unid:this.$route.query.unid}});
     },
     onClickLeft() {
       this.$router.go(-1);

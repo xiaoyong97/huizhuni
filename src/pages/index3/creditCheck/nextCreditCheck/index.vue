@@ -12,7 +12,7 @@
 
         </div>
         <!--头部导航-->
-        <van-nav-bar :title="title"  right-text="发起校验" @click-right="go('creditCheckResult')">
+        <van-nav-bar :title="title"  right-text="发起校验" @click-right="createCheck('creditCheckResult')">
 
         </van-nav-bar>
         <img src="../../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
@@ -59,8 +59,8 @@
         },
 
         //网页加载完成
-        mounted : ()=>{
-
+        mounted(){
+			
         },
 
         //声明方法
@@ -68,6 +68,23 @@
             onClickLeft() {
                 this.$router.go(-1);
             },
+			createCheck:function(url){
+				
+				var infos =  sessionStorage.getItem('userinfo')
+				if(null != infos && undefined != infos && '' != infos){
+					infos = JSON.parse(infos)
+					var unid = this.$route.query.unid;
+					for(var i=0;i<infos.length;i++){
+						if(infos[i].unid == unid){	
+							//贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+							infos[i].step = 2;
+							sessionStorage.setItem('userinfo',JSON.stringify(infos))
+							break;
+						}
+					}
+				}
+				this.go(url);
+			},
             go : function(url){
                 this.$router.push({name: url})
             },

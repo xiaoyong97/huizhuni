@@ -20,7 +20,7 @@
             <p class="list_test">企业名称</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">广州市睿智防水电器股份有限公司</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.company_info.company_name}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -28,7 +28,7 @@
             <p class="list_test">企业主</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">艾仲华</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.company_info.legal_representative}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -36,7 +36,7 @@
             <p class="list_test">统一信用社会编码</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">91120116MA07K2307A</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.company_info.unified_social_credit_code}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -44,7 +44,7 @@
             <p class="list_test">采集时间</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">2019-8-15</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.collect_time}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -52,7 +52,7 @@
             <p class="list_test">ID</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">120106197010204098</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.unid}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row_top">
@@ -69,7 +69,7 @@
             <p class="list_test">产品计划</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">9613</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.loan.plan_code}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -77,7 +77,7 @@
             <p class="list_test">币种</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">人民币</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.loan.currency}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -85,7 +85,7 @@
             <p class="list_test">借款金额(元)</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">8,500,000</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.loan.borrowing_amount}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -93,7 +93,7 @@
             <p class="list_test">借款金额大写</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">八百伍拾万元整</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.loan.capital_money}}</p>
           </van-col>
         </van-row>
         <van-row class="list_row">
@@ -101,7 +101,7 @@
             <p class="list_test">借款期限</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">3年</p>
+            <p class="list_test" style="color: rgb(51,51,51)">{{info.loan.time_limit}}</p>
           </van-col>
         </van-row>
       </div>
@@ -346,7 +346,8 @@ export default {
     return {
       title: "确认贷款信息",
       activeName: "a",
-      current: 0
+      current: 0,
+	  info:{},
     };
   },
 
@@ -354,7 +355,21 @@ export default {
   created: function() {},
 
   //网页加载完成
-  mounted() {},
+  mounted() {
+	  var infos =  sessionStorage.getItem('userinfo')
+	  
+	  if(null != infos && infos != undefined && '' != infos){
+	  	 var unid = this.$route.query.unid;
+		 infos = JSON.parse(infos)
+		 for(var i=0;i<infos.length;i++){
+			 if(unid == infos[i].unid){
+				 this.info = infos[i];
+				 console.log(this.info);
+				 return;
+			 }
+		 }
+	 }
+  },
 
   //声明方法
   methods: {
