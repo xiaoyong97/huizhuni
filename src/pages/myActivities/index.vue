@@ -79,7 +79,7 @@
              </van-row>
          </div>
          <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" v-show="type!==2" @click="open_fliter">
-         <img src="../../assets/images/38/searchfor@2x.png" class="img_search" v-show="type!==2" >
+         <img src="../../assets/images/48/create@2x.png" class="img_search" v-show="type!==2" >
          <span class="top_tight_text" v-show="type==2">查看附件</span>
          <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
          <!--         下拉菜单-->
@@ -572,20 +572,22 @@
 							</div>
 							 <van-row class="cell">
 								 <van-col class="cell-header" span="6">机构名称</van-col>
-								 <van-col class="cell-content" span="16">
+								 <van-col class="cell-content" span="10">
 									 <select name="" id="">
 										 <option value="" selected>中国建设银行总行</option>
 									 </select>
 								 </van-col>
-							 </van-row>
+                                 <van-col class="" span="6"><van-icon name="arrow-down" class="arrow_down_icon"/></van-col>
+                             </van-row>
 
 							 <van-row class="cell" @click="chooseDate">
 								<van-col class="cell-header" span="6">报告期</van-col>
-								<van-col class="cell-content" span="16">
+								<van-col class="cell-content" span="12">
 									<select name="" id="">
 										<option value="" selected>2019.01.01-2019.07.01</option>
 									</select>
 								</van-col>
+                                 <van-col class="cell-header" span="4"><img  src="../../assets/images/24/modify@2x.png" class="img_write" ></van-col>
 							 </van-row>
 							 <div class="line_grey"></div>
 						</div>
@@ -1345,6 +1347,18 @@
     }
     .text-left {
         text-align: left;
+    }
+    .arrow_down_icon{
+        font-size: 18px;
+        color: #4c62e7;
+        margin: 8px auto;
+        margin-left: -10px;
+    }
+    .img_write{
+        height: 18px;
+        width: 18px;
+        position: relative;
+        left: -20px;
     }
 	.query_container{
 		background-color: #fff;

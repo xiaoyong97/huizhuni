@@ -1,9 +1,9 @@
 <template>
     <div class="main businessData">
-     
+
      <!--头部导航-->
      <van-nav-bar class="theme_color" :title="title"  left-arrow @click-left="onClickLeft" >
-    
+
      </van-nav-bar>
 
     <div class="content">
@@ -19,7 +19,7 @@
 					<van-grid-item class="item" v-show="level>=0"><div slot="default" class="level1" @click="chooseLevel(0)">一级</div></van-grid-item>
 					<van-grid-item class="item"  v-show="level>=1"><div slot="default" class="level2" @click="chooseLevel(1)">二级</div></van-grid-item>
 					<van-grid-item class="item" v-show="level>=2"><div slot="default" class="level3" @click="chooseLevel(2)">三级</div></van-grid-item>
-					<van-grid-item class="item" v-show="level>=3"><div slot="default"class="level4" @click="chooseLevel(3)">四级</div></van-grid-item>
+					<van-grid-item class="item" v-show="level>=3"><div slot="default" class="level4" @click="chooseLevel(3)">四级</div></van-grid-item>
 				</van-grid>
 				<van-checkbox-group v-model="result" class="item_container" >
 					 <van-cell-group>
@@ -30,18 +30,18 @@
 					      is-link
 					      @click="toggle(index)"
 					    >
-					    <van-checkbox 
+					    <van-checkbox
 						:key="item.name"
 						    :name="item.name"
 						>
-					      {{item.name}}  
+					      {{item.name}}
 					    </van-checkbox>
 					    </van-cell>
 					  </van-cell-group>
-				   
+
 				  </van-checkbox>
 				</van-checkbox-group>
-				
+
 			</van-popup>
 			<van-collapse v-model="activeName" accordion @change="createChart">
 			<van-collapse-item  name="1"><div slot="title"><img class="icon" src="../../../assets/images/48/01_gskhjg.png" alt="">工商客户结构</div><div id="myChart1" ></div></van-collapse-item>
@@ -56,7 +56,7 @@
 			</van-collapse>
 		</div>
     </div>
-        
+
     </div>
 </template>
 
@@ -71,12 +71,12 @@
 	require('echarts/lib/chart/bar')
 	require('echarts/lib/chart/pie')
 	require('echarts/lib/chart/line')
-	
+
 	// 引入提示框和title组件
 	require('echarts/lib/component/tooltip')
 	require('echarts/lib/component/title')
 	require('echarts/lib/component/legend')
-	
+
  export default {
 
   data() {
@@ -93,7 +93,7 @@
 	  myChart8:null,
 	  myChart9:null,
 	  show: false,
-	  banks:[ 
+	  banks:[
 		  {
 			  name:'中国建设银行总行',
 			  sub:[
@@ -106,31 +106,31 @@
 								{
 									name:'建行北京新航城支行',
 									sub:[
-										
+
 									],
 								},
 								{
 									name:'建行北京朝阳北路支行',
 									sub:[
-										
+
 									],
 								},
 								{
 									name:'建行北京双桥支行',
 									sub:[
-										
+
 									],
 								},
 								{
 									name:'建行北京双桥南路支行',
 									sub:[
-										
+
 									],
 								},
 								{
 									name:'建行北京东三环中路支行ßß',
 									sub:[
-										
+
 									],
 								},
 							],
@@ -138,25 +138,25 @@
 						{
 							name:'建行北京保利支行私人银行（汇总）',
 							sub:[
-								
+
 							],
 						},
 						{
 							name:'建行北京华贸支行（汇总）',
 							sub:[
-								
+
 							],
 						},
 						{
 							name:'建行北京望京支行（汇总）',
 							sub:[
-								
+
 							],
 						},
 						{
 							name:'建行北京东大街支行（汇总）',
 							sub:[
-								
+
 							],
 						},
 					],
@@ -164,25 +164,25 @@
 				  {
 					name:'建行河北省分行',
 					sub:[
-					  
+
 					],
 				  },
 				  {
 					name:'建行天津市分行',
 					sub:[
-					  
+
 					],
 				  },
 				  {
 					name:'建行山西市分行',
 					sub:[
-					  
+
 					],
 				  },
 				  {
 					name:'建行内蒙古自治区分行',
 					sub:[
-					  
+
 					],
 				  }
 			  ],
@@ -195,25 +195,25 @@
 	        active: 'https://img.yzcdn.cn/vant/user-active.png',
 	        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png'
 	      },
-	 level:0,	
+	 level:0,
 	  bank_title:'建行厦门金山支行',
-	 
+
     }
   },
-  
-  
+
+
   //数据预加载
   created : ()=>{
   },
 
   //网页加载完成
   mounted (){
-	  
+
 	  this.createChart1();
-	  
+
 		this.lists = this.banks;
   },
-  
+
   //声明方法
   methods : {
 	onClickLeft:function(){
@@ -222,7 +222,7 @@
 	createChart:function(){
 		var that = this;
 		setTimeout(function(){
-				
+
 			switch(that.activeName){
 				case '1':
 					that.createChart1();
@@ -259,18 +259,18 @@
 			// 基于准备好的dom，初始化echarts实例
 			      this.myChart1 = echarts.init(document.getElementById('myChart1'))
 				  var colors = [ '#FAED5B', '#7EDCEE'];
-	
+
 				  let option = {
-		
+
 					legend: {
 						orient: 'vertical',
 						left: 'left',
 						data: ['非工商小微客户数','工商小微客户数']
 					},
-					
+
 					color:colors,
 					label: {
-						formatter: "{b}\n{c}",	
+						formatter: "{b}\n{c}",
 						normal: {
 						    textStyle: {
 						    	color: '#666666'
@@ -285,7 +285,7 @@
 							center: ['50%', '60%'],
 							data:[
 								{value:126207, name:'非工商小微客户数'},
-								{value:654745, name:'工商小微客户数'},					
+								{value:654745, name:'工商小微客户数'},
 							],
 							itemStyle: {
 								emphasis: {
@@ -305,7 +305,7 @@
 								}
 							},
 							label: {
-								formatter: "{b}\n{c}",	
+								formatter: "{b}\n{c}",
 								normal: {
 								    textStyle: {
 								    	color: '#666666'
@@ -315,9 +315,9 @@
 						}
 					]
 				};
-				  
-			
-	
+
+
+
 			      // 绘制图表
 			      this.myChart1.setOption(option);
 				  // this.createChart2();
@@ -334,10 +334,10 @@
 					orient: 'vertical',
 					left: 'left',
 					data: ['未分类客户数','我行小微客户数','我行中大型客户数'],
-				},		
+				},
 				color:colors,
 				label: {
-					formatter: "{b}\n{c}",	
+					formatter: "{b}\n{c}",
 					normal: {
 						textStyle: {
 							color: '#666666'
@@ -352,8 +352,8 @@
 						center: ['53%', '60%'],
 						data:[
 							{value:19904, name:'未分类客户数'},
-							{value:138742, name:'我行小微客户数'},	
-							{value:100719, name:'我行中大型客户数'},	
+							{value:138742, name:'我行小微客户数'},
+							{value:100719, name:'我行中大型客户数'},
 						],
 						itemStyle: {
 							emphasis: {
@@ -373,7 +373,7 @@
 							}
 						},
 						label: {
-							formatter: "{b}\n{c}",	
+							formatter: "{b}\n{c}",
 							normal: {
 								textStyle: {
 									color: '#666666'
@@ -392,7 +392,7 @@
 				// 基于准备好的dom，初始化echarts实例
 				  this.myChart3 = echarts.init(document.getElementById('myChart3'))
 				  var colors = [ '#FAED5B', '#7EDCEE','#F57B2A'];
-				   
+
 				  let option = {
 					 color: ['#8FC0FE'],
 					  legend: {
@@ -401,7 +401,7 @@
 								 textStyle:{
 									 // color:'#fff',
 									 // backgroundColor:'#8FC0FE',
-									
+
 								 }
 							 },'小企业业务一般性存款日均余额','对公余额','小企业业务一般性存款点余额']
 							,selected: {
@@ -477,7 +477,7 @@
 				// 基于准备好的dom，初始化echarts实例
 				  this.myChart4 = echarts.init(document.getElementById('myChart4'))
 				  var colors = [ '#FAED5B', '#7EDCEE','#F57B2A'];
-				   
+
 				  let option = {
 					 color: ['#3EC275'],
 					  legend: {
@@ -533,19 +533,19 @@
 							    barWidth: '40%',
 							    data:[1550, 1200, 1300, 1850, 1220, 1440, 1560, 1660, 1350, 1450, 1800,1700]
 							},
-						
+
 					    ]
 				};
 				// 绘制图表
 				this.myChart4.setOption(option);		　
 			}
-		},	
+		},
 	createChart5: function() {
 		if(this.myChart5 == null){
 			// 基于准备好的dom，初始化echarts实例
 			  this.myChart5 = echarts.init(document.getElementById('myChart5'))
 			  var colors = [ '#FAED5B', '#7EDCEE','#F57B2A'];
-			   
+
 			  let option = {
 				 color: ['#8FC0FE'],
 				  legend: {
@@ -608,7 +608,7 @@
 							barWidth: '40%',
 							data:[1550, 1200, 1300, 1850, 1220, 1440, 1560, 1660, 1350, 1450, 1800,1700]
 						},
-					
+
 					]
 			};
 			// 绘制图表
@@ -620,7 +620,7 @@
 			// 基于准备好的dom，初始化echarts实例
 			  this.myChart6 = echarts.init(document.getElementById('myChart6'))
 			  var colors = [ '#FAED5B', '#7EDCEE','#F57B2A'];
-			   
+
 			  let option = {
 				 color: ['#8FC0FE'],
 				  legend: {
@@ -683,7 +683,7 @@
 							barWidth: '40%',
 							data:[1550, 1200, 1300, 1850, 1220, 1440, 1560, 1660, 1350, 1450, 1800,1700]
 						},
-					
+
 					]
 			};
 			// 绘制图表
@@ -695,7 +695,7 @@
 			// 基于准备好的dom，初始化echarts实例
 			  this.myChart7 = echarts.init(document.getElementById('myChart7'))
 			  var colors = [ '#FAED5B', '#7EDCEE','#F57B2A'];
-			   
+
 			  let option = {
 				 color: colors,
 				  // legend: {
@@ -757,9 +757,9 @@
 			// 基于准备好的dom，初始化echarts实例
 			  this.myChart8 = echarts.init(document.getElementById('myChart8'))
 			  var colors = [ '#FAED5B', '#7EDCEE','#F57B2A'];
-			   
+
 			  let option = {
-				 color: colors,	
+				 color: colors,
 					tooltip : {
 						trigger: 'axis',
 						axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -806,9 +806,9 @@
 			// 基于准备好的dom，初始化echarts实例
 			  this.myChart9 = echarts.init(document.getElementById('myChart9'))
 			  var colors = [ '#F57B2A'];
-			   
+
 			  let option = {
-				 color: colors,	
+				 color: colors,
 					tooltip : {
 						trigger: 'axis',
 						axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -821,7 +821,7 @@
 							 textStyle:{
 								 // color:'#fff',
 								 // backgroundColor:'#8FC0FE',
-								
+
 							 }
 						 },'普惠8+1','人行普惠','小微快贷']
 						,selected: {
@@ -902,33 +902,33 @@
 		setTimeout(function(){
 			that.bank_title = that.lists[index].name
 				if(that.level<3){
-					that.history[that.level] = that.lists;	
+					that.history[that.level] = that.lists;
 					that.level ++;
 					that.lists = that.lists[index].sub;
-					
+
 				}else{
 					that.close();
 					that.level = 0;
 					that.lists = that.banks;
 				}
-				
+
 		},200)
-		
+
 	},
 	close:function(){
-			this.show = false;  
+			this.show = false;
 			this.level = 0;
 			this.lists = this.banks;
 	},
 	chooseLevel:function(level){
 		if(level != this.level){
 			this.level = level;
-			
+
 			this.lists = this.history[level];
 		}
 	}
   },
-  
+
   //计算属性
   computed: {
 
@@ -1033,7 +1033,7 @@
 		padding: 0px;
 	}
 	.splice{
-		
+
 	}
 	.item_container{
 		margin-top: 12px;;

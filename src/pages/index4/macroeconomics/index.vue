@@ -46,13 +46,14 @@
             <div style="height: 8px"></div>
 
         </div>
-            <van-picker class="picker_box" v-show="pickerShow"
-                        show-toolbar
-                        title="请选择省份"
-                        :columns="columns"
-                        @cancel="onCancel"
-                        @confirm="onConfirm"
-            />
+        <van-action-sheet class="select-box" :overlay="false" :round="false" :close-on-click-overlay="false" v-model="listShow" title="请选择省份">
+            <van-row class="cell" v-for="(item, index) in columns" @click="select(index)">
+                <van-col span="2" class="cell-left"> <div class="point" :class="[active == index? 'active' : '']"></div></van-col>
+                <van-col span="20" class="shengfen">{{item}}</van-col>
+                <van-col span="2"> </van-col>
+            </van-row>
+        </van-action-sheet>
+
     </div>
 </template>
 
@@ -67,6 +68,8 @@
 
         data() {
             return {
+                active:-1,
+                listShow: false,
                 title : '宏观经济数据',
                 pickerShow:false,
                 locationTitle:'全国',
@@ -94,20 +97,27 @@
         //声明方法
         methods : {
             onClickLeft() {
-                this.$router.go(-1);
+                console.log(this.$route.path);
+                this.$router.replace({name:'index4'});
             },
             go : function(url){
                 this.$router.push({name: url})
             },
             openPicker() {
-                this.pickerShow = true;
+                this.listShow = true;
             },
-            onConfirm(value, index) {
-                this.locationTitle = value;// (`当前值：${value}, 当前索引：${index}`);
-                this.pickerShow = false;
+            select( index) {
+                var that = this;
+                setTimeout(function(){
+                    that.locationTitle = that.columns[index];// (`当前值：${value}, 当前索引：${index}`);
+                    that.active = index;
+                    that.listShow = false;
+                },200
+                )
+
             },
             onCancel() {
-                this.pickerShow = false;
+                this.listShow = false;
             },
 
 
@@ -139,13 +149,18 @@
     }
     .main_box{
         background-color: rgb(238,238,238);
-        position: relative;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
     }
     .content{
         padding: 0px ;
         background-color: rgb(238,238,238);
         justify-content: center;
         align-items: center;
+        position: relative;
     }
     .content{
         padding: 0 18px;
@@ -265,6 +280,85 @@
         padding: 0;
         margin: 0;
         color: white;
+    }
+    .select-box{
+        height: 300px;
+        position:absolute ;
+        bottom:0px;
+        .shengfen{
+            text-align: center;
+        }
+        .van-action-sheet__header{
+            line-height: 40px;
+            font-size: 15px;
+            background-color: #379BF6;
+            color: white;
+        }
+        .van-icon{
+            color: white;
+        }
+        .cell{
+            display: flex;
+
+            align-items: center;
+            padding: 8px 12px;
+            &:not(:last-child){
+                border-bottom: 1px solid #cccccc;
+            }
+            .cell-left{
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+                position: relative;
+                .point{
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    left: 0px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    border-radius: 50%;
+                    border: 1px solid #379BF6;
+                }
+                .active{
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        left: 2px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background-color: #379BF6;
+                    }
+                }
+            }
+            .more{
+                width: 12px;
+                height: 12px;
+                img{
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+        .nav{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #cccccc;
+            .nav-item{
+                flex: 1;
+                text-align: center;
+            }
+            .nav-item:not(:first-child){
+                border-left: 1px solid #999999;
+            }
+        }
     }
 
 
