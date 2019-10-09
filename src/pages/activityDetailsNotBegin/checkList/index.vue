@@ -9,7 +9,7 @@
                     <div class="null_box"></div>
                     <van-row class="list_row" >
                         <van-col span="6" class="van-col_left"  ><p class="left_text">姓名</p></van-col>
-                        <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /></van-col>
+                        <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /></van-col>
                     </van-row>
                     <van-row class="list_row" >
                         <van-col span="6" class="van-col_left"  ><p class="left_text">性别</p></van-col>
@@ -20,19 +20,19 @@
                     </van-row>
                     <van-row class="list_row" >
                         <van-col span="6" class="van-col_left"  ><p class="left_text">手机号</p></van-col>
-                        <van-col span="18" class=" "  ><van-field v-model="value" class="input_box" placeholder="" /></van-col>
+                        <van-col span="18" class=" "  ><van-field   class="input_box" placeholder="" /></van-col>
                     </van-row>
                     <van-row class="list_row" >
                         <van-col span="6" class="van-col_left"  ><p class="left_text">公司名称</p></van-col>
-                        <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                        <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                     </van-row>
                     <van-row class="list_row" >
                         <van-col span="6" class="van-col_left"  ><p class="left_text">职务</p></van-col>
-                        <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                        <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                     </van-row>
                     <van-row class="list_row" >
                         <van-col span="6" class="van-col_left"  ><p class="left_text">民族</p></van-col>
-                        <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                        <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                     </van-row>
                     <van-row class="list_row" @click="setType(1)">
                         <van-col span="8" class="van-col_left"  ><p class="left_text">需要接站 <van-icon name="arrow-up" v-show="type!==1"/><van-icon name="arrow-down"  v-show="type==1"/></p></van-col>
@@ -40,7 +40,7 @@
                     <div v-show="type==1">
                         <van-row class="list_row" >
                             <van-col span="6" class="text_align_right"  ><p class="left_text">车次/航班</p></van-col>
-                            <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                            <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                         </van-row>
                         <van-row class="list_row" >
                             <van-col span="6" class="text_align_right"  ><p class="left_text">到达日期</p></van-col>
@@ -50,11 +50,11 @@
                         </van-row>
                         <van-row class="list_row" >
                             <van-col span="6" class="text_align_right"  ><p class="left_text">抵达时间</p></van-col>
-                            <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                            <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                         </van-row>
                         <van-row class="list_row" >
                             <van-col span="6" class="text_align_right"  ><p class="left_text">到达地点</p></van-col>
-                            <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                            <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                         </van-row>
                     </div>
                     <van-row class="list_row" @click="setType(2)">
@@ -63,7 +63,7 @@
                     <div v-show="type==2">
                         <van-row class="list_row" >
                             <van-col span="6" class="text_align_right"  ><p class="left_text">车次/航班</p></van-col>
-                            <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                            <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                         </van-row>
                         <van-row class="list_row" >
                             <van-col span="6" class="text_align_right"  ><p class="left_text">出发日期</p></van-col>
@@ -73,11 +73,11 @@
                         </van-row>
                         <van-row class="list_row" >
                             <van-col span="6" class="text_align_right"  ><p class="left_text">出发时间</p></van-col>
-                            <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                            <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                         </van-row>
                         <van-row class="list_row" >
                             <van-col span="6" class="text_align_right"  ><p class="left_text">出发地点</p></van-col>
-                            <van-col span="18" class=" "  > <van-field v-model="value" class="input_box" placeholder="" /> </van-col>
+                            <van-col span="18" class=" "  > <van-field   class="input_box" placeholder="" /> </van-col>
                         </van-row>
                     </div>
                 <div class="time_picker_box" v-show="time_Picker_Statue!==0">

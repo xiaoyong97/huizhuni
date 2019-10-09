@@ -11,69 +11,26 @@
             <div class="content" >
                 <div class="list_div ">
 
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
+                    <van-row class="list_box" type="flex" justify="center" style="position: relative" v-for="(item,i) in list">
+                        <van-col  class="" span="2" v-show="delete_status==!item.checkbox_status"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="item.result"></van-checkbox></van-col>
+                        <van-col  class="" span="2" v-show="delete_status==item.checkbox_status"> <div v-show="!item.read" class="read_status_div"></div></van-col>
                         <van-col  class="" span="17" >
-                            <p class="list_text2">客户<span>广州可可里服装有限公司</span>进入抢单池，前往抢单</p>
+                            <p class="list_text2" :class="item.read?'gray_text':''">{{item.text1}}<span>{{item.text2}}</span>{{item.text3}}</p>
                         </van-col>
-                        <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time gray_text">14:20</p></van-col>
+                        <van-col  class="" span="5"  style="text-align: right;"><p class="list_text_time gray_text">{{item.text4}}</p></van-col>
                     </van-row>
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false">
-                                    <div class="read_status_div"></div>
-                                </van-col>
-                        <van-col  class="" span="17" >
-                            <p class="list_text2">客户<span>广州清竹酒业有限公司</span>进入抢单池，前往抢单</p>
-                        </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">13:36</p></van-col>
-                    </van-row>
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false">
-                                    <div class="read_status_div"></div>
-                                </van-col>
-                        <van-col  class="" span="17" >
-                            <p class="list_text2">客户<span>尚佛友文化传播有限公司</span>进入抢单池，前往抢单</p>
-                        </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">昨天</p></van-col>
-                    </van-row>
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
-                        <van-col  class="" span="17" >
-                            <p class="list_text2 gray_text">客户<span class="gray_text">乐田文化传媒有限公司</span>进入抢单池，前往抢单</p>
-                        </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">昨天</p></van-col>
-                    </van-row>
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class=""></div></van-col>
-                        <van-col  class="" span="17" >
-                            <p class="list_text2 gray_text">客户<span class="gray_text">4399游戏平台网络有限公司</span>进入抢单池，前往抢单</p>
-                        </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">昨天</p></van-col>
-                    </van-row>
-                    <van-row class="list_box" type="flex" justify="center" style="position: relative">
-                        <van-col  class="" span="2" v-show="delete_status==true"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                                <van-col  class="" span="2" v-show="delete_status==false"> <div class="read_status_div"></div></van-col>
-                        <van-col  class="" span="17" >
-                            <p class="list_text2">客户<span>广州佳人有约直播平台有限公司</span>进入抢单池，前往抢单</p>
-                        </van-col>
-                        <van-col  class="" span="5" style="text-align: right"><p class="list_text_time gray_text">2018/08/12</p></van-col>
-                    </van-row>
+
 
                 </div>
 
             </div>
             <div class="popContainer" v-show="delete_status==true">
                 <van-row class="botton_box" type="flex" justify="center" style="">
-                    <van-col  class="" span="2" ><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
-                    <van-col  class="" span="17" >
-                        <p class="list_text2" style="font-size: 16px">全选</p>
+                    <van-col  class="" span="2" @click="all_choose"><van-checkbox class="check_box" checked-color="#4c62e7" v-model="result"></van-checkbox></van-col>
+                    <van-col  class="" span="15" >
+                        <p class="list_text2 all_choose_text"  >全选</p>
                     </van-col>
-                    <van-col  class="blue_bg_box" span="5" style="text-align: center"><p class="list_text_delete">删除</p></van-col>
+                    <van-col  class="blue_bg_box" span="7" style="text-align: center" @click="delete_msg"><p class="list_text_delete">删除</p></van-col>
                 </van-row>
             </div>
         </div>
@@ -102,7 +59,7 @@
         //基础数据存放处
         data (){
             return {
-                result:true,
+                result:false,
                 title : '抢单消息',
                 right_text:'批量删除',
                 activeName: 'a',
@@ -110,19 +67,18 @@
                 step:false,
                 decrease_img: require('@/assets/image/my/decrease.png'),
                 pull_down: require('@/assets/image/my/Pull down 4@2x.png'),
-                successCircle: require('@/assets/images/24/Navigationcirclepink@2x.png'),
-                failCircle: require('@/assets/images/24/Navigationcircle@2x.png'),
                 chart: require('@/assets/images/activity/chart.png'),
                 Pullup: require('@/assets/images/38/Pullup.png'),
-                frame1: require('@/assets/image/my/Picture frame1@2x.png'),
-                frame2: require('@/assets/image/my/Picture frame2@2x.png'),
-                frame3: require('@/assets/image/my/Picture frame3@2x.png'),
-                frame4: require('@/assets/image/my/Picture frame4@2x.png'),
-                people1: require('@/assets/images/activity/people1.png'),
-                people2: require('@/assets/images/activity/people2.png'),
-                people3: require('@/assets/images/activity/people3.png'),
                 medal: require('@/assets/image/my/medal.png'),
-                // medal: require('@/assets/image/my/medal.png'),
+                list:[
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'客户',text2:'广州可可里服装有限公司',text3:'进入抢单池，前往抢单',text4:'14:20',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'客户',text2:'广州清竹酒业有限公司',text3:'进入抢单池，前往抢单',text4:'13:36',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'客户',text2:'尚佛友文化传播有限公司',text3:'进入抢单池，前往抢单',text4:'昨天',},
+                    {checkbox_status:false,delete_status:false,result:0,read:true,text1:'客户',text2:'乐田文化传媒有限公司',text3:'进入抢单池，前往抢单',text4:'昨天',},
+                    {checkbox_status:false,delete_status:false,result:0,read:true,text1:'客户',text2:'4399游戏平台网络有限公司',text3:'进入抢单池，前往抢单',text4:'昨天',},
+                    {checkbox_status:false,delete_status:false,result:0,read:false,text1:'客户',text2:'广州佳人有约直播平台有限公司',text3:'进入抢单池，前往抢单',text4:'2018/08/12',},
+                ],
+
             }
         },
 
@@ -153,9 +109,29 @@
                     this.right_text = '取消删除'
                 } else {
                     this.right_text = '批量删除'
-                };
+                }
             },
-
+            all_choose() {
+                var self = this;
+                if (this.result == false) {
+                    for (var i=0;i<self.list.length;i++) {
+                        self.list[i].result = true;
+                    }
+                } else {
+                    for (var i=0;i<self.list.length;i++) {
+                        self.list[i].result = false;
+                    }
+                }
+            },
+            delete_msg() {
+                var self = this;
+                for (var  i=self.list.length-1;i>=0;i--) {
+                    if(self.list[i].result == true) {
+                        self.list.splice(i,1);
+                    }
+                }
+                this.delete_status = !this.delete_status;
+            }
         },
 
         //计算属性
@@ -606,6 +582,10 @@
     }
     .gray_text>span{
         color: #999999;
+    }
+    .all_choose_text{
+        font-size: 16px;
+        width: 50%;
     }
 
 
