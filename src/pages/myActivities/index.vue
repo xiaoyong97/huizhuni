@@ -573,19 +573,25 @@
 							 <van-row class="cell">
 								 <van-col class="cell-header" span="6">机构名称</van-col>
 								 <van-col class="cell-content" span="10">
-									 <select name="" id="">
-										 <option value="" selected>中国建设银行总行</option>
-									 </select>
+                                    <p class="selete_bank">中国建设银行总行</p>
+<!--                                     选择框遮罩层-->
+                                     <div class="selete_bank_box" v-show="selete_Bank">
+                                         <van-row class="bank_row" @click="seleteBank"><p class="selete_bank">中国建设银行总行</p> </van-row>
+                                     </div>
+<!--									 <select name="" id="" class="selete_bank">-->
+<!--										 <option value="" selected>中国建设银行总行</option>-->
+<!--									 </select>-->
 								 </van-col>
-                                 <van-col class="" span="6"><van-icon name="arrow-down" class="arrow_down_icon"/></van-col>
+                                 <van-col class="" span="6"><van-icon v-show="selete_Bank" name="arrow-up" class="arrow_down_icon" @click="seleteBank"/><van-icon v-show="!selete_Bank" name="arrow-down" class="arrow_down_icon" @click="seleteBank"/></van-col>
                              </van-row>
 
 							 <van-row class="cell" @click="chooseDate">
 								<van-col class="cell-header" span="6">报告期</van-col>
 								<van-col class="cell-content" span="12">
-									<select name="" id="">
-										<option value="" selected>2019.01.01-2019.07.01</option>
-									</select>
+<!--									<select name="" id="">-->
+<!--										<option value="" selected>2019.01.01-2019.07.01</option>-->
+<!--									</select>-->
+                                    <p class="selete_bank">2019.01.01-2019.07.01</p>
 								</van-col>
                                  <van-col class="cell-header" span="4"><img  src="../../assets/images/24/modify@2x.png" class="img_write" ></van-col>
 							 </van-row>
@@ -666,6 +672,10 @@
 
         data() {
             return {
+                value1: 0,
+                option1: [
+                    { text: '中国建设银行总行', value: 0 },
+                ],
                 hidden:false,
                 menu:-1,  //-1:不显示 0:已发布，1.待审核，2.已拒绝,9筛选
                 menu_choose :0,
@@ -699,6 +709,7 @@
 				date_show:true,
 				end_date:'',
 				start_date:'',
+                selete_Bank:false,
             }
         },
 
@@ -1003,6 +1014,9 @@
 
 
             },
+            seleteBank() {
+                this.selete_Bank = !this.selete_Bank;
+            }
 
         },
 
@@ -1354,6 +1368,14 @@
         margin: 8px auto;
         margin-left: -10px;
     }
+    .dropdown_menu{
+        height: 34px;
+        font-size: 20px;
+        border: 0;
+    }
+    .van-dropdown-menu__title{
+        font-size: 16px;
+    }
     .img_write{
         height: 18px;
         width: 18px;
@@ -1409,6 +1431,31 @@
 		border-bottom: 1px solid #dddddd;
 		margin-bottom: 16px;
 	}
+    .selete_bank{
+       padding: 0;
+        line-height: 34px;
+        font-size: 16px;
+        margin: 0;
+    }
+    .selete_bank_box{
+        position: fixed;
+        z-index: 10;
+        left:0;
+        right: 0;
+        top:166px;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.3);
+    }
+    .bank_row{
+        background-color: white;
+        position: absolute;
+        top: 0;
+        height: 34px;
+        width: 100%;
+        border-top: 1px solid #999999;
+        border-bottom: 1px solid #999999;
+        text-align: center;
+    }
 	.btn-group .btn-item .sort{
 		display: inline-block;
 		width: 12px;

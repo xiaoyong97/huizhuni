@@ -68,7 +68,7 @@
 
         data() {
             return {
-                active:-1,
+                active:0,
                 listShow: false,
                 title : '宏观经济数据',
                 pickerShow:false,
@@ -97,7 +97,6 @@
         //声明方法
         methods : {
             onClickLeft() {
-                console.log(this.$route.path);
                 this.$router.replace({name:'index4'});
             },
             go : function(url){

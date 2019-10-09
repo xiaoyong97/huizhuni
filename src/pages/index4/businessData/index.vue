@@ -217,7 +217,8 @@
   //声明方法
   methods : {
 	onClickLeft:function(){
-		this.$router.go(-1);
+		// this.$router.go(-1);
+		this.$router.replace({name:'index4'});
 	},
 	createChart:function(){
 		var that = this;
