@@ -18,31 +18,31 @@
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">新一代客户编号:</van-col>
-						 <van-col span="12">252841000000526649</van-col>
+						 <van-col span="12">{{info.company_info.customer_id}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">统一社会信用代码:</van-col>
-						 <van-col span="12">91120116MA07K2307A</van-col>
+						 <van-col span="12">{{info.company_info.unified_social_credit_code}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">企业名称:</van-col>
-						 <van-col span="12">广州市睿智防水电器股份有限公司</van-col>
+						 <van-col span="12">{{info.company_info.company_name}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">企业地址:</van-col>
-						 <van-col span="12">广州市高新技术产业开发区迎宾大道188号</van-col>
+						 <van-col span="12">{{info.company_info.enterprise_address}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人:</van-col>
-						 <van-col span="12">艾仲华</van-col>
+						 <van-col span="12">{{info.company_info.legal_representative}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人电话:</van-col>
-						 <van-col span="12">13702137765</van-col>
+						 <van-col span="12">{{info.company_info.mobile}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人地址:</van-col>
-						 <van-col span="12">广州市高新技术产业开发区迎宾大道188号</van-col>
+						 <van-col span="12">{{info.company_info.legal_representative_address}}</van-col>
 					</van-cell>
 				</div>
 			 </van-cell-group>
@@ -60,124 +60,101 @@
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">姓名:</van-col>
-						 <van-col span="12">艾仲华</van-col>
+						 <van-col span="12">{{info.company_main_info.name}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">性别:</van-col>
-						 <van-col span="12">女</van-col>
+						 <van-col span="12">{{info.company_main_info.sex}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">民族:</van-col>
-						 <van-col span="12">汉</van-col>
+						 <van-col span="12">{{info.company_main_info.ethnic}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">出生日期:</van-col>
-						 <van-col span="12">1976.8.1</van-col>
+						 <van-col span="12">{{info.company_main_info.birth}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">住址:</van-col>
-						 <van-col span="12">广州市天河朱景新城中花城大道中海花城湾4号楼3们201</van-col>
+						 <van-col span="12">{{info.company_main_info.address}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">公民身份证号码:</van-col>
-						 <van-col span="12">120106197608016578</van-col>
+						 <van-col span="12">{{info.company_main_info.idcard}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">有效期限:</van-col>
-						 <van-col span="12">2030.1.1</van-col>
+						 <van-col span="12">{{info.company_main_info.validity_period}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">学历:</van-col>
-						 <van-col span="12">研究生</van-col>
+						 <van-col span="12">{{info.company_main_info.record_of_formal_schooling}}</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">手机号码:</van-col>
-						 <van-col span="12">13702137765</van-col>
+						 <van-col span="12">{{info.company_main_info.mobile}}</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">工作单位:</van-col>
-						 <van-col span="12">广州市睿智防水电器股份有限公司</van-col>
+						 <van-col span="12">{{info.company_main_info.work}}</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">婚烟情况:</van-col>
-						 <van-col span="12">已婚</van-col>
+						 <van-col span="12">{{info.company_main_info.marriage_status}}</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">家庭人数:</van-col>
-						 <van-col span="12">3</van-col>
+						 <van-col span="12">{{info.company_main_info.households}}</van-col>
 					</van-cell>
 				</div>
 			 </van-cell-group>
 		</div>
 		<div v-show='type==2'>
 				<van-cell-group class="bg-grey"  >
+					
 					<div class="grey_bg"> </div>
-					<div class="">
-						<van-cell>
-							<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
-							<van-col span="23"><h3>关联人信息</h3></van-col>
-						</van-cell>
-						<van-cell>
-							<van-col span="10">关系</van-col>
-							<van-col span="12">其他（默认）</van-col>
-						</van-cell>
-						<van-cell>
-							<van-col span="10">企业主身份证:</van-col>
-							<van-col span="12"><img class="yyzz" src="../../../../assets/images/idcard/sfz.png" alt=""></van-col>
-						</van-cell>
-						<van-cell>
-							<van-col span="10">姓名:</van-col>
-							<van-col span="12">艾仲华</van-col>
-						</van-cell>
-						<!-- <van-cell @click="show_3" v-show="show3">
-							<div class="blue_bg_box"><p class="list_text_open">展开详情<van-icon name="arrow-down" /></p></div>
-						</van-cell> -->
-						<van-cell @click="show_3" v-show="show_3" >
-							<img src="../../../../assets/images/38/Pulldown3@2x.png"  class="felx_img" v-show="show_3">
-						</van-cell>
-
-					</div>
-					<div class="grey_bg"> </div>
-					<div v-show="!show3">
+					<div v-show="!show3||index==0" v-for="(item,index) in info.associates">
 						<van-cell>
 							 <van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
 							 <van-col span="23"><h3>关联人信息2</h3></van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">关系:</van-col>
-							 <van-col span="12">夫妻<br/><img class="yyzz" src="../../../../assets/images/idcard/sfz.png" alt=""></van-col>
+							 <van-col span="12">{{item.relationship}}<br/><img class="yyzz" src="../../../../assets/images/idcard/sfz.png" alt=""></van-col>
 						</van-cell>
 						<van-cell>
 							 <van-col span="10">姓名:</van-col>
-							 <van-col span="12">李天明</van-col>
+							 <van-col span="12">{{item.name}}</van-col>
 						</van-cell>
-						<van-cell>
-							 <van-col span="10">性别:</van-col>
-							 <van-col span="12">男</van-col>
-						</van-cell>
-						<van-cell>
-							 <van-col span="10">民族:</van-col>
-							 <van-col span="12">汉</van-col>
-						</van-cell>
-						<van-cell>
-							 <van-col span="10">出生日期:</van-col>
-							 <van-col span="12">1970.10.20</van-col>
-						</van-cell>
-						<van-cell>
-							 <van-col span="10">住址:</van-col>
-							 <van-col span="12">广州市天河朱景新城中花城大道中海花城湾4号楼3们201</van-col>
-						</van-cell>
-						<van-cell>
-							 <van-col span="10">公民身份证号码:</van-col>
-							 <van-col span="12">120106197010204098</van-col>
-						</van-cell>
-						<van-cell>
-							 <van-col span="10">有效期限:</van-col>
-							 <van-col span="12">2030.1.1</van-col>
-						</van-cell>
-						<van-cell>
-							 <van-col span="10">学历:</van-col>
-							 <van-col span="12">研究生</van-col>
-						</van-cell><van-cell>
-							 <van-col span="10">手机号码:</van-col>
-							 <van-col span="12">13439078656</van-col>
-						</van-cell>
+						<div v-show="!show3">
+							<van-cell>
+								 <van-col span="10">性别:</van-col>
+								 <van-col span="12">{{item.sex}}</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="10">民族:</van-col>
+								 <van-col span="12">{{item.ethnic}}</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="10">出生日期:</van-col>
+								 <van-col span="12">{{item.birth}}</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="10">住址:</van-col>
+								 <van-col span="12">{{item.address}}</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="10">公民身份证号码:</van-col>
+								 <van-col span="12">{{item.idcard}}</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="10">有效期限:</van-col>
+								 <van-col span="12">{{item.validity_period}}</van-col>
+							</van-cell>
+							<van-cell>
+								 <van-col span="10">学历:</van-col>
+								 <van-col span="12">{{item.record_of_formal_schooling}}</van-col>
+							</van-cell><van-cell>
+								 <van-col span="10">手机号码:</van-col>
+								 <van-col span="12">{{item.mobile}}</van-col>
+							</van-cell>
+						</div>
 						<!-- <van-cell>
 							 <van-col span="10">工作单位:</van-col>
 							 <van-col span="12">广州市睿智防水电器股份有限公司</van-col>
@@ -191,10 +168,13 @@
 						<!-- <van-cell @click="show_3">
 							<div class="blue_bg_box"><p class="list_text_open">收起<van-icon name="arrow-up" /></p></div>
 						</van-cell> -->
-						
-						<van-cell @click="show_3" v-show="show_3" style="position: relative">
+						<van-cell @click="show_3" v-show="show3" >
+							<img src="../../../../assets/images/38/Pulldown3@2x.png"  class="felx_img" v-show="show_3">
+						</van-cell>
+						<van-cell @click="show_3" v-show="!show3 && index!=0" style="position: relative">
 							<img src="../../../../assets/images/38/Pullup__.png"  class="felx_img" v-show="show_3">
 						</van-cell>
+						<div class="grey_bg"> </div>
 					</div>
 				 </van-cell-group>
 			</div>
@@ -285,7 +265,7 @@
 				</div>
 			</van-cell-group> -->
 			<van-cell-group class="bg-grey">
-				<div >
+				<div v-for="(item,index) in info.mortgaged">
 					<van-cell>
 						<van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
 						<van-col span="23"><h3>抵押物信息</h3></van-col>
@@ -297,35 +277,35 @@
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">权力人:</van-col>
-						 <van-col span="12">艾仲华</van-col>
+						 <van-col span="12">{{item.holder}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">共有情况:</van-col>
-						 <van-col span="12">自由</van-col>
+						 <van-col span="12">{{item.situations}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">坐落:</van-col>
-						 <van-col span="12">广东省广州市天河区花城大道中海花城湾4号楼3门201</van-col>
+						 <van-col span="12">{{item.address}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">不动产号：</van-col>
-						 <van-col span="12">0130031024</van-col>
+						 <van-col span="12">{{item.number}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">权力性质：</van-col>
-						 <van-col span="12">自有</van-col>
+						 <van-col span="12">{{item.nature}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">用途:</van-col>
-						 <van-col span="12">住宅</van-col>
+						 <van-col span="12">{{item.use}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">建筑面积：</van-col>
-						 <van-col span="12">120.4</van-col>
+						 <van-col span="12">{{item.area}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">权力其他情况：</van-col>
-						 <van-col span="12">无</van-col>
+						 <van-col span="12">{{item.relationship}}</van-col>
 					</van-cell>
 				</div>
 			 </van-cell-group>
@@ -434,25 +414,36 @@
     return {
 		show3:true,
 		show4:true,
+		info:{},
     }
   },
 
 
   //数据预加载
   created : ()=>{
-
-
-
   },
 
   //网页加载完成
-  mounted : ()=>{
-
+  mounted(){
+		var infos =  sessionStorage.getItem('userinfo')
+		 
+		 if(null != infos && infos != undefined && '' != infos){
+			 var unid = this.$route.query.unid;
+				 infos = JSON.parse(infos)
+				 for(var i=0;i<infos.length;i++){
+					 if(unid == infos[i].unid){
+						 this.info = infos[i];
+						 console.log(this.info);
+						 return;
+					 }
+				 }
+		}
   },
 
   //声明方法
   methods : {
   	show_3 () {
+		
   		this.show3 = !this.show3
 	},
 	  show_4 () {

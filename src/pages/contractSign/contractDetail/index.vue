@@ -10,19 +10,19 @@
             </van-row>
             <van-row>
                 <van-col span="9" class="left-text">企业名称：</van-col>
-                <van-col class="right-text">{{info.companyName}}</van-col>
+                <van-col class="right-text">{{info.company_info.company_name}}</van-col>
             </van-row>
             <van-row>
                 <van-col span="9" class="left-text">统一社会信用代码：</van-col>
-                <van-col class="right-text">{{info.creditCode}}</van-col>
+                <van-col class="right-text">{{info.company_info.unified_social_credit_code}}</van-col>
             </van-row>
             <van-row>
                 <van-col span="9" class="left-text">企业主姓名：</van-col>
-                <van-col class="right-text">{{info.owner}}</van-col>
+                <van-col class="right-text">{{info.company_info.legal_representative}}</van-col>
             </van-row>
             <van-row>
                 <van-col span="9" class="left-text">产品代码：</van-col>
-                <van-col class="right-text">{{info.productCode}}</van-col>
+                <van-col class="right-text">{{info.company_info.customer_id}}</van-col>
             </van-row>
             <van-row>
                 <van-col span="9" class="left-text">签约时间：</van-col>
@@ -30,7 +30,7 @@
             </van-row>
             <van-row>
                 <van-col span="9" class="left-text">ID：</van-col>
-                <van-col class="right-text">{{info.id}}</van-col>
+                <van-col class="right-text">{{info.unid}}</van-col>
             </van-row>
         </div>
         <div class="box">
@@ -109,6 +109,7 @@ export default {
     },
     created() {
         this.info = this.getItem('signedInfo');
+		console.log(this.info)
     },
     methods: {
         showPicture() {

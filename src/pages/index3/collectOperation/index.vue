@@ -225,7 +225,7 @@
 						</van-cell>
 					</div>
 				</van-cell-group>
-				<div class="jyButton" @click="go('creditCollectionInfo')">征信校验</div>
+				<div class="jyButton" @click="go('creditCheck')">征信校验</div>
 			</div>
 		</div>
     </div>
@@ -238,13 +238,13 @@
 			<van-datetime-picker v-show="time_Picker_Statue==1" class="picker"
 								 v-model="currentDate1"
 								 type="date"
-								 :min-date="minDate"
+							
 								 @confirm="confirmBtn" @cancel="onCancel()"
 			/>
 			<van-datetime-picker v-show="time_Picker_Statue==2" class="picker"
 								 v-model="currentDate2"
 								 type="date"
-								 :min-date="minDate"
+								
 								 @confirm="confirmBtn" @cancel="onCancel()"
 			/>
 		</div>
@@ -394,7 +394,13 @@
   },
 
   //数据预加载
-  created : ()=>{
+  created(){
+	  var info  = this.$route.params.info;
+	   
+	  if(info){
+		  this.info = info;
+		 
+	  }
   },
 
   //网页加载完成
@@ -583,11 +589,21 @@
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				infos = JSON.parse(jsonStr);
 			}
-			
-			this.info.unid = Date.parse(new Date());
 			this.info.collect_time = (new Date()).toLocaleDateString()
 			this.info.step = 1;
-			infos.push(this.info);
+			//判断是编辑还是新增
+		
+			if(this.info.unid){
+				for(var i=0;i<infos.length;i++){
+					if(infos[i].unid == this.info.unid){
+							
+						infos[i] = this.info;
+					}
+				}
+			}else{
+				this.info.unid = Date.parse(new Date());
+				infos.push(this.info);
+			}
 			sessionStorage.setItem('userinfo',JSON.stringify(infos))
 		}
 		if(this.step == 5 ){
@@ -668,6 +684,18 @@
 	    this.$refs.checkboxes[index].toggle();
 	},
 	save:function(){
+		var jsonStr = sessionStorage.getItem('userinfo');
+		var infos = [];
+		if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
+			infos = JSON.parse(jsonStr);
+		}
+		
+		this.info.unid = Date.parse(new Date());
+		this.info.collect_time = (new Date()).toLocaleDateString()
+		this.info.step = 0;
+		infos.push(this.info);
+		sessionStorage.setItem('userinfo',JSON.stringify(infos))
+		
 		this.$router.go(-1);
 	},
 	go : function(url){

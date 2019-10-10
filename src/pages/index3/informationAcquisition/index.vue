@@ -10,48 +10,25 @@
         <div class="content">
             <van-tabs color="#4c62e7" line-width="50%" line-height=3>
                 <van-tab title="待补录" color="#4c62e7">
-                    <div class="card_div" style="">
+                    <div class="card_div" v-for="(item,index) in this.infos" v-show="item.step==0">
                         <van-row style="padding: 4px 12px 0">
                             <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="18"><p class="card_list2_test" >广州建信信息科技有限公司</p></van-col>
+                            <van-col class="" span="18"><p class="card_list2_test" >{{item.company_info.company_name}}</p></van-col>
                         </van-row>
                         <van-row style="padding: 4px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >440108888888</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.company_info.unified_social_credit_code}}</p></van-col>
                         </van-row>
                         <van-row style="padding: 4px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >张三</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.company_info.legal_representative}}</p></van-col>
                         </van-row>
                         <van-row style="padding: 4px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.company_info.collect_time}}</p></van-col>
                         </van-row>
                         <div style="height: 6px"></div>
-                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('collectOperation',{step:1})">
-                            <van-col class="icon_box" span=""><img src="../../../assets/images/38/Supplement@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #f76037;font-weight: normal">补录</p></van-col>
-                        </van-row>
-                    </div>
-                    <div class="card_div" style="">
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="18"><p class="card_list2_test" >广州琪琪电子商务有限公司</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >440107777777</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >黎四</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
-                        </van-row>
-                        <div style="height: 6px"></div>
-                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('collectOperation',{step:1})">
+                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('collectOperation',{info:item})">
                             <van-col class="icon_box" span=""><img src="../../../assets/images/38/Supplement@2x.png" class="img_location" ></van-col>
                             <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #f76037;font-weight: normal">补录</p></van-col>
                         </van-row>
@@ -61,30 +38,30 @@
                     <div style="height: 8px"></div>
                 </van-tab>
                 <van-tab title="已完成" color="#4c62e7">
-                    <div class="card_div" style="">
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="18"><p class="card_list2_test" >广州可可有限公司</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >440729999999</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >黄五</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
-                        </van-row>
+                     <div class="card_div" v-for="(item,index) in this.infos" v-show="item.step!=0">
+                       <van-row style="padding: 4px 12px 0">
+                           <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
+                           <van-col class="" span="18"><p class="card_list2_test" >{{item.company_info.company_name}}</p></van-col>
+                       </van-row>
+                       <van-row style="padding: 4px 12px 0">
+                           <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
+                           <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.company_info.unified_social_credit_code}}</p></van-col>
+                       </van-row>
+                       <van-row style="padding: 4px 12px 0">
+                           <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
+                           <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.company_info.legal_representative}}</p></van-col>
+                       </van-row>
+                       <van-row style="padding: 4px 12px 0">
+                           <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
+                           <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.company_info.collect_time}}</p></van-col>
+                       </van-row>
                         <div style="height: 6px"></div>
                         <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center">
-                            <van-col class="" span="12" @click="go('collectOperation')">
+                            <van-col class="" span="12" @click="go('collectOperation',{info:item})">
                                 <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Signing@2x.png" class="img_location" ></van-col>
                                 <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">修改</p></van-col>
                             </van-col>
-                            <van-col class="" span="12" @click="go('infoDetail')">
+                            <van-col class="" span="12" @click="go('infoDetail',{info:item})">
                                 <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Viewreport@2x.png" class="img_location"  ></van-col>
                                 <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">查看详情</p></van-col>
                             </van-col>
@@ -92,46 +69,8 @@
 
                         </van-row>
                     </div>
-                    <div class="card_div" style="">
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
-                            <van-col class="" span="18"><p class="card_list2_test" >广州老地方有限公司</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >统一社会信用代码</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >4400111111111</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >企业主姓名</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >黄五</p></van-col>
-                        </van-row>
-                        <van-row style="padding: 4px 12px 0">
-                            <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >2019-07-22</p></van-col>
-                        </van-row>
-                        <div style="height: 6px"></div>
-                        <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center">
-                            <van-col class="" span="12" @click="go('collectOperation')">
-                                <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Signing@2x.png" class="img_location" ></van-col>
-                                <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">修改</p></van-col>
-                            </van-col>
-                            <van-col class="" span="12" @click="go('infoDetail')">
-                                <van-col class="icon_box2" span=""><img src="../../../assets/images/38/Viewreport@2x.png" class="img_location"></van-col>
-                                <van-col class="" span=""><p class="card_list2_test" style="padding-left: 8px;color: #4c62e7;font-weight: normal">查看详情</p></van-col>
-                            </van-col>
-
-
-                        </van-row>
-                    </div>
-
-
                     <div style="height: 8px"></div>
                 </van-tab>
-
-
-
-
-
             </van-tabs>
         </div>
 
@@ -157,12 +96,19 @@
                 openOverlay_title:"",
                 open:true,
                 step:'',
+				infos:[],
             }
         },
 
 
         //数据预加载
-        created : ()=>{
+        created(){
+			var jsonStr = sessionStorage.getItem('userinfo');
+			
+			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
+				this.infos = JSON.parse(jsonStr);
+				console.log(this.infos)
+			}
         },
 
         //网页加载完成
@@ -182,6 +128,7 @@
                 this.$router.push('./activityDetailsNotBegin');
             },
             go : function(url,param){
+				
                 if (param) {
                     this.$router.push({name:url,params:param});
                 }

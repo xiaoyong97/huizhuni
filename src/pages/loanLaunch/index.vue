@@ -12,7 +12,7 @@
 			 <van-cell-group class="bg-grey pan2">
 			  	<div class="cell-container">
 					<br>
-					<van-cell class="cell-box" v-for="(item,index) in infos" v-step="item.step==2">
+					<van-cell class="cell-box" v-for="(item,index) in infos" v-show="item.step==2">
 						<div class="dk-pan">
 							<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;{{item.company_info.company_name}}</van-col>
 							<van-col span="9" class="subText">采集:{{item.collect_time}} </van-col>
@@ -46,7 +46,7 @@
 			 <van-cell-group class="bg-grey pan2">
 			  	<div class="cell-container">
 					<br>
-					<van-cell class="cell-box">
+					<van-cell class="cell-box" v-for="(item,index) in infos" v-show="item.step==3">
 						<div class=" dk-pan">
 							<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;广州市睿智防水电器股份有限公司</van-col>
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
@@ -55,24 +55,7 @@
 							<van-col span="24" class="detail"  @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
-					<van-cell class="cell-box">
-						<div class=" dk-pan">
-							<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;广州市睿智防水电器股份有限公司</van-col>
-							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
-							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
-							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
-						</div>
-					</van-cell>
-					<van-cell class="cell-box">
-						<div class=" dk-pan">
-							<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;广州市睿智防水电器股份有限公司</van-col>
-							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
-							<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
-							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
-							<van-col span="24" class="detail" @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
-						</div>
-					</van-cell>
+					
 				</div>
 			  </van-cell-group>
 		 </van-tab>
@@ -111,6 +94,7 @@
 	  var infos =  sessionStorage.getItem('userinfo')
 	  if(null != infos && undefined != infos && '' != infos){
 	  	this.infos = JSON.parse(infos)
+		console.log(this.infos)
 	  }
   },
    watch: {

@@ -44,11 +44,11 @@
             <div class="info-box">
                 <div class="name-box van-hairline--bottom">
                     <label for="name">姓名</label>
-                    <input id="name" type="text" placeholder="请输入姓名">
+                    <input id="name" type="text" placeholder="请输入姓名" v-model="info.company_main_info.name">
                 </div>
                 <div class="id-box van-hairline--bottom">
                     <label for="id">身份证号</label>
-                    <input id="id" type="number" placeholder="请输入身份证号">
+                    <input id="id" type="number" placeholder="请输入身份证号" v-model="info.company_main_info.idcard">
                 </div>
             </div>
             <div class="btn" @click="start">开始识别</div>
@@ -94,6 +94,7 @@ export default {
             content2Show: false,
             content3Show: false,
             isDistinguish: true,
+			info:{},
         }
     },
     computed: {
@@ -150,8 +151,9 @@ export default {
             }, 2000)
         },
         next() {
+			
             if (this.active == 3) {
-                this.go('contractSignResult')
+                this.go('contractSignResult',{signInfo:this.info})
             } else {
                 this.active++;
                 this.isDistinguish = true;
@@ -162,7 +164,9 @@ export default {
         }
     },
     created() {
-        console.log(this.$route.params)
+        this.info = this.$route.params.signInfo;
+		console.log(this.info)
+		
     }
 }
 </script> 

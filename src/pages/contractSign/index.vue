@@ -16,55 +16,51 @@
             >
 
             <van-tab title="待签约">
-                <div class="cell" v-for="item in list1">
+                <div class="cell" v-for="item in infos" v-show="item.step==3">
                     <van-row>
                         <van-col><img class="img" src="../../assets/images/38/Sequencenumber@2.png" alt="" /></van-col>
-                        <van-col class="title right-text">申请顺序号{{item.applicationSequenceNumber}}</van-col>
+                        <van-col class="title right-text">申请顺序号{{item.unid}}</van-col>
                     </van-row>
-                    <van-row>
-                        <van-col span="9" class="left-text">企业名称：</van-col>
-                        <van-col class="right-text">{{item.companyName}}</van-col>
-                    </van-row>
-                    <van-row>
-                        <van-col span="9" class="left-text">统一社会信用代码：</van-col>
-                        <van-col class="right-text">{{item.creditCode}}</van-col>
-                    </van-row>
-                    <van-row>
-                        <van-col span="9" class="left-text">企业主姓名：</van-col>
-                        <van-col class="right-text">{{item.owner}}</van-col>
-                    </van-row>
-                    <van-row>
-                        <van-col span="9" class="left-text">产品代码：</van-col>
-                        <van-col class="right-text">{{item.productCode}}</van-col>
-                    </van-row>
-                    <van-row>
-                        <van-col span="9" class="left-text">ID：</van-col>
-                        <van-col class="right-text">{{item.id}}</van-col>
-                    </van-row>
+                   <van-row>
+                       <van-col span="8" class="left-text">企业名称：</van-col>
+                       <van-col class="right-text">{{item.company_info.company_name}}</van-col>
+                   </van-row>
+                   <van-row>
+                       <van-col span="8" class="left-text">统一社会信用代码：</van-col>
+                       <van-col class="right-text">{{item.company_info.unified_social_credit_code}}</van-col>
+                   </van-row>
+                   <van-row>
+                       <van-col span="8" class="left-text">企业主姓名：</van-col>
+                       <van-col class="right-text">{{item.company_info.legal_representative}}</van-col>
+                   </van-row>
+                   <van-row>
+                       <van-col span="8" class="left-text">ID：</van-col>
+                       <van-col class="right-text">{{item.unid}}</van-col>
+                   </van-row>
                     <div class="btn van-hairline--top" @click="go('sign', {signInfo: item})"><img class="img-btn" src="../../assets/images/38/Signing@2x.png" />签约</div>
                 </div>
             </van-tab>
             <van-tab title="已签约">
-                <div class="cell" v-for="item in list2">
+               	<div class="cell" v-for="item in infos" v-show="item.step==4">		
                     <van-row>
                         <van-col><img class="img" src="../../assets/images/38/Sequencenumber@2.png" alt="" /></van-col>
-                        <van-col class="title right-text">申请顺序号{{item.applicationSequenceNumber}}</van-col>
+                        <van-col class="title right-text">申请顺序号{{item.unid}}</van-col>
                     </van-row>
                     <van-row>
                         <van-col span="9" class="left-text">企业名称：</van-col>
-                        <van-col class="right-text">{{item.companyName}}</van-col>
+                        <van-col class="right-text">{{item.company_info.company_name}}</van-col>
                     </van-row>
                     <van-row>
                         <van-col span="9" class="left-text">统一社会信用代码：</van-col>
-                        <van-col class="right-text">{{item.creditCode}}</van-col>
+                        <van-col class="right-text">{{item.company_info.unified_social_credit_code}}</van-col>
                     </van-row>
                     <van-row>
                         <van-col span="9" class="left-text">企业主姓名：</van-col>
-                        <van-col class="right-text">{{item.owner}}</van-col>
+                        <van-col class="right-text">{{item.company_info.legal_representative}}</van-col>
                     </van-row>
                     <van-row>
                         <van-col span="9" class="left-text">产品代码：</van-col>
-                        <van-col class="right-text">{{item.productCode}}</van-col>
+                        <van-col class="right-text">{{item.company_info.customer_id}}</van-col>
                     </van-row>
                     <van-row>
                         <van-col span="9" class="left-text">签约时间：</van-col>
@@ -72,7 +68,7 @@
                     </van-row>
                     <van-row>
                         <van-col span="9" class="left-text">ID：</van-col>
-                        <van-col class="right-text">{{item.id}}</van-col>
+                        <van-col class="right-text">{{item.unid}}</van-col>
                     </van-row>
                     <div class="btn van-hairline--top" @click="go('contractDetail', {signedInfo: item})"><img class="img-btn" src="../../assets/images/38/Viewreport@2x.png" />查看详情</div>
                 </div>
@@ -89,10 +85,18 @@ import searchIcon from '@/assets/images/38/searchfor@2x.png';
 export default {
     name: 'contractSign',
     mixins: [base],
+	mounted (){
+		  var infos =  sessionStorage.getItem('userinfo')
+		  if(null != infos && undefined != infos && '' != infos){
+		  	this.infos = JSON.parse(infos)
+			console.log(this.infos)
+		  }
+	},
     data() {
         return {
             backIcon,
             searchIcon,
+			infos:{},
             list1: [
                 {
                     applicationSequenceNumber: 987628221227780861,
