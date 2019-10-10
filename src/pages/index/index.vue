@@ -188,7 +188,7 @@
 
 			},
 			go : function(url){
-
+				console.log(url)
 				 // this.$router.push({ name: 'informationAcquisition', params: { userId: 123 }});
 				this.$router.push({path:'/'+url, query: { userId: 123 }})
 
@@ -214,7 +214,7 @@
 						{name:"贷后跟踪",icon:require('../../assets/images/84/Post-loantracking@2x.png'),url:'index',isChecked:false},
 						{name:"合同签订",icon:require('../../assets/images/84/signacontract@2x.png'),url:'contractSign',isChecked:true},
 						{name:"抵押登记",icon:require('../../assets/images/84/Mortgageregistration@2x.png'),url:'index3/mortgageRegistration',isChecked:true},
-						{name:"线下活动",icon:require('../../assets/images/84/off-lineactivity@2x.png'),url:'index',isChecked:false},
+						{name:"融智赋能",icon:require('../../assets/images/84/off-lineactivity@2x.png'),url:'offlineHuoDong',isChecked:true},
 						{name:"业绩展示",icon:require('../../assets/images/84/resultsshow@2x.png'),url:'index',isChecked:false},
 						{name:"客户抢单",icon:require('../../assets/images/84/Custmerrobsingle.png'),url:'index',isChecked:false},
 						{name:"咕咕管理",icon:require('../../assets/images/84/gugu@2x.png'),url:'gugu',isChecked:true},

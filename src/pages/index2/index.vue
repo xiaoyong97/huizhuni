@@ -134,6 +134,7 @@
             </div>
           </van-row>
         </div>
+
       </div>
 
       
@@ -259,14 +260,6 @@ export default {
     shaixuanBut(){
       this.$router.push('/filtrateYe');
     },
-    //     //文字抢单前字体截取
-    // textJue(){
-    //   alert(this.enterprise.length)
-    //   if (this.enterprise.length > 2) {
-    //     this.enterprise=this.enterprise.slice(0,2) + '*********'
-    //     alert(this.enterprise)
-    //   }
-    // },
   },
   
   //计算属性

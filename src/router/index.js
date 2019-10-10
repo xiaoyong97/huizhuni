@@ -175,6 +175,40 @@ export default new Router({
         },
       },
 
+      //线下活动
+      {
+        name: 'offlineHuoDong',
+        path: '/offlineHuoDong',
+        component: () => import('@/pages/offlineHuoDong'),
+        meta: {
+        title: '线下活动首页'
+        },
+      },
+      {
+        name: 'NewActivities',
+        path: '/offlineHuoDong/NewActivities',
+        component: () => import('@/pages/offlineHuoDong/NewActivities'),
+        meta: {
+        title: '新建活动页'
+        },
+      },
+      {
+        name: 'newActivitiesConfirm',
+        path: '/offlineHuoDong/newActivitiesConfirm',
+        component: () => import('@/pages/offlineHuoDong/newActivitiesConfirm'),
+        meta: {
+        title: '新建活动确定页'
+        },
+      },
+      {
+        name: 'newSchedule',
+        path: '/offlineHuoDong/newSchedule',
+        component: () => import('@/pages/offlineHuoDong/newSchedule'),
+        meta: {
+        title: '新建日程表页'
+        },
+      },
+
 
  //咕咕管理
 	  {
