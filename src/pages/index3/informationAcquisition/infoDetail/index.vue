@@ -6,7 +6,7 @@
         <van-nav-bar :title="title"  ></van-nav-bar>
         <img src="../../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <div class="main">
-            <div class="main_box">
+            <div class="main_box" v-show="this.info">
                 <div style="height: 8px"></div>
                 <van-row class="list_row_top" >
                     <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
@@ -14,19 +14,19 @@
                 </van-row>
                 <van-row class="list_row" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test gray_text" >企业名称</p></van-col>
-                    <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">广州可可有限公司</p></van-col>
+                    <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">{{this.info.company_info.company_name}}</p></van-col>
                 </van-row>
                 <van-row class="list_row" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test gray_text" >统一社会信用代码</p></van-col>
-                    <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">440729999999</p></van-col>
+                    <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">{{this.info.company_info.unified_social_credit_code}}</p></van-col>
                 </van-row>
                 <van-row class="list_row" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test gray_text" >企业主姓名</p></van-col>
-                    <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">黄五</p></van-col>
+                    <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">{{this.info.company_info.legal_representative}}</p></van-col>
                 </van-row>
                 <van-row class="list_row" >
                     <van-col class="list_left"  style="text-align: left;width: 123px;"><p class="list_test gray_text" >采集时间</p></van-col>
-                    <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">2019-07-22</p></van-col>
+                    <van-col class="list_right"  style="text-align: left"><p class="list_test" style="color: rgb(51,51,51)">{{this.info.collect_time}}</p></van-col>
                 </van-row>
             </div>
 
@@ -81,12 +81,14 @@
                 title : '信息采集详情',
                 activeName: 'a',
                 current: 0,
+				info:{},
             }
         },
 
         //数据预加载
-        created : function(){
-        },
+       created(){
+       		this.info = this.$route.params.info;
+       },
 
         //网页加载完成
         mounted () {
@@ -106,7 +108,9 @@
 
 			goToDetail : function(type){
 				localStorage.setItem('xxcj_type',type);
-				this.$router.push('../infoDetail');
+			
+				this.$router.push({path:'/index3/infoDetail',query:{info:this.info}});
+				
 			},
             go : function(url){
                 this.$router.push({name: url})

@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <!--头部导航-->
-		<van-nav-bar title="合同签订" :border="false" @click-left="onClickLeft" @click-right="onClickRight('contractSearch')">
+		<van-nav-bar title="合同签订" :border="false" @click-left="onClickLeft1" @click-right="onClickRight('contractSearch')">
             <van-icon :name="backIcon" size="18px" slot="left" />
             <van-icon :name="searchIcon" size="18px" slot="right" />
         </van-nav-bar>
@@ -91,6 +91,11 @@ export default {
 		  	this.infos = JSON.parse(infos)
 			console.log(this.infos)
 		  }
+	},
+	methods:{
+		onClickLeft1:function(){
+			this.$router.push('backHome')
+		}
 	},
     data() {
         return {

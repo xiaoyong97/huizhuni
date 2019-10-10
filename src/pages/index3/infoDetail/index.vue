@@ -10,7 +10,7 @@
 				<div >
 					<van-cell>
 						 <van-col span="1"> <van-tag type="danger" class="left_tag">&nbsp;</van-tag></van-col>
-						 <van-col span="23"><h3>广州老地方有限公司</h3></van-col>
+						 <van-col span="23"><h3>{{info.company_info.company_name}}</h3></van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">全业法人营业执照:</van-col>
@@ -18,31 +18,31 @@
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">新一代客户编号:</van-col>
-						 <van-col span="12">44099999999</van-col>
+						 <van-col span="12">{{info.company_info.customer_id}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">统一社会信用代码:</van-col>
-						 <van-col span="12">xxxxxXxXXXX</van-col>
+						 <van-col span="12">{{info.company_info.unified_social_credit_code}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">企业名称:</van-col>
-						 <van-col span="12">XXXX有限公司</van-col>
+						 <van-col span="12">{{info.company_info.company_name}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">企业地址:</van-col>
-						 <van-col span="12">广州市越秀区法政路XX号</van-col>
+						 <van-col span="12">{{info.company_info.legal_representative_address}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人:</van-col>
-						 <van-col span="12">张三</van-col>
+						 <van-col span="12">{{info.company_info.legal_representative}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人电话:</van-col>
-						 <van-col span="12">13800000000</van-col>
+						 <van-col span="12">{{info.company_info.mobile}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">法定代表人地址:</van-col>
-						 <van-col span="12">广州市越秀区法政路XX号</van-col>
+						 <van-col span="12">{{info.company_info.enterprise_address}}</van-col>
 					</van-cell>
 				</div>
 			 </van-cell-group>
@@ -60,47 +60,47 @@
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">姓名:</van-col>
-						 <van-col span="12">张三</van-col>
+						 <van-col span="12">{{info.company_main_info.name}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">性别:</van-col>
-						 <van-col span="12">男</van-col>
+						 <van-col span="12">{{info.company_main_info.sex}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">民族:</van-col>
-						 <van-col span="12">汉</van-col>
+						 <van-col span="12">{{info.company_main_info.ethnic}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">出生日期:</van-col>
-						 <van-col span="12">1988-01-01</van-col>
+						 <van-col span="12">{{info.company_main_info.birth}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">住址:</van-col>
-						 <van-col span="12">广州市越秀区法政路XX号</van-col>
+						 <van-col span="12">{{info.company_main_info.address}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">公民身份证号码:</van-col>
-						 <van-col span="12">440103198801017543</van-col>
+						 <van-col span="12">{{info.company_main_info.idcard}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">有效期限:</van-col>
-						 <van-col span="12">2030-01-10</van-col>
+						 <van-col span="12">{{info.company_main_info.validity_period}}</van-col>
 					</van-cell>
 					<van-cell>
 						 <van-col span="10">学历:</van-col>
-						 <van-col span="12">研究生或以上</van-col>
+						 <van-col span="12">{{info.company_main_info.record_of_formal_schooling}}</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">手机号码:</van-col>
-						 <van-col span="12">2030-01-10</van-col>
+						 <van-col span="12">{{info.company_main_info.mobile}}</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">工作单位:</van-col>
-						 <van-col span="12">广州乐乐科技有限公司</van-col>
+						 <van-col span="12">{{info.company_main_info.work}}</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">婚烟情况:</van-col>
-						 <van-col span="12">已婚有子女</van-col>
+						 <van-col span="12">{{info.company_main_info.marriage_status}}</van-col>
 					</van-cell><van-cell>
 						 <van-col span="10">家庭人数:</van-col>
-						 <van-col span="12">3</van-col>
+						 <van-col span="12">{{info.company_main_info.households}}</van-col>
 					</van-cell>
 				</div>
 			 </van-cell-group>
@@ -432,15 +432,16 @@
     return {
 		show3:true,
 		show4:true,
+		info:{},
     }
   },
 
 
   //数据预加载
-  created : ()=>{
-
-
-
+  created(){
+	  	console.log(this.$route.query.info)
+		this.info = this.$route.query.info;
+	
   },
 
   //网页加载完成
@@ -458,7 +459,7 @@
 	  },
 
 	  onClickLeft() {
-		  this.$router.go(-1);
+		  this.$router.go(-2);
 	  },
   },
 

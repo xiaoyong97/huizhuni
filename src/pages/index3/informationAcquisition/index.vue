@@ -25,7 +25,7 @@
                         </van-row>
                         <van-row style="padding: 4px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
-                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.company_info.collect_time}}</p></van-col>
+                            <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.collect_time}}</p></van-col>
                         </van-row>
                         <div style="height: 6px"></div>
                         <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center" @click="go('collectOperation',{info:item})">
@@ -53,7 +53,7 @@
                        </van-row>
                        <van-row style="padding: 4px 12px 0">
                            <van-col class="" span="12"><p class="card_list1_test_left" >采集时间</p></van-col>
-                           <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.company_info.collect_time}}</p></van-col>
+                           <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.collect_time}}</p></van-col>
                        </van-row>
                         <div style="height: 6px"></div>
                         <van-row style="text-align: center;padding: 8px 12px 8PX;border-top: #dddddd 1px solid" type="flex" justify="center">

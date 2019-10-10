@@ -118,7 +118,7 @@
         //声明方法
         methods : {
             onClickLeft() {
-                this.$router.go(-1);
+                this.$router.push({path:'/'});
             },
             go : function(url,params = false){
 				if(params){

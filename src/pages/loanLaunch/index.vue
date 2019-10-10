@@ -120,7 +120,7 @@
 		return;
 	},
 	onClickLeft:function() {
-	  this.$router.go(-1);
+	  this.$router.push('backhome');
 	},
 	checkTask:function(id){
 		localStorage.setItem('id',id);
