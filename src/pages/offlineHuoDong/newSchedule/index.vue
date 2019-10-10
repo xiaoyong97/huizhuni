@@ -22,11 +22,11 @@
             </van-cell>
             <van-cell title="日程开始时间">
               <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="schedule.scheduleStartTime" placeholder="请选择" />
-              <van-icon name="todo-list-o" @click="onSelect" size="24px" color="#1989fa"/>
+              <van-icon name="todo-list-o" @click="onSelect(1)" size="24px" color="#1989fa"/>
             </van-cell>
             <van-cell title="日程结束时间">
-              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="schedule.EndTime" placeholder="请选择" />
-              <van-icon name="todo-list-o"  @click="onSelect"  size="24px" color="#1989fa"/>
+              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="schedule.scheduleEndTime" placeholder="请选择" />
+              <van-icon name="todo-list-o"  @click="onSelect(2)"  size="24px" color="#1989fa"/>
             </van-cell>
             <van-cell title="日程时长">
               <van-field class="inputFieldMesShuan" input-align="right" v-model="schedule.scheduleLength" placeholder="请输入" /><span style="color:black">分钟</span>
@@ -42,9 +42,13 @@
       </div>
     </div>
 
-    <!--时间上拉-->
-    <van-action-sheet v-model="StartTimeIs" @select="onSelect">
-      <van-datetime-picker @confirm="timeQueDing" @cancel="timeQiXiao " v-model="minDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
+    <!--开始时间上拉-->
+    <van-action-sheet v-model="StartTimeIs">
+      <van-datetime-picker @change="changeVal" @confirm="timeQueDing" @cancel="timeQiXiao " v-model="currentDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
+    </van-action-sheet>
+    <!--结束时间上拉-->
+    <van-action-sheet v-model="EndTimeIs">
+      <van-datetime-picker @change="changeValTwo" @confirm="timeQueDingTwo" @cancel="timeQiXiao " v-model="currentDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
     </van-action-sheet>
 
   </div>
@@ -67,7 +71,9 @@ export default {
         minDate: new Date(),
         maxDate: new Date(2099, 10, 1),
         currentDate: new Date(),
+        jieShouTime: '',//暂时接受时间
         StartTimeIs: false,
+        EndTimeIs: false,
        schedule:{//新建日程表
         scheduleName:'',//日称名称
         scheduleSpeaker:'',//主讲人
@@ -103,16 +109,35 @@ export default {
       this.$router.go(-1);
     },
     //打开选择时间
-    onSelect() {
-      this.StartTimeIs = true;
+    onSelect(value) {
+      if(value==1){
+        this.StartTimeIs = true;
+      }else if(value==2){
+        this.EndTimeIs = true;
+      }
     },
-    //时间确定按钮，关闭选择时间
+    changeVal(values){
+      this.jieShouTime=""
+      this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
+    },
+    changeValTwo(values){
+      this.jieShouTime=""
+      this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
+    },
+    //开始时间确定按钮，关闭选择时间
     timeQueDing(){
-       this.StartTimeIs = false;
+      this.schedule.scheduleStartTime=this.jieShouTime
+      this.StartTimeIs = false;
+    },
+    //结束时间确定按钮，关闭选择时间
+    timeQueDingTwo(){
+      this.schedule.scheduleEndTime=this.jieShouTime
+      this.EndTimeIs = false;
     },
     //取消按钮，关闭选择时间
     timeQiXiao(){
       this.StartTimeIs = false;
+      this.EndTimeIs = false;
     },
 
     //确定

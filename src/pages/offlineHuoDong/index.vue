@@ -123,7 +123,7 @@ export default {
   //基础数据存放处
   data (){
      return {
-       title : '我的活动',
+       title : '新建活动',
        guanLiId:this.$route.params.guanLiId,//跳转参数id
        active: 1,
        menu:-1,  //-1:已发布不显示
