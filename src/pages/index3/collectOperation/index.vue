@@ -75,15 +75,15 @@
 					<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
 					<van-field label="性别" placeholder="性别" @click-right-icon="openPicker(7,index)" v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
-					<van-field label="出生日期"placeholder="请输入企业地址" @click-right-icon="openPicker(1,index)" v-model="item.birth" clearable label-width="120" right-icon="arrow-down"/>
-					<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
-					<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
-					<van-field label="有效期限"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(2,index)" v-model="item.validity_period" clearable label-width="120" right-icon="arrow-down" label-color="red"/>
-					<van-field label="学历" placeholder="法定代表人电话" @click-right-icon="openPicker(4,index)" v-model="item.record_of_formal_schooling" clearable label-width="120" right-icon="arrow-down"/>
+					<van-field label="出生日期"placeholder="请选择日期" @click-right-icon="openPicker(1,index)" v-model="item.birth" clearable label-width="120" right-icon="arrow-down"/>
+					<van-field label="住址" placeholder="请输入住址"  v-model="item.address" clearable label-width="120"/>
+					<van-field label="公民身份证号" placeholder="请输入公民身份证号" v-model="item.idcard" clearable label-width="120"/>
+					<van-field label="有效期限"placeholder="请输入有效期限" @click-right-icon="openPicker(2,index)" v-model="item.validity_period" clearable label-width="120" right-icon="arrow-down" label-color="red"/>
+					<van-field label="学历" placeholder="请选择学历" @click-right-icon="openPicker(4,index)" v-model="item.record_of_formal_schooling" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="电话号码"placeholder="请输入电话号码" v-model="item.mobile" clearable label-width="120" label-color="red"/>
 					<van-field label="工作单位"placeholder="请输入工作单位" v-model="item.work" clearable label-width="120" label-color="red"/>
-					<van-field label="婚姻情况" placeholder="法定代表人电话" @click-right-icon="openPicker(5,index)" v-model="item.marriage_status" clearable label-width="120" right-icon="arrow-down"/>
-					<van-field label="家庭人数"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(6,index)" v-model="item.households" clearable label-width="120" label-color="red" right-icon="arrow-down"/>
+					<van-field label="婚姻情况" placeholder="请选择婚姻情况" @click-right-icon="openPicker(5,index)" v-model="item.marriage_status" clearable label-width="120" right-icon="arrow-down"/>
+					<van-field label="家庭人数"placeholder="请输入家庭人数" @click-right-icon="openPicker(6,index)" v-model="item.households" clearable label-width="120" label-color="red" right-icon="arrow-down"/>
 				</van-cell-group>
 			</div>
 
@@ -192,7 +192,7 @@
 		</div>
 
 		<div class="btn_group" v-show='step!=5'>
-			<p v-show="step>1" class="add_asso" @click="add_item"><span class="add">&nbsp;+&nbsp;</span>添加关联人</p>
+			<p v-show="step>1" class="add_asso" @click="add_item"><span class="add">&nbsp;+&nbsp;</span>{{add_item_title}}</p>
 			<div class="save_button" @click="save">保存并退出</div>
 			<div class="next_button" @click="addStep">{{next}}</div>
 		</div>
@@ -225,7 +225,7 @@
 						</van-cell>
 					</div>
 				</van-cell-group>
-				<div class="jyButton" @click="go('creditCollectionInfo')">征信校验</div>
+				<div class="jyButton" @click="go('creditCheck')">征信校验</div>
 			</div>
 		</div>
     </div>
@@ -238,13 +238,13 @@
 			<van-datetime-picker v-show="time_Picker_Statue==1" class="picker"
 								 v-model="currentDate1"
 								 type="date"
-								 :min-date="minDate"
+							
 								 @confirm="confirmBtn" @cancel="onCancel()"
 			/>
 			<van-datetime-picker v-show="time_Picker_Statue==2" class="picker"
 								 v-model="currentDate2"
 								 type="date"
-								 :min-date="minDate"
+								
 								 @confirm="confirmBtn" @cancel="onCancel()"
 			/>
 		</div>
@@ -262,6 +262,7 @@
   data() {
     return {
 		next:'下一步',
+		add_item_title:'添加关联人',
 		areaList:areaList,
 		zidingyi:3,//3性别4学历5婚姻6家庭人数
 		currentDate1: new Date(),//1:开始日期  2 结束日期
@@ -270,7 +271,7 @@
 		timeValue2: '',
 		time_Picker_Statue:0, //0：不显示 1：显示开始日期控件 2：显示结束日期控件  3：自定义控件：默认性别
 		columns:['男', '女'],//默认自定义picker数据
-
+		
       title : [
 		'信息采集-企业信息',
 		'信息采集-企业主信息',
@@ -394,7 +395,13 @@
   },
 
   //数据预加载
-  created : ()=>{
+  created(){
+	  var info  = this.$route.params.info;
+	   
+	  if(info){
+		  this.info = info;
+		 
+	  }
   },
 
   //网页加载完成
@@ -572,22 +579,28 @@
 		  this.$refs.item.toggle();
 	  },
 	addStep:function(){
-		if(this.step == 3 ){
-			this.next = '确认提交';
-		} else {
-			this.next = '下一步';
-		}
+		
 		if(this.step == 4 ){
 			var jsonStr = sessionStorage.getItem('userinfo');
 			var infos = [];
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				infos = JSON.parse(jsonStr);
 			}
-			
-			this.info.unid = Date.parse(new Date());
 			this.info.collect_time = (new Date()).toLocaleDateString()
 			this.info.step = 1;
-			infos.push(this.info);
+			//判断是编辑还是新增
+		
+			if(this.info.unid){
+				for(var i=0;i<infos.length;i++){
+					if(infos[i].unid == this.info.unid){
+							
+						infos[i] = this.info;
+					}
+				}
+			}else{
+				this.info.unid = Date.parse(new Date());
+				infos.push(this.info);
+			}
 			sessionStorage.setItem('userinfo',JSON.stringify(infos))
 		}
 		if(this.step == 5 ){
@@ -668,15 +681,39 @@
 	    this.$refs.checkboxes[index].toggle();
 	},
 	save:function(){
+		var jsonStr = sessionStorage.getItem('userinfo');
+		var infos = [];
+		if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
+			infos = JSON.parse(jsonStr);
+		}
+		if(this.info.unid){
+			for(var i=0;i<infos.length;i++){
+				if(infos[i].unid == this.info.unid){
+						
+					infos[i] = this.info;
+				}
+			}
+		}else{
+			this.info.unid = Date.parse(new Date());
+			this.info.collect_time = (new Date()).toLocaleDateString()
+			this.info.step = 0;
+			infos.push(this.info);
+		}
+		
+		sessionStorage.setItem('userinfo',JSON.stringify(infos))
+		
 		this.$router.go(-1);
 	},
 	go : function(url){
 	  this.$router.push({name: url})
 	},
   },
-
-  //计算属性
-  computed: {
+  watch: {
+	 step: function (val, oldVal) {
+	  this.next = val!=4?'下一步':'确认提交';
+	  
+	  this.add_item_title = val==2?'添加关联人':val==3?'添加抵押物':'添加抵押人';
+	 }, 
   },
 
   //引入组件

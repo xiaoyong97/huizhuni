@@ -222,19 +222,19 @@
 				if(arr == null || arr == undefined){
 					arr = [
 						{name:"信息采集",icon:require('../../assets/images/84/InformationCollection@2x.png'),url:'index3/informationAcquisition',isChecked:true},
-						{name:"贷款发起",icon:require('../../assets/images/84/Loaninitiation1@2x.png'),url:'index3/infoDetail',isChecked:true},
 						{name:"征信校验",icon:require('../../assets/images/84/Creditcheck1@2x.png'),url:'index3/creditCheck',isChecked:true},
+						{name:"贷款发起",icon:require('../../assets/images/84/Loaninitiation1@2x.png'),url:'loanLaunch',isChecked:true},
 						{name:"申贷查询",icon:require('../../assets/images/84/Creditinquiry@2x.png'),url:'index3/applyQuery',isChecked:true},
-						{name:"贷后跟踪",icon:require('../../assets/images/84/Post-loantracking@2x.png'),url:'index',isChecked:false},
+						{name:"贷后跟踪",icon:require('../../assets/images/84/Post-loantracking@2x.png'),url:'loanTracking',isChecked:false},
 						{name:"合同签订",icon:require('../../assets/images/84/signacontract@2x.png'),url:'contractSign',isChecked:true},
 						{name:"抵押登记",icon:require('../../assets/images/84/Mortgageregistration@2x.png'),url:'index3/mortgageRegistration',isChecked:true},
-						{name:"融智赋能",icon:require('../../assets/images/84/off-lineactivity@2x.png'),url:'offlineHuoDong',isChecked:true},
-						{name:"业绩展示",icon:require('../../assets/images/84/resultsshow@2x.png'),url:'index',isChecked:false},
-						{name:"客户抢单",icon:require('../../assets/images/84/Custmerrobsingle.png'),url:'index',isChecked:false},
+						{name:"融智赋能",icon:require('../../assets/images/84/off-lineactivity@2x.png'),url:'offlineHuoDong',isChecked:false},
+						{name:"业绩展示",icon:require('../../assets/images/84/resultsshow@2x.png'),url:'myperformance',isChecked:false},
+						{name:"客户抢单",icon:require('../../assets/images/84/Custmerrobsingle.png'),url:'index2',isChecked:false},
 						{name:"咕咕管理",icon:require('../../assets/images/84/gugu@2x.png'),url:'gugu',isChecked:true},
-						{name:"贷款催收",icon:require('../../assets/images/84/daikuancuishou.png'),url:'index',isChecked:false},
-						{name:"商机管理",icon:require('../../assets/images/84/shangjiguanli.png'),url:'index',isChecked:false},
-						{name:"贷款管理",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index',isChecked:false},
+						{name:"贷款催收",icon:require('../../assets/images/84/daikuancuishou.png'),url:'index3',isChecked:false},
+						{name:"商机管理",icon:require('../../assets/images/84/shangjiguanli.png'),url:'index2',isChecked:false},
+						{name:"贷款管理",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index3',isChecked:false},
 					]
 					localStorage.setItem('home_menu',JSON.stringify(arr));
 				}

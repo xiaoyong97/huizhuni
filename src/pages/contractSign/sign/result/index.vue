@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <van-nav-bar title="合同签订" :border="false" @click-right="go('contractSign')">
+        <van-nav-bar title="合同签订" :border="false" @click-right="finish">
             <span class="nav-right-text" slot="right">完成</span>
         </van-nav-bar>
 
@@ -19,7 +19,7 @@
             <div class="cell">
                 <van-row>
                     <van-col><img class="img" src="../../../../assets/images/38/Sequencenumber@2.png" alt="" /></van-col>
-                    <van-col class="title right-text">申请顺序号{{info.applicationSequenceNumber}}</van-col>
+                    <van-col class="title right-text">申请顺序号{{info.unid}}</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="6" class="left-text">申请时间：</van-col>
@@ -27,19 +27,19 @@
                 </van-row>
                 <van-row>
                     <van-col span="6" class="left-text">产品代码：</van-col>
-                    <van-col class="right-text">{{info.productCode}}</van-col>
+                    <van-col class="right-text">{{info.company_info.unified_social_credit_code}}</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="6" class="left-text">企业名称：</van-col>
-                    <van-col class="right-text">{{info.companyName}}</van-col>
+                    <van-col class="right-text">{{info.company_info.company_name}}</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="6" class="left-text">企业主姓名：</van-col>
-                    <van-col class="right-text">{{info.owner}}</van-col>
+                    <van-col class="right-text">{{info.company_info.legal_representative}}</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="6" class="left-text">ID：</van-col>
-                    <van-col class="right-text">{{info.id}}</van-col>
+                    <van-col class="right-text">{{info.unid}}</van-col>
                 </van-row>
             </div>
         </div>
@@ -58,9 +58,34 @@ export default {
             info: {}
         }
     },
+	methods:{
+		finish:function() {
+			var infos =  sessionStorage.getItem('userinfo')
+			
+			if(null != infos && undefined != infos && '' != infos){
+				infos = JSON.parse(infos)
+				
+				for(var i=0;i<infos.length;i++){
+					if(infos[i].unid == this.info.unid){	
+						//贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+						infos[i].step = 4;
+						infos[i].signDate = this.info.signDate;
+						sessionStorage.setItem('userinfo',JSON.stringify(infos))
+						break;
+					}
+				}
+			}
+			
+			this.go('contractSign')
+		},
+		
+	},
     created() {
         this.info = this.getItem('signInfo');
-        this.info.signDate = '2019-07-01'
+		
+		var d=new Date(this.info.unid); 
+		this.info.signDate = d.getFullYear()+"-"+d.getMonth()+1+"-"+d.getDate(); 
+		console.log(this.info)
     }
 }
 </script>

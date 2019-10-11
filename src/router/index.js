@@ -216,6 +216,14 @@ export default new Router({
         title: '新建日程表页'
         },
       },
+      {
+        name: 'submitSuccessfully',
+        path: '/offlineHuoDong/submitSuccessfully',
+        component: () => import('@/pages/offlineHuoDong/submitSuccessfully'),
+        meta: {
+        title: '提交成功页'
+        },
+      },
 
 
  //咕咕管理

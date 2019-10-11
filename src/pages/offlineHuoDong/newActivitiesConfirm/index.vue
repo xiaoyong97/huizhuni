@@ -14,13 +14,13 @@
         <div class="huoDongMes">
           <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">活动信息</div></div>
           <div  class="biaoQianLie" gutter="10">
-            <van-cell title="活动时长" class="" :value="confirmActivitiesMes.timeLength"/>
-            <van-cell title="签到时间" :value="confirmActivitiesMes.registerTime"/>
-            <van-cell title="活动地点" :value="confirmActivitiesMes.Location"/>
-            <van-cell title="培训对象" :value="confirmActivitiesMes.huoObject"/>
-            <van-cell title="主办机构" :value="confirmActivitiesMes.organization"/>
-            <van-cell title="经办人" :value="confirmActivitiesMes.sponsor"/>
-            <van-cell title="审核人" :value="confirmActivitiesMes.auditor"/>
+            <van-cell title="活动时长" value-class="cellRightMes" :value="confirmActivitiesMes.timeLength"/>
+            <van-cell title="签到时间" value-class="cellRightMes" :value="confirmActivitiesMes.registerTime"/>
+            <van-cell title="活动地点" value-class="cellRightMes" :value="confirmActivitiesMes.Location"/>
+            <van-cell title="培训对象" value-class="cellRightMes" :value="confirmActivitiesMes.huoObject"/>
+            <van-cell title="主办机构" value-class="cellRightMes" :value="confirmActivitiesMes.organization"/>
+            <van-cell title="经办人" value-class="cellRightMes" :value="confirmActivitiesMes.sponsor"/>
+            <van-cell title="审核人" value-class="cellRightMes" :value="confirmActivitiesMes.auditor"/>
           </div>
         </div>
 
@@ -49,7 +49,7 @@
             <van-cell title="是否需要送站" value="是"/>
           </div>
         </div>
-        <div class="botButDiv"><van-button class="botQianDanBut" round type="info" v-if="true" @click="xiangQingQianDan">确定</van-button></div>
+        <div class="botButDiv"><van-button class="botQianDanBut" round type="info" v-if="true" @click="ChengQueDing">确定</van-button></div>
 
       </div>
     </div>
@@ -199,8 +199,9 @@ export default {
     },
     
 
-    //下一步
-    xiangQingQianDan(){
+    //确定
+    ChengQueDing(){
+      this.$router.push('/offlineHuoDong/submitSuccessfully');
     }
 
 
@@ -260,6 +261,12 @@ export default {
     height:auto;
     padding-right: 15px;
     margin-bottom:20px;
+  }
+  .cellRightMes{
+    height:26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
   }
   .secend_box{
       background-color: #FFFFFF;

@@ -20,18 +20,18 @@
             </van-cell>
             <van-cell title="活动开始时间">
               <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="NewActivitiesMes.StartTime" placeholder="请选择" />
-              <van-icon name="todo-list-o" @click="onSelect" size="24px" color="#1989fa"/>
+              <van-icon name="todo-list-o" @click="onSelect(1)" size="24px" color="#1989fa"/>
             </van-cell>
             <van-cell title="活动结束时间">
               <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="NewActivitiesMes.EndTime" placeholder="请选择" />
-              <van-icon name="todo-list-o" size="24px" color="#1989fa"/>
+              <van-icon name="todo-list-o" @click="onSelect(2)" size="24px" color="#1989fa"/>
             </van-cell>
             <van-cell title="活动时长">
               <van-field class="inputFieldMesShuan" input-align="right" v-model="NewActivitiesMes.timeLength" placeholder="请输入" /><span style="color:black">天</span>
             </van-cell>
-            <van-cell title="报道时间">
-              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="NewActivitiesMes.EndTime" placeholder="请选择" />
-              <van-icon name="todo-list-o" size="24px" color="#1989fa"/>
+            <van-cell title="报到时间">
+              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="NewActivitiesMes.registerTime" placeholder="请选择" />
+              <van-icon name="todo-list-o" @click="onSelect(3)" size="24px" color="#1989fa"/>
             </van-cell>
             <van-cell title="活动地点">
               <van-field class="inputFieldMes" input-align="right" v-model="NewActivitiesMes.Location" placeholder="请输入" />
@@ -55,14 +55,29 @@
         </div>
 
         <div class="huoDongMes">
-          <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">日程表信息</div></div>
+          <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">日程表信息</div>
+            <div class="tianJiaBut" v-show="!riChengQueDing">添加</div>
+          </div>
           <van-row  class="biaoQianLie" gutter="10">
-            <van-grid>
-              <van-grid-item @click="newScheduleBut" style="margin:auto;border:padding-bottom:0px">
+            <van-grid   v-show="riChengQueDing">
+              <van-grid-item @click="newScheduleBut">
                 <img src="../../../assets/images/84/custom.png">
 							  <p>新建日程表</p>
               </van-grid-item>
             </van-grid>
+
+            <div class="secend_box"  v-show="!riChengQueDing">
+                <van-row class="list_row" style="border-bottom:1px solid #333333;font-weight: bold;">
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min_head" >日期名称</p></van-col>
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min_head" >主讲人</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min_head" >日程日期</p></van-col>
+                </van-row>
+                <van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10/12 9:30-10/12 11:20</p></van-col>
+                </van-row>
+            </div>
           </van-row>
         </div>
 
@@ -83,9 +98,17 @@
       </div>
     </div>
 
-    <!--时间上拉-->
-    <van-action-sheet v-model="StartTimeIs" @select="onSelect">
-      <van-datetime-picker @confirm="timeQueDing" @cancel="timeQiXiao " v-model="minDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
+    <!--开始时间上拉-->
+    <van-action-sheet v-model="StartTimeIs">
+      <van-datetime-picker @change="changeVal" @confirm="timeQueDing" @cancel="timeQiXiao " v-model="currentDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
+    </van-action-sheet>
+    <!--结束时间上拉-->
+    <van-action-sheet v-model="EndTimeIS">
+      <van-datetime-picker @change="changeValTwo" @confirm="timeQueDingTwo" @cancel="timeQiXiao " v-model="currentDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
+    </van-action-sheet>
+    <!--报到时间上拉-->
+    <van-action-sheet v-model="registerTimeIS">
+      <van-datetime-picker @change="changeValThree" @confirm="timeQueDingThree" @cancel="timeQiXiao " v-model="currentDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
     </van-action-sheet>
     <!--主办机构上拉-->
     <van-action-sheet v-model="organizationIs" :actions="organizations" @select="xuanZhongOrganization"/>
@@ -115,28 +138,26 @@ export default {
         maxDate: new Date(2099, 10, 1),
         currentDate: new Date(),
         StartTimeIs: false,
+        EndTimeIS: false,
+        registerTimeIS: false,
         organizationIs: false,
         sponsorIS: false,
         auditorIS: false,
+        riChengQueDing:true,
         shangRight:'arrow',
+        jieShouTime: '',//暂时接受时间
        checkboxListS:[
          {id:1,name:"是否需要接站"},
          {id:2,name:"是否需要送站"}
        ],
        organizations: [
         { id: 1,name: '建行机构分行营业部' },
-        { id: 2,name: '建行机构分行技术部' },
-        { id: 3,name: '建行机构分行销售部' }
        ],
        sponsors: [
         { id: 1,name: '杨峰' },
-        { id: 2,name: '杨峰2' },
-        { id: 3,name: '杨峰3' }
        ],
        auditors: [
         { id: 1,name: '陈雪梅' },
-        { id: 2,name: '陈雪梅2' },
-        { id: 3,name: '陈雪梅3' }
        ],
        NewActivitiesMes:{
          theme: '',//活动主题
@@ -189,16 +210,47 @@ export default {
 
     },
     //打开选择时间
-    onSelect() {
-      this.StartTimeIs = true;
+    onSelect(value) {
+      if(value==1){
+        this.StartTimeIs = true;
+      }else if(value==2){
+        this.EndTimeIS = true;
+      }else if(value==3){
+        this.registerTimeIS = true;
+      }
     },
-    //时间确定按钮，关闭选择时间
+    changeVal(values){
+      this.jieShouTime=""
+      this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
+    },
+    changeValTwo(values){
+      this.jieShouTime=""
+      this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
+    },
+    changeValThree(values){
+      this.jieShouTime=""
+      this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
+    },
+    //开始时间确定按钮，关闭选择时间
     timeQueDing(){
+       this.NewActivitiesMes.StartTime=this.jieShouTime
        this.StartTimeIs = false;
+    },
+    //结束时间确定按钮，关闭选择时间
+    timeQueDingTwo(){
+       this.NewActivitiesMes.EndTime=this.jieShouTime
+       this.EndTimeIS = false;
+    },
+    //报到时间确定按钮，关闭选择时间
+    timeQueDingThree(){
+       this.NewActivitiesMes.registerTime=this.jieShouTime
+       this.registerTimeIS = false;
     },
     //取消按钮，关闭选择时间
     timeQiXiao(){
       this.StartTimeIs = false;
+       this.EndTimeIS = false;
+       this.EndTimeIS = false;
     },
     //打开右向图标上拉
     openOrganization(value){
@@ -256,7 +308,6 @@ export default {
     width: 100%;
     min-height: 570px;
     height: 100%;
-    overflow: auto;
     margin: 0px;
     padding-top: 1px;
     padding-bottom: 48px;
@@ -273,7 +324,7 @@ export default {
     background-color: white;
   }
   .logoHang{
-    width:60%;
+    width:100%;
     height: 30px;
     line-height: 30px;
   }
@@ -285,14 +336,30 @@ export default {
     background-color: rgb(76,98,232);
   }
   .logoHang .logoRight{
+    float: left;
     font-weight: bold;
     margin-left: 25px;
     padding-top: 3px;
+  }
+  .logoHang .tianJiaBut{
+    float:right;
+    width: 70px;
+    padding-top: 3px;
+    font-weight: bold;
+    color:rgb(76,98,232);
   }
   .biaoQianLie {
     height:auto;
     padding-right: 15px;
     margin-bottom:20px;
+  }
+  .secend_box{
+      background-color: #FFFFFF;
+      position: relative;
+      top:-10px;
+      width: 100%;
+      height: 136px;
+      margin-top: 9px;
   }
   
   .botButDiv{
@@ -309,7 +376,7 @@ export default {
     float:left;
     width:100%;
     height: 26px;
-    line-height: 24px;
+    line-height: 26px;
     padding-top:0px;
     padding-bottom:0px;
     padding-right:0px;
@@ -319,7 +386,7 @@ export default {
     float:left;
     width:83%;
     height: 26px;
-    line-height: 24px;
+    line-height: 26px;
     padding-top:0px;
     padding-bottom:0px;
     padding-right:0px;
