@@ -1,6 +1,7 @@
 <template>
    <van-nav-bar
     :title="title"
+    z-index="999"
     left-text="返回"
     left-arrow
     @click-left="onClickLeft"

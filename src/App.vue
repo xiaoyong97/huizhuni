@@ -39,4 +39,7 @@ body {
 .content{
   padding-top:46px;
 }
+.van-nav-bar--fixed{
+  z-index: 999 !important;
+}
 </style>
