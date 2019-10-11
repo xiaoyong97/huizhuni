@@ -108,7 +108,7 @@
                       <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location location2" ></van-col>
                       <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看名单</p></van-col>
                   </van-col>
-                  <van-col class="" span="12" @click="goPage('uploadImage')">
+                  <van-col class="" span="12" @click="goPage('xinZhenguploadImage')">
                       <van-col class="" span="2"><img src="../../assets/images/38/Upload@2x.png" class="img_location location2" ></van-col>
                       <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >上传照片</p></van-col>
                   </van-col>
@@ -281,7 +281,7 @@
                 </van-col>
                 <van-col class="" span="12" @click="openOverlay">
                     <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location location2" ></van-col>
-                    <van-col class="" span="22"><p class="card_list2_test" >报名/签到</p></van-col>
+                    <van-col class="" span="22"><p class="card_list2_test" @click="baoMingQianDao">报名/签到</p></van-col>
                 </van-col>
               </van-row>
             </div>
@@ -337,7 +337,7 @@
                       <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location location2" ></van-col>
                       <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >查看名单</p></van-col>
                   </van-col>
-                  <van-col class="" span="12" @click="goPage('uploadImage')">
+                  <van-col class="" span="12" @click="goPage('xinZhenguploadImage')">
                       <van-col class="" span="2"><img src="../../assets/images/38/Upload@2x.png" class="img_location location2" ></van-col>
                       <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >上传照片</p></van-col>
                   </van-col>
@@ -361,7 +361,7 @@
                 </van-col>
             </van-row>
             <!--待审核-->
-            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityDetailsIng',{status_:1})">
+            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityParticulars',{status_:1})">
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
@@ -553,7 +553,25 @@
             </van-row>
         </div>
     </div>
-
+    
+    <!--二维码弹出框-->
+     <van-popup v-model="erWeiMaIs" position="bottom" :style="{ height: '60%' }">
+        <van-nav-bar id="erWeiMa" title='报名二维码'  @click-right="guanBiErWeiMa">
+            <van-icon name="cross" slot="right"  size="24px" />
+        </van-nav-bar>
+        <van-row>
+            <van-col span="5"></van-col>
+            <van-col span="8">
+              <div class="mesZhong">
+                <img class="duiImg" src="../../assets/images/1570783923er.png"/></br>
+                <div style="margin-left:10px;font-size:13px;">报名参加建行每周沙龙会</div>
+              </div>
+            </van-col>
+          </van-row>
+     </van-popup>
+    <!--报名签到上拉-->
+    <van-action-sheet id="baoMingId" title="报名/签到" v-model="baoQianIS" :actions="auditors" @select="xuanZhongAditor"/>
+   
   </div>
 </template>
 
@@ -585,6 +603,13 @@ export default {
        tab3Title:"已拒绝",
        countcc:3,
        countDsh:4,
+       baoQianIS:false,
+       erWeiMaIs:false,
+       tuPianIs: false,
+       auditors: [
+        { id: 1,name: '报名二维码' },
+        { id: 2,name: '每周沙龙会' },
+       ],
      }
   },
 
@@ -610,6 +635,23 @@ export default {
     },
     goPage (url,param){
         this.$router.push({name:url,params:param});
+    },
+    //报名签到
+    baoMingQianDao(){
+       this.baoQianIS=true;
+    },
+    //报名签到选中项
+    xuanZhongAditor(item){
+        if(item.id==1){
+            //打开二维码
+            this.erWeiMaIs =true;
+        }else if(item.id==2){
+            this.erWeiMaIs =true;
+        }
+    },
+    //关闭二维码
+    guanBiErWeiMa(){
+        this.erWeiMaIs =false;
     },
     openOverlay : function(){
         this.show = true;
@@ -730,7 +772,17 @@ export default {
   }
 }
 </script>
-
+<style>
+    #erWeiMa .van-nav-bar__title{
+        font-weight: bold;
+    }
+    #baoMingId .van-action-sheet__header{
+        font-weight: bold;
+    }
+    #baoMingId .van-action-sheet__name{
+        color:#4c62e8;
+    }
+</style>
 <style lang="scss" scoped>
   //
   .card_div{
@@ -927,5 +979,17 @@ export default {
       font-size: 16px;
       margin-block-start:0;
       margin-block-end:0;
+  }
+  //二维码
+  .mesZhong{
+    width:250px;
+    height:250px;
+  }
+  .duiImg{
+    width:200px;
+    height:200px;
+    margin-top:40px;;
+    font-size: 12px;
+    margin-left:10px;;
   }
 </style>

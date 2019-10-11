@@ -209,11 +209,27 @@ export default new Router({
         },
       },
       {
+        name: 'activityParticulars',
+        path: '/offlineHuoDong/activityParticulars',
+        component: () => import('@/pages/offlineHuoDong/activityParticulars'),
+        meta: {
+        title: '活动详情页'
+        },
+      },
+      {
         name: 'submitSuccessfully',
         path: '/offlineHuoDong/submitSuccessfully',
         component: () => import('@/pages/offlineHuoDong/submitSuccessfully'),
         meta: {
         title: '提交成功页'
+        },
+      },
+      {
+        name: 'xinZhenguploadImage',
+        path: '/offlineHuoDong/xinZhenguploadImage',
+        component: () => import('@/pages/offlineHuoDong/xinZhenguploadImage'),
+        meta: {
+        title: '上传图片页'
         },
       },
 
