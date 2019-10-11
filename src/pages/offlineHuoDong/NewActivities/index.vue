@@ -174,6 +174,7 @@
 import TabBar from '@/components/tabBar';
 import { Divider } from 'vant';
 import { Checkbox, CheckboxGroup } from 'vant';
+import { Dialog } from 'vant';
 export default {
 
   //基础数据存放处
@@ -272,8 +273,14 @@ export default {
       this.scheduleIs=false
       this.riChengQueDing=false
     },
+    //保存草稿
     onClickRight(){
-
+      Dialog.alert({
+        title: '',
+        message: '保存成功'
+      }).then(() => {
+        this.$router.push('/offlineHuoDong');
+      });
     },
     //打开选择时间
     onSelect(value) {
