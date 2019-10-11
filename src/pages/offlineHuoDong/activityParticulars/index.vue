@@ -30,7 +30,7 @@
         </div>
 
         <div class="huoDongMes">
-          <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">日程表信息</div></div>
+          <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight" @click="riChengXinXi">日程表信息</div></div>
           <van-row  class="biaoQianLie" gutter="10">
             <div class="secend_box">
                 <van-row class="list_row" style="border-bottom:1px solid #333333;font-weight: bold;">
@@ -38,10 +38,10 @@
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min_head" >主讲人</p></van-col>
                     <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min_head" >日程日期</p></van-col>
                 </van-row>
-                <van-row @click="riChengXinXi" class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
+                <van-row  class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
-                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10/12 9:30-10/12 11:30</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10.12 9:30-10.12 11:30</p></van-col>
                 </van-row>
             </div>
           </van-row>
@@ -66,7 +66,7 @@
 
 
     <!--弹出日程信息框-->
-    <van-dialog v-model="riChengDialog" title="活动日程">
+    <van-dialog id="riCard" v-model="riChengDialog" title="活动日程">
       <div style="margin:20px 0px;">
         <van-row>
           <van-col span="8" class="riChengMesRight">日程名称：</van-col>
@@ -282,7 +282,11 @@ export default {
   }
 }
 </script>
-
+<style>
+  #riCard .van-dialog__header{
+    font-weight: bold;
+  }
+</style>
 <style lang="scss" scoped>
   //
   .xiangQingBac{
