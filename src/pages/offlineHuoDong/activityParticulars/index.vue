@@ -41,7 +41,7 @@
                 <van-row  class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
-                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10/12 9:30-10/12 11:30</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10.12 9:30-10.12 11:30</p></van-col>
                 </van-row>
             </div>
           </van-row>
