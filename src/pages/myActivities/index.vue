@@ -79,7 +79,7 @@
              </van-row>
          </div>
          <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" v-show="type!==2" @click="open_fliter">
-         <img src="../../assets/images/48/create@2x.png" class="img_search" v-show="type!==2" @click="goPage('NewActivities')">
+<!--         <img src="../../assets/images/48/create@2x.png" class="img_search" v-show="type!==2" @click="goPage('NewActivities')">-->
          <span class="top_tight_text" v-show="type==2">查看附件</span>
          <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
          <!--         下拉菜单-->
@@ -1199,7 +1199,7 @@
     .img_fliter{
         position: absolute;
         top: 14px;
-        right:40px ;
+        right:12px ;
         height: 18px;
         width: 18px;
         z-index: 100;
