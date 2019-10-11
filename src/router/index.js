@@ -209,14 +209,6 @@ export default new Router({
         },
       },
       {
-        name: 'newSchedule',
-        path: '/offlineHuoDong/newSchedule',
-        component: () => import('@/pages/offlineHuoDong/newSchedule'),
-        meta: {
-        title: '新建日程表页'
-        },
-      },
-      {
         name: 'submitSuccessfully',
         path: '/offlineHuoDong/submitSuccessfully',
         component: () => import('@/pages/offlineHuoDong/submitSuccessfully'),
