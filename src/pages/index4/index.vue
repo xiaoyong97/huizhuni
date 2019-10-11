@@ -84,11 +84,11 @@
       <div class="coordinate" v-for="(item, index) in coordinateList1" :style="item.style" @click="showTips(index)">
         <img :src="item.img" alt="">
         <div  @click="cllFunc" class="popup-box" v-show="item.show" :style="item.style">
-          <template v-if="item.type == 2">
+          <div v-if="item.type == 2" @click="go('customerInfo')">
             <div>厦门象屿股份有限公司</div>
             <div>客户需求：强</div>
             <div>客户分层：优质</div>
-          </template>
+          </div>
           <template v-if="item.type == 1">
             <div class="bank">
               <img class="bank-img" :src="bankImg" alt="">
