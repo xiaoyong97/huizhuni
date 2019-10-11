@@ -501,7 +501,7 @@
     </div>
          <!--         待审核下拉菜单-->
     <div class='menu_popContainerTwo'  v-show="toAudit!==-1">
-        <div  class="menu1_choose_boxTwo" v-show="toAudit==1&&manu==1">
+        <div  class="menu1_choose_boxTwo" v-show="toAudit==1&&type==1">
             <van-row class="choose_box_listTwo" @click="menu2Choose(0)">
                 <p class="menu1_choose_box_textTwo " :class="menu2_choose == 0 ? 'blue' : '' ">待审核</p>
             </van-row>
@@ -518,7 +518,7 @@
                 <p class="menu1_choose_box_textTwo " :class="menu2_choose == 4 ? 'blue' : '' ">名单补录</p>
             </van-row>
         </div>
-        <div  class="menu1_choose_boxTwo"  style="left:65%;" v-show="toAudit==1">
+        <div  class="menu1_choose_boxTwo"  style="left:65%;" v-show="type==0">
             <van-row class="choose_box_listTwo" @click="menu2Choose(0)">
                 <p class="menu1_choose_box_textTwo " :class="menu2_choose == 0 ? 'blue' : '' ">待审核</p>
             </van-row>
