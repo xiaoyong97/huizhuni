@@ -56,7 +56,7 @@
 
         <div class="huoDongMes">
           <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">日程表信息</div>
-            <div class="tianJiaBut" v-show="!riChengQueDing">添加</div>
+            <div class="tianJiaBut" v-show="!riChengQueDing" @click="newScheduleBut">添加</div>
           </div>
           <van-row  class="biaoQianLie" gutter="10">
             <van-grid   v-show="riChengQueDing">
@@ -98,6 +98,44 @@
       </div>
     </div>
 
+    <!-- 日程表信息上拉 -->
+    <van-popup v-model="scheduleIs" position="bottom" :style="{ height: '100%' }">
+      
+      <div class="content">
+        <van-nav-bar :title='title' style="font-weight: bold" @click-right="onClickRightRi" fixed>
+          <van-icon name="cross" slot="right"  size="24px"  />
+        </van-nav-bar>
+      </div>
+      <div class="xiangQingBac" >
+        <div class="huoDongMes">
+          <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">活动信息</div></div>
+          <div  class="biaoQianLie" gutter="10">
+            <van-cell title="日程名称">
+              <van-field class="inputFieldMes" input-align="right" v-model="NewActivitiesMes.schedule.scheduleName" placeholder="请输入" />
+            </van-cell>
+            <van-cell title="主讲人">
+              <van-field class="inputFieldMes" input-align="right" v-model="NewActivitiesMes.schedule.scheduleSpeaker" placeholder="请输入" />
+            </van-cell>
+            <van-cell title="日程开始时间">
+              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="NewActivitiesMes.schedule.scheduleStartTime" placeholder="请选择" />
+              <van-icon name="todo-list-o" @click="onSelect(4)" size="24px" color="#1989fa"/>
+            </van-cell>
+            <van-cell title="日程结束时间">
+              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="NewActivitiesMes.schedule.scheduleEndTime" placeholder="请选择" />
+              <van-icon name="todo-list-o"  @click="onSelect(5)"  size="24px" color="#1989fa"/>
+            </van-cell>
+            <van-cell title="日程时长">
+              <van-field class="inputFieldMesShuan" input-align="right" v-model="NewActivitiesMes.schedule.scheduleLength" placeholder="请输入" /><span style="color:black">分钟</span>
+            </van-cell>
+            <van-cell title="日程地点">
+              <van-field class="inputFieldMes" input-align="right" v-model="NewActivitiesMes.schedule.scheduleLocation" placeholder="请输入" />
+            </van-cell>
+          </div>
+        </div>
+        <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="riQueDing">确定</van-button></div>
+
+      </div>
+    </van-popup >
     <!--开始时间上拉-->
     <van-action-sheet v-model="StartTimeIs">
       <van-datetime-picker @change="changeVal" @confirm="timeQueDing" @cancel="timeQiXiao " v-model="currentDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
@@ -116,6 +154,16 @@
     <van-action-sheet v-model="sponsorIS" :actions="sponsors" @select="xuanZhongSponsor"/>
     <!--审核人上拉-->
     <van-action-sheet v-model="auditorIS" :actions="auditors" @select="xuanZhongAditor"/>
+    <!--日程开始时间上拉-->
+    <van-action-sheet v-model="RiStartTimeIs">
+      <van-datetime-picker @change="changeValFour" @confirm="timeQueDinFOur" @cancel="timeQiXiao " v-model="currentDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
+    </van-action-sheet>
+    <!--日程结束时间上拉-->
+    <van-action-sheet v-model="RiEndTimeIs">
+      <van-datetime-picker @change="changeValFive" @confirm="timeQueDingFive" @cancel="timeQiXiao " v-model="currentDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
+    </van-action-sheet>
+
+
 
   </div>
   
@@ -126,6 +174,7 @@
 import TabBar from '@/components/tabBar';
 import { Divider } from 'vant';
 import { Checkbox, CheckboxGroup } from 'vant';
+import { Dialog } from 'vant';
 export default {
 
   //基础数据存放处
@@ -137,6 +186,7 @@ export default {
         minDate: new Date(),
         maxDate: new Date(2099, 10, 1),
         currentDate: new Date(),
+        scheduleIs: false,
         StartTimeIs: false,
         EndTimeIS: false,
         registerTimeIS: false,
@@ -144,6 +194,8 @@ export default {
         sponsorIS: false,
         auditorIS: false,
         riChengQueDing:true,
+        RiStartTimeIs:false,
+        RiEndTimeIs:false,
         shangRight:'arrow',
         jieShouTime: '',//暂时接受时间
        checkboxListS:[
@@ -206,8 +258,29 @@ export default {
     onClickLeft() {
       this.$router.go(-1);
     },
+    
+    //新建日程表
+    newScheduleBut(){
+      //this.$router.push('/offlineHuoDong/newSchedule');
+      this.scheduleIs=true;
+    },
+    //关闭日程表
+    onClickRightRi(){
+      this.scheduleIs=false
+    },
+    //日程表确定按钮
+    riQueDing(){
+      this.scheduleIs=false
+      this.riChengQueDing=false
+    },
+    //保存草稿
     onClickRight(){
-
+      Dialog.alert({
+        title: '',
+        message: '保存成功'
+      }).then(() => {
+        this.$router.push('/offlineHuoDong');
+      });
     },
     //打开选择时间
     onSelect(value) {
@@ -217,6 +290,10 @@ export default {
         this.EndTimeIS = true;
       }else if(value==3){
         this.registerTimeIS = true;
+      }else if(value==4){
+        this.RiStartTimeIs = true;
+      }else if(value==5){
+        this.RiEndTimeIs = true;
       }
     },
     changeVal(values){
@@ -228,6 +305,14 @@ export default {
       this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
     },
     changeValThree(values){
+      this.jieShouTime=""
+      this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
+    },
+    changeValFour(values){
+      this.jieShouTime=""
+      this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
+    },
+    changeValFive(values){
       this.jieShouTime=""
       this.jieShouTime=values.getColumnValue(0)+"/"+values.getColumnValue(1)+"/"+values.getColumnValue(2)+" "+values.getColumnValue(3)+":"+values.getColumnValue(4)
     },
@@ -246,11 +331,23 @@ export default {
        this.NewActivitiesMes.registerTime=this.jieShouTime
        this.registerTimeIS = false;
     },
+    //日程开始时间确定按钮，关闭选择时间
+    timeQueDinFOur(){
+      this.NewActivitiesMes.schedule.scheduleStartTime=this.jieShouTime
+      this.RiStartTimeIs = false;
+    },
+    //日程=结束时间确定按钮，关闭选择时间
+    timeQueDingFive(){
+      this.NewActivitiesMes.schedule.scheduleEndTime=this.jieShouTime
+      this.RiEndTimeIs = false;
+    },
     //取消按钮，关闭选择时间
     timeQiXiao(){
       this.StartTimeIs = false;
        this.EndTimeIS = false;
        this.EndTimeIS = false;
+      this.RiStartTimeIs = false;
+      this.RiEndTimeIs = false;
     },
     //打开右向图标上拉
     openOrganization(value){
@@ -276,10 +373,6 @@ export default {
     xuanZhongAditor(item){
       this.NewActivitiesMes.auditor=item.name
       this.auditorIS=false
-    },
-    //新建日程表
-    newScheduleBut(){
-      this.$router.push('/offlineHuoDong/newSchedule');
     },
     
 
@@ -384,7 +477,7 @@ export default {
   }
   .inputFieldMesShuan{
     float:left;
-    width:83%;
+    width:82%;
     height: 26px;
     line-height: 26px;
     padding-top:0px;

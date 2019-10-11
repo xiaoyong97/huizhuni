@@ -185,6 +185,14 @@ export default new Router({
         },
       },
       {
+        name: 'viewList',
+        path: '/offlineHuoDong/viewList',
+        component: () => import('@/pages/offlineHuoDong/viewList'),
+        meta: {
+        title: '查看名单'
+        },
+      },
+      {
         name: 'NewActivities',
         path: '/offlineHuoDong/NewActivities',
         component: () => import('@/pages/offlineHuoDong/NewActivities'),
@@ -201,11 +209,11 @@ export default new Router({
         },
       },
       {
-        name: 'newSchedule',
-        path: '/offlineHuoDong/newSchedule',
-        component: () => import('@/pages/offlineHuoDong/newSchedule'),
+        name: 'activityParticulars',
+        path: '/offlineHuoDong/activityParticulars',
+        component: () => import('@/pages/offlineHuoDong/activityParticulars'),
         meta: {
-        title: '新建日程表页'
+        title: '活动详情页'
         },
       },
       {
@@ -214,6 +222,14 @@ export default new Router({
         component: () => import('@/pages/offlineHuoDong/submitSuccessfully'),
         meta: {
         title: '提交成功页'
+        },
+      },
+      {
+        name: 'xinZhenguploadImage',
+        path: '/offlineHuoDong/xinZhenguploadImage',
+        component: () => import('@/pages/offlineHuoDong/xinZhenguploadImage'),
+        meta: {
+        title: '上传图片页'
         },
       },
 
