@@ -188,9 +188,23 @@
 
 			},
 			go : function(url){
-				console.log(url)
-				 // this.$router.push({ name: 'informationAcquisition', params: { userId: 123 }});
-				this.$router.push({path:'/'+url, query: { userId: 123 }})
+				if(url=='offlineHuoDong'){//融智赋能
+					Dialog.confirm({
+						message: "请选择身份",
+						confirmButtonText: "普惠营销管理岗",
+						cancelButtonText: "营销主管岗" ,
+						cancelButtonColor:"#1989fa",
+					}).then(()=> {
+						sessionStorage.setItem("intelligenceEnablement","management")
+						this.$router.push('/offlineHuoDong');
+					}).catch(() => {
+                    	sessionStorage.setItem("intelligenceEnablement","supervisor")
+						this.$router.push('/offlineHuoDong');
+					})
+				}else{
+				 	// this.$router.push({ name: 'informationAcquisition', params: { userId: 123 }});
+					this.$router.push({path:'/'+url, query: { userId: 123 }})
+				}
 
 			},
 			onBannerChange(index) {

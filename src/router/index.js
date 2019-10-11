@@ -185,6 +185,14 @@ export default new Router({
         },
       },
       {
+        name: 'viewList',
+        path: '/offlineHuoDong/viewList',
+        component: () => import('@/pages/offlineHuoDong/viewList'),
+        meta: {
+        title: '查看名单'
+        },
+      },
+      {
         name: 'NewActivities',
         path: '/offlineHuoDong/NewActivities',
         component: () => import('@/pages/offlineHuoDong/NewActivities'),
