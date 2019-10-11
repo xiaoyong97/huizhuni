@@ -82,7 +82,7 @@
       <div class="coordinate" v-for="(item, index) in coordinateList1" :style="item.style" @click="showTips(index)">
         <img :src="item.img" alt="">
         <div class="popup-box" v-show="item.show" :style="item.style">
-          <div v-if="item.type == 2" @click="go('customerInfo')">
+          <div v-if="item.type == 2" @click="goTo('customerInfo')">
             <div>厦门象屿股份有限公司</div>
             <div>客户需求：强</div>
             <div>客户分层：优质</div>
@@ -633,6 +633,9 @@ export default {
           type: this.value1 == 0 ? 1 : 2
         },
       ]
+    },
+    goTo(url) {
+      this.$router.push({name: url});
     },
     go: function() {
       this.$router.push("/more");
