@@ -8,8 +8,8 @@
         <img src="../../../assets/images/48/create@2x.png" class="img_fliter" @click="go('collectOperation')" >
         <img src="../../../assets/images/38/searchfor@2x.png" class="img_search" @click="go('searchInfo')">
         <div class="content">
-            <van-tabs color="#4c62e7" line-width="50%" line-height=3>
-                <van-tab title="待补录" color="#4c62e7">
+            <van-tabs v-model="activeName" @click="onTabClick" color="#4c62e7" line-width="50%" line-height=3 >
+                <van-tab title="待补录" color="#4c62e7" name="待补录">
                     <div class="card_div" v-for="(item,index) in this.infos" v-show="item.step==0">
                         <van-row style="padding: 4px 12px 0">
                             <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
@@ -37,7 +37,7 @@
 
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab title="已完成" color="#4c62e7">
+                <van-tab title="已完成" color="#4c62e7" name="已完成">
                      <div class="card_div" v-for="(item,index) in this.infos" v-show="item.step!=0">
                        <van-row style="padding: 4px 12px 0">
                            <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
@@ -97,6 +97,7 @@
                 open:true,
                 step:'',
 				infos:[],
+                activeName:'待补录',
             }
         },
 
@@ -104,22 +105,37 @@
         //数据预加载
         created(){
 			var jsonStr = sessionStorage.getItem('userinfo');
-			
+
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				this.infos = JSON.parse(jsonStr);
 				console.log(this.infos)
 			}
+
+            var value = sessionStorage.getItem('informationAcquisition_tab' );
+            console.log(value,'qweqwe')
+            if (value=='待补录') {
+                console.log('value')
+                this.activeName = value;
+            } else {
+                console.log('else')
+                this.activeName = '已完成';
+            }
         },
 
         //网页加载完成
-        mounted : ()=>{
+        mounted  (){
 
         },
 
         //声明方法
         methods : {
+            onTabClick() {
+                sessionStorage.setItem('informationAcquisition_tab',this.activeName )
+                console.log(this.activeName)
+            },
             onClickLeft() {
                 this.$router.go(-1);
+                sessionStorage.setItem('informationAcquisition_tab','待补录' );
             },
             gomyperformance : function(){
                 this.$router.push('./myperformance');
@@ -128,7 +144,7 @@
                 this.$router.push('./activityDetailsNotBegin');
             },
             go : function(url,param){
-				
+
                 if (param) {
                     this.$router.push({name:url,params:param});
                 }

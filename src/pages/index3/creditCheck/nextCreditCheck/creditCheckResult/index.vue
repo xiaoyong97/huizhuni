@@ -63,7 +63,7 @@
             return {
                 title : '征信校验',
                 right_text:'完成',
-                step:1,
+                step:0,
                 resule:'征信查询结果',
                 is_show:0,
             }
@@ -71,7 +71,14 @@
 
 
         //数据预加载
-        created : ()=>{
+        created (){
+            var num = Math.random();
+            console.log(num)
+            if ( num-0.5 > 0 ) {
+                this.step = 2
+            } else {
+                this.step = 3
+            }
         },
 
         //网页加载完成

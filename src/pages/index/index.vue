@@ -11,7 +11,7 @@
 
 		<div class="content" >
 			<div class="notice-bar" v-show="isShowNoticeBar">
-				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">张三</span>进入名单池中，前往
+				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">王光明</span>进入名单池中，前往
 				<div class="btn-group">
 				  <span class="rob" @click="go('index2')">抢单</span>
 				  <span class="close" @click="closeNotice" >X</span>
@@ -152,7 +152,7 @@
 		created (){
 			var jsonStr = sessionStorage.getItem('userinfo');
 			if(jsonStr == '' || jsonStr == undefined || jsonStr == null){
-				
+
 				var infos = [
 					{
 						company_info:{
@@ -179,7 +179,7 @@
 							households:'3',
 						},
 						associates:[   //关联人
-							{	
+							{
 								relationship:'其他', //0=自然人， 1=  企业法人
 								name:'李天明',
 								sex:'男',
@@ -247,7 +247,7 @@
 								legal_representative:'艾仲华',
 								mobile:'13702137765',
 								legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-					
+
 							}
 						],
 						unid:'10001',
@@ -282,7 +282,7 @@
 						households:'3',
 					},
 					associates:[   //关联人
-						{	
+						{
 							relationship:'其他', //0=自然人， 1=  企业法人
 							name:'李天明',
 							sex:'男',
@@ -350,7 +350,7 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-				
+
 						}
 					],
 					unid:'10002',
@@ -385,7 +385,7 @@
 						households:'3',
 					},
 					associates:[   //关联人
-						{	
+						{
 							relationship:'其他', //0=自然人， 1=  企业法人
 							name:'李天明',
 							sex:'男',
@@ -453,7 +453,7 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-				
+
 						}
 					],
 					unid:'10003',
@@ -488,7 +488,7 @@
 						households:'3',
 					},
 					associates:[   //关联人
-						{	
+						{
 							relationship:'其他', //0=自然人， 1=  企业法人
 							name:'李天明',
 							sex:'男',
@@ -556,7 +556,7 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-				
+
 						}
 					],
 					unid:'10004',
@@ -590,7 +590,7 @@
 						households:'3',
 					},
 					associates:[   //关联人
-						{	
+						{
 							relationship:'其他', //0=自然人， 1=  企业法人
 							name:'李天明',
 							sex:'男',
@@ -658,7 +658,7 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-				
+
 						}
 					],
 					unid:'10005',
@@ -669,11 +669,11 @@
 					status:0
 				}
 				];
-				
+
 				sessionStorage.setItem('userinfo',JSON.stringify(infos));
 			}
-			
-		
+
+
 		},
 
 		//网页加载完成
