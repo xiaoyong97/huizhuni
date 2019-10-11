@@ -209,6 +209,14 @@ export default new Router({
         },
       },
       {
+        name: 'newActivitiesConfirmDetails',
+        path: '/offlineHuoDong/newActivitiesConfirmDetails',
+        component: () => import('@/pages/offlineHuoDong/newActivitiesConfirmDetails'),
+        meta: {
+        title: '活动详情'
+        },
+      },
+      {
         name: 'activityParticulars',
         path: '/offlineHuoDong/activityParticulars',
         component: () => import('@/pages/offlineHuoDong/activityParticulars'),

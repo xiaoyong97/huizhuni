@@ -11,7 +11,7 @@
 
         <div class="content">
             <van-tabs color="#4c62e7" line-width="50%" line-height=3>
-                <van-tab title="报名名单(30)" color="#4c62e7">
+                <van-tab title="报名名单" color="#4c62e7">
                     <!--头部搜索-->
                     <van-row class="seekRow" gutter="20"> 
                         <van-col span="16"><van-field class="seekField" v-model="fieldWei" placeholder="请输入活动名称" />    
@@ -155,7 +155,7 @@
 
         data() {
             return {
-                countcc:11,
+                countcc:4,
                 title : '查看名单',
                 checked: true,
                 show: false,

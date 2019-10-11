@@ -29,7 +29,7 @@
             </van-row>
             <!--进行中-->
             <div class="card_div" v-show="menu_choose==2|menu_choose==0">
-              <div @click="goPage('activityDetailsIng',{status_:0})" class="card-bottom-line">
+              <div @click="goPage('newActivitiesConfirmDetails',{status_:0})" class="card-bottom-line">
                   <van-row style="padding: 16px 12px 0">
                       <van-col class="" span="12"><p class="card_list1_test_left" >建行每周沙龙会</p></van-col>
                       <!-- <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col> -->
@@ -52,7 +52,7 @@
                 </van-col>
                 <van-col class="" span="12" @click="openOverlay">
                     <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location location2" ></van-col>
-                    <van-col class="" span="22"><p class="card_list2_test" >报名/签到</p></van-col>
+                    <van-col class="" span="22"><p class="card_list2_test" @click="baoMingQianDao">报名/签到</p></van-col>
                 </van-col>
               </van-row>
             </div>
@@ -81,7 +81,7 @@
                   </van-col>
                   <van-col class="" span="12" @click="openOverlay">
                       <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location location2" ></van-col>
-                      <van-col class="" span="22" style="text-align: center"><p class="card_list2_test" >报名/签到</p></van-col>
+                      <van-col class="" span="22" style="text-align: center"><p class="card_list2_test" @click="baoMingQianDao">报名/签到</p></van-col>
                   </van-col>
               </van-row>
             </div>
@@ -132,7 +132,7 @@
                 </van-col>
             </van-row>
             <!--待审核-->
-            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityDetailsIng',{status_:1})">
+            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('newActivitiesConfirmDetails',{status_:1})">
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
@@ -258,7 +258,7 @@
             </van-row>
             <!--进行中-->
             <div class="card_div" v-show="menu_choose==2|menu_choose==0">
-              <div @click="goPage('activityDetailsIng',{status_:0})" class="card-bottom-line">
+              <div @click="goPage('newActivitiesConfirmDetails',{status_:0})" class="card-bottom-line">
                   <van-row style="padding: 16px 12px 0">
                       <van-col class="" span="12"><p class="card_list1_test_left" >建行每周沙龙会</p></van-col>
                       <!-- <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col> -->
@@ -310,7 +310,7 @@
                   </van-col>
                   <van-col class="" span="12" @click="openOverlay">
                       <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location location2" ></van-col>
-                      <van-col class="" span="22" style="text-align: center"><p class="card_list2_test" >报名/签到</p></van-col>
+                      <van-col class="" span="22" style="text-align: center"><p class="card_list2_test" @click="baoMingQianDao">报名/签到</p></van-col>
                   </van-col>
               </van-row>
             </div>
@@ -555,7 +555,7 @@
     </div>
     
     <!--二维码弹出框-->
-     <van-popup v-model="erWeiMaIs" position="bottom" :style="{ height: '60%' }">
+     <van-popup v-model="erWeiMaIs" position="bottom" :style="{ height: '50%' }">
         <van-nav-bar id="erWeiMa" title='报名二维码'  @click-right="guanBiErWeiMa">
             <van-icon name="cross" slot="right"  size="24px" />
         </van-nav-bar>
@@ -564,7 +564,7 @@
             <van-col span="8">
               <div class="mesZhong">
                 <img class="duiImg" src="../../assets/images/1570783923er.png"/></br>
-                <div style="margin-left:10px;font-size:13px;">报名参加建行每周沙龙会</div>
+                <div style="margin-left:45px;font-size:13px;">报名参加建行每周沙龙会</div>
               </div>
             </van-col>
           </van-row>
@@ -990,6 +990,6 @@ export default {
     height:200px;
     margin-top:40px;;
     font-size: 12px;
-    margin-left:10px;;
+    margin-left:20px;
   }
 </style>
