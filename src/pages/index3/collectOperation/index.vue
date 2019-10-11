@@ -113,7 +113,7 @@
 					<van-field label="权利类型" placeholder="权利类型"  v-model="item.type" clearable label-width="120"/>
 					<van-field label="权利性质" placeholder="权利性质" v-model="item.nature" clearable label-width="120"/>
 					<van-field label="用途"placeholder="请输入用途" v-model="item.use" clearable label-width="120" label-color="red"/>
-					<van-field label="面积" placeholder="面积" v-model="item.area" clearable label-width="120"/>
+					<van-field label="面积" placeholder="请输入面积" v-model="item.area" clearable label-width="120"/>
 					<van-field label="权利其他情况"placeholder="请输入权利其他情况" v-model="item.Other" clearable label-width="120" label-color="red"/>
 					<van-field label="房产证号"placeholder="请输入房产证号" v-model="item.house_nubmer" clearable label-width="120" label-color="red"/>
 				</van-cell-group>
@@ -387,7 +387,8 @@
 			collect_time:'',
 			step:0,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
 			isPass:true,
-			loan:{}
+			loan:{},
+			status:0
 		},
 		result:[],
 		current_index:0,

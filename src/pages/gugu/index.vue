@@ -13,7 +13,7 @@
          <van-tab title="任务发布" color="#4c62e7">
 			 <van-cell-group class="bg-grey">
 				 <van-checkbox-group v-model="result">
-					<van-cell v-for="(item, index) in infos" v-show="item.step==4">
+					<van-cell v-for="(item, index) in infos" v-show="item.status==0">
 						<div class="checkbox">
 							<van-checkbox  checked-color="#4c62e7"  :key="item.unid" :name="item.unid" ></van-checkbox>
 						</div>
@@ -40,37 +40,35 @@
 		 </van-tab>
          <van-tab title="任务查看" color="#4c62e7">
 			 <van-cell-group class="bg-grey pan2">
-				 <van-cell v-for="(item, index) in infos" v-show="item.step==5">
+				 <van-cell v-for="(item, index) in tasks">
 				 	<div class="pan-content">
 				 		<div class=" dk-pan">
 				 			<img class="pan-tag-img" src="../../assets/images/other/Label7.0@2x.png" alt="" v-show="item.status == 0">
 				 			<img class="pan-tag-img" src="../../assets/images/other/Label7@2x.png" alt="" v-show="item.status == 1">
 				 			<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" v-show="item.status == 2">
-				 			<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{item.mortgaged[0].house_nubmer}}</div></van-col>
-				 			<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{item.mortgaged[0].address}}</van-col>
-				 			<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{item.mortgaged[0].holder}}&nbsp;</van-col>
-				 			<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{item.mortgagor[0].name}}&nbsp;</van-col>
-				 			<van-col span="24" class="detail" @click="checkTask(item.task_id)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+				 			<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{item.info[0].mortgaged[0].house_nubmer}}</div></van-col>
+				 			<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{item.info[0].mortgaged[0].address}}</van-col>
+				 			<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{item.info[0].mortgaged[0].holder}}&nbsp;</van-col>
+				 			<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{item.info[0].mortgagor[0].name}}&nbsp;</van-col>
+				 			<van-col span="24" class="detail" @click="checkTask(item)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
 				 		</div>
 				 	</div>
 				 </van-cell>
 				 				
-			  	<van-cell v-for="(item, index) in task">
+			  <!-- 	<van-cell v-for="(item, index) in task">
 			  		<div class="pan-content">
 			 			<div class=" dk-pan">
 							<img class="pan-tag-img" src="../../assets/images/other/Label7.0@2x.png" alt="" v-show="item.status == 0">
 							<img class="pan-tag-img" src="../../assets/images/other/Label7@2x.png" alt="" v-show="item.status == 1">
 							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" v-show="item.status == 2">
-<!--							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" v-show="item.status == 1">-->
-<!--							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" v-show="item.status == 2">-->
-			 				<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{item.diyawuList[0].cqzh}}</div></van-col>
+							<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{item.diyawuList[0].cqzh}}</div></van-col>
 			 				<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{item.diyawuList[0].sf}}{{item.diyawuList[0].xxdz}}</van-col>
 			 				<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{item.diyawuList[0].cqr}}&nbsp;</van-col>
 			 				<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{item.jkr}}&nbsp;</van-col>
-							<van-col span="24" class="detail" @click="checkTask(item.task_id)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+							<van-col span="24" class="detail" @click="checkTask(item)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
 						</div>
 			 		</div>
-			  	</van-cell>
+			  	</van-cell> -->
 				
 			 </van-submit-bar>
 
@@ -98,6 +96,7 @@
 	  result:[],
 	  count:0,
 	  infos:[],
+	  tasks:[],
     }
   },
 
@@ -105,10 +104,13 @@
   //数据预加载
   created (){
 	  var jsonStr = sessionStorage.getItem('userinfo');
-	  
 	  if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 	  	this.infos = JSON.parse(jsonStr);
-	  	console.log(this.infos)
+		console.log(this.infos)
+	  }
+	  var taskJsonStr = sessionStorage.getItem('task');
+	  if(taskJsonStr != '' && taskJsonStr != undefined && taskJsonStr != null){
+	  	this.tasks = JSON.parse(taskJsonStr);
 	  }
   },
 
@@ -125,12 +127,25 @@
   //声明方法
   methods : {
 	add_task:function  () {
+		var task = {
+			status:0,
+			info:[],
+		}
+		for(var i=0; i<this.result.length;i++){
+			for(var ii=0; ii<this.infos.length;ii++){
+				if(this.infos[ii].unid == this.result[i]){
+					
+					task.info.push(this.infos[ii]);
+				}
+			}
+		}
+		
 		sessionStorage.setItem('type',0);
-		localStorage.setItem('jkr',this.task[this.task.length-1].jkr);
-
-	    this.$router.push({name: 'new_task', params: {type: 0}});
+	    this.$router.push({name: 'new_task', params:{task:task}});
 	},
 	new_task:function (){
+		//组装任务
+		
 		sessionStorage.setItem('type',1);
 		this.$router.push({name: 'new_task', params: {type: 1}});
 	},
@@ -141,9 +156,8 @@
 	onClickLeft:function() {
 	  this.$router.go(-1);
 	},
-	checkTask:function(id){
-		localStorage.setItem('id',id);
-		this.$router.push({name: 'checkTask'});
+	checkTask:function(task){
+		this.$router.push({name: 'checkTask',query:{task:task}});
 	}
   },
 

@@ -3,26 +3,22 @@
 		 <!--头部导航-->
 		<van-nav-bar :title="title"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<div class="content">
-			<van-cell-group class="bg-grey"  v-for="(item, index) in task.diyawuList" v-show="task.status != 2">
+			<van-cell-group class="bg-grey"  v-for="(item, index) in task.info[0].mortgaged" v-show="task.status != 2">
 			 <van-cell class="grey">抵押物{{index+1}}</van-cell>
 			 <van-cell>
 				 <van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-				 <van-col span="22"><h3>产权证号:{{item.cqzh}}</h3></van-col>
+				 <van-col span="22"><h3>产权证号:{{item.number}}</h3></van-col>
 			 </van-cell>
 			 <van-cell>
 				 <van-col span="2"></van-col>
 				 <van-col span="6">房产地址:</van-col>
-				 <van-col span="16">{{item.sf}}</van-col>
+				 <van-col span="16">{{item.sf}}{{item.address}}</van-col>
 			 </van-cell>
-			 <van-cell>
-				  <van-col span="2"></van-col>
-				 <van-col span="6"></van-col>
-				 <van-col span="16">{{item.xxdz}}</van-col>
-			 </van-cell>
+			
 			 <van-cell>
 				  <van-col span="2"></van-col>
 				 <van-col span="6">产权人:</van-col>
-				 <van-col span="16">{{item.cqr}}</van-col>
+				 <van-col span="16">{{item.holder}}</van-col>
 			 </van-cell>
 
 			 </van-cell-group>
@@ -32,11 +28,11 @@
 
 				<van-cell>
 					 <van-col span="8">借款人</van-col>
-					 <van-col span="16">{{task.jkr}}</van-col>
+					 <van-col span="16">{{info.mortgagor[0].name}}</van-col>
 				</van-cell>
 				<van-cell>
 					 <van-col span="8">联系方式</van-col>
-					 <van-col span="16">{{task.lxfs}}</van-col>
+					 <van-col span="16">{{info.mortgagor[0].diyaren_mobile}}</van-col>
 				</van-cell>
 			</van-cell-group>
 			<div  v-show="task.status == 2">
@@ -45,15 +41,15 @@
 					<p>27780861877282212</p>
 				</div>
 				<div class="btn-container">
-					<button v-for="(item, index) in task.diyawuList" v-bind:class="index == choose? 'active':''" @click="chooseTab(index)">
+					<button v-for="(item, index) in info.mortgaged" v-bind:class="index == choose? 'active':''" @click="chooseTab(index)">
 						抵押物{{index+1}}
 					</button>
 				</div>
 
 				<div class="pan-container">
 					<br>
-					<div v-for="(item, index) in task.diyawuList"  v-show="choose == index">
-						<van-cell-group class="bg-grey" v-show="task.status != 0">
+					<div v-for="(item, index) in info.mortgaged"  v-show="choose == index">
+						<van-cell-group class="bg-grey" v-show="info.status != 0">
 
 							<van-cell>
 								<van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
@@ -164,7 +160,7 @@
 			<van-cell-group class="bg-grey" v-show="task.status == 2">
 				<div class="line"></div>
 					<div class="img-container">
-						<van-col span="8"  v-for="(item, index) in task.diyawuList" class="img-box">
+						<van-col span="8"  v-for="(item, index) in info.diyawuList" class="img-box">
 							<img src="../../assets/images/24/house1.jpeg" alt="">
 						</van-col>
 					</div>
@@ -185,19 +181,17 @@
 	return {
 		title : '任务检查',
 		choose: 0,
+		task:{},
+		info:{},
 	  }
 	},
 
 	//网页加载完成
-	mounted : ()=>{
-		// var diyawuList = localStorage.getItem('diyawu');
-		// console.log(diyawuList)
-
-		// var task = localStorage.getItem('task');
-		// console.log(task)
-
-		// var tasks = JSON.parse(localStorage.getItem('task'));
-		// console.log(tasks)
+	 created(){
+		
+		this.task = this.$route.query.task;
+		 console.log(this.task)
+		 this.info = this.task.info[0];
 	},
 
 	//声明方法
@@ -221,18 +215,7 @@
 		type: function () {
 			return localStorage.getItem('type')
 		},
-		task:function () {
-			var tasks = JSON.parse(localStorage.getItem('task'));
-
-			var id = localStorage.getItem('id');
-			var task = [];
-			for(var i=0; i<tasks.length; i++){
-				if(tasks[i].task_id == id){
-					task = tasks[i];
-				}
-			}
-			return task;
-		}
+		
 	},
 
 	//引入组件

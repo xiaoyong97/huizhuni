@@ -8,30 +8,30 @@
 
 
     <div class="content">
+		
 		<div v-show="step==1">
-			<van-cell-group class="bg-grey"  v-for="(item, index) in card_count"  v-show="type==1">
+			<van-cell-group class="bg-grey"  v-for="(item, index) in info.mortgaged"  v-show="type==1">
 				<van-cell class="grey"  >抵押物{{index+1}}</van-cell>
-				<van-field label="产权证号"placeholder="请输入产权证号" v-model="item.cqzh"/>
+				<van-field label="产权证号"placeholder="请输入产权证号" v-model="item.number"/>
 				<!-- <van-field label="房产地址" placeholder=""   /> -->
 				<van-row class="field_container" >
 				<van-col class="" span="6">房产地址</van-col>
-				<van-col class="area_select" span="18" @click="area_select(index+1)" >{{card_count[index].sf}}<span v-if="!card_count[index].sf"> 请选择省份/地区</span></van-col>
+				<van-col class="area_select" span="18" @click="area_select(index+1)" >{{item.sf}}<span v-if="!info.mortgaged[index].sf"> 请选择省份/地区</span></van-col>
 				</van-row>	
-				<van-field label="" placeholder="详细地址"  v-model="item.xxdz"/>
-				<van-field label="产权人"placeholder="" v-model="item.cqr"/>
+				<van-field label="" placeholder="详细地址"  v-model="item.address"/>
+				<van-field label="产权人"placeholder="" v-model="item.holder"/>
 		
 			 </van-cell-group>
 			 
-			<van-cell-group class="bg-grey"  v-for="(item, index) in card_count" v-show="type==0" >
+			<van-cell-group class="bg-grey"  v-for="(item, index) in info.mortgaged" v-show="type==0" >
 			 <van-cell class="grey"  >抵押物{{index+1}}</van-cell>
 			 <van-cell>
-
-				 <van-col span="24"><h3>产权证号:{{item.cqzh}}</h3></van-col>
+				 <van-col span="24"><h3>产权证号:{{item.number}}</h3></van-col>
 			 </van-cell>
 			 <van-cell>
 				 <van-col span="2"></van-col>
 				 <van-col span="6">房产地址:</van-col>
-				 <van-col span="16">{{item.sf}}</van-col>
+				 <van-col span="16">{{item.address}}</van-col>
 			 </van-cell>
 			 <van-cell>
 				  <van-col span="2"></van-col>
@@ -41,7 +41,7 @@
 			 <van-cell>
 				  <van-col span="2"></van-col>
 				 <van-col span="6">产权人:</van-col>
-				 <van-col span="16">{{item.cqr}}</van-col>
+				 <van-col span="16">{{item.holder}}</van-col>
 			 </van-cell>
 				
 			 </van-cell-group>			
@@ -49,8 +49,8 @@
 			<van-cell-group class="bg-grey">
 				<van-cell class="grey " v-show="type==1" @click="addCard"><div class="addCard"><van-icon name="add-o" />添加抵押物</div></van-cell>
 				<van-cell class="grey addCard" v-show="type==0" ></van-cell>
-				<van-field label="借款人"placeholder=""  v-model="jkr"/>
-				<van-field label="联系方式" placeholder=""  v-model="lxfs"/>
+				<van-field label="借款人"placeholder=""  v-model="info.mortgagor[0].name"/>
+				<van-field label="联系方式" placeholder=""  v-model="info.mortgagor[0].diyaren_mobile"/>
 			  </van-cell-group>
 			  
 			  <div class="area_select_pan">
@@ -58,26 +58,22 @@
 			  </div>
 		</div>
 		<div v-show="step==2">
-			<van-cell-group class="bg-grey"  v-for="(item, index) in card_count" >
+			<van-cell-group class="bg-grey"  v-for="(item, index) in info.mortgaged" >
 			 <van-cell class="grey">抵押物{{index+1}}</van-cell>
 			 <van-cell>
 				 <van-col span="2"><img class="logo" src="../../assets/images/38/Propertycertificatenumber@2x.png" alt=""></van-col>
-				 <van-col span="22" ><h3>产权证号:{{item.cqzh}}</h3></van-col>
+				 <van-col span="22" ><h3>产权证号:{{item.number}}</h3></van-col>
 			 </van-cell>
 			 <van-cell>
 				 <van-col span="2"></van-col>
 				 <van-col span="6">房产地址:</van-col>
-				 <van-col span="16">{{item.sf}}</van-col>
+				 <van-col span="16">{{item.sf}}{{item.address}}</van-col>
 			 </van-cell>
-			 <van-cell>
-				  <van-col span="2"></van-col>
-				 <van-col span="6"></van-col>
-				 <van-col span="16">{{item.xxdz}}</van-col>
-			 </van-cell>
+			
 			 <van-cell>
 				  <van-col span="2"></van-col>
 				 <van-col span="6">产权人:</van-col>
-				 <van-col span="16">{{item.cqr}}</van-col>
+				 <van-col span="16">{{item.holder}}</van-col>
 			 </van-cell>
 				
 			 </van-cell-group>
@@ -87,11 +83,11 @@
 				 <br>
 				<van-cell>
 								 <van-col span="8">借款人</van-col>
-								 <van-col span="16">{{jkr}}</van-col>
+								 <van-col span="16">{{info.mortgagor[0].name}}</van-col>
 				</van-cell>
 				<van-cell>
 								 <van-col span="8">联系方式</van-col>
-								 <van-col span="16">{{lxfs}}</van-col>
+								 <van-col span="16">{{info.mortgagor[0].diyaren_mobile}}</van-col>
 				</van-cell>
 			
 			</van-cell-group>		
@@ -104,12 +100,12 @@
 				<p class="success-tip">发布已成功</p>
 				<p class="detail-tip">查看详情</p>
 				
-				<van-cell-group class="bg-grey"  v-for="(item, index) in card_count" >
+				<van-cell-group class="bg-grey"  v-for="(item, index) in info.mortgaged" >
 					<div v-if="isShowDetail || index == 0">
 						<van-cell>抵押物{{index+1}}</van-cell>
 						<van-cell>
 											 <van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-											 <van-col span="22"><h4>产权证号:{{item.cqzh}}</h4></van-col>
+											 <van-col span="22"><h4>产权证号:{{item.number}}</h4></van-col>
 											
 						</van-cell>
 						<van-cell>
@@ -120,12 +116,12 @@
 						<van-cell>
 											  <van-col span="2"></van-col>
 											 <van-col span="6"></van-col>
-											 <van-col span="16">{{item.xxdz}}</van-col>
+											 <van-col span="16">{{item.address}}</van-col>
 						</van-cell>
 						<van-cell>
 											  <van-col span="2"></van-col>
 											 <van-col span="6">产权人:</van-col>
-											 <van-col span="16">{{item.cqr}}</van-col>
+											 <van-col span="16">{{item.holder}}</van-col>
 						</van-cell>
 					</div>
 				
@@ -134,14 +130,14 @@
 						
 				<van-button class="more" @click="more" v-show="!isShowDetail">查看更多 ▿ </van-button>
 				<van-cell-group class="bg-grey">
-					 <van-cell class="grey"  > </van-cell>
+					 <van-cell class="grey"  ></van-cell>
 					<van-cell>
-									 <van-col span="8">借款人</van-col>
-									 <van-col span="16">{{jkr}}</van-col>
+						 <van-col span="8">借款人</van-col>
+						 <van-col span="16">{{info.mortgagor[0].name}}</van-col>
 					</van-cell>
 					<van-cell>
-									 <van-col span="8">联系方式</van-col>
-									 <van-col span="16">{{lxfs}}</van-col>
+						 <van-col span="8">联系方式</van-col>
+						 <van-col span="16">{{info.mortgagor[0].diyaren_mobile}}</van-col>
 					</van-cell>
 				
 				</van-cell-group>	
@@ -169,27 +165,138 @@
 	  is_show_area:false,
 	  areaCellIndex:0,
 	  step:1,
-	  lxfs:'',
-	  jkr:'',
-	  isShowDetail:false,
+	  info:{
+	  	company_info:{
+	  		customer_id:'252841000000526649',
+	  		unified_social_credit_code:'91120116MA07K2307A',
+	  		company_name:'广州市睿智防水电器股份有限公司',
+	  		enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+	  		legal_representative:'艾仲华',
+	  		mobile:'13702137765',
+	  		legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+	  	},
+	  	company_main_info:{
+	  		name:'艾仲华',
+	  		sex:'女',
+	  		ethnic:'汉族',
+	  		birth:'1976.8.1',
+	  		address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+	  		idcard:'120106197608016578',
+	  		validity_period:'2030.1.1' ,//有效期
+	  		record_of_formal_schooling : '研究生', //学历
+	  		mobile:'13702137765',
+	  		work:'广州市睿智防水电器股份有限公司',
+	  		marriage_status:'已婚',
+	  		households:'3',
+	  	},
+	  	associates:[   //关联人
+	  		{	
+	  			relationship:'其他', //0=自然人， 1=  企业法人
+	  			name:'李天明',
+	  			sex:'男',
+	  			ethnic:'汉族',
+	  			birth:'1970.10.20',
+	  			address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+	  			idcard:'120106197010204098',
+	  			validity_period:'2030.1.1' ,//有效期
+	  			record_of_formal_schooling : '研究生', //学历
+	  			mobile:'13439078656',
+	  			work:'无',
+	  			marriage_status:'已婚',
+	  			households:'3',
+	  		}
+	  	],
+	  	mortgaged:[
+	  		{
+	  			relationship:'其他', //0=自然人， 1=  企业法人
+	  			holder:'',
+	  			situations:'自由',
+				sf:'',
+	  			address:'',
+	  			number:'',
+	  			type:'自有',
+	  			nature:'自有',
+	  			use:'住宅',
+	  			area:'120.4',
+	  			Other:'无',
+	  			house_nubmer:'0188192319',
+	  		}
+	  	],
+	  	mortgagor:[
+	  		{
+	  			relationship:'自然人', //0=自然人， 1=  企业法人
+	  			name:'',
+	  			sex:'女',
+	  			ethnic:'汉族',
+	  			birth:'1976.8.1',
+	  			address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+	  			idcard:'120106197608016578',
+	  			validity_period:'2030.1.1' , //有效期
+	  			diyaren_mobile:'',
+	  			diyawu:[],
+	  			customer_id:'',
+	  			unified_social_credit_code:'',
+	  			company_name:'',
+	  			enterprise_address:'',
+	  			legal_representative:'',
+	  			mobile:'',
+	  		},
+	  		{
+	  			relationship:'企业法人', //0=自然人， 1=  企业法人
+	  			name:'艾仲华',
+	  			sex:'',
+	  			ethnic:'',
+	  			birth:'',
+	  			address:'',
+	  			idcard:'',
+	  			validity_period:'' , //有效期
+	  			diyaren_mobile:'',
+	  			diyawu:[],
+	  			customer_id:'252841000000526649',
+	  			unified_social_credit_code:'91120116MA07K2307A',
+	  			company_name:'广州市睿智防水电器股份有限公司',
+	  			enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+	  			legal_representative:'艾仲华',
+	  			mobile:'13702137765',
+	  			legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+	  
+	  		}
+	  	],
+	  	unid:'',
+	  	collect_time:'',
+	  	step:5,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+	  	isPass:true,
+	  	loan:{},
+		status:0,
+	  },
+		lxfs:'',
+		jkr:'',
+		isShowDetail:false,
 		isSubmit:false,
+		 unids:[],
 	  }
+	 
   },
 
 
   //数据预加载
-  created : ()=>{
+  created (){
+	  var task = this.$route.params.task;
+	  var tmpArray = [];
+	  this.info = task.info[0];
+	  for(var i=0;i<task.info.length;i++){
+		   tmpArray.push(task.info[i].mortgaged[0]);
+		   this.unids.push(task.info[i].unid);
+	  }
+	 
+	 this.info.mortgaged = tmpArray;
 	
   },
 
   //网页加载完成
   mounted(){
 		var diyawuList = localStorage.getItem('diyawu');
-		console.log(diyawuList)
-		
-		var task = localStorage.getItem('task');
-		console.log(task)
-		
+	
 		if(this.type == 0){
 			this.name = localStorage.getItem('jkr')
 		}
@@ -211,14 +318,27 @@
 		for(var i = 0; i< data.length; i++){
 			area += ' '+data[i].name
 		}
-		// this.areaArray[this.areaCellIndex-1] = area;
-		this.card_count[this.areaCellIndex-1].sf = area;
+		
+		this.info.mortgaged[this.areaCellIndex-1].sf = area;
 		this.is_show_area = false;
 	},
 	addCard:function(){
-		
-	
-		 this.card_count[this.card_count.length] =  {id:Date.parse(new Date())+this.card_count.length,cqzh:'',sf:'',xxdz:'',cqr:''};
+		var mortgaged = {
+	  			relationship:'其他', //0=自然人， 1=  企业法人
+	  			holder:'',
+	  			situations:'自由',
+	  			address:'',
+				sf:'',
+	  			number:'',
+	  			type:'自有',
+	  			nature:'自有',
+	  			use:'住宅',
+	  			area:'120.4',
+	  			Other:'无',
+	  			house_nubmer:'0188192319',
+	  		};
+			this.info.mortgaged[this.info.mortgaged.length] = mortgaged;
+		 // this.card_count[this.card_count.length] =  {id:Date.parse(new Date())+this.card_count.length,cqzh:'',sf:'',xxdz:'',cqr:''};
 		 this.$forceUpdate();//并不管用
 	},
 	onClickLeft() {
@@ -257,22 +377,40 @@
 		this.setTitle();
 	},
 	saveData:function(){
-		var diyawuList = this.parseJson(localStorage.getItem('diyawu'));
-		var all = diyawuList.concat(this.card_count);
-		localStorage.setItem('diyawu',JSON.stringify(all));
+		this.info.step=5;
+		this.info.unid = Date.parse(new Date());
 		
-		//add task
-		var task = {
-			task_id : Date.parse(new Date()),
-			diyawuList: this.card_count,
-			jkr:this.jkr,
-			lxfs:this.lxfs,
-			status:1,
-			datail:'',
+		var tasks = [];
+		var jsonStr = sessionStorage.getItem('task');
+		if(jsonStr != null && jsonStr != undefined){
+			tasks =  JSON.parse(jsonStr);
 		}
-		var taskList = this.parseJson(localStorage.getItem('task'));
-		taskList.push(task);
-		localStorage.setItem('task',JSON.stringify(taskList));
+		tasks.push({
+			status:0,
+			info:[this.info],
+		})
+		sessionStorage.setItem('task',JSON.stringify(tasks))
+		
+		if(this.unids.length>0){
+			
+			var jsonStr = sessionStorage.getItem('userinfo');
+			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
+				var infos = JSON.parse(jsonStr);
+				
+				for(var i=0;i<this.unids.length;i++){
+					
+					for(var ii=0;ii<infos.length;ii++){
+						console.log(this.unids[i])
+						console.log(infos[ii].unid)
+						if(this.unids[i] == infos[ii].unid){
+							infos[ii].status=1;
+						}
+					}
+				}
+				sessionStorage.setItem('userinfo',JSON.stringify(infos));
+			}
+		}
+		
 		this.isSubmit = true;
 	},
 	parseJson:function(str){
@@ -308,7 +446,7 @@
   computed: {
 	// 仅读取
 	type: function () {
-	  return sessionStorage.getItem('type')
+	    return sessionStorage.getItem('type')
 	},
 	card_count:function () {
 		var count = [
