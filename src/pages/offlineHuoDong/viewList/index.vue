@@ -11,7 +11,7 @@
 
         <div class="content">
             <van-tabs color="#4c62e7" line-width="50%" line-height=3>
-                <van-tab title="报名名单" color="#4c62e7">
+                <van-tab title="报名名单(4)" color="#4c62e7">
                     <!--头部搜索-->
                     <van-row class="seekRow" gutter="20"> 
                         <van-col span="16"><van-field class="seekField" v-model="fieldWei" placeholder="请输入活动名称" />    
@@ -164,10 +164,10 @@
                 openOverlay_title:"",
                 open:true,
                 list:[
-                    {id:1,sex:'女',name:'张三三',phone:'12345678901',job:'客户经理',company:'广州新野模具有限公司'},
-                    {id:2,sex:'男',name:'赵无极',phone:'12345678901',job:'客户经理',company:'鲁信创股'},
-                    {id:3,sex:'男',name:'李思思',phone:'12345678901',job:'财务总监',company:'广州新野模具有限公司'},
-                    {id:4,sex:'女',name:'  乔妹',phone:'12345678901',job:'客户经理',company:'贵州百灵药业'}
+                    {id:1,sex:'女',name:'张琳',phone:'12345678901',job:'董事长',company:'广州新野模具有限公司'},
+                    {id:2,sex:'男',name:'赵无极',phone:'12345678901',job:'总经理',company:'鲁信创股'},
+                    {id:3,sex:'女',name:'李思思',phone:'12345678901',job:'总经理',company:'广州新野模具有限公司'},
+                    {id:4,sex:'女',name:'  乔妹',phone:'12345678901',job:'总经理',company:'贵州百灵药业'}
                 ],
                 step:'',
             }

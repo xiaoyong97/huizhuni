@@ -63,10 +63,10 @@ export default {
     go : function(){
       this.$router.push('/more');
     },
-    //返回线下活动首页
+    //返回上一级
     onClickLeft() {
-      this.$router.push('/offlineHuoDong');
-      //this.$router.go(-1);
+      //this.$router.push('/offlineHuoDong');
+      this.$router.go(-1);
     },
    
   },

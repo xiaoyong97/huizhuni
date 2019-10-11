@@ -837,7 +837,7 @@ export default {
       height: 19px;
       width: 19px;
   }
-  .location2{position:relative; left: 40px;}
+  .location2{position:relative; left: 35px;}
   .text-left{
     text-align: left;
   }
