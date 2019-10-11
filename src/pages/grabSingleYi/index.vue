@@ -3,7 +3,9 @@
   <div class="main">
    
     <div class="content">
-      <TabBar/>
+      <div id="yiQian">
+        <TabBar/>
+      </div>
        <!--头部导航-->
       <van-row  gutter="10" class="daohangKuang">
         <van-col class="skipCaiDan">
@@ -35,18 +37,20 @@
          <div class="bac">
             
             <div class="daiWanCheng">
-              <van-row @click="yiParticularsCardBut">
+              <van-row>
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(1)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row @click="yiParticularsCardBut" gutter="15">
+              <van-row @click="yiParticularsCardBut(1)" gutter="15">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -68,14 +72,14 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  @click="yiParticularsCardBut" gutter="10">
+              <van-row  @click="yiParticularsCardBut(1)" gutter="10">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
               <van-row gutter="10">
-                <div><div class ="timeKuang" @click="yiParticularsCardBut"><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div>
+                <div><div class ="timeKuang" @click="yiParticularsCardBut(1)"><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div>
                   <div class ="isKuang" ><van-button @click="fangQiBut" class="kuangFangBut" round type="info">放弃</van-button></div>
                 </div>
               </van-row>
@@ -86,14 +90,16 @@
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(2)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row gutter="15">
+              <van-row gutter="15" @click="yiParticularsCardBut(2)">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -115,13 +121,13 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10"  @click="yiParticularsCardBut(2)">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10"  @click="yiParticularsCardBut(2)">
                 <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuang" >已完成</div></div>
               </van-row>
             </div>
@@ -132,15 +138,17 @@
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(3)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row gutter="15">
-                <van-col class="kuang" span="6">
+              <van-row gutter="15" >
+                <van-col class="kuang" span="6"  @click="yiParticularsCardBut(3)">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
                   </div>
@@ -161,13 +169,13 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(3)">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(3)">
                 <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangOrange" >已退回</div></div>
               </van-row>
             </div>
@@ -179,14 +187,16 @@
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+               <div @click="yiParticularsCardBut(4)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row gutter="15">
+              <van-row gutter="15"  @click="yiParticularsCardBut(4)">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -208,13 +218,13 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(4)">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10"  @click="yiParticularsCardBut(4)">
                 <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangBlue" >已放弃</div></div>
               </van-row>
             </div>
@@ -225,14 +235,16 @@
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(5)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row gutter="15">
+              <van-row gutter="15"b @click="yiParticularsCardBut(5)">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -254,13 +266,13 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10"  @click="yiParticularsCardBut(5)">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10"  @click="yiParticularsCardBut(5)">
                 <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangGray" >已失效</div></div>
               </van-row>
             </div>
@@ -273,18 +285,20 @@
           <div class="bac">
             
             <div class="daiWanCheng">
-              <van-row @click="yiParticularsCardBut">
+              <van-row>
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(1)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row @click="yiParticularsCardBut" gutter="15">
+              <van-row @click="yiParticularsCardBut(1)" gutter="15">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -306,14 +320,14 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  @click="yiParticularsCardBut" gutter="10">
+              <van-row  @click="yiParticularsCardBut(1)" gutter="10">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
               <van-row gutter="10">
-                <div><div class ="timeKuang" @click="yiParticularsCardBut"><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div>
+                <div><div class ="timeKuang" @click="yiParticularsCardBut(1)"><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div>
                   <div class ="isKuang" ><van-button @click="fangQiBut" class="kuangFangBut" round type="info">放弃</van-button></div>
                 </div>
               </van-row>
@@ -329,14 +343,16 @@
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(2)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row gutter="15">
+              <van-row gutter="15"  @click="yiParticularsCardBut(2)">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -358,13 +374,13 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10"  @click="yiParticularsCardBut(2)">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(2)">
                 <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuang" >已完成</div></div>
               </van-row>
             </div>
@@ -375,14 +391,16 @@
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(3)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row gutter="15">
+              <van-row gutter="15" @click="yiParticularsCardBut(3)">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -404,13 +422,13 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(3)">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(3)">
                 <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangOrange" >已退回</div></div>
               </van-row>
             </div>
@@ -422,14 +440,16 @@
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(4)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row gutter="15">
+              <van-row gutter="15" @click="yiParticularsCardBut(4)">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -451,13 +471,13 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(4)">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(4)">
                 <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangBlue" >已放弃</div></div>
               </van-row>
             </div>
@@ -468,14 +488,16 @@
                 <van-col class="qiangDanCol" span="17">
                   <div class="qiangGongSi">新野摸具制造有限公司</div><div class="qiangGongLu">(<20KM)</div>
                 </van-col>
-                <van-col style="line-height:20px;" span="3">
-                  <div class="jingZhuenWan">精准</br>测额</div>
-                </van-col>
-                <van-col style="line-height:20px;" span="4">
-                  <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
-                </van-col>
+                <div @click="yiParticularsCardBut(5)">
+                  <van-col style="line-height:20px;" span="3">
+                    <div class="jingZhuenWan">精准</br>测额</div>
+                  </van-col>
+                  <van-col style="line-height:20px;" span="4">
+                    <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
+                  </van-col>
+                </div>
               </van-row>
-              <van-row gutter="15">
+              <van-row gutter="15" @click="yiParticularsCardBut(5)">
                 <van-col class="kuang" span="6">
                   <div class="kuangHang">
                     <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
@@ -497,13 +519,13 @@
                   </div>
                 </van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(5)">
                 <van-col><div class ="BKuang" >一般户</div></van-col>
                 <van-col><div class ="BKuang" >结算户</div></van-col>
                 <van-col><div class ="BKuang" >企业征信</div></van-col>
                 <van-col><div class ="BKuang" >个人征信</div></van-col>
               </van-row>
-              <van-row  gutter="10">
+              <van-row  gutter="10" @click="yiParticularsCardBut(5)">
                 <div><div class ="timeKuang" ><span>认领时间：</span>2019/08/21 &nbsp; 18:21</div><div class ="isKuangGray" >已失效</div></div>
               </van-row>
             </div>
@@ -526,7 +548,7 @@
     </van-dialog>
          <!--         历史名单下拉菜单-->
     <div class='menu_popContainer'  v-show="menu!==-1">
-        <div  class="menu1_choose_box" :class="type==1?'':'width_half_right'" v-show="menu==1">
+        <div  class="menu1_choose_box" v-show="menu==1">
             <van-row class="choose_box_list" @click="menu2Choose(0)">
                 <p class="menu1_choose_box_text " :class="menu2_choose == 0 ? 'blue' : '' ">全部历史</p>
             </van-row>
@@ -545,6 +567,8 @@
         </div>
     </div>
 
+            
+    <img class="jiImg" @click="fuGaiTiaoIndex2" src="../../assets/images/48/Businessopportunityselected@2x.png"/>
   </div>
   
 </template>
@@ -601,6 +625,10 @@ export default {
     go : function(){
       this.$router.push('/more');
     },
+    //商机图标覆盖加跳转index2
+    fuGaiTiaoIndex2(){
+      this.$router.push('/index2');
+    },
     //图标下拉
     openMenu (i){
       this.menu = i;
@@ -611,25 +639,6 @@ export default {
     },
     //下拉列表中列得点击事件
     menu2Choose(i){
-        // switch (i) {
-        //     case 0 :
-        //         this.tab2Title = '待审核(4)';
-        //         break;
-        //     case 1 :
-        //         this.tab2Title = '任务新建(1)';
-        //         break;
-        //     case 2 :
-        //         this.tab2Title = '任务中止(1)';
-        //         break;
-        //     case 3 :
-        //         this.tab2Title = '任务变更(1)';
-        //         break;
-        //     case 4 :
-        //         this.tab2Title = '名单补录(1)';
-        //         break;
-        //     default:
-        //         break;
-        // }
         this.menu2_choose = i;
         this.menu = -1;
     },
@@ -660,8 +669,8 @@ export default {
       }
     },
     //点击信息卡背景打开详情信息
-    yiParticularsCardBut(){
-      this.$router.push('/managementParticulars');
+    yiParticularsCardBut(stutasId){
+      this.$router.push('/managementParticulars/'+stutasId);
     },
     //点击打开搜索
     searchBut(){
@@ -684,7 +693,22 @@ export default {
   }
 }
 </script>
+<style>
+  #yiQian .van-tabbar-item:nth-of-type(2){
+    color:#4c62e7 !important;
+  }
+</style>
 <style lang="scss" scoped>
+  .jiImg{
+    background-color: white;
+    width:18px;
+    height: 18px;;
+    position: fixed;
+    bottom:25px;
+    left:103px;
+    z-index: 1;
+  }
+
   //头部导航
   .daohangKuang{
     position: fixed;

@@ -113,7 +113,7 @@
           </div>
           
         <!--dialog已抢单放弃按钮弹出框-->
-        <van-dialog v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true" confirm="fangQiConfirm()">
+        <van-dialog @confirm="queRen" v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true">
           <van-radio-group v-model="fangQiRadio">
             <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
             <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
@@ -157,7 +157,7 @@ export default {
          phone: '13818886688',//联系电话
          address: '山东省青岛市城阳区惜福镇王沙路1616号',//企业注册地址
          Subordinate: '软件和信息技术服务行业',//所属行业
-         scopeBusiness: '计算机软硬件的技术开发，技术咨询，技术转让，技术服务，数据库处理，经济信息咨询，经营电子商务，计算机编程',//经营范围
+         scopeBusiness: '计算机软硬件的技术开发；技术咨询；技术转让；技术服务；数据库处理；经济信息咨询；经营电子商务；计算机编程',//经营范围
          establishTime: "2012年9月20日",//成立日期
          whether: '否',//是否存量客户
          accurateTime: '2019年10月12日',//精准测额时间
@@ -180,6 +180,7 @@ export default {
            {name:'个人网银'},
            {name:'手机银行'},
            {name:'精准测额'},
+           {name:'信贷准入'},
            {name:'申贷意愿'},
          ],
          companyName: '广州市睿智防水电器股份有限公司', //公司名称
@@ -187,7 +188,7 @@ export default {
          phone: '13702137765',//联系电话
          address: '广州市高新技术产业开发区迎宾大道188号',//企业注册地址
          Subordinate: '计算机，通信和其他电子设备制造业',//所属行业
-         scopeBusiness: '电子元件及组件制造：货物进出口：电子元器件批发：技术进出口：电器辅件',//经营范围
+         scopeBusiness: '电子元件及组件制造；货物进出口；电子元器件批发；技术进出口；电器辅件',//经营范围
          establishTime: "2009年3月12日",//成立日期
          whether: '是',//是否存量客户
          accurateTime: '2019年10月12日',//精准测额时间
@@ -252,26 +253,17 @@ export default {
     },
     //商机详情放弃按钮
     xiangQingFangQi(){
-      //this.fangQiButShow = true
+      this.fangQiButShow = true
+    },
+    //放弃弹窗确定按钮
+    queRen(){
       Dialog.alert({
-        title: '',
-        message: '已放弃订单'
+        message: '已放弃'
       }).then(() => {
         this.qianDanIsOk= true
         this.fansQiIsOk= false
         this.textJueIsOk=false
       });
-    },
-    //放弃弹窗确定按钮
-    fangQiConfirm(){
-      // Dialog.alert({
-      //   title: '',
-      //   message: '已放弃订单'
-      // }).then(() => {
-      //   this.qianDanIsOk= true
-      //   this.fansQiIsOk= false
-      //   this.textJueIsOk=false
-      // });
     },
     //返回上一级
     onClickLeft() {

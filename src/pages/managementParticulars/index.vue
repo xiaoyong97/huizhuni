@@ -105,14 +105,18 @@
                 
               </div>  
             </div>
-            <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingQianDan">放弃</van-button></div>
+            <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingQianDan" v-show="typeStutas==1">放弃</van-button></div>
+            <div class="botButDiv"><div class="boWanChengBut" v-show="typeStutas==2">已完成</div></div>
+            <div class="botButDiv"><div class="botTuiHuiBut" v-show="typeStutas==3">已退回</div></div>
+            <div class="botButDiv"><div class="botYiQianDanBut" v-show="typeStutas==4">已放弃</div></div>
+            <div class="botButDiv"><div class="botShiXIaoBut" v-show="typeStutas==5">已失效</div></div>
            
           </div>
       </div>
 
       
     <!--dialog已抢单放弃按钮弹出框-->
-    <van-dialog v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true">
+    <van-dialog @confirm="queRen" v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true">
       <van-radio-group v-model="fangQiRadio">
         <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
         <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
@@ -137,6 +141,8 @@ export default {
        title : '新野摸具制造有限公司',
        fangQiButShow: false,
        fangQiRadio: 1,
+       stutasId:this.$route.params.stutasId,//跳转参数id
+       typeStutas: 0,
      }
   },
 
@@ -147,7 +153,7 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+    this.getButStutasId()
   },
   
   //声明方法
@@ -156,9 +162,21 @@ export default {
     go : function(){
       this.$router.push('/more');
     },
+    //获取传来的状态id
+    getButStutasId(){
+      this.typeStutas=this.stutasId;
+    },
     //商机管理放弃按钮
     xiangQingQianDan(){
       this.fangQiButShow = true
+    },
+    //放弃确认
+    queRen(){
+      Dialog.alert({
+        message: '已放弃'
+      }).then(() => {
+        this.typeStutas=4
+      });
     },
     //返回上一级
     onClickLeft() {
@@ -420,5 +438,41 @@ export default {
     height:35px;
     line-height:35px;
     width:250px;
+  }
+  .botButDiv .boWanChengBut{
+    height:35px;
+    line-height:35px;
+    width:250px;
+    text-align: center;
+    border:1px solid;
+    border-radius: 22px;
+    color: green;
+  }
+  .botButDiv .botTuiHuiBut{
+    height:35px;
+    line-height:35px;
+    width:250px;
+    text-align: center;
+    border:1px solid;
+    border-radius: 22px;
+    color: orange;
+  }
+  .botButDiv .botYiQianDanBut{
+    height:35px;
+    line-height:35px;
+    width:250px;
+    text-align: center;
+    border:1px solid;
+    border-radius: 22px;
+    color: rgb(76,98,232);
+  }
+  .botButDiv .botShiXIaoBut{
+    height:35px;
+    line-height:35px;
+    width:250px;
+    text-align: center;
+    border:1px solid;
+    border-radius: 22px;
+    color: #666666;
   }
 </style>

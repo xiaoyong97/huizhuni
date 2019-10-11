@@ -152,7 +152,7 @@ export default new Router({
       },
       {
         name: 'managementParticulars',
-        path: '/managementParticulars',
+        path: '/managementParticulars/:stutasId',
         component: () => import('@/pages/managementParticulars'),
         meta: {
           title: '商机管理详情信息'
