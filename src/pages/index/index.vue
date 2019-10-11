@@ -719,9 +719,11 @@
 						cancelButtonColor:"#1989fa",
 					}).then(()=> {
 						sessionStorage.setItem("intelligenceEnablement","management")
+						sessionStorage.setItem("saveCg","false") //默认保存草稿为false
 						this.$router.push('/offlineHuoDong');
 					}).catch(() => {
                     	sessionStorage.setItem("intelligenceEnablement","supervisor")
+						sessionStorage.setItem("saveCg","false") //默认保存草稿为false
 						this.$router.push('/offlineHuoDong');
 					})
 				}else{

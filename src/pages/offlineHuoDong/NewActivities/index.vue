@@ -5,7 +5,7 @@
     <div class="content">
       <van-nav-bar :title='title' @click-left="onClickLeft" @click-right="onClickRight" fixed>
         <van-icon name="arrow-left" slot="left"  size="24px" />
-        <van-icon style="padding-bottom:6px;" slot="right"  size="16px" >保存草稿</van-icon>
+        <van-icon style="padding-bottom:6px;" slot="right"  size="16px">保存草稿</van-icon>
       </van-nav-bar>
     </div>
     
@@ -247,7 +247,6 @@ export default {
   
   //声明方法
   methods : {
-    
     go : function(){
       this.$router.push('/more');
     },
@@ -279,6 +278,7 @@ export default {
         title: '',
         message: '保存成功'
       }).then(() => {
+        sessionStorage.setItem("saveCg","true") //保存草稿
         this.$router.push('/offlineHuoDong');
       });
     },
