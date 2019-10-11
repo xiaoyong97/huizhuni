@@ -244,6 +244,7 @@ export default {
         title: '',
         message: '抢单成功'
       }).then(() => {
+        this.title=this.enterpriseTwo.companyName
         this.qianDanIsOk= false
         this.fansQiIsOk= true
         this.textJueIsOk=true
