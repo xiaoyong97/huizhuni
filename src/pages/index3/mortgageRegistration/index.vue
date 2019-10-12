@@ -331,7 +331,7 @@
                             }).then(() => {
                                 // on close
                             });
-                            this.list3.push(this.list[i]);
+                            this.list3.push(this.list2[i]);
                             this.list2.splice(i,1);
                         }else{
                             this.list[i].huakuai_title="确认取件";
@@ -346,7 +346,7 @@
                             }).then(() => {
                                 // on close
                             });
-                            this.list4.push(this.list[i]);
+                            this.list4.push(this.list3[i]);
                             this.list3.splice(i,1);
                         }else{
                             this.list[i].huakuai_title="确认送件";
@@ -422,7 +422,7 @@
                         count = 0;
                         for (let i=this.list2.length-1;i>=0;i--) {
                             if (this.list2[i].radio2) {
-                                this.list3.push(this.list[i]);
+                                this.list3.push(this.list2[i]);
                                 this.list2.splice(i,1);
                                 count++;
                             }
@@ -440,7 +440,7 @@
                         count = 0;
                         for (let i=this.list3.length-1;i>=0;i--) {
                             if (this.list3[i].radio3) {
-                                this.list4.push(this.list[i]);
+                                this.list4.push(this.list3[i]);
                                 this.list3.splice(i,1);
                                 count++;
                             }
