@@ -1,28 +1,28 @@
 <template>
     <div class="main">
-     
+
      <!--头部导航-->
     <van-nav-bar :title="title"  left-arrow @click-left="onClickLeft" @click-right="next">
 	<van-button slot="right" class="theme_color next_button"  >{{nextTitle}}</van-button>
 	</van-nav-bar>
 
 
-    <div class="content">
-		
+    <div class="content addTask">
+
 		<div v-show="step==1">
 			<van-cell-group class="bg-grey"  v-for="(item, index) in info.mortgaged"  v-show="type==1">
 				<van-cell class="grey"  >抵押物{{index+1}}</van-cell>
-				<van-field label="产权证号"placeholder="请输入产权证号" v-model="item.number"/>
-				<!-- <van-field label="房产地址" placeholder=""   /> -->
-				<van-row class="field_container" >
-				<van-col class="" span="6">房产地址</van-col>
-				<van-col class="area_select" span="18" @click="area_select(index+1)" >{{item.sf}}<span v-if="!info.mortgaged[index].sf"> 请选择省份/地区</span></van-col>
-				</van-row>	
-				<van-field label="" placeholder="详细地址"  v-model="item.address"/>
-				<van-field label="产权人"placeholder="" v-model="item.holder"/>
-		
+				<van-field class="van-field" label="产权证号"placeholder="请输入产权证号" v-model="item.number"/>
+				 <van-field class="van-field" label="房产地址" placeholder="请选择省份/地区" v-model="item.sf" right-icon="arrow-down" @click-right-icon="area_select(index+1)"/>
+<!--				<van-row class="field_container" >-->
+<!--				<van-col class="" span="6">房产地址</van-col>-->
+<!--				<van-col class="area_select" span="18" @click="area_select(index+1)" >{{item.sf}}<span v-if="!info.mortgaged[index].sf"> 请选择省份/地区</span></van-col>-->
+<!--				</van-row>-->
+				<van-field class="van-field" label="" placeholder="详细地址"  v-model="item.address"/>
+				<van-field class="van-field" label="产权人"placeholder="" v-model="item.holder"/>
+
 			 </van-cell-group>
-			 
+
 			<van-cell-group class="bg-grey"  v-for="(item, index) in info.mortgaged" v-show="type==0" >
 			 <van-cell class="grey"  >抵押物{{index+1}}</van-cell>
 			 <van-cell>
@@ -43,16 +43,16 @@
 				 <van-col span="6">产权人:</van-col>
 				 <van-col span="16">{{item.holder}}</van-col>
 			 </van-cell>
-				
-			 </van-cell-group>			
-							
+
+			 </van-cell-group>
+
 			<van-cell-group class="bg-grey">
 				<van-cell class="grey " v-show="type==1" @click="addCard"><div class="addCard"><van-icon name="add-o" />添加抵押物</div></van-cell>
 				<van-cell class="grey addCard" v-show="type==0" ></van-cell>
-				<van-field label="借款人"placeholder=""  v-model="info.mortgagor[0].name"/>
-				<van-field label="联系方式" placeholder=""  v-model="info.mortgagor[0].diyaren_mobile"/>
+				<van-field class="van-field" label="借款人"placeholder=""  v-model="info.mortgagor[0].name"/>
+				<van-field class="van-field" label="联系方式" placeholder=""  v-model="info.mortgagor[0].diyaren_mobile"/>
 			  </van-cell-group>
-			  
+
 			  <div class="area_select_pan">
 					<van-area :area-list="areaList" :columns-num="3" v-show="is_show_area" @confirm="area_confirm"  @cancel="area_select(0)"/>
 			  </div>
@@ -69,15 +69,15 @@
 				 <van-col span="6">房产地址:</van-col>
 				 <van-col span="16">{{item.sf}}{{item.address}}</van-col>
 			 </van-cell>
-			
+
 			 <van-cell>
 				  <van-col span="2"></van-col>
 				 <van-col span="6">产权人:</van-col>
 				 <van-col span="16">{{item.holder}}</van-col>
 			 </van-cell>
-				
+
 			 </van-cell-group>
-					
+
 			<van-cell-group class="bg-grey">
 				 <van-cell class="grey"  > </van-cell>
 				 <br>
@@ -89,24 +89,24 @@
 								 <van-col span="8">联系方式</van-col>
 								 <van-col span="16">{{info.mortgagor[0].diyaren_mobile}}</van-col>
 				</van-cell>
-			
-			</van-cell-group>		
-			
-		
+
+			</van-cell-group>
+
+
 		</div>
 		<div v-show="step==3">
 			<div>
 				<img class="success" src="../../assets/images/other/success@2x.png" alt="">
 				<p class="success-tip">发布已成功</p>
 				<p class="detail-tip">查看详情</p>
-				
+
 				<van-cell-group class="bg-grey"  v-for="(item, index) in info.mortgaged" >
 					<div v-if="isShowDetail || index == 0">
 						<van-cell>抵押物{{index+1}}</van-cell>
 						<van-cell>
 											 <van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 											 <van-col span="22"><h4>产权证号:{{item.number}}</h4></van-col>
-											
+
 						</van-cell>
 						<van-cell>
 											 <van-col span="2"></van-col>
@@ -124,10 +124,10 @@
 											 <van-col span="16">{{item.holder}}</van-col>
 						</van-cell>
 					</div>
-				
-					
+
+
 				 </van-cell-group>
-						
+
 				<van-button class="more" @click="more" v-show="!isShowDetail">查看更多 ▿ </van-button>
 				<van-cell-group class="bg-grey">
 					 <van-cell class="grey"  ></van-cell>
@@ -139,12 +139,12 @@
 						 <van-col span="8">联系方式</van-col>
 						 <van-col span="16">{{info.mortgagor[0].diyaren_mobile}}</van-col>
 					</van-cell>
-				
-				</van-cell-group>	
+
+				</van-cell-group>
 			</div>
 		</div>
     </div>
-        
+
     </div>
 </template>
 
@@ -154,13 +154,14 @@
 	import Vue from 'vue';
 	import { Cell , Row, Col,Field,Area,AddressEdit} from 'vant';
 	import areaList from '../../area.js';
+	import '../../assets/resetui.scss'
  export default {
 
   data() {
     return {
       title : '新建任务',
 	  nextTitle:'下一步',
-	  
+
 	  areaList: areaList,
 	  is_show_area:false,
 	  areaCellIndex:0,
@@ -190,7 +191,7 @@
 	  		households:'3',
 	  	},
 	  	associates:[   //关联人
-	  		{	
+	  		{
 	  			relationship:'其他', //0=自然人， 1=  企业法人
 	  			name:'李天明',
 	  			sex:'男',
@@ -259,7 +260,7 @@
 	  			legal_representative:'艾仲华',
 	  			mobile:'13702137765',
 	  			legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-	  
+
 	  		}
 	  	],
 	  	unid:'',
@@ -275,7 +276,7 @@
 		isSubmit:false,
 		 unids:[],
 	  }
-	 
+
   },
 
 
@@ -288,37 +289,37 @@
 		   tmpArray.push(task.info[i].mortgaged[0]);
 		   this.unids.push(task.info[i].unid);
 	  }
-	 
+
 	 this.info.mortgaged = tmpArray;
-	
+
   },
 
   //网页加载完成
   mounted(){
 		var diyawuList = localStorage.getItem('diyawu');
-	
+
 		if(this.type == 0){
 			this.name = localStorage.getItem('jkr')
 		}
   },
-  
+
   //声明方法
   methods : {
 	area_select:function(index){
-		
+
 		if( index == 0){
 			this.is_show_area = false;
 			return;
-		} 
+		}
 		this.areaCellIndex = index;
-		this.is_show_area = !this.is_show_area; 
+		this.is_show_area = !this.is_show_area;
 	},
 	area_confirm:function(data){
 		var area = '';
 		for(var i = 0; i< data.length; i++){
 			area += ' '+data[i].name
 		}
-		
+
 		this.info.mortgaged[this.areaCellIndex-1].sf = area;
 		this.is_show_area = false;
 	},
@@ -342,30 +343,30 @@
 		 this.$forceUpdate();//并不管用
 	},
 	onClickLeft() {
-		
+
 		if(this.step==1 || this.isSubmit ){
 			this.$router.go(-1);
 			return;
 		}
-	
+
 		this.step=this.step-1;
 		this.setTitle();
-	  
+
 	},
 	checkType:function(){
 		var type = localStorage.getItem('type')
 		var that = this;
 		if(type != null && type != undefined){
-					 
+
 			if(type == 0){
-						
+
 				that.step = 1;
 				that.type = 0;
 			}
 		}
 	},
 	next:function(){
-		 
+
 		if(this.step==3){
 			this.$router.go(-1);
 		}else{
@@ -379,7 +380,7 @@
 	saveData:function(){
 		this.info.step=5;
 		this.info.unid = Date.parse(new Date());
-		
+
 		var tasks = [];
 		var jsonStr = sessionStorage.getItem('task');
 		if(jsonStr != null && jsonStr != undefined){
@@ -390,15 +391,15 @@
 			info:[this.info],
 		})
 		sessionStorage.setItem('task',JSON.stringify(tasks))
-		
+
 		if(this.unids.length>0){
-			
+
 			var jsonStr = sessionStorage.getItem('userinfo');
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				var infos = JSON.parse(jsonStr);
-				
+
 				for(var i=0;i<this.unids.length;i++){
-					
+
 					for(var ii=0;ii<infos.length;ii++){
 						console.log(this.unids[i])
 						console.log(infos[ii].unid)
@@ -410,16 +411,16 @@
 				sessionStorage.setItem('userinfo',JSON.stringify(infos));
 			}
 		}
-		
+
 		this.isSubmit = true;
 	},
 	parseJson:function(str){
 		if(str == null || str == undefined) return [];
-		
+
 		return JSON.parse(str);
 	},
 	setTitle:function(){
-	
+
 		switch(this.step){
 			case 1:{
 				this.title= this.type == 1 ? '新建任务' : '发布任务';
@@ -434,14 +435,14 @@
 			};
 			break;
 		}
-		
+
 		this.nextTitle = this.step == 1 ? '下一步' : this.step == 2 ? '发布' : '完成';
 	},
 	more:function(){
 		this.isShowDetail = true;
 	}
   },
-  
+
   //计算属性
   computed: {
 	// 仅读取
@@ -450,7 +451,7 @@
 	},
 	card_count:function () {
 		var count = [
-			{id:Date.parse(new Date())+'0',cqzh:'',sf:'',xxdz:'',cqr:''}, 	
+			{id:Date.parse(new Date())+'0',cqzh:'',sf:'',xxdz:'',cqr:''},
 		];
 		if(this.type == 0){
 			count = JSON.parse(localStorage.getItem('diyawu'))
@@ -484,13 +485,13 @@
 	bottom: 10px;
 	width: 100%;
 }
-.van-field .van-cell__value{
+.van-field .van-cell__control{
 	border: 1px solid lightgray;
 	background-color: red;
 }
 .theme_color{
 	color:#4c62e7;
-	
+
 }
 .next_button,.next_button:hover{
 	border: 0px;
@@ -526,7 +527,7 @@
 		line-height: 30px;
 		margin: 0 auto 20px;;
 		display: block;
-		
+
 	}
 	.addCard{
 		text-align: center;

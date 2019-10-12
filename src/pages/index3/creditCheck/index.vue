@@ -10,7 +10,7 @@
                     <p class="choose_box_text " :class="type == 1 ? 'blue' : '' ">通过</p>
                 </van-row>
                 <van-row class="choose_box_list" @click="choose(2)">
-                    <p class="choose_box_text " :class="type == 2 ? 'blue' : '' ">不通过</p>
+                    <p class="choose_box_text " :class="type == 2 ? 'blue' : '' ">未通过</p>
                 </van-row>
             </div>
 
@@ -52,7 +52,7 @@
                     <div style="height: 8px"></div>
                 </van-tab>
                 <van-tab :title="tab2" color="#4c62e7" >
-                    <div class="card_div" style="position: relative" v-for="(item,index) in this.infos" v-show="item.step == 2">
+                    <div class="card_div" style="position: relative" v-for="(item,index) in this.infos" v-show="item.step == 2&&tab2!=='未通过'">
                         <van-row style="padding: 4px 12px 0">
                             <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
                             <van-col class="" span="18"><p class="card_list2_test" >{{item.company_info.company_name}}</p></van-col>
@@ -73,7 +73,7 @@
                         </van-row>
                         <div style="height: 6px"></div>
                     </div>
-            
+
                     <div class="null_box"></div>
                 </van-tab>
             </van-tabs>
@@ -126,7 +126,7 @@
 				}else{
 					 this.$router.push({name: url})
 				}
-	
+
             },
             openOverlay : function(){
                 if(this.active == 1) {

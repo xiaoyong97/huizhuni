@@ -4,14 +4,24 @@
      <!--头部导航-->
      <van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" >
      </van-nav-bar>
+		<!--       拍照遮罩层-->
+		<div class='popContainer'  v-show="is_open">
+			<van-nav-bar left-arrow @click-left="colseOverlay"  >
+			</van-nav-bar>
+			<p class="craema_text">请拍摄</p>
+			<img src="../../../assets/images/other/02130521.png" class="img_shoot"  >
+			<p style="line-height: 10px"></p>
+			<img src="../../../assets/images/other/Takeaphoto@2x.png" class="img_cmarea"  @click="add_img">
+
+		</div>
 
     <div class="content">
 		<progressBar :step="this.step" :stepArray="stepArray" v-show="step!=5"></progressBar>
 		<div class="input-contianer" v-show="step==0">
 			<div>
 				<h4>企业营业执照</h4>
-				<div class="idCard">
-					<div class="idCard_shadow_button"></div>
+				<div class="idCard" @click="openOverlay(0)" :class="imgshow==0?'idCard_bk':''">
+					<div class="idCard_shadow_button" ></div>
 					<p>点击拍摄/上传企业营业执照</p>
 				</div>
 			</div>
@@ -28,11 +38,11 @@
 		<div class="input-contianer" v-show="step==1">
 			<div>
 				<h4>企业业主身份证</h4>
-				<div class="idCard_front">
+				<div class="idCard_front" @click="openOverlay(11)" :class="imgshow==11||imgshow==12?'idCard_front_bk':''">
 					<div class="idCard_shadow_button"></div>
 					<p>点击拍摄/上传人像面</p>
 				</div>
-				<div class="idCard_back">
+				<div class="idCard_back" @click="openOverlay(12)" :class="imgshow==12?'idCard_back_bk':''">
 					<div class="idCard_shadow_button"></div>
 					<p>点击拍摄/上传国徽面</p>
 				</div>
@@ -60,12 +70,12 @@
 
 				<div>
 					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>
-						
-					<div class="idCard_front">
+
+					<div class="idCard_front" @click="openOverlay(21)" :class="imgshow==21||imgshow==22?'idCard_front_bk':''">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
 					</div>
-					<div class="idCard_back">
+					<div class="idCard_back" @click="openOverlay(22)" :class="imgshow==22?'idCard_back_bk':''">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传国徽面</p>
 					</div>
@@ -73,6 +83,8 @@
 				<!--style="position: fixed;top: 34px; width:100%;"-->
 				<van-cell-group class="bg-grey">
 					<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
+				</van-cell-group>
+				<van-cell-group class="bg-grey" v-show="item.open_status">
 					<van-field label="性别" placeholder="性别" @click-right-icon="openPicker(7,index)" v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
 					<van-field label="出生日期"placeholder="请选择日期" @click-right-icon="openPicker(1,index)" v-model="item.birth" clearable label-width="120" right-icon="arrow-down"/>
@@ -85,6 +97,10 @@
 					<van-field label="婚姻情况" placeholder="请选择婚姻情况" @click-right-icon="openPicker(5,index)" v-model="item.marriage_status" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="家庭人数"placeholder="请输入家庭人数" @click-right-icon="openPicker(6,index)" v-model="item.households" clearable label-width="120" label-color="red" right-icon="arrow-down"/>
 				</van-cell-group>
+				<van-row type="flex" justify="center">
+					<van-col span="6" class="open_close_col" v-show="!item.open_status" @click="openClose(index)"><p>展开详情<van-icon name="arrow-down" /></p></van-col>
+					<van-col span="6" class="open_close_col" v-show="item.open_status" @click="openClose(index)"><p>收起<van-icon name="arrow-up" /></p></van-col>
+				</van-row>
 			</div>
 
 		</div>
@@ -95,13 +111,9 @@
 				<div>
 					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>
 
-					<div class="idCard_front">
-						<div class="idCard_shadow_button"></div>
-						<p>点击拍摄/上传人像面</p>
-					</div>
-					<div class="idCard_back">
-						<div class="idCard_shadow_button"></div>
-						<p>点击拍摄/上传国徽面</p>
+					<div class="idFangChan" @click="openOverlay(3)" :class="imgshow==3?'idFangChan_bk':''">
+						<div class="idCard_shadow_button" ></div>
+						<p>点击拍摄/上传房产证</p>
 					</div>
 				</div>
 
@@ -129,11 +141,11 @@
 					<div v-show="item.relationship=='自然人'">
 						<div>
 							<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
-							<div class="idCard_front">
+							<div class="idCard_front" @click="openOverlay(41)" :class="imgshow==41||imgshow==42||imgshow==43?'idCard_front_bk':''">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传人像面</p>
 							</div>
-							<div class="idCard_back">
+							<div class="idCard_back" @click="openOverlay(42)" :class="imgshow==42||imgshow==43?'idCard_back_bk':''">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传国徽面</p>
 							</div>
@@ -153,8 +165,8 @@
 						<div>
 							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>
 
-							<div class="idCard">
-								<div class="idCard_shadow_button"></div>
+							<div class="idCard" @click="openOverlay(43)" :class="imgshow==43?'idCard_bk':''">
+								<div class="idCard_shadow_button" ></div>
 								<p>点击拍摄/上传企业营业执照</p>
 							</div>
 						</div>
@@ -238,13 +250,13 @@
 			<van-datetime-picker v-show="time_Picker_Statue==1" class="picker"
 								 v-model="currentDate1"
 								 type="date"
-							
+
 								 @confirm="confirmBtn" @cancel="onCancel()"
 			/>
 			<van-datetime-picker v-show="time_Picker_Statue==2" class="picker"
 								 v-model="currentDate2"
 								 type="date"
-								
+
 								 @confirm="confirmBtn" @cancel="onCancel()"
 			/>
 		</div>
@@ -261,6 +273,8 @@
 	export default {
   data() {
     return {
+		imgshow:-1,
+		imgshow_tmp:'',
 		next:'下一步',
 		add_item_title:'添加关联人',
 		areaList:areaList,
@@ -271,7 +285,7 @@
 		timeValue2: '',
 		time_Picker_Statue:0, //0：不显示 1：显示开始日期控件 2：显示结束日期控件  3：自定义控件：默认性别
 		columns:['男', '女'],//默认自定义picker数据
-		
+		is_open:false,
       title : [
 		'信息采集-企业信息',
 		'信息采集-企业主信息',
@@ -312,7 +326,7 @@
 				households:'3',
 			},
 			associates:[   //关联人
-				{	
+				{
 					relationship:'其他', //0=自然人， 1=  企业法人
 					name:'李天明',
 					sex:'男',
@@ -326,21 +340,22 @@
 					work:'无',
 					marriage_status:'已婚',
 					households:'3',
+					open_status:true,
 				}
 			],
 			mortgaged:[
 				{
 					relationship:'其他', //0=自然人， 1=  企业法人
 					holder:'艾仲华',
-					situations:'自由',
+					situations:'自有',
 					address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-					number:'0130031024',
+					number:'3单元',
 					type:'自有',
 					nature:'自有',
 					use:'住宅',
 					area:'120.4',
 					Other:'无',
-					house_nubmer:'0188192319',
+					house_nubmer:'0130031024',
 				}
 			],
 			mortgagor:[
@@ -380,7 +395,7 @@
 					legal_representative:'艾仲华',
 					mobile:'13702137765',
 					legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-		
+
 				}
 			],
 			unid:'',
@@ -398,10 +413,10 @@
   //数据预加载
   created(){
 	  var info  = this.$route.params.info;
-	   
+
 	  if(info){
 		  this.info = info;
-		 
+
 	  }
   },
 
@@ -415,6 +430,23 @@
 
   //声明方法
   methods : {
+	  openOverlay : function(i){
+	  	if (i!==-1) {
+			this.imgshow_tmp = i
+		}
+		  this.is_open = !this.is_open;
+	  },
+	  colseOverlay() {
+		  this.is_open = !this.is_open;
+	  },
+	  add_img() {
+		  this.imgshow = this.imgshow_tmp;
+		  console.log(this.imgshow,'add_img')
+		  this.is_open = !this.is_open;
+	  },
+	  openClose(i) {
+	  	this.info.associates[i].open_status = !this.info.associates[i].open_status;
+	  },
 	  openPicker(i,index) {//0：不显示 1：显示开始日期控件 2：显示结束日期控件  3:自定义控件：  3地区 4学历5婚姻6家庭人数 7性别
 			this.time_Picker_Statue = i;  //0127
 			this.current_index = index; //当前卡片index
@@ -450,12 +482,12 @@
 	  },
 	  //自定义以及日期picker----确定键
 	  confirmBtn(picker, value, index) { // 确定按钮TODO
-		
+
 		switch (this.time_Picker_Statue){
 			case 1:{
 				var d = new Date(picker);
-				var str=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();  
-				
+				var str=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+
 				switch(this.step){
 					case 1:
 						this.info.company_main_info.birth = str;
@@ -468,8 +500,8 @@
 				break;
 			case 2:{
 				var d = new Date(picker);
-				var str=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() ;  
-				
+				var str=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() ;
+
 				switch(this.step){
 					case 1:
 						this.info.company_main_info.validity_period = str
@@ -481,7 +513,7 @@
 			}
 				break;
 			case 3:{
-			
+
 				switch(this.step){
 					case 3:
 						this.info.mortgaged[this.current_index].address = picker[0].name+' '+picker[1].name+' '+picker[2].name
@@ -499,7 +531,7 @@
 						break;
 				}
 			}
-				break;	
+				break;
 			case 5:{
 				switch(this.step){
 					case 1:
@@ -510,7 +542,7 @@
 						break;
 				}
 			}
-				break;	
+				break;
 			case 6:{
 				switch(this.step){
 					case 1:
@@ -521,7 +553,7 @@
 						break;
 				}
 			}
-				break;	
+				break;
 			case 7:{
 				switch(this.step){
 					case 1:
@@ -537,7 +569,7 @@
 			}
 				break;
 			case 8:{
-				
+
 				switch(this.step){
 					case 1:
 						this.info.company_main_info.sex = this.columns[value];
@@ -546,14 +578,14 @@
 						this.info.associates[this.current_index].relationship = this.columns[value];
 						break;
 					case 3:
-					
+
 						this.info.mortgaged[this.current_index].relationship = this.columns[value];
 						break;
 				}
 			}
 				break;
 			case 9:{
-				
+
 				switch(this.step){
 					case 4:
 						this.info.mortgagor[this.current_index].relationship = this.columns[value];
@@ -580,7 +612,7 @@
 		  this.$refs.item.toggle();
 	  },
 	addStep:function(){
-		
+
 		if(this.step == 4 ){
 			var jsonStr = sessionStorage.getItem('userinfo');
 			var infos = [];
@@ -590,11 +622,11 @@
 			this.info.collect_time = (new Date()).toLocaleDateString()
 			this.info.step = 1;
 			//判断是编辑还是新增
-		
+
 			if(this.info.unid){
 				for(var i=0;i<infos.length;i++){
 					if(infos[i].unid == this.info.unid){
-							
+
 						infos[i] = this.info;
 					}
 				}
@@ -637,6 +669,7 @@
 						work:'',
 						marriage_status:'',
 						households:'',
+						open_status:true,
 					})
 			}
 			break;
@@ -690,7 +723,7 @@
 		if(this.info.unid){
 			for(var i=0;i<infos.length;i++){
 				if(infos[i].unid == this.info.unid){
-						
+
 					infos[i] = this.info;
 				}
 			}
@@ -700,9 +733,9 @@
 			this.info.step = 0;
 			infos.push(this.info);
 		}
-		
+
 		sessionStorage.setItem('userinfo',JSON.stringify(infos))
-		
+		sessionStorage.setItem('informationAcquisition_tab','已完成' );
 		this.$router.go(-1);
 	},
 	go : function(url){
@@ -712,9 +745,9 @@
   watch: {
 	 step: function (val, oldVal) {
 	  this.next = val!=4?'下一步':'确认提交';
-	  
+
 	  this.add_item_title = val==2?'添加关联人':val==3?'添加抵押物':'添加抵押人';
-	 }, 
+	 },
   },
 
   //引入组件
@@ -887,6 +920,22 @@
 			padding-top: 36px;;
 			box-shadow: 0px 0px 12px 2px rgba(0,0,0,.15);
 		}
+		.idCard_bk{
+			background-image: url(../../../assets/images/idcard/103507@123123.png);
+		}
+.idFangChan{
+	background-image: url(../../../assets/images/idcard/bg_jhz@2x.png);
+	background-size: 100% 100%;
+	height: 110px;
+	width: 256px;
+	margin: 16px auto;
+	border-radius: 8px;;
+	padding-top: 36px;;
+	box-shadow: 0px 0px 12px 2px rgba(0,0,0,.15);
+}
+.idFangChan_bk{
+	background-image: url(../../../assets/images/idcard/1012110@635.png);
+}
 		.idCard_front,.idCard_back{
 			padding-top: 16px;
 			background-size: 100% 100%;
@@ -898,8 +947,14 @@
 		.idCard_front{
 			background-image: url(../../../assets/images/idcard/bg_sfz_front@2x.png);
 		}
+		.idCard_front_bk{
+			background-image: url(../../../assets/images/idcard/012105736@33.png);
+		}
 		.idCard_back{
 			background-image: url(../../../assets/images/idcard/bg_sfz_reverse@2x.png);
+		}
+		.idCard_back_bk{
+			background-image: url(../../../assets/images/idcard/1057@58.png);
 		}
 		.input-contianer{
 			margin-top: 8px;
@@ -912,7 +967,7 @@
 			width: 40px;
 			margin: 0px auto ;
 		}
-		.idCard p,.idCard_front p,.idCard_back p{
+		.idCard p,.idCard_front p,.idCard_back p,.idFangChan p{
 			text-align: center;
 			color: #4c62e7;
 			font-size: 12px;
@@ -953,9 +1008,49 @@
 			color: #4c62e7;
 			margin-top: -6px;
 		}
+		.open_close_col {
+			margin: 10px auto;
+			height: 28px;
+			border: #4c62e7 1px solid;
+			border-radius: 40px;
+			text-align: center;
+		}
+		.open_close_col p{
+			line-height: 28px;
+			margin: 0 0 ;
+			padding: 0;
+			font-size: 14px;
+			color: #4c62e7;
+		}
 		.cell{
 			height: 24px;
 			padding: 10px 16px;
 		}
+	.popContainer{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.6);
+		z-index: 110;
+		text-align: center;
+	}
+	.img_shoot{
+		margin-top: 10px;
+		width: 260px;
+		height: 380px;
+	}
+.craema_text {
+	color: #ffffff;
+	margin-top: 50px;
+	font-size: 14px;
+}
+.img_cmarea{
+	margin-top: 14px;
+	left:45% ;
+	height: 80px;
+	width: 80px;
+}
 
 </style>
