@@ -98,7 +98,7 @@
         methods : {
             onClickLeft() {
                 this.$router.go(-1);
-                sessionStorage.setItem('informationAcquisition_tab','待补录' );
+                sessionStorage.setItem('informationAcquisition_tab','已完成' );
             },
             onChange(index) {
                 this.current = index;

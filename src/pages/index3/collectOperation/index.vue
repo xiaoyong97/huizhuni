@@ -119,6 +119,8 @@
 
 				<van-cell-group class="bg-grey">
 					<van-field label="权利人"placeholder="请输入权利人" v-model="item.holder" clearable label-width="120"/>
+				</van-cell-group>
+				<van-cell-group class="bg-grey" v-show="item.open_status">
 					<van-field label="共有情况" placeholder="共有情况"  v-model="item.situations" clearable label-width="120"/>
 					<van-field label="坐落" placeholder="坐落" @click-right-icon="openPicker(3,index)" v-model="item.address" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="不动产单元号"placeholder="请输入不动产单元号" v-model="item.number" clearable label-width="120"/>
@@ -129,7 +131,10 @@
 					<van-field label="权利其他情况"placeholder="请输入权利其他情况" v-model="item.Other" clearable label-width="120" label-color="red"/>
 					<van-field label="房产证号"placeholder="请输入房产证号" v-model="item.house_nubmer" clearable label-width="120" label-color="red"/>
 				</van-cell-group>
-
+				<van-row type="flex" justify="center">
+					<van-col span="6" class="open_close_col" v-show="!item.open_status" @click="openClose(index)"><p>展开详情<van-icon name="arrow-down" /></p></van-col>
+					<van-col span="6" class="open_close_col" v-show="item.open_status" @click="openClose(index)"><p>收起<van-icon name="arrow-up" /></p></van-col>
+				</van-row>
 			</div>
 
 		</div>
@@ -356,6 +361,7 @@
 					area:'120.4',
 					Other:'无',
 					house_nubmer:'0130031024',
+					open_status:true
 				}
 			],
 			mortgagor:[
@@ -445,7 +451,12 @@
 		  this.is_open = !this.is_open;
 	  },
 	  openClose(i) {
-	  	this.info.associates[i].open_status = !this.info.associates[i].open_status;
+	  	if (this.step==2) {
+			this.info.associates[i].open_status = !this.info.associates[i].open_status;
+		}
+		  if (this.step==3) {
+			  this.info.mortgaged[i].open_status = !this.info.mortgaged[i].open_status;
+		  }
 	  },
 	  openPicker(i,index) {//0：不显示 1：显示开始日期控件 2：显示结束日期控件  3:自定义控件：  3地区 4学历5婚姻6家庭人数 7性别
 			this.time_Picker_Statue = i;  //0127
@@ -685,6 +696,7 @@
 					area:'',
 					Other:'',
 					house_nubmer:'',
+					open_status:true,
 				})
 			}
 			break;
@@ -715,6 +727,7 @@
 	    this.$refs.checkboxes[index].toggle();
 	},
 	save:function(){
+		sessionStorage.setItem('informationAcquisition_tab','已完成' );
 		var jsonStr = sessionStorage.getItem('userinfo');
 		var infos = [];
 		if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
@@ -723,7 +736,6 @@
 		if(this.info.unid){
 			for(var i=0;i<infos.length;i++){
 				if(infos[i].unid == this.info.unid){
-
 					infos[i] = this.info;
 				}
 			}
@@ -733,9 +745,7 @@
 			this.info.step = 0;
 			infos.push(this.info);
 		}
-
-		sessionStorage.setItem('userinfo',JSON.stringify(infos))
-		sessionStorage.setItem('informationAcquisition_tab','已完成' );
+		sessionStorage.setItem('userinfo',JSON.stringify(infos));
 		this.$router.go(-1);
 	},
 	go : function(url){

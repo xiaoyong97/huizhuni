@@ -31,7 +31,7 @@
                                         <van-col class="" span="16" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                     </van-row>
                                     <div class="slider_content" >
-                                        <van-slider @change="huaKuaiChange(1,i)" class="sliderHua" v-model="item.huakuai_value" bar-height="10px" active-color="#ffffff" >
+                                        <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value" bar-height="10px" active-color="#ffffff" >
                                             <div slot="button" class="custom-button" >
                                                 {{item.huakuai_title}}
                                             </div>
@@ -46,7 +46,7 @@
                 </van-tab>
                 <van-tab title="待送件" color="#4c62e7">
                     <van-row  class="width_max">
-                        <van-col  class=" checkbox_and_card_div"  v-for="(item ,i) in list">
+                        <van-col  class=" checkbox_and_card_div"  v-for="(item ,i) in list2">
                             <div class="check_box">
                                 <van-checkbox v-show="delete_status"  class="radio" checked-color="#4c62e7" v-model="item.radio2"></van-checkbox>
                             </div>
@@ -64,7 +64,7 @@
                                     <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                 </van-row>
                                 <div class="slider_content" >
-                                    <van-slider @change="huaKuaiChange(2,i)" class="sliderHua" v-model="item.huakuai_value1" bar-height="10px" active-color="#ffffff" >
+                                    <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value1" bar-height="10px" active-color="#ffffff" >
                                         <div slot="button" class="custom-button" >
                                             {{item.confirmSend}}
                                         </div>
@@ -78,7 +78,7 @@
                 </van-tab>
                 <van-tab title="待取件" color="#4c62e7">
                     <van-row  class="width_max">
-                        <van-col  class=" checkbox_and_card_div"  v-for="(item ,i) in list">
+                        <van-col  class=" checkbox_and_card_div"  v-for="(item ,i) in list3">
                             <div class="check_box">
                                 <van-checkbox v-show="delete_status"  class="radio" checked-color="#4c62e7" v-model="item.radio3"></van-checkbox>
                             </div>
@@ -96,7 +96,7 @@
                                     <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                 </van-row>
                                 <div class="slider_content" >
-                                    <van-slider @change="huaKuaiChange(3,i)" class="sliderHua" v-model="item.huakuai_value2" bar-height="10px" active-color="#ffffff" >
+                                    <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value2" bar-height="10px" active-color="#ffffff" >
                                         <div slot="button" class="custom-button" >
                                             {{item.confirmGet}}
                                         </div>
@@ -110,7 +110,7 @@
                 </van-tab>
                 <van-tab title="已完成" color="#4c62e7">
                     <van-row class="width_max">
-                        <van-col  class=" checkbox_and_card_div"  style="">
+                        <van-col  class=" checkbox_and_card_div"  style="" >
                             <div class="check_box">
                                 <div class="check_box_inline">
                                     <van-checkbox v-show="delete_status"   checked-color="#4c62e7" v-model="result"></van-checkbox>
@@ -151,6 +151,25 @@
                                 </van-row>
                             </div>
                         </van-col>
+                        <van-col  class=" checkbox_and_card_div"  v-for="(item ,i) in list4">
+                            <div class="check_box">
+                                <van-checkbox v-show="delete_status"  class="radio" checked-color="#4c62e7" v-model="item.radio3"></van-checkbox>
+                            </div>
+                            <div class="card_div" >
+                                <van-row style="padding: 4px 12px 0">
+                                    <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Pawn@2x.png" class="img_location" ></van-col>
+                                    <van-col class="" span="22"><p class="card_list2_test" >抵押物： {{item.name}}</p></van-col>
+                                </van-row>
+                                <van-row style="padding: 4px 12px 0">
+                                    <van-col class="" span="12"><p class="card_list1_test_left" >企业主</p></van-col>
+                                    <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >张三</p></van-col>
+                                </van-row>
+                                <van-row style="padding: 4px 12px 0">
+                                    <van-col class="" span="12"><p class="card_list1_test_left" >房产证号</p></van-col>
+                                    <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
+                                </van-row>
+                            </div>
+                        </van-col>
                     </van-row>
                     <div class="null_div_8px" ></div>
                 </van-tab>
@@ -162,7 +181,7 @@
                 <van-col  class="" span="12" @click="allChoose">
                     <p class="all_text" style="">全选</p>
                 </van-col>
-                <van-col  class="blue_bg_box" span="5" style=""><p class="list_text_delete">{{allChooseTitle}}</p></van-col>
+                <van-col  class="blue_bg_box" span="5" style=""><p class="list_text_delete" @click="jiedanBtn">{{allChooseTitle}}</p></van-col>
                 <van-col  class="orange_bg_box" span="5" v-show="active==0"><p class="list_text_delete" @click="hulueAll">忽略</p></van-col>
             </van-row>
         </div>
@@ -200,7 +219,10 @@
                     {name:'北京市朝阳区三里屯马家大院',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
                     {name:'北京市丰台区南三环西路10号',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
                     {name:'北京市朝阳区三里屯马家大院',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
-                ]
+                ],
+                list2:[],
+                list3:[],
+                list4:[],
             }
         },
 
@@ -239,47 +261,53 @@
                 }
             },
             allChoose() {
-                if (this.result == 0) {
-                    for (var i = 0; i < this.list.length; i++) {
-                        switch (this.active) {
-                            case 0:
-                                this.list[i].radio1 = 1;
-                                break;
-                            case 1:
-                                this.list[i].radio2 = 1;
-                                break;
-                            case 2:
-                                this.list[i].radio3 = 1;
-                                break;
-                            default:
-                                break;
-
-                        }
+                if (this.result==0) {
+                    switch (this.active) {
+                        case 0:
+                            for (let i=this.list.length-1;i>=0;i--) {
+                                this.list[i].radio1 = 1
+                            }
+                            break;
+                        case 1:
+                            for (let i=this.list2.length-1;i>=0;i--) {
+                                this.list2[i].radio1 = 1
+                            }
+                            break;
+                        case 2:
+                            for (let i=this.list3.length-1;i>=0;i--) {
+                                this.list3[i].radio1 = 1
+                            }
+                            break;
+                        default:
+                            break;
                     }
-                    this.result = 1;
                 } else {
-                    for (var j = 0; j < this.list.length; j++) {
-                        switch (this.active) {
-                            case 0:
-                                this.list[j].radio1 = 0;
-                                break;
-                            case 1:
-                                this.list[j].radio2 = 0;
-                                break;
-                            case 2:
-                                this.list[j].radio3 = 0;
-                                break;
-                            default:
-                                break;
-                        }
-                        this.result = 0;
+                    switch (this.active) {
+                        case 0:
+                            for (let i=this.list.length-1;i>=0;i--) {
+                                this.list[i].radio1 = 0
+                            }
+                            break;
+                        case 1:
+                            for (let i=this.list2.length-1;i>=0;i--) {
+                                this.list2[i].radio1 = 0
+                            }
+                            break;
+                        case 2:
+                            for (let i=this.list3.length-1;i>=0;i--) {
+                                this.list3[i].radio1 = 0
+                            }
+                            break;
+                        default:
+                            break;
                     }
                 }
 
+
             },
-            huaKuaiChange(num,i){
-                switch (num) {
-                    case 1:
+            huaKuaiChange(i){
+                switch (this.active) {
+                    case 0:
                         if(this.list[i].huakuai_value==100){
                             this.list[i].huakuai_title="确认中...";
                             Dialog.alert({
@@ -288,32 +316,38 @@
                             }).then(() => {
                                 // on close
                             });
+                            this.list2.push(this.list[i]);
+                            this.list.splice(i,1);
                         }else{
                             this.list[i].huakuai_title="滑动抢单";
                         }
                         break;
-                    case 2:
-                        if(this.list[i].huakuai_value1==100){
-                            this.list[i].confirmSend="确认中...";
+                    case 1:
+                        if(this.list2[i].huakuai_value1==100){
+                            this.list2[i].confirmSend="确认中...";
                             Dialog.alert({
                                 title: '',
                                 message: '抢单成功'
                             }).then(() => {
                                 // on close
                             });
+                            this.list3.push(this.list[i]);
+                            this.list2.splice(i,1);
                         }else{
                             this.list[i].huakuai_title="确认取件";
                         }
                         break;
-                    case 3:
-                        if(this.list[i].huakuai_value2==100){
-                            this.list[i].confirmGet="确认中...";
+                    case 2:
+                        if(this.list3[i].huakuai_value2==100){
+                            this.list3[i].confirmGet="确认中...";
                             Dialog.alert({
                                 title: '',
                                 message: '抢单成功'
                             }).then(() => {
                                 // on close
                             });
+                            this.list4.push(this.list[i]);
+                            this.list3.splice(i,1);
                         }else{
                             this.list[i].huakuai_title="确认送件";
                         }
@@ -364,6 +398,67 @@
                     this.list=[];
                 }
             },
+            jiedanBtn() {
+                switch (this.active) {
+                    case 0:
+                        var count = 0;
+                        for (let i=this.list.length-1;i>=0;i--) {
+                            if (this.list[i].radio1) {
+                                this.list2.push(this.list[i]);
+                                this.list.splice(i,1);
+                                count++;
+                            }
+                        }
+                        if (count>0) {
+                            Dialog.alert({
+                                title: '',
+                                message: '抢单成功'
+                            }).then(() => {
+                                // on close
+                            });
+                        }
+                        break;
+                    case 1:
+                        count = 0;
+                        for (let i=this.list2.length-1;i>=0;i--) {
+                            if (this.list2[i].radio2) {
+                                this.list3.push(this.list[i]);
+                                this.list2.splice(i,1);
+                                count++;
+                            }
+                        }
+                        if (count>0) {
+                            Dialog.alert({
+                                title: '',
+                                message: '抢单成功'
+                            }).then(() => {
+                                // on close
+                            });
+                        }
+                        break;
+                    case 2:
+                        count = 0;
+                        for (let i=this.list3.length-1;i>=0;i--) {
+                            if (this.list3[i].radio3) {
+                                this.list4.push(this.list[i]);
+                                this.list3.splice(i,1);
+                                count++;
+                            }
+                        }
+                        if (count>0) {
+                            Dialog.alert({
+                                title: '',
+                                message: '抢单成功'
+                            }).then(() => {
+                                // on close
+                            });
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+            }
         },
 
         //计算属性

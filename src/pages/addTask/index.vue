@@ -13,7 +13,7 @@
 			<van-cell-group class="bg-grey"  v-for="(item, index) in info.mortgaged"  v-show="type==1">
 				<van-cell class="grey"  >抵押物{{index+1}}</van-cell>
 				<van-field class="van-field" label="产权证号"placeholder="请输入产权证号" v-model="item.number"/>
-				 <van-field class="van-field" label="房产地址" placeholder="请选择省份/地区" v-model="item.sf" right-icon="arrow-down" @click-right-icon="area_select(index+1)"/>
+				 <van-field class="van-field" label="房产地址" disabled placeholder="请选择省份/地区" v-model="item.sf" right-icon="arrow-down" @click-right-icon="area_select(index+1)"/>
 <!--				<van-row class="field_container" >-->
 <!--				<van-col class="" span="6">房产地址</van-col>-->
 <!--				<van-col class="area_select" span="18" @click="area_select(index+1)" >{{item.sf}}<span v-if="!info.mortgaged[index].sf"> 请选择省份/地区</span></van-col>-->

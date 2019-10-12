@@ -18,6 +18,7 @@
         <img src="../../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
         <progressBar :step="this.step" :stepArray="stepArray" v-show="step!=5" class="progressBar"></progressBar>
         <div class="content" v-show="step==0">
+            <div style="height: 8px;"></div>
             <van-row  class="picture_div" >
                 <p>请上传征信查询授权协议</p>
             </van-row>
@@ -47,6 +48,7 @@
             </van-row>
         </div>
         <div class="content" v-show="step==1">
+            <div style="height: 8px;"></div>
             <van-row  class="picture_div" >
                 <p>请上传业务申请书</p>
             </van-row>
@@ -76,6 +78,7 @@
             </van-row>
         </div>
         <div class="content" v-show="step==2">
+            <div style="height: 8px;"></div>
             <van-row  class="picture_div" >
                 <p>请上传企业主手持本人身份证的影像</p>
             </van-row>

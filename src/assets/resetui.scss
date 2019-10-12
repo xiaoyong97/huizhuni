@@ -23,5 +23,20 @@
 			padding-right: 12px;
 		}
 	}
+}
 
+.collectOperation{
+	.progressBar{
+		.progress{
+			background-color: #999999;
+			display: inline-block;
+			width: 33%;
+			height: 2px;
+			margin: 7px 0px;
+
+		}
+		.step-text-pan{
+			width: 33%;
+		}
+	}
 }

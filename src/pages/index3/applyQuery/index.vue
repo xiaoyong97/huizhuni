@@ -3,18 +3,18 @@
         <!--        遮罩层-->
         <div class='popContainer'  v-show="is_open">
             <div  class="choose_box" >
-                <van-row class="choose_box_list" @click="choose(0)">
-                    <p class="choose_box_text " :class="type == 0 ? 'blue' : '' ">全部</p>
+                <van-row class="choose_box_list" v-for="(item,i) in list" @click="choose(i)">
+                    <p class="choose_box_text " :class="type == i ? 'blue' : '' ">{{item}}</p>
                 </van-row>
-                <van-row class="choose_box_list" @click="choose(1)">
-                    <p class="choose_box_text " :class="type == 1 ? 'blue' : '' ">录入复核</p>
-                </van-row>
-                <van-row class="choose_box_list" @click="choose(2)">
-                    <p class="choose_box_text " :class="type == 2 ? 'blue' : '' ">合规审查</p>
-                </van-row>
-                <van-row class="choose_box_list" @click="choose(3)">
-                    <p class="choose_box_text " :class="type == 3 ? 'blue' : '' ">贷款审批</p>
-                </van-row>
+<!--                <van-row class="choose_box_list" @click="choose(1)">-->
+<!--                    <p class="choose_box_text " :class="type == 1 ? 'blue' : '' ">录入复核</p>-->
+<!--                </van-row>-->
+<!--                <van-row class="choose_box_list" @click="choose(2)">-->
+<!--                    <p class="choose_box_text " :class="type == 2 ? 'blue' : '' ">合规审查</p>-->
+<!--                </van-row>-->
+<!--                <van-row class="choose_box_list" @click="choose(3)">-->
+<!--                    <p class="choose_box_text " :class="type == 3 ? 'blue' : '' ">贷款审批</p>-->
+<!--                </van-row>-->
             </div>
 
         </div>
@@ -133,6 +133,9 @@
                 type:0,
                 active:0,
                 tab2:'已校验',
+                list:['全部','录入复核','合规审查','贷款审批','业务受理','信息录入','信息调查', '合规审核','贷款定价','合同签约','抵押登记','贷款放行',
+'贷款放款','额度上传','贷款开户','贷款销户','贷款拒绝','申请终止', '贷款结清'
+                ],
             }
         },
 
@@ -159,14 +162,11 @@
             },
 
             choose(i) {
+                this.type = i;
                 if ( i == 0) {
                     this.right_text = '贷款状态 ';
-                } else if ( i == 1) {
-                    this.right_text = '录入复核';
-                } else if( i == 2) {
-                    this.right_text = '合规审查';
                 } else {
-                    this.right_text = '贷款审批';
+                    this.right_text = this.list[i];
                 }
 
                 this.is_open = false;
