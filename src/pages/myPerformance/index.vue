@@ -73,7 +73,7 @@
 											<p class="business_text2" style="padding-left: 14px;margin-top: 10px">商机成功率</p>
 										</div>
 										<div >
-											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(51,51,51);padding-left: 20px">33.33</p></van-col>
+											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(51,51,51);padding-left: 20px">33</p></van-col>
 											<van-col span="2" class="business_box3" style="height: 45px;"><p class="business_text_percent">%</p></van-col>
 										</div>
 									</van-col>
@@ -339,8 +339,8 @@
 									}
 								},
 								data:[
-									{value:66.67, name:'未成功'},
-									{value:33.33, name:'成功'},
+									{value:67, name:'未成功'},
+									{value:33, name:'成功'},
 
 								]
 							}
