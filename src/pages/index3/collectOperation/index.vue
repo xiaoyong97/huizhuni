@@ -71,13 +71,17 @@
 				<div>
 					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>
 
-					<div class="idCard_front" @click="openOverlay(21)" :class="imgshow==21||imgshow==22?'idCard_front_bk':''">
+					<div class="idCard_front" @click="openOverlay(21)" :class="imgshow==23||imgshow==21||imgshow==22?'idCard_front_bk':''">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
 					</div>
-					<div class="idCard_back" @click="openOverlay(22)" :class="imgshow==22?'idCard_back_bk':''">
+					<div class="idCard_back" @click="openOverlay(22)" :class="imgshow==23||imgshow==22?'idCard_back_bk':''">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传国徽面</p>
+					</div>
+					<div class="idjiehun" @click="openOverlay(23)" v-show="index!==0" :class="imgshow==23?'idjiehun_bk':''">
+						<div class="idCard_shadow_button" ></div>
+						<p>点击拍摄/上传结婚证</p>
 					</div>
 				</div>
 				<!--style="position: fixed;top: 34px; width:100%;"-->
@@ -157,15 +161,41 @@
 						</div>
 
 						<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
-						<van-field label="性别" placeholder="性别" @click-right-icon="openPicker(7,index)" v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
-
-						<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
-						<van-field label="出生日期"placeholder="请输入出生日期" @click-right-icon="openPicker(1,index)"v-model="item.birth" clearable label-width="120" right-icon="arrow-down"/>
-						<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
-						<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
-						<van-field label="有效期限"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(2,index)" right-icon="arrow-down" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
-						<van-field label="抵押人联系方式" placeholder="请输入法定代表人地址" v-model="item.diyaren_mobile" clearable label-width="120" label-color="red"/>
+						<van-cell-group class="bg-grey" v-show="item.open_status">
+							<van-field label="性别" placeholder="性别" @click-right-icon="openPicker(7,index)" v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
+							<van-field label="民族" placeholder="请输入民族" v-model="item.ethnic" clearable label-width="120"/>
+							<van-field label="出生日期"placeholder="请输入出生日期" @click-right-icon="openPicker(1,index)"v-model="item.birth" clearable label-width="120" right-icon="arrow-down"/>
+							<van-field label="住址" placeholder="住址"  v-model="item.address" clearable label-width="120"/>
+							<van-field label="公民身份证号" placeholder="公民身份证号" v-model="item.idcard" clearable label-width="120"/>
+							<van-field label="有效期限"placeholder="请输入法定代表人地址" @click-right-icon="openPicker(2,index)" right-icon="arrow-down" v-model="item.validity_period" clearable label-width="120" label-color="red"/>
+							<van-field label="抵押人联系方式" placeholder="请输入法定代表人地址" v-model="item.diyaren_mobile" clearable label-width="120" label-color="red"/>
+							<div class='cell'>请选择关联抵押物(可多选)</div>
+							<van-checkbox-group v-model="result">
+								<van-cell-group>
+									<van-cell
+											v-for="(item, index) in info.mortgaged"
+											clickable
+											:key="item"
+											:title="`房产证号 ${item.house_nubmer}`"
+											@click="toggle(index)"
+									>
+										<van-checkbox
+												:name="item.house_nubmer"
+												ref="checkboxes"
+												slot="right-icon"
+										/>
+									</van-cell>
+								</van-cell-group>
+							</van-checkbox-group>
+						</van-cell-group>
+						<van-row type="flex" justify="center">
+							<van-col span="6" class="open_close_col" v-show="!item.open_status" @click="openClose(index)"><p>展开详情<van-icon name="arrow-down" /></p></van-col>
+							<van-col span="6" class="open_close_col" v-show="item.open_status" @click="openClose(index)"><p>收起<van-icon name="arrow-up" /></p></van-col>
+						</van-row>
 					</div>
+
+
+
 					<div v-show="item.relationship=='企业法人'">
 						<div>
 							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>
@@ -183,25 +213,6 @@
 						<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="item.mobile" clearable label-width="120"/>
 						<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="item.legal_representative_address" clearable label-width="120" label-color="red"/>
 					</div>
-
-					<div class='cell'>请选择关联抵押物(可多选)</div>
-					<van-checkbox-group v-model="result">
-					  <van-cell-group>
-					    <van-cell
-					      v-for="(item, index) in info.mortgaged"
-					      clickable
-					      :key="item"
-					      :title="`房产证号 ${item.house_nubmer}`"
-					      @click="toggle(index)"
-					    >
-					      <van-checkbox
-					        :name="item.house_nubmer"
-					        ref="checkboxes"
-					        slot="right-icon"
-					      />
-					    </van-cell>
-					  </van-cell-group>
-					</van-checkbox-group>
 				</van-cell-group>
 
 			</div>
@@ -382,6 +393,7 @@
 					enterprise_address:'',
 					legal_representative:'',
 					mobile:'',
+					open_status:true,
 				},
 				{
 					relationship:'企业法人', //0=自然人， 1=  企业法人
@@ -456,6 +468,9 @@
 		}
 		  if (this.step==3) {
 			  this.info.mortgaged[i].open_status = !this.info.mortgaged[i].open_status;
+		  }
+		  if (this.step==4) {
+			  this.info.mortgagor[i].open_status = !this.info.mortgagor[i].open_status;
 		  }
 	  },
 	  openPicker(i,index) {//0：不显示 1：显示开始日期控件 2：显示结束日期控件  3:自定义控件：  3地区 4学历5婚姻6家庭人数 7性别
@@ -933,26 +948,35 @@
 		.idCard_bk{
 			background-image: url(../../../assets/images/idcard/103507@123123.png);
 		}
-.idFangChan{
-	background-image: url(../../../assets/images/idcard/bg_jhz@2x.png);
-	background-size: 100% 100%;
-	height: 110px;
-	width: 256px;
-	margin: 16px auto;
-	border-radius: 8px;;
-	padding-top: 36px;;
-	box-shadow: 0px 0px 12px 2px rgba(0,0,0,.15);
-}
-.idFangChan_bk{
-	background-image: url(../../../assets/images/idcard/1012110@635.png);
-}
-		.idCard_front,.idCard_back{
+		.idFangChan{
+			background-image: url(../../../assets/images/idcard/budongchanquanzheng.png);
+			background-size: 100% 100%;
+			height: 110px;
+			width: 256px;
+			margin: 16px auto;
+			border-radius: 8px;;
+			padding-top: 36px;;
+			box-shadow: 0px 0px 12px 2px rgba(0,0,0,.15);
+		}
+		.idFangChan_bk{
+			background-image: url(../../../assets/images/idcard/1012110@635.png);
+		}
+
+		.idCard_front,.idCard_back,.idjiehun{
 			padding-top: 16px;
 			background-size: 100% 100%;
 			width: 46%;
 			margin: 0 2%;
 			display: inline-block;
 			height: 80px;
+		}
+		.idjiehun{
+			background-image: url(../../../assets/images/idcard/bg_jhz@2x.png);
+			margin-left: 27%;
+			margin-top: 8px;
+		}
+		.idjiehun_bk{
+			background-image: url(../../../assets/images/idcard/12@215545.png);
 		}
 		.idCard_front{
 			background-image: url(../../../assets/images/idcard/bg_sfz_front@2x.png);
@@ -963,6 +987,7 @@
 		.idCard_back{
 			background-image: url(../../../assets/images/idcard/bg_sfz_reverse@2x.png);
 		}
+
 		.idCard_back_bk{
 			background-image: url(../../../assets/images/idcard/1057@58.png);
 		}
@@ -977,7 +1002,7 @@
 			width: 40px;
 			margin: 0px auto ;
 		}
-		.idCard p,.idCard_front p,.idCard_back p,.idFangChan p{
+		.idCard p,.idCard_front p,.idCard_back p,.idFangChan p ,.idjiehun p{
 			text-align: center;
 			color: #4c62e7;
 			font-size: 12px;
