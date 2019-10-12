@@ -21,7 +21,7 @@
 											<p class="business_text2">共领取商机</p>
 										</div>
 										<div >
-											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(76,98,231)">51</p></van-col>
+											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(76,98,231)">5</p></van-col>
 											<van-col span="2" class="business_box3"><p class="business_text3">条</p></van-col>
 										</div>
 									</van-col>
@@ -30,7 +30,7 @@
 											<p class="business_text2">成功转换</p>
 										</div>
 										<div >
-											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(247,96,55)">34</p></van-col>
+											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(247,96,55)">1</p></van-col>
 											<van-col span="2" class="business_box3"><p class="business_text3">条</p></van-col>
 										</div>
 									</van-col>
@@ -73,7 +73,7 @@
 											<p class="business_text2" style="padding-left: 14px;margin-top: 10px">商机成功率</p>
 										</div>
 										<div >
-											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(51,51,51);padding-left: 20px">67</p></van-col>
+											<van-col span="12" class="business_box3"><p class="max_num" style="color: rgb(51,51,51);padding-left: 20px">33</p></van-col>
 											<van-col span="2" class="business_box3" style="height: 45px;"><p class="business_text_percent">%</p></van-col>
 										</div>
 									</van-col>
@@ -105,16 +105,19 @@
 									<van-col span="12"><p class="business_flexbox_text">您名下商机处理情况为</p></van-col>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >成功转换累计笔数：<span style="color: #4c62e7">34</span>&nbsp;笔</p>
+									<p class="business_flexbox_text" >已成功累计笔数：<span style="color: #4c62e7">1</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >待完成累计笔数：<span style="color: #f76037">5</span>&nbsp;笔</p>
+									<p class="business_flexbox_text" >待完成累计笔数：<span style="color: #f76037">1</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >放弃累计笔数：<span style="color: #f34c83">1</span>&nbsp;笔</p>
+									<p class="business_flexbox_text" >已放弃累计笔数：<span style="color: #f34c83">1</span>&nbsp;笔</p>
 								</van-row>
 								<van-row>
-									<p class="business_flexbox_text" >失败累计笔数：<span style="color: #46b948">2</span>&nbsp;笔</p>
+									<p class="business_flexbox_text" >已退回累计笔数：<span style="color: #46b948">1</span>&nbsp;笔</p>
+								</van-row>
+								<van-row>
+									<p class="business_flexbox_text" >已失效累计笔数：<span style="color: #B3B3B3">1</span>&nbsp;笔</p>
 								</van-row>
 							</div>
 						</van-tab>
@@ -291,7 +294,7 @@
 		//声明方法
 		methods : {
             onClickLeft() {
-                this.$router.go(-1);
+				this.$router.push('/index');
             },
 			go : function(){
 				this.$router.push('/index5');
@@ -336,8 +339,8 @@
 									}
 								},
 								data:[
-									{value:33, name:'未成功'},
-									{value:67, name:'成功'},
+									{value:67, name:'未成功'},
+									{value:33, name:'成功'},
 
 								]
 							}

@@ -98,6 +98,7 @@
         methods : {
             onClickLeft() {
                 this.$router.go(-1);
+                sessionStorage.setItem('informationAcquisition_tab','已完成' );
             },
             onChange(index) {
                 this.current = index;
@@ -108,9 +109,9 @@
 
 			goToDetail : function(type){
 				localStorage.setItem('xxcj_type',type);
-			
+
 				this.$router.push({path:'/index3/infoDetail',query:{info:this.info}});
-				
+
 			},
             go : function(url){
                 this.$router.push({name: url})

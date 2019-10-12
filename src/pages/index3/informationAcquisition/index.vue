@@ -108,7 +108,7 @@
 
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				this.infos = JSON.parse(jsonStr);
-				console.log(this.infos)
+				console.log('888'+jsonStr+this.infos)
 			}
 
             var value = sessionStorage.getItem('informationAcquisition_tab' );
@@ -144,11 +144,7 @@
                 this.$router.push('./activityDetailsNotBegin');
             },
             go : function(url,param){
-
-                if (param) {
-                    this.$router.push({name:url,params:param});
-                }
-                this.$router.push({name: url})
+                this.$router.push({name:url,params:param});
             },
             go_attendanceList() {
                 this.$router.push('/attendanceList');

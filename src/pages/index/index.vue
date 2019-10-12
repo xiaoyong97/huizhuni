@@ -7,7 +7,7 @@
 				:title='title'
 				fixed
 		/>
-		<img src="../../assets/images/48/Message@2x.png" class="img_massage" @click="go_newspage">
+		<img src="../../assets/images/48/Message@2x.png" class="img_massage" @click="go_Page('news')">
 
 		<div class="content" >
 			<div class="notice-bar" v-show="isShowNoticeBar">
@@ -61,7 +61,7 @@
 					<van-col span="14">客户合规审核未通过</van-col>
 					<van-col span="10">
 						<span class="cell-num">12 </span> 户
-						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
+						<van-button class="check" @click="go_Page('applyQueryResult')" type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
 					</van-col>
 
 				</van-cell>
@@ -70,14 +70,14 @@
 					<van-col span="14">客户贷款逾期通知</van-col>
 					<van-col span="10">
 						<span class="cell-num">10 </span> 户
-						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
+						<van-button class="check" @click="go_Page('loanTracking')"  type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
 					</van-col>
 				</van-cell>
 				<van-cell class="padding-bottom-16">
 					<van-col span="14">名下待抢单客户</van-col>
 					<van-col span="10">
 						<span class="cell-num"> 8 </span> 条
-						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)" @click="go('index2')">查看</van-button>
+						<van-button class="check" type="primary" size="small" color="rgb(90,75,234)" @click="go('index2')">查看</van-button>
 					</van-col>
 				</van-cell>
 			</van-cell-group>
@@ -706,14 +706,15 @@
 
 		//声明方法
 		methods : {
-			go_newspage : function(){
-				this.$router.push({name:'news'})
+			go_Page : function(url){
+				this.$router.push({name:url})
 
 			},
 			go : function(url){
 				if(url=='offlineHuoDong'){//融智赋能
 					Dialog.confirm({
 						message: "请选择身份",
+						//closeOnClickOverlay: true,
 						confirmButtonText: "普惠营销管理岗",
 						cancelButtonText: "营销主管岗" ,
 						cancelButtonColor:"#1989fa",
