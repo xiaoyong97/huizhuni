@@ -6,6 +6,16 @@
             <van-icon :name="searchIcon" size="18px" slot="right" />
         </van-nav-bar>
 
+        <!--        遮罩层-->
+        <div class='popContainer' v-show="isOpen">
+            <div class="choose_box" v-for="(item, index) in typeList">
+                <van-row class="choose_box_list" @click="choose(index)">
+                    <p class="choose_box_text " :class="type == index ? 'blue' : '' ">{{item}}</p>
+                </van-row>
+            </div>
+
+        </div>
+
         <van-tabs v-model="activeTab" title-active-color="#4c62e7" title-inactive-color="#000000" color="#4c62e7" line-width="33.333333%" line-height=3 :border="false">
             <van-tab title="逾期提醒" class="tab-content">
                 <van-cell class="cell" v-for="item in tabList1" @click="go('loanTrackingDetail', {status: '逾期'})">
@@ -33,10 +43,10 @@
             </van-tab>
             <van-tab class="tab-content">
                 <div slot="title">
-                    续贷提醒<van-icon class="more-img" :name="moreImg" />
+                    续贷提醒<van-icon class="more-img" :name="moreImg" @click="typeSelect" />
                 </div>
                 <div class="tab2-content">
-                    <div class="cell" v-for="item in tabList2">
+                    <div class="cell" v-for="item in tabList2" @click="go('loanTrackingDetail', {status: '续贷'})">
                         <van-cell>
                             <van-row>
                             <van-col span="18"><img class="company" :src="companyIcon" alt=""> {{item.company}} </van-col>
@@ -145,6 +155,7 @@
                         amount: '2,000,000',
                         date: '2019-08-08',
                         customerNumber: 8877554554125233,
+                        type: 2,
                         tag: require('../../assets/images/other/blacklist@2x.png')
                     },
                     {
@@ -154,6 +165,7 @@
                         amount: '2,000,000',
                         date: '2019-08-08',
                         customerNumber: 8877554554125233,
+                        type: 1,
                         tag: require('../../assets/images/other/whitelist@2x.png')
                     },
                     {
@@ -163,6 +175,7 @@
                         amount: '2,000,000',
                         date: '2019-08-08',
                         customerNumber: 8877554554125233,
+                        type: 3,
                         tag: require('../../assets/images/other/Greylist@2x.png')
                     },
                     {
@@ -172,6 +185,7 @@
                         amount: '2,000,000',
                         date: '2019-08-08',
                         customerNumber: 8877554554125233,
+                        type: 4,
                         tag: require('../../assets/images/other/Bluelist@2x.png')
                     },
                     {
@@ -181,6 +195,59 @@
                         amount: '2,000,000',
                         date: '2019-08-08',
                         customerNumber: 8877554554125233,
+                        type: 5,
+                        tag: require('../../assets/images/other/Yellowlist@2x.png')
+                    }
+                ],
+                tabList2BackUp: [
+                    {
+                        company: '北京京东金融有限公司',
+                        userName: '张三',
+                        productCode: 9613,
+                        amount: '2,000,000',
+                        date: '2019-08-08',
+                        customerNumber: 8877554554125233,
+                        type: 2,
+                        tag: require('../../assets/images/other/blacklist@2x.png')
+                    },
+                    {
+                        company: '北京京东金融有限公司',
+                        userName: '张三',
+                        productCode: 9613,
+                        amount: '2,000,000',
+                        date: '2019-08-08',
+                        customerNumber: 8877554554125233,
+                        type: 1,
+                        tag: require('../../assets/images/other/whitelist@2x.png')
+                    },
+                    {
+                        company: '北京京东金融有限公司',
+                        userName: '张三',
+                        productCode: 9613,
+                        amount: '2,000,000',
+                        date: '2019-08-08',
+                        customerNumber: 8877554554125233,
+                        type: 3,
+                        tag: require('../../assets/images/other/Greylist@2x.png')
+                    },
+                    {
+                        company: '北京京东金融有限公司',
+                        userName: '张三',
+                        productCode: 9613,
+                        amount: '2,000,000',
+                        date: '2019-08-08',
+                        customerNumber: 8877554554125233,
+                        type: 4,
+                        tag: require('../../assets/images/other/Bluelist@2x.png')
+                    },
+                    {
+                        company: '北京京东金融有限公司',
+                        userName: '张三',
+                        productCode: 9613,
+                        amount: '2,000,000',
+                        date: '2019-08-08',
+                        customerNumber: 8877554554125233,
+                        type: 5,
                         tag: require('../../assets/images/other/Yellowlist@2x.png')
                     }
                 ],
@@ -200,11 +267,40 @@
                         date: '2019-11-01'
                     }
                 ],
+                typeSelectFlag: false,
+                type: -1,
+                typeList: ['全部', '续贷白名单', '续贷黑名单', '续贷灰名单', '续贷蓝名单', '续贷黄名单'],
             }
         },
         computed: {
             moreImg() {
                 return this.activeTab == 1 ? moreImg1 : moreImg3;
+            },
+            isOpen() {
+                return (this.activeTab == 1  && this.typeSelectFlag) ? true : false;
+            }
+        },
+        methods: {
+            typeSelect() {
+                if (this.activeTab == 1) {
+                    this.typeSelectFlag = true;
+                }
+            },
+            choose(index) {
+                this.typeSelectFlag = false;
+                this.type = index;
+                if (index == 0) {
+                    this.tabList2 = this.tabList2BackUp;
+                } else {
+                    this.tabList2 = this.tabList2BackUp.filter((item) => {
+                        return item.type == index;
+                    })
+                }
+            }
+        },
+        watch: {
+            activeTab(value) {
+                this.typeSelectFlag = false;
             }
         }
     }
@@ -256,5 +352,33 @@
         vertical-align: top;
         margin-top: 14px;
         margin-left: 4px;
+    }
+    .popContainer{
+        position: fixed;
+        top: 90px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.3);
+        z-index: 100;
+    }
+    .choose_box{
+        background-color: white;
+        width: 33.333333%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    .choose_box_list{
+        text-align: center;
+    }
+    .choose_box_text{
+        line-height: 34px;
+        color: #999999;
+        font-size: 16px;
+        margin-block-start:0;
+        margin-block-end:0;
+    }
+    .blue{
+        color: #4c62e7;
     }
 </style>

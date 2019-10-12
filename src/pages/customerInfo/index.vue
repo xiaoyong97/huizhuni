@@ -773,6 +773,29 @@
             </div>
           </div>
         </van-tab>
+        <van-tab title="惠助你抢单">
+          <div class="main_box qmdlb" style="min-height:568px;">
+            <div class="cloudMtxTable_body">
+              <table class="cloudTable"  style="table-layout:fixed">
+                <!-- <colgroup >
+                  <col width="50px;">
+                  <col width="90px">
+                  <col width="120px">
+                  <col width="">
+                </colgroup> -->
+                <tbody class="cloudTable_body ">
+                  <tr @click="goTo">
+                    <td>商机名称</td>
+                    <td>商机编号</td>
+                    <td>商机来源</td>
+                    <td>商机状态</td>
+                    <td>商机阶段</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </van-tab>
       </van-tabs>
     
     </div>
@@ -838,6 +861,9 @@ export default {
 
   //声明方法
   methods: {
+    goTo() {
+      this.$router.push({path: '/shangParticulars/1'});
+    },
     hznClick(){
       this.$router.push('./shangParticulars/1');
     },
