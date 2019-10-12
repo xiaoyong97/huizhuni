@@ -143,10 +143,9 @@
 
 		</div>
 		<div class="input-contianer" v-show="step==4">
-			<div v-for="(item,index) in info.mortgagor">
-				<h4 class="cell-hearder">抵押人{{index+1}}</h4>
-
-				<van-cell-group class="bg-grey">
+			<div v-for="(item,index) in info.mortgagor" v-show="index>0">
+				<h4 class="cell-hearder">抵押人{{index}}</h4>
+				<van-cell-group class="bg-grey" >
 					<div v-show="item.relationship=='自然人'">
 						<div>
 							<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
@@ -159,7 +158,6 @@
 								<p>点击拍摄/上传国徽面</p>
 							</div>
 						</div>
-
 						<van-field label="姓名"placeholder="请输入姓名" v-model="item.name" clearable label-width="120"/>
 						<van-cell-group class="bg-grey" v-show="item.open_status">
 							<van-field label="性别" placeholder="性别" @click-right-icon="openPicker(7,index)" v-model="item.sex" clearable label-width="120" right-icon="arrow-down"/>
@@ -193,10 +191,9 @@
 							<van-col span="6" class="open_close_col" v-show="item.open_status" @click="openClose(index)"><p>收起<van-icon name="arrow-up" /></p></van-col>
 						</van-row>
 					</div>
-
-
-
 					<div v-show="item.relationship=='企业法人'">
+						<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
+
 						<div>
 							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>
 
@@ -205,13 +202,72 @@
 								<p>点击拍摄/上传企业营业执照</p>
 							</div>
 						</div>
-						<van-field label="新一代客户编号"placeholder="请输入新一代客户编号" v-model="item.customer_id" clearable label-width="120"/>
-						<van-field label="统一社会信用代码" placeholder="统一社会信用代码"  v-model="item.unified_social_credit_code" clearable label-width="120"/>
-						<van-field label="企业名称" placeholder="企业名称" v-model="item.company_name" clearable label-width="120"/>
-						<van-field label="企业地址"placeholder="请输企业地址" v-model="item.enterprise_address" clearable label-width="120"/>
-						<van-field label="法定代表人" placeholder="法定代表人"  v-model="item.legal_representative" clearable label-width="120"/>
-						<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="item.mobile" clearable label-width="120"/>
-						<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="item.legal_representative_address" clearable label-width="120" label-color="red"/>
+						<van-cell-group class="bg-grey" v-show="item.open_status">
+							<van-field label="新一代客户编号"placeholder="请输入新一代客户编号" v-model="item.customer_id" clearable label-width="120"/>
+							<van-field label="统一社会信用代码" placeholder="统一社会信用代码"  v-model="item.unified_social_credit_code" clearable label-width="120"/>
+							<van-field label="企业名称" placeholder="企业名称" v-model="item.company_name" clearable label-width="120"/>
+							<van-field label="企业地址"placeholder="请输企业地址" v-model="item.enterprise_address" clearable label-width="120"/>
+							<van-field label="法定代表人" placeholder="法定代表人"  v-model="item.legal_representative" clearable label-width="120"/>
+							<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="item.mobile" clearable label-width="120"/>
+							<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="item.legal_representative_address" clearable label-width="120" label-color="red"/>
+							<div class='cell'>请选择关联抵押物(可多选)</div>
+							<van-checkbox-group v-model="result">
+								<van-cell-group>
+									<van-cell
+											v-for="(item, index) in info.mortgaged"
+											clickable
+											:key="item"
+											:title="`房产证号 ${item.house_nubmer}`"
+											@click="toggle(index)"
+									>
+										<van-checkbox
+												:name="item.house_nubmer"
+												ref="checkboxes"
+												slot="right-icon"
+										/>
+									</van-cell>
+								</van-cell-group>
+							</van-checkbox-group>
+						</van-cell-group>
+					</div>
+					<div v-show="item.relationship=='其他'">
+						<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
+
+						<div>
+							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>
+
+							<div class="idCard" @click="openOverlay(43)" :class="imgshow==43?'idCard_bk':''">
+								<div class="idCard_shadow_button" ></div>
+								<p>点击拍摄/上传企业营业执照</p>
+							</div>
+						</div>
+						<van-cell-group class="bg-grey" v-show="item.open_status">
+							<van-field label="新一代客户编号"placeholder="请输入新一代客户编号" v-model="item.customer_id" clearable label-width="120"/>
+							<van-field label="统一社会信用代码" placeholder="统一社会信用代码"  v-model="item.unified_social_credit_code" clearable label-width="120"/>
+							<van-field label="企业名称" placeholder="企业名称" v-model="item.company_name" clearable label-width="120"/>
+							<van-field label="企业地址"placeholder="请输企业地址" v-model="item.enterprise_address" clearable label-width="120"/>
+							<van-field label="法定代表人" placeholder="法定代表人"  v-model="item.legal_representative" clearable label-width="120"/>
+							<van-field label="法定代表人电话" placeholder="法定代表人电话" v-model="item.mobile" clearable label-width="120"/>
+							<van-field label="法定代表人地址"placeholder="请输入法定代表人地址" v-model="item.legal_representative_address" clearable label-width="120" label-color="red"/>
+							<div class='cell'>请选择关联抵押物(可多选)</div>
+							<van-checkbox-group v-model="result">
+								<van-cell-group>
+									<van-cell
+											v-for="(item, index) in info.mortgaged"
+											clickable
+											:key="item"
+											:title="`房产证号 ${item.house_nubmer}`"
+											@click="toggle(index)"
+									>
+										<van-checkbox
+												:name="item.house_nubmer"
+												ref="checkboxes"
+												slot="right-icon"
+										/>
+									</van-cell>
+								</van-cell-group>
+							</van-checkbox-group>
+						</van-cell-group>
 					</div>
 				</van-cell-group>
 
@@ -377,6 +433,26 @@
 			],
 			mortgagor:[
 				{
+					relationship:'企业法人', //0=自然人， 1=  企业法人
+					name:'艾仲华',
+					sex:'',
+					ethnic:'',
+					birth:'',
+					address:'',
+					idcard:'',
+					validity_period:'' , //有效期
+					diyaren_mobile:'',
+					diyawu:[],
+					customer_id:'252841000000526649',
+					unified_social_credit_code:'91120116MA07K2307A',
+					company_name:'广州市睿智防水电器股份有限公司',
+					enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+					legal_representative:'艾仲华',
+					mobile:'13702137765',
+					legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+					open_status:true,
+				},
+				{
 					relationship:'自然人', //0=自然人， 1=  企业法人
 					name:'艾仲华',
 					sex:'女',
@@ -395,26 +471,6 @@
 					mobile:'',
 					open_status:true,
 				},
-				{
-					relationship:'企业法人', //0=自然人， 1=  企业法人
-					name:'艾仲华',
-					sex:'',
-					ethnic:'',
-					birth:'',
-					address:'',
-					idcard:'',
-					validity_period:'' , //有效期
-					diyaren_mobile:'',
-					diyawu:[],
-					customer_id:'252841000000526649',
-					unified_social_credit_code:'91120116MA07K2307A',
-					company_name:'广州市睿智防水电器股份有限公司',
-					enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
-					legal_representative:'艾仲华',
-					mobile:'13702137765',
-					legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-
-				}
 			],
 			unid:'',
 			collect_time:'',
@@ -611,7 +667,7 @@
 			}
 				break;
 			case 9:{
-
+				console.log('121',picker, value, index);
 				switch(this.step){
 					case 4:
 						this.info.mortgagor[this.current_index].relationship = this.columns[value];
@@ -733,6 +789,7 @@
 						enterprise_address:'',
 						legal_representative:'',
 						mobile:'',
+						open_status:true,
 					})
 			}
 			break;
@@ -974,6 +1031,7 @@
 			background-image: url(../../../assets/images/idcard/bg_jhz@2x.png);
 			margin-left: 27%;
 			margin-top: 8px;
+
 		}
 		.idjiehun_bk{
 			background-image: url(../../../assets/images/idcard/12@215545.png);
