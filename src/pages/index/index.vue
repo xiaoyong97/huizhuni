@@ -714,6 +714,7 @@
 				if(url=='offlineHuoDong'){//融智赋能
 					Dialog.confirm({
 						message: "请选择身份",
+						//closeOnClickOverlay: true,
 						confirmButtonText: "普惠营销管理岗",
 						cancelButtonText: "营销主管岗" ,
 						cancelButtonColor:"#1989fa",

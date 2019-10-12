@@ -11,7 +11,7 @@
     
     <div class="top_bar_main_box" >
         <van-row class="top_bar_box" style="">
-            <van-col :class="type!==2?'active':''" class="top_bar_box_col top_bar_box_col_left " span="12"><p class="top_bar_box_text_left" @click="changeType(1)">我的活动</p></van-col>
+            <van-col :class="type!==2?'active':''" class="top_bar_box_col top_bar_box_col_left " span="12"><p class="top_bar_box_text_left" @click="changeType(1)">融智赋能</p></van-col>
             <van-col :class="type==2?'active':''" class="top_bar_box_col " span="12"><p class="top_bar_box_text_right" @click="changeType(2)">报表查询</p></van-col>
         </van-row>
     </div>
