@@ -54,6 +54,34 @@
 				 		</div>
 				 	</div>
 				 </van-cell>
+				 <van-cell>
+					 <div class="pan-content">
+					 	<div class=" dk-pan">
+					 		<img class="pan-tag-img" src="../../assets/images/other/Label7@2x.png" alt="">
+					 		<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{infos[0].mortgaged[0].house_nubmer}}</div></van-col>
+					 		<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].address}}</van-col>
+					 		<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].holder}}&nbsp;</van-col>
+					 		<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[0].mortgagor[0].name}}&nbsp;</van-col>
+					 		<van-col span="24" class="detail" @click="checkTask(infos[0],1)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+					 	
+					 					 </div>
+					 </div>
+				 </van-cell>
+				 <van-cell>
+					 <div class="pan-content">
+						<div class=" dk-pan">
+							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" >
+							<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{infos[0].mortgaged[0].house_nubmer}}</div></van-col>
+							<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].address}}</van-col>
+							<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].holder}}&nbsp;</van-col>
+							<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[0].mortgagor[0].name}}&nbsp;</van-col>
+							<van-col span="24" class="detail" @click="checkTask(infos[0],2)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+						 </div>
+					 </div>
+				 </van-cell>
+			
+			
+			
 
 			  <!-- 	<van-cell v-for="(item, index) in task">
 			  		<div class="pan-content">
@@ -169,7 +197,15 @@
 	  this.$router.go(-1);
 		sessionStorage.setItem('gugu_tab','任务发布' );
 	},
-	checkTask:function(task){
+	checkTask:function(task,status){
+		if(task.info == undefined){
+			
+			task = {
+				status:status,
+				info:[task],
+			}
+		}
+	
 		this.$router.push({name: 'checkTask',query:{task:task}});
 	}
   },
