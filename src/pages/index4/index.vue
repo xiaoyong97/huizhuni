@@ -97,8 +97,8 @@
     </div>
     <!-- 客户模式 -->
     <div class="region-slectModule">
-      <van-dropdown-menu id="slectModule" :overlay="false" style="height:30px;">
-        <van-dropdown-item style="height:170px;" v-model="value1" @change="chaVal" :options="option1" />
+      <van-dropdown-menu id="slectModule" :overlay="false" :style="{width: '100%', height: '30px'}">
+        <van-dropdown-item v-model="value1" @change="chaVal" :options="option1" />
       </van-dropdown-menu>
     </div>
     <!--底部导航-->
@@ -553,8 +553,8 @@ export default {
   position: fixed;
   top: 58px;
   right: 10px;
-  height: 30px;
-  line-height: 30px;
+  // height: 30px;
+  // line-height: 30px;
   text-align: center;
   background-color: #ffffff;
   border:solid 0.5px #eeeeee;  
