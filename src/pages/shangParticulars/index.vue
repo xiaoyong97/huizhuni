@@ -109,6 +109,7 @@
             </div>
             <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingQianDan" v-if="qianDanIsOk">抢单</van-button></div>
             <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingFangQi" v-if="fansQiIsOk">放弃</van-button></div>
+            <div class="botButDiv"><div class="botYiQianDanBut" v-show="typeStutas">已放弃</div></div>
            
           </div>
           
@@ -139,6 +140,7 @@ export default {
        id:this.$route.params.id,//跳转参数id
        qianDanIsOk: true,
        fansQiIsOk: false,
+       typeStutas:false,
        fangQiButShow: false,
        fangQiRadio: 1,
        enterprise:[],//接受显示数据
@@ -169,7 +171,7 @@ export default {
        },
        enterpriseTwo:{
          EnterpriseLabel:[//企业标签
-           {name:'法定代表人'},
+           {name:'法人'},
            {name:'个人征信'},
            {name:'企业征信'},
            {name:'基本户'},
@@ -243,9 +245,10 @@ export default {
     xiangQingQianDan(){
       Dialog.alert({
         title: '',
-        message: '抢单成功'
+        message: '抢单成功',
+        confirmButtonText: "确定",
       }).then(() => {
-        this.title=this.enterpriseTwo.companyName
+        this.title=this.enterprise.companyName
         this.qianDanIsOk= false
         this.fansQiIsOk= true
         this.textJueIsOk=true
@@ -258,10 +261,11 @@ export default {
     //放弃弹窗确定按钮
     queRen(){
       Dialog.alert({
-        message: '已放弃'
+        message: '已放弃',
+        confirmButtonText: "确定",
       }).then(() => {
-        this.qianDanIsOk= true
         this.fansQiIsOk= false
+        this.typeStutas=true
         this.textJueIsOk=false
       });
     },
@@ -545,5 +549,14 @@ export default {
   //放弃弹窗
   .fangButClass{
     margin: 15px 0px 10px 80px ;
+  }
+  .botButDiv .botYiQianDanBut{
+    height:35px;
+    line-height:35px;
+    width:250px;
+    text-align: center;
+    border:1px solid;
+    border-radius: 22px;
+    color: rgb(76,98,232);
   }
 </style>

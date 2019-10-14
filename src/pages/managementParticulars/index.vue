@@ -13,11 +13,7 @@
             <div class="biaoQian">
               <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">企业标签</div></div>
               <van-row  class="biaoQianLie" gutter="10">
-                <van-col span="2"></van-col>
-                <van-col><div class ="BKuang" >一般户</div></van-col>
-                <van-col><div class ="BKuang" >结算户</div></van-col>
-                <van-col><div class ="BKuang" >企业征信</div></van-col>
-                <van-col><div class ="BKuang" >个人征信</div></van-col>
+                <van-col  v-for="item in enterprise.EnterpriseLabel"><div class ="BKuang" >{{item.name}}</div></van-col>
               </van-row>
             </div>
             <div class="xinXi">
@@ -33,68 +29,84 @@
                 </van-col>
               </div>
               <div class="mesKang">
-                <van-row>
+                  <van-row>
                   <van-col class="mesKangLeft" span="8">企业名称</van-col>
-                  <van-col class="mesKangRight" span="16">新野摸具制造有限公司</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.companyName}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">联系人</van-col>
-                  <van-col class="mesKangRight" span="16">李某某</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.principalName}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">联系电话</van-col>
-                  <van-col class="mesKangRight" span="16">13527283736</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.phone}}</van-col>
                 </van-row>
                 <van-row>
-                  <van-col class="mesKangLeft" span="8">企业联系地址</van-col>
-                  <van-col class="mesKangRight" span="16">北京市朝阳区建国路1号科贸大厦</van-col>
+                  <van-col class="mesKangLeft" span="8">企业注册地址</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.address}}</van-col>
+                </van-row>
+                <van-row>
+                  <van-col class="mesKangLeft" span="8">所属行业</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.Subordinate}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">经营范围</van-col>
-                  <van-col class="mesKangRight" span="16">北京市朝阳区建国路1号科贸大厦北京市朝阳区建国路1号科贸大厦</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.scopeBusiness}}</van-col>
                 </van-row>
                 <van-row>
-                  <van-col class="mesKangLeft" span="8">成立年限</van-col>
-                  <van-col class="mesKangRight" span="16">4年</van-col>
+                  <van-col class="mesKangLeft" span="8">成立日期</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.establishTime}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">是否存量客户</van-col>
-                  <van-col class="mesKangRight" span="16">是</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.whether}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">精准测额时间</van-col>
-                  <van-col class="mesKangRight" span="16">2019/08/15</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.accurateTime}}</van-col>
                 </van-row>
                 <van-row>
                   <van-col class="mesKangLeft" span="8">申贷意向时间</van-col>
-                  <van-col class="mesKangRight" span="16">2019/07/21</van-col>
+                  <van-col class="mesKangRight" span="16">{{enterprise.CreditTime}}</van-col>
                 </van-row>
               </div>
               <div class="eDu">
                   <van-divider style="margin-top: 10px;margin-bottom: 10px;"/>
                   <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">产品额度</div></div>
                   <van-row gutter="15">
-                    <van-col class="kuang" span="6">
-                      <div class="kuangHang">
-                        <div class="kuangTop">信用快贷</div><div class="kuangBottom">200万</div>
-                      </div>
-                    </van-col>
-                    <van-col class="kuang" span="6">
-                      <div class="kuangHangDi">
-                        <div class="kuangTop">抵押快贷</div><div class="kuangBottom">500万</div>
-                      </div>
-                    </van-col>
-                    <van-col class="kuang" span="6">
-                      <div class="kuangHang">
-                        <div class="kuangTop">交易快贷</div><div class="kuangBottom">300万</div>
-                      </div>
-                    </van-col>
-                    <van-col class="kuang" span="6">
-                      <div class="kuangHang">
-                        <div class="kuangTop">质押快贷</div><div class="kuangBottom">800万</div>
-                      </div>
-                    </van-col>
-                  </van-row>
+                  <van-col class="kuang" span="6">
+                    <div class="kuangHangDi" v-if="statusOne"><!--橘色状态-->
+                      <div class="kuangTop">信用快贷</div><div class="kuangBottom">{{enterprise.moneyOne}}</div>
+                    </div>
+                    <div class="kuangHang" v-if="!statusOne">
+                      <div class="kuangTop">信用快贷</div><div class="kuangBottom">{{enterprise.moneyOne}}</div>
+                    </div>
+                  </van-col>
+                  <van-col class="kuang" span="6">
+                    <div class="kuangHangDi" v-if="statusTwo"><!--橘色状态-->
+                      <div class="kuangTop">抵押快贷</div><div class="kuangBottom">{{enterprise.moneyTwo}}</div>
+                    </div>
+                    <div class="kuangHang" v-if="!statusTwo">
+                      <div class="kuangTop">抵押快贷</div><div class="kuangBottom">{{enterprise.moneyTwo}}</div>
+                    </div>
+                  </van-col>
+                  <van-col class="kuang" span="6">
+                    <div class="kuangHangDi" v-if="statusThree"><!--橘色状态-->
+                      <div class="kuangTop">交易快贷</div><div class="kuangBottom">{{enterprise.moneyThree}}</div>
+                    </div>
+                    <div class="kuangHang" v-if="!statusThree">
+                      <div class="kuangTop">交易快贷</div><div class="kuangBottom">{{enterprise.moneyThree}}</div>
+                    </div>
+                  </van-col>
+                  <van-col class="kuang" span="6">
+                    <div class="kuangHangDi" v-if="statusFour"><!--橘色状态-->
+                      <div class="kuangTop">质押快贷</div><div class="kuangBottom">{{enterprise.moneyFour}}</div>
+                    </div>
+                    <div class="kuangHang" v-if="!statusFour">
+                      <div class="kuangTop">质押快贷</div><div class="kuangBottom">{{enterprise.moneyFour}}</div>
+                    </div>
+                  </van-col>
+                </van-row>
                 </div><div class="eDu">
                 <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">企业关系图谱</div></div>
                   
@@ -141,8 +153,182 @@ export default {
        title : '新野摸具制造有限公司',
        fangQiButShow: false,
        fangQiRadio: 1,
-       stutasId:this.$route.params.stutasId,//跳转参数id
-       typeStutas: 0,
+       stutasId:this.$route.params.stutasId,//跳转参数状态id
+       userId:this.$route.params.userId,//跳转参数用户id
+       typeStutas: 0,//橘色状态
+       userTypeId: 0,//用户id
+       enterprise:[],//接受显示数据
+       enterpriseOne:{//青岛智慧科技有限公司数据1
+         EnterpriseLabel:[//企业标签
+           {name:'法定代表人'},
+           {name:'个人征信'},
+           {name:'绑定惠懂你'},
+           {name:'联系电话'},
+           {name:'精准测额'},
+           {name:'信贷准入'},
+           {name:'申贷意愿'},
+         ],
+         companyName: '青岛智慧科技有限公司', //公司名称
+         principalName: '王光明',//联系人
+         phone: '13818886688',//联系电话
+         address: '山东省青岛市城阳区惜福镇王沙路1616号',//企业注册地址
+         Subordinate: '软件和信息技术服务行业',//所属行业
+         scopeBusiness: '计算机软硬件的技术开发；技术咨询；技术转让；技术服务；数据库处理；经济信息咨询；经营电子商务；计算机编程',//经营范围
+         establishTime: "2012年9月20日",//成立日期
+         whether: '否',//是否存量客户
+         accurateTime: '2019年10月12日',//精准测额时间
+         CreditTime: '2019年10月12日',//申贷意愿时间
+         moneyOne:'188万',
+         moneyTwo:'850万',
+         moneyThree:'300万',
+         moneyFour:'800万',
+       },
+       enterpriseTwo:{//广州市睿智防水电器股份有限公司数据2
+         EnterpriseLabel:[//企业标签
+           {name:'法人'},
+           {name:'个人征信'},
+           {name:'企业征信'},
+           {name:'基本户'},
+           {name:'一般户'},
+           {name:'绑定惠懂你'},
+           {name:'联系电话'},
+           {name:'企业网银'},
+           {name:'个人网银'},
+           {name:'手机银行'},
+           {name:'精准测额'},
+           {name:'信贷准入'},
+           {name:'申贷意愿'},
+         ],
+         companyName: '广州市睿智防水电器股份有限公司', //公司名称
+         principalName: '艾仲华',//联系人
+         phone: '13702137765',//联系电话
+         address: '广州市高新技术产业开发区迎宾大道188号',//企业注册地址
+         Subordinate: '计算机，通信和其他电子设备制造业',//所属行业
+         scopeBusiness: '电子元件及组件制造；货物进出口；电子元器件批发；技术进出口；电器辅件',//经营范围
+         establishTime: "2009年3月12日",//成立日期
+         whether: '是',//是否存量客户
+         accurateTime: '2019年10月12日',//精准测额时间
+         CreditTime: '2019年10月12日',//申贷意愿时间
+         moneyOne:'188万',
+         moneyTwo:'850万',
+         moneyThree:'300万',
+         moneyFour:'800万',
+       },
+      enterpriseThree:{//新野摸具制造有限公司数据3
+        EnterpriseLabel:[//企业标签
+          {name:'一般户'},
+          {name:'结算户'},
+          {name:'企业征信'},
+          {name:'个人征信'},
+        ],
+        companyName: '新野摸具制造有限公司', //公司名称
+        principalName: '李某某',//联系人
+        phone: '13527282726',//联系电话
+        address: '北京市朝阳区建国路1号科贸大厦',//企业注册地址
+        Subordinate: '摸具制造行业',//所属行业
+        scopeBusiness: '摸具制造：摸具生产：摸具设计；技术咨询；技术转让；技术服务',//经营范围
+        establishTime: "2012年9月20日",//成立日期
+        whether: '否',//是否存量客户
+        accurateTime: '2019年10月12日',//精准测额时间
+        CreditTime: '2019年10月12日',//申贷意愿时间
+        moneyOne:'188万',
+        moneyTwo:'500万',
+        moneyThree:'300万',
+        moneyFour:'800万',
+      },
+      enterpriseFour:{//广西汇智科技有限公司数据4
+        EnterpriseLabel:[//企业标签
+          {name:'一般户'},
+          {name:'结算户'},
+          {name:'企业征信'},
+          {name:'个人征信'},
+        ],
+        companyName: '广西汇智科技有限公司', //公司名称
+        principalName: '张某某',//联系人
+        phone: '134223322726',//联系电话
+        address: '广西省桂林市建安路5号科贸大厦',//企业注册地址
+        Subordinate: '计算机，通信和其他电子设备制造业',//所属行业
+        scopeBusiness: '技术开发；技术咨询；技术转让；技术服务；数据库处理；经济信息咨询；经营电子商务',//经营范围
+        establishTime: "2014年10月20日",//成立日期
+        whether: '否',//是否存量客户
+        accurateTime: '2019年10月12日',//精准测额时间
+        CreditTime: '2019年10月12日',//申贷意愿时间
+        moneyOne:'188万',
+        moneyTwo:'500万',
+        moneyThree:'300万',
+        moneyFour:'800万',
+      },
+      enterpriseFive:{//深圳科创科技有限公司数据5
+        EnterpriseLabel:[//企业标签
+          {name:'一般户'},
+          {name:'结算户'},
+          {name:'企业征信'},
+          {name:'个人征信'},
+        ],
+        companyName: '深圳科创科技有限公司', //公司名称
+        principalName: '陈某某',//联系人
+        phone: '134537857384',//联系电话
+        address: '深圳市建业路7号科贸大厦',//企业注册地址
+        Subordinate: '计算机，通信和其他电子设备制造业',//所属行业
+        scopeBusiness: '技术开发；技术咨询；技术转让；技术服务；数据库处理；经济信息咨询；经营电子商务',//经营范围
+        establishTime: "2013年3月23日",//成立日期
+        whether: '否',//是否存量客户
+        accurateTime: '2019年10月12日',//精准测额时间
+        CreditTime: '2019年10月12日',//申贷意愿时间
+        moneyOne:'188万',
+        moneyTwo:'500万',
+        moneyThree:'300万',
+        moneyFour:'800万',
+      },
+      enterpriseSix:{//佛山薇薇科技有限公司数据6
+        EnterpriseLabel:[//企业标签
+          {name:'一般户'},
+          {name:'结算户'},
+          {name:'企业征信'},
+          {name:'个人征信'},
+        ],
+        companyName: '佛山薇薇科技有限公司', //公司名称
+        principalName: '罗某某',//联系人
+        phone: '134537223384',//联系电话
+        address: '佛山市民安路7号科贸大厦',//企业注册地址
+        Subordinate: '计算机，通信和其他电子设备制造业',//所属行业
+        scopeBusiness: '技术开发；技术咨询；技术转让；技术服务；经济信息咨询；经营电子商务',//经营范围
+        establishTime: "2015年12月23日",//成立日期
+        whether: '否',//是否存量客户
+        accurateTime: '2019年10月12日',//精准测额时间
+        CreditTime: '2019年10月12日',//申贷意愿时间
+        moneyOne:'188万',
+        moneyTwo:'500万',
+        moneyThree:'300万',
+        moneyFour:'800万',
+      },
+      enterpriseSeven:{//佛山创新科技有限公司数据7
+        EnterpriseLabel:[//企业标签
+          {name:'一般户'},
+          {name:'结算户'},
+          {name:'企业征信'},
+          {name:'个人征信'},
+        ],
+        companyName: '佛山创新科技有限公司', //公司名称
+        principalName: '谭某某',//联系人
+        phone: '13486854384',//联系电话
+        address: '佛山市民安路3号科贸大厦',//企业注册地址
+        Subordinate: '计算机，通信和其他电子设备制造业',//所属行业
+        scopeBusiness: '技术开发；技术咨询；技术转让；技术服务；经济信息咨询；经营电子商务',//经营范围
+        establishTime: "2014年12月23日",//成立日期
+        whether: '否',//是否存量客户
+        accurateTime: '2019年10月12日',//精准测额时间
+        CreditTime: '2019年10月12日',//申贷意愿时间
+        moneyOne:'188万',
+        moneyTwo:'500万',
+        moneyThree:'300万',
+        moneyFour:'800万',
+      },
+       //四个快贷状态,true为橘色
+       statusOne: false,//1信用快贷
+       statusTwo: false,//2抵押快贷
+       statusThree: false,//3交易快贷
+       statusFour: false,//4质押快贷
      }
   },
 
@@ -154,6 +340,7 @@ export default {
   //网页加载完成
   mounted : function(){
     this.getButStutasId()
+    this.gteEnterprise()
   },
   
   //声明方法
@@ -161,6 +348,34 @@ export default {
     
     go : function(){
       this.$router.push('/more');
+    },
+    //初始化数据
+    gteEnterprise(){
+      this.userTypeId=this.userId
+      this.enterprise=[]
+
+      if(this.userTypeId==1){
+        this.enterprise=this.enterpriseOne
+        this.statusOne=true//1信用快贷
+      }else if(this.userTypeId==2){
+        this.enterprise=this.enterpriseTwo
+        this.statusTwo=true//2抵押快贷
+      }else if(this.userTypeId==3){
+        this.enterprise=this.enterpriseThree
+        this.statusTwo=true//2抵押快贷
+      }else if(this.userTypeId==4){
+        this.enterprise=this.enterpriseFour
+        this.statusTwo=true//2抵押快贷
+      }else if(this.userTypeId==5){
+        this.enterprise=this.enterpriseFive
+        this.statusTwo=true//2抵押快贷
+      }else if(this.userTypeId==6){
+        this.enterprise=this.enterpriseSix
+        this.statusTwo=true//2抵押快贷
+      }else if(this.userTypeId==7){
+        this.enterprise=this.enterpriseSeven
+        this.statusTwo=true//2抵押快贷
+      }
     },
     //获取传来的状态id
     getButStutasId(){
@@ -173,7 +388,8 @@ export default {
     //放弃确认
     queRen(){
       Dialog.alert({
-        message: '已放弃'
+        message: '已放弃',
+        confirmButtonText: "确定",
       }).then(() => {
         this.typeStutas=4
       });
@@ -364,7 +580,7 @@ export default {
   }
   .xiangQingBac .biaoQian{
     width: 90%;
-    height:78px;
+    min-height:78px;
     margin: 8px auto 0px auto;
     border-radius: 10px;
     padding-left: 10px;
@@ -398,6 +614,10 @@ export default {
     width:80%;
     height:70px;
   }
+  .biaoQianLie {
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
   .biaoQianLie .BKuang{
     width: 55px;
     line-height:20px;
@@ -411,7 +631,7 @@ export default {
   }
   .xiangQingBac .xinXi{
     width: 90%;
-    height:540px;
+    height:580px;
     margin: 8px auto 0px auto;
     border-radius: 10px;
     padding-left: 10px;

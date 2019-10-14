@@ -239,7 +239,7 @@
             </van-row>
 
           </van-tab>
-          <van-tab name="草稿箱" title="草稿箱" v-model="active">
+          <van-tab name="草稿箱" :title="tab4Title"  color="#4c62e7"> 
             <!--头部搜索-->
             <van-row class="seekRow" gutter="20"> 
               <van-col span="16"><van-field class="seekField" v-model="fieldWeiCao" placeholder="请输入活动名称" />    
@@ -270,7 +270,7 @@
           </van-tab>
         </van-tabs>
 
-        <van-tabs v-model="active" line-width="25%" title-active-color="#1989fa" color="#1989fa" v-show="type==0">
+        <van-tabs v-model="active2" line-width="25%" title-active-color="#1989fa" color="#1989fa" v-show="type==0">
           <!--                已发布下拉图标-->
           <img src="../../assets/images/24/Pulldown@2x.png" style="left:32%;" class="menu1_open" v-show="menu!==1" @click="openMenu(1,1)">
           <img src="../../assets/images/24/Pullupselect@12x.png" style="left:32%;" class="menu1_open" v-show="menu==1" @click="openMenu(1,-1)">
@@ -705,7 +705,8 @@ export default {
      return {
        title : '新建活动',
        guanLiId:this.$route.params.guanLiId,//跳转参数id
-       active: 1,
+       active: "已发布",
+       active2: "已发布",
        menu:-1,  //-1:已发布不显示
        toAudit:-1,//-1:待审核不显示
        refuse:-1,//-1:已拒绝不显示
@@ -720,6 +721,7 @@ export default {
        tab1Title:"已发布",
        tab2Title:"待审核",
        tab3Title:"已拒绝",
+       tab4Title:"草稿箱",
        countcc:3,
        countDsh:4,
        baoQianIS:false,
