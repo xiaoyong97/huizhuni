@@ -378,39 +378,59 @@
 		this.setTitle();
 	},
 	saveData:function(){
-		this.info.step=5;
-		this.info.unid = Date.parse(new Date());
 
-		var tasks = [];
-		var jsonStr = sessionStorage.getItem('task');
-		if(jsonStr != null && jsonStr != undefined){
-			tasks =  JSON.parse(jsonStr);
-		}
-		tasks.push({
-			status:0,
-			info:[this.info],
-		})
-		sessionStorage.setItem('task',JSON.stringify(tasks))
-
-		if(this.unids.length>0){
-
-			var jsonStr = sessionStorage.getItem('userinfo');
+		var jsonStr = sessionStorage.getItem('userinfo');
+		console.log('999'+jsonStr)
+		console.log('888'+this.unids)
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				var infos = JSON.parse(jsonStr);
-
 				for(var i=0;i<this.unids.length;i++){
-
 					for(var ii=0;ii<infos.length;ii++){
-						console.log(this.unids[i])
-						console.log(infos[ii].unid)
+						console.log('999'+infos)
 						if(this.unids[i] == infos[ii].unid){
 							infos[ii].status=1;
 						}
 					}
 				}
+				infos.push(
+						this.info
+					)
 				sessionStorage.setItem('userinfo',JSON.stringify(infos));
 			}
-		}
+
+		// this.info.step=5;
+		// this.info.unid = Date.parse(new Date());
+		//
+		// var tasks = [];
+		// var jsonStr = sessionStorage.getItem('task');
+		// if(jsonStr != null && jsonStr != undefined){
+		// 	tasks =  JSON.parse(jsonStr);
+		// }
+		// tasks.push({
+		// 	status:0,
+		// 	info:[this.info],
+		// })
+		// sessionStorage.setItem('task',JSON.stringify(tasks))
+		//
+		// if(this.unids.length>0){
+		//
+		// 	var jsonStr = sessionStorage.getItem('userinfo');
+		// 	if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
+		// 		var infos = JSON.parse(jsonStr);
+		//
+		// 		for(var i=0;i<this.unids.length;i++){
+		//
+		// 			for(var ii=0;ii<infos.length;ii++){
+		// 				console.log(this.unids[i])
+		// 				console.log(infos[ii].unid)
+		// 				if(this.unids[i] == infos[ii].unid){
+		// 					infos[ii].status=1;
+		// 				}
+		// 			}
+		// 		}
+		// 		sessionStorage.setItem('userinfo',JSON.stringify(infos));
+		// 	}
+		// }
 
 		this.isSubmit = true;
 	},
