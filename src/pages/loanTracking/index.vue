@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <!--头部导航-->
-		<van-nav-bar title="贷后跟踪" :border="false" @click-left="onClickLeft" @click-right="onClickRight('index')">
+		<van-nav-bar title="贷后跟踪" :border="false" @click-left="onClickLeft" @click-right="onClickRight('loanTrackingSearch')">
             <van-icon :name="backIcon" size="18px" slot="left" />
             <van-icon :name="searchIcon" size="18px" slot="right" />
         </van-nav-bar>

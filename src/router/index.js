@@ -562,6 +562,15 @@ export default new Router({
         title: '贷后跟踪'
       }
     },
+    //贷后跟踪搜索
+    {
+      name: 'loanTrackingSearch',
+      path: '/loanTracking/search',
+      component: () => import('@/pages/loanTracking/search'),
+      meta: {
+        title: '贷后跟踪'
+      }
+    },
     //合同签订列表
     {
       name: 'contractSign',
