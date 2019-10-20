@@ -66,17 +66,31 @@
             gomyActivities : function(){
                 Dialog.confirm({
                     message: "请选择身份",
-                    confirmButtonText: "管理岗", //改变确认按钮上显示的文字
-                    cancelButtonText: "经办岗" ,//改变取消按钮上显示的文字
+                    //closeOnClickOverlay: true,
+                    confirmButtonText: "普惠营销管理岗",
+                    cancelButtonText: "营销主管岗" ,
                     cancelButtonColor:"#1989fa",
                 }).then(()=> {
-                    sessionStorage.setItem("identity","management")
-                    this.$router.push('/myActivities');
+                    sessionStorage.setItem("intelligenceEnablement","management")
+                    sessionStorage.setItem("saveCg","false") //默认保存草稿为false
+                    this.$router.push('/offlineHuoDong');
                 }).catch(() => {
-                    sessionStorage.setItem("identity","handle")
-                    this.$router.push('/myActivities');
+                    sessionStorage.setItem("intelligenceEnablement","supervisor")
+                    sessionStorage.setItem("saveCg","false") //默认保存草稿为false
+                    this.$router.push('/offlineHuoDong');
                 })
-
+                // Dialog.confirm({
+                //     message: "请选择身份",
+                //     confirmButtonText: "管理岗", //改变确认按钮上显示的文字
+                //     cancelButtonText: "经办岗" ,//改变取消按钮上显示的文字
+                //     cancelButtonColor:"#1989fa",
+                // }).then(()=> {
+                //     sessionStorage.setItem("identity","management")
+                //     this.$router.push('/myActivities');
+                // }).catch(() => {
+                //     sessionStorage.setItem("identity","handle")
+                //     this.$router.push('/myActivities');
+                // })
             },
             gomyperformance : function(){
                 this.$router.push('./myperformance');

@@ -276,7 +276,8 @@ export default {
     onClickRight(){
       Dialog.alert({
         title: '',
-        message: '保存成功'
+        message: '保存成功',
+        confirmButtonText: "确定",
       }).then(() => {
         sessionStorage.setItem("saveCg","true") //保存草稿
         this.$router.push('/offlineHuoDong');

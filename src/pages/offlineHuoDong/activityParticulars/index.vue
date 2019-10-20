@@ -260,7 +260,8 @@ export default {
     ChengQueDing(){
       Dialog.confirm({
         title: '确认进行该操作吗？',
-        message: ''
+        message: '',
+        confirmButtonText: "确定",
       }).then(() => {
         //确认新建按钮，返回
         this.$router.push('/offlineHuoDong');
