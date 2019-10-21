@@ -34,7 +34,7 @@
         data (){
             return {
                 title : '我的',
-                img1: require('@/assets/images/other/wodehuodong.jpg'),
+                img1: require('@/assets/images/other/4c429533dfa2d23c0a40430e92c8601.jpg'),
                 img2: require('@/assets/images/other/wodeyeji.jpg'),
                 //  screenWidth: document.body.clientWidth, // 屏幕尺寸
                 //  screenHeight: document.body.clientHeight, // 屏幕尺寸
