@@ -87,6 +87,8 @@
 
         //数据预加载
        created(){
+           console.log(this.$route.params.info)
+
        		this.info = this.$route.params.info;
        },
 

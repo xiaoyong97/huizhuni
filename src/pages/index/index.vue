@@ -77,7 +77,7 @@
 					<van-col span="14">名下待抢单客户</van-col>
 					<van-col span="10">
 						<span class="cell-num"> 8 </span> 条
-						<van-button class="check" type="primary" size="small" color="rgb(90,75,234)" @click="go('index2')">查看</van-button>
+						<van-button class="check" type="primary" size="small" color="rgb(90,75,234)" @click="go_Page('grabMessage')">查看</van-button>
 					</van-col>
 				</van-cell>
 			</van-cell-group>
@@ -86,7 +86,7 @@
 					<!-- 使用 title 插槽来自定义标题 -->
 					<template slot="title">
 						<van-tag type="danger" class="left_tag">&nbsp;</van-tag>
-						<span class="custom-title">&nbsp;&nbsp;贷款管理</span>
+						<span class="custom-title">&nbsp;&nbsp;贷款查询</span>
 					</template>
 				</van-cell>
 				<van-cell>
@@ -760,7 +760,7 @@
 						{name:"咕咕管理",icon:require('../../assets/images/84/gugu@2x.png'),url:'gugu',isChecked:true},
 						{name:"贷款催收",icon:require('../../assets/images/84/daikuancuishou.png'),url:'index3',isChecked:false},
 						{name:"商机管理",icon:require('../../assets/images/84/shangjiguanli.png'),url:'index2',isChecked:false},
-						{name:"贷款管理",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index3',isChecked:false},
+						{name:"贷款查询",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index3',isChecked:false},
 					]
 					localStorage.setItem('home_menu',JSON.stringify(arr));
 				}

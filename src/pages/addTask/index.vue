@@ -379,9 +379,7 @@
 	},
 	saveData:function(){
 
-		var jsonStr = sessionStorage.getItem('userinfo');
-		console.log('999'+jsonStr)
-		console.log('888'+this.unids)
+		var jsonStr = sessionStorage.getItem('userinfo'); //新增的任务在任务发布的tab
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				var infos = JSON.parse(jsonStr);
 				for(var i=0;i<this.unids.length;i++){
@@ -392,13 +390,11 @@
 						}
 					}
 				}
-				infos.push(
-						this.info
-					)
+				infos.push(this.info)
 				sessionStorage.setItem('userinfo',JSON.stringify(infos));
 			}
 
-		// this.info.step=5;
+		// this.info.step=5;   //新增的任务在任务查看的tab
 		// this.info.unid = Date.parse(new Date());
 		//
 		// var tasks = [];

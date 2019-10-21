@@ -287,7 +287,7 @@
 				<div class="line"></div>
 				<van-cell-group class="bg-grey"  >
 					<div >
-						<van-cell ><div class="grey">查看详情</div></van-cell>
+						<van-cell ><div class="grey" @click="go('infoDetail',{info:msg_[0]})">查看详情</div></van-cell>
 						<van-cell>
 							<van-col span="3"><img class="logo" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 							<van-col span="21"><h3>{{info.company_info.company_name}}</h3></van-col>
@@ -345,6 +345,7 @@
 	export default {
   data() {
     return {
+		msg_:{},
 		imgshow:-1,
 		imgshow_tmp:'',
 		next:'下一步',
@@ -482,15 +483,20 @@
 		result:[],
 		current_index:0,
     }
+
   },
 
   //数据预加载
   created(){
 	  var info  = this.$route.params.info;
-
 	  if(info){
 		  this.info = info;
+	  }
+	  //查看详情
+	  var jsonStr = sessionStorage.getItem('userinfo');
 
+	  if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
+		  this.msg_ = JSON.parse(jsonStr);
 	  }
   },
 
@@ -820,9 +826,9 @@
 		sessionStorage.setItem('userinfo',JSON.stringify(infos));
 		this.$router.go(-1);
 	},
-	go : function(url){
-	  this.$router.push({name: url})
-	},
+	  go : function(url,param){
+		  this.$router.push({name:url,params:param});
+	  },
   },
   watch: {
 	 step: function (val, oldVal) {

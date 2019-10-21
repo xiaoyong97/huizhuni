@@ -314,7 +314,7 @@
                                 title: '',
                                 message: '抢单成功'
                             }).then(() => {
-                                // on close
+                                this.active = 1
                             });
                             this.list2.push(this.list[i]);
                             this.list.splice(i,1);
@@ -327,9 +327,9 @@
                             this.list2[i].confirmSend="确认中...";
                             Dialog.alert({
                                 title: '',
-                                message: '抢单成功'
+                                message: '送件成功'
                             }).then(() => {
-                                // on close
+                                this.active = 2;
                             });
                             this.list3.push(this.list2[i]);
                             this.list2.splice(i,1);
@@ -342,9 +342,9 @@
                             this.list3[i].confirmGet="确认中...";
                             Dialog.alert({
                                 title: '',
-                                message: '抢单成功'
+                                message: '取件成功'
                             }).then(() => {
-                                // on close
+                                this.active = 3;
                             });
                             this.list4.push(this.list3[i]);
                             this.list3.splice(i,1);
