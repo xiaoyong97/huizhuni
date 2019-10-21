@@ -168,10 +168,10 @@ export default {
            {name:'信贷准入'},
            {name:'申贷意愿'},
          ],
-         companyName: '青岛智慧科技有限公司', //公司名称
+         companyName: '广州智慧科技有限公司', //公司名称
          principalName: '王光明',//联系人
-         phone: '13818886688',//联系电话
-         address: '山东省青岛市城阳区惜福镇王沙路1616号',//企业注册地址
+         phone: '13814466688',//联系电话
+         address: '广州市高新技术产业开发区迎宾大道88号',//企业注册地址
          Subordinate: '软件和信息技术服务行业',//所属行业
          scopeBusiness: '计算机软硬件的技术开发；技术咨询；技术转让；技术服务；数据库处理；经济信息咨询；经营电子商务；计算机编程',//经营范围
          establishTime: "2012年9月20日",//成立日期
@@ -376,6 +376,7 @@ export default {
         this.enterprise=this.enterpriseSeven
         this.statusTwo=true//2抵押快贷
       }
+      this.title=this.enterprise.companyName
     },
     //获取传来的状态id
     getButStutasId(){
@@ -631,7 +632,7 @@ export default {
   }
   .xiangQingBac .xinXi{
     width: 90%;
-    height:580px;
+    min-height:600px;
     margin: 8px auto 0px auto;
     border-radius: 10px;
     padding-left: 10px;
