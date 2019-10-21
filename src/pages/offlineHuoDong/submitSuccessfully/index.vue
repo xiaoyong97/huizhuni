@@ -65,8 +65,8 @@ export default {
     },
     //返回上一级
     onClickLeft() {
-      //this.$router.push('/offlineHuoDong');
-      this.$router.go(-1);
+      this.$router.push('/offlineHuoDong');
+      //this.$router.go(-1);
     },
    
   },

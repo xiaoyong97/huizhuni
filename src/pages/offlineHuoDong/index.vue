@@ -10,15 +10,18 @@
     </div> -->
     
     <div class="top_bar_main_box" >
-        <van-row class="top_bar_box" style="">
+        <van-row class="top_bar_box" style="" v-show="type==0|type==2">
             <van-col :class="type!==2?'active':''" class="top_bar_box_col top_bar_box_col_left " span="12"><p class="top_bar_box_text_left" @click="changeType(1)">融智赋能</p></van-col>
-            <van-col :class="type==2?'active':''" class="top_bar_box_col " span="12"><p class="top_bar_box_text_right" @click="changeType(2)">报表查询</p></van-col>
+            <van-col :class="type==2?'active':''" class="top_bar_box_col" span="12"><p class="top_bar_box_text_right" @click="changeType(2)">报表查询</p></van-col>
+        </van-row>
+        <van-row class="top_bar_box" style="" v-show="type==1">
+            <van-col :class="type!==2?'active':''" class="top_bar_box_col top_bar_box_col_left " span="24"><p class="top_bar_box_text_left_dan" @click="changeType(1)">融智赋能</p></van-col>
         </van-row>
     </div>
     <!-- <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" v-show="type!==2" @click="open_fliter"> -->
-    <span class="top_tight_text" v-show="type==2">查看附件</span>
+    <!--<span class="top_tight_text" v-show="type==2">查看附件</span>-->
     <img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
-    <van-icon v-show="type!==2" class="img_fliter" name="plus" slot="right"  size="24px" @click="onClickRight" />
+    <van-icon v-show="type==1" class="img_fliter" name="plus" slot="right"  size="24px" @click="onClickRight" />
 
     <div class="center-div">
       <div class="xiangQingBac" >
@@ -669,18 +672,18 @@
     
     <!--二维码弹出框-->
      <van-popup v-model="erWeiMaIs" position="bottom" :style="{ height: '50%' }">
-        <van-nav-bar id="erWeiMa" title='报名二维码'  @click-right="guanBiErWeiMa">
+        <van-nav-bar id="erWeiMa" :title='erWeiMaName'  @click-right="guanBiErWeiMa">
             <van-icon name="cross" slot="right"  size="24px" />
         </van-nav-bar>
-        <van-row>
+        <van-row style="background-color:white;height:287.6px;">
             <van-col span="5"></van-col>
             <van-col span="8">
-              <div class="mesZhong">
+                <div class="mesZhong">
                 <img class="duiImg" src="../../assets/images/1570783923er.png"/></br>
                 <div style="margin-left:45px;font-size:13px;">报名参加建行每周沙龙会</div>
-              </div>
+                </div>
             </van-col>
-          </van-row>
+        </van-row>
      </van-popup>
     <!--报名签到上拉-->
     <van-action-sheet id="baoMingId" title="报名/签到" v-model="baoQianIS" :actions="auditors" @select="xuanZhongAditor"/>
@@ -729,8 +732,9 @@ export default {
        tuPianIs: false,
        auditors: [
         { id: 1,name: '报名二维码' },
-        { id: 2,name: '每周沙龙会' },
+        { id: 2,name: '签到二维码' },
        ],
+       erWeiMaName: '报名二维码',
        showCg:false,
         selete_Bank:false,
         date_picker:false,
@@ -845,8 +849,10 @@ export default {
         if(item.id==1){
             //打开二维码
             this.erWeiMaIs =true;
+            this.erWeiMaName='报名二维码'
         }else if(item.id==2){
             this.erWeiMaIs =true;
+            this.erWeiMaName='签到二维码'
         }
     },
     //关闭二维码
@@ -865,7 +871,8 @@ export default {
     },
     //返回上一级
     onClickLeft() {
-      this.$router.go(-1);
+      this.$router.push('/index');
+      //this.$router.go(-1);
     },
     //新建活动页面图标
     onClickRight(){
@@ -1327,6 +1334,17 @@ export default {
         line-height: 30px;
         color: rgb(76,98,231);
         margin-block-start:0;
+        margin-block-end:0;
+    }
+    .top_bar_box_text_left_dan{
+        font-size: 14px;
+        line-height: 30px;
+        color:white;
+        margin-top:1px;
+        margin-left:1px;
+        background-color:rgb(76,98,231);
+        margin-block-start:0;
+        border-radius: 8px;
         margin-block-end:0;
     }
     .top_bar_box_text_right{

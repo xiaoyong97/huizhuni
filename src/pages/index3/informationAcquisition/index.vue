@@ -108,16 +108,13 @@
 
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				this.infos = JSON.parse(jsonStr);
-				console.log('888'+jsonStr+this.infos)
+                console.log('789',this.infos)
 			}
 
             var value = sessionStorage.getItem('informationAcquisition_tab' );
-            console.log(value,'qweqwe')
             if (value=='待补录') {
-                console.log('value')
                 this.activeName = value;
             } else {
-                console.log('else')
                 this.activeName = '已完成';
             }
         },

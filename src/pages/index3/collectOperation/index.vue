@@ -148,7 +148,10 @@
 				<van-cell-group class="bg-grey" >
 					<div v-show="item.relationship=='自然人'">
 						<div>
-							<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
+							<van-field  disabled placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
+							<van-row type="flex" justify="center" style="height:44px;">
+									<van-checkbox class="radio" checked-color="#4c62e7" v-model="item.radio">借款的企业主本人</van-checkbox>
+							</van-row>
 							<div class="idCard_front" @click="openOverlay(41)" :class="imgshow==41||imgshow==42||imgshow==43?'idCard_front_bk':''">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传人像面</p>
@@ -192,11 +195,12 @@
 						</van-row>
 					</div>
 					<div v-show="item.relationship=='企业法人'">
-						<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
-
+						<van-field  disabled placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
+						<van-row type="flex" justify="center" style="height:44px;">
+							<van-checkbox class="radio" checked-color="#4c62e7" v-model="item.radio">借款的企业</van-checkbox>
+						</van-row>
 						<div>
-							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>
-
+<!--							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>-->
 							<div class="idCard" @click="openOverlay(43)" :class="imgshow==43?'idCard_bk':''">
 								<div class="idCard_shadow_button" ></div>
 								<p>点击拍摄/上传企业营业执照</p>
@@ -229,6 +233,10 @@
 								</van-cell-group>
 							</van-checkbox-group>
 						</van-cell-group>
+						<van-row type="flex" justify="center">
+							<van-col span="6" class="open_close_col" v-show="!item.open_status" @click="openClose(index)"><p>展开详情<van-icon name="arrow-down" /></p></van-col>
+							<van-col span="6" class="open_close_col" v-show="item.open_status" @click="openClose(index)"><p>收起<van-icon name="arrow-up" /></p></van-col>
+						</van-row>
 					</div>
 					<div v-show="item.relationship=='其他'">
 						<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
@@ -287,7 +295,7 @@
 				<div class="line"></div>
 				<van-cell-group class="bg-grey"  >
 					<div >
-						<van-cell ><div class="grey">查看详情</div></van-cell>
+						<van-cell ><div class="grey" @click="go('infoDetail',{info:msg_[0]})">查看详情</div></van-cell>
 						<van-cell>
 							<van-col span="3"><img class="logo" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 							<van-col span="21"><h3>{{info.company_info.company_name}}</h3></van-col>
@@ -345,6 +353,7 @@
 	export default {
   data() {
     return {
+		msg_:{},
 		imgshow:-1,
 		imgshow_tmp:'',
 		next:'下一步',
@@ -417,7 +426,7 @@
 			],
 			mortgaged:[
 				{
-					relationship:'其他', //0=自然人， 1=  企业法人
+					relationship:'自然人', //0=自然人， 1=  企业法人
 					holder:'艾仲华',
 					situations:'自有',
 					address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
@@ -451,6 +460,7 @@
 					mobile:'13702137765',
 					legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
 					open_status:true,
+					radio:true,
 				},
 				{
 					relationship:'自然人', //0=自然人， 1=  企业法人
@@ -482,15 +492,20 @@
 		result:[],
 		current_index:0,
     }
+
   },
 
   //数据预加载
   created(){
 	  var info  = this.$route.params.info;
-
 	  if(info){
 		  this.info = info;
+	  }
+	  //查看详情
+	  var jsonStr = sessionStorage.getItem('userinfo');
 
+	  if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
+		  this.msg_ = JSON.parse(jsonStr);
 	  }
   },
 
@@ -515,8 +530,8 @@
 	  },
 	  add_img() {
 		  this.imgshow = this.imgshow_tmp;
-		  console.log(this.imgshow,'add_img')
 		  this.is_open = !this.is_open;
+		  this.info.mortgagor.radio = true;
 	  },
 	  openClose(i) {
 	  	if (this.step==2) {
@@ -773,7 +788,7 @@
 			break;
 			case 4:{
 				this.info.mortgagor.push({
-						relationship:'其他', //0=自然人， 1=  企业法人
+						relationship:'自然人', //0=自然人， 1=  企业法人
 						name:'',
 						sex:'',
 						ethnic:'',
@@ -790,6 +805,7 @@
 						legal_representative:'',
 						mobile:'',
 						open_status:true,
+						radio:false,
 					})
 			}
 			break;
@@ -820,9 +836,9 @@
 		sessionStorage.setItem('userinfo',JSON.stringify(infos));
 		this.$router.go(-1);
 	},
-	go : function(url){
-	  this.$router.push({name: url})
-	},
+	  go : function(url,param){
+		  this.$router.push({name:url,params:param});
+	  },
   },
   watch: {
 	 step: function (val, oldVal) {
