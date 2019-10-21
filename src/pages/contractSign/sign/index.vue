@@ -142,8 +142,13 @@ export default {
                     cancelButtonColor: '#999999',
                     className: 'dialog',
                 }).then(() => {
+                    // this.content2Show = false;
+                    // this.content3Show = true;
+                    this.active++;
+                    this.isDistinguish = true;
+                    this.content1Show = true;
                     this.content2Show = false;
-                    this.content3Show = true;
+                    this.content3Show = false;
                 }).catch(() => {
                     this.isDistinguish = true;
                     setTimeout(() => {
