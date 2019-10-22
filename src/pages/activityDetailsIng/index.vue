@@ -139,10 +139,10 @@
                 </van-row>
             </div>
             <div v-show="identity=='management'">
-                <van-row type="flex" justify="center" class="choose_row" v-show="status_==1">
-                    <van-col class="reject_col"  span="9" ><p class="reject_col_test">拒绝创建</p></van-col>
+                <van-row type="flex" justify="center" class="choose_row" v-show="status_==1 && agree_status==0">
+                    <van-col class="reject_col"  span="9" @click="agreeStatus(0)" ><p class="reject_col_test">拒绝创建</p></van-col>
                     <van-col class=""  span="2" ></van-col>
-                    <van-col class="agree_col"   span="9" ><p class="agree_col_test" >同意创建</p></van-col>
+                    <van-col class="agree_col"   span="9" @click="agreeStatus(1)"><p class="agree_col_test" >同意创建</p></van-col>
                 </van-row>
                 <div class="null_box" v-show="status_==1"></div>
             </div>
@@ -155,10 +155,10 @@
 
     //引入组件首字母大写
     import TabBar from '@/components/tabBar'
-    import { Tab, Tabs,Swipe, SwipeItem, Row, Col  } from 'vant';
+    import { Tab, Tabs,Swipe, SwipeItem, Row, Col ,Dialog  } from 'vant';
     import Vue from 'vue';
 
-    Vue.use(Swipe).use(SwipeItem).use(Col).use(Row).use(Tab).use(Tabs);
+    Vue.use(Swipe).use(SwipeItem).use(Col).use(Row).use(Tab).use(Tabs).use(Dialog);
     export default {
         //基础数据存放处
         data (){
@@ -168,6 +168,7 @@
                 current: 0,
                 status_:0,//0：活动未开始  1:任务新建
                 identity:'',
+                agree_status:0,
             }
         },
 
@@ -177,8 +178,15 @@
 
         //网页加载完成
         mounted () {
-            this.status_ = this.$route.params.status_
-            var value = sessionStorage.getItem('identity')
+            var value_status = this.$route.params.status_;
+            console.log(value_status);
+            if (value_status!==undefined) {
+                sessionStorage.setItem('status_',value_status)
+            }
+
+            this.status_ = sessionStorage.getItem('status_');
+
+            var value = sessionStorage.getItem('identity');
             if (value == "management") {
                 this.identity = 'management'
             }
@@ -187,6 +195,24 @@
 
         //声明方法
         methods : {
+            agreeStatus(i) {
+                if (i==0) {
+                    this.agree_status = 1;
+                    Dialog.alert({
+                        message: '拒绝创建'
+                    }).then(() => {
+                        // on close
+                    });
+
+                }else {
+                    Dialog.alert({
+                        message: '同意创建'
+                    }).then(() => {
+                        // on close
+                    });
+                    this.agree_status = 1;
+                }
+            },
             onClickLeft() {
                 this.$router.go(-1);
             },

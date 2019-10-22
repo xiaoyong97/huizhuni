@@ -1,9 +1,11 @@
 <template>
   <div class="main" style="position:absolute;top:0px;height:100%;width:100%;">
     <!--头部导航-->
-    <van-nav-bar class="vnavbar" :title="title" left-arrow  @click-left="onClickLeft"></van-nav-bar>
+    <van-nav-bar class="vnavbar" :title="title" left-arrow  @click-left="onClickLeft">
+    </van-nav-bar>
     <img src="../../assets/images/huidiantong/1_0000s_0007.png" @click="goviewList" class="img_location">
     
+    <van-button v-show="active==14" class="hznbtn" plain hairline type="info" @click="hznClick">惠助你抢单</van-button>
     <div class="main">
       <van-tabs id="tabls" :ellipsis="false" v-model="active" title-active-color="#ffffff" @change="createChart">
         <!--基本信息-->
@@ -771,6 +773,29 @@
             </div>
           </div>
         </van-tab>
+        <van-tab title="惠助你抢单">
+          <div class="main_box qmdlb" style="min-height:568px;">
+            <div class="cloudMtxTable_body">
+              <table class="cloudTable"  style="table-layout:fixed">
+                <!-- <colgroup >
+                  <col width="50px;">
+                  <col width="90px">
+                  <col width="120px">
+                  <col width="">
+                </colgroup> -->
+                <tbody class="cloudTable_body ">
+                  <tr @click="goTo">
+                    <td>商机名称</td>
+                    <td>商机编号</td>
+                    <td>商机来源</td>
+                    <td>商机状态</td>
+                    <td>商机阶段</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </van-tab>
       </van-tabs>
     
     </div>
@@ -823,6 +848,7 @@ export default {
       activeName:'1',
       heiMingDan: "2",//黑名单单选1行
       heiMingDanTwo: "2",//黑名单单选2行
+      sjbtn:false
     };
   },
 
@@ -835,6 +861,13 @@ export default {
 
   //声明方法
   methods: {
+    goTo() {
+      this.$router.push({path: '/shangParticulars/1'});
+    },
+    hznClick(){
+      this.$router.push('./shangParticulars/1');
+    },
+
     createChart:function(){
       var that = this;
       //必须延迟加载才会不报错
@@ -843,6 +876,9 @@ export default {
         switch(that.active){
           case 6:
             that.createChart1();
+          break;
+          case 14:
+            that.sjbtn=true;
           break;
         }
       },100)
@@ -991,7 +1027,9 @@ export default {
 
 </style>
 <style lang="postcss" scoped>
-
+.hznbtn{position: absolute;top:6px;right: 10px;z-index: 99;height: 35px; line-height: 35px;
+border-radius: 10px;
+}
 #myChart1{
   margin-top: 50px;
   width: 100%;

@@ -333,7 +333,7 @@
 <script>
 //引入组件首字母大写
 import TabBar from "@/components/tabBar";
-import { Tab, Tabs, Swipe, SwipeItem, Row, Col, Collapse } from "vant";
+import { Tab, Tabs, Swipe, SwipeItem, Row, Col, Collapse,Dialog } from "vant";
 import Vue from "vue";
 
 Vue.use(Swipe)
@@ -342,7 +342,8 @@ Vue.use(Swipe)
   .use(Row)
   .use(Tab)
   .use(Tabs)
-  .use(Collapse);
+  .use(Collapse)
+  .use(Dialog);
 export default {
   //基础数据存放处
   data() {
@@ -381,22 +382,28 @@ export default {
       this.$router.push({path:"./launchDetails/lookOriginalFile/loanBusinessOwner",query:{unid:this.$route.query.unid}});
     },
     go() {
-		var infos =  sessionStorage.getItem('userinfo')
-		
-		if(null != infos && undefined != infos && '' != infos){
-			infos = JSON.parse(infos)
-			var unid = this.$route.query.unid;
-			for(var i=0;i<infos.length;i++){
-				if(infos[i].unid == unid){	
-					//贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
-					infos[i].step = 3;
-					sessionStorage.setItem('userinfo',JSON.stringify(infos))
-					break;
-				}
-			}
-		}
-		
-      this.$router.push("/loanLaunch");
+      Dialog.alert({
+        title: '提示信息',
+        message: '交易成功！',
+        confirmButtonText: "确定",
+      }).then(() => {
+        // on close
+        var infos =  sessionStorage.getItem('userinfo')
+        if(null != infos && undefined != infos && '' != infos){
+          infos = JSON.parse(infos)
+          var unid = this.$route.query.unid;
+          for(var i=0;i<infos.length;i++){
+            if(infos[i].unid == unid){	
+              //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+              infos[i].step = 3;
+              sessionStorage.setItem('userinfo',JSON.stringify(infos))
+              break;
+            }
+          }
+        }
+        this.$router.push("/loanLaunch");
+      });
+      
     },
     onClickLeft() {
       this.$router.go(-1);

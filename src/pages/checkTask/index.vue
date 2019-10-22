@@ -140,8 +140,8 @@
 					</div>
 				</div>
 			</div>
-
-			<van-cell-group class="bg-grey" v-show="task.status != 0">
+			
+			<van-cell-group class="bg-grey" v-show="task.status == 3">
 				<div class="line"></div>
 				<van-cell>
 					 <van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
@@ -179,7 +179,7 @@
 
 	data() {
 	return {
-		title : '任务检查',
+		title : '任务查看',
 		choose: 0,
 		task:{},
 		info:{},
@@ -190,8 +190,14 @@
 	 created(){
 		
 		this.task = this.$route.query.task;
-		 console.log(this.task)
-		 this.info = this.task.info[0];
+		console.log(this.task.info)
+		if(this.task.info != undefined){
+			this.info = this.task.info[0];
+		} else{
+			
+			this.info = this.task;
+			console.log(this.task)
+		} 
 	},
 
 	//声明方法
@@ -228,7 +234,7 @@
 <style lang="scss" scoped>
 .content{
 	padding: 0px;
-	min-height: 667px;
+	min-height: 697px;
 	background-color: rgb(238,238,238);
 }
 .grey{

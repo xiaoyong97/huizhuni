@@ -109,11 +109,12 @@
             </div>
             <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingQianDan" v-if="qianDanIsOk">抢单</van-button></div>
             <div class="botButDiv"><van-button class="botQianDanBut" round type="info" @click="xiangQingFangQi" v-if="fansQiIsOk">放弃</van-button></div>
+            <div class="botButDiv"><div class="botYiQianDanBut" v-show="typeStutas">已放弃</div></div>
            
           </div>
           
         <!--dialog已抢单放弃按钮弹出框-->
-        <van-dialog v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true" confirm="fangQiConfirm()">
+        <van-dialog @confirm="queRen" v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true">
           <van-radio-group v-model="fangQiRadio">
             <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
             <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
@@ -139,6 +140,7 @@ export default {
        id:this.$route.params.id,//跳转参数id
        qianDanIsOk: true,
        fansQiIsOk: false,
+       typeStutas:false,
        fangQiButShow: false,
        fangQiRadio: 1,
        enterprise:[],//接受显示数据
@@ -152,12 +154,12 @@ export default {
            {name:'信贷准入'},
            {name:'申贷意愿'},
          ],
-         companyName: '青岛智慧科技有限公司', //公司名称
+         companyName: '广州智慧科技有限公司', //公司名称
          principalName: '王光明',//联系人
-         phone: '13818886688',//联系电话
-         address: '山东省青岛市城阳区惜福镇王沙路1616号',//企业注册地址
+         phone: '13814466688',//联系电话
+         address: '广州市高新技术产业开发区迎宾大道88号',//企业注册地址
          Subordinate: '软件和信息技术服务行业',//所属行业
-         scopeBusiness: '计算机软硬件的技术开发，技术咨询，技术转让，技术服务，数据库处理，经济信息咨询，经营电子商务，计算机编程',//经营范围
+         scopeBusiness: '计算机软硬件的技术开发；技术咨询；技术转让；技术服务；数据库处理；经济信息咨询；经营电子商务；计算机编程',//经营范围
          establishTime: "2012年9月20日",//成立日期
          whether: '否',//是否存量客户
          accurateTime: '2019年10月12日',//精准测额时间
@@ -169,7 +171,7 @@ export default {
        },
        enterpriseTwo:{
          EnterpriseLabel:[//企业标签
-           {name:'法定代表人'},
+           {name:'法人'},
            {name:'个人征信'},
            {name:'企业征信'},
            {name:'基本户'},
@@ -180,6 +182,7 @@ export default {
            {name:'个人网银'},
            {name:'手机银行'},
            {name:'精准测额'},
+           {name:'信贷准入'},
            {name:'申贷意愿'},
          ],
          companyName: '广州市睿智防水电器股份有限公司', //公司名称
@@ -187,7 +190,7 @@ export default {
          phone: '13702137765',//联系电话
          address: '广州市高新技术产业开发区迎宾大道188号',//企业注册地址
          Subordinate: '计算机，通信和其他电子设备制造业',//所属行业
-         scopeBusiness: '电子元件及组件制造：货物进出口：电子元器件批发：技术进出口：电器辅件',//经营范围
+         scopeBusiness: '电子元件及组件制造；货物进出口；电子元器件批发；技术进出口；电器辅件',//经营范围
          establishTime: "2009年3月12日",//成立日期
          whether: '是',//是否存量客户
          accurateTime: '2019年10月12日',//精准测额时间
@@ -242,8 +245,10 @@ export default {
     xiangQingQianDan(){
       Dialog.alert({
         title: '',
-        message: '抢单成功'
+        message: '抢单成功',
+        confirmButtonText: "确定",
       }).then(() => {
+        this.title=this.enterprise.companyName
         this.qianDanIsOk= false
         this.fansQiIsOk= true
         this.textJueIsOk=true
@@ -251,26 +256,18 @@ export default {
     },
     //商机详情放弃按钮
     xiangQingFangQi(){
-      //this.fangQiButShow = true
-      Dialog.alert({
-        title: '',
-        message: '已放弃订单'
-      }).then(() => {
-        this.qianDanIsOk= true
-        this.fansQiIsOk= false
-        this.textJueIsOk=false
-      });
+      this.fangQiButShow = true
     },
     //放弃弹窗确定按钮
-    fangQiConfirm(){
-      // Dialog.alert({
-      //   title: '',
-      //   message: '已放弃订单'
-      // }).then(() => {
-      //   this.qianDanIsOk= true
-      //   this.fansQiIsOk= false
-      //   this.textJueIsOk=false
-      // });
+    queRen(){
+      Dialog.alert({
+        message: '已放弃',
+        confirmButtonText: "确定",
+      }).then(() => {
+        this.fansQiIsOk= false
+        this.typeStutas=true
+        this.textJueIsOk=false
+      });
     },
     //返回上一级
     onClickLeft() {
@@ -552,5 +549,14 @@ export default {
   //放弃弹窗
   .fangButClass{
     margin: 15px 0px 10px 80px ;
+  }
+  .botButDiv .botYiQianDanBut{
+    height:35px;
+    line-height:35px;
+    width:250px;
+    text-align: center;
+    border:1px solid;
+    border-radius: 22px;
+    color: rgb(76,98,232);
   }
 </style>

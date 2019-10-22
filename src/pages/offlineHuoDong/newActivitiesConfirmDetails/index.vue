@@ -1,5 +1,5 @@
 <template>
-  <!--活动详情页-->
+  <!--新建活动确定页-->
   <div class="main">
    
     <div class="content">
@@ -12,13 +12,14 @@
       <div class="xiangQingBac" >
 
         <div class="huoDongMes">
-          <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">活动信息</div>
-            <div class="tianJiaBut"  @click="newScheduleBut">任务新建</div>
+          <div class="logoHang">
+            <div class="logoLeft"> </div><div class="logoRight">活动信息</div>
+            <img  src="../../../assets/images/other/Label3@2x.png" class="img_task">
           </div>
           <div  class="biaoQianLie" gutter="10">
-            <van-cell title="活动主题" value-class="cellRightMes" :value="confirmActivitiesMes.theme"/>
-            <van-cell title="活动开始时间" value-class="cellRightMes" :value="confirmActivitiesMes.StartTime"/>
-            <van-cell title="活动结束时间" value-class="cellRightMes" :value="confirmActivitiesMes.EndTime"/>
+            <van-cell title="活动主题" value-class="cellRightMes" :value="confirmActivitiesMes.hdzt"/>
+            <van-cell title="活动开始时间" value-class="cellRightMes" :value="confirmActivitiesMes.hdkssj"/>
+            <van-cell title="活动结束时间" value-class="cellRightMes" :value="confirmActivitiesMes.hdjssj"/>
             <van-cell title="活动时长" value-class="cellRightMes" :value="confirmActivitiesMes.timeLength"/>
             <van-cell title="签到时间" value-class="cellRightMes" :value="confirmActivitiesMes.registerTime"/>
             <van-cell title="活动地点" value-class="cellRightMes" :value="confirmActivitiesMes.Location"/>
@@ -29,8 +30,8 @@
           </div>
         </div>
 
-        <div class="huoDongMes">
-          <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight" @click="riChengXinXi">日程表信息</div></div>
+        <div class="huoDongMes"  @click="clickCar">
+          <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">日程表信息</div></div>
           <van-row  class="biaoQianLie" gutter="10">
             <div class="secend_box">
                 <van-row class="list_row" style="border-bottom:1px solid #333333;font-weight: bold;">
@@ -38,10 +39,10 @@
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min_head" >主讲人</p></van-col>
                     <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min_head" >日程日期</p></van-col>
                 </van-row>
-                <van-row  class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
+                <van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
-                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10.12 9:30-10.12 11:30</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10/12 9:30-10/12 11:20</p></van-col>
                 </van-row>
             </div>
           </van-row>
@@ -55,19 +56,26 @@
           </div>
         </div>-->
         <div class="botButDiv">
-          <van-row>
-            <van-col span="12"> <van-button class="botJuJueBut" round plain type="info" v-if="true" @click="juJueXinJian">拒绝新建</van-button></van-col>
-            <van-col span="12"><van-button class="botQianDanBut" round type="info" v-if="true" @click="ChengQueDing">同意新建</van-button></van-col>
-          </van-row>
+          <van-button class="botQianDanBut" style="margin-right:10%;" plain hairline round type="info" v-if="true" @click="ChengQueDing">拒绝新建</van-button>
+          <van-button class="botQianDanBut" round type="info" v-if="true" @click="ChengQueDing">同意新建</van-button>
         </div>
 
       </div>
     </div>
 
-
-    <!--弹出日程信息框-->
-    <van-dialog id="riCard" v-model="riChengDialog" title="活动日程">
-      <div style="margin:20px 0px;">
+    <!--时间上拉-->
+    <van-action-sheet v-model="StartTimeIs" @select="onSelect">
+      <van-datetime-picker @confirm="timeQueDing" @cancel="timeQiXiao " v-model="minDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
+    </van-action-sheet>
+    <!--主办机构上拉-->
+    <van-action-sheet v-model="organizationIs" :actions="organizations" @select="xuanZhongOrganization"/>
+    <!--经办人上拉-->
+    <van-action-sheet v-model="sponsorIS" :actions="sponsors" @select="xuanZhongSponsor"/>
+    <!--审核人上拉-->
+    <van-action-sheet v-model="auditorIS" :actions="auditors" @select="xuanZhongAditor"/>
+    
+    <van-dialog class="vanDdialog" v-model="clickCarFunc" title="活动日程" :showConfirmButton="false">
+      <div style="margin:10px 0px 50px 0px;">
         <van-row>
           <van-col span="8" class="riChengMesRight">日程名称：</van-col>
           <van-col class="riChengMesLeft">每周沙龙会</van-col>
@@ -89,18 +97,8 @@
           <van-col class="riChengMesLeft">120分钟</van-col>
         </van-row>
       </div>
+      <img class="img_xx" @click="clickCar" src="../../../assets/images/38/delete@2x.png">
     </van-dialog>
-    <!--时间上拉-->
-    <van-action-sheet v-model="StartTimeIs" @select="onSelect">
-      <van-datetime-picker @confirm="timeQueDing" @cancel="timeQiXiao " v-model="minDate" type="datetime" :min-date="minDate" :max-date="maxDate"/>
-    </van-action-sheet>
-    <!--主办机构上拉-->
-    <van-action-sheet v-model="organizationIs" :actions="organizations" @select="xuanZhongOrganization"/>
-    <!--经办人上拉-->
-    <van-action-sheet v-model="sponsorIS" :actions="sponsors" @select="xuanZhongSponsor"/>
-    <!--审核人上拉-->
-    <van-action-sheet v-model="auditorIS" :actions="auditors" @select="xuanZhongAditor"/>
-
   </div>
   
 </template>
@@ -109,13 +107,13 @@
 //引入组件首字母大写
 import TabBar from '@/components/tabBar';
 import { Divider } from 'vant';
-import { Checkbox, CheckboxGroup } from 'vant';
-import { Dialog } from 'vant';
+import { Checkbox, CheckboxGroup,Dialog } from 'vant';
 export default {
 
   //基础数据存放处
   data (){
      return {
+        clickCarFunc:false,
         title : '活动详情',
         minHour: 10,
         maxHour: 20,
@@ -126,7 +124,6 @@ export default {
         organizationIs: false,
         sponsorIS: false,
         auditorIS: false,
-        riChengDialog:false,
         shangRight:'arrow',
        checkboxListS:[
          {id:1,name:"是否需要接站"},
@@ -148,9 +145,9 @@ export default {
         { id: 3,name: '陈雪梅3' }
        ],
        confirmActivitiesMes:{
-         theme: '建行每周沙龙会',//活动主题
-         StartTime: '2019.10.12',//活动开始时间
-         EndTime: '2019.10.12',//活动结束时间
+         hdzt:"建行每周沙龙会",
+         hdkssj:"2019.10.12",
+         hdjssj:"2019.10.13",
          timeLength: '2天',//活动时长，天
          registerTime: '2019.10.12  09：00',//签到时间
          Location:'西湖',//活动地点
@@ -238,37 +235,23 @@ export default {
     newScheduleBut(){
       this.$router.push('/offlineHuoDong/newSchedule');
     },
-    //弹出日程信息详情
-    riChengXinXi(){
-      this.riChengDialog=true;
-    },
-
-    //拒绝新建
-    juJueXinJian(){
-      Dialog.confirm({
-        title: '确认进行拒绝操作吗？',
-        message: ''
-      }).then(() => {
-        //确认拒绝按钮，返回
-        this.$router.push('/offlineHuoDong');
-      }).catch(() => {
-       
-      });
-    },
+    
 
     //确定
     ChengQueDing(){
       Dialog.confirm({
-        title: '确认进行该操作吗？',
-        message: '',
+        message: '确定进行该操作吗？',
         confirmButtonText: "确定",
       }).then(() => {
-        //确认新建按钮，返回
         this.$router.push('/offlineHuoDong');
       }).catch(() => {
-        
+        // on cancel
       });
     },
+
+    clickCar(){
+      this.clickCarFunc = this.clickCarFunc?false:true;
+    }
 
 
   },
@@ -283,19 +266,21 @@ export default {
   }
 }
 </script>
-<style>
-  #riCard .van-dialog__header{
-    font-weight: bold;
-  }
-</style>
+
 <style lang="scss" scoped>
-  //
+  
+  .img_task{
+      position: absolute;
+      right: 0;
+      top: 50px;
+      height: 28px;
+  }
   .xiangQingBac{
     width: 100%;
     min-height: 570px;
     height: 100%;
+    overflow: auto;
     margin: 0px;
-    padding-top: 1px;
     padding-bottom: 48px;
     background-color: #E7EAF5;
   } 
@@ -305,12 +290,12 @@ export default {
     height:auto;
     margin: 0px auto 20px auto;
     border-radius: 10px;
-    padding-left: 10px ;
-    padding-right: 10px;
+    /*padding-left: 10px;
+    padding-right: 10px;*/
     background-color: white;
   }
   .logoHang{
-    width:95%;
+    width:60%;
     height: 30px;
     line-height: 30px;
   }
@@ -322,20 +307,9 @@ export default {
     background-color: rgb(76,98,232);
   }
   .logoHang .logoRight{
-    float:left;
     font-weight: bold;
-    margin-left: 5px;
+    margin-left: 25px;
     padding-top: 3px;
-  }
-  .logoHang .tianJiaBut{
-    float:right;
-    width: 70px;
-    height: 26px;
-    line-height: 26px;
-    font-size: 12px;
-    text-align:center;
-    color:white;
-    background-color: rgb(76,98,232);
   }
   .biaoQianLie {
     height:auto;
@@ -359,18 +333,13 @@ export default {
   
   .botButDiv{
     line-height:40px;
-    width:250px;
+    width:80%;
     margin: 20px auto;
-  }
-  .botButDiv .botJuJueBut{
-    height:35px;
-    line-height:35px;
-    width:100px;
   }
   .botButDiv .botQianDanBut{
     height:35px;
     line-height:35px;
-    width:100px;
+    width:45%;
   }
   .inputFieldMes{
     float:left;
@@ -401,5 +370,15 @@ export default {
     font-size: 14px;
     font-weight: bold;
     margin-top:10px;
+  }
+  .vanDdialog{
+    overflow:inherit !important;
+  }
+  .img_xx{
+    position: absolute;
+    bottom: -55px;
+    left: 50%;
+    margin-left: -20px;
+    width: 38px;
   }
 </style>

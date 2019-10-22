@@ -9,27 +9,27 @@
                 <van-col class="title right-text">申请顺序号{{info.applicationSequenceNumber}}</van-col>
             </van-row>
             <van-row>
-                <van-col span="9" class="left-text">企业名称：</van-col>
+                <van-col span="8" class="left-text">企业名称:</van-col>
                 <van-col class="right-text">{{info.company_info.company_name}}</van-col>
             </van-row>
             <van-row>
-                <van-col span="9" class="left-text">统一社会信用代码：</van-col>
+                <van-col span="8" class="left-text">统一社会信用代码:</van-col>
                 <van-col class="right-text">{{info.company_info.unified_social_credit_code}}</van-col>
             </van-row>
             <van-row>
-                <van-col span="9" class="left-text">企业主姓名：</van-col>
+                <van-col span="8" class="left-text">企业主姓名:</van-col>
                 <van-col class="right-text">{{info.company_info.legal_representative}}</van-col>
             </van-row>
             <van-row>
-                <van-col span="9" class="left-text">产品代码：</van-col>
+                <van-col span="8" class="left-text">产品代码:</van-col>
                 <van-col class="right-text">{{info.company_info.customer_id}}</van-col>
             </van-row>
             <van-row>
-                <van-col span="9" class="left-text">签约时间：</van-col>
+                <van-col span="8" class="left-text">签约时间:</van-col>
                 <van-col class="right-text">{{info.signDate}}</van-col>
             </van-row>
             <van-row>
-                <van-col span="9" class="left-text">ID：</van-col>
+                <van-col span="8" class="left-text">ID:</van-col>
                 <van-col class="right-text">{{info.unid}}</van-col>
             </van-row>
         </div>
@@ -140,7 +140,7 @@ p{
     margin-right: 2px;
     vertical-align: top;
     margin-top: 6px;
-    margin-left: 16px;
+    margin-left: 12px;
 }
 .left-text,
 .right-text{
@@ -149,7 +149,7 @@ p{
 }
 .left-text{
     color: #999999;
-    margin-left: 34px;
+    margin-left: 24px;
 }
 .right-text{
     font-weight: 500;
@@ -160,7 +160,7 @@ p{
 }
 .box{
     background-color: #ffffff;
-    padding-left: 32px;
+    padding-left: 24px;
     padding-right: 24px;
     margin-bottom: 2px;
     .title{

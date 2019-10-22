@@ -59,12 +59,6 @@
       </span>
     </div>
 
-    <div class="region-slectModule">
-      <van-dropdown-menu id="slectModule" :overlay="false" style="height:30px;">
-        <van-dropdown-item style="height:170px;" v-model="value1" @change="chaVal" :options="option1" />
-      </van-dropdown-menu>
-    </div>
-
     <div class="map-content">
       <!-- <baidu-map id="container" :mapClick="false" :center="center" :zoom="zoom" @ready="handler">
         <div v-for="(marker, i) of markers" :key="i">
@@ -83,21 +77,29 @@
       <div class="map-bg"><img :src="bgImg" alt=""></div>
       <div class="coordinate" v-for="(item, index) in coordinateList1" :style="item.style" @click="showTips(index)">
         <img :src="item.img" alt="">
-        <div  @click="cllFunc" class="popup-box" v-show="item.show" :style="item.style">
-          <div v-if="item.type == 2" @click="goTo('customerInfo')">
-            <div>厦门象屿股份有限公司</div>
-            <div>客户需求：强</div>
-            <div>客户分层：优质</div>
+        <div class="popup-box" v-show="item.show" :style="item.style">
+          <div v-if="item.type == 2" key="company">
+            <div @click="goTo('customerInfo')">
+              <div>厦门象屿股份有限公司</div>
+              <div>客户需求：强</div>
+              <div>客户分层：优质</div>
+            </div>
+            <div class="mg-top" @click="go(item.status)">客户：{{item.status}}</div>
           </div>
-          <template v-if="item.type == 1">
+          <div v-if="item.type == 1" key="bank">
             <div class="bank">
               <img class="bank-img" :src="bankImg" alt="">
               <div>建行厦门金路支行</div>
             </div>
-          </template>
+          </div>
         </div>
       </div>
-
+    </div>
+    <!-- 客户模式 -->
+    <div class="region-slectModule">
+      <van-dropdown-menu id="slectModule" :overlay="false" :style="{width: '100%', height: '30px'}">
+        <van-dropdown-item v-model="value1" @change="chaVal" :options="option1" />
+      </van-dropdown-menu>
     </div>
     <!--底部导航-->
     <BottomBar />
@@ -188,7 +190,8 @@ export default {
             left: '160px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '待完成'
         },
         {
           img: img1,
@@ -206,7 +209,8 @@ export default {
             left: '286px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '已抢单'
         },
         {
           img: img2,
@@ -215,7 +219,8 @@ export default {
             left: '100px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '待完成'
         },
         {
           img: img1,
@@ -233,7 +238,8 @@ export default {
             left: '208px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '已抢单'
         },
         {
           img: img1,
@@ -251,7 +257,8 @@ export default {
             left: '198px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '已抢单'
         },
         {
           img: img1,
@@ -307,6 +314,7 @@ export default {
             left: '100px'
           },
           show: false,
+          status: '已抢单',
           type: this.value1 == 0 ? 1 : 2
         },
         {
@@ -316,6 +324,7 @@ export default {
             left: '160px'
           },
           show: false,
+          status: '待完成',
           type: 2
         },
         {
@@ -325,6 +334,7 @@ export default {
             left: '80px'
           },
           show: false,
+          status: '待完成',
           type: this.value1 == 0 ? 1 : 2
         },
         {
@@ -334,6 +344,7 @@ export default {
             left: '286px'
           },
           show: false,
+          status: '已抢单',
           type: 2
         },
         {
@@ -343,6 +354,7 @@ export default {
             left: '100px'
           },
           show: false,
+          status: '已抢单',
           type: 2
         },
         {
@@ -352,6 +364,7 @@ export default {
             left: '300px'
           },
           show: false,
+          status: '待完成',
           type: this.value1 == 0 ? 1 : 2
         },
         {
@@ -361,6 +374,7 @@ export default {
             left: '208px'
           },
           show: false,
+          status: '待完成',
           type: 2
         },
         {
@@ -370,6 +384,7 @@ export default {
             left: '102px'
           },
           show: false,
+          status: '已抢单',
           type: this.value1 == 0 ? 1 : 2
         },
         {
@@ -379,6 +394,7 @@ export default {
             left: '198px'
           },
           show: false,
+          status: '已抢单',
           type: 2
         },
         {
@@ -388,6 +404,7 @@ export default {
             left: '188px'
           },
           show: false,
+          status: '待完成',
           type: this.value1 == 0 ? 1 : 2
         },
       ]
@@ -395,8 +412,13 @@ export default {
     goTo(url) {
       this.$router.push({name: url});
     },
-    go: function() {
-      this.$router.push("/more");
+    go: function(type) {
+      if (type == '已抢单') {
+        // this.$router.push({path: '/shangParticulars/1'});
+        this.$router.push({name: 'index2'});
+      } else {
+        this.$router.push({name: 'applyQueryResult'});
+      }
     },
 
     handler({ BMap, map }) {
@@ -444,6 +466,9 @@ export default {
     z-index: 2;
     transform: translate(-50%, -140%);
     font-size: 14px;
+  }
+  .mg-top{
+    line-height: 32px;
   }
   .bank{
     display: flex;
@@ -528,8 +553,8 @@ export default {
   position: fixed;
   top: 58px;
   right: 10px;
-  height: 30px;
-  line-height: 30px;
+  // height: 30px;
+  // line-height: 30px;
   text-align: center;
   background-color: #ffffff;
   border:solid 0.5px #eeeeee;  

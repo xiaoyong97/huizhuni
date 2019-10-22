@@ -1,8 +1,8 @@
 <template>
-    <div class="main_box">
+    <div class="main_box collectOperation">
         <!--        遮罩层-->
         <div class='popContainer'  v-show="is_open">
-            <img src="../../../../assets/images/38/return@2x.png" class="img_return" @click="openOverlay" >
+            <img src="../../../../assets/images/38/return@2x.png" class="img_return" @click="openOverlay(-1)" >
             <van-nav-bar  >
             </van-nav-bar>
             <p class="craema_text">请拍摄征信查询授权协议</p>
@@ -12,43 +12,117 @@
 
         </div>
         <!--头部导航-->
-        <van-nav-bar :title="title"  right-text="发起校验" @click-right="createCheck('creditCheckResult')">
+        <van-nav-bar :title="title"  :right-text="right_text" @click-right="addStep">
 
         </van-nav-bar>
         <img src="../../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
-        <div class="content">
-            <van-row  class="picture_div" id="mainbox">
-                <van-col v-for="(item,i) in list" class="picture_col" span="8" >
+        <progressBar :step="this.step" :stepArray="stepArray" v-show="step!=5" class="progressBar"></progressBar>
+        <div class="content" v-show="step==0">
+            <div style="height: 8px;"></div>
+            <van-row  class="picture_div" >
+                <p>请上传征信查询授权协议</p>
+            </van-row>
+            <van-row  class="picture_div" >
+                <van-col  class="picture_col gray_border" span="8" v-show="list[0][0]">
                     <img src="../../../../assets/images/other/file.png" class="img_file"  >
-                    <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img" >
+                    <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0,0)" >
+                </van-col>
+                <van-col class="picture_col blue_border" span="8" @click="openOverlay(0,0)" v-show="list[0][1]">
+                    <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
+                    <p class="add_text">点击拍摄</p>
+                </van-col>
+            </van-row>
+            <van-row  class="picture_div" >
+                <p>请上传客户手持征信查询授权协议的影像</p>
+            </van-row>
+            <van-row  class="picture_div" >
+                <van-col  class="picture_col gray_border" span="8" v-show="list[0][2]">
+                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0,2)" >
                 </van-col>
 
-                <van-col class="picture_col blue_border" span="8" @click="openOverlay">
+                <van-col class="picture_col blue_border" span="8" @click="openOverlay(0,2)" v-show="list[0][3]">
                     <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
-                    <p class="add_text">添加</p>
+                    <p class="add_text">点击拍摄</p>
                 </van-col>
             </van-row>
         </div>
+        <div class="content" v-show="step==1">
+            <div style="height: 8px;"></div>
+            <van-row  class="picture_div" >
+                <p>请上传业务申请书</p>
+            </van-row>
+            <van-row  class="picture_div " >
+                <van-col  class="picture_col gray_border" span="8" v-show="list[1][0]">
+                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(1,0)" >
+                </van-col>
+                <van-col class="picture_col blue_border" span="8" @click="openOverlay(1,0)" v-show="list[1][1]">
+                    <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
+                    <p class="add_text">点击拍摄</p>
+                </van-col>
+            </van-row>
+            <van-row  class="picture_div" >
+                <p>请上传客户手持业务申请书的影像</p>
+            </van-row>
+            <van-row  class="picture_div" >
+                <van-col  class="picture_col gray_border" span="8" v-show="list[1][2]">
+                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(1,2)" >
+                </van-col>
 
+                <van-col class="picture_col blue_border" span="8" @click="openOverlay(1,2)" v-show="list[1][3]">
+                    <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
+                    <p class="add_text">点击拍摄</p>
+                </van-col>
+            </van-row>
+        </div>
+        <div class="content" v-show="step==2">
+            <div style="height: 8px;"></div>
+            <van-row  class="picture_div" >
+                <p>请上传企业主手持本人身份证的影像</p>
+            </van-row>
+            <van-row  class="picture_div" >
+                <van-col  class="picture_col gray_border" span="8" v-show="list[2][0]">
+                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(2,0)" >
+                </van-col>
+                <van-col class="picture_col blue_border" span="8" @click="openOverlay(2,0)" v-show="list[2][1]">
+                    <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
+                    <p class="add_text">点击拍摄</p>
+                </van-col>
+            </van-row>
+        </div>
     </div>
 </template>
 
 <script>
 
-    import NavBar from '@/components/navBar'
+    import "../../../../assets/resetui.scss";
     import Vue from 'vue';
     import { Tab, Tabs ,SubmitBar, } from 'vant';
-
+    import progressBar from '@/components/progressBar'
     Vue.use(Tab).use(Tabs).use(SubmitBar);
     export default {
 
         data() {
             return {
-                title : '征信校验',
+                Indexe1:'',
+                Indexe2:'',
+                title : '征信采集信息',
+                step:0,
+                stepArray:[
+                    '征信查询授权协议',
+                    '业务申请书',
+                    '企业主信息' ,
+                ],
+                right_text:'下一步',
                 checked: true,
                 is_open:false,
                 type:0,
-                list:[1,1,1
+                list:[[false,true,false,true,],
+                      [false,true,false,true,],
+                      [false,true,false,true,],
                 ],
             }
         },
@@ -60,47 +134,55 @@
 
         //网页加载完成
         mounted(){
-			
+
         },
 
         //声明方法
         methods : {
             onClickLeft() {
-                this.$router.go(-1);
+                if(this.step == 0 ){
+                    this.$router.go(-1);
+                    return;
+                }
+                this.step--;
+                this.right_text='下一步';
             },
-			createCheck:function(url){
-				
-				var infos =  sessionStorage.getItem('userinfo')
-				if(null != infos && undefined != infos && '' != infos){
-					infos = JSON.parse(infos)
-					var unid = this.$route.query.unid;
-					for(var i=0;i<infos.length;i++){
-						if(infos[i].unid == unid){	
-							//贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
-							infos[i].step = 2;
-							sessionStorage.setItem('userinfo',JSON.stringify(infos))
-							break;
-						}
-					}
-				}
-				this.go(url);
+            onClickRight:function(url){
+                if (this.step == 2) {
+                    this.go(url);
+                }
 			},
             go : function(url){
                 this.$router.push({name: url})
             },
-            openOverlay : function(){
+            openOverlay : function(i,j){
+                if (i!==-1) {
+                    this.Indexe1 = i;
+                    this.Indexe2 = j;
+                }
                 this.is_open = !this.is_open;
             },
             onTabClick(index) {
                 this.active = index
             },
-            remove_img() {
-                this.list.pop();
+            remove_img(i,j) {
+                this.list[i][j] = false;
             },
             add_img() {
-                this.list.push('1');
+                this.list[this.Indexe1][this.Indexe2] = true;
                 this.is_open = !this.is_open;
-            }
+            },
+            addStep:function(){
+                if(this.step == 2){
+                    this.right_text = '发起校验';
+                    this.go('creditCheckResult')
+                    return
+                }
+                this.step ++;
+                if(this.step == 2){
+                    this.right_text = '发起校验';
+                }
+            },
 
 
         },
@@ -112,7 +194,7 @@
 
         //引入组件
         components: {
-            NavBar
+            progressBar,
         }
 
 
@@ -143,7 +225,10 @@
         margin-top: 50px;
         font-size: 14px;
     }
-    .picture_div{
+    .picture_div p{
+        margin: 0;
+        padding: 0;
+        line-height: 40px;
 
     }
     .picture_col{
@@ -158,9 +243,18 @@
         border-radius: 2px;
         text-align: center;
     }
-    .content{
-        padding: 0 12px ;
+    .gray_border{
+        border: #666666 1px solid;
+        border-radius: 2px;
+       margin-right: 8px;
+    }
+    .main_box{
         background-color: rgb(238,238,238);
+    }
+    .content{
+        margin-top: 8px;
+        padding: 0 12px ;
+        background-color: white;
     }
 
     .img_return{
@@ -173,8 +267,8 @@
     }
     .img_close{
         position: absolute;
-        top: 8px;
-        right:12px ;
+        top: 5px;
+        right:8px ;
         height: 24px;
         width: 24px;
         z-index: 10;
@@ -185,6 +279,7 @@
         margin: 2px auto;
 
     }
+
     .img_cmarea{
        margin-top: 14px;
         left:45% ;

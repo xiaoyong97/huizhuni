@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <van-nav-bar :title="'合同签订-'+title" @click-left="onClickLeft">
+        <van-nav-bar :title="'合同签订-'+title" @click-left="back">
             <van-icon :name="backIcon" size="18px" slot="left" />
         </van-nav-bar>
 
@@ -118,6 +118,17 @@ export default {
         }
     },
     methods: {
+        back() {
+            if (this.active == 0) {
+                this.$router.go(-1);
+            } else {
+                this.active--;
+                this.isDistinguish = true;
+                this.content1Show = true;
+                this.content2Show = false;
+                this.content3Show = false;
+            }
+        },
         start() {
             this.content1Show = false;
             this.content2Show = true;
@@ -131,8 +142,13 @@ export default {
                     cancelButtonColor: '#999999',
                     className: 'dialog',
                 }).then(() => {
+                    // this.content2Show = false;
+                    // this.content3Show = true;
+                    this.active++;
+                    this.isDistinguish = true;
+                    this.content1Show = true;
                     this.content2Show = false;
-                    this.content3Show = true;
+                    this.content3Show = false;
                 }).catch(() => {
                     this.isDistinguish = true;
                     setTimeout(() => {

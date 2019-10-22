@@ -9,8 +9,8 @@
 	 </van-nav-bar>
 	<van-icon name="search" class="search" @click="gotoSearch()"  />
     <div class="content">
-       <van-tabs color="#4c62e7" line-width="50%">
-         <van-tab title="任务发布" color="#4c62e7">
+       <van-tabs color="#4c62e7" line-width="50%" v-model="activeName" @click="onTabClick">
+         <van-tab title="任务发布" name="任务发布" color="#4c62e7">
 			 <van-cell-group class="bg-grey">
 				 <van-checkbox-group v-model="result">
 					<van-cell v-for="(item, index) in infos" v-show="item.status==0">
@@ -38,7 +38,7 @@
 
 			 </van-cell-group>
 		 </van-tab>
-         <van-tab title="任务查看" color="#4c62e7">
+         <van-tab title="任务查看" name="任务查看" color="#4c62e7">
 			 <van-cell-group class="bg-grey pan2">
 				 <van-cell v-for="(item, index) in tasks">
 				 	<div class="pan-content">
@@ -54,7 +54,35 @@
 				 		</div>
 				 	</div>
 				 </van-cell>
-				 				
+				 <van-cell>
+					 <div class="pan-content">
+					 	<div class=" dk-pan">
+					 		<img class="pan-tag-img" src="../../assets/images/other/Label7@2x.png" alt="">
+					 		<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{infos[0].mortgaged[0].house_nubmer}}</div></van-col>
+					 		<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].address}}</van-col>
+					 		<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].holder}}&nbsp;</van-col>
+					 		<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[0].mortgagor[0].name}}&nbsp;</van-col>
+					 		<van-col span="24" class="detail" @click="checkTask(infos[0],1)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+					 	
+					 					 </div>
+					 </div>
+				 </van-cell>
+				 <van-cell>
+					 <div class="pan-content">
+						<div class=" dk-pan">
+							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" >
+							<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{infos[0].mortgaged[0].house_nubmer}}</div></van-col>
+							<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].address}}</van-col>
+							<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].holder}}&nbsp;</van-col>
+							<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[0].mortgagor[0].name}}&nbsp;</van-col>
+							<van-col span="24" class="detail" @click="checkTask(infos[0],2)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+						 </div>
+					 </div>
+				 </van-cell>
+			
+			
+			
+
 			  <!-- 	<van-cell v-for="(item, index) in task">
 			  		<div class="pan-content">
 			 			<div class=" dk-pan">
@@ -69,7 +97,7 @@
 						</div>
 			 		</div>
 			  	</van-cell> -->
-				
+
 			 </van-submit-bar>
 
 			  </van-cell-group>
@@ -97,6 +125,7 @@
 	  count:0,
 	  infos:[],
 	  tasks:[],
+		activeName: '任务发布',
     }
   },
 
@@ -112,6 +141,13 @@
 	  if(taskJsonStr != '' && taskJsonStr != undefined && taskJsonStr != null){
 	  	this.tasks = JSON.parse(taskJsonStr);
 	  }
+		//tab状态绑定
+	  var value = sessionStorage.getItem('gugu_tab' );
+	  if (value=='任务发布') {
+		  this.activeName = value;
+	  } else {
+		  this.activeName = '任务查看';
+	  }
   },
 
   //网页加载完成
@@ -126,6 +162,10 @@
 
   //声明方法
   methods : {
+	  onTabClick() {
+		  sessionStorage.setItem('gugu_tab',this.activeName )
+		  console.log(this.activeName)
+	  },
 	add_task:function  () {
 		var task = {
 			status:0,
@@ -134,18 +174,18 @@
 		for(var i=0; i<this.result.length;i++){
 			for(var ii=0; ii<this.infos.length;ii++){
 				if(this.infos[ii].unid == this.result[i]){
-					
+
 					task.info.push(this.infos[ii]);
 				}
 			}
 		}
-		
+
 		sessionStorage.setItem('type',0);
 	    this.$router.push({name: 'new_task', params:{task:task}});
 	},
 	new_task:function (){
 		//组装任务
-		
+
 		sessionStorage.setItem('type',1);
 		this.$router.push({name: 'new_task', params: {type: 1}});
 	},
@@ -155,8 +195,17 @@
 	},
 	onClickLeft:function() {
 	  this.$router.go(-1);
+		sessionStorage.setItem('gugu_tab','任务发布' );
 	},
-	checkTask:function(task){
+	checkTask:function(task,status){
+		if(task.info == undefined){
+			
+			task = {
+				status:status,
+				info:[task],
+			}
+		}
+	
 		this.$router.push({name: 'checkTask',query:{task:task}});
 	}
   },

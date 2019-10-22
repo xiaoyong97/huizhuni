@@ -70,9 +70,10 @@
                     <van-col class="list_title"  style="text-align: left"><p class="list_right_text " >录入调查结果</p></van-col>
                 </van-row>
                 <div style="background-color: rgb(228,228,228);padding:6px 12px;height: 100px">
-                    <p class="list_right_text grey" style="line-height: 30px">该客户贷款逾期，不良情况属实**********，股权质押时间即将结束</p>
+                    <textarea rows="3" class="textarea_box" :disabled="inptuStatus">该客户贷款逾期，不良情况属实**********，股权质押时间即将结束</textarea>
+<!--                    <p class="list_right_text grey" style="line-height: 30px">该客户贷款逾期，不良情况属实**********，股权质押时间即将结束</p>-->
                 </div>
-                <div class="save_box">
+                <div class="save_box" :class="inptuStatus?'':'blue_bg'" @click="saveBtn">
                     <p class="list_right_text white" >保存</p>
                 </div>
             </div>
@@ -96,6 +97,7 @@
                 step:1,
                 resule:'征信查询结果',
                 is_show:0,
+                inptuStatus:false,
             }
         },
 
@@ -134,6 +136,9 @@
                     this.step = 3
                 }
             },
+            saveBtn() {
+                this.inptuStatus = true;
+            }
 
 
 
@@ -179,6 +184,11 @@
         height: 28px;
         border-radius: 28px;
         width: 70%;
+    }
+    .textarea_box{
+        background-color: rgb(228,228,228);
+        width: 100%;
+        border: 0;
     }
     .white{
         color: white;
@@ -243,5 +253,8 @@
     }
     .grey{
         color: #666666;
+    }
+    .blue_bg{
+        background-color: #4c62e7;
     }
 </style>

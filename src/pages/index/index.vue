@@ -7,11 +7,11 @@
 				:title='title'
 				fixed
 		/>
-		<img src="../../assets/images/48/Message@2x.png" class="img_massage" @click="go_newspage">
+		<img src="../../assets/images/48/Message@2x.png" class="img_massage" @click="go_Page('news')">
 
 		<div class="content" >
 			<div class="notice-bar" v-show="isShowNoticeBar">
-				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">张三</span>进入名单池中，前往
+				&nbsp;&nbsp;&nbsp;&nbsp;客户<span class="theme_color">王光明</span>进入名单池中，前往
 				<div class="btn-group">
 				  <span class="rob" @click="go('index2')">抢单</span>
 				  <span class="close" @click="closeNotice" >X</span>
@@ -61,7 +61,7 @@
 					<van-col span="14">客户合规审核未通过</van-col>
 					<van-col span="10">
 						<span class="cell-num">12 </span> 户
-						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
+						<van-button class="check" @click="go_Page('applyQueryResult')" type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
 					</van-col>
 
 				</van-cell>
@@ -70,14 +70,14 @@
 					<van-col span="14">客户贷款逾期通知</van-col>
 					<van-col span="10">
 						<span class="cell-num">10 </span> 户
-						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
+						<van-button class="check" @click="go_Page('loanTracking')"  type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
 					</van-col>
 				</van-cell>
 				<van-cell class="padding-bottom-16">
 					<van-col span="14">名下待抢单客户</van-col>
 					<van-col span="10">
 						<span class="cell-num"> 8 </span> 条
-						<van-button class="check"  type="primary" size="small" color="rgb(90,75,234)" @click="go('index2')">查看</van-button>
+						<van-button class="check" type="primary" size="small" color="rgb(90,75,234)" @click="go_Page('grabMessage')">查看</van-button>
 					</van-col>
 				</van-cell>
 			</van-cell-group>
@@ -86,7 +86,7 @@
 					<!-- 使用 title 插槽来自定义标题 -->
 					<template slot="title">
 						<van-tag type="danger" class="left_tag">&nbsp;</van-tag>
-						<span class="custom-title">&nbsp;&nbsp;贷款管理</span>
+						<span class="custom-title">&nbsp;&nbsp;贷款查询</span>
 					</template>
 				</van-cell>
 				<van-cell>
@@ -152,7 +152,7 @@
 		created (){
 			var jsonStr = sessionStorage.getItem('userinfo');
 			if(jsonStr == '' || jsonStr == undefined || jsonStr == null){
-				
+
 				var infos = [
 					{
 						company_info:{
@@ -179,7 +179,7 @@
 							households:'3',
 						},
 						associates:[   //关联人
-							{	
+							{
 								relationship:'其他', //0=自然人， 1=  企业法人
 								name:'李天明',
 								sex:'男',
@@ -247,7 +247,7 @@
 								legal_representative:'艾仲华',
 								mobile:'13702137765',
 								legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-					
+
 							}
 						],
 						unid:'10001',
@@ -282,7 +282,7 @@
 						households:'3',
 					},
 					associates:[   //关联人
-						{	
+						{
 							relationship:'其他', //0=自然人， 1=  企业法人
 							name:'李天明',
 							sex:'男',
@@ -350,7 +350,7 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-				
+
 						}
 					],
 					unid:'10002',
@@ -385,7 +385,7 @@
 						households:'3',
 					},
 					associates:[   //关联人
-						{	
+						{
 							relationship:'其他', //0=自然人， 1=  企业法人
 							name:'李天明',
 							sex:'男',
@@ -453,7 +453,7 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-				
+
 						}
 					],
 					unid:'10003',
@@ -488,7 +488,7 @@
 						households:'3',
 					},
 					associates:[   //关联人
-						{	
+						{
 							relationship:'其他', //0=自然人， 1=  企业法人
 							name:'李天明',
 							sex:'男',
@@ -556,7 +556,7 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-				
+
 						}
 					],
 					unid:'10004',
@@ -590,7 +590,7 @@
 						households:'3',
 					},
 					associates:[   //关联人
-						{	
+						{
 							relationship:'其他', //0=自然人， 1=  企业法人
 							name:'李天明',
 							sex:'男',
@@ -658,7 +658,7 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-				
+
 						}
 					],
 					unid:'10005',
@@ -669,11 +669,11 @@
 					status:0
 				}
 				];
-				
+
 				sessionStorage.setItem('userinfo',JSON.stringify(infos));
 			}
-			
-		
+
+
 		},
 
 		//网页加载完成
@@ -706,22 +706,25 @@
 
 		//声明方法
 		methods : {
-			go_newspage : function(){
-				this.$router.push({name:'news'})
+			go_Page : function(url){
+				this.$router.push({name:url})
 
 			},
 			go : function(url){
 				if(url=='offlineHuoDong'){//融智赋能
 					Dialog.confirm({
 						message: "请选择身份",
+						//closeOnClickOverlay: true,
 						confirmButtonText: "普惠营销管理岗",
 						cancelButtonText: "营销主管岗" ,
 						cancelButtonColor:"#1989fa",
 					}).then(()=> {
 						sessionStorage.setItem("intelligenceEnablement","management")
+						sessionStorage.setItem("saveCg","false") //默认保存草稿为false
 						this.$router.push('/offlineHuoDong');
 					}).catch(() => {
                     	sessionStorage.setItem("intelligenceEnablement","supervisor")
+						sessionStorage.setItem("saveCg","false") //默认保存草稿为false
 						this.$router.push('/offlineHuoDong');
 					})
 				}else{
@@ -757,7 +760,7 @@
 						{name:"咕咕管理",icon:require('../../assets/images/84/gugu@2x.png'),url:'gugu',isChecked:true},
 						{name:"贷款催收",icon:require('../../assets/images/84/daikuancuishou.png'),url:'index3',isChecked:false},
 						{name:"商机管理",icon:require('../../assets/images/84/shangjiguanli.png'),url:'index2',isChecked:false},
-						{name:"贷款管理",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index3',isChecked:false},
+						{name:"贷款查询",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index3',isChecked:false},
 					]
 					localStorage.setItem('home_menu',JSON.stringify(arr));
 				}

@@ -45,6 +45,17 @@
                 </van-row>
                     <p  v-show="is_show==2" class="list_test"  style="font-size: 12px;line-height: 24px">您上传的征信查询授权存在缺失页</p>
                 </div>
+
+            </div>
+            <div class="div_errmsg" v-show="step==3">
+                <van-row class="list_row_top" >
+                    <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
+                    <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >录入调查结果</p></van-col>
+                </van-row>
+                <textarea rows="4" cols="20" class="textarea" :disabled="save_status">该客户贷款逾期，不良情况属实*****，股权质押时间即将结束
+                </textarea>
+                <button class="save_btn" @click="save" :class="save_status?'gray_bg':''">保存</button>
+                <div style="height: 8px;"></div>
             </div>
         </div>
     </div>
@@ -63,15 +74,23 @@
             return {
                 title : '征信校验',
                 right_text:'完成',
-                step:1,
+                step:0,
                 resule:'征信查询结果',
                 is_show:0,
+                save_status:false,
             }
         },
 
 
         //数据预加载
-        created : ()=>{
+        created (){
+            var num = Math.random();
+            console.log(num)
+            if ( num-0.5 > 0 ) {
+                this.step = 2
+            } else {
+                this.step = 3
+            }
         },
 
         //网页加载完成
@@ -104,7 +123,9 @@
                     this.step = 3
                 }
             },
-
+            save() {
+                this.save_status = true;
+            },
 
 
 
@@ -125,6 +146,22 @@
 </script>
 
 <style lang="scss" scoped>
+    .save_btn{
+        background-color: #4c62e7;
+        width: 80%;
+        border-radius: 80px;
+        height: 34px;
+        color: white;
+        margin: 0 10%;
+    }
+    .textarea{
+        background-color: rgb(238,238,238);
+        width: 95%;
+        padding: 8px 8px;
+    }
+    .gray_bg{
+        background-color:rgb(187,187,187);
+    }
     .popContainer{
         text-align: center;
         height: 210px;
@@ -160,6 +197,7 @@
         background-color: white;
         margin-top: 8px;
         padding: 0 12px;
+        justify-content: center;
     }
     .craema_text {
         color: #ffffff;

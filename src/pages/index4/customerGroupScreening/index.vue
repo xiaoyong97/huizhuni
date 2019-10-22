@@ -82,17 +82,20 @@
       <div class="coordinate" v-for="(item, index) in coordinateList1" :style="item.style" @click="showTips(index)">
         <img :src="item.img" alt="">
         <div class="popup-box" v-show="item.show" :style="item.style">
-          <div v-if="item.type == 2" @click="goTo('customerInfo')">
-            <div>厦门象屿股份有限公司</div>
-            <div>客户需求：强</div>
-            <div>客户分层：优质</div>
+          <div v-if="item.type == 2" key="company">
+            <div @click="goTo('customerInfo')">
+              <div>厦门象屿股份有限公司</div>
+              <div>客户需求：强</div>
+              <div>客户分层：优质</div>
+            </div>
+            <div class="mg-top" @click="go(item.status)">客户：{{item.status}}</div>
           </div>
-          <template v-if="item.type == 1">
+          <div v-if="item.type == 1" key="bank">
             <div class="bank">
               <img class="bank-img" :src="bankImg" alt="">
               <div>建行厦门金路支行</div>
             </div>
-          </template>
+          </div>
         </div>
       </div>
     </div>
@@ -340,7 +343,8 @@ export default {
             left: '160px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '待完成'
         },
         {
           img: img1,
@@ -358,7 +362,8 @@ export default {
             left: '286px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '已抢单'
         },
         {
           img: img2,
@@ -367,7 +372,8 @@ export default {
             left: '100px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '待完成'
         },
         {
           img: img1,
@@ -385,7 +391,8 @@ export default {
             left: '208px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '已抢单'
         },
         {
           img: img1,
@@ -403,7 +410,8 @@ export default {
             left: '198px'
           },
           show: false,
-          type: 2
+          type: 2,
+          status: '已抢单'
         },
         {
           img: img1,
@@ -518,6 +526,7 @@ export default {
             left: '100px'
           },
           show: false,
+          status: '已抢单',
           type: this.value1 == 0 ? 1 : 2
         },
         {
@@ -527,6 +536,7 @@ export default {
             left: '160px'
           },
           show: false,
+          status: '待完成',
           type: 2
         },
         {
@@ -536,6 +546,7 @@ export default {
             left: '80px'
           },
           show: false,
+          status: '待完成',
           type: this.value1 == 0 ? 1 : 2
         },
         {
@@ -545,6 +556,7 @@ export default {
             left: '286px'
           },
           show: false,
+          status: '已抢单',
           type: 2
         },
         {
@@ -554,6 +566,7 @@ export default {
             left: '100px'
           },
           show: false,
+          status: '已抢单',
           type: 2
         },
         {
@@ -563,6 +576,7 @@ export default {
             left: '300px'
           },
           show: false,
+          status: '待完成',
           type: this.value1 == 0 ? 1 : 2
         },
         {
@@ -572,6 +586,7 @@ export default {
             left: '208px'
           },
           show: false,
+          status: '待完成',
           type: 2
         },
         {
@@ -581,6 +596,7 @@ export default {
             left: '102px'
           },
           show: false,
+          status: '已抢单',
           type: this.value1 == 0 ? 1 : 2
         },
         {
@@ -590,6 +606,7 @@ export default {
             left: '198px'
           },
           show: false,
+          status: '已抢单',
           type: 2
         },
         {
@@ -599,6 +616,7 @@ export default {
             left: '188px'
           },
           show: false,
+          status: '待完成',
           type: this.value1 == 0 ? 1 : 2
         },
       ]
@@ -606,8 +624,13 @@ export default {
     goTo(url) {
       this.$router.push({name: url});
     },
-    go: function() {
-      this.$router.push("/more");
+    go: function(type) {
+      if (type == '已抢单') {
+        // this.$router.push({path: '/shangParticulars/1'});
+        this.$router.push({name: 'index2'});
+      } else {
+        this.$router.push({name: 'applyQueryResult'});
+      }
     },
 
     handler({ BMap, map }) {
@@ -746,6 +769,9 @@ export default {
     z-index: 2;
     transform: translate(-50%, -140%);
     font-size: 14px;
+  }
+  .mg-top{
+    line-height: 32px;
   }
   .bank{
     display: flex;

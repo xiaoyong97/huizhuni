@@ -33,8 +33,8 @@
       
       
       <div class="bac" >
-        <div class="daiWanCheng" @click="particularsCardBut(1)">
-          <van-row >
+        <div class="daiWanCheng" v-show="typeOneShow">
+          <van-row  @click="particularsCardBut(1)">
             <van-col class="qiangDanCol" span="17">
               <div class="qiangGongSi">{{enterprise|textJue(textJueIsOk)}}</div><div class="qiangGongLu">(<20KM)</div>
             </van-col>
@@ -46,7 +46,7 @@
               <div class="yunShuiDaiWan">云税贷</br>破冰行动</div>
             </van-col>
           </van-row>
-          <van-row gutter="15">
+          <van-row gutter="15" @click="particularsCardBut(1)">
             <van-col class="kuang" span="6">
               <div class="kuangHangOrange">
                 <div class="kuangTop">信用快贷</div><div class="kuangBottom">188万</div>
@@ -68,7 +68,7 @@
               </div>
             </van-col>
           </van-row>
-          <van-row  gutter="10">
+          <van-row  gutter="10" @click="particularsCardBut(1)">
             <van-col><div class ="BKuang" >法人</div></van-col>
             <van-col><div class ="BKuang" >个人征信</div></van-col>
           </van-row>
@@ -79,14 +79,14 @@
                   {{huaKuaiName}}
                 </div>
               </van-slider></div>
-              <div class ="huaTime" >2019/10/12 </br><span class="timeSpan">18:21</span></div>
+              <div class ="huaTime" @click="particularsCardBut(1)" >2019/10/12 </br><span class="timeSpan">18:21</span></div>
             </div>
           </van-row>
         </div>
 
       
-        <div class="daiWanCheng" @click="particularsCardBut(2)">
-          <van-row >
+        <div class="daiWanCheng"  v-show="typeTwoShow">
+          <van-row @click="particularsCardBut(2)">
             <van-col class="qiangDanCol" span="17">
               <div class="qiangGongSi">{{enterpriseTwo|textJue(textJueIsOkTwo)}}</div><div class="qiangGongLu">(<20KM)</div>
             </van-col>
@@ -95,7 +95,7 @@
               <div class="jingZhuenWan">精准</br>测额</div>
             </van-col>
           </van-row>
-          <van-row gutter="15">
+          <van-row gutter="15" @click="particularsCardBut(2)">
             <van-col class="kuang" span="6">
               <div class="kuangHang">
                 <div class="kuangTop">信用快贷</div><div class="kuangBottom">188万</div>
@@ -117,7 +117,7 @@
               </div>
             </van-col>
           </van-row>
-          <van-row  gutter="10">
+          <van-row  gutter="10"@click="particularsCardBut(2)">
             <van-col><div class ="BKuang" >基本户</div></van-col>
             <van-col><div class ="BKuang" >法人</div></van-col>
             <van-col><div class ="BKuang" >企业征信</div></van-col>
@@ -130,7 +130,7 @@
                   {{huaKuaiNameTwo}}
                 </div>
               </van-slider></div>
-              <div class ="huaTime" >2019/10/12 </br><span class="timeSpan">18:21</span></div>
+              <div class ="huaTime" @click="particularsCardBut(2)">2019/10/12 </br><span class="timeSpan">18:21</span></div>
             </div>
           </van-row>
         </div>
@@ -154,8 +154,8 @@ export default {
   data (){
      return {
 
-       title : '商2机',
-       enterprise:'青岛摸具制造有限公司',
+       title : '商机',
+       enterprise:'广州智慧科技有限公司',
        enterpriseTwo:'广州市睿智防水电器股份有限公司',
        activeName: 'a',
        activeTabs:'a',
@@ -178,6 +178,8 @@ export default {
        active: 'b',
        textJueIsOk: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第一个
        textJueIsOkTwo: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第二个
+       typeOneShow:true,
+       typeTwoShow:true,
      }
   },
 
@@ -188,7 +190,18 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+    var enterpriseStatus = sessionStorage.getItem('enterpriseStatus')
+    if(enterpriseStatus=="YiQiangDan"){
+      this.typeOneShow=false
+    }else{
+      this.typeOneShow=true
+    }
+    var enterpriseTwoStatus = sessionStorage.getItem('enterpriseTwoStatus')
+    if(enterpriseTwoStatus=="YiQiangDan"){
+      this.typeTwoShow=false
+    }else{
+      this.typeTwoShow=true
+    }
   },
   //vue过滤器
   filters: {
@@ -222,9 +235,12 @@ export default {
       if(this.huaKuai==100){
         this.huaKuaiName="抢单中..."
         Dialog.alert({
-          message: '抢单成功'
+          message: '抢单成功',
+          confirmButtonText: "确定",
         }).then(() => {
           this.huaKuaiName="抢单成功"
+					sessionStorage.setItem("enterpriseStatus","YiQiangDan")
+          this.typeOneShow=false
           this.textJueIsOk=true
         });
       }else{
@@ -237,9 +253,12 @@ export default {
       if(this.huaKuaitwo==100){
         this.huaKuaiNameTwo="抢单中..."
         Dialog.alert({
-          message: '抢单成功'
+          message: '抢单成功',
+          confirmButtonText: "确定",
         }).then(() => {
           this.huaKuaiNameTwo="抢单成功"
+					sessionStorage.setItem("enterpriseTwoStatus","YiQiangDan")
+          this.typeTwoShow=false
           this.textJueIsOkTwo=true
         });
       }else{
@@ -322,7 +341,8 @@ export default {
 
   .bac{
     width: 100%;
-    height: 509px;
+    min-height: 509px;
+    height: 100%;
     overflow:auto;
     margin: 0px;
     padding-top: 1px;

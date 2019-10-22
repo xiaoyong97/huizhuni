@@ -1,16 +1,29 @@
 <template>
     <van-tabbar v-model="active">
-    <van-tabbar-item 
+    <van-tabbar-item
        v-for="(icon ,index) in iconList" :key='index'
        replace
        :to="icon.route"
        >
         <span v-show="index!=0">{{icon.name}}</span>
+<!--        <img-->
+<!--        slot="icon"-->
+<!--        slot-scope="props"-->
+<!--        :src="props.active ? icon.active : icon.normal"-->
+<!--        :class="index==0&&props.active ? 'big' : ''"-->
+<!--        >-->
         <img
+<<<<<<< HEAD
         slot="icon"
         slot-scope="props"
         :src="props.active ? icon.active : icon.normal"
         :class="[index==0 ? 'big' : '']"
+=======
+                slot="icon"
+                slot-scope="props"
+                :src="props.active ? icon.active : icon.normal"
+                :class="index==0? 'big' : ''"
+>>>>>>> origin/master
         >
     </van-tabbar-item>
     </van-tabbar>
@@ -28,7 +41,7 @@ import icon4_1 from '../../../static/4-1.png'
 import icon5 from '../../../static/5.png'
 import icon5_1 from '../../../static/5-1.png'
 
- 
+
  export default {
 
   name : 'tabBar',
@@ -80,14 +93,14 @@ import icon5_1 from '../../../static/5-1.png'
 
   //声明方法
   methods : {
-    
+
     setActive : function(){
        let path = this.$route.path;
        let index = this.iconList.findIndex(res=>(res.route==path))
        this.active = index;
     }
-   
-    
+
+
 
   },
 
@@ -100,5 +113,10 @@ import icon5_1 from '../../../static/5-1.png'
   img.big{
     width: 32px;
     height: 32px;
+<<<<<<< HEAD
   }
 </style>
+=======
+}
+</style>
+>>>>>>> origin/master

@@ -152,7 +152,7 @@ export default new Router({
       },
       {
         name: 'managementParticulars',
-        path: '/managementParticulars',
+        path: '/managementParticulars/:userId/:stutasId',
         component: () => import('@/pages/managementParticulars'),
         meta: {
           title: '商机管理详情信息'
@@ -206,6 +206,14 @@ export default new Router({
         component: () => import('@/pages/offlineHuoDong/newActivitiesConfirm'),
         meta: {
         title: '新建活动确定页'
+        },
+      },
+      {
+        name: 'newActivitiesConfirmDetails',
+        path: '/offlineHuoDong/newActivitiesConfirmDetails',
+        component: () => import('@/pages/offlineHuoDong/newActivitiesConfirmDetails'),
+        meta: {
+        title: '活动详情'
         },
       },
       {
@@ -550,6 +558,15 @@ export default new Router({
       name: 'loanTrackingDetail',
       path: '/loanTracking/detail',
       component: () => import('@/pages/loanTracking/detail'),
+      meta: {
+        title: '贷后跟踪'
+      }
+    },
+    //贷后跟踪搜索
+    {
+      name: 'loanTrackingSearch',
+      path: '/loanTracking/search',
+      component: () => import('@/pages/loanTracking/search'),
       meta: {
         title: '贷后跟踪'
       }
