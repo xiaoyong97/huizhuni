@@ -127,8 +127,25 @@
       </div>
 
       
-    <!--dialog已抢单放弃按钮弹出框-->
-    <van-dialog @confirm="queRen" v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true">
+    
+    <!--dialog已抢单放弃按钮弹出框1-->
+    <van-dialog v-model="fangQiButShowOne" @confirm="radioQueDing(1)" title="请选择放弃原因" show-cancel-button >
+      <van-radio-group v-model="fangQiRadio">
+        <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
+        <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
+        <van-radio class="fangButClass" name="3">客户条件不符合</van-radio>
+      </van-radio-group>
+    </van-dialog>
+    <!--dialog已抢单放弃按钮弹出框2-->
+    <van-dialog v-model="fangQiButShowTwo" @confirm="radioQueDing(2)" title="请选择放弃原因" show-cancel-button >
+      <van-radio-group v-model="fangQiRadio">
+        <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
+        <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
+        <van-radio class="fangButClass" name="3">客户条件不符合</van-radio>
+      </van-radio-group>
+    </van-dialog>
+    <!--dialog已抢单放弃按钮弹出框3-->
+    <van-dialog v-model="fangQiButShowThree" @confirm="radioQueDing(3)" title="请选择放弃原因" show-cancel-button >
       <van-radio-group v-model="fangQiRadio">
         <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
         <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
@@ -151,10 +168,12 @@ export default {
   data (){
      return {
        title : '新野摸具制造有限公司',
-       fangQiButShow: false,
+       fangQiButShowOne: false,
+       fangQiButShowTwo: false,
+       fangQiButShowThree: false,
        fangQiRadio: 1,
-       stutasId:this.$route.params.stutasId,//跳转参数状态id
        userId:this.$route.params.userId,//跳转参数用户id
+       stutasId:this.$route.params.stutasId,//跳转参数状态id
        typeStutas: 0,//橘色状态
        userTypeId: 0,//用户id
        enterprise:[],//接受显示数据
@@ -384,7 +403,24 @@ export default {
     },
     //商机管理放弃按钮
     xiangQingQianDan(){
-      this.fangQiButShow = true
+      if(this.userId==1){
+        this.fangQiButShowOne = true
+      }else if(this.userId==2){
+        this.fangQiButShowTwo = true
+      }else if(this.userId==3){
+        this.fangQiButShowThree = true
+      }
+    },
+    //放弃弹框中确定按钮
+    radioQueDing(num){
+      if(num==1){
+				sessionStorage.setItem("enterpriseStatus","YiFangQi")
+      }else if(num==2){
+				sessionStorage.setItem("enterpriseTwoStatus","YiFangQi")
+      }else if(num==3){
+				sessionStorage.setItem("enterpriseThreeStatus","YiFangQi")
+      }
+      this.typeStutas=4
     },
     //放弃确认
     queRen(){

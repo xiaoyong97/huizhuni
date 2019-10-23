@@ -248,6 +248,11 @@ export default {
         message: '抢单成功',
         confirmButtonText: "确定",
       }).then(() => {
+        if(this.id==1){
+					sessionStorage.setItem("enterpriseStatus","YiQiangDan")
+        }else{
+					sessionStorage.setItem("enterpriseTwoStatus","YiQiangDan")
+        }
         this.title=this.enterprise.companyName
         this.qianDanIsOk= false
         this.fansQiIsOk= true
@@ -264,6 +269,11 @@ export default {
         message: '已放弃',
         confirmButtonText: "确定",
       }).then(() => {
+        if(this.id==1){
+					sessionStorage.setItem("enterpriseStatus","YiFangQi")
+        }else{
+					sessionStorage.setItem("enterpriseTwoStatus","YiFangQi")
+        }
         this.fansQiIsOk= false
         this.typeStutas=true
         this.textJueIsOk=false

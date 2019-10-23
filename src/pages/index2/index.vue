@@ -79,7 +79,7 @@
                   {{huaKuaiName}}
                 </div>
               </van-slider></div>
-              <div class ="huaTime" @click="particularsCardBut(1)" >2019/10/12 </br><span class="timeSpan">18:21</span></div>
+              <div class ="huaTime" @click="particularsCardBut(1)" >{{toDay}}</br><span class="timeSpan">09:00</span></div>
             </div>
           </van-row>
         </div>
@@ -130,7 +130,7 @@
                   {{huaKuaiNameTwo}}
                 </div>
               </van-slider></div>
-              <div class ="huaTime" @click="particularsCardBut(2)">2019/10/12 </br><span class="timeSpan">18:21</span></div>
+              <div class ="huaTime" @click="particularsCardBut(2)">{{toDay}}</br><span class="timeSpan">09:00</span></div>
             </div>
           </van-row>
         </div>
@@ -180,6 +180,7 @@ export default {
        textJueIsOkTwo: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第二个
        typeOneShow:true,
        typeTwoShow:true,
+       toDay: '',//当前日期
      }
   },
 
@@ -191,17 +192,18 @@ export default {
   //网页加载完成
   mounted : function(){
     var enterpriseStatus = sessionStorage.getItem('enterpriseStatus')
-    if(enterpriseStatus=="YiQiangDan"){
+    if(enterpriseStatus=="YiQiangDan"||enterpriseStatus=="YiFangQi"){
       this.typeOneShow=false
     }else{
       this.typeOneShow=true
     }
     var enterpriseTwoStatus = sessionStorage.getItem('enterpriseTwoStatus')
-    if(enterpriseTwoStatus=="YiQiangDan"){
+    if(enterpriseTwoStatus=="YiQiangDan"||enterpriseTwoStatus=="YiFangQi"){
       this.typeTwoShow=false
     }else{
       this.typeTwoShow=true
     }
+    this.getDataTime()
   },
   //vue过滤器
   filters: {
@@ -221,6 +223,20 @@ export default {
   methods : {
     go : function(){
       this.$router.push('/more');
+    },
+    //获取当前日期
+    getDataTime(){
+      this.toDay=new Date().getFullYear()
+      if(new Date().getMonth()<10){
+        this.toDay+="/"+0+new Date().getMonth()
+      }else{
+        this.toDay+="/"+new Date().getMonth()
+      }
+      if(new Date().getDate()<10){
+        this.toDay+="/"+0+new Date().getDate()
+      }else{
+        this.toDay+="/"+new Date().getDate()
+      }
     },
     //已抢单中放弃按钮
     fangQiBut(){
