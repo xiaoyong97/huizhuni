@@ -13,7 +13,7 @@
          <van-tab title="任务发布" name="任务发布" color="#4c62e7">
 			 <van-cell-group class="bg-grey">
 				 <van-checkbox-group v-model="result">
-					<van-cell v-for="(item, index) in infos" v-show="item.status==0">
+					<van-cell v-for="(item, index) in infos" v-show="item.status==0&&index==0">
 						<div class="checkbox">
 							<van-checkbox  checked-color="#4c62e7"  :key="item.unid" :name="item.unid" ></van-checkbox>
 						</div>
