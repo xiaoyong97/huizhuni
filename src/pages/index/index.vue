@@ -256,93 +256,9 @@
 						isPass:true,
 						loan:{},
 						status:0
-					}
-				,{
-					company_info:{
-						customer_id:'252841000000526649',
-						unified_social_credit_code:'91120116MA07K2307A',
-						company_name:'广州市睿智防水电器股份有限公司',
-						enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
-						legal_representative:'艾仲华',
-						mobile:'13702137765',
-						legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
 					},
-					company_main_info:{
-						name:'艾仲华',
-						sex:'女',
-						ethnic:'汉族',
-						birth:'1976.8.1',
-						address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
-						idcard:'120106197608016578',
-						validity_period:'2030.1.1' ,//有效期
-						record_of_formal_schooling : '研究生', //学历
-						mobile:'13702137765',
-						work:'广州市睿智防水电器股份有限公司',
-						marriage_status:'已婚',
-						households:'3',
-					},
-					associates:[   //关联人
-						{
-							relationship:'其他', //0=自然人， 1=  企业法人
-							name:'李天明',
-							sex:'男',
-							ethnic:'汉族',
-							birth:'1970.10.20',
-							address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-							idcard:'120106197010204098',
-							validity_period:'2030.1.1' ,//有效期
-							record_of_formal_schooling : '研究生', //学历
-							mobile:'13439078656',
-							work:'无',
-							marriage_status:'已婚',
-							households:'3',
-						}
-					],
-					mortgaged:[
-						{
-							relationship:'其他', //0=自然人， 1=  企业法人
-							holder:'艾仲华',
-							situations:'自由',
-							address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-							number:'0130031024',
-							type:'自有',
-							nature:'自有',
-							use:'住宅',
-							area:'120.4',
-							Other:'无',
-							house_nubmer:'0188192319',
-						}
-					],
-					mortgagor:[
-						{
-							relationship:'自然人', //0=自然人， 1=  企业法人
-							name:'艾仲华',
-							sex:'女',
-							ethnic:'汉族',
-							birth:'1976.8.1',
-							address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
-							idcard:'120106197608016578',
-							validity_period:'2030.1.1' , //有效期
-							diyaren_mobile:'13702137765',
-							diyawu:[],
-							customer_id:'',
-							unified_social_credit_code:'',
-							company_name:'',
-							enterprise_address:'',
-							legal_representative:'',
-							mobile:'',
-						},
-						{
-							relationship:'企业法人', //0=自然人， 1=  企业法人
-							name:'艾仲华',
-							sex:'',
-							ethnic:'',
-							birth:'',
-							address:'',
-							idcard:'',
-							validity_period:'' , //有效期
-							diyaren_mobile:'',
-							diyawu:[],
+					{//已评估
+						company_info:{
 							customer_id:'252841000000526649',
 							unified_social_credit_code:'91120116MA07K2307A',
 							company_name:'广州市睿智防水电器股份有限公司',
@@ -350,324 +266,410 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-
-						}
-					],
-					unid:'10002',
-					collect_time:'',
-					step:1,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
-					isPass:true,
-					loan:{},
-					status:0
-				},
-				{
-					company_info:{
-						customer_id:'252841000000526649',
-						unified_social_credit_code:'91120116MA07K2307A',
-						company_name:'广州市睿智防水电器股份有限公司',
-						enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
-						legal_representative:'艾仲华',
-						mobile:'13702137765',
-						legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-					},
-					company_main_info:{
-						name:'艾仲华',
-						sex:'女',
-						ethnic:'汉族',
-						birth:'1976.8.1',
-						address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
-						idcard:'120106197608016578',
-						validity_period:'2030.1.1' ,//有效期
-						record_of_formal_schooling : '研究生', //学历
-						mobile:'13702137765',
-						work:'广州市睿智防水电器股份有限公司',
-						marriage_status:'已婚',
-						households:'3',
-					},
-					associates:[   //关联人
-						{
-							relationship:'其他', //0=自然人， 1=  企业法人
-							name:'李天明',
-							sex:'男',
-							ethnic:'汉族',
-							birth:'1970.10.20',
-							address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-							idcard:'120106197010204098',
-							validity_period:'2030.1.1' ,//有效期
-							record_of_formal_schooling : '研究生', //学历
-							mobile:'13439078656',
-							work:'无',
-							marriage_status:'已婚',
-							households:'3',
-						}
-					],
-					mortgaged:[
-						{
-							relationship:'其他', //0=自然人， 1=  企业法人
-							holder:'艾仲华',
-							situations:'自由',
-							address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-							number:'0130031024',
-							type:'自有',
-							nature:'自有',
-							use:'住宅',
-							area:'120.4',
-							Other:'无',
-							house_nubmer:'0188192319',
-						}
-					],
-					mortgagor:[
-						{
-							relationship:'自然人', //0=自然人， 1=  企业法人
+						},
+						company_main_info:{
 							name:'艾仲华',
 							sex:'女',
 							ethnic:'汉族',
 							birth:'1976.8.1',
 							address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
 							idcard:'120106197608016578',
-							validity_period:'2030.1.1' , //有效期
-							diyaren_mobile:'13702137765',
-							diyawu:[],
-							customer_id:'',
-							unified_social_credit_code:'',
-							company_name:'',
-							enterprise_address:'',
-							legal_representative:'',
-							mobile:'',
-						},
-						{
-							relationship:'企业法人', //0=自然人， 1=  企业法人
-							name:'艾仲华',
-							sex:'',
-							ethnic:'',
-							birth:'',
-							address:'',
-							idcard:'',
-							validity_period:'' , //有效期
-							diyaren_mobile:'',
-							diyawu:[],
-							customer_id:'252841000000526649',
-							unified_social_credit_code:'91120116MA07K2307A',
-							company_name:'广州市睿智防水电器股份有限公司',
-							enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
-							legal_representative:'艾仲华',
-							mobile:'13702137765',
-							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-
-						}
-					],
-					unid:'10003',
-					collect_time:'',
-					step:2,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
-					isPass:true,
-					loan:{},
-					status:0
-				},
-				{
-					company_info:{
-						customer_id:'252841000000526649',
-						unified_social_credit_code:'91120116MA07K2307A',
-						company_name:'广州市睿智防水电器股份有限公司',
-						enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
-						legal_representative:'艾仲华',
-						mobile:'13702137765',
-						legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-					},
-					company_main_info:{
-						name:'艾仲华',
-						sex:'女',
-						ethnic:'汉族',
-						birth:'1976.8.1',
-						address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
-						idcard:'120106197608016578',
-						validity_period:'2030.1.1' ,//有效期
-						record_of_formal_schooling : '研究生', //学历
-						mobile:'13702137765',
-						work:'广州市睿智防水电器股份有限公司',
-						marriage_status:'已婚',
-						households:'3',
-					},
-					associates:[   //关联人
-						{
-							relationship:'其他', //0=自然人， 1=  企业法人
-							name:'李天明',
-							sex:'男',
-							ethnic:'汉族',
-							birth:'1970.10.20',
-							address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-							idcard:'120106197010204098',
 							validity_period:'2030.1.1' ,//有效期
 							record_of_formal_schooling : '研究生', //学历
-							mobile:'13439078656',
-							work:'无',
+							mobile:'13702137765',
+							work:'广州市睿智防水电器股份有限公司',
 							marriage_status:'已婚',
 							households:'3',
-						}
-					],
-					mortgaged:[
-						{
-							relationship:'其他', //0=自然人， 1=  企业法人
-							holder:'艾仲华',
-							situations:'自由',
-							address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-							number:'0130031024',
-							type:'自有',
-							nature:'自有',
-							use:'住宅',
-							area:'120.4',
-							Other:'无',
-							house_nubmer:'0188192319',
-						}
-					],
-					mortgagor:[
-						{
-							relationship:'自然人', //0=自然人， 1=  企业法人
-							name:'艾仲华',
-							sex:'女',
-							ethnic:'汉族',
-							birth:'1976.8.1',
-							address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
-							idcard:'120106197608016578',
-							validity_period:'2030.1.1' , //有效期
-							diyaren_mobile:'13702137765',
-							diyawu:[],
-							customer_id:'',
-							unified_social_credit_code:'',
-							company_name:'',
-							enterprise_address:'',
-							legal_representative:'',
-							mobile:'',
 						},
-						{
-							relationship:'企业法人', //0=自然人， 1=  企业法人
-							name:'艾仲华',
-							sex:'',
-							ethnic:'',
-							birth:'',
-							address:'',
-							idcard:'',
-							validity_period:'' , //有效期
-							diyaren_mobile:'',
-							diyawu:[],
-							customer_id:'252841000000526649',
-							unified_social_credit_code:'91120116MA07K2307A',
-							company_name:'广州市睿智防水电器股份有限公司',
-							enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
-							legal_representative:'艾仲华',
-							mobile:'13702137765',
-							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+						associates:[   //关联人
+							{
+								relationship:'其他', //0=自然人， 1=  企业法人
+								name:'李天明',
+								sex:'男',
+								ethnic:'汉族',
+								birth:'1970.10.20',
+								address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+								idcard:'120106197010204098',
+								validity_period:'2030.1.1' ,//有效期
+								record_of_formal_schooling : '研究生', //学历
+								mobile:'13439078656',
+								work:'无',
+								marriage_status:'已婚',
+								households:'3',
+							}
+						],
+						mortgaged:[
+							{
+								relationship:'其他', //0=自然人， 1=  企业法人
+								holder:'李锡旺',
+								situations:'自由',
+								address:'广东省广州市海珠区华府南路御华府24幢1号201室',
+								number:'0130031024',
+								type:'自有',
+								nature:'自有',
+								use:'住宅',
+								area:'120.4',
+								Other:'无',
+								house_nubmer:'00118810044',
 
-						}
-					],
-					unid:'10004',
-					collect_time:'',
-					step:3,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
-					isPass:true,
-					loan:{},
-					status:0
-				},{
-					company_info:{
-						customer_id:'252841000000526649',
-						unified_social_credit_code:'91120116MA07K2307A',
-						company_name:'广州市睿智防水电器股份有限公司',
-						enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
-						legal_representative:'艾仲华',
-						mobile:'13702137765',
-						legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-					},
-					company_main_info:{
-						name:'艾仲华',
-						sex:'女',
-						ethnic:'汉族',
-						birth:'1976.8.1',
-						address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
-						idcard:'120106197608016578',
-						validity_period:'2030.1.1' ,//有效期
-						record_of_formal_schooling : '研究生', //学历
-						mobile:'13702137765',
-						work:'广州市睿智防水电器股份有限公司',
-						marriage_status:'已婚',
-						households:'3',
-					},
-					associates:[   //关联人
-						{
-							relationship:'其他', //0=自然人， 1=  企业法人
-							name:'李天明',
-							sex:'男',
-							ethnic:'汉族',
-							birth:'1970.10.20',
-							address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-							idcard:'120106197010204098',
-							validity_period:'2030.1.1' ,//有效期
-							record_of_formal_schooling : '研究生', //学历
-							mobile:'13439078656',
-							work:'无',
-							marriage_status:'已婚',
-							households:'3',
-						}
-					],
-					mortgaged:[
-						{
-							relationship:'其他', //0=自然人， 1=  企业法人
-							holder:'艾仲华',
-							situations:'自由',
-							address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
-							number:'0130031024',
-							type:'自有',
-							nature:'自有',
-							use:'住宅',
-							area:'120.4',
-							Other:'无',
-							house_nubmer:'0188192319',
-						}
-					],
-					mortgagor:[
-						{
-							relationship:'自然人', //0=自然人， 1=  企业法人
-							name:'艾仲华',
-							sex:'女',
-							ethnic:'汉族',
-							birth:'1976.8.1',
-							address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
-							idcard:'120106197608016578',
-							validity_period:'2030.1.1' , //有效期
-							diyaren_mobile:'13702137765',
-							diyawu:[],
-							customer_id:'',
-							unified_social_credit_code:'',
-							company_name:'',
-							enterprise_address:'',
-							legal_representative:'',
-							mobile:'',
-						},
-						{
-							relationship:'企业法人', //0=自然人， 1=  企业法人
-							name:'艾仲华',
-							sex:'',
-							ethnic:'',
-							birth:'',
-							address:'',
-							idcard:'',
-							validity_period:'' , //有效期
-							diyaren_mobile:'',
-							diyawu:[],
-							customer_id:'252841000000526649',
-							unified_social_credit_code:'91120116MA07K2307A',
-							company_name:'广州市睿智防水电器股份有限公司',
-							enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
-							legal_representative:'艾仲华',
-							mobile:'13702137765',
-							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+							}
+						],
+						mortgagor:[
+							{
+								relationship:'自然人', //0=自然人， 1=  企业法人
+								name:'艾仲华',
+								sex:'女',
+								ethnic:'汉族',
+								birth:'1976.8.1',
+								address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+								idcard:'120106197608016578',
+								validity_period:'2030.1.1' , //有效期
+								diyaren_mobile:'13702137765',
+								diyawu:[],
+								customer_id:'',
+								unified_social_credit_code:'',
+								company_name:'',
+								enterprise_address:'',
+								legal_representative:'',
+								mobile:'',
+							},
+							{
+								relationship:'企业法人', //0=自然人， 1=  企业法人
+								name:'艾仲华',
+								sex:'',
+								ethnic:'',
+								birth:'',
+								address:'',
+								idcard:'',
+								validity_period:'' , //有效期
+								diyaren_mobile:'',
+								diyawu:[],
+								customer_id:'252841000000526649',
+								unified_social_credit_code:'91120116MA07K2307A',
+								company_name:'广州市睿智防水电器股份有限公司',
+								enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+								legal_representative:'艾仲华',
+								mobile:'13702137765',
+								legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
 
-						}
-					],
-					unid:'10005',
-					collect_time:'',
-					step:4,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
-					isPass:true,
-					loan:{},
-					status:0
-				}
+							}
+						],
+						unid:'10002',
+						collect_time:'',
+						step:1,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+						isPass:true,
+						loan:{},
+						status:80,//80：已评估状态
+					},
+				// 	{
+				// 		company_info:{
+				// 			customer_id:'252841000000526649',
+				// 			unified_social_credit_code:'91120116MA07K2307A',
+				// 			company_name:'广州市睿智防水电器股份有限公司',
+				// 			enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 			legal_representative:'艾仲华',
+				// 			mobile:'13702137765',
+				// 			legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 		},
+				// 		company_main_info:{
+				// 			name:'艾仲华',
+				// 			sex:'女',
+				// 			ethnic:'汉族',
+				// 			birth:'1976.8.1',
+				// 			address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+				// 			idcard:'120106197608016578',
+				// 			validity_period:'2030.1.1' ,//有效期
+				// 			record_of_formal_schooling : '研究生', //学历
+				// 			mobile:'13702137765',
+				// 			work:'广州市睿智防水电器股份有限公司',
+				// 			marriage_status:'已婚',
+				// 			households:'3',
+				// 		},
+				// 		associates:[   //关联人
+				// 			{
+				// 				relationship:'其他', //0=自然人， 1=  企业法人
+				// 				name:'李天明',
+				// 				sex:'男',
+				// 				ethnic:'汉族',
+				// 				birth:'1970.10.20',
+				// 				address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+				// 				idcard:'120106197010204098',
+				// 				validity_period:'2030.1.1' ,//有效期
+				// 				record_of_formal_schooling : '研究生', //学历
+				// 				mobile:'13439078656',
+				// 				work:'无',
+				// 				marriage_status:'已婚',
+				// 				households:'3',
+				// 			}
+				// 		],
+				// 		mortgaged:[
+				// 			{
+				// 				relationship:'其他', //0=自然人， 1=  企业法人
+				// 				holder:'艾仲华',
+				// 				situations:'自由',
+				// 				address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+				// 				number:'0130031024',
+				// 				type:'自有',
+				// 				nature:'自有',
+				// 				use:'住宅',
+				// 				area:'120.4',
+				// 				Other:'无',
+				// 				house_nubmer:'0188192319',
+				// 			}
+				// 		],
+				// 		mortgagor:[
+				// 			{
+				// 				relationship:'自然人', //0=自然人， 1=  企业法人
+				// 				name:'艾仲华',
+				// 				sex:'女',
+				// 				ethnic:'汉族',
+				// 				birth:'1976.8.1',
+				// 				address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+				// 				idcard:'120106197608016578',
+				// 				validity_period:'2030.1.1' , //有效期
+				// 				diyaren_mobile:'13702137765',
+				// 				diyawu:[],
+				// 				customer_id:'',
+				// 				unified_social_credit_code:'',
+				// 				company_name:'',
+				// 				enterprise_address:'',
+				// 				legal_representative:'',
+				// 				mobile:'',
+				// 			},
+				// 			{
+				// 				relationship:'企业法人', //0=自然人， 1=  企业法人
+				// 				name:'艾仲华',
+				// 				sex:'',
+				// 				ethnic:'',
+				// 				birth:'',
+				// 				address:'',
+				// 				idcard:'',
+				// 				validity_period:'' , //有效期
+				// 				diyaren_mobile:'',
+				// 				diyawu:[],
+				// 				customer_id:'252841000000526649',
+				// 				unified_social_credit_code:'91120116MA07K2307A',
+				// 				company_name:'广州市睿智防水电器股份有限公司',
+				// 				enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 				legal_representative:'艾仲华',
+				// 				mobile:'13702137765',
+				// 				legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+				//
+				// 			}
+				// 		],
+				// 		unid:'10003',
+				// 		collect_time:'',
+				// 		step:2,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+				// 		isPass:true,
+				// 		loan:{},
+				// 		status:0
+				// 	},
+				// 	{
+				// 	company_info:{
+				// 		customer_id:'252841000000526649',
+				// 		unified_social_credit_code:'91120116MA07K2307A',
+				// 		company_name:'广州市睿智防水电器股份有限公司',
+				// 		enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 		legal_representative:'艾仲华',
+				// 		mobile:'13702137765',
+				// 		legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 	},
+				// 	company_main_info:{
+				// 		name:'艾仲华',
+				// 		sex:'女',
+				// 		ethnic:'汉族',
+				// 		birth:'1976.8.1',
+				// 		address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+				// 		idcard:'120106197608016578',
+				// 		validity_period:'2030.1.1' ,//有效期
+				// 		record_of_formal_schooling : '研究生', //学历
+				// 		mobile:'13702137765',
+				// 		work:'广州市睿智防水电器股份有限公司',
+				// 		marriage_status:'已婚',
+				// 		households:'3',
+				// 	},
+				// 	associates:[   //关联人
+				// 		{
+				// 			relationship:'其他', //0=自然人， 1=  企业法人
+				// 			name:'李天明',
+				// 			sex:'男',
+				// 			ethnic:'汉族',
+				// 			birth:'1970.10.20',
+				// 			address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+				// 			idcard:'120106197010204098',
+				// 			validity_period:'2030.1.1' ,//有效期
+				// 			record_of_formal_schooling : '研究生', //学历
+				// 			mobile:'13439078656',
+				// 			work:'无',
+				// 			marriage_status:'已婚',
+				// 			households:'3',
+				// 		}
+				// 	],
+				// 	mortgaged:[
+				// 		{
+				// 			relationship:'其他', //0=自然人， 1=  企业法人
+				// 			holder:'艾仲华',
+				// 			situations:'自由',
+				// 			address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+				// 			number:'0130031024',
+				// 			type:'自有',
+				// 			nature:'自有',
+				// 			use:'住宅',
+				// 			area:'120.4',
+				// 			Other:'无',
+				// 			house_nubmer:'0188192319',
+				// 		}
+				// 	],
+				// 	mortgagor:[
+				// 		{
+				// 			relationship:'自然人', //0=自然人， 1=  企业法人
+				// 			name:'艾仲华',
+				// 			sex:'女',
+				// 			ethnic:'汉族',
+				// 			birth:'1976.8.1',
+				// 			address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+				// 			idcard:'120106197608016578',
+				// 			validity_period:'2030.1.1' , //有效期
+				// 			diyaren_mobile:'13702137765',
+				// 			diyawu:[],
+				// 			customer_id:'',
+				// 			unified_social_credit_code:'',
+				// 			company_name:'',
+				// 			enterprise_address:'',
+				// 			legal_representative:'',
+				// 			mobile:'',
+				// 		},
+				// 		{
+				// 			relationship:'企业法人', //0=自然人， 1=  企业法人
+				// 			name:'艾仲华',
+				// 			sex:'',
+				// 			ethnic:'',
+				// 			birth:'',
+				// 			address:'',
+				// 			idcard:'',
+				// 			validity_period:'' , //有效期
+				// 			diyaren_mobile:'',
+				// 			diyawu:[],
+				// 			customer_id:'252841000000526649',
+				// 			unified_social_credit_code:'91120116MA07K2307A',
+				// 			company_name:'广州市睿智防水电器股份有限公司',
+				// 			enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 			legal_representative:'艾仲华',
+				// 			mobile:'13702137765',
+				// 			legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+				//
+				// 		}
+				// 	],
+				// 	unid:'10004',
+				// 	collect_time:'',
+				// 	step:3,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+				// 	isPass:true,
+				// 	loan:{},
+				// 	status:0
+				// },
+				// 	{
+				// 	company_info:{
+				// 		customer_id:'252841000000526649',
+				// 		unified_social_credit_code:'91120116MA07K2307A',
+				// 		company_name:'广州市睿智防水电器股份有限公司',
+				// 		enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 		legal_representative:'艾仲华',
+				// 		mobile:'13702137765',
+				// 		legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 	},
+				// 	company_main_info:{
+				// 		name:'艾仲华',
+				// 		sex:'女',
+				// 		ethnic:'汉族',
+				// 		birth:'1976.8.1',
+				// 		address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+				// 		idcard:'120106197608016578',
+				// 		validity_period:'2030.1.1' ,//有效期
+				// 		record_of_formal_schooling : '研究生', //学历
+				// 		mobile:'13702137765',
+				// 		work:'广州市睿智防水电器股份有限公司',
+				// 		marriage_status:'已婚',
+				// 		households:'3',
+				// 	},
+				// 	associates:[   //关联人
+				// 		{
+				// 			relationship:'其他', //0=自然人， 1=  企业法人
+				// 			name:'李天明',
+				// 			sex:'男',
+				// 			ethnic:'汉族',
+				// 			birth:'1970.10.20',
+				// 			address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+				// 			idcard:'120106197010204098',
+				// 			validity_period:'2030.1.1' ,//有效期
+				// 			record_of_formal_schooling : '研究生', //学历
+				// 			mobile:'13439078656',
+				// 			work:'无',
+				// 			marriage_status:'已婚',
+				// 			households:'3',
+				// 		}
+				// 	],
+				// 	mortgaged:[
+				// 		{
+				// 			relationship:'其他', //0=自然人， 1=  企业法人
+				// 			holder:'艾仲华',
+				// 			situations:'自由',
+				// 			address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
+				// 			number:'0130031024',
+				// 			type:'自有',
+				// 			nature:'自有',
+				// 			use:'住宅',
+				// 			area:'120.4',
+				// 			Other:'无',
+				// 			house_nubmer:'0188192319',
+				// 		}
+				// 	],
+				// 	mortgagor:[
+				// 		{
+				// 			relationship:'自然人', //0=自然人， 1=  企业法人
+				// 			name:'艾仲华',
+				// 			sex:'女',
+				// 			ethnic:'汉族',
+				// 			birth:'1976.8.1',
+				// 			address:'广州市天河朱景新城中花城大道中海花城湾4号楼3们201',
+				// 			idcard:'120106197608016578',
+				// 			validity_period:'2030.1.1' , //有效期
+				// 			diyaren_mobile:'13702137765',
+				// 			diyawu:[],
+				// 			customer_id:'',
+				// 			unified_social_credit_code:'',
+				// 			company_name:'',
+				// 			enterprise_address:'',
+				// 			legal_representative:'',
+				// 			mobile:'',
+				// 		},
+				// 		{
+				// 			relationship:'企业法人', //0=自然人， 1=  企业法人
+				// 			name:'艾仲华',
+				// 			sex:'',
+				// 			ethnic:'',
+				// 			birth:'',
+				// 			address:'',
+				// 			idcard:'',
+				// 			validity_period:'' , //有效期
+				// 			diyaren_mobile:'',
+				// 			diyawu:[],
+				// 			customer_id:'252841000000526649',
+				// 			unified_social_credit_code:'91120116MA07K2307A',
+				// 			company_name:'广州市睿智防水电器股份有限公司',
+				// 			enterprise_address:'广州市高新技术产业开发区迎宾大道188号',
+				// 			legal_representative:'艾仲华',
+				// 			mobile:'13702137765',
+				// 			legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
+				//
+				// 		}
+				// 	],
+				// 	unid:'10005',
+				// 	collect_time:'',
+				// 	step:4,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+				// 	isPass:true,
+				// 	loan:{},
+				// 	status:0
+				// }
 				];
 
 				sessionStorage.setItem('userinfo',JSON.stringify(infos));

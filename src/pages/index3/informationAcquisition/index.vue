@@ -108,7 +108,6 @@
 
 			if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 				this.infos = JSON.parse(jsonStr);
-                console.log('789',this.infos)
 			}
 
             var value = sessionStorage.getItem('informationAcquisition_tab' );

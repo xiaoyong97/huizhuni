@@ -14,7 +14,7 @@
 				 <van-col span="6">房产地址:</van-col>
 				 <van-col span="16">{{item.sf}}{{item.address}}</van-col>
 			 </van-cell>
-			
+
 			 <van-cell>
 				  <van-col span="2"></van-col>
 				 <van-col span="6">产权人:</van-col>
@@ -53,11 +53,11 @@
 
 							<van-cell>
 								<van-col span="2"><img class="logo" src="../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-								<van-col span="22"><h3>产权证号:{{item.cqzh}}</h3></van-col>
+								<van-col span="22"><h3>产权证号:00118810044</h3></van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">项目名称:</van-col>
-								 <van-col span="12">中海花城湾4号楼3门201</van-col>
+								 <van-col span="12">御华府24幢1号201室</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">城市:</van-col>
@@ -65,19 +65,19 @@
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">行政区域:</van-col>
-								 <van-col span="12">天河区</van-col>
+								 <van-col span="12">海珠区</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">楼盘:</van-col>
-								 <van-col span="12">中海花城湾</van-col>
+								 <van-col span="12">御华府</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">楼栋号:</van-col>
-								 <van-col span="12">4号楼</van-col>
+								 <van-col span="12">24号楼</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">单元号:</van-col>
-								 <van-col span="12">3单元</van-col>
+								 <van-col span="12">1单元</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">户号:</van-col>
@@ -86,7 +86,7 @@
 							<van-cell>
 								 <van-col span="12" class="subtext">证载地址:</van-col>
 <!--								<van-col span="12">{{item.sf}}</van-col>-->
-								<van-col span="12">广东省广州市天河区花城大道中海花城湾4号楼3门201</van-col>
+								<van-col span="12">广东省广州市海珠区华府南路御华府24幢1号201室</van-col>
 							</van-cell>
 							<van-cell>
 								 <van-col span="12" class="subtext">房屋证载用途:</van-col>
@@ -140,7 +140,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<van-cell-group class="bg-grey" v-show="task.status == 3">
 				<div class="line"></div>
 				<van-cell>
@@ -188,16 +188,16 @@
 
 	//网页加载完成
 	 created(){
-		
+
 		this.task = this.$route.query.task;
 		console.log(this.task.info)
 		if(this.task.info != undefined){
 			this.info = this.task.info[0];
 		} else{
-			
+
 			this.info = this.task;
 			console.log(this.task)
-		} 
+		}
 	},
 
 	//声明方法
@@ -221,7 +221,7 @@
 		type: function () {
 			return localStorage.getItem('type')
 		},
-		
+
 	},
 
 	//引入组件

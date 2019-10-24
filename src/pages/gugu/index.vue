@@ -63,7 +63,7 @@
 					 		<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].holder}}&nbsp;</van-col>
 					 		<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[0].mortgagor[0].name}}&nbsp;</van-col>
 					 		<van-col span="24" class="detail" @click="checkTask(infos[0],1)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
-					 	
+
 					 					 </div>
 					 </div>
 				 </van-cell>
@@ -71,17 +71,17 @@
 					 <div class="pan-content">
 						<div class=" dk-pan">
 							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" >
-							<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{infos[0].mortgaged[0].house_nubmer}}</div></van-col>
-							<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].address}}</van-col>
-							<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].holder}}&nbsp;</van-col>
-							<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[0].mortgagor[0].name}}&nbsp;</van-col>
-							<van-col span="24" class="detail" @click="checkTask(infos[0],2)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+							<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{infos[1].mortgaged[0].house_nubmer}}</div></van-col>
+							<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{infos[1].mortgaged[0].address}}</van-col>
+							<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[1].mortgaged[0].holder}}&nbsp;</van-col>
+							<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[1].mortgagor[0].name}}&nbsp;</van-col>
+							<van-col span="24" class="detail" @click="checkTask(infos[1],2)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
 						 </div>
 					 </div>
 				 </van-cell>
-			
-			
-			
+
+
+
 
 			  <!-- 	<van-cell v-for="(item, index) in task">
 			  		<div class="pan-content">
@@ -98,7 +98,7 @@
 			 		</div>
 			  	</van-cell> -->
 
-			 </van-submit-bar>
+<!--			 </van-submit-bar>-->
 
 			  </van-cell-group>
 		 </van-tab>
@@ -135,11 +135,12 @@
 	  var jsonStr = sessionStorage.getItem('userinfo');
 	  if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 	  	this.infos = JSON.parse(jsonStr);
-		console.log(this.infos)
 	  }
 	  var taskJsonStr = sessionStorage.getItem('task');
+	  console.log('task'+taskJsonStr);
 	  if(taskJsonStr != '' && taskJsonStr != undefined && taskJsonStr != null){
 	  	this.tasks = JSON.parse(taskJsonStr);
+		  console.log('this.tasks'+this.tasks);
 	  }
 		//tab状态绑定
 	  var value = sessionStorage.getItem('gugu_tab' );
@@ -199,13 +200,13 @@
 	},
 	checkTask:function(task,status){
 		if(task.info == undefined){
-			
+
 			task = {
 				status:status,
 				info:[task],
 			}
 		}
-	
+
 		this.$router.push({name: 'checkTask',query:{task:task}});
 	}
   },
