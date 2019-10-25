@@ -1134,6 +1134,8 @@
 		if(this.info.unid){
 			for(var i=0;i<infos.length;i++){
 				if(infos[i].unid == this.info.unid){
+					this.info.collect_time = (new Date()).toLocaleDateString()
+					console.log(this.info.collect_time)
 					infos[i] = this.info;
 				}
 			}

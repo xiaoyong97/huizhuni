@@ -193,6 +193,7 @@
 								work:'无',
 								marriage_status:'已婚',
 								households:'3',
+								open_status:true,
 							}
 						],
 						mortgaged:[
@@ -208,6 +209,7 @@
 								area:'120.4',
 								Other:'无',
 								house_nubmer:'0188192319',
+								open_status:true
 							}
 						],
 						mortgagor:[
@@ -228,6 +230,8 @@
 								enterprise_address:'',
 								legal_representative:'',
 								mobile:'',
+								open_status:true,
+								radio:false,
 							},
 							{
 								relationship:'企业法人', //0=自然人， 1=  企业法人
@@ -247,11 +251,12 @@
 								legal_representative:'艾仲华',
 								mobile:'13702137765',
 								legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-
+								open_status:true,
+								radio:false,
 							}
 						],
 						unid:'10001',
-						collect_time:'',
+						collect_time:'2019/10/08',
 						step:0,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
 						isPass:true,
 						loan:{},
@@ -296,6 +301,7 @@
 								work:'无',
 								marriage_status:'已婚',
 								households:'3',
+								open_status:true,
 							}
 						],
 						mortgaged:[
@@ -311,6 +317,7 @@
 								area:'120.4',
 								Other:'无',
 								house_nubmer:'00118810044',
+								open_status:true
 
 							}
 						],
@@ -332,7 +339,8 @@
 								enterprise_address:'',
 								legal_representative:'',
 								mobile:'',
-							},
+								open_status:true,
+								radio:false,	},
 							{
 								relationship:'企业法人', //0=自然人， 1=  企业法人
 								name:'艾仲华',
@@ -351,15 +359,17 @@
 								legal_representative:'艾仲华',
 								mobile:'13702137765',
 								legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-
+								open_status:true,
+								radio:false,
 							}
 						],
 						unid:'10002',
-						collect_time:'',
+						collect_time:'2019/10/08',
 						step:1,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
 						isPass:true,
 						loan:{},
-						status:0,//80：已评估状态
+						status:1,//
+						diyawuList:1,
 					},
 					{
 						company_info:{
@@ -400,6 +410,7 @@
 								work:'无',
 								marriage_status:'已婚',
 								households:'3',
+								open_status:true,
 							}
 						],
 						mortgaged:[
@@ -415,6 +426,7 @@
 								area:'120.4',
 								Other:'无',
 								house_nubmer:'0188192319',
+								open_status:true
 							}
 						],
 						mortgagor:[
@@ -435,6 +447,8 @@
 								enterprise_address:'',
 								legal_representative:'',
 								mobile:'',
+								open_status:true,
+								radio:false,
 							},
 							{
 								relationship:'企业法人', //0=自然人， 1=  企业法人
@@ -454,11 +468,12 @@
 								legal_representative:'艾仲华',
 								mobile:'13702137765',
 								legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-
+								open_status:true,
+								radio:false,
 							}
 						],
 						unid:'10003',
-						collect_time:'',
+						collect_time:'2019/10/08',
 						step:2,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
 						isPass:true,
 						loan:{},
@@ -503,6 +518,7 @@
 							work:'无',
 							marriage_status:'已婚',
 							households:'3',
+							open_status:true,
 						}
 					],
 					mortgaged:[
@@ -518,6 +534,7 @@
 							area:'120.4',
 							Other:'无',
 							house_nubmer:'0188192319',
+							open_status:true
 						}
 					],
 					mortgagor:[
@@ -538,6 +555,8 @@
 							enterprise_address:'',
 							legal_representative:'',
 							mobile:'',
+							open_status:true,
+							radio:false,
 						},
 						{
 							relationship:'企业法人', //0=自然人， 1=  企业法人
@@ -557,11 +576,12 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-
+							open_status:true,
+							radio:false,
 						}
 					],
 					unid:'10004',
-					collect_time:'',
+					collect_time:'2019/10/08',
 					step:3,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
 					isPass:true,
 					loan:{},
@@ -606,6 +626,7 @@
 							work:'无',
 							marriage_status:'已婚',
 							households:'3',
+							open_status:true,
 						}
 					],
 					mortgaged:[
@@ -621,6 +642,7 @@
 							area:'120.4',
 							Other:'无',
 							house_nubmer:'0188192319',
+							open_status:true
 						}
 					],
 					mortgagor:[
@@ -641,6 +663,8 @@
 							enterprise_address:'',
 							legal_representative:'',
 							mobile:'',
+							open_status:true,
+							radio:false,
 						},
 						{
 							relationship:'企业法人', //0=自然人， 1=  企业法人
@@ -660,11 +684,12 @@
 							legal_representative:'艾仲华',
 							mobile:'13702137765',
 							legal_representative_address:'广州市高新技术产业开发区迎宾大道188号',
-
+							open_status:true,
+							radio:false,
 						}
 					],
 					unid:'10005',
-					collect_time:'',
+					collect_time:'2019/10/08',
 					step:4,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
 					isPass:true,
 					loan:{},
