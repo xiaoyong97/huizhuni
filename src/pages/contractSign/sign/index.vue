@@ -132,39 +132,52 @@ export default {
         start() {
             this.content1Show = false;
             this.content2Show = true;
+            this.isDistinguish = true;
             setTimeout(() => {
                 this.isDistinguish = false;
-                this.$dialog.confirm({
-                    message: '人脸识别不成功，是否重试？',
-                    confirmButtonText: '跳过',
-                    cancelButtonText: '确定',
+                this.$dialog.alert({
+                    message: '人脸识别成功',
+                    confirmButtonText: '确定',
                     confirmButtonColor: '#4c62e7',
-                    cancelButtonColor: '#999999',
                     className: 'dialog',
                 }).then(() => {
-                    // this.content2Show = false;
-                    // this.content3Show = true;
-                    this.active++;
-                    this.isDistinguish = true;
-                    this.content1Show = true;
                     this.content2Show = false;
-                    this.content3Show = false;
-                }).catch(() => {
-                    this.isDistinguish = true;
-                    setTimeout(() => {
-                        this.isDistinguish = false;
-                        this.$dialog.alert({
-                            message: '人脸识别成功',
-                            confirmButtonText: '确定',
-                            confirmButtonColor: '#4c62e7',
-                            className: 'dialog',
-                        }).then(() => {
-                            this.content2Show = false;
-                            this.content3Show = true;
-                        })
-                    }, 2000)
-                });
+                    this.content3Show = true;
+                })
             }, 2000)
+            // setTimeout(() => {
+            //     this.isDistinguish = false;
+            //     this.$dialog.confirm({
+            //         message: '人脸识别不成功，是否重试？',
+            //         confirmButtonText: '跳过',
+            //         cancelButtonText: '确定',
+            //         confirmButtonColor: '#4c62e7',
+            //         cancelButtonColor: '#999999',
+            //         className: 'dialog',
+            //     }).then(() => {
+            //         // this.content2Show = false;
+            //         // this.content3Show = true;
+            //         this.active++;
+            //         this.isDistinguish = true;
+            //         this.content1Show = true;
+            //         this.content2Show = false;
+            //         this.content3Show = false;
+            //     }).catch(() => {
+            //         this.isDistinguish = true;
+            //         setTimeout(() => {
+            //             this.isDistinguish = false;
+            //             this.$dialog.alert({
+            //                 message: '人脸识别成功',
+            //                 confirmButtonText: '确定',
+            //                 confirmButtonColor: '#4c62e7',
+            //                 className: 'dialog',
+            //             }).then(() => {
+            //                 this.content2Show = false;
+            //                 this.content3Show = true;
+            //             })
+            //         }, 2000)
+            //     });
+            // }, 2000)
         },
         next() {
 			

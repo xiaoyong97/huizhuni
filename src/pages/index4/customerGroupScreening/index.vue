@@ -5,6 +5,7 @@
       fixed
     />-->
     <div class="menu-sc">
+      <div class="img_return"  @click="onClickLeft"></div>
       <van-search style="height:25px;" placeholder="请输入客户名称" class="vv-search" />
       <van-button class="vbtn-small" size="small" type="default">搜索</van-button>
       <img class="dy-icon" src="../../../assets/images/huidiantong/1_0001s_0003.png" alt />
@@ -84,7 +85,7 @@
         <div class="popup-box" v-show="item.show" :style="item.style">
           <div v-if="item.type == 2" key="company">
             <div @click="goTo('customerInfo')">
-              <div>厦门象屿股份有限公司</div>
+              <div>广州市睿智防水电器股份有限公司</div>
               <div>客户需求：强</div>
               <div>客户分层：优质</div>
             </div>
@@ -453,6 +454,9 @@ export default {
 
   //声明方法
   methods: {
+    onClickLeft() {
+      this.$router.push({name: 'index'})
+    },
     selectClick() {
       this.listShow = true;
     },
@@ -855,6 +859,17 @@ export default {
   background-color: #379bf6;
   z-index: 1;
 }
+.img_return{
+    position: absolute;
+    top: 17px;
+    left: 12px;
+    height: 12px;
+    width: 12px;
+    z-index: 100;
+    border-top: 1px solid #ffffff;
+    border-left:  1px solid #ffffff;
+    transform: rotate(-45deg);
+}
 .region-module{
   position: fixed;
   top: 58px;
@@ -903,11 +918,11 @@ export default {
 }
 .vv-search {
   width: auto;
-  min-width: 60%;
+  // min-width: 60%;
   float: left;
   line-height: 28px;
   height: 28px;
-  margin: 11px 0px 0px 12px;
+  margin: 11px 0px 0px 30px;
   padding: 0px;
   border-radius: 15px;
 }
