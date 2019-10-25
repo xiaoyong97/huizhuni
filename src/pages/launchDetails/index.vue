@@ -93,7 +93,7 @@
             <p class="list_test">借款金额大写</p>
           </van-col>
           <van-col class="list_right" style="text-align: left">
-            <p class="list_test" style="color: rgb(51,51,51)">八百伍拾万元整</p>
+            <p class="list_test" style="color: rgb(51,51,51)">八百伍拾萬元整</p>
           </van-col>
         </van-row>
         <van-row class="list_row">

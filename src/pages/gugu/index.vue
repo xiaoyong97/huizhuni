@@ -3,17 +3,20 @@
 
      <!--头部导航-->
 
-	 <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="new_task">
-
-	 <van-icon name="add"  slot="right" class="add"/>
+<!--	 <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="new_task">-->
+		 <van-nav-bar :title="title"  >
+<!--	 <van-icon name="add"  slot="right" class="add"/>-->
 	 </van-nav-bar>
-	<van-icon name="search" class="search" @click="gotoSearch()"  />
+<!--	<van-icon name="search" class="search" @click="gotoSearch()"  />-->
+		<img src="../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
+		<img src="../../assets/images/48/create@2x.png" class="img_fliter" @click="new_task" >
+		<img src="../../assets/images/38/searchfor@2x.png" class="img_search" @click="gotoSearch">
     <div class="content">
        <van-tabs color="#4c62e7" line-width="50%" v-model="activeName" @click="onTabClick">
          <van-tab title="任务发布" name="任务发布" color="#4c62e7">
 			 <van-cell-group class="bg-grey">
 				 <van-checkbox-group v-model="result">
-					<van-cell v-for="(item, index) in infos" v-show="item.status==0">
+					<van-cell v-for="(item, index) in infos" v-show="item.status==0&&index==0">
 						<div class="checkbox">
 							<van-checkbox  checked-color="#4c62e7"  :key="item.unid" :name="item.unid" ></van-checkbox>
 						</div>
@@ -63,7 +66,7 @@
 					 		<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].holder}}&nbsp;</van-col>
 					 		<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[0].mortgagor[0].name}}&nbsp;</van-col>
 					 		<van-col span="24" class="detail" @click="checkTask(infos[0],1)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
-					 	
+
 					 					 </div>
 					 </div>
 				 </van-cell>
@@ -71,17 +74,17 @@
 					 <div class="pan-content">
 						<div class=" dk-pan">
 							<img class="pan-tag-img" src="../../assets/images/other/Label6@x.png" alt="" >
-							<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{infos[0].mortgaged[0].house_nubmer}}</div></van-col>
-							<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].address}}</van-col>
-							<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[0].mortgaged[0].holder}}&nbsp;</van-col>
-							<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[0].mortgagor[0].name}}&nbsp;</van-col>
-							<van-col span="24" class="detail" @click="checkTask(infos[0],2)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
+							<van-col span="24"><div class="title"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 产权证号{{infos[1].mortgaged[0].house_nubmer}}</div></van-col>
+							<van-col class="grey" span="8">房产地址</van-col><van-col class="grey" span="16">{{infos[1].mortgaged[0].address}}</van-col>
+							<van-col class="grey" span="8">产权人</van-col><van-col class="grey" span="16">{{infos[1].mortgaged[0].holder}}&nbsp;</van-col>
+							<van-col class="grey" span="8">借款人</van-col><van-col class="grey" span="16">{{infos[1].mortgagor[0].name}}&nbsp;</van-col>
+							<van-col span="24" class="detail" @click="checkTask(infos[1],2)"><img class="detail-img" src="../../assets/images/38/Companyname@2x.png" alt=""> 查看详情</van-col>
 						 </div>
 					 </div>
 				 </van-cell>
-			
-			
-			
+
+
+
 
 			  <!-- 	<van-cell v-for="(item, index) in task">
 			  		<div class="pan-content">
@@ -98,7 +101,7 @@
 			 		</div>
 			  	</van-cell> -->
 
-			 </van-submit-bar>
+<!--			 </van-submit-bar>-->
 
 			  </van-cell-group>
 		 </van-tab>
@@ -135,11 +138,12 @@
 	  var jsonStr = sessionStorage.getItem('userinfo');
 	  if(jsonStr != '' && jsonStr != undefined && jsonStr != null){
 	  	this.infos = JSON.parse(jsonStr);
-		console.log(this.infos)
 	  }
 	  var taskJsonStr = sessionStorage.getItem('task');
+	  console.log('task'+taskJsonStr);
 	  if(taskJsonStr != '' && taskJsonStr != undefined && taskJsonStr != null){
 	  	this.tasks = JSON.parse(taskJsonStr);
+		  console.log('this.tasks'+this.tasks);
 	  }
 		//tab状态绑定
 	  var value = sessionStorage.getItem('gugu_tab' );
@@ -199,13 +203,13 @@
 	},
 	checkTask:function(task,status){
 		if(task.info == undefined){
-			
+
 			task = {
 				status:status,
 				info:[task],
 			}
 		}
-	
+
 		this.$router.push({name: 'checkTask',query:{task:task}});
 	}
   },
@@ -457,4 +461,29 @@
 	.van-checkbox__icon .van-icon{
 		border: 1px solid red;
 	}
+	.img_fliter{
+		position: absolute;
+		top: 14px;
+		right:12px ;
+		height: 18px;
+		width: 18px;
+		z-index: 100;
+	}
+	.img_search{
+		position: absolute;
+		top: 14px;
+		right:40px ;
+		height: 18px;
+		width: 18px;
+		z-index: 100;
+
+	}
+.img_return{
+	position: absolute;
+	top: 14px;
+	left:12px ;
+	height: 18px;
+	width: 18px;
+	z-index: 100;
+}
 </style>

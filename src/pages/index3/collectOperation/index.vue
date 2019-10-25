@@ -9,7 +9,12 @@
 			<van-nav-bar left-arrow @click-left="colseOverlay"  >
 			</van-nav-bar>
 			<p class="craema_text">请拍摄</p>
-			<img src="../../../assets/images/other/02130521.png" class="img_shoot"  >
+<!--            <img src="../../../assets/images/other/02130521.png" class="img_shoot"  >-->
+            <img src="../../../assets/images/idcard/103507@123123.png" class="img_shoot"  v-show="imgshow_tmp==1">
+            <img src="../../../assets/images/idcard/012105736@33.png" class="img_shoot"  v-show="imgshow_tmp==2">
+            <img src="../../../assets/images/idcard/1057@58.png" class="img_shoot"  v-show="imgshow_tmp==3">
+            <img src="../../../assets/images/idcard/12@215545.png" class="img_shoot"  v-show="imgshow_tmp==4">
+            <img src="../../../assets/images/idcard/1012110@635.png" class="img_shoot"  v-show="imgshow_tmp==5">
 			<p style="line-height: 10px"></p>
 			<img src="../../../assets/images/other/Takeaphoto@2x.png" class="img_cmarea"  @click="add_img">
 
@@ -20,7 +25,7 @@
 		<div class="input-contianer" v-show="step==0">
 			<div>
 				<h4>企业营业执照</h4>
-				<div class="idCard" @click="openOverlay(0)" :class="imgshow==0?'idCard_bk':''">
+				<div class="idCard" @click="openOverlay(0)" :class="info.company_info.img1==2?'idCard_bk':''">
 					<div class="idCard_shadow_button" ></div>
 					<p>点击拍摄/上传企业营业执照</p>
 				</div>
@@ -38,11 +43,11 @@
 		<div class="input-contianer" v-show="step==1">
 			<div>
 				<h4>企业业主身份证</h4>
-				<div class="idCard_front" @click="openOverlay(11)" :class="imgshow==11||imgshow==12?'idCard_front_bk':''">
+				<div class="idCard_front" @click="openOverlay(0)" :class="info.company_main_info.img2_1==2?'idCard_front_bk':''">
 					<div class="idCard_shadow_button"></div>
 					<p>点击拍摄/上传人像面</p>
 				</div>
-				<div class="idCard_back" @click="openOverlay(12)" :class="imgshow==12?'idCard_back_bk':''">
+				<div class="idCard_back" @click="openOverlay(1)" :class="info.company_main_info.img2_2==2?'idCard_back_bk':''">
 					<div class="idCard_shadow_button"></div>
 					<p>点击拍摄/上传国徽面</p>
 				</div>
@@ -63,7 +68,6 @@
 				<van-field label="家庭人数"placeholder="请输入家庭人数" @click-right-icon="openPicker(6)" v-model="info.company_main_info.households" clearable right-icon="arrow-down" label-width="120" label-color="red"/>
 			</van-cell-group>
 		</div>
-
 		<div class="input-contianer" v-show="step==2">
 			<div v-for="(item,index) in info.associates">
 				<h4 class="cell-hearder">关联人{{index+1}}</h4>
@@ -71,15 +75,15 @@
 				<div>
 					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>
 
-					<div class="idCard_front" @click="openOverlay(21)" :class="imgshow==23||imgshow==21||imgshow==22?'idCard_front_bk':''">
+					<div class="idCard_front" @click="openOverlay(0,index)" :class="info.associates[index].img3_1==2?'idCard_front_bk':''">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
 					</div>
-					<div class="idCard_back" @click="openOverlay(22)" :class="imgshow==23||imgshow==22?'idCard_back_bk':''">
+					<div class="idCard_back" @click="openOverlay(1,index)" :class="info.associates[index].img3_2==2?'idCard_back_bk':''">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传国徽面</p>
 					</div>
-					<div class="idjiehun" @click="openOverlay(23)" v-show="index!==0" :class="imgshow==23?'idjiehun_bk':''">
+					<div class="idjiehun" @click="openOverlay(2,index)" v-show="item.relationship=='配偶'" :class="info.associates[index].img3_3==2?'idjiehun_bk':''">
 						<div class="idCard_shadow_button" ></div>
 						<p>点击拍摄/上传结婚证</p>
 					</div>
@@ -108,14 +112,13 @@
 			</div>
 
 		</div>
-
 		<div class="input-contianer" v-show="step==3">
 			<div v-for="(item,index) in info.mortgaged">
 				<h4 class="cell-hearder">抵押物{{index+1}}</h4>
 				<div>
-					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>
+<!--					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>-->
 
-					<div class="idFangChan" @click="openOverlay(3)" :class="imgshow==3?'idFangChan_bk':''">
+					<div class="idFangChan" @click="openOverlay(0,index)" :class="info.mortgaged[index].img4==2?'idFangChan_bk':''">
 						<div class="idCard_shadow_button" ></div>
 						<p>点击拍摄/上传房产证</p>
 					</div>
@@ -143,20 +146,20 @@
 
 		</div>
 		<div class="input-contianer" v-show="step==4">
-			<div v-for="(item,index) in info.mortgagor" v-show="index>0">
-				<h4 class="cell-hearder">抵押人{{index}}</h4>
-				<van-cell-group class="bg-grey" >
+			<div v-for="(item,index) in info.mortgagor" >
+				<h4 class="cell-hearder" v-show="index>0">抵押人{{index}}</h4>
+				<van-cell-group class="bg-grey" v-show="index>0">
 					<div v-show="item.relationship=='自然人'">
 						<div>
-							<van-field  disabled placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
+							<van-field   placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
 							<van-row type="flex" justify="center" style="height:44px;">
-									<van-checkbox class="radio" checked-color="#4c62e7" v-model="item.radio">借款的企业主本人</van-checkbox>
+									<van-checkbox class="radio" @change="show_mortgagor(item.radio,index)"   checked-color="#4c62e7" v-model="item.radio">借款的企业主本人</van-checkbox>
 							</van-row>
-							<div class="idCard_front" @click="openOverlay(41)" :class="imgshow==41||imgshow==42||imgshow==43?'idCard_front_bk':''">
+							<div class="idCard_front" @click="openOverlay(0,index)" :class="info.mortgagor[index].img5_1==2?'idCard_front_bk':''">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传人像面</p>
 							</div>
-							<div class="idCard_back" @click="openOverlay(42)" :class="imgshow==42||imgshow==43?'idCard_back_bk':''">
+							<div class="idCard_back" @click="openOverlay(1,index)" :class="info.mortgagor[index].img5_2==2?'idCard_back_bk':''">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传国徽面</p>
 							</div>
@@ -195,13 +198,13 @@
 						</van-row>
 					</div>
 					<div v-show="item.relationship=='企业法人'">
-						<van-field  disabled placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
-						<van-row type="flex" justify="center" style="height:44px;">
-							<van-checkbox class="radio" checked-color="#4c62e7" v-model="item.radio">借款的企业</van-checkbox>
+						<van-field   placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
+						<van-row type="flex" justify="center" style="height:44px;" >
+							<van-checkbox class="radio" checked-color="#4c62e7" @change="show_mortgagor(item.radio,index)"  v-model="item.radio"  >借款的企业</van-checkbox>
 						</van-row>
 						<div>
 <!--							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>-->
-							<div class="idCard" @click="openOverlay(43)" :class="imgshow==43?'idCard_bk':''">
+							<div class="idCard" @click="openOverlay(2,index)" :class="info.mortgagor[index].img5_3==2?'idCard_bk':''">
 								<div class="idCard_shadow_button" ></div>
 								<p>点击拍摄/上传企业营业执照</p>
 							</div>
@@ -238,13 +241,13 @@
 							<van-col span="6" class="open_close_col" v-show="item.open_status" @click="openClose(index)"><p>收起<van-icon name="arrow-up" /></p></van-col>
 						</van-row>
 					</div>
-					<div v-show="item.relationship=='其他'">
+					<div v-show="item.relationship!=='企业法人'&& item.relationship!=='自然人'">
 						<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(9,index)" v-model="item.relationship" clearable label-width="120" right-icon="arrow-down"/>
 
 						<div>
 							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>
 
-							<div class="idCard" @click="openOverlay(43)" :class="imgshow==43?'idCard_bk':''">
+							<div class="idCard" @click="openOverlay(2,index)" :class="info.mortgagor[index].img5_3==2?'idCard_bk':''">
 								<div class="idCard_shadow_button" ></div>
 								<p>点击拍摄/上传企业营业执照</p>
 							</div>
@@ -282,7 +285,6 @@
 			</div>
 
 		</div>
-
 		<div class="btn_group" v-show='step!=5'>
 			<p v-show="step>1" class="add_asso" @click="add_item"><span class="add">&nbsp;+&nbsp;</span>{{add_item_title}}</p>
 			<div class="save_button" @click="save">保存并退出</div>
@@ -355,7 +357,7 @@
     return {
 		msg_:{},
 		imgshow:-1,
-		imgshow_tmp:'',
+		imgshow_tmp:0,
 		next:'下一步',
 		add_item_title:'添加关联人',
 		areaList:areaList,
@@ -382,7 +384,7 @@
 			'抵押物信息',
 			'抵押人信息',
 		],
-		info:{
+		info_default:{
 			company_info:{
 				customer_id:'252841000000526649',
 				unified_social_credit_code:'91120116MA07K2307A',
@@ -442,7 +444,7 @@
 			],
 			mortgagor:[
 				{
-					relationship:'企业法人', //0=自然人， 1=  企业法人
+					relationship:'企业法人', //1=自然人， 0=  企业法人
 					name:'艾仲华',
 					sex:'',
 					ethnic:'',
@@ -480,8 +482,19 @@
 					legal_representative:'',
 					mobile:'',
 					open_status:true,
+                    radio:true,
 				},
 			],
+            img1:0,//企业营业执照  0:默认状态，1：选中状态，2：点击拍摄
+            img2_1:0,//企业业主身份证正面
+            img2_2:0,//企业业主身份证反面
+            img3_1:0,//关系人身份证正面
+            img3_2:0,//关系人身份证反面
+            img3_3:0,//关系人结婚证
+            img4:0,//房产证
+            img5_1:0,//抵押人身份证正面
+            img5_2:0,//抵押人身份证反面
+            img5_3:0,//企业营业执照
 			unid:'',
 			collect_time:'',
 			step:0,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
@@ -489,8 +502,173 @@
 			loan:{},
 			status:0
 		},
+        info:{
+            company_info:{
+                customer_id:'',
+                unified_social_credit_code:'',
+                company_name:'',
+                enterprise_address:'',
+                legal_representative:'',
+                mobile:'',
+                legal_representative_address:'',
+				img1:0,//企业营业执照  0:默认状态，1：选中状态，2：点击拍摄
+            },
+            company_main_info:{
+                name:'',
+                sex:'',
+                ethnic:'',
+                birth:'',
+                address:'',
+                idcard:'',
+                validity_period:'' ,//有效期
+                record_of_formal_schooling : '', //学历
+                mobile:'',
+                work:'',
+                marriage_status:'',
+                households:'',
+				img2_1:0,//企业业主身份证正面
+				img2_2:0,//企业业主身份证反面
+            },
+            associates:[   //关联人
+                {
+                    relationship:'', //0=自然人， 1=  企业法人
+                    name:'',
+                    sex:'',
+                    ethnic:'',
+                    birth:'',
+                    address:'',
+                    idcard:'',
+                    validity_period:'' ,//有效期
+                    record_of_formal_schooling : '', //学历
+                    mobile:'',
+                    work:'',
+                    marriage_status:'',
+                    households:'',
+                    open_status:true,
+					img3_1:0,//关系人身份证正面
+					img3_2:0,//关系人身份证反面
+					img3_3:0,//关系人结婚证
+                }
+            ],
+            mortgaged:[
+                {
+                    relationship:'', //0=自然人， 1=  企业法人
+                    holder:'',
+                    situations:'',
+                    address:'',
+                    number:'',
+                    type:'',
+                    nature:'',
+                    use:'',
+                    area:'',
+                    Other:'',
+                    house_nubmer:'',
+                    open_status:true,
+					img4:0,//房产证
+                }
+            ],
+            mortgagor:[
+                {
+                    relationship:'企业法人', //1=自然人， 0=  企业法人
+                    name:'',
+                    sex:'',
+                    ethnic:'',
+                    birth:'',
+                    address:'',
+                    idcard:'',
+                    validity_period:'' , //有效期
+                    diyaren_mobile:'',
+                    diyawu:[],
+                    customer_id:'',
+                    unified_social_credit_code:'',
+                    company_name:'',
+                    enterprise_address:'',
+                    legal_representative:'',
+                    mobile:'',
+                    legal_representative_address:'',
+                    open_status:true,
+                    radio:false,
+					img5_1:0,//抵押人身份证正面
+					img5_2:0,//抵押人身份证反面
+					img5_3:0,//企业营业执照
+                },
+                {
+                    relationship:'自然人', //0=自然人， 1=  企业法人
+                    name:'',
+                    sex:'',
+                    ethnic:'',
+                    birth:'',
+                    address:'',
+                    idcard:'',
+                    validity_period:'' , //有效期
+                    diyaren_mobile:'',
+                    diyawu:[],
+                    customer_id:'',
+                    unified_social_credit_code:'',
+                    company_name:'',
+                    enterprise_address:'',
+                    legal_representative:'',
+                    mobile:'',
+                    open_status:true,
+                    radio:false,
+					img5_1:0,//抵押人身份证正面
+					img5_2:0,//抵押人身份证反面
+					img5_3:0,//企业营业执照
+                },
+            ],
+            unid:'',
+            collect_time:'',
+            step:0,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
+            isPass:true,
+            loan:{},
+            status:0
+        },
 		result:[],
 		current_index:0,
+        null_data:  [
+				{
+					relationship: '企业法人', //0=自然人， 1=  企业法人
+					name: '',
+					sex: '',
+					ethnic: '',
+					birth: '',
+					address: '',
+					idcard: '',
+					validity_period: '', //有效期
+					diyaren_mobile: '',
+					diyawu: [],
+					customer_id: '',
+					unified_social_credit_code: '',
+					company_name: '',
+					enterprise_address: '',
+					legal_representative: '',
+					mobile: '',
+					legal_representative_address: '',
+					open_status: true,
+					radio: false,
+				},
+				{
+					relationship: '自然人', //0=自然人， 1=  企业法人
+					name: '',
+					sex: '',
+					ethnic: '',
+					birth: '',
+					address: '',
+					idcard: '',
+					validity_period: '', //有效期
+					diyaren_mobile: '',
+					diyawu: [],
+					customer_id: '',
+					unified_social_credit_code: '',
+					company_name: '',
+					enterprise_address: '',
+					legal_representative: '',
+					mobile: '',
+					open_status: true,
+					radio: false,
+				},
+			],
+
     }
 
   },
@@ -519,17 +697,167 @@
 
   //声明方法
   methods : {
-	  openOverlay : function(i){
-	  	if (i!==-1) {
-			this.imgshow_tmp = i
-		}
-		  this.is_open = !this.is_open;
+      show_mortgagor(flag,i){
+          console.log('444'+flag+i)
+              if (this.info.mortgagor[i].relationship=='企业法人') {
+				  if (flag) {
+					  this.info.mortgagor[i].customer_id = this.info_default.mortgagor[0].customer_id;
+					  this.info.mortgagor[i].unified_social_credit_code = this.info_default.mortgagor[0].unified_social_credit_code;
+					  this.info.mortgagor[i].company_name = this.info_default.mortgagor[0].company_name;
+					  this.info.mortgagor[i].enterprise_address = this.info_default.mortgagor[0].enterprise_address;
+					  this.info.mortgagor[i].legal_representative = this.info_default.mortgagor[0].legal_representative;
+					  this.info.mortgagor[i].mobile = this.info_default.mortgagor[0].mobile;
+					  this.info.mortgagor[i].idcard = this.info_default.mortgagor[0].idcard;
+					  this.info.mortgagor[i].legal_representative_address = this.info_default.mortgagor[0].legal_representative_address;
+				  } else {
+					  this.info.mortgagor[i].customer_id = this.null_data[0].customer_id;
+					  this.info.mortgagor[i].unified_social_credit_code = this.null_data[0].unified_social_credit_code;
+					  this.info.mortgagor[i].company_name = this.null_data[0].company_name;
+					  this.info.mortgagor[i].enterprise_address = this.null_data[0].enterprise_address;
+					  this.info.mortgagor[i].legal_representative = this.null_data[0].legal_representative;
+					  this.info.mortgagor[i].mobile = this.null_data[0].mobile;
+					  this.info.mortgagor[i].idcard = this.null_data[0].idcard;
+					  this.info.mortgagor[i].legal_representative_address = this.null_data[0].legal_representative_address;
+				  }
+
+              } else {
+				  if (flag) {
+					  this.info.mortgagor[i].name = this.info_default.mortgagor[1].name;
+					  this.info.mortgagor[i].sex = this.info_default.mortgagor[1].sex;
+					  this.info.mortgagor[i].ethnic = this.info_default.mortgagor[1].ethnic;
+					  this.info.mortgagor[i].birth = this.info_default.mortgagor[1].birth;
+					  this.info.mortgagor[i].address = this.info_default.mortgagor[1].address;
+					  this.info.mortgagor[i].idcard = this.info_default.mortgagor[1].idcard;
+					  this.info.mortgagor[i].validity_period = this.info_default.mortgagor[1].validity_period;
+					  this.info.mortgagor[i].diyaren_mobile = this.info_default.mortgagor[1].diyaren_mobile;
+				  } else {
+					  this.info.mortgagor[i].name = this.null_data[1].name;
+					  this.info.mortgagor[i].sex = this.null_data[1].sex;
+					  this.info.mortgagor[i].ethnic = this.null_data[1].ethnic;
+					  this.info.mortgagor[i].birth = this.null_data[1].birth;
+					  this.info.mortgagor[i].address = this.null_data[1].address;
+					  this.info.mortgagor[i].idcard = this.null_data[1].idcard;
+					  this.info.mortgagor[i].validity_period = this.null_data[1].validity_period;
+					  this.info.mortgagor[i].diyaren_mobile = this.null_data[1].diyaren_mobile;
+				  }
+              }
+      },
+	  openOverlay : function(i,index){
+          this.is_open = !this.is_open;
+          switch (this.step) {
+              case 0 :
+                  this.imgshow_tmp = 1;
+                  this.info.company_info.img1 = 1;
+                  break;
+              case 1 :
+                  if(i===1) {
+                      this.info.company_main_info.img2_2 = 1;
+                      this.imgshow_tmp = 3;
+                  } else {
+                      this.info.company_main_info.img2_1 = 1;
+                      this.imgshow_tmp = 2;
+                  }
+                  break;
+              case 2 :
+                  if(i===0) {
+                      this.info.associates[index].img3_1 = 1;
+                      this.imgshow_tmp = 2;
+                  } else if(i===1) {
+                      this.info.associates[index].img3_2 = 1;
+                      this.imgshow_tmp = 3;
+                  } else {
+                      this.info.associates[index].img3_3 = 1;
+                      this.imgshow_tmp = 4;
+                  }
+                  break;
+              case 3 :
+                  this.info.mortgaged[index].img4 = true;
+                  this.imgshow_tmp = 5;
+                  break;
+              case 4 :
+                  if(i===0) {
+                      this.info.mortgagor[index].img5_1 = 1;
+                      this.imgshow_tmp = 2;
+                  } else if(i===1) {
+                      this.info.mortgagor[index].img5_2 = 1;
+                      this.imgshow_tmp = 3;
+                  } else {
+                      this.info.mortgagor[index].img5_3 = 1;
+                      this.imgshow_tmp = 1;
+                  }
+                  break;
+              default:
+                  break;
+          }
+
 	  },
 	  colseOverlay() {
 		  this.is_open = !this.is_open;
 	  },
 	  add_img() {
-		  this.imgshow = this.imgshow_tmp;
+	      switch (this.step) {
+              case 0 :
+                  this.info.company_info = this.info_default.company_info;
+				  this.info.company_info.img1 = 2;
+				  break;
+              case 1 :
+                  if(this.info.company_main_info.img2_1==1) {
+                      this.info.company_main_info.img2_1 = 2;
+                  }
+                  if(this.info.company_main_info.img2_2==1) {
+                      this.info.company_main_info.img2_2 = 2;
+                  }
+                  if(this.info.company_main_info.img2_1==2 && this.info.company_main_info.img2_2==2) {
+                      this.info.company_main_info = this.info_default.company_main_info;
+					  this.info.company_main_info.img2_1 = 2;
+					  this.info.company_main_info.img2_2 = 2;
+                  }
+                  break;
+              case 2 :
+              	for(var i=0;i<this.info.associates.length;i++) {
+					if(this.info.associates[i].img3_1==1) {
+						this.info.associates[i].img3_1 = 2;
+					}
+					if(this.info.associates[i].img3_2==1) {
+						this.info.associates[i].img3_2 = 2;
+					}
+					if(this.info.associates[i].img3_3==1) {
+						this.info.associates[i].img3_3 = 2;
+					}
+					if(this.info.associates[i].img3_2==2 && this.info.associates[i].img3_1==2) {
+						var tmp = this.info.associates[i].relationship;
+						this.info.associates[i] = this.info_default.associates[0];
+						this.info.associates[i].relationship = tmp;
+						this.info.associates[i].img3_1 = 2;
+						this.info.associates[i].img3_2 = 2;
+						// this.info.associates[i].img3_3 = 1;
+					}
+				}
+
+                  break;
+              case 3 :
+				  for(var i=0;i<this.info.mortgaged.length;i++) {
+					  this.info.mortgaged[i] = this.info_default.mortgaged[0];
+					  this.info.mortgaged[i].img4 = 2;
+				  }
+                  break;
+              case 4 :
+				  for(var i=0;i<this.info.mortgagor.length;i++) {
+					  if(this.info.mortgagor[i].img5_1==1) {
+						  this.info.mortgagor[i].img5_1 = 2;
+					  }
+					  if(this.info.mortgagor[i].img5_2==1) {
+						  this.info.mortgagor[i].img5_2 = 2;
+					  }
+					  if(this.info.mortgagor[i].img5_3==1) {
+						  this.info.mortgagor[i].img5_3 = 2;
+					  }
+				  };
+
+                  break;
+              default:
+                      break;
+          }
 		  this.is_open = !this.is_open;
 		  this.info.mortgagor.radio = true;
 	  },
@@ -570,7 +898,7 @@
 				break;
 		}
 	  },
-	  //自定义以及日期picker---取消键
+	  //自定义以及日                                                                                                 期picker---取消键
 	  onCancel() {
 		  this.time_Picker_Statue = 0;
 	  },
@@ -824,6 +1152,8 @@
 		if(this.info.unid){
 			for(var i=0;i<infos.length;i++){
 				if(infos[i].unid == this.info.unid){
+					this.info.collect_time = (new Date()).toLocaleDateString()
+					console.log(this.info.collect_time)
 					infos[i] = this.info;
 				}
 			}
@@ -1146,9 +1476,10 @@
 		text-align: center;
 	}
 	.img_shoot{
-		margin-top: 10px;
-		width: 260px;
-		height: 380px;
+		margin-top: 55px;
+		width: 380px;
+		height: 260px;
+        transform:rotate(90deg);
 	}
 .craema_text {
 	color: #ffffff;
@@ -1156,7 +1487,7 @@
 	font-size: 14px;
 }
 .img_cmarea{
-	margin-top: 14px;
+	margin-top: 74px;
 	left:45% ;
 	height: 80px;
 	width: 80px;

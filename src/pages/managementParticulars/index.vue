@@ -127,8 +127,25 @@
       </div>
 
       
-    <!--dialog已抢单放弃按钮弹出框-->
-    <van-dialog @confirm="queRen" v-model="fangQiButShow" title="请选择放弃原因" :show-cancel-button="true">
+    
+    <!--dialog已抢单放弃按钮弹出框1-->
+    <van-dialog v-model="fangQiButShowOne" @confirm="radioQueDing(1)" title="请选择放弃原因" show-cancel-button >
+      <van-radio-group v-model="fangQiRadio">
+        <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
+        <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
+        <van-radio class="fangButClass" name="3">客户条件不符合</van-radio>
+      </van-radio-group>
+    </van-dialog>
+    <!--dialog已抢单放弃按钮弹出框2-->
+    <van-dialog v-model="fangQiButShowTwo" @confirm="radioQueDing(2)" title="请选择放弃原因" show-cancel-button >
+      <van-radio-group v-model="fangQiRadio">
+        <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
+        <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
+        <van-radio class="fangButClass" name="3">客户条件不符合</van-radio>
+      </van-radio-group>
+    </van-dialog>
+    <!--dialog已抢单放弃按钮弹出框3-->
+    <van-dialog v-model="fangQiButShowThree" @confirm="radioQueDing(3)" title="请选择放弃原因" show-cancel-button >
       <van-radio-group v-model="fangQiRadio">
         <van-radio class="fangButClass" name="1">无法联系客户</van-radio>
         <van-radio class="fangButClass" name="2">客户无贷款意愿</van-radio>
@@ -151,10 +168,12 @@ export default {
   data (){
      return {
        title : '新野摸具制造有限公司',
-       fangQiButShow: false,
+       fangQiButShowOne: false,
+       fangQiButShowTwo: false,
+       fangQiButShowThree: false,
        fangQiRadio: 1,
-       stutasId:this.$route.params.stutasId,//跳转参数状态id
        userId:this.$route.params.userId,//跳转参数用户id
+       stutasId:this.$route.params.stutasId,//跳转参数状态id
        typeStutas: 0,//橘色状态
        userTypeId: 0,//用户id
        enterprise:[],//接受显示数据
@@ -168,10 +187,10 @@ export default {
            {name:'信贷准入'},
            {name:'申贷意愿'},
          ],
-         companyName: '青岛智慧科技有限公司', //公司名称
+         companyName: '广州智慧科技有限公司', //公司名称
          principalName: '王光明',//联系人
-         phone: '13818886688',//联系电话
-         address: '山东省青岛市城阳区惜福镇王沙路1616号',//企业注册地址
+         phone: '13814466688',//联系电话
+         address: '广州市高新技术产业开发区迎宾大道88号',//企业注册地址
          Subordinate: '软件和信息技术服务行业',//所属行业
          scopeBusiness: '计算机软硬件的技术开发；技术咨询；技术转让；技术服务；数据库处理；经济信息咨询；经营电子商务；计算机编程',//经营范围
          establishTime: "2012年9月20日",//成立日期
@@ -376,6 +395,7 @@ export default {
         this.enterprise=this.enterpriseSeven
         this.statusTwo=true//2抵押快贷
       }
+      this.title=this.enterprise.companyName
     },
     //获取传来的状态id
     getButStutasId(){
@@ -383,7 +403,24 @@ export default {
     },
     //商机管理放弃按钮
     xiangQingQianDan(){
-      this.fangQiButShow = true
+      if(this.userId==1){
+        this.fangQiButShowOne = true
+      }else if(this.userId==2){
+        this.fangQiButShowTwo = true
+      }else if(this.userId==3){
+        this.fangQiButShowThree = true
+      }
+    },
+    //放弃弹框中确定按钮
+    radioQueDing(num){
+      if(num==1){
+				sessionStorage.setItem("enterpriseStatus","YiFangQi")
+      }else if(num==2){
+				sessionStorage.setItem("enterpriseTwoStatus","YiFangQi")
+      }else if(num==3){
+				sessionStorage.setItem("enterpriseThreeStatus","YiFangQi")
+      }
+      this.typeStutas=4
     },
     //放弃确认
     queRen(){
@@ -631,7 +668,7 @@ export default {
   }
   .xiangQingBac .xinXi{
     width: 90%;
-    height:580px;
+    min-height:600px;
     margin: 8px auto 0px auto;
     border-radius: 10px;
     padding-left: 10px;

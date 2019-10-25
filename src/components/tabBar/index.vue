@@ -6,17 +6,11 @@
        :to="icon.route"
        >
         <span v-show="index!=0">{{icon.name}}</span>
-<!--        <img-->
-<!--        slot="icon"-->
-<!--        slot-scope="props"-->
-<!--        :src="props.active ? icon.active : icon.normal"-->
-<!--        :class="index==0&&props.active ? 'big' : ''"-->
-<!--        >-->
         <img
-                slot="icon"
-                slot-scope="props"
-                :src="props.active ? icon.active : icon.normal"
-                :class="index==0? 'big' : ''"
+        slot="icon"
+        slot-scope="props"
+        :src="props.active ? icon.active : icon.normal"
+        :class="[index==0 ? 'big' : '']"
         >
     </van-tabbar-item>
     </van-tabbar>
@@ -103,8 +97,8 @@ import icon5_1 from '../../../static/5-1.png'
 
 <style lang="scss" scoped>
 // scoped 表示私有样式
-img.big{
+  img.big{
     width: 32px;
     height: 32px;
-}
+  }
 </style>

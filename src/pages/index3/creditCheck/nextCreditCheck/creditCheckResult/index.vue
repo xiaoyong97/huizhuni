@@ -86,7 +86,7 @@
         created (){
             var num = Math.random();
             console.log(num)
-            if ( num-0.5 > 0 ) {
+            if ( num+0.5 > 0 ) {
                 this.step = 2
             } else {
                 this.step = 3
