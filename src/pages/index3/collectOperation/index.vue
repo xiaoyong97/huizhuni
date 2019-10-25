@@ -10,11 +10,11 @@
 			</van-nav-bar>
 			<p class="craema_text">请拍摄</p>
 <!--            <img src="../../../assets/images/other/02130521.png" class="img_shoot"  >-->
-            <img src="../../../assets/images/idcard/bg_dyw@2x.png" class="img_shoot"  v-show="imgshow_tmp==1">
-            <img src="../../../assets/images/idcard/bg_sfz_front@2x.png" class="img_shoot"  v-show="imgshow_tmp==2">
-            <img src="../../../assets/images/idcard/bg_sfz_reverse@2x.png" class="img_shoot"  v-show="imgshow_tmp==3">
-            <img src="../../../assets/images/idcard/bg_jhz@2x.png" class="img_shoot"  v-show="imgshow_tmp==4">
-            <img src="../../../assets/images/idcard/budongchanquanzheng.png" class="img_shoot"  v-show="imgshow_tmp==5">
+            <img src="../../../assets/images/idcard/103507@123123.png" class="img_shoot"  v-show="imgshow_tmp==1">
+            <img src="../../../assets/images/idcard/012105736@33.png" class="img_shoot"  v-show="imgshow_tmp==2">
+            <img src="../../../assets/images/idcard/1057@58.png" class="img_shoot"  v-show="imgshow_tmp==3">
+            <img src="../../../assets/images/idcard/12@215545.png" class="img_shoot"  v-show="imgshow_tmp==4">
+            <img src="../../../assets/images/idcard/1012110@635.png" class="img_shoot"  v-show="imgshow_tmp==5">
 			<p style="line-height: 10px"></p>
 			<img src="../../../assets/images/other/Takeaphoto@2x.png" class="img_cmarea"  @click="add_img">
 
@@ -25,7 +25,7 @@
 		<div class="input-contianer" v-show="step==0">
 			<div>
 				<h4>企业营业执照</h4>
-				<div class="idCard" @click="openOverlay(0)" :class="info.img1==2?'idCard_bk':''">
+				<div class="idCard" @click="openOverlay(0)" :class="info.company_info.img1==2?'idCard_bk':''">
 					<div class="idCard_shadow_button" ></div>
 					<p>点击拍摄/上传企业营业执照</p>
 				</div>
@@ -43,11 +43,11 @@
 		<div class="input-contianer" v-show="step==1">
 			<div>
 				<h4>企业业主身份证</h4>
-				<div class="idCard_front" @click="openOverlay(0)" :class="info.img2_1==2?'idCard_front_bk':''">
+				<div class="idCard_front" @click="openOverlay(0)" :class="info.company_main_info.img2_1==2?'idCard_front_bk':''">
 					<div class="idCard_shadow_button"></div>
 					<p>点击拍摄/上传人像面</p>
 				</div>
-				<div class="idCard_back" @click="openOverlay(1)" :class="info.img2_2==2?'idCard_back_bk':''">
+				<div class="idCard_back" @click="openOverlay(1)" :class="info.company_main_info.img2_2==2?'idCard_back_bk':''">
 					<div class="idCard_shadow_button"></div>
 					<p>点击拍摄/上传国徽面</p>
 				</div>
@@ -75,15 +75,15 @@
 				<div>
 					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>
 
-					<div class="idCard_front" @click="openOverlay(0)" :class="info.img3_1==2?'idCard_front_bk':''">
+					<div class="idCard_front" @click="openOverlay(0,index)" :class="info.associates[index].img3_1==2?'idCard_front_bk':''">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传人像面</p>
 					</div>
-					<div class="idCard_back" @click="openOverlay(1)" :class="info.img3_2==2?'idCard_back_bk':''">
+					<div class="idCard_back" @click="openOverlay(1,index)" :class="info.associates[index].img3_2==2?'idCard_back_bk':''">
 						<div class="idCard_shadow_button"></div>
 						<p>点击拍摄/上传国徽面</p>
 					</div>
-					<div class="idjiehun" @click="openOverlay(2)" v-show="index!==0" :class="info.img3_3==2?'idjiehun_bk':''">
+					<div class="idjiehun" @click="openOverlay(2,index)" v-show="item.relationship=='配偶'" :class="info.associates[index].img3_3==2?'idjiehun_bk':''">
 						<div class="idCard_shadow_button" ></div>
 						<p>点击拍摄/上传结婚证</p>
 					</div>
@@ -118,7 +118,7 @@
 				<div>
 <!--					<van-field label="关系" placeholder="请选择" @click-right-icon="openPicker(8,index)" v-model="item.relationship" disabled clearable label-width="120" right-icon="arrow-down"/>-->
 
-					<div class="idFangChan" @click="openOverlay(0)" :class="info.img4==2?'idFangChan_bk':''">
+					<div class="idFangChan" @click="openOverlay(0,index)" :class="info.mortgaged[index].img4==2?'idFangChan_bk':''">
 						<div class="idCard_shadow_button" ></div>
 						<p>点击拍摄/上传房产证</p>
 					</div>
@@ -131,7 +131,7 @@
 					<van-field label="共有情况" placeholder="共有情况"  v-model="item.situations" clearable label-width="120"/>
 					<van-field label="坐落" placeholder="坐落" @click-right-icon="openPicker(3,index)" v-model="item.address" clearable label-width="120" right-icon="arrow-down"/>
 					<van-field label="不动产单元号"placeholder="请输入不动产单元号" v-model="item.number" clearable label-width="120"/>
-					<van-field label="不动产权证" placeholder="不动产权证"  v-model="item.type" clearable label-width="120"/>
+					<van-field label="权利类型" placeholder="权利类型"  v-model="item.type" clearable label-width="120"/>
 					<van-field label="权利性质" placeholder="权利性质" v-model="item.nature" clearable label-width="120"/>
 					<van-field label="用途"placeholder="请输入用途" v-model="item.use" clearable label-width="120" label-color="red"/>
 					<van-field label="面积" placeholder="请输入面积" v-model="item.area" clearable label-width="120"/>
@@ -155,11 +155,11 @@
 							<van-row type="flex" justify="center" style="height:44px;">
 									<van-checkbox class="radio" @change="show_mortgagor(item.radio,index)"   checked-color="#4c62e7" v-model="item.radio">借款的企业主本人</van-checkbox>
 							</van-row>
-							<div class="idCard_front" @click="openOverlay(0)" :class="info.img5_1==2?'idCard_front_bk':''">
+							<div class="idCard_front" @click="openOverlay(0,index)" :class="info.mortgagor[index].img5_1==2?'idCard_front_bk':''">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传人像面</p>
 							</div>
-							<div class="idCard_back" @click="openOverlay(1)" :class="info.img5_2==2?'idCard_back_bk':''">
+							<div class="idCard_back" @click="openOverlay(1,index)" :class="info.mortgagor[index].img5_2==2?'idCard_back_bk':''">
 								<div class="idCard_shadow_button"></div>
 								<p>点击拍摄/上传国徽面</p>
 							</div>
@@ -204,7 +204,7 @@
 						</van-row>
 						<div>
 <!--							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>-->
-							<div class="idCard" @click="openOverlay(2)" :class="info.img5_3==2?'idCard_bk':''">
+							<div class="idCard" @click="openOverlay(2,index)" :class="info.mortgagor[index].img5_3==2?'idCard_bk':''">
 								<div class="idCard_shadow_button" ></div>
 								<p>点击拍摄/上传企业营业执照</p>
 							</div>
@@ -247,7 +247,7 @@
 						<div>
 							<van-field label="企业法人" placeholder="请输入法人名称" v-model="item.name" clearable label-width="120"/>
 
-							<div class="idCard" @click="openOverlay(2)" :class="info.img5_3==2?'idCard_bk':''">
+							<div class="idCard" @click="openOverlay(2,index)" :class="info.mortgagor[index].img5_3==2?'idCard_bk':''">
 								<div class="idCard_shadow_button" ></div>
 								<p>点击拍摄/上传企业营业执照</p>
 							</div>
@@ -511,6 +511,7 @@
                 legal_representative:'',
                 mobile:'',
                 legal_representative_address:'',
+				img1:0,//企业营业执照  0:默认状态，1：选中状态，2：点击拍摄
             },
             company_main_info:{
                 name:'',
@@ -525,6 +526,8 @@
                 work:'',
                 marriage_status:'',
                 households:'',
+				img2_1:0,//企业业主身份证正面
+				img2_2:0,//企业业主身份证反面
             },
             associates:[   //关联人
                 {
@@ -542,6 +545,9 @@
                     marriage_status:'',
                     households:'',
                     open_status:true,
+					img3_1:0,//关系人身份证正面
+					img3_2:0,//关系人身份证反面
+					img3_3:0,//关系人结婚证
                 }
             ],
             mortgaged:[
@@ -557,7 +563,8 @@
                     area:'',
                     Other:'',
                     house_nubmer:'',
-                    open_status:true
+                    open_status:true,
+					img4:0,//房产证
                 }
             ],
             mortgagor:[
@@ -581,6 +588,9 @@
                     legal_representative_address:'',
                     open_status:true,
                     radio:false,
+					img5_1:0,//抵押人身份证正面
+					img5_2:0,//抵押人身份证反面
+					img5_3:0,//企业营业执照
                 },
                 {
                     relationship:'自然人', //0=自然人， 1=  企业法人
@@ -601,18 +611,11 @@
                     mobile:'',
                     open_status:true,
                     radio:false,
+					img5_1:0,//抵押人身份证正面
+					img5_2:0,//抵押人身份证反面
+					img5_3:0,//企业营业执照
                 },
             ],
-            img1:0,//企业营业执照  0:默认状态，1：选中状态，2：点击拍摄
-            img2_1:0,//企业业主身份证正面
-            img2_2:0,//企业业主身份证反面
-            img3_1:0,//关系人身份证正面
-            img3_2:0,//关系人身份证反面
-            img3_3:0,//关系人结婚证
-            img4:0,//房产证
-            img5_1:0,//抵押人身份证正面
-            img5_2:0,//抵押人身份证反面
-            img5_3:0,//企业营业执照
             unid:'',
             collect_time:'',
             step:0,  //贷款流程 ： 0=信息待采集 1=征信待校验 2=贷款待申请 3.合同待签订 4.待跟踪
@@ -739,47 +742,47 @@
 				  }
               }
       },
-	  openOverlay : function(i){
+	  openOverlay : function(i,index){
           this.is_open = !this.is_open;
           switch (this.step) {
               case 0 :
                   this.imgshow_tmp = 1;
-                  this.info.img1 = 1;
+                  this.info.company_info.img1 = 1;
                   break;
               case 1 :
                   if(i===1) {
-                      this.info.img2_2 = 1;
+                      this.info.company_main_info.img2_2 = 1;
                       this.imgshow_tmp = 3;
                   } else {
-                      this.info.img2_1 = 1;
+                      this.info.company_main_info.img2_1 = 1;
                       this.imgshow_tmp = 2;
                   }
                   break;
               case 2 :
                   if(i===0) {
-                      this.info.img3_1 = 1;
+                      this.info.associates[index].img3_1 = 1;
                       this.imgshow_tmp = 2;
                   } else if(i===1) {
-                      this.info.img3_2 = 1;
+                      this.info.associates[index].img3_2 = 1;
                       this.imgshow_tmp = 3;
                   } else {
-                      this.info.img3_3 = 1;
+                      this.info.associates[index].img3_3 = 1;
                       this.imgshow_tmp = 4;
                   }
                   break;
               case 3 :
-                  this.info.img4 = true;
+                  this.info.mortgaged[index].img4 = true;
                   this.imgshow_tmp = 5;
                   break;
               case 4 :
                   if(i===0) {
-                      this.info.img5_1 = 1;
+                      this.info.mortgagor[index].img5_1 = 1;
                       this.imgshow_tmp = 2;
                   } else if(i===1) {
-                      this.info.img5_2 = 1;
+                      this.info.mortgagor[index].img5_2 = 1;
                       this.imgshow_tmp = 3;
                   } else {
-                      this.info.img5_3 = 1;
+                      this.info.mortgagor[index].img5_3 = 1;
                       this.imgshow_tmp = 1;
                   }
                   break;
@@ -794,48 +797,63 @@
 	  add_img() {
 	      switch (this.step) {
               case 0 :
-                  this.info.img1 = 2;
                   this.info.company_info = this.info_default.company_info;
-                  break;
+				  this.info.company_info.img1 = 2;
+				  break;
               case 1 :
-                  if(this.info.img2_1==1) {
-                      this.info.img2_1 = 2;
+                  if(this.info.company_main_info.img2_1==1) {
+                      this.info.company_main_info.img2_1 = 2;
                   }
-                  if(this.info.img2_2==1) {
-                      this.info.img2_2 = 2;
+                  if(this.info.company_main_info.img2_2==1) {
+                      this.info.company_main_info.img2_2 = 2;
                   }
-                  if(this.info.img2_1==2 && this.info.img2_2==2) {
+                  if(this.info.company_main_info.img2_1==2 && this.info.company_main_info.img2_2==2) {
                       this.info.company_main_info = this.info_default.company_main_info;
+					  this.info.company_main_info.img2_1 = 2;
+					  this.info.company_main_info.img2_2 = 2;
                   }
                   break;
               case 2 :
-                  if(this.info.img3_1==1) {
-                      this.info.img3_1 = 2;
-                  }
-                  if(this.info.img3_2==1) {
-                      this.info.img3_2 = 2;
-                  }
-                  if(this.info.img3_3==1) {
-                      this.info.img3_3 = 2;
-                  }
-                  if(this.info.img3_2==2 && this.info.img3_1==2) {
-                      this.info.associates = this.info_default.associates;
-                  }
+              	for(var i=0;i<this.info.associates.length;i++) {
+					if(this.info.associates[i].img3_1==1) {
+						this.info.associates[i].img3_1 = 2;
+					}
+					if(this.info.associates[i].img3_2==1) {
+						this.info.associates[i].img3_2 = 2;
+					}
+					if(this.info.associates[i].img3_3==1) {
+						this.info.associates[i].img3_3 = 2;
+					}
+					if(this.info.associates[i].img3_2==2 && this.info.associates[i].img3_1==2) {
+						var tmp = this.info.associates[i].relationship;
+						this.info.associates[i] = this.info_default.associates[0];
+						this.info.associates[i].relationship = tmp;
+						this.info.associates[i].img3_1 = 2;
+						this.info.associates[i].img3_2 = 2;
+						// this.info.associates[i].img3_3 = 1;
+					}
+				}
+
                   break;
               case 3 :
-                  this.info.img4 = 2;
-                  this.info.mortgaged = this.info_default.mortgaged;
+				  for(var i=0;i<this.info.mortgaged.length;i++) {
+					  this.info.mortgaged[i] = this.info_default.mortgaged[0];
+					  this.info.mortgaged[i].img4 = 2;
+				  }
                   break;
               case 4 :
-                  if(this.info.img5_1==1) {
-                      this.info.img5_1 = 2;
-                  }
-                  if(this.info.img5_2==1) {
-                      this.info.img5_2 = 2;
-                  }
-                  if(this.info.img5_3==1) {
-                      this.info.img5_3 = 2;
-                  }
+				  for(var i=0;i<this.info.mortgagor.length;i++) {
+					  if(this.info.mortgagor[i].img5_1==1) {
+						  this.info.mortgagor[i].img5_1 = 2;
+					  }
+					  if(this.info.mortgagor[i].img5_2==1) {
+						  this.info.mortgagor[i].img5_2 = 2;
+					  }
+					  if(this.info.mortgagor[i].img5_3==1) {
+						  this.info.mortgagor[i].img5_3 = 2;
+					  }
+				  };
+
                   break;
               default:
                       break;
