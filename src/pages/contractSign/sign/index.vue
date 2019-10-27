@@ -65,9 +65,9 @@
         <div class="content3" v-if="content3Show">
             <p class="title">签约人手持合同照片</p>
             <div class="contract-img">
-                <img src="../../../assets/images/idcard/bg_sfz_front@2x.png" alt="">
-                <div class="shoot-box">
-                    <div class="shoot-img">
+                <img :src="updateContractPic ? require('../../../assets/images/face/contract.png') : require('../../../assets/images/idcard/bg_sfz_front@2x.png')" alt="">
+                <div class="shoot-box" v-show="!updateContractPic">
+                    <div class="shoot-img" @click="updateContractPic = true">
                         <img src="../../../assets/images/other/Takeaphoto@2x.png" alt="">
                     </div>
                     <div class="shoot-text">照片添加，请拍照上传</div>
@@ -94,6 +94,7 @@ export default {
             content2Show: false,
             content3Show: false,
             isDistinguish: true,
+            updateContractPic: false,
 			info:{},
         }
     },
@@ -127,6 +128,7 @@ export default {
                 this.content1Show = true;
                 this.content2Show = false;
                 this.content3Show = false;
+                this.updateContractPic = false;
             }
         },
         start() {
@@ -189,6 +191,7 @@ export default {
                 this.content1Show = true;
                 this.content2Show = false;
                 this.content3Show = false;
+                this.updateContractPic = false;
             }
         }
     },
