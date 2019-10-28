@@ -5,7 +5,7 @@
     </van-nav-bar>
     <img src="../../assets/images/huidiantong/1_0000s_0007.png" @click="goviewList" class="img_location">
     
-    <van-button v-show="active==14" class="hznbtn" plain hairline type="info" @click="hznClick">惠助你抢单</van-button>
+    <van-button v-show="active==16" class="hznbtn" type="info" @click="hznClick">惠助你抢单</van-button>
     <div class="main">
       <van-tabs id="tabls" :ellipsis="false" v-model="active" title-active-color="#ffffff" @change="createChart">
         <!--基本信息-->
@@ -1027,8 +1027,8 @@ export default {
 
 </style>
 <style lang="postcss" scoped>
-.hznbtn{position: absolute;top:6px;right: 10px;z-index: 99;height: 35px; line-height: 35px;
-border-radius: 10px;
+.hznbtn{position: absolute;top:180px;right:36%;z-index: 99;height: 35px; line-height: 35px;
+border-radius: 5px;
 }
 #myChart1{
   margin-top: 50px;
