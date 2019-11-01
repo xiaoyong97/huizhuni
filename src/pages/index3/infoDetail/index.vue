@@ -288,7 +288,7 @@
 					<div >
 
 						<van-cell>
-							<van-col span="10">企业法人：</van-col>
+							<van-col span="10">自然人：</van-col>
 							<van-col span="12"><img class="yyzz" src="../../../assets/images/idcard/sfz.png" alt=""></van-col>
 						</van-cell>
 
@@ -351,27 +351,28 @@
 					</van-cell>
 					<van-cell>
 						<van-col span="10">新一代客户编号:</van-col>
-						<van-col span="12">44099999999</van-col>
+						<van-col span="12">252841000000526649</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">统一社会信用代码:</van-col>
-						<van-col span="12">xxxxxxx</van-col>
+						<van-col span="12">91120116MA07K2307A</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">企业名称:</van-col>
-						<van-col span="12">广州老地方有限公司</van-col>
+						<van-col span="12">广州市睿智防水电器股份有限公司</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">企业地址:</van-col>
-						<van-col span="12">广州市越秀区法政路XX号</van-col>
+						<van-col span="12">广州市高新技术产业开发区迎宾大道188号
+						</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">法定代表人:</van-col>
-						<van-col span="12">广州市越秀区法政路XX号</van-col>
+						<van-col span="12">艾仲华</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">公民身份证号码:</van-col>
-						<van-col span="12">张三</van-col>
+						<van-col span="12">252841000000526649</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">有效期限:</van-col>
@@ -379,11 +380,11 @@
 					</van-cell>
 					<van-cell>
 						<van-col span="10">法定代表人电话:</van-col>
-						<van-col span="12">13800000000</van-col>
+						<van-col span="12">13702137765</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">法定代表人地址</van-col>
-						<van-col span="12">广州市越秀区法政路XX号</van-col>
+						<van-col span="12">广州市高新技术产业开发区迎宾大道188号</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">抵押人2联系方式:</van-col>

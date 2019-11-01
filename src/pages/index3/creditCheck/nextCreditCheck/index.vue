@@ -174,7 +174,7 @@
                 this.active = index
             },
             remove_img(i) {
-                this.list[i] = this.list[i].splice(1);
+                this.list[i].pop();
             },
             add_img() {
                 this.list[this.type].push(1)
