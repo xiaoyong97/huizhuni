@@ -439,9 +439,8 @@
 
   //数据预加载
   created(){
-	  	console.log(this.$route.query.info)
-		this.info = this.$route.query.info;
-	
+  	// console.log('query',this.$route.query.info)
+	  this.info = this.$route.query.info;
   },
 
   //网页加载完成
@@ -459,7 +458,7 @@
 	  },
 
 	  onClickLeft() {
-		  this.$router.go(-2);
+		  this.$router.go(-1);
 	  },
   },
 

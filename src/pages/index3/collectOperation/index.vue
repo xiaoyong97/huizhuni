@@ -433,7 +433,7 @@
 					situations:'自有',
 					address:'广东省广州市天河区花城大道中海花城湾4号楼3门201',
 					number:'3单元',
-					type:'自有',
+					type:'不动产权证',
 					nature:'自有',
 					use:'住宅',
 					area:'120.4',
@@ -826,8 +826,10 @@
 					}
 					if(this.info.associates[i].img3_2==2 && this.info.associates[i].img3_1==2) {
 						var tmp = this.info.associates[i].relationship;
+						var tmp2 = this.info.associates[i].open_status;
 						this.info.associates[i] = this.info_default.associates[0];
 						this.info.associates[i].relationship = tmp;
+						this.info.associates[i].open_status = tmp2;
 						this.info.associates[i].img3_1 = 2;
 						this.info.associates[i].img3_2 = 2;
 						// this.info.associates[i].img3_3 = 1;
@@ -837,7 +839,9 @@
                   break;
               case 3 :
 				  for(var i=0;i<this.info.mortgaged.length;i++) {
+					  let tmp2 = this.info.mortgaged[i].open_status;
 					  this.info.mortgaged[i] = this.info_default.mortgaged[0];
+					  this.info.mortgaged[i].open_status = tmp2;
 					  this.info.mortgaged[i].img4 = 2;
 				  }
                   break;
