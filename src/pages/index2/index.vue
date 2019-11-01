@@ -357,7 +357,7 @@ export default {
 
   .bac{
     width: 100%;
-    min-height: 509px;
+    min-height: 630px;
     height: 100%;
     overflow:auto;
     margin: 0px;
