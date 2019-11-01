@@ -103,7 +103,8 @@
 
 
         //数据预加载
-        created : ()=>{
+        created (){
+
         },
 
         //网页加载完成
@@ -138,6 +139,7 @@
             },
             saveBtn() {
                 this.inptuStatus = true;
+                this.$router.go(-1);
             }
 
 

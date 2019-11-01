@@ -123,7 +123,7 @@
 						</van-cell>
 						<van-cell>
 							<van-col span="10">姓名:</van-col>
-							<van-col span="12">张唔唔</van-col>
+							<van-col span="12">李天明</van-col>
 						</van-cell>
 						<van-cell @click="show_3" v-show="show3">
 							<div class="blue_bg_box"><p class="list_text_open">展开详情<van-icon name="arrow-down" /></p></div>
@@ -205,7 +205,7 @@
 					</van-cell>
 					<van-cell>
 						<van-col span="10">权利人:</van-col>
-						<van-col span="12">张三</van-col>
+						<van-col span="12">艾仲华</van-col>
 					</van-cell>
 					<van-cell @click="show_4" v-show="show4" >
 						<img src="../../../assets/images/38/Pulldown3@2x.png"  class="felx_img" v-show="show4">
@@ -244,7 +244,7 @@
 					</van-cell>
 					<van-cell>
 						<van-col span="10">公民身份证号码:</van-col>
-						<van-col span="12">张三</van-col>
+						<van-col span="12">艾仲华</van-col>
 					</van-cell>
 					<van-cell>
 						<van-col span="10">有效期限:</van-col>
@@ -291,49 +291,38 @@
 							<van-col span="10">企业法人：</van-col>
 							<van-col span="12"><img class="yyzz" src="../../../assets/images/idcard/sfz.png" alt=""></van-col>
 						</van-cell>
+
 						<van-cell>
-							<van-col span="10">新一代客户编号:</van-col>
-							<van-col span="12">44099999999</van-col>
+							<van-col span="10">姓名:</van-col>
+							<van-col span="12">艾仲华</van-col>
 						</van-cell>
 						<van-cell>
-							<van-col span="10">统一社会信用代码:</van-col>
-							<van-col span="12">xxxxxxx</van-col>
+							<van-col span="10">性别:</van-col>
+							<van-col span="12">女</van-col>
 						</van-cell>
 						<van-cell>
-							<van-col span="10">企业名称:</van-col>
-							<van-col span="12">广州老地方有限公司</van-col>
+							<van-col span="10">民族:</van-col>
+							<van-col span="12">汉族</van-col>
 						</van-cell>
 						<van-cell>
-							<van-col span="10">企业地址:</van-col>
-							<van-col span="12">广州市越秀区法政路XX号</van-col>
+							<van-col span="10">出生日期:</van-col>
+							<van-col span="12">1976.8.1</van-col>
 						</van-cell>
 						<van-cell>
-							<van-col span="10">法定代表人:</van-col>
-							<van-col span="12">广州市越秀区法政路XX号</van-col>
+							<van-col span="10">住址:</van-col>
+							<van-col span="12">广州市天河朱系新城中花城大道中海</van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="10">公民身份证号码:</van-col>
-							<van-col span="12">张三</van-col>
+							<van-col span="12">120106197608016578</van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="10">有效期限:</van-col>
 							<van-col span="12">2030-01-10</van-col>
 						</van-cell>
 						<van-cell>
-							<van-col span="10">法定代表人电话:</van-col>
-							<van-col span="12">13800000000</van-col>
-						</van-cell>
-						<van-cell>
-							<van-col span="10">法定代表人地址</van-col>
-							<van-col span="12">广州市越秀区法政路XX号</van-col>
-						</van-cell>
-						<van-cell>
 							<van-col span="10">抵押人1联系方式:</van-col>
-							<van-col span="12">138000000000</van-col>
-						</van-cell>
-						<van-cell>
-							<van-col span="10"></van-col>
-							<van-col span="12">FC2384239482392</van-col>
+							<van-col span="12">13702137765</van-col>
 						</van-cell>
 						<van-cell>
 							<van-col span="10"></van-col>
@@ -397,7 +386,7 @@
 						<van-col span="12">广州市越秀区法政路XX号</van-col>
 					</van-cell>
 					<van-cell>
-						<van-col span="10">抵押人1联系方式:</van-col>
+						<van-col span="10">抵押人2联系方式:</van-col>
 						<van-col span="12">138000000000</van-col>
 					</van-cell>
 					<van-cell>
@@ -439,7 +428,7 @@
 
   //数据预加载
   created(){
-  	// console.log('query',this.$route.query.info)
+  	console.log('query',this.$route.query.info)
 	  this.info = this.$route.query.info;
   },
 

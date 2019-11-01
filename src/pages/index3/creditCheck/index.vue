@@ -110,8 +110,10 @@
         //网页加载完成
         mounted (){
 			var infos =  sessionStorage.getItem('userinfo')
+
 			if(null != infos && undefined != infos && '' != infos){
-				this.infos = JSON.parse(infos)
+				this.infos = JSON.parse(infos);
+                console.log(this.infos);
 			}
 		},
 
