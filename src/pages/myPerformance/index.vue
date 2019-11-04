@@ -133,19 +133,20 @@
 										<p class="tab3_div1_text2">第<span class="tab3_div1_text3" >12</span>名</p>
 									</van-row>
 								</van-col>
-								<van-col  class="" span="8" style="position: relative">
+								<van-col  class="" span="7" style="position: relative">
 									<img :src="frame1"  class="img_frame" >
 									<img :src="people1"  class="img_frame_head" >
 								</van-col>
-								<van-col span="8">
-									<van-row style="height: 60px">
+								<van-col span="8" style="">
+									<van-row style="height: 60px" >
 										<p class="tab3_div1_text5" style="color: rgb(51,51,51);">广东省分行</p>
 										<p class="tab3_div1_text5" >2019年9月</p>
 									</van-row>
 									<van-row style="text-align: center;">
-										<p class="tab3_div1_text2">成功<span class="tab3_div1_text3">34</span>笔</p>
+										<p class="tab3_div1_text2 p_icon">成功<span class="tab3_div1_text3">34</span>笔<van-icon name="question-o" class="icon"/></p>
 									</van-row>
 								</van-col>
+
 							</van-row>
 
 							<div class="list_div ">
@@ -155,7 +156,10 @@
 										<img :src="frame2"  class="img_frame_min" >
 										<img :src="people2"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2" >Selina</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >Selina</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9"><p class="list_text3">成功<span class="list_text4">47</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -164,7 +168,10 @@
 										<img :src="frame3"  class="img_frame_min" >
 										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">王长生</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >王长生</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9"><p class="list_text3">成功<span class="list_text4">45</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -173,7 +180,10 @@
 										<img :src="frame4"  class="img_frame_min" >
 										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">赵无极</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >赵无极</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">42</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -181,7 +191,10 @@
 									<van-col  class="" span="4" >
 										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">石昊</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >石昊</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">41</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -189,7 +202,10 @@
 									<van-col  class="" span="4" >
 										<img :src="people1"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">柳飘飘</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >柳飘飘</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">40</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -197,7 +213,10 @@
 									<van-col  class="" span="4" >
 										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">徐琨</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >徐琨</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">39</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -205,7 +224,10 @@
 									<van-col  class="" span="4" >
 										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">李察</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >李察</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">39</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -213,7 +235,10 @@
 									<van-col  class="" span="4" >
 										<img :src="people3"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">秦广汉</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >秦广汉</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">37</span>笔</p></van-col>
 								</van-row>
 								<van-row class="list_box" type="flex" justify="center" style="position: relative">
@@ -221,7 +246,10 @@
 									<van-col  class="" span="4" >
 										<img :src="people2"  class="img_frame_head_min" >
 									</van-col>
-									<van-col  class="" span="10"><p class="list_text2">曾李</p></van-col>
+									<van-col  class="" span="10">
+										<van-row><span class="list_top">广东省分行</span></van-row>
+										<van-row><span class="list_button" >曾李</span></van-row>
+									</van-col>
 									<van-col  class="text-align_right" span="9" ><p class="list_text3">成功<span class="list_text4">35</span>笔</p></van-col>
 								</van-row>
 
@@ -587,6 +615,8 @@
 		color: rgb(102,102,102);
 	};
 	.tab3_div1_text5{
+		position: relative;
+		right: -6px;
 		font-size:15px;
 		text-align: right;
 		line-height: 24px;
@@ -668,7 +698,29 @@
 		top:-18px
 
 	}
+	.list_top{
+		line-height: 34px;
+		font-size: 14px;
+		color: #666666;
+		margin-left: 12px;
+	}
+	.list_button{
+		line-height: 20px;
+		margin-left: 10px;
+		font-size: 18px;
 
+	}
+	.icon{
+		color: #4c62e7;
+		padding-left: 2px;
+		font-size: 18px;
+		font-weight: bold;
+		position: relative;
+		top:4px;
+	}
+	.p_icon{
+		width: 120%;
+	}
 
 
 
