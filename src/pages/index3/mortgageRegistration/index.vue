@@ -31,11 +31,16 @@
                                         <van-col class="" span="16" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                     </van-row>
                                     <div class="slider_content" >
-                                        <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value" bar-height="10px" active-color="#ffffff" >
+<!--                                        <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value" bar-height="10px" active-color="#ffffff" >-->
+<!--                                            <div slot="button" class="custom-button" >-->
+<!--                                                {{item.huakuai_title}}-->
+<!--                                            </div>-->
+<!--                                        </van-slider>-->
+                                        <el-slider @change="huaKuaiChange(i)"  class="sliderHua" v-model="item.huakuai_value" :show-tooltip="false" active-color="#e5e5e5">
                                             <div slot="button" class="custom-button" >
                                                 {{item.huakuai_title}}
                                             </div>
-                                        </van-slider>
+                                        </el-slider>
                                     </div>
                                 </div>
                             </van-col>
@@ -64,11 +69,16 @@
                                     <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                 </van-row>
                                 <div class="slider_content" >
-                                    <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value1" bar-height="10px" active-color="#ffffff" >
+<!--                                    <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value1" bar-height="10px" active-color="#ffffff" >-->
+<!--                                        <div slot="button" class="custom-button" >-->
+<!--                                            {{item.confirmSend}}-->
+<!--                                        </div>-->
+<!--                                    </van-slider>-->
+                                    <el-slider @change="huaKuaiChange(i)"  class="sliderHua" v-model="item.huakuai_value1" :show-tooltip="false" active-color="#e5e5e5">
                                         <div slot="button" class="custom-button" >
                                             {{item.confirmSend}}
                                         </div>
-                                    </van-slider>
+                                    </el-slider>
                                 </div>
 
                             </div>
@@ -96,11 +106,16 @@
                                     <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                 </van-row>
                                 <div class="slider_content" >
-                                    <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value2" bar-height="10px" active-color="#ffffff" >
+<!--                                    <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value2" bar-height="10px" active-color="#ffffff" >-->
+<!--                                        <div slot="button" class="custom-button" >-->
+<!--                                            {{item.confirmGet}}-->
+<!--                                        </div>-->
+<!--                                    </van-slider>-->
+                                    <el-slider @change="huaKuaiChange(i)"  class="sliderHua" v-model="item.huakuai_value2" :show-tooltip="false" active-color="#e5e5e5">
                                         <div slot="button" class="custom-button" >
                                             {{item.confirmGet}}
                                         </div>
-                                    </van-slider>
+                                    </el-slider>
                                 </div>
 
                             </div>
@@ -548,7 +563,7 @@
     .sliderHua{
         margin:12px auto;
         width:75%;
-        border: #4c62e7 1px solid;
+        /*border: #4c62e7 1px solid;*/
         background-color: white;
     }
 
