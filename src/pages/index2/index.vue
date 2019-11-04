@@ -73,17 +73,23 @@
             <van-col><div class ="BKuang" >个人征信</div></van-col>
           </van-row>
           <van-row  gutter="10">
-            <div><div class ="timeKuang" >
-              <van-slider @change="huaKuaiChange()" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
-                <div slot="button" class="custom-button" >
-                  {{huaKuaiName}}
-                </div>
-              </van-slider></div>
+            <div>
+              <div class ="timeKuang" >
+                <!-- <van-slider @change="huaKuaiChange()" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
+                  <div slot="button" class="custom-button" >
+                    {{huaKuaiName}}
+                  </div>
+                </van-slider> -->
+                <el-slider @change="huaKuaiChange()"  class="sliderHua" v-model="huaKuai" :show-tooltip="false" active-color="#e5e5e5">
+                  <div slot="button" class="custom-button" >
+                    {{huaKuaiName}}
+                  </div>
+                </el-slider>
+              </div>
               <div class ="huaTime" @click="particularsCardBut(1)" >{{toDay}}</br><span class="timeSpan">09:00</span></div>
             </div>
           </van-row>
         </div>
-
       
         <div class="daiWanCheng"  v-show="typeTwoShow">
           <van-row @click="particularsCardBut(2)">
@@ -124,12 +130,19 @@
             <van-col><div class ="BKuang" >个人征信</div></van-col>
           </van-row>
           <van-row  gutter="10">
-            <div><div class ="timeKuang" >
-              <van-slider @change="huaKuaiChangeTwo()" class="sliderHua" v-model="huaKuaitwo" bar-height="10px" active-color="#e5e5e5" >
-                <div slot="button" class="custom-button" >
-                  {{huaKuaiNameTwo}}
-                </div>
-              </van-slider></div>
+            <div>
+              <div class ="timeKuang" >
+                <!-- <van-slider @change="huaKuaiChangeTwo()" class="sliderHua" v-model="huaKuaitwo" bar-height="10px" active-color="#e5e5e5" >
+                  <div slot="button" class="custom-button" >
+                    {{huaKuaiNameTwo}}
+                  </div>
+                </van-slider> -->
+                <el-slider @change="huaKuaiChangeTwo()"  class="sliderHua" v-model="huaKuaitwo" :show-tooltip="false" active-color="#e5e5e5">
+                  <div slot="button" class="custom-button" >
+                    {{huaKuaiNameTwo}}
+                  </div>
+                </el-slider>
+              </div>
               <div class ="huaTime" @click="particularsCardBut(2)">{{toDay}}</br><span class="timeSpan">09:00</span></div>
             </div>
           </van-row>
@@ -175,6 +188,7 @@ export default {
        huaKuaitwo: null,
        huaKuaiName: "滑动抢单",
        huaKuaiNameTwo: "滑动抢单",
+       value3:36,
        active: 'b',
        textJueIsOk: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第一个
        textJueIsOkTwo: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第二个
@@ -312,7 +326,14 @@ export default {
   #shaiLeft .van-dropdown-menu__item:nth-of-type(1){
     border-bottom:3px solid #4c62e7;
   }
-
+  .el-slider__button{
+    /* width: 80px;
+    height: 26px;
+    /* border-radius:15px;
+    background-color: #4c62e8;
+    color: white;
+    border:none; */
+  }
 </style>
 <style lang="scss" scoped>
 
@@ -489,7 +510,7 @@ export default {
     margin-right:12px;
   }
   .timeKuang .sliderHua{
-    margin-top:20px;
+    margin-top:7px;//20px;
     margin-left: 42px;
     width:75%;
   }
