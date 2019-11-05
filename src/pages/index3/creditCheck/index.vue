@@ -120,7 +120,8 @@
         //声明方法
         methods : {
             onClickLeft() {
-                this.$router.push({path:'/'});
+                // this.$router.push({path:'/'});
+                this.$router.go(-1);
             },
             go : function(url,params = false){
 				if(params){
