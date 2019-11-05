@@ -62,10 +62,10 @@
                         <van-col span="8" class="left-text">产品代码:</van-col>
                         <van-col class="right-text">{{item.company_info.customer_id}}</van-col>
                     </van-row>
-                    <van-row>
+                    <!-- <van-row>
                         <van-col span="8" class="left-text">签约时间:</van-col>
                         <van-col class="right-text">{{item.signDate}}</van-col>
-                    </van-row>
+                    </van-row> -->
                     <van-row>
                         <van-col span="8" class="left-text">ID:</van-col>
                         <van-col class="right-text">{{item.unid}}</van-col>
