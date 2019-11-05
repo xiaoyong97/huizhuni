@@ -88,8 +88,12 @@
         //数据预加载
        created(){
            console.log(this.$route.params.info)
-
-       		this.info = this.$route.params.info;
+           if(this.$route.params.info) {
+               this.info = this.$route.params.info;
+               sessionStorage.setItem('infoDetail',JSON.stringify(this.info))
+           } else {
+               this.info = JSON.parse(sessionStorage.getItem('infoDetail'))
+           }
        },
 
         //网页加载完成

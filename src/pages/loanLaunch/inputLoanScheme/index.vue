@@ -149,7 +149,7 @@ export default {
       info:{
         cpCode:'9613',
         mmmey:'8,500,000',
-		capitalMoney:'八百五拾万元整',
+		capitalMoney:'捌佰伍拾万元整',
       },
       value: '',
       showPicker: false,

@@ -167,49 +167,99 @@
             </van-collapse-item>
           <van-collapse-item name="4">
               <div class="letdiv" slot="title">抵押物及抵押人信息</div>
+              <div>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                        <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
+                        <p class="list_test" style="color:#323233;">抵押物1：</p>
+                    </van-col>
+                </van-row>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                        <p class="list_test" style="color:#323233;">不动产权证：</p>
+                        <img src="../../../assets/images/other/budongchan.png" alt="">
+                    </van-col>
+                </van-row>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;">
+                        <p class="list_test2">权力人：张三</p>
+                    </van-col>
+                </van-row>
+              </div>
               <div v-for="(item ,index) in info.mortgaged">
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
                         <img class="img24_chosen" src="../../../assets/images/38/choose@2x.png" alt="">
-                        <p class="list_test" style="color:#323233;">权力人：{{item.holder}}</p>
+                        <p class="list_test" style="color:#323233;">抵押物2：</p>
                     </van-col>
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">共有情况：{{item.nature}}</p>
+                        <p class="list_test" style="color:#323233;">企业法人：</p>
+                        <img style="width:100%;float:right;" src="../../../assets/images/idcard/sfz.png" alt="">
                     </van-col>
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
-                        <p class="list_test2">坐落：{{item.address}}</p>
+                        <p class="list_test2">新一代客户编号：44099999999</p>
+                    </van-col>
+                </van-row>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;position:relative;">
+                        <p class="list_test2">统一社会信用代码：xxxxxxx</p>
                     </van-col>
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">不动产号：{{item.house_nubmer}}</p>
+                        <p class="list_test2">企业名称：广州老地方有限公司</p>
                     </van-col>
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">权力性质：{{item.type}}</p>
+                        <p class="list_test2">企业地址：广州市越秀区法政路XX号</p>
                     </van-col>
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">用途：{{item.use}}</p>
+                        <p class="list_test2">法定代表人：广州市越秀区法政路XX号</p>
                     </van-col>
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">建筑面积：{{item.area}}</p>
+                        <p class="list_test2">公民身份证号码：张三</p>
                     </van-col>
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">权力其他情况：{{item.Other}}</p>
+                        <p class="list_test2">有效期限：2030-01-10</p>
                     </van-col>
                 </van-row>
-				</div>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;">
+                        <p class="list_test2">法定代表人电话：13800000000</p>
+                    </van-col>
+                </van-row>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;">
+                        <p class="list_test2">法定代表人地址：广州市越秀区法政路XX号</p>
+                    </van-col>
+                </van-row>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;">
+                        <p class="list_test2">抵押人2联系方式：138000000000</p>
+                    </van-col>
+                </van-row>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;">
+                        <p class="list_test2"><span style="width:103px;height:20px;float:left;"></span>FC2384239482392</p>
+                    </van-col>
+                </van-row>
+                <van-row class="list_row">
+                    <van-col class="list_left" style="text-align: left;width:100%;">
+                        <p class="list_test2"><span style="width:103px;height:20px;float:left;"></span>FC7717626617263</p>
+                    </van-col>
+                </van-row>
+                </div>
 			</van-collapse-item>
         </van-collapse>
       </div>

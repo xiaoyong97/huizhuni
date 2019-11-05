@@ -1,8 +1,8 @@
 <template>
     <div class="main">
-     
+
      <!--头部导航-->
-   
+
 	 <van-nav-bar class="vnavbar" :title="title" left-arrow @click-left="onClickLeft" @click-right="new_task">
 	 </van-nav-bar>
 	<van-icon name="search" class="search" @click="gotoSearch()"  />
@@ -55,13 +55,13 @@
 							<van-col span="24" class="detail"  @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
-					
+
 				</div>
 			  </van-cell-group>
 		 </van-tab>
        </van-tabs>
     </div>
-      
+
     </div>
 </template>
 
@@ -73,7 +73,7 @@
 
 	Vue.use(Tab).use(Tabs).use(SubmitBar).use(Checkbox);
  export default {
-	
+
   data() {
     return {
       title : '贷款发起',
@@ -83,8 +83,8 @@
 	  infos:[],
     }
   },
-  
-  
+
+
   //数据预加载
   created : ()=>{
   },
@@ -103,10 +103,10 @@
         this.count = newCount.length*100;
       }
     },
-  
+
   //声明方法
   methods : {
-	  
+
     go:function(url){
       this.$router.push({name:url});
     },
@@ -120,7 +120,8 @@
 		return;
 	},
 	onClickLeft:function() {
-	  this.$router.push('backhome');
+	  // this.$router.push('backhome');
+		this.$router.go(-1);
 	},
 	checkTask:function(id){
 		localStorage.setItem('id',id);
@@ -130,7 +131,7 @@
 		this.$router.push({name: url,query:{unid:id}})
 	}
   },
-  
+
   //计算属性
   computed: {
 	diyawuList:function(){
@@ -153,7 +154,7 @@
 				diyawu = obj;
 				localStorage.setItem('diyawu',JSON.stringify(obj))
 			}
-			
+
 			return diyawu;
 		},
 		task:function(){
@@ -225,7 +226,7 @@
 			localStorage.setItem('task',JSON.stringify(obj))
 			task = obj;
 		}
-	
+
 		return task
 	}
   },
@@ -237,7 +238,7 @@
 </script>
 
 <style lang="scss" scoped>
-	
+
 // scoped 表示私有样式
 	.vnavbar{
 		position: fixed;
@@ -247,7 +248,7 @@
 	.van-submit-bar__text{
 		text-align: left;
 		padding-left: 44px;
-		
+
 	}
 	.van-submit-bar__button{
 		background-color: #4c62e7;
@@ -280,7 +281,7 @@
 	    display:table;
 	    clear:both;
 	}
-	
+
 	.bg-grey{
 		background-color: rgb(238,238,238);
 		padding: 0px;
@@ -294,7 +295,7 @@
 	}
 	.van-cell__value--alone{
 		padding: 4px 8px 4px 30px;;
-		
+
 	}
 	.company{
 		width: 18px;
@@ -313,7 +314,7 @@
 		margin-top: 8px;;
 		margin-bottom: 8px;;
 	}
-	
+
 	.checkbox{
 		position: absolute;
 		left: 0px;
@@ -324,7 +325,7 @@
 	.pan2 .van-cell__value--alone{
 		padding: 4px 8px 4px 8px;;
 	}
-	
+
 	.pan2 .company{
 		width: 18px;
 		height: 18px;
@@ -332,7 +333,7 @@
 		top:16px;
 		left: 18px;;
 	}
-	
+
 	.pan2 .van-cell{
 		background-color: rgba(0,0,0,0);
 		padding-left: 4px;;
@@ -356,7 +357,7 @@
 	}
 	.detail-img{
 		width: 18px;;
-		
+
 	}
 	.search{
 		position: fixed;

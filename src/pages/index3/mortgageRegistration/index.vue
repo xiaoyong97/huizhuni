@@ -30,13 +30,20 @@
                                         <van-col class="" span="8"><p class="card_list1_test_left" >房产证号</p></van-col>
                                         <van-col class="" span="16" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                     </van-row>
-                                    <div class="slider_content" >
-                                        <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value" bar-height="10px" active-color="#ffffff" >
-                                            <div slot="button" class="custom-button" >
-                                                {{item.huakuai_title}}
-                                            </div>
-                                        </van-slider>
-                                    </div>
+                                    <van-row class="slider_content" >
+<!--                                        <vue-slide-bar @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value" bar-height="10px" active-color="#ffffff" >-->
+<!--                                            <div slot="button" class="custom-button" >-->
+<!--                                                {{item.huakuai_title}}-->
+<!--                                            </div>-->
+<!--                                        </vue-slide-bar>-->
+                                        <vue-slide-bar class="sliderHua" v-model="item.huakuai_value" @dragEnd="huaKuaiChange(i)" >
+                                            <template slot="tooltip" slot-scope="tooltip">
+                                                <div slot="button" class="custom-button">
+                                                    {{item.huakuai_title}}
+                                                </div>
+                                            </template>
+                                        </vue-slide-bar>
+                                    </van-row>
                                 </div>
                             </van-col>
                             <span slot="right" class="van-swipe-cell__right" @click="hulue(i)">忽略</span>
@@ -64,13 +71,19 @@
                                     <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                 </van-row>
                                 <div class="slider_content" >
-                                    <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value1" bar-height="10px" active-color="#ffffff" >
-                                        <div slot="button" class="custom-button" >
-                                            {{item.confirmSend}}
-                                        </div>
-                                    </van-slider>
+<!--                                    <vue-slide @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value1" bar-height="10px" active-color="#ffffff" >-->
+<!--                                        <div slot="button" class="custom-button" >-->
+<!--                                            {{item.confirmSend}}-->
+<!--                                        </div>-->
+<!--                                    </vue-slide>-->
+                                    <vue-slide-bar class="sliderHua" v-model="item.huakuai_value1" @dragEnd="huaKuaiChange(i)">
+                                        <template slot="tooltip" slot-scope="tooltip">
+                                            <div slot="button" class="custom-button">
+                                                {{item.confirmSend}}
+                                            </div>
+                                        </template>
+                                    </vue-slide-bar>
                                 </div>
-
                             </div>
                         </van-col>
                     </van-row>
@@ -95,14 +108,20 @@
                                     <van-col class="" span="12"><p class="card_list1_test_left" >房产证号</p></van-col>
                                     <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >9613662222223</p></van-col>
                                 </van-row>
-                                <div class="slider_content" >
-                                    <van-slider @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value2" bar-height="10px" active-color="#ffffff" >
-                                        <div slot="button" class="custom-button" >
-                                            {{item.confirmGet}}
-                                        </div>
-                                    </van-slider>
-                                </div>
-
+                                <van-row class="slider_content" >
+<!--                                    <vue-slide @change="huaKuaiChange(i)" class="sliderHua" v-model="item.huakuai_value2" bar-height="10px" active-color="#ffffff" >-->
+<!--                                        <div slot="button" class="custom-button" >-->
+<!--                                            {{item.confirmGet}}-->
+<!--                                        </div>-->
+<!--                                    </vue-slide>-->
+                                    <vue-slide-bar class="sliderHua" v-model="item.huakuai_value2" @dragEnd="huaKuaiChange(i)">
+                                        <template slot="tooltip" slot-scope="tooltip">
+                                            <div slot="button" class="custom-button">
+                                                {{item.confirmGet}}
+                                            </div>
+                                        </template>
+                                    </vue-slide-bar>
+                                </van-row>
                             </div>
                         </van-col>
                     </van-row>
@@ -305,7 +324,7 @@
 
 
             },
-            huaKuaiChange(i){
+            huaKuaiChange(i,valll){
                 switch (this.active) {
                     case 0:
                         if(this.list[i].huakuai_value==100){
@@ -505,7 +524,11 @@
     }
     .slider_content{
         padding: 0 16%;
-        height: 40px;
+        width:65%;
+        line-height:40px;
+        float: left;
+        font-size: 12px;
+        color:rgb(102,102,102);
     }
     .botton_box{
         height: 64px;
@@ -544,12 +567,15 @@
         border-radius: 13px;
         background-color: rgb(76,98,232);
         color: white;
+        position: relative;
+        top: 15px;
     }
     .sliderHua{
         margin:12px auto;
         width:75%;
-        border: #4c62e7 1px solid;
-        background-color: white;
+        padding-top:10px !important;
+        /*border: #4c62e7 1px solid;*/
+        /*background-color: white;*/
     }
 
     .list_text_delete{

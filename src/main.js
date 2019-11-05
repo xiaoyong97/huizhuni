@@ -13,12 +13,20 @@ Vue.use(BaiduMap, {
 
 Vue.config.productionTip = false
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
+import VueSlideBar from 'vue-slide-bar';
+Vue.component('vue-slide-bar', VueSlideBar)
+
 //引入uant UI
 Vue.use(Vant);
 Vue.use(Grid);
 Vue.use(GridItem)
 
 new Vue({
+  el: '#app',
   router,
   render: h => h(App),
 }).$mount('#app')

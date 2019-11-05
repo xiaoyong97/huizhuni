@@ -885,7 +885,7 @@
 		right:12px ;
 		height: 18px;
 		width: 18px;
-		z-index: 100;
+		z-index: 1000;
 	}
 	.grey{
 		color: #999999;

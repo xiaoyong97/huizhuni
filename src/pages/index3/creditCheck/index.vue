@@ -110,15 +110,18 @@
         //网页加载完成
         mounted (){
 			var infos =  sessionStorage.getItem('userinfo')
+
 			if(null != infos && undefined != infos && '' != infos){
-				this.infos = JSON.parse(infos)
+				this.infos = JSON.parse(infos);
+                console.log(this.infos);
 			}
 		},
 
         //声明方法
         methods : {
             onClickLeft() {
-                this.$router.push({path:'/'});
+                // this.$router.push({path:'/'});
+                this.$router.go(-1);
             },
             go : function(url,params = false){
 				if(params){
