@@ -227,14 +227,14 @@
         </van-col>
         <van-col span="2" > </van-col>
         <van-col span="11" >
-            <van-button class="keQunCengBut" type="primary">取消</van-button>
+            <van-button class="keQunCengBut" type="primary" @click="cancelPopupShow">取消</van-button>
         </van-col>
       </van-row>
       
     </van-popup>
 
     <!-- 机构选择 -->
-    <van-action-sheet class="select-box" :overlay="false" :round="false" :close-on-click-overlay="false" v-model="listShow" title="选择机构">
+    <van-action-sheet class="select-box" :overlay="false" :round="false" :close-on-click-overlay="false" v-model="listShow" title="行业选择">
       <div class="nav">
         <div class="nav-item" v-for="item in navList">{{item}}级</div>
       </div>
@@ -464,7 +464,7 @@ export default {
       listShow: false,
       navList: ['一'],
       cellList: [
-        '中国建设银行总行'
+        '房地产业',
       ],
       active: -1,
     };
@@ -505,10 +505,10 @@ export default {
           case 1:
             this.navList.push('二');
             this.cellList = [
-              '建行北京市分行',
-              '建行河北市分行',
-              '建行天津市分行',
-              '建行山西市分行',
+              '房地产业',
+              '租赁和商务服务业',
+              '科学研究和技术服务业',
+              '水利，环境和公共设施管理业',
             ]
             break;
           case 2:
@@ -662,7 +662,7 @@ export default {
     go: function(type) {
       if (type == '已抢单') {
         // this.$router.push({path: '/shangParticulars/1'});
-        this.$router.push({name: 'index2'});
+        this.$router.push({name: 'grabSingleYi'});
       } else {
         this.$router.push({name: 'applyQueryResult'});
       }
@@ -694,6 +694,10 @@ export default {
       this.coordinateList1.splice(3, 1);
       this.coordinateList1.splice(4, 1);
       this.coordinateList1.splice(5, 1);
+      this.huiShow = false;
+      this.huiPopupShow=false;
+    },
+    cancelPopupShow() {
       this.huiShow = false;
       this.huiPopupShow=false;
     }

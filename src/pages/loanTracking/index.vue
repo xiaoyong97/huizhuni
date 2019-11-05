@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <!--头部导航-->
-		<van-nav-bar title="贷后跟踪" :border="false" @click-left="onClickLeft" @click-right="onClickRight('loanTrackingSearch')">
+		<van-nav-bar title="贷后跟踪" :border="false" @click-left="onClickLeft" @click-right="go('loanTrackingSearch', {loanTracking: activeTab})">
             <van-icon :name="backIcon" size="18px" slot="left" />
             <van-icon :name="searchIcon" size="18px" slot="right" />
         </van-nav-bar>
@@ -18,7 +18,7 @@
 
         <van-tabs v-model="activeTab" title-active-color="#4c62e7" title-inactive-color="#000000" color="#4c62e7" line-width="33.333333%" line-height=3 :border="false">
             <van-tab title="逾期提醒" class="tab-content">
-                <van-cell class="cell" v-for="item in tabList1" @click="go('loanTrackingDetail', {status: '逾期'})">
+                <van-cell class="cell" v-for="item in tabList1" @click="go('loanTrackingDetail', {status: '逾期', loanTracking: activeTab})">
                     <van-row>
                         <van-col span="18"><img class="company" :src="companyIcon" alt=""> {{item.company}} </van-col>
                         <van-col span="6"><div class="p">逾期<span class="days">{{item.delayDays}}</span>天</div></van-col>
@@ -46,7 +46,7 @@
                     续贷提醒<van-icon class="more-img" :name="moreImg" @click="typeSelect" />
                 </div>
                 <div class="tab2-content">
-                    <div class="cell" v-for="item in tabList2" @click="go('loanTrackingDetail', {status: '续贷'})">
+                    <div class="cell" v-for="item in tabList2" @click="go('loanTrackingDetail', {status: '续贷',loanTracking: activeTab})">
                         <van-cell>
                             <van-row>
                             <van-col span="18"><img class="company" :src="companyIcon" alt=""> {{item.company}} </van-col>
@@ -73,7 +73,7 @@
                 </div>
             </van-tab>
             <van-tab title="还本息提醒" class="tab-content">
-                <van-cell class="cell" v-for="item in tabList3" @click="go('loanTrackingDetail', {status: '正常'})">
+                <van-cell class="cell" v-for="item in tabList3" @click="go('loanTrackingDetail', {status: '正常', loanTracking: activeTab})">
                     <van-row>
                         <van-col span="18"><img class="company" :src="companyIcon" alt=""> {{item.company}} </van-col>
                     </van-row>
@@ -302,6 +302,9 @@
             activeTab(value) {
                 this.typeSelectFlag = false;
             }
+        },
+        mounted() {
+            this.activeTab = this.getItem('loanTracking') == undefined  ? 1 : this.getItem('loanTracking');
         }
     }
 </script>

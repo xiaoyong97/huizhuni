@@ -193,7 +193,7 @@
             <van-button class="keQunCengBut" type="info">选择</van-button>
           </van-col>
         </van-row>
-        <van-row  class="keQunRow">
+        <van-row  class="keQunRow" @click="selectClick">
           <van-col  span="9">
             <div class="keQunText">标签层级：</div>
           </van-col>
@@ -631,7 +631,7 @@ export default {
     go: function(type) {
       if (type == '已抢单') {
         // this.$router.push({path: '/shangParticulars/1'});
-        this.$router.push({name: 'index2'});
+        this.$router.push({name: 'grabSingleYi'});
       } else {
         this.$router.push({name: 'applyQueryResult'});
       }
