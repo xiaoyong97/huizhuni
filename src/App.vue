@@ -42,4 +42,29 @@ body {
 .van-nav-bar--fixed{
   z-index: 999 !important;
 }
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+	::-webkit-scrollbar  
+	{  
+	    width: 0px;    
+	    background-color: #FFFFFF;  
+	}  
+
+	/*定义滚动条轨道 内阴影+圆角*/  
+	::-webkit-scrollbar-track  
+	{  
+	    border-radius: 10px;  
+	    background-color: #FFFFFF;  
+	}  
+
+	/*定义滑块 内阴影+圆角*/  
+	::-webkit-scrollbar-thumb  
+	{  
+	    border-radius: 10px;
+	    background-color: #FFFFFF;  
+	}  
+	/*定义最上方和最下方的按钮*/
+	::-webkit-scrollbar-button{
+	     background-color: #FFFFFF;
+	     border:1px solid #FFFFFF;
+	}
 </style>

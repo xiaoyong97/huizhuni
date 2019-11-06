@@ -114,7 +114,6 @@
                 this.$router.push({name: url})
             },
             gocommit : function(){
-                console.log('123')
                 var num = Math.random();
                 console.log(num)
                 if ( num-0.5 > 0 ) {

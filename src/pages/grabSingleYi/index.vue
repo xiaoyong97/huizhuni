@@ -1283,8 +1283,8 @@ export default {
     width:18px;
     height: 18px;;
     position: fixed;
-    bottom:25px;
-    left:103px;
+    bottom:24px;
+    left:27.7%;//115px
     z-index: 1;
   }
 
@@ -1383,11 +1383,11 @@ export default {
     }
   //结束
   .qiangDanTabs{
-    padding-bottom: 50px;
+    padding-bottom: 30px;
   }
   .qiangDanTabs .bac{
     width: 100%;
-    height: 509px;
+    height: 600px;
     overflow: auto;
     margin: 0px;
     padding-top: 1px;
@@ -1507,6 +1507,7 @@ export default {
     padding-left: 10px;
     padding-right: 10px;
     background-color: white;
+    margin-bottom: 15px;
   }
   .yiShiXiao .qiangDanCol{
     line-height:20px;

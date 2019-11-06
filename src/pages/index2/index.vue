@@ -73,17 +73,25 @@
             <van-col><div class ="BKuang" >个人征信</div></van-col>
           </van-row>
           <van-row  gutter="10">
-            <div><div class ="timeKuang" >
-              <van-slider @change="huaKuaiChange()" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
-                <div slot="button" class="custom-button" >
-                  {{huaKuaiName}}
-                </div>
-              </van-slider></div>
+            <div>
+              <div class ="timeKuang" >
+                <!-- <van-slider @change="huaKuaiChange()" class="sliderHua" v-model="huaKuai" bar-height="10px" active-color="#e5e5e5" >
+                  <div slot="button" class="custom-button" >
+                    {{huaKuaiName}}
+                  </div>
+                </van-slider> -->
+                <vue-slide-bar class="sliderHua" v-model="huaKuai" @dragEnd="huaKuaiChange">
+                  <template slot="tooltip" slot-scope="tooltip">
+                    <div slot="button" class="custom-button">
+                      {{huaKuaiName}}
+                    </div>
+                  </template>
+                </vue-slide-bar>
+              </div>
               <div class ="huaTime" @click="particularsCardBut(1)" >{{toDay}}</br><span class="timeSpan">09:00</span></div>
             </div>
           </van-row>
         </div>
-
       
         <div class="daiWanCheng"  v-show="typeTwoShow">
           <van-row @click="particularsCardBut(2)">
@@ -124,12 +132,21 @@
             <van-col><div class ="BKuang" >个人征信</div></van-col>
           </van-row>
           <van-row  gutter="10">
-            <div><div class ="timeKuang" >
-              <van-slider @change="huaKuaiChangeTwo()" class="sliderHua" v-model="huaKuaitwo" bar-height="10px" active-color="#e5e5e5" >
-                <div slot="button" class="custom-button" >
-                  {{huaKuaiNameTwo}}
-                </div>
-              </van-slider></div>
+            <div>
+              <div class ="timeKuang" >
+                <!-- <van-slider @change="huaKuaiChangeTwo()" class="sliderHua" v-model="huaKuaitwo" bar-height="10px" active-color="#e5e5e5" >
+                  <div slot="button" class="custom-button" >
+                    {{huaKuaiNameTwo}}
+                  </div>
+                </van-slider> -->
+                <vue-slide-bar class="sliderHua" v-model="huaKuaitwo" @dragEnd="huaKuaiChangeTwo">
+                  <template slot="tooltip" slot-scope="tooltip">
+                    <div slot="button" class="custom-button">
+                      {{huaKuaiNameTwo}}
+                    </div>
+                  </template>
+                </vue-slide-bar>
+              </div>
               <div class ="huaTime" @click="particularsCardBut(2)">{{toDay}}</br><span class="timeSpan">09:00</span></div>
             </div>
           </van-row>
@@ -175,6 +192,7 @@ export default {
        huaKuaitwo: null,
        huaKuaiName: "滑动抢单",
        huaKuaiNameTwo: "滑动抢单",
+       value3:36,
        active: 'b',
        textJueIsOk: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第一个
        textJueIsOkTwo: false,//判断是否抢单成功用于企业信息打码,未成功false，成功true，第二个
@@ -248,7 +266,8 @@ export default {
       this.$router.push('/grabSingleYi/'+activeNameHui);
     },
     //滑动进度变化且结束拖动后触发1
-    huaKuaiChange(){
+    huaKuaiChange(valll){
+      this.huaKuai = valll.value;
       if(this.huaKuai==100){
         this.huaKuaiName="抢单中..."
         Dialog.alert({
@@ -266,7 +285,8 @@ export default {
       }
     },
     //滑动进度变化且结束拖动后触发2
-    huaKuaiChangeTwo(){
+    huaKuaiChangeTwo(valll){
+      this.huaKuaitwo = valll.value;
       if(this.huaKuaitwo==100){
         this.huaKuaiNameTwo="抢单中..."
         Dialog.alert({
@@ -313,7 +333,14 @@ export default {
   #shaiLeft .van-dropdown-menu__item:nth-of-type(1){
     border-bottom:3px solid #4c62e7;
   }
-
+  .el-slider__button{
+    width: 80px;
+    height: 26px;
+    border-radius:15px;
+    background-color: #4c62e8;
+    color: white;
+    border:none;
+  }
 </style>
 <style lang="scss" scoped>
 
@@ -358,7 +385,7 @@ export default {
 
   .bac{
     width: 100%;
-    min-height: 509px;
+    min-height: 630px;
     height: 100%;
     overflow:auto;
     margin: 0px;
@@ -490,9 +517,10 @@ export default {
     margin-right:12px;
   }
   .timeKuang .sliderHua{
-    margin-top:20px;
+    margin-top:7px;//20px;
     margin-left: 42px;
     width:75%;
+    padding-top:15px !important;
   }
   .timeKuang .sliderHua .custom-button{
     line-height: 26px;
@@ -502,5 +530,7 @@ export default {
     border-radius: 13px;
     background-color: rgb(76,98,232);
     color: white;
+    position: relative;
+    top: 15px;
   }
 </style>

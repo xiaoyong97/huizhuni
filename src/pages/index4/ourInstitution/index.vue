@@ -486,7 +486,7 @@ export default {
     go: function(type) {
       if (type == '已抢单') {
         // this.$router.push({path: '/shangParticulars/1'});
-        this.$router.push({name: 'index2'});
+        this.$router.push({name: 'grabSingleYi'});
       } else {
         this.$router.push({name: 'applyQueryResult'});
       }

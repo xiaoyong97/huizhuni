@@ -6,7 +6,7 @@
             <van-icon :name="searchIcon" size="18px" slot="right" />
         </van-nav-bar>
 
-        <van-tabs 
+        <van-tabs
             color="#4c62e7"
             line-width="50%"
             title-active-color="#4c62e7"
@@ -41,7 +41,7 @@
                 </div>
             </van-tab>
             <van-tab title="已签约">
-               	<div class="cell" v-for="item in infos" v-show="item.step==4">		
+               	<div class="cell" v-for="item in infos" v-show="item.step==4">
                     <van-row>
                         <van-col><img class="img" src="../../assets/images/38/Sequencenumber@2.png" alt="" /></van-col>
                         <van-col class="title right-text">申请顺序号{{item.unid}}</van-col>
@@ -62,10 +62,10 @@
                         <van-col span="8" class="left-text">产品代码:</van-col>
                         <van-col class="right-text">{{item.company_info.customer_id}}</van-col>
                     </van-row>
-                    <van-row>
+                    <!-- <van-row>
                         <van-col span="8" class="left-text">签约时间:</van-col>
                         <van-col class="right-text">{{item.signDate}}</van-col>
-                    </van-row>
+                    </van-row> -->
                     <van-row>
                         <van-col span="8" class="left-text">ID:</van-col>
                         <van-col class="right-text">{{item.unid}}</van-col>
@@ -94,7 +94,8 @@ export default {
 	},
 	methods:{
 		onClickLeft1:function(){
-			this.$router.push('backHome')
+			// this.$router.push('backHome')
+            this.$router.go(-1);
 		}
 	},
     data() {

@@ -18,7 +18,7 @@
                 </van-row>
                 <van-row>
                     <van-col span="8"><p class="text1">企业名称</p></van-col>
-                    <van-col span="12"><p class="text1">北京京东金融有限公司</p></van-col>
+                    <van-col span="12"><p class="text1">广州市睿智防水电器股份有限公司</p></van-col>
                 </van-row>
                 <van-row>
                     <van-col span="8"><p class="text1">企业主</p></van-col>
@@ -103,7 +103,8 @@
 
 
         //数据预加载
-        created : ()=>{
+        created (){
+
         },
 
         //网页加载完成
@@ -138,6 +139,7 @@
             },
             saveBtn() {
                 this.inptuStatus = true;
+                this.$router.go(-1);
             }
 
 
