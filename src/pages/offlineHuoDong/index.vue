@@ -835,7 +835,8 @@ export default {
         }
     },
     goViewList(url){
-      this.$router.push(url)
+        let activeNameDan="a"
+      this.$router.push(url+"/"+activeNameDan)
     },
     goPage (url,param){
         this.$router.push({name:url,params:param});
@@ -1335,6 +1336,9 @@ export default {
         color: rgb(76,98,231);
         margin-block-start:0;
         margin-block-end:0;
+
+        border-bottom-left-radius:7px;
+        border-top-left-radius: 7px;
     }
     .top_bar_box_text_left_dan{
         font-size: 14px;
@@ -1353,6 +1357,9 @@ export default {
         color: rgb(76,98,231);
         margin-block-start:0;
         margin-block-end:0;
+
+        border-bottom-right-radius:7px;
+        border-top-right-radius: 7px;
     }
 	.top_bar_box_col.active .top_bar_box_text_right, .top_bar_box_col.active .top_bar_box_text_left{
 		background-color: rgb(76,98,231);

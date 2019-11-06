@@ -136,7 +136,7 @@ export default new Router({
       //商机部分
       {
         name: 'grabSingleYi',
-        path: '/grabSingleYi',
+        path: '/grabSingleYi/:activeNameHui',
         component: () => import('@/pages/grabSingleYi'),
         meta: {
           title: '商机已抢单页'
@@ -152,7 +152,7 @@ export default new Router({
       },
       {
         name: 'managementParticulars',
-        path: '/managementParticulars/:userId/:stutasId',
+        path: '/managementParticulars/:userId/:stutasId/:activeNameChuan',
         component: () => import('@/pages/managementParticulars'),
         meta: {
           title: '商机管理详情信息'
@@ -186,7 +186,7 @@ export default new Router({
       },
       {
         name: 'viewList',
-        path: '/offlineHuoDong/viewList',
+        path: '/offlineHuoDong/viewList/:activeNameDan',
         component: () => import('@/pages/offlineHuoDong/viewList'),
         meta: {
         title: '查看名单'

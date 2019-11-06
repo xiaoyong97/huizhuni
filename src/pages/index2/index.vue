@@ -227,10 +227,10 @@ export default {
     //获取当前日期
     getDataTime(){
       this.toDay=new Date().getFullYear()
-      if(new Date().getMonth()<10){
-        this.toDay+="/"+0+new Date().getMonth()
+      if(new Date().getMonth()+1<10){
+        this.toDay+="/"+0+(new Date().getMonth()+1)
       }else{
-        this.toDay+="/"+new Date().getMonth()
+        this.toDay+="/"+(new Date().getMonth()+1)
       }
       if(new Date().getDate()<10){
         this.toDay+="/"+0+new Date().getDate()
@@ -242,9 +242,10 @@ export default {
     fangQiBut(){
       this.fangQiButShow = true
     },
-    //已抢单按钮,跳到抢单页面
+    //已抢单按钮,跳到已抢单页面
     onClickRight(){
-      this.$router.push('/grabSingleYi');
+      let activeNameHui="a"
+      this.$router.push('/grabSingleYi/'+activeNameHui);
     },
     //滑动进度变化且结束拖动后触发1
     huaKuaiChange(){

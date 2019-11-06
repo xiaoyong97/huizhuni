@@ -145,7 +145,9 @@
         //声明方法
         methods : {
             onClickLeft() {
-                this.$router.go(-1);
+                let activeNameDan="b"
+                this.$router.push("/offlineHuoDong/viewList/"+activeNameDan)
+                //this.$router.go(-1);
             },
             gomyperformance : function(){
                 this.$router.push('./myperformance');

@@ -174,6 +174,7 @@ export default {
        fangQiRadio: 1,
        userId:this.$route.params.userId,//跳转参数用户id
        stutasId:this.$route.params.stutasId,//跳转参数状态id
+       activeNameChuan:this.$route.params.activeNameChuan,//已抢单标签状态
        typeStutas: 0,//橘色状态
        userTypeId: 0,//用户id
        enterprise:[],//接受显示数据
@@ -433,7 +434,9 @@ export default {
     },
     //返回上一级
     onClickLeft() {
-      this.$router.go(-1);
+      let activeNameHui=this.activeNameChuan
+      this.$router.push('/grabSingleYi/'+activeNameHui);
+      //this.$router.go(-1);
     },
   },
   

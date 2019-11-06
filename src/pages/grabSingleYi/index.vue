@@ -32,6 +32,10 @@
         <!--                历史名单下拉图标-->
         <img src="../../assets/images/24/Pulldown@2x.png" class="menu1_open" v-show="menu!==1" @click="openMenu(1)">
         <img src="../../assets/images/24/Pullupselect@12x.png" class="menu1_open" v-show="menu==1" @click="closeMenu">
+        <!--                待完成数量-->
+        <!--<div  class="menu1_DaiWanCheng">(55)</div>-->
+        <!--                历史名单数量-->
+        <!--<div class="menu1_LiShi">(54)</div>-->
         <!--全部-->
         <van-tab title="全部" name="a">
          <div class="bac">
@@ -527,7 +531,7 @@
         </van-tab>
         
         <!--待完成-->
-        <van-tab :title="daiTitle" name="b" >
+        <van-tab :title="daiTitle" name="b">
           <div class="bac">
 
             <div class="daiWanCheng" v-show="enterpriseStatus=='YiQiangDan'">
@@ -679,12 +683,13 @@
               </van-row>
             </div>
           </div>
+
+          
         </van-tab>
 
         <!--历史名单-->
-        <van-tab :title="liTitle" name="c">
+        <van-tab  :title="liTitle" name="c">
           <div class="bac">
-            
             <div class="daiWanCheng" v-show="enterpriseStatus=='YiFangQi'">
               <van-row  @click="yiParticularsCardBut(1,4)">
                 <van-col class="qiangDanCol" span="17">
@@ -1095,13 +1100,12 @@ export default {
   //基础数据存放处
   data (){
      return {
-       daiTitle : '待完成(1)',
+       daiTitle:'待完成(1)',
        liTitle: '历史名单(4)',
        menu:-1,  //-1:不显示
        active:0,
        menu2_choose:0,
-       activeName: 'a',
-       activeTabs:'a',
+       activeName:this.$route.params.activeNameHui,//已抢单标签状态
        fangQiButShowOne: false,
        fangQiButShowTwo: false,
        fangQiButShowThree: false,
@@ -1134,7 +1138,6 @@ export default {
   created : function(){
 
   },
-
   //网页加载完成
   mounted : function(){
     this.activeB()
@@ -1156,10 +1159,10 @@ export default {
     //获取当前日期
     getDataTime(){
       this.toDay=new Date().getFullYear()
-      if(new Date().getMonth()<10){
-        this.toDay+="/"+0+new Date().getMonth()
+      if(new Date().getMonth()+1<10){
+        this.toDay+="/"+0+(new Date().getMonth()+1)
       }else{
-        this.toDay+="/"+new Date().getMonth()
+        this.toDay+="/"+(new Date().getMonth()+1)
       }
       if(new Date().getDate()<10){
         this.toDay+="/"+0+new Date().getDate()
@@ -1187,7 +1190,6 @@ export default {
     //计算待完成和历史名单数量
     getDaiLi(){
       //待完成title拼接
-      console.log(this.enterpriseThreeStatus)
       var numDai=0;
       if(this.enterpriseStatus=="YiQiangDan"){
         numDai=numDai+1
@@ -1197,10 +1199,8 @@ export default {
       }
       if(this.enterpriseThreeStatus=="YiQiangDan"||this.enterpriseThreeStatus==null){
         numDai=numDai+1
-        console.log(numDai)
       }
       this.daiTitle= '待完成('+numDai+')'
-
       //历史名单title拼接
       var numLi=4
       if(this.enterpriseStatus=="YiFangQi"){
@@ -1213,7 +1213,6 @@ export default {
         numLi=numLi+1
       }
       this.liTitle= '历史名单('+numLi+')'
-
     },
     //已抢单中放弃按钮
     fangQiBut(num){
@@ -1237,7 +1236,7 @@ export default {
 				sessionStorage.setItem("enterpriseThreeStatus","YiFangQi")
         this.enterpriseThreeStatus = sessionStorage.getItem('enterpriseThreeStatus')
       }
-      this.getDaiLi()
+     this.getDaiLi()
     },
     //抢单按钮,跳到抢单页面
     onClickLeft(){
@@ -1247,24 +1246,10 @@ export default {
     onClickRight(){
       this.$router.push('/grabSingleYi');
     },
-    //滑动进度变化且结束拖动后触发
-    huaKuaiChange(){
-      if(this.huaKuai==100){
-        this.huaKuaiName="抢单中..."
-        Dialog.alert({
-          title: '',
-          message: '抢单成功',
-          confirmButtonText: "确定",
-        }).then(() => {
-          // on close
-        });
-      }else{
-        this.huaKuaiName="滑动抢单"
-      }
-    },
     //点击信息卡背景打开详情信息
     yiParticularsCardBut(userId,stutasId){
-      this.$router.push('/managementParticulars/'+userId+"/"+stutasId);
+      let activeNameChuan=this.activeName //获取当前标签
+      this.$router.push('/managementParticulars/'+userId+"/"+stutasId+"/"+activeNameChuan);
     },
     //点击打开搜索
     searchBut(){
@@ -1342,6 +1327,27 @@ export default {
     background-color: #4c62e7;
   }
   //结束
+  //待完成数量
+  .menu1_DaiWanCheng{
+    width:0px;
+      line-height: 20px;
+      margin-bottom: 3px;
+      position: absolute;
+      font-size: 14px;
+      left: 54%;
+      top:12px;
+      z-index: 100;
+      color: #7d7e80;
+  }
+  .menu1_LiShi{
+      line-height: 20px;
+      position: absolute;
+      font-size: 14px;
+      left: 83%;
+      top:12px;
+      z-index: 100;
+      color: #7d7e80;
+  }
   //下拉图标及菜单
   .menu1_open{
       height: 18px;

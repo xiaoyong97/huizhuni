@@ -10,8 +10,8 @@
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
 
         <div class="content">
-            <van-tabs color="#4c62e7" line-width="50%" line-height=3>
-                <van-tab title="报名名单(4)" color="#4c62e7">
+            <van-tabs color="#4c62e7" v-model="activeNameDan" line-width="50%" line-height=3>
+                <van-tab title="报名名单(4)" color="#4c62e7" name="a">
                     <!--头部搜索-->
                     <van-row class="seekRow" gutter="20"> 
                         <van-col span="16"><van-field class="seekField" v-model="fieldWei" placeholder="请输入活动名称" />    
@@ -84,7 +84,7 @@
 
                     <div style="height: 8px"></div>
                 </van-tab>
-                <van-tab title="签到名单" color="#4c62e7">
+                <van-tab title="签到名单" color="#4c62e7"  name="b">
                     <div class="card_div" style="">
                         <van-row style="padding: 12px 12px 0">
                             <van-col class="" span="12"><p class="card_list1_test_left" >支付系统及形式创新001</p></van-col>
@@ -155,6 +155,7 @@
 
         data() {
             return {
+                activeNameDan:this.$route.params.activeNameDan,
                 countcc:4,
                 title : '查看名单',
                 checked: true,
