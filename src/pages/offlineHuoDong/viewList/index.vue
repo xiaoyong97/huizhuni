@@ -199,7 +199,7 @@
                 this.$router.push('/index5');
             },
             go_attendanceList() {
-                this.$router.push('/attendanceList');
+                this.$router.push('/offlineHuoDong/attendanceList');
             },
             goactivityDetailsOver : function(){
                 this.$router.push('./activityDetailsOver');

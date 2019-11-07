@@ -192,6 +192,15 @@ export default new Router({
         title: '查看名单'
         },
       },
+      
+      {
+        name: 'offAttendanceList',
+        path: '/offlineHuoDong/attendanceList',
+        component: () => import('@/pages/offlineHuoDong/attendanceList'),
+        meta: {
+          title: '我的活动-签到名单'
+        },
+      },
       {
         name: 'NewActivities',
         path: '/offlineHuoDong/NewActivities',
