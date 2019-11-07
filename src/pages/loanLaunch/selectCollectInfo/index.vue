@@ -182,7 +182,7 @@
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">权力人：张三</p>
+                        <p class="list_test2">权利人：艾仲华</p>
                     </van-col>
                 </van-row>
               </div>
@@ -226,7 +226,7 @@
                 </van-row>
                 <van-row class="list_row">
                     <van-col class="list_left" style="text-align: left;width:100%;">
-                        <p class="list_test2">公民身份证号码：张三</p>
+                        <p class="list_test2">公民身份证号码：艾仲华</p>
                     </van-col>
                 </van-row>
                 <van-row class="list_row">
@@ -286,7 +286,7 @@ export default {
   data() {
     return {
       title: "选择采集信息",
-      activeName: ['3','4'],
+      activeName: [],
       current: 0,
 	  info:{}
     };

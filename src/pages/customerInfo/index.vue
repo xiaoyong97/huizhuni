@@ -13,7 +13,7 @@
           <div class="main_box">
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">客户名称：厦门象屿股份有限公司</p>
+                <p class="list_test">客户名称：广州市睿智防水电器股份有限公司</p>
               </van-col>
             </van-row>
             <van-row class="list_row">
@@ -28,12 +28,12 @@
             </van-row>
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">注册地址：厦门市思明区</p>
+                <p class="list_test">注册地址：广州市天河区</p>
               </van-col>
             </van-row>
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">企业地址：厦门市软件园观日路1号</p>
+                <p class="list_test">企业地址：广州市天河软件园软件路1号</p>
               </van-col>
             </van-row>
             <van-row class="list_row">
@@ -73,7 +73,7 @@
             </van-row>
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">发证单位：厦门市市场监督管理局</p>
+                <p class="list_test">发证单位：广州市市场监督管理局</p>
               </van-col>
             </van-row>
             <van-row class="list_row">
@@ -224,7 +224,7 @@
                     <td>否</td>
                   </tr>
                   <tr>
-                    <td>厦门软件园有限公司</td>
+                    <td>广州软件园有限公司</td>
                     <td>公司</td>
                     <td>96</td>
                     <td>是</td>
@@ -236,31 +236,31 @@
                     <td>是</td>
                   </tr>
                   <tr>
-                    <td>厦门信贷股份有限公司</td>
+                    <td>广州信贷股份有限公司</td>
                     <td>公司</td>
                     <td>90</td>
                     <td>否</td>
                   </tr>
                   <tr>
-                    <td>厦门国贸集团股份有限公司</td>
+                    <td>广州国贸集团股份有限公司</td>
                     <td>公司</td>
                     <td>90</td>
                     <td>是</td>
                   </tr>
                   <tr>
-                    <td>厦门国三伏光电股份有限公司</td>
+                    <td>广州国三伏光电股份有限公司</td>
                     <td>公司</td>
                     <td>89</td>
                     <td>否</td>
                   </tr>
                   <tr>
-                    <td>厦门中药厂有限公司</td>
+                    <td>广州中药厂有限公司</td>
                     <td>公司</td>
                     <td>87</td>
                     <td>否</td>
                   </tr>
                   <tr>
-                    <td>厦门尚为科技股份有限公司</td>
+                    <td>广州尚为科技股份有限公司</td>
                     <td>公司</td>
                     <td>85</td>
                     <td>是</td>
@@ -300,11 +300,11 @@
                     <td>职位</td>
                   </tr>
                   <tr>
-                    <td>邓家国</td>
+                    <td>艾仲华</td>
                     <td>总经理</td>
                   </tr>
                   <tr>
-                    <td>张方远</td>
+                    <td>李天明</td>
                     <td>财务总监</td>
                   </tr>
                 </tbody>
@@ -332,22 +332,16 @@
                     <td>出资比例</td>
                   </tr>
                   <tr>
-                    <td>齐海</td>
-                    <td>35万元</td>
+                    <td>艾仲华</td>
+                    <td>50万元</td>
                     <td>现金</td>
-                    <td>35%</td>
+                    <td>50%</td>
                   </tr>
                   <tr>
-                    <td>蔡庆</td>
-                    <td>35万元</td>
+                    <td>李天明</td>
+                    <td>50万元</td>
                     <td>现金</td>
-                    <td>35%</td>
-                  </tr>
-                  <tr>
-                    <td>沈东</td>
-                    <td>30万元</td>
-                    <td>现金</td>
-                    <td>30%</td>
+                    <td>50%</td>
                   </tr>
                 </tbody>
 
@@ -375,7 +369,7 @@
                   </tr>
                   <tr>
                     <td class="bgcol-eee">名称</td>
-                    <td>沈东</td>
+                    <td>艾仲华</td>
                   </tr>
                   <tr>
                     <td class="bgcol-eee">证件类型</td>
@@ -383,7 +377,7 @@
                   </tr>
                   <tr>
                     <td class="bgcol-eee">证件号码</td>
-                    <td>130534198008218630</td>
+                    <td>120106197608016578</td>
                   </tr>
                   <tr>
                     <td class="bgcol-eee">证件有效期</td>
@@ -403,7 +397,7 @@
                   </tr>
                   <tr>
                     <td class="bgcol-eee">名称</td>
-                    <td>厦门软件园开发有限责任公司</td>
+                    <td>广州软件园开发有限责任公司</td>
                   </tr>
                   <tr>
                     <td class="bgcol-eee">证件类型</td>
@@ -423,11 +417,11 @@
                   </tr>
                   <tr>
                     <td class="bgcol-eee">发证机关名称</td>
-                    <td>厦门市市场监督管理局</td>
+                    <td>广州市市场监督管理局</td>
                   </tr>
                   <tr>
                     <td class="bgcol-eee">发证机关所在地</td>
-                    <td>厦门市</td>
+                    <td>广州市</td>
                   </tr>
                 </tbody>
 
@@ -531,7 +525,7 @@
                     <td>客群平台分类</td>
                   </tr>
                   <tr>
-                    <td>厦门高新技术产业客群</td>
+                    <td>广州高新技术产业客群</td>
                     <td>主力客群</td>
                     <td>商业聚类</td>
                   </tr>
@@ -580,7 +574,7 @@
             </van-row>
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">开户行所在网点名称：建行厦门金山路支行</p>
+                <p class="list_test">开户行所在网点名称：建行广州金山路支行</p>
               </van-col>
             </van-row>
             <van-row class="list_row">
@@ -759,7 +753,7 @@
                   <tr>
                     <td>吕昌荣</td>
                     <td>管护权客户经理</td>
-                    <td>建行厦门金山路支行</td>
+                    <td>建行广州金山路支行</td>
                     <td>13950186993</td>
                   </tr>
                   <tr>
@@ -839,7 +833,7 @@ export default {
         { text: '亲密度关系', value: 0 },
         { text: '实际控制人', value: 1 },
         { text: '实际控制人（挖掘）', value: 2 },
-        { text: '企业担保计划', value: 3 },
+        { text: '企业担保关系', value: 3 },
         { text: '配偶关系', value: 4 },
         { text: '集团派系关系（挖掘）', value: 5 },
         { text: '上下游关系', value: 6 }
