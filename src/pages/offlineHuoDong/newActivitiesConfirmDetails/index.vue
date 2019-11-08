@@ -1,5 +1,4 @@
 <template>
-  <!--新建活动确定页-->
   <div class="main">
    
     <div class="content">
@@ -56,7 +55,7 @@
           </div>
         </div>-->
         <div class="botButDiv">
-          <van-button class="botQianDanBut" style="margin-right:10%;" plain hairline round type="info" v-if="true" @click="ChengQueDing">拒绝新建</van-button>
+          <van-button class="botQianDanBut" style="margin-right:10%;" plain hairline round type="info" v-if="true" @click="jueJueChengQueDing">拒绝新建</van-button>
           <van-button class="botQianDanBut" round type="info" v-if="true" @click="ChengQueDing">同意新建</van-button>
         </div>
 
@@ -189,6 +188,7 @@ export default {
     },
     //返回上一级
     onClickLeft() {
+        sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核
       this.$router.go(-1);
     },
     onClickRight(){
@@ -235,14 +235,27 @@ export default {
     newScheduleBut(){
       this.$router.push('/offlineHuoDong/newSchedule');
     },
-    
-
-    //确定
-    ChengQueDing(){
+    //拒绝
+    jueJueChengQueDing(){
       Dialog.confirm({
-        message: '确定进行该操作吗？',
+        message: '确定拒绝新建吗？',
         confirmButtonText: "确定",
       }).then(() => {
+        //确定拒绝
+				sessionStorage.setItem("xinJianStatus","yiJuJue")
+        sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核
+        this.$router.push('/offlineHuoDong');
+      }).catch(() => {
+        // on cancel
+      });
+    },
+    //同意
+    ChengQueDing(){
+      Dialog.confirm({
+        message: '确定同意新建吗？',
+        confirmButtonText: "确定",
+      }).then(() => {
+        sessionStorage.setItem("offlineHuoDongActive","已发布") //去到已发布
         this.$router.push('/offlineHuoDong');
       }).catch(() => {
         // on cancel

@@ -80,9 +80,9 @@
 
             </div>
             <van-row type="flex" justify="center" class="choose_row"  v-show="identity!=='handle'">
-                <van-col class="reject_col"  span="8" ><p class="reject_col_test">拒绝补录</p></van-col>
+                <van-col class="reject_col"  span="8" ><p class="reject_col_test" @click="fanHui">拒绝补录</p></van-col>
                 <van-col class=""  span="2" ></van-col>
-                <van-col class="agree_col"   span="8" ><p class="agree_col_test" >同意补录</p></van-col>
+                <van-col class="agree_col"   span="8" ><p class="agree_col_test"  @click="fanHui">同意补录</p></van-col>
             </van-row>
 
         </div>
@@ -128,6 +128,7 @@
         //声明方法
         methods : {
             onClickLeft() {
+                sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核
                 this.$router.go(-1);
             },
             gomyperformance : function(){
@@ -163,6 +164,10 @@
             },
             changeOpen() {
                 this.open=!this.open
+            },
+            fanHui(){
+                sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核
+                this.$router.push('/offlineHuoDong');
             }
 
         },

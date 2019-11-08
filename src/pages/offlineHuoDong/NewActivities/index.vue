@@ -68,14 +68,19 @@
 
             <div class="secend_box"  v-show="!riChengQueDing">
                 <van-row class="list_row" style="border-bottom:1px solid #333333;font-weight: bold;">
-                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min_head" >日期名称</p></van-col>
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min_head" >日程名称</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min_head" >主讲人</p></van-col>
                     <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min_head" >日程日期</p></van-col>
                 </van-row>
-                <van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
+                <!--<van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
                     <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10/12 9:30-10/12 11:20</p></van-col>
+                </van-row>-->
+                <van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;" v-for="item in NewActivitiesMes.schedule">
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min">{{item.scheduleName}}</p></van-col>
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min">{{item.scheduleSpeaker}}</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >{{item.scheduleStartTime|shiJian()}}-{{item.scheduleEndTime|shiJian()}}</p></van-col>
                 </van-row>
             </div>
           </van-row>
@@ -102,7 +107,7 @@
     <van-popup v-model="scheduleIs" position="bottom" :style="{ height: '100%' }">
       
       <div class="content">
-        <van-nav-bar :title='title' style="font-weight: bold" @click-right="onClickRightRi" fixed>
+        <van-nav-bar :title='titleRiCheng' style="font-weight: bold" @click-right="onClickRightRi" fixed>
           <van-icon name="cross" slot="right"  size="24px"  />
         </van-nav-bar>
       </div>
@@ -111,24 +116,24 @@
           <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">活动信息</div></div>
           <div  class="biaoQianLie" gutter="10">
             <van-cell title="日程名称">
-              <van-field class="inputFieldMes" input-align="right" v-model="NewActivitiesMes.schedule.scheduleName" placeholder="请输入" />
+              <van-field class="inputFieldMes" input-align="right" v-model="scheduleTwo.scheduleName" placeholder="请输入" />
             </van-cell>
             <van-cell title="主讲人">
-              <van-field class="inputFieldMes" input-align="right" v-model="NewActivitiesMes.schedule.scheduleSpeaker" placeholder="请输入" />
+              <van-field class="inputFieldMes" input-align="right" v-model="scheduleTwo.scheduleSpeaker" placeholder="请输入" />
             </van-cell>
             <van-cell title="日程开始时间">
-              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="NewActivitiesMes.schedule.scheduleStartTime" placeholder="请选择" />
+              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="scheduleTwo.scheduleStartTime" placeholder="请选择" />
               <van-icon name="todo-list-o" @click="onSelect(4)" size="24px" color="#1989fa"/>
             </van-cell>
             <van-cell title="日程结束时间">
-              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="NewActivitiesMes.schedule.scheduleEndTime" placeholder="请选择" />
+              <van-field class="inputFieldMesShuan" input-align="right" disabled v-model="scheduleTwo.scheduleEndTime" placeholder="请选择" />
               <van-icon name="todo-list-o"  @click="onSelect(5)"  size="24px" color="#1989fa"/>
             </van-cell>
             <van-cell title="日程时长">
-              <van-field class="inputFieldMesShuan" input-align="right" v-model="NewActivitiesMes.schedule.scheduleLength" placeholder="请输入" /><span style="color:black">分钟</span>
+              <van-field class="inputFieldMesShuan" input-align="right" v-model="scheduleTwo.scheduleLength" placeholder="请输入" /><span style="color:black">分钟</span>
             </van-cell>
             <van-cell title="日程地点">
-              <van-field class="inputFieldMes" input-align="right" v-model="NewActivitiesMes.schedule.scheduleLocation" placeholder="请输入" />
+              <van-field class="inputFieldMes" input-align="right" v-model="scheduleTwo.scheduleLocation" placeholder="请输入" />
             </van-cell>
           </div>
         </div>
@@ -181,6 +186,7 @@ export default {
   data (){
      return {
         title : '新建活动',
+        titleRiCheng : '新建日程表',
         minHour: 10,
         maxHour: 20,
         minDate: new Date(),
@@ -222,16 +228,20 @@ export default {
          organization:'',//主办机构
          sponsor:'',//主办人
          auditor:'',//审核人
-         schedule:{//新建日程表
-          scheduleName:'',//日称名称
+         schedule:[],//新建日程表
+         checkboxList: [],//是否接送站
+       },
+      
+      scheduleTwo:{//新建日程表
+          scheduleName:'',//日程名称
           scheduleSpeaker:'',//主讲人
           scheduleStartTime:'',//日程开始时间
           scheduleEndTime:'',//日程结束时间
           scheduleLength:'',//日程时长，分钟
           scheduleLocation:'',//日程地点
-         },
-         checkboxList: [],//是否接送站
-       }
+      },
+      isOkCaoGao:false,//判断是否是草稿箱进入
+
      }
   },
 
@@ -240,9 +250,41 @@ export default {
 
   },
 
+  //vue过滤器
+  filters: {
+    shiJian(value){
+      return value.substr(5,20)
+    }
+  },
   //网页加载完成
   mounted : function(){
-    
+    this.isOkCaoGao=sessionStorage.getItem('caoGaoMes')
+    sessionStorage.setItem("caoGaoMes",false) //清除草稿sessionStorage
+      console.log(this.isOkCaoGao)
+    if(this.isOkCaoGao==true){//判断是否是草稿箱进入
+      this.riChengQueDing=false
+      //
+      this.scheduleTwo.scheduleName='每周沙龙会'//日程名称
+      this.scheduleTwo.scheduleSpeaker='西施'//主讲人
+      this.scheduleTwo.scheduleStartTime='2019/12/06 09:00'//日程开始时间
+      this.scheduleTwo.scheduleEndTime='2019/12/06 12:00'//日程结束时间
+      this.scheduleTwo.scheduleLength='180'//日程时长，分钟
+      this.scheduleTwo.scheduleLocation='省分行营业部'//日程地点
+      //
+      this.NewActivitiesMes.theme= '小微快贷企业交流会'//活动主题
+      this.NewActivitiesMes.StartTime= '2019:12:06'//活动开始时间
+      this.NewActivitiesMes.EndTime= '2019;12:08'//活动结束时间
+      this.NewActivitiesMes.timeLength= '2'//活动时长，天
+      this.NewActivitiesMes.registerTime= '2019:12:06'//报到时间
+      this.NewActivitiesMes.Location='省分行营业部'//活动地点
+      this.NewActivitiesMes.huoObject='客户'//活动对象
+      this.NewActivitiesMes.organization='建行杭州分行营业部（汇报）'//主办机构
+      this.NewActivitiesMes.sponsor='杨峰'//主办人
+      this.NewActivitiesMes.auditor='陈雪梅'//审核人
+      this.NewActivitiesMes.schedule=this.scheduleTwo//新建日程表
+      this.NewActivitiesMes.checkboxList= []//是否接送站
+    }
+      console.log(this.isOkCaoGao)
   },
   
   //声明方法
@@ -260,7 +302,12 @@ export default {
     
     //新建日程表
     newScheduleBut(){
-      //this.$router.push('/offlineHuoDong/newSchedule');
+      this.scheduleTwo.scheduleName=''//新建日程表
+      this.scheduleTwo.scheduleSpeaker=''//日程名称
+      this.scheduleTwo.scheduleStartTime=''//主讲人
+      this.scheduleTwo.scheduleEndTime=''//日程开始时间
+      this.scheduleTwo.scheduleLength=''//日程时长，分钟
+      this.scheduleTwo.scheduleLocation=''//日程地点
       this.scheduleIs=true;
     },
     //关闭日程表
@@ -269,6 +316,8 @@ export default {
     },
     //日程表确定按钮
     riQueDing(){
+      this.NewActivitiesMes.schedule.push(this.scheduleTwo)
+      //console.log(this.NewActivitiesMes.schedule.scheduleStartTime.substr(5,20))
       this.scheduleIs=false
       this.riChengQueDing=false
     },
@@ -280,6 +329,7 @@ export default {
         confirmButtonText: "确定",
       }).then(() => {
         sessionStorage.setItem("saveCg","true") //保存草稿
+        sessionStorage.setItem("offlineHuoDongActive","草稿箱") //去到草稿箱
         this.$router.push('/offlineHuoDong');
       });
     },
@@ -334,12 +384,12 @@ export default {
     },
     //日程开始时间确定按钮，关闭选择时间
     timeQueDinFOur(){
-      this.NewActivitiesMes.schedule.scheduleStartTime=this.jieShouTime
+      this.scheduleTwo.scheduleStartTime=this.jieShouTime
       this.RiStartTimeIs = false;
     },
     //日程=结束时间确定按钮，关闭选择时间
     timeQueDingFive(){
-      this.NewActivitiesMes.schedule.scheduleEndTime=this.jieShouTime
+      this.scheduleTwo.scheduleEndTime=this.jieShouTime
       this.RiEndTimeIs = false;
     },
     //取消按钮，关闭选择时间

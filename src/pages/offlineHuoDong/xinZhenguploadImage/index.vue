@@ -2,7 +2,7 @@
     <div class="main" >
 
         <!--头部导航-->
-        <van-nav-bar :title="title"  right-text="保存">
+        <van-nav-bar :title="title"  @click-right="onClickRight" right-text="保存">
         </van-nav-bar>
         <img src="../../../assets/images/38/return@2x.png" class="img_return"  @click="onClickLeft">
             <div class="secend_box" style="height: auto">
@@ -59,6 +59,9 @@
         //声明方法
         methods : {
             onClickLeft() {
+                this.$router.go(-1);
+            },
+            onClickRight(){
                 this.$router.go(-1);
             },
             onChange(index) {

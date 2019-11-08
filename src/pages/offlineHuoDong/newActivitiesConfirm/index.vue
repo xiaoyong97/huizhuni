@@ -112,7 +112,7 @@ export default {
        confirmActivitiesMes:{
          timeLength: '2天',//活动时长，天
          registerTime: '2019.10.12  09：00',//签到时间
-         Location:'西湖',//活动地点
+         Location:'省分行营业部',//活动地点
          huoObject:'客户',//培训对象
          organization:'建行杭州分行营业部（汇报）',//主办机构
          sponsor:'杨峰',//经办人

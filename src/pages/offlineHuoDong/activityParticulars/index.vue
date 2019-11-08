@@ -41,7 +41,7 @@
                 <van-row  class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
-                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10.12 9:30-10.12 11:30</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10.12 9:00-10.12 11:30</p></van-col>
                 </van-row>
             </div>
           </van-row>
@@ -153,7 +153,7 @@ export default {
          EndTime: '2019.10.12',//活动结束时间
          timeLength: '2天',//活动时长，天
          registerTime: '2019.10.12  09：00',//签到时间
-         Location:'西湖',//活动地点
+         Location:'省分行营业部',//活动地点
          huoObject:'客户',//培训对象
          organization:'建行杭州分行营业部（汇报）',//主办机构
          sponsor:'杨峰',//经办人

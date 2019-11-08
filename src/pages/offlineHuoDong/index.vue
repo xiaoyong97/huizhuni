@@ -14,8 +14,8 @@
             <van-col :class="type!==2?'active':''" class="top_bar_box_col top_bar_box_col_left " span="12"><p class="top_bar_box_text_left" @click="changeType(1)">融智赋能</p></van-col>
             <van-col :class="type==2?'active':''" class="top_bar_box_col" span="12"><p class="top_bar_box_text_right" @click="changeType(2)">报表查询</p></van-col>
         </van-row>
-        <van-row class="top_bar_box" style="" v-show="type==1">
-            <van-col :class="type!==2?'active':''" class="top_bar_box_col top_bar_box_col_left " span="24"><p class="top_bar_box_text_left_dan" @click="changeType(1)">融智赋能</p></van-col>
+        <van-row v-show="type==1">
+            <van-col :class="type!==2?'active':''"  span="24"><p class="top_bar_box_text_left_dan" @click="changeType(1)">融智赋能</p></van-col>
         </van-row>
     </div>
     <!-- <img src="../../assets/images/38/filter1@2x.png" class="img_fliter" v-show="type!==2" @click="open_fliter"> -->
@@ -146,7 +146,7 @@
                 </van-col>
             </van-row>
             <!--待审核-->
-            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('newActivitiesConfirmDetails',{status_:1})">
+            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0&shenHeIsShow!='yiJuJue'" @click="goPage('newActivitiesConfirmDetails',{status_:1})">
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
@@ -240,18 +240,8 @@
               <van-col span="8"><van-button class="seekBut">查找</van-button>
               </van-col>
             </van-row>
-
-          </van-tab>
-          <van-tab name="草稿箱" :title="tab4Title"  color="#4c62e7"> 
-            <!--头部搜索-->
-            <van-row class="seekRow" gutter="20"> 
-              <van-col span="16"><van-field class="seekField" v-model="fieldWeiCao" placeholder="请输入活动名称" />    
-              </van-col>
-              <van-col span="8"><van-button class="seekBut">查找</van-button>
-              </van-col>
-            </van-row>
-            <!--保存草稿-->
-            <div class="card_div_examine" v-show="showCg">
+            <!--待审核-->
+            <div class="card_div_examine" v-show="shenHeIsShow=='yiJuJue'" >
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
@@ -266,7 +256,44 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">已被<font color="#4c62e7">张三</font>拒绝</p></van-col>
+                </van-row>
+                <img  src="../../assets/images/other/Label3@2x.png" class="img_task" >
+            </div>
+
+          </van-tab>
+          <van-tab name="草稿箱" :title="tab4Title"  color="#4c62e7"> 
+            <!--头部搜索-->
+            <van-row class="seekRow" gutter="20"> 
+              <van-col span="16"><van-field class="seekField" v-model="fieldWeiCao" placeholder="请输入活动名称" />    
+              </van-col>
+              <van-col span="8"><van-button class="seekBut">查找</van-button>
+              </van-col>
+            </van-row>
+            <!--保存草稿-->
+            <div class="card_div_examine" v-show="showCg">
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="12"><p class="card_list1_test_left" >每周沙龙会</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 8px">
+                    <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.12.06-2019.12.08</p></van-col>
+                    <van-col class="" span="10" style="text-align: right"></van-col>
+                </van-row>
+                
+                <van-row style="text-align: center;padding: 8px 12px 0" type="flex" justify="center">
+                    <van-col class="" span="12" @click="updateCaoGao">
+                        <van-col class="" span="2"><van-icon name="edit"  class="img_location location2" color="#4c62e7" size="22px"/></van-col>
+                        <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >修改</p></van-col>
+                    </van-col>
+                    <van-col class="" span="12" @click="delCaoGao">
+                        <van-col class="" span="2"><van-icon name="cross" class="img_location location2" color="#4c62e7" size="22px"/></van-col>
+                        <van-col class="" span="22" style="text-align: center"><p class="card_list2_test">删除</p></van-col>
+                    </van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
             </div>
@@ -710,6 +737,7 @@ export default {
        guanLiId:this.$route.params.guanLiId,//跳转参数id
        active: "已发布",
        active2: "已发布",
+       shenHeIsShow: '',
        menu:-1,  //-1:已发布不显示
        toAudit:-1,//-1:待审核不显示
        refuse:-1,//-1:已拒绝不显示
@@ -767,6 +795,8 @@ export default {
             this.showCg = true;
         }
     }
+    this.active=sessionStorage.getItem('offlineHuoDongActive')
+    this.shenHeIsShow=sessionStorage.getItem('xinJianStatus')
   },
   
   //声明方法
@@ -878,6 +908,15 @@ export default {
     //新建活动页面图标
     onClickRight(){
       this.$router.push('/offlineHuoDong/NewActivities');
+    },
+    //修改草稿
+    updateCaoGao(){
+        sessionStorage.setItem("caoGaoMes",true) //保存草稿
+      this.$router.push('/offlineHuoDong/NewActivities');
+    },
+    //草稿箱删除
+    delCaoGao(){
+        this.showCg=false
     },
     //图标上下拉
     openMenu (value,i){
@@ -1319,7 +1358,7 @@ export default {
         width: 150px;
         height: 30px;
 
-        border-radius: 8px;
+        border-radius: 7px;
     }
 
 
@@ -1341,14 +1380,14 @@ export default {
         border-top-left-radius: 7px;
     }
     .top_bar_box_text_left_dan{
+        width: 150px;
+        margin: 0 auto;
         font-size: 14px;
         line-height: 30px;
         color:white;
-        margin-top:1px;
-        margin-left:1px;
         background-color:rgb(76,98,231);
         margin-block-start:0;
-        border-radius: 8px;
+        border-radius: 7px;
         margin-block-end:0;
     }
     .top_bar_box_text_right{
