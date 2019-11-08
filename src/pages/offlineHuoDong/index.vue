@@ -128,6 +128,37 @@
                   </van-col>
               </van-row>
             </div>
+
+
+            <!--进行中-->
+            <div class="card_div" v-show="jinxzShow">
+              <div @click="goPage('newActivitiesConfirmDetails',{status_:0})" class="card-bottom-line">
+                  <van-row style="padding: 16px 12px 0">
+                      <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
+                      <!-- <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col> -->
+                  </van-row>
+                  <van-row style="padding: 16px 12px 0">
+                      <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                      <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                  </van-row>
+                  <van-row style="padding: 16px 12px 8px">
+                      <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                      <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
+                      <van-col class="" span="10" style="text-align: right" ><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人</p></van-col>
+                  </van-row>
+                  <img  src="../../assets/images/other/ICON_325-02.png" class="img_task" >
+              </div>
+              <van-row style="text-align: center;padding: 8px 12px 0">
+                <van-col class="" span="12" @click="goViewList('/offlineHuoDong/viewList')">
+                    <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location location2" ></van-col>
+                    <van-col class="" span="20"><p class="card_list2_test" >查看名单</p></van-col>
+                </van-col>
+                <van-col class="" span="12" @click="openOverlay">
+                    <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location location2" ></van-col>
+                    <van-col class="" span="22"><p class="card_list2_test" @click="baoMingQianDao">报名/签到</p></van-col>
+                </van-col>
+              </van-row>
+            </div>
           </van-tab>
 
           <!--                已发布下拉图标-->
@@ -293,7 +324,7 @@
             <div class="card_div" v-show="menu_choose==2|menu_choose==0">
               <div @click="goPage('newActivitiesConfirmDetails',{status_:0})" class="card-bottom-line">
                   <van-row style="padding: 16px 12px 0">
-                      <van-col class="" span="12"><p class="card_list1_test_left" >建行每周沙龙会</p></van-col>
+                      <van-col class="" span="12"><p class="card_list1_test_left" >1111建行每周沙龙会</p></van-col>
                       <!-- <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col> -->
                   </van-row>
                   <van-row style="padding: 16px 12px 0">
@@ -374,6 +405,37 @@
                       <van-col class="" span="2"><img src="../../assets/images/38/Upload@2x.png" class="img_location location2" ></van-col>
                       <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >上传照片</p></van-col>
                   </van-col>
+              </van-row>
+            </div>
+
+
+            <!--进行中-->
+            <div class="card_div" v-show="jinxzShow">
+              <div @click="goPage('newActivitiesConfirmDetails',{status_:0})" class="card-bottom-line">
+                  <van-row style="padding: 16px 12px 0">
+                      <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
+                      <!-- <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col> -->
+                  </van-row>
+                  <van-row style="padding: 16px 12px 0">
+                      <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                      <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                  </van-row>
+                  <van-row style="padding: 16px 12px 8px">
+                      <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                      <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.13</p></van-col>
+                      <van-col class="" span="10" style="text-align: right" ><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人</p></van-col>
+                  </van-row>
+                  <img  src="../../assets/images/other/ICON_325-02.png" class="img_task" >
+              </div>
+              <van-row style="text-align: center;padding: 8px 12px 0">
+                <van-col class="" span="12" @click="goViewList('/offlineHuoDong/viewList')">
+                    <van-col class="" span="2"><img src="../../assets/image/my/List@2x.png" class="img_location location2" ></van-col>
+                    <van-col class="" span="20"><p class="card_list2_test" >查看名单</p></van-col>
+                </van-col>
+                <van-col class="" span="12" @click="openOverlay">
+                    <van-col class="" span="2"><img src="../../assets/image/my/QR code@2x.png" class="img_location location2" ></van-col>
+                    <van-col class="" span="22"><p class="card_list2_test" @click="baoMingQianDao">报名/签到</p></van-col>
+                </van-col>
               </van-row>
             </div>
           </van-tab>
@@ -706,6 +768,7 @@ export default {
   //基础数据存放处
   data (){
      return {
+       jinxzShow:false, //待审核 任务新建是否显示
        title : '新建活动',
        guanLiId:this.$route.params.guanLiId,//跳转参数id
        active: "已发布",
@@ -768,6 +831,7 @@ export default {
         }
     }
 
+    //tab页显示  待审核 或 已发布
     var offlineHuoDong_active = sessionStorage.getItem("offlineHuoDong_active")
     console.log(offlineHuoDong_active)
     if (offlineHuoDong_active == "主管岗_待审核") {//选中待审核页面
@@ -775,6 +839,10 @@ export default {
     }else{
         this.active2 = "已发布"
     }
+
+    //待审核跳转过来 任务新建是否显示
+    this.jinxzShow = this.$route.params.jinxzShow?this.$route.params.jinxzShow:false;
+    console.log(this.jinxzShow)
   },
   
   //声明方法

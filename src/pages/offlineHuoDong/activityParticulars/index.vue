@@ -269,7 +269,7 @@ export default {
       }).then(() => {
         sessionStorage.setItem("offlineHuoDong_active","主管岗_已发布") //确认新建
         //确认新建按钮，返回
-        this.$router.push('/offlineHuoDong');
+        this.$router.push({name:'offlineHuoDong',params:{jinxzShow:true}});
       }).catch(() => {
         
       });
