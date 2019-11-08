@@ -83,7 +83,7 @@
                   </van-row>
                   <van-row style="padding: 16px 12px 8px">
                       <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                      <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                      <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                       <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人</p></van-col>
                   </van-row>
                   <img  src="../../assets/images/other/ICON_325.png" class="img_task" >
@@ -112,7 +112,7 @@
                   </van-row>
                   <van-row style="padding: 16px 12px 8px">
                       <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                      <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                      <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                       <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">98</span>人/签到<span style="color: #4c62e7">92</span>人</p></van-col>
                   </van-row>
                   <img  src="../../assets/images/other/ICON_325-03.png" class="img_task" >
@@ -156,7 +156,7 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
@@ -168,7 +168,7 @@
             <!--任务中止-->
             <div class="card_div_examine" v-show="menu2_choose==2|menu2_choose==0" style="">
                 <van-row style="padding: 16px 12px 0">
-                    <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
+                    <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
@@ -176,7 +176,7 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
@@ -196,7 +196,7 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
@@ -216,7 +216,7 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
@@ -261,7 +261,7 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
@@ -331,7 +331,7 @@
                   </van-row>
                   <van-row style="padding: 16px 12px 8px">
                       <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                      <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                      <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                       <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">30</span>人</p></van-col>
                   </van-row>
                   <img  src="../../assets/images/other/ICON_325.png" class="img_task" >
@@ -360,7 +360,7 @@
                   </van-row>
                   <van-row style="padding: 16px 12px 8px">
                       <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                      <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                      <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                       <van-col class="" span="10" style="text-align: right"><p class="card_list2_test" >报名<span style="color: #4c62e7">98</span>人/签到<span style="color: #4c62e7">92</span>人</p></van-col>
                   </van-row>
                   <img  src="../../assets/images/other/ICON_325-03.png" class="img_task" >
@@ -394,7 +394,7 @@
                 </van-col>
             </van-row>
             <!--待审核-->
-            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityParticulars',{status_:1})">
+            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0" @click="goPage('activityParticulars',{status_:'任务新建'})">
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
@@ -404,7 +404,7 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
@@ -414,27 +414,7 @@
                 <img  src="../../assets/images/other/Label3@2x.png" class="img_task" >
             </div>
             <!--任务中止-->
-            <div class="card_div_examine" v-show="menu2_choose==2|menu2_choose==0" style="">
-                <van-row style="padding: 16px 12px 0">
-                    <van-col class="" span="12"><p class="card_list1_test_left" >小微贷款</p></van-col>
-                </van-row>
-                <van-row style="padding: 16px 12px 0">
-                    <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
-                </van-row>
-                <van-row style="padding: 16px 12px 8px">
-                    <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
-                    <van-col class="" span="10" style="text-align: right"></van-col>
-                </van-row>
-                <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
-                    <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
-                </van-row>
-                <img  src="../../assets/images/other/Label5@2x.png" class="img_task" >
-            </div>
-            <!--任务变更-->
-            <div class="card_div_examine" v-show="menu2_choose==3|menu2_choose==0" style="">
+            <div class="card_div_examine" v-show="menu2_choose==2|menu2_choose==0" @click="goPage('activityParticulars',{status_:'任务终止'})" style="">
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
@@ -444,7 +424,27 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
+                    <van-col class="" span="10" style="text-align: right"></van-col>
+                </van-row>
+                <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                    <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                </van-row>
+                <img  src="../../assets/images/other/Label5@2x.png" class="img_task" >
+            </div>
+            <!--任务变更-->
+            <div class="card_div_examine" v-show="menu2_choose==3|menu2_choose==0" @click="goPage('activityParticulars',{status_:'任务变更'})" style="">
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 8px">
+                    <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
@@ -464,7 +464,7 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">

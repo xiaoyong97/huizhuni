@@ -13,7 +13,9 @@
 
         <div class="huoDongMes">
           <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">活动信息</div>
-            <div class="tianJiaBut"  @click="newScheduleBut">任务新建</div>
+            <div class="tianJiaBut" style="background-color:#F76037;" v-if="aition=='任务终止'">{{aition}}</div>
+            <div class="tianJiaBut" style="background-color:#4BC63A;" v-else-if="aition=='任务变更'">{{aition}}</div>
+            <div class="tianJiaBut" v-else @click="newScheduleBut">任务新建</div>
           </div>
           <div  class="biaoQianLie" gutter="10">
             <van-cell title="活动主题" value-class="cellRightMes" :value="confirmActivitiesMes.theme"/>
@@ -39,7 +41,7 @@
                     <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min_head" >日程日期</p></van-col>
                 </van-row>
                 <van-row  class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
-                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >小微快贷企业交流会</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
                     <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10.12 9:30-10.12 11:30</p></van-col>
                 </van-row>
@@ -54,7 +56,7 @@
             <van-cell title="是否需要送站" value="是"/>
           </div>
         </div>-->
-        <div class="botButDiv">
+        <div class="botButDiv" v-if="aition=='任务新建'">
           <van-row>
             <van-col span="12"> <van-button class="botJuJueBut" round plain type="info" v-if="true" @click="juJueXinJian">拒绝新建</van-button></van-col>
             <van-col span="12"><van-button class="botQianDanBut" round type="info" v-if="true" @click="ChengQueDing">同意新建</van-button></van-col>
@@ -70,7 +72,7 @@
       <div style="margin:20px 0px;">
         <van-row>
           <van-col span="8" class="riChengMesRight">日程名称：</van-col>
-          <van-col class="riChengMesLeft">每周沙龙会</van-col>
+          <van-col class="riChengMesLeft">小微快贷企业交流会</van-col>
         </van-row>
         <van-row>
           <van-col span="8" class="riChengMesRight">主讲人：</van-col>
@@ -117,6 +119,7 @@ export default {
   data (){
      return {
         title : '活动详情',
+        aition:'任务新建',
         minHour: 10,
         maxHour: 20,
         minDate: new Date(),
@@ -148,12 +151,12 @@ export default {
         { id: 3,name: '陈雪梅3' }
        ],
        confirmActivitiesMes:{
-         theme: '建行每周沙龙会',//活动主题
+         theme: '小微快贷企业交流会',//活动主题
          StartTime: '2019.10.12',//活动开始时间
          EndTime: '2019.10.12',//活动结束时间
          timeLength: '2天',//活动时长，天
          registerTime: '2019.10.12  09：00',//签到时间
-         Location:'西湖',//活动地点
+         Location:'省分行营业部',//活动地点
          huoObject:'客户',//培训对象
          organization:'建行杭州分行营业部（汇报）',//主办机构
          sponsor:'杨峰',//经办人
@@ -178,7 +181,7 @@ export default {
 
   //网页加载完成
   mounted : function(){
-    
+    this.aition = this.$route.params.status_;
   },
   
   //声明方法
