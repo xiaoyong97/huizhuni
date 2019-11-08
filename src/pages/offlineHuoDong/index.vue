@@ -767,6 +767,14 @@ export default {
             this.showCg = true;
         }
     }
+
+    var offlineHuoDong_active = sessionStorage.getItem("offlineHuoDong_active")
+    console.log(offlineHuoDong_active)
+    if (offlineHuoDong_active == "主管岗_待审核") {//选中待审核页面
+        this.active2 = "待审核"
+    }else{
+        this.active2 = "已发布"
+    }
   },
   
   //声明方法

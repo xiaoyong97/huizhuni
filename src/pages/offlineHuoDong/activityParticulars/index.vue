@@ -249,6 +249,7 @@ export default {
         title: '确认进行拒绝操作吗？',
         message: ''
       }).then(() => {
+        sessionStorage.setItem("offlineHuoDong_active","主管岗_待审核") //拒绝新建
         //确认拒绝按钮，返回
         this.$router.push('/offlineHuoDong');
       }).catch(() => {
@@ -263,6 +264,7 @@ export default {
         message: '',
         confirmButtonText: "确定",
       }).then(() => {
+        sessionStorage.setItem("offlineHuoDong_active","主管岗_已发布") //确认新建
         //确认新建按钮，返回
         this.$router.push('/offlineHuoDong');
       }).catch(() => {

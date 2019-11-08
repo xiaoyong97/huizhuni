@@ -747,10 +747,12 @@
 						cancelButtonColor:"#1989fa",
 					}).then(()=> {
 						sessionStorage.setItem("intelligenceEnablement","management")
+                    	sessionStorage.setItem("offlineHuoDong_active","普通岗_已发布")
 						sessionStorage.setItem("saveCg","false") //默认保存草稿为false
 						this.$router.push('/offlineHuoDong');
 					}).catch(() => {
-                    	sessionStorage.setItem("intelligenceEnablement","supervisor")
+						sessionStorage.setItem("intelligenceEnablement","supervisor")
+                    	sessionStorage.setItem("offlineHuoDong_active","主管岗_已发布")
 						sessionStorage.setItem("saveCg","false") //默认保存草稿为false
 						this.$router.push('/offlineHuoDong');
 					})
