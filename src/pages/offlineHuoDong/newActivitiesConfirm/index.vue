@@ -33,11 +33,16 @@
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min_head" >主讲人</p></van-col>
                     <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min_head" >日程日期</p></van-col>
                 </van-row>
-                <van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
+                <van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;" v-for="item in confirmActivitiesMes.schedule">
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min">{{item.scheduleName}}</p></van-col>
+                    <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min">{{item.scheduleSpeaker}}</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >{{item.scheduleStartTime|shiJian()}}-{{item.scheduleEndTime|shiJian()}}</p></van-col>
+                </van-row>
+                <!--<van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
                     <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10/12 9:30-10/12 11:20</p></van-col>
-                </van-row>
+                </van-row>-->
             </div>
           </van-row>
         </div>
@@ -117,14 +122,16 @@ export default {
          organization:'建行杭州分行营业部（汇报）',//主办机构
          sponsor:'杨峰',//经办人
          auditor:'陈雪梅',//审核人
-         schedule:{//新建日程表
-          scheduleName:'',//日称名称
-          scheduleSpeaker:'',//主讲人
-          scheduleStartTime:'',//日程开始时间
-          scheduleEndTime:'',//日程结束时间
-          scheduleLength:'',//日程时长，分钟
-          scheduleLocation:'',//日程地点
-         },
+         schedule:[
+           {//新建日程表
+              scheduleName:'每周沙龙会',//日称名称
+              scheduleSpeaker:'西施',//主讲人
+              scheduleStartTime:'2019:10:12 09:00',//日程开始时间
+              scheduleEndTime:'2019:10:12 12:00',//日程结束时间
+              scheduleLength:'180',//日程时长，分钟
+              scheduleLocation:'建行杭州分行营业部',//日程地点
+            }
+         ],
          checkboxList: [{id:1,value:true,name:'是'},{id:2,value:true,name:'是'},],//是否接送站
        }
      }
@@ -138,6 +145,13 @@ export default {
   //网页加载完成
   mounted : function(){
     
+  },
+  //vue过滤器
+  filters: {
+    shiJian(value){
+      //return value
+      return value.substr(5,20)
+    }
   },
   
   //声明方法

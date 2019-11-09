@@ -80,15 +80,9 @@
 
             </div>
             <van-row type="flex" justify="center" class="choose_row"  v-show="identity!=='handle'">
-<<<<<<< HEAD
-                <van-col class="reject_col"  span="8" ><p class="reject_col_test" @click="fanHui">拒绝补录</p></van-col>
-                <van-col class=""  span="2" ></van-col>
-                <van-col class="agree_col"   span="8" ><p class="agree_col_test"  @click="fanHui">同意补录</p></van-col>
-=======
                 <van-col class="reject_col"  span="8" @click="juJueXinJian"><p class="reject_col_test">拒绝补录</p></van-col>
                 <van-col class=""  span="2" ></van-col>
                 <van-col class="agree_col"   span="8" @click="ChengQueDing"><p class="agree_col_test" >同意补录</p></van-col>
->>>>>>> 24557d429603069371d84b9c9f226e4d47c98abd
             </van-row>
 
         </div>
@@ -140,6 +134,7 @@
                     message: ''
                 }).then(() => {
                     sessionStorage.setItem("offlineHuoDong_active","主管岗_待审核") //拒绝新建
+                    sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核-
                     //确认拒绝按钮，返回
                     this.$router.push("/offlineHuoDong");
                 }).catch(() => {
@@ -155,6 +150,7 @@
                     confirmButtonText: "确定",
                 }).then(() => {
                     sessionStorage.setItem("offlineHuoDong_active","主管岗_待审核") //确认新建
+                    sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核-
                     //确认新建按钮，返回
                     this.$router.push("/offlineHuoDong");
                 }).catch(() => {
@@ -162,11 +158,8 @@
                 });
             },
             onClickLeft() {
-<<<<<<< HEAD
                 sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核
-=======
                 sessionStorage.setItem("offlineHuoDong_active","主管岗_待审核") //待审核
->>>>>>> 24557d429603069371d84b9c9f226e4d47c98abd
                 this.$router.go(-1);
             },
             gomyperformance : function(){

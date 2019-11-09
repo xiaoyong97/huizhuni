@@ -176,8 +176,28 @@
                 <van-col style="text-align:center;" span="24">共有<font data-v-27d9ad80="" color="#4c62e7">{{countDsh}}</font>数据</van-button>
                 </van-col>
             </van-row>
+            <!--新待审核-->
+            <div class="card_div_examine" v-show="menu2_choose==11|menu2_choose==0&jianHangShenHeIsShow=='daiShengHe'" @click="goPage('newActivitiesConfirmDetails',{status_:1})">
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="12"><p class="card_list1_test_left" >建行每周沙龙会</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >建行杭州分行营业部</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 8px">
+                    <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
+                    <van-col class="" span="10" style="text-align: right"></van-col>
+                </van-row>
+                <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                    <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                </van-row>
+                <img  src="../../assets/images/other/Label3@2x.png" class="img_task" >
+            </div>
             <!--待审核-->
-            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0&shenHeIsShow!='yiJuJue'" @click="goPage('newActivitiesConfirmDetails',{status_:1})">
+            <div class="card_div_examine" v-show="menu2_choose==1|menu2_choose==0&shenHeIsShow!='yiJuJue'" @click="goPage('xiaoNewActivitiesConfirmDetails',{status_:1})">
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
@@ -271,7 +291,27 @@
               <van-col span="8"><van-button class="seekBut">查找</van-button>
               </van-col>
             </van-row>
-            <!--待审核-->
+            <!--已拒绝-->
+            <div class="card_div_examine" v-show="jianHangShenHeIsShow=='yiJuJue'" >
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="12"><p class="card_list1_test_left" >建行每周沙龙会</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 0">Label 3.2@2x
+                    <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >建行杭州分行营业部</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 8px">
+                    <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
+                    <van-col class="" span="10" style="text-align: right"></van-col>
+                </van-row>
+                <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                    <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">已被<font color="#4c62e7">张三</font>拒绝</p></van-col>
+                </van-row>
+                <img  src="../../assets/images/other/Label3.2@2x.png" class="img_task" >
+            </div>
+            <!--已拒绝-->
             <div class="card_div_examine" v-show="shenHeIsShow=='yiJuJue'" >
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
@@ -282,14 +322,14 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.07.06-2019.08.08</p></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
                     <van-col class="" span="10" style="text-align: right"></van-col>
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
                     <van-col class="text-left" span="12"><p class="card_list2_test">已被<font color="#4c62e7">张三</font>拒绝</p></van-col>
                 </van-row>
-                <img  src="../../assets/images/other/Label3@2x.png" class="img_task" >
+                <img  src="../../assets/images/other/Label3.2@2x.png" class="img_task" >
             </div>
 
           </van-tab>
@@ -312,12 +352,11 @@
                 </van-row>
                 <van-row style="padding: 16px 12px 8px">
                     <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
-<<<<<<< HEAD
-                    <van-col class="" span="12"><p class="card_list2_test" >2019.12.06-2019.12.08</p></van-col>
-=======
                     <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
->>>>>>> 24557d429603069371d84b9c9f226e4d47c98abd
-                    <van-col class="" span="10" style="text-align: right"></van-col>
+                </van-row>
+                <van-row style="padding: 6px 12px 0">
+                    <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
                 </van-row>
                 
                 <van-row style="text-align: center;padding: 8px 12px 0" type="flex" justify="center">
@@ -330,7 +369,7 @@
                         <van-col class="" span="22" style="text-align: center"><p class="card_list2_test">删除</p></van-col>
                     </van-col>
                 </van-row>
-                <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
+                <img  src="../../assets/images/other/ICON_325.png" class="img_task" >
             </div>
           </van-tab>
         </van-tabs>
@@ -805,6 +844,7 @@ export default {
        active: "已发布",
        active2: "已发布",
        shenHeIsShow: '',
+       jianHangShenHeIsShow: '',
        menu:-1,  //-1:已发布不显示
        toAudit:-1,//-1:待审核不显示
        refuse:-1,//-1:已拒绝不显示
@@ -862,24 +902,19 @@ export default {
             this.showCg = true;
         }
     }
-<<<<<<< HEAD
     this.active=sessionStorage.getItem('offlineHuoDongActive')
     this.shenHeIsShow=sessionStorage.getItem('xinJianStatus')
-=======
+    this.jianHangShenHeIsShow=sessionStorage.getItem('jianHangXinJianStatus')
 
     //tab页显示  待审核 或 已发布
     var offlineHuoDong_active = sessionStorage.getItem("offlineHuoDong_active")
-    console.log(offlineHuoDong_active)
     if (offlineHuoDong_active == "主管岗_待审核") {//选中待审核页面
         this.active2 = "待审核"
     }else{
         this.active2 = "已发布"
     }
-
     //待审核跳转过来 任务新建是否显示
     this.jinxzShow = this.$route.params.jinxzShow?this.$route.params.jinxzShow:false;
-    console.log(this.jinxzShow)
->>>>>>> 24557d429603069371d84b9c9f226e4d47c98abd
   },
   
   //声明方法

@@ -145,8 +145,9 @@
         //声明方法
         methods : {
             onClickLeft() {
-                /* let activeNameDan="b"
-                this.$router.push("/offlineHuoDong/viewList/"+activeNameDan) */
+                // let activeNameDan="b"
+                // this.$router.push("/offlineHuoDong/viewList/"+activeNameDan) 
+                sessionStorage.setItem("activeNameDan_active","b") 
                 this.$router.go(-1);
             },
             gomyperformance : function(){

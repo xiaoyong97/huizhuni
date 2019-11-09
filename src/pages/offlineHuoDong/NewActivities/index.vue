@@ -253,15 +253,14 @@ export default {
   //vue过滤器
   filters: {
     shiJian(value){
+      //return value
       return value.substr(5,20)
     }
   },
   //网页加载完成
   mounted : function(){
     this.isOkCaoGao=sessionStorage.getItem('caoGaoMes')
-    sessionStorage.setItem("caoGaoMes",false) //清除草稿sessionStorage
-      console.log(this.isOkCaoGao)
-    if(this.isOkCaoGao==true){//判断是否是草稿箱进入
+    if(this.isOkCaoGao=="true"){//判断是否是草稿箱进入
       this.riChengQueDing=false
       //
       this.scheduleTwo.scheduleName='每周沙龙会'//日程名称
@@ -273,7 +272,7 @@ export default {
       //
       this.NewActivitiesMes.theme= '小微快贷企业交流会'//活动主题
       this.NewActivitiesMes.StartTime= '2019:12:06'//活动开始时间
-      this.NewActivitiesMes.EndTime= '2019;12:08'//活动结束时间
+      this.NewActivitiesMes.EndTime= '2019:12:08'//活动结束时间
       this.NewActivitiesMes.timeLength= '2'//活动时长，天
       this.NewActivitiesMes.registerTime= '2019:12:06'//报到时间
       this.NewActivitiesMes.Location='省分行营业部'//活动地点
@@ -281,10 +280,10 @@ export default {
       this.NewActivitiesMes.organization='建行杭州分行营业部（汇报）'//主办机构
       this.NewActivitiesMes.sponsor='杨峰'//主办人
       this.NewActivitiesMes.auditor='陈雪梅'//审核人
-      this.NewActivitiesMes.schedule=this.scheduleTwo//新建日程表
+      this.NewActivitiesMes.schedule.push(this.scheduleTwo)//新建日程表
       this.NewActivitiesMes.checkboxList= []//是否接送站
+      sessionStorage.setItem("caoGaoMes",false) //清除草稿sessionStorage
     }
-      console.log(this.isOkCaoGao)
   },
   
   //声明方法

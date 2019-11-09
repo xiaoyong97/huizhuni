@@ -41,7 +41,7 @@
                 <van-row class="list_row" style="border-bottom:1px solid #999999;font-size:14px;">
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >每周沙龙会</p></van-col>
                     <van-col class=""  span="6" style="text-align: center;"><p class="list_test_min" >西施</p></van-col>
-                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10/12 9:30-10/12 11:20</p></van-col>
+                    <van-col class=""  span="12" style="text-align: center;"><p class="list_test_min" >10/12 9:00-10/11 12:00</p></van-col>
                 </van-row>
             </div>
           </van-row>
@@ -85,7 +85,7 @@
         </van-row>
         <van-row>
           <van-col span="8" class="riChengMesRight">日程日期：</van-col>
-          <van-col class="riChengMesLeft">10.12 09:00 - 10.12 12:00</van-col>
+          <van-col class="riChengMesLeft">10.12 09:00 - 10.11 12:00</van-col>
         </van-row>
         <van-row>
           <van-col span="8" class="riChengMesRight">日程地点：</van-col>
@@ -144,12 +144,12 @@ export default {
         { id: 3,name: '陈雪梅3' }
        ],
        confirmActivitiesMes:{
-         hdzt:"建行每周沙龙会",
+         hdzt:"小微快贷企业交流会",
          hdkssj:"2019.10.12",
-         hdjssj:"2019.10.13",
-         timeLength: '2天',//活动时长，天
+         hdjssj:"2019.10.12",
+         timeLength: '1天',//活动时长，天
          registerTime: '2019.10.12  09：00',//签到时间
-         Location:'西湖',//活动地点
+         Location:'建行杭州分行营业部',//活动地点
          huoObject:'客户',//培训对象
          organization:'建行杭州分行营业部（汇报）',//主办机构
          sponsor:'杨峰',//经办人
@@ -242,7 +242,7 @@ export default {
         confirmButtonText: "确定",
       }).then(() => {
         //确定拒绝
-				sessionStorage.setItem("jianHangXinJianStatus","yiJuJue")
+				sessionStorage.setItem("xinJianStatus","yiJuJue")
         sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核
         this.$router.push('/offlineHuoDong');
       }).catch(() => {

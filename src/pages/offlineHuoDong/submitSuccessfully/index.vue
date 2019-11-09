@@ -66,6 +66,7 @@ export default {
     //返回上一级
     onClickLeft() {
         sessionStorage.setItem("offlineHuoDongActive","待审核") //去到草稿箱
+      sessionStorage.setItem('jianHangXinJianStatus','daiShengHe')
       this.$router.push('/offlineHuoDong');
       //this.$router.go(-1);
     },

@@ -155,7 +155,7 @@
 
         data() {
             return {
-                activeNameDan:this.$route.params.activeNameDan,
+                activeNameDan:'a',
                 countcc:4,
                 title : '查看名单',
                 checked: true,
@@ -164,6 +164,7 @@
                 show2:false,
                 openOverlay_title:"",
                 open:true,
+                fieldWei:'',
                 list:[
                     {id:1,sex:'女',name:'张琳',phone:'12345678901',job:'董事长',company:'广州新野模具有限公司'},
                     {id:2,sex:'男',name:'赵无极',phone:'12345678901',job:'总经理',company:'鲁信创股'},
@@ -180,13 +181,16 @@
         },
 
         //网页加载完成
-        mounted : ()=>{
-
+        mounted() {
+            this.activeNameDan = sessionStorage.getItem('activeNameDan_active')
+            sessionStorage.setItem("activeNameDan_active","a") 
         },
 
         //声明方法
         methods : {
             onClickLeft() {
+                sessionStorage.setItem("offlineHuoDong_active","主管岗_已发布") //确认新建
+                sessionStorage.setItem("offlineHuoDongActive","已发布") //去到待审核-
                 this.$router.go(-1);
             },
             gomyperformance : function(){

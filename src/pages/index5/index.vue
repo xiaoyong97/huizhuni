@@ -71,10 +71,14 @@
                     cancelButtonText: "营销主管岗" ,
                     cancelButtonColor:"#1989fa",
                 }).then(()=> {
+                    sessionStorage.setItem("offlineHuoDong_active","主管岗_已发布") //确认新建
+                    sessionStorage.setItem("offlineHuoDongActive","已发布") //去到待审核-
                     sessionStorage.setItem("intelligenceEnablement","management")
                     sessionStorage.setItem("saveCg","false") //默认保存草稿为false
                     this.$router.push('/offlineHuoDong');
                 }).catch(() => {
+                    sessionStorage.setItem("offlineHuoDong_active","主管岗_已发布") //确认新建
+                    sessionStorage.setItem("offlineHuoDongActive","已发布") //去到待审核-
                     sessionStorage.setItem("intelligenceEnablement","supervisor")
                     sessionStorage.setItem("saveCg","false") //默认保存草稿为false
                     this.$router.push('/offlineHuoDong');
