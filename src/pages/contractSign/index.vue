@@ -94,8 +94,8 @@ export default {
 	},
 	methods:{
 		onClickLeft1:function(){
-			// this.$router.push('backHome')
-            this.$router.go(-1);
+			this.$router.push({name: 'index3'})
+            // this.$router.go(-1);
 		}
 	},
     data() {

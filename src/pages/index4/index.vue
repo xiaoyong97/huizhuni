@@ -90,7 +90,7 @@
           <div v-if="item.type == 1" key="bank">
             <div class="bank">
               <img class="bank-img" :src="bankImg" alt="">
-              <div>建行厦门金路支行</div>
+              <div>建行银行天河路支行</div>
             </div>
           </div>
         </div>

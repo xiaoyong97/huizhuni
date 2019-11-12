@@ -94,7 +94,7 @@
           <div v-if="item.type == 1" key="bank">
             <div class="bank">
               <img class="bank-img" :src="bankImg" alt="">
-              <div>建行厦门金路支行</div>
+              <div>建行银行天河路支行</div>
             </div>
           </div>
         </div>
@@ -465,6 +465,11 @@ export default {
       navList: ['一'],
       cellList: [
         '房地产业',
+        '租赁和商务服务业',
+        '科学研究和技术服务业',
+        '水利，环境和公共设施管理业',
+        '居民服务、服务和其他服务业',
+        '教育'
       ],
       active: -1,
     };
@@ -502,33 +507,41 @@ export default {
       setTimeout(() => {
         this.active = -1;
         switch (this.navList.length) {
-          case 1:
-            this.navList.push('二');
+          case 0:
+            this.navList.push('一');
             this.cellList = [
               '房地产业',
               '租赁和商务服务业',
               '科学研究和技术服务业',
               '水利，环境和公共设施管理业',
+              '居民服务、服务和其他服务业',
+              '教育'
+            ]
+            break;
+          case 1:
+            this.navList.push('二');
+            this.cellList = [
+              '研究和实验发展',
+              '专业服务技术业',
+              '科技推广和应用服务业'
             ]
             break;
           case 2:
             this.navList.push('三');
             this.cellList = [
-              '建行总营业部',
-              '建行北京华贸支行（汇总）',
-              '建行北京华贸支行（汇总）2',
-              '建行北京华贸支行（汇总）3',
-              '建行北京华贸支行（汇总）4',
+              '技术推广服务',
+              '科技中介服务',
+              '其他科技推广和应用服务业'
             ]
             break;
           case 3:
             this.navList.push('四');
             this.cellList = [
-              '建行北京新航城支行',
-              '建行北京朝阳北路支行',
-              '建行北京双桥支行',
-              '建行北京双桥南路支行',
-              '建行北京东二环中路支行',
+              '农业技术推广服务',
+              '生物技术推广服务',
+              '新材料技术推广服务',
+              '节能技术推广服务',
+              '其他技术推广服务',
             ]
             break;
           case 4:
@@ -537,7 +550,14 @@ export default {
             this.coordinateList1.splice(6, 1);
             this.listShow = false;
             this.navList = ['一'];
-            this.cellList = ['中国建设银行总行'];
+            this.cellList = [
+              '房地产业',
+              '租赁和商务服务业',
+              '科学研究和技术服务业',
+              '水利，环境和公共设施管理业',
+              '居民服务、服务和其他服务业',
+              '教育'
+            ];
           default:
             break;
         }
