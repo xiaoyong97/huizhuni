@@ -83,8 +83,9 @@ export default {
     created() {
         this.info = this.getItem('signInfo');
 		
-		var d=new Date(this.info.unid); 
-		this.info.signDate = d.getFullYear()+"-"+d.getMonth()+1+"-"+d.getDate(); 
+		var d=new Date(); 
+		var mon = d.getMonth()+1
+		this.info.signDate = d.getFullYear()+"-"+mon+"-"+d.getDate(); 
 		console.log(this.info)
     }
 }
