@@ -195,6 +195,7 @@ export default {
     },
     //返回上一级
     onClickLeft() {
+      sessionStorage.setItem("offlineHuoDong_active","主管岗_待审核")
       this.$router.go(-1);
     },
     onClickRight(){

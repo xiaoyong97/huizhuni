@@ -188,7 +188,7 @@ export default {
     },
     //返回上一级
     onClickLeft() {
-        sessionStorage.setItem("offlineHuoDongActive","待审核") //去到待审核
+      sessionStorage.setItem("offlineHuoDong_active","主管岗_已发布") //去到已发布
       this.$router.go(-1);
     },
     onClickRight(){

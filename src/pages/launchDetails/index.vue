@@ -361,6 +361,8 @@ export default {
       this.$router.push("./launchDetails/lookOriginalFile/loanBusinessOwner");
     },
     onClickLeft() {
+      //返回列表已申请
+      sessionStorage.setItem("loanLaunch_sq","已申请");
       this.$router.go(-1);
     },
     onChange(index) {
