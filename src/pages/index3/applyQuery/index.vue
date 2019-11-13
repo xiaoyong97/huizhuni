@@ -3,9 +3,11 @@
         <!--        遮罩层-->
         <div class='popContainer'  v-show="is_open">
             <div  class="choose_box" >
-                <van-row class="choose_box_list" v-for="(item,i) in list" @click="choose(i)">
-                    <p class="choose_box_text " :class="type == i ? 'blue' : '' ">{{item}}</p>
-                </van-row>
+                <el-scrollbar style="height: 170px;"> <!-- 滚动条 -->
+                    <van-row class="choose_box_list" v-for="(item,i) in list" @click="choose(i)">
+                        <p class="choose_box_text " :class="type == i ? 'blue' : '' ">{{item}}</p>
+                    </van-row>
+                </el-scrollbar>
 <!--                <van-row class="choose_box_list" @click="choose(1)">-->
 <!--                    <p class="choose_box_text " :class="type == 1 ? 'blue' : '' ">录入复核</p>-->
 <!--                </van-row>-->

@@ -293,20 +293,22 @@ export default {
   },
 
   //数据预加载
-  created: function() {},
-
-  //网页加载完成
-  mounted() {
+  created() {
 	  var infos =  sessionStorage.getItem('userinfo')
 	  if(null != infos && undefined != infos && '' != infos){
 	  	 infos = JSON.parse(infos)
-		 var unid = this.$route.query.unid;
-		 for(var i=0;i<infos.length;i++){
-			 if(unid == infos[i].unid){
-				this.info = infos[i];
-			 }
-		 }
+	  		 var unid = this.$route.query.unid;
+	  		 for(var i=0;i<infos.length;i++){
+	  			 if(unid == infos[i].unid){
+	  				this.info = infos[i];
+	  			 }
+	  		 }
 	  }
+  },
+
+  //网页加载完成
+  mounted() {
+	  
   },
 
   //声明方法

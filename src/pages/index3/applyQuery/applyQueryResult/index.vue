@@ -22,7 +22,7 @@
                 </van-row>
                 <van-row>
                     <van-col span="8"><p class="text1">企业主</p></van-col>
-                    <van-col span="12"><p class="text1">张三</p></van-col>
+                    <van-col span="12"><p class="text1">艾仲华</p></van-col>
                 </van-row>
                 <van-row>
                     <van-col span="8"><p class="text1">申货序列号</p></van-col>

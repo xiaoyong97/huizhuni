@@ -262,7 +262,8 @@ export default {
     },
     //已抢单按钮,跳到抢单页面
     onClickRight(){
-      this.$router.push('/grabSingleYi');
+      let activeNameHui="a"
+      this.$router.push('/grabSingleYi/'+activeNameHui);
     },
     //点击打开搜索
     searchBut(){
