@@ -7,8 +7,8 @@
 	 </van-nav-bar>
 	<van-icon name="search" class="search" @click="gotoSearch()"  />
     <div class="content">
-       <van-tabs color="#4c62e7" line-width="50%">
-         <van-tab title="待申请" color="#4c62e7">
+       <van-tabs v-model="tabsss" color="#4c62e7" line-width="50%">
+         <van-tab title="待申请" name="待申请" color="#4c62e7">
 			 <van-cell-group class="bg-grey pan2">
 			  	<div class="cell-container">
 					<br>
@@ -42,7 +42,7 @@
 				</div>
 			  </van-cell-group>
 		 </van-tab>
-         <van-tab title="已申请" color="#4c62e7">
+         <van-tab title="已申请" name="已申请" color="#4c62e7">
 			 <van-cell-group class="bg-grey pan2">
 			  	<div class="cell-container">
 					<br>
@@ -76,6 +76,7 @@
 
   data() {
     return {
+	  tabsss:"待申请",
       title : '贷款发起',
 	  checked: 400,
 	  result:[],
@@ -96,6 +97,10 @@
 	  	this.infos = JSON.parse(infos)
 		console.log(this.infos)
 	  }
+
+	  //检查待申请已申请选中状态 
+	  var loanLaunchSq = sessionStorage.getItem("loanLaunch_sq");
+	  this.tabsss = loanLaunchSq;
   },
    watch: {
       // 如果 `question` 发生改变，这个函数就会运行

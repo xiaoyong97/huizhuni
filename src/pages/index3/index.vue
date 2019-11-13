@@ -66,19 +66,19 @@
 			<br>
 			<van-cell class="cell-box">
 				<div class=" dk-pan">
-					<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;广州可可有限公司 </van-col>
+					<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;广州市睿智防水电器股份有限公司 </van-col>
 					<van-col span="9" class="subText">采集:2019/08/15 </van-col>
-					<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
-					<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
+					<van-col class="grey" span="9">企业主</van-col><van-col span="15">艾仲华</van-col>
+					<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91120116MA07K2307A</van-col>
 					<van-col span="24" class="detail" @click="go('loanLaunch')"><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
 				</div>
 			</van-cell>
 			<van-cell class="cell-box">
 				<div class=" dk-pan">
-					<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 广州可可有限公司 </van-col>
+					<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 广州市睿智防水电器股份有限公司 </van-col>
 					<van-col span="9" class="subText">采集:2019/08/15 </van-col>
-					<van-col class="grey" span="9">企业主</van-col><van-col span="15">张三</van-col>
-					<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91439104MA4PLN3035</van-col>
+					<van-col class="grey" span="9">企业主</van-col><van-col span="15">艾仲华</van-col>
+					<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91120116MA07K2307A</van-col>
 					<van-col span="24" class="detail"  @click="go('loanLaunch')"><img class="detail-img" src="../../assets/images/38/Initiatingaloan@2x.png" alt="">&nbsp;&nbsp;贷款发起</van-col>
 				</div>
 			</van-cell>

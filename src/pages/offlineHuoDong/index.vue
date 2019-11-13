@@ -192,7 +192,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label3@2x.png" class="img_task" >
             </div>
@@ -212,7 +212,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label3@2x.png" class="img_task" >
             </div>
@@ -232,7 +232,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label5@2x.png" class="img_task" >
             </div>
@@ -252,7 +252,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
             </div>
@@ -272,7 +272,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/activity/Label14@2x.png" class="img_task" >
             </div>
@@ -307,12 +307,31 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">已被<font color="#4c62e7">张三</font>拒绝</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">已被<font color="#4c62e7">陈雪梅</font>拒绝</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label3.2@2x.png" class="img_task" >
             </div>
             <!--已拒绝-->
             <div class="card_div_examine" v-show="shenHeIsShow=='yiJuJue'" >
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 0">
+                    <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >省分行营业部</p></van-col>
+                </van-row>
+                <van-row style="padding: 16px 12px 8px">
+                    <van-col class="" span="2"><img src="../../assets/image/my/time@2x.png" class="img_location" ></van-col>
+                    <van-col class="" span="12"><p class="card_list2_test" >2019.10.12-2019.10.12</p></van-col>
+                    <van-col class="" span="10" style="text-align: right"></van-col>
+                </van-row>
+                <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
+                    <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">已被<font color="#4c62e7">陈雪梅</font>拒绝</p></van-col>
+                </van-row>
+                <img  src="../../assets/images/other/Label3.2@2x.png" class="img_task" >
+            </div>
+            <div class="card_div_examine">
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >小微快贷企业交流会</p></van-col>
                 </van-row>
@@ -369,7 +388,7 @@
                         <van-col class="" span="22" style="text-align: center"><p class="card_list2_test">删除</p></van-col>
                     </van-col>
                 </van-row>
-                <img  src="../../assets/images/other/ICON_325.png" class="img_task" >
+                <img  src="../../assets/images/other/weiTiJiao.png" class="img_task" >
             </div>
           </van-tab>
         </van-tabs>
@@ -394,7 +413,7 @@
             <div class="card_div" v-show="menu_choose==2|menu_choose==0">
               <div @click="goPage('newActivitiesConfirmDetails',{status_:0})" class="card-bottom-line">
                   <van-row style="padding: 16px 12px 0">
-                      <van-col class="" span="12"><p class="card_list1_test_left" >1111建行每周沙龙会</p></van-col>
+                      <van-col class="" span="12"><p class="card_list1_test_left" >建行每周沙龙会</p></van-col>
                       <!-- <van-col class="" span="12" style="text-align: right"><p class="card_list1_test_right">进行中...</p></van-col> -->
                   </van-row>
                   <van-row style="padding: 16px 12px 0">
@@ -541,7 +560,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label3@2x.png" class="img_task" >
             </div>
@@ -561,7 +580,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label5@2x.png" class="img_task" >
             </div>
@@ -581,7 +600,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/other/Label-15@2x.png" class="img_task" >
             </div>
@@ -601,7 +620,7 @@
                 </van-row>
                 <van-row style="text-align: center;padding: 8px 12px 0px;margin-bottom: 16px;background-color: white">
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
-                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">张三</font>审核</p></van-col>
+                    <van-col class="text-left" span="12"><p class="card_list2_test">等待<font color="#4c62e7">陈雪梅</font>审核</p></van-col>
                 </van-row>
                 <img  src="../../assets/images/activity/Label14@2x.png" class="img_task" >
             </div>
@@ -1475,8 +1494,7 @@ export default {
         border: #4c62e7 1px solid;
         width: 150px;
         height: 30px;
-
-        border-radius: 7px;
+        border-radius: 10px;
     }
 
 
