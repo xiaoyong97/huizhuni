@@ -107,7 +107,7 @@
 		</div>
 		<div v-show='type==2'>
 				<van-cell-group class="bg-grey"  >
-					
+
 					<div class="grey_bg"> </div>
 					<div v-show="!show3||index==0" v-for="(item,index) in info.associates">
 						<van-cell>
@@ -418,32 +418,29 @@
     }
   },
 
-
-  //数据预加载
-  created : ()=>{
+//数据预加载
+ created() {
+	  var infos =  sessionStorage.getItem('userinfo')
+	  if(null != infos && undefined != infos && '' != infos){
+	  	 infos = JSON.parse(infos)
+			   var unid = this.$route.query.unid;
+	  		 for(var i=0;i<infos.length;i++){
+	  			 if(unid == infos[i].unid){
+                      this.info = infos[i];
+	  			 }
+	  		 }
+	  }
   },
 
   //网页加载完成
   mounted(){
-		var infos =  sessionStorage.getItem('userinfo')
-		 
-		 if(null != infos && infos != undefined && '' != infos){
-			 var unid = this.$route.query.unid;
-				 infos = JSON.parse(infos)
-				 for(var i=0;i<infos.length;i++){
-					 if(unid == infos[i].unid){
-						 this.info = infos[i];
-						 console.log(this.info);
-						 return;
-					 }
-				 }
-		}
+
   },
 
   //声明方法
   methods : {
   	show_3 () {
-		
+
   		this.show3 = !this.show3
 	},
 	  show_4 () {

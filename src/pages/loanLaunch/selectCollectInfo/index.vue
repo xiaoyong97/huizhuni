@@ -7,7 +7,7 @@
 
     <div class="main">
       <div class="main_box">
-        
+
         <van-collapse v-model="activeName">
           <van-collapse-item name="1">
               <div class="letdiv" slot="title">企业信息</div>
@@ -162,7 +162,7 @@
 					        <p class="list_test2">手机号：{{item.mobile}}</p>
 					    </van-col>
 					</van-row>
-					
+
 				</div>
             </van-collapse-item>
           <van-collapse-item name="4">
@@ -294,13 +294,13 @@ export default {
 
   //数据预加载
   created() {
-	  var infos =  sessionStorage.getItem('userinfo')
+      var infos =  sessionStorage.getItem('userinfo')
 	  if(null != infos && undefined != infos && '' != infos){
 	  	 infos = JSON.parse(infos)
-	  		 var unid = this.$route.query.unid;
+               var unid = this.$route.query.unid;
 	  		 for(var i=0;i<infos.length;i++){
 	  			 if(unid == infos[i].unid){
-	  				this.info = infos[i];
+                      this.info = infos[i];
 	  			 }
 	  		 }
 	  }
@@ -308,7 +308,7 @@ export default {
 
   //网页加载完成
   mounted() {
-	  
+
   },
 
   //声明方法
@@ -350,7 +350,7 @@ export default {
   float: left;
   position: absolute;
   left: -22px;
-  top:11px; 
+  top:11px;
 }
 .van-cell__right-icon{
     position: absolute !important;

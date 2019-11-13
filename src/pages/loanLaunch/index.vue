@@ -52,7 +52,7 @@
 							<van-col span="9" class="subText">采集:2019/08/15 </van-col>
 							<van-col class="grey" span="9">企业主</van-col><van-col span="15">艾仲华</van-col>
 							<van-col class="grey" span="9">统一社会信用代码 </van-col><van-col span="15">&nbsp;91120116MA07K2307A</van-col>
-							<van-col span="24" class="detail"  @click="go('launchDetails')"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
+							<van-col span="24" class="detail"  @click="createLoan('launchDetails',item.unid)"><img class="detail-img" src="../../assets/images/38/View@2x.png" alt="">&nbsp;&nbsp;查看详情</van-col>
 						</div>
 					</van-cell>
 

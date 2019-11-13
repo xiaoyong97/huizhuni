@@ -352,13 +352,15 @@ export default {
   created: function() {},
 
   //网页加载完成
-  mounted() {},
+  mounted() {
+    this.unid = this.$route.query.unid;
+  },
 
   //声明方法
   methods: {
     lockCli(type) {
       localStorage.setItem("ckywj_type", type);
-      this.$router.push("./launchDetails/lookOriginalFile/loanBusinessOwner");
+      this.$router.push({name: "loanBusinessOwner",query:{unid:this.unid}})
     },
     onClickLeft() {
       this.$router.go(-1);
