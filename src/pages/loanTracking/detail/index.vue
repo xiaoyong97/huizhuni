@@ -14,11 +14,11 @@
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">企业名称</van-col>
-                    <van-col class="text">北京京东金融有限公司</van-col>
+                    <van-col class="text">{{item.company}}</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">企业主</van-col>
-                    <van-col class="text">张三</van-col>
+                    <van-col class="text">{{item.userName}}</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">客户编号</van-col>
@@ -44,7 +44,7 @@
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">产品代码</van-col>
-                    <van-col class="text">9613</van-col>
+                    <van-col class="text">{{item.productCode}}</van-col>
                 </van-row>
                 <van-row>
                     <van-col span="9" class="text">贷款账号</van-col>
@@ -115,11 +115,17 @@ export default {
     data() {
         return {
             backIcon,
-            loanStatus: ''
+            loanStatus: '',
+            item: {
+                company: '北京京东金融有限公司',
+                userName: '张三',
+                productCode: '9613',
+            },
         }
     },
     created() {
         this.loanStatus = this.$route.params.status;
+        this.item = this.$route.params.loanTrackingItemInfo;
     }
 }
 </script>

@@ -184,6 +184,7 @@ export default {
         next() {
 			
             if (this.active == 3) {
+                this.active = 0;
                 this.go('contractSignResult',{signInfo:this.info})
             } else {
                 this.active++;

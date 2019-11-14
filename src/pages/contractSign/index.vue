@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <!--头部导航-->
-		<van-nav-bar title="合同签订" :border="false" @click-left="onClickLeft1" @click-right="onClickRight('contractSearch')">
+		<van-nav-bar title="合同签订" :border="false" @click-left="onClickLeft1" @click-right="go('contractSearch',{contractSign:activeName})">
             <van-icon :name="backIcon" size="18px" slot="left" />
             <van-icon :name="searchIcon" size="18px" slot="right" />
         </van-nav-bar>
@@ -13,9 +13,10 @@
             title-inactive-color="#000000"
             line-height=3
             :border="false"
+            v-model="activeName"
             >
 
-            <van-tab title="待签约">
+            <van-tab title="待签约" name="sign">
                 <div class="cell" v-for="item in infos" v-show="item.step==3">
                     <van-row>
                         <van-col><img class="img" src="../../assets/images/38/Sequencenumber@2.png" alt="" /></van-col>
@@ -37,10 +38,10 @@
                        <van-col span="8" class="left-text">ID:</van-col>
                        <van-col class="right-text">{{item.unid}}</van-col>
                    </van-row>
-                    <div class="btn van-hairline--top" @click="go('sign', {signInfo: item})"><img class="img-btn" src="../../assets/images/38/Signing@2x.png" />签约</div>
+                    <div class="btn van-hairline--top" @click="go('sign', {signInfo: item, contractSign: 'sign'})"><img class="img-btn" src="../../assets/images/38/Signing@2x.png" />签约</div>
                 </div>
             </van-tab>
-            <van-tab title="已签约">
+            <van-tab title="已签约" name="signed">
                	<div class="cell" v-for="item in infos" v-show="item.step==4">
                     <van-row>
                         <van-col><img class="img" src="../../assets/images/38/Sequencenumber@2.png" alt="" /></van-col>
@@ -70,7 +71,7 @@
                         <van-col span="8" class="left-text">ID:</van-col>
                         <van-col class="right-text">{{item.unid}}</van-col>
                     </van-row>
-                    <div class="btn van-hairline--top" @click="go('contractDetail', {signedInfo: item})"><img class="img-btn" src="../../assets/images/38/Viewreport@2x.png" />查看详情</div>
+                    <div class="btn van-hairline--top" @click="go('contractDetail', {signedInfo: item, contractSign: 'signed'})"><img class="img-btn" src="../../assets/images/38/Viewreport@2x.png" />查看详情</div>
                 </div>
             </van-tab>
         </van-tabs>
@@ -91,9 +92,11 @@ export default {
 		  	this.infos = JSON.parse(infos)
 			console.log(this.infos)
 		  }
+          this.activeName = this.getItem('contractSign') == undefined  ? 'sign' : this.getItem('contractSign');
 	},
 	methods:{
 		onClickLeft1:function(){
+            this.setItem('contractSign', 'sign')
 			this.$router.push({name: 'index3'})
             // this.$router.go(-1);
 		}
@@ -140,7 +143,8 @@ export default {
                     signDate: '2019-08-02',
                     id: 654432
                 },
-            ]
+            ],
+            activeName: 'sign',
         }
     }
 }
