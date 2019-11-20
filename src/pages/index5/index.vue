@@ -10,6 +10,7 @@
         <div class="content">
                 <img :src="img1" class="img" @click="gomyActivities">
                 <img :src="img2" class="img" @click="gomyperformance">
+				<img :src="img3" class="img" @click="goResearch">
         </div>
 
 
@@ -36,6 +37,7 @@
                 title : '我的',
                 img1: require('@/assets/images/other/4c429533dfa2d23c0a40430e92c8601.jpg'),
                 img2: require('@/assets/images/other/wodeyeji.jpg'),
+				img3: require('@/assets/images/other/8021574236234_.pic_hd.jpg'),
                 //  screenWidth: document.body.clientWidth, // 屏幕尺寸
                 //  screenHeight: document.body.clientHeight, // 屏幕尺寸
             }
@@ -99,6 +101,9 @@
             gomyperformance : function(){
                 this.$router.push('./myperformance');
             },
+			goResearch : function(){
+			    this.$router.push('./research');
+			},
 
 
         },

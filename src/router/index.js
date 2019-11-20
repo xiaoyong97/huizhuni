@@ -77,6 +77,15 @@ export default new Router({
         },
 
       },
+	  {
+	    name: 'research',
+	    path: '/research',
+	    component: () => import('@/pages/research'),
+	    meta: {
+	      title: 'research'
+	    },
+	  
+	  },
       {
         name: 'myActivities',
         path: '/myActivities',
