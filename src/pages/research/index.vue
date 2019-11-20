@@ -182,7 +182,7 @@
         data() {
             return {
                 title : '调查问券',
-                step: 3,
+                step: 1,
                 is_open:false,
                 type:0,
                 active:0,
@@ -481,7 +481,7 @@
 	   height: 40px;
 	   line-height: 36px;
 	   margin: 0px auto ;
-	   background-image: url(../../../dist/img/Mainbutton@2x.d7bdb707.png);
+	   background-image: url(../../assets/images/other/Slider2@2x.png);
 	   background-size: 100% 100%;
 	   color: #fff;
 	   text-align: center;
