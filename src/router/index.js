@@ -650,6 +650,15 @@ export default new Router({
             title: '宏观经济'
         },
     },
+	//催收管理
+	{
+		name: 'collectionManagement',
+		path: '/index3/collectionManagement',
+		component: () => import('@/pages/index3/collectionManagement'),
+		meta: {
+			title: '催收管理'
+		},
+	},
 		{
 			name: 'businessData',
 			path: '/index4/businessData',
