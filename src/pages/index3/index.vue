@@ -46,8 +46,9 @@
 			  			   <p>合同签订</p>
 			  </van-grid-item>
 
-			  <van-grid-item >
-
+			  <van-grid-item icon="photo-o" text="文字" @click="go('businessMonitor')">
+			  		<img src="../../assets/images/84/signacontract@2x.png" alt="">
+			  			   <p>业务监测</p>
 			  </van-grid-item>
 			</van-grid>
 		</div>

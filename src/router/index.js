@@ -651,12 +651,21 @@ export default new Router({
         },
     },
 		{
-		    name: 'businessData',
-		    path: '/index4/businessData',
-		    component: () => import('@/pages/index4/businessData'),
-		    meta: {
-		        title: '经营数据'
-		    },
+			name: 'businessData',
+			path: '/index4/businessData',
+			component: () => import('@/pages/index4/businessData'),
+			meta: {
+				title: '经营数据'
+			},
 		},
+		{
+			name: 'businessMonitor',
+			path: '/index3/businessMonitor',
+			component: () => import('@/pages/index3/businessMonitor'),
+			meta: {
+				title: '经营数据'
+			},
+		},
+		
     ]
   })
