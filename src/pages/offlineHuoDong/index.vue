@@ -492,7 +492,7 @@
                   </van-col>
                   <van-col class="" span="12" @click="goPage('xinZhenguploadImage')">
                       <van-col class="" span="2"><img src="../../assets/images/38/Upload@2x.png" class="img_location location2" ></van-col>
-                      <van-col class="" span="20" style="text-align: center"><p class="card_list2_test" >上传照片</p></van-col>
+                      <van-col class="" span="20" style="text-align: center">上传照片</van-col>
                   </van-col>
               </van-row>
             </div>
@@ -657,7 +657,7 @@
                 <div class="line_grey"></div>
                 <div class="header_text" >
                     <h3>"普惠金融百万创业者培训计划"</h3>
-                    <h3>开展情况会中表</h3>
+                    <h3>开展情况表</h3>
                 </div>
                 <van-row class="cell">
                     <van-col class="cell-header" span="6">机构名称</van-col>
@@ -1018,9 +1018,11 @@ export default {
             //打开二维码
             this.erWeiMaIs =true;
             this.erWeiMaName='报名二维码'
+            this.baoQianIS=false
         }else if(item.id==2){
             this.erWeiMaIs =true;
             this.erWeiMaName='签到二维码'
+            this.baoQianIS=false
         }
     },
     //关闭二维码

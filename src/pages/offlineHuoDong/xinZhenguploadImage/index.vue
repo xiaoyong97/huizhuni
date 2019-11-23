@@ -59,6 +59,7 @@
         //声明方法
         methods : {
             onClickLeft() {
+                sessionStorage.setItem("offlineHuoDongActive","已发布") //去到草稿箱
                 this.$router.go(-1);
             },
             onClickRight(){

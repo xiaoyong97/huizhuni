@@ -28,9 +28,10 @@
                             <van-col class="" span="12">
                                 <p class="card_list1_test_left" style="font-weight: bold;font-size: 15px">{{i+1}}.  &thinsp; {{user.sex}}</p>
                                 <p class="card_list1_test_left" style="">{{user.company}}</p>
+                                <p class="card_list1_test_right">{{user.phone}}</p>
                             </van-col>
                             <van-col class="" span="12" style="text-align: left">
-                                <p class="card_list1_test_right">{{user.phone}}</p>
+                                <p class="card_list1_test_left" style="">{{user.name}}</p>
                                 <p class="card_list1_test_right" style="font-weight: bold;font-size: 14px">{{user.job}}</p>
                             </van-col>
                         </van-row>

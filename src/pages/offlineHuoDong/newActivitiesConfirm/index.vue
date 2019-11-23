@@ -14,6 +14,9 @@
         <div class="huoDongMes">
           <div class="logoHang"><div class="logoLeft"> </div><div class="logoRight">活动信息</div></div>
           <div  class="biaoQianLie" gutter="10">
+            <van-cell title="活动主题" value-class="cellRightMes" :value="confirmActivitiesMes.theme"/>
+            <van-cell title="活动开始时间" value-class="cellRightMes" :value="confirmActivitiesMes.StartTime"/>
+            <van-cell title="活动结束时间" value-class="cellRightMes" :value="confirmActivitiesMes.EndTime"/>
             <van-cell title="活动时长" value-class="cellRightMes" :value="confirmActivitiesMes.timeLength"/>
             <van-cell title="签到时间" value-class="cellRightMes" :value="confirmActivitiesMes.registerTime"/>
             <van-cell title="活动地点" value-class="cellRightMes" :value="confirmActivitiesMes.Location"/>
@@ -54,7 +57,10 @@
             <van-cell title="是否需要送站" value="是"/>
           </div>
         </div>
-        <div class="botButDiv"><van-button class="botQianDanBut" round type="info" v-if="true" @click="ChengQueDing">确定</van-button></div>
+        <div class="botButDiv">
+          <van-button class="botQianDanBut" style="margin-right:10%;" plain hairline round type="info" v-if="true" @click="fanHui">返回</van-button>
+          <van-button class="botQianDanBut" round type="info" v-if="true" @click="ChengQueDing">确定</van-button>
+        </div>
 
       </div>
     </div>
@@ -115,6 +121,9 @@ export default {
         { id: 3,name: '陈雪梅3' }
        ],
        confirmActivitiesMes:{
+         theme: '建行每周沙龙会',//活动主题
+         StartTime: '2019.10.12',//活动开始时间
+         EndTime: '2019.10.13',//活动结束时间
          timeLength: '2天',//活动时长，天
          registerTime: '2019.10.12  09：00',//签到时间
          Location:'省分行营业部',//活动地点
@@ -212,7 +221,10 @@ export default {
       this.$router.push('/offlineHuoDong/newSchedule');
     },
     
-
+    //返回
+    fanHui(){
+      this.$router.go(-1)
+    },
     //确定
     ChengQueDing(){
       this.$router.push('/offlineHuoDong/submitSuccessfully');
@@ -293,13 +305,13 @@ export default {
   
   .botButDiv{
     line-height:40px;
-    width:250px;
+    width:80%;
     margin: 20px auto;
   }
   .botButDiv .botQianDanBut{
     height:35px;
     line-height:35px;
-    width:250px;
+    width:45%;
   }
   .inputFieldMes{
     float:left;

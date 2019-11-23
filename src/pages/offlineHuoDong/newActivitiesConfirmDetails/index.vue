@@ -253,6 +253,7 @@ export default {
     ChengQueDing(){
       Dialog.confirm({
         message: '确定同意新建吗？',
+        cancelButtonText: "返回",
         confirmButtonText: "确定",
       }).then(() => {
         sessionStorage.setItem("offlineHuoDongActive","已发布") //去到已发布
