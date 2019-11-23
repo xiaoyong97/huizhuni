@@ -14,7 +14,7 @@
             <img src="../../../assets/images/idcard/012105736@33.png" class="img_shoot"  v-show="imgshow_tmp==2">
             <img src="../../../assets/images/idcard/1057@58.png" class="img_shoot"  v-show="imgshow_tmp==3">
             <img src="../../../assets/images/idcard/12@215545.png" class="img_shoot"  v-show="imgshow_tmp==4">
-            <img src="../../../assets/images/idcard/1012110@635.png" class="img_shoot"  v-show="imgshow_tmp==5">
+            <img src="../../../assets/images/idcard/timg.jpg" class="img_shoot"  v-show="imgshow_tmp==5">
 			<p style="line-height: 10px"></p>
 			<img src="../../../assets/images/other/Takeaphoto@2x.png" class="img_cmarea"  @click="add_img">
 
@@ -1366,7 +1366,7 @@
 			box-shadow: 0px 0px 12px 2px rgba(0,0,0,.15);
 		}
 		.idFangChan_bk{
-			background-image: url(../../../assets/images/idcard/1012110@635.png);
+			background-image: url(../../../assets/images/idcard/timg_mohu.jpg);
 		}
 
 		.idCard_front,.idCard_back,.idjiehun{

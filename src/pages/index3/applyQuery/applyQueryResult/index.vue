@@ -18,11 +18,11 @@
                 </van-row>
                 <van-row>
                     <van-col span="8"><p class="text1">企业名称</p></van-col>
-                    <van-col span="12"><p class="text1">广州市睿智防水电器股份有限公司</p></van-col>
+                    <van-col span="12"><p class="text1">北京京东金融有限公司</p></van-col>
                 </van-row>
                 <van-row>
                     <van-col span="8"><p class="text1">企业主</p></van-col>
-                    <van-col span="12"><p class="text1">艾仲华</p></van-col>
+                    <van-col span="12"><p class="text1">张三</p></van-col>
                 </van-row>
                 <van-row>
                     <van-col span="8"><p class="text1">申货序列号</p></van-col>
@@ -42,7 +42,7 @@
                     <van-col class=""  style="background-color: #4c62e7;width: 10px;height: 16px;margin: 9px 4px 9px 0;"></van-col>
                     <van-col class="list_title"  style="text-align: left"><p class="list_right_text" >不通过原因</p></van-col>
                 </van-row>
-                <div class="border_botton">
+                <!-- <div class="border_botton">
                     <van-row class="list_row " >
                         <van-col class="" span="15" style=""><p class="list_test " >个人近12个月还款记录</p></van-col>
                         <van-col class="" span="4" style=""><p class="list_test orange" >不通过</p></van-col>
@@ -52,7 +52,7 @@
                     </van-row>
 
                     <p  v-show="is_show==1" class="list_test"  style="font-size: 12px;line-height: 24px">您最近12个月存在<span class="orange">5</span>次途期还款记录，其中有<span class="orange">3</span>次涵期超时<span class="orange">2</span>个月</p>
-                </div>
+                </div> -->
                 <div class="border_botton">
                     <van-row class="list_row " >
                         <van-col class="" span="15" style=""><p class="list_test " >股权质押异常检查</p></van-col>
