@@ -131,7 +131,7 @@
                         date: '2019-07-15'
                     },
                     {
-                        company: '北京京东金融有限公司',
+                        company: '广州京东金融有限公司',
                         delayDays: 35,
                         userName: '张三',
                         productCode: 9613,
@@ -169,7 +169,7 @@
                         tag: require('../../assets/images/other/whitelist@2x.png')
                     },
                     {
-                        company: '北京京东金融有限公司',
+                        company: '广州京东金融有限公司',
                         userName: '张三',
                         productCode: 9613,
                         amount: '2,000,000',
@@ -201,7 +201,7 @@
                 ],
                 tabList2BackUp: [
                     {
-                        company: '北京京东金融有限公司',
+                        company: '广州京东金融有限公司',
                         userName: '张三',
                         productCode: 9613,
                         amount: '2,000,000',
@@ -221,7 +221,7 @@
                         tag: require('../../assets/images/other/whitelist@2x.png')
                     },
                     {
-                        company: '北京京东金融有限公司',
+                        company: '广州京西科技有限公司',
                         userName: '张三',
                         productCode: 9613,
                         amount: '2,000,000',

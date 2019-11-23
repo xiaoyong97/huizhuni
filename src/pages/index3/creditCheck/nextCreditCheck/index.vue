@@ -6,7 +6,9 @@
             <van-nav-bar  >
             </van-nav-bar>
             <p class="craema_text">{{text}}</p>
-            <img src="../../../../assets/images/other/file.png" class="img_shoot"  >
+            <img src="../../../../assets/images/other/file.png" class="img_shoot" v-show="type==0||type==2" >
+            <img src="../../../../assets/images/other/timg.jpg" class="img_shoot" v-show="type==1||type==3" >
+            <img src="../../../../assets/images/other/certificate.jpg" class="img_shoot" v-show="type==4" >
             <p style="line-height: 10px"></p>
             <img src="../../../../assets/images/other/Takeaphoto@2x.png" class="img_cmarea"  @click="add_img">
 

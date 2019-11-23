@@ -61,7 +61,7 @@
                             <p class="list_test blue" >详情<van-icon name="arrow-up" v-show="is_show==2" style="margin: 4px 4px;"/><van-icon name="arrow-down" v-show="is_show!==2" style="margin: 4px 4px"/></p>
                         </van-col>
                     </van-row>
-                    <p  v-show="is_show==2" class="list_test"  style="font-size: 12px;line-height: 24px">您上传的征信查询授权存在缺失页</p>
+                    <p  v-show="is_show==2" class="list_test"  style="font-size: 12px;line-height: 24px">股权质押时间即将结束</p>
                 </div>
             </div>
             <div class="result_box" >
