@@ -61,7 +61,7 @@
 					<van-col span="14">客户合规审核未通过</van-col>
 					<van-col span="10">
 						<span class="cell-num">12 </span> 户
-						<van-button class="check" @click="go_Page('applyQueryResult')" type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
+						<van-button class="check" @click="go_Page('applyQuery')" type="primary" size="small" color="rgb(90,75,234)">查看</van-button>
 					</van-col>
 
 				</van-cell>
@@ -99,7 +99,7 @@
 					</div>
 
 				</van-cell>
-				<van-cell>
+				<!-- <van-cell>
 					<div class=" dk-pan">
 						<van-col span="24"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt=""> 广州可可有限公司 </van-col>
 						<van-col class="grey" span="8">企业主</van-col><van-col span="16">张三</van-col>
@@ -117,7 +117,7 @@
 						<van-col class="grey" span="8">应还金额（元）</van-col><van-col class="orange" span="16">200,000</van-col>
 						<van-col class="grey" span="8">到期时间</van-col><van-col span="16" class="orange">2019-07-15</van-col>
 					</div>
-				</van-cell>
+				</van-cell> -->
 
 				<van-cell>
 					<br>
