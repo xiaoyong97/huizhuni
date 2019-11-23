@@ -683,6 +683,22 @@ export default new Router({
 				title: '经营数据'
 			},
 		},
+		{
+			name: 'businessMonitorDetail',
+			path: '/index3/businessMonitorDetail',
+			component: () => import('@/pages/index3/businessMonitorDetail'),
+			meta: {
+				title: '经营数据详情'
+			},
+		},
+		{
+			name: 'businessMonitorBankDetail',
+			path: '/index3/businessMonitorBankDetail',
+			component: () => import('@/pages/index3/businessMonitorBankDetail'),
+			meta: {
+				title: '经营数据详情'
+			},
+		},
 		
     ]
   })
