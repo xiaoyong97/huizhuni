@@ -9,25 +9,25 @@
 				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 			</van-col>
 		</van-row>
-		<van-row class="noticeBar">
-			<van-col span="12" class="text-center">
-				<div class="noticePan1" @click="gotoBankDetail">{{noticePan1_text}}</div>
-				<div class="noticePan2">不良率</div>
-				<div class="noticePan3">比年初: <span>-0.60%</span></div>
-			</van-col>
-			<van-col span="12" class="text-center">
-				<div class="noticePan4">2019/07/03</div>
-				<div class="noticePan5">1.54%</div>
-				<div class="noticePan6">比上月: <span>-0.08%</span></div>
-			</van-col>
-		</van-row>
-		<p class="tip">责任口径不良排名</p>
-		<van-tabs v-model="active" color="#4c62e7" line-width="150"   >
-		  <van-tab v-bind:title="item.title" v-for="item in data" >
-			  <van-cell v-bind:class="{redColor:item1.isOver}" v-bind:title="item1.bank" v-for="item1 in item.data"  is-link  @click="gotoDetail(item1)" v-bind:value="item1.rate"  />
-		  </van-tab>
-		 
-		</van-tabs>
+		<div class="table">
+			<van-row class="table-hearder">
+				<van-col span="7" >指标 </van-col>
+				<van-col span="4" >指标值</van-col>
+				<van-col span="4" >比年初</van-col>
+				<van-col span="4" >比上月</van-col>
+				<van-col span="4" >比上旬</van-col>
+			</van-row>
+			<van-row class="table-content">
+				<van-col span="24" v-for="item in data" >
+					<van-col span="7" class="table-left-title">{{item.title}}</van-col>
+					<van-col span="4" >21.37</van-col>
+					<van-col span="4" >7.39</van-col>
+					<van-col span="4" >0.05</van-col>
+					<van-col span="4" >-0.18</van-col>
+				</van-col>
+			</van-row>
+		</div>
+		
     </div>
 </template>
 
@@ -38,49 +38,42 @@
 	import { Grid, GridItem,Image,Panel,Cell, CellGroup,Row, Col,Dialog,Toast ,Tab, Tabs } from 'vant';
 	
 	export default {
-  data() {
-    return {
-		title:['业务监测'],
-		step:0,
-		date:'2019-11-21',
-		bank:'建行江苏省分行小企业业务部',
-		active:0,
-		noticePan1_text:'人行口径',
-		data:[
-			{
-				'title':'二级分行不良率',
-				data:[
+	data() {
+		return {
+			title:['业务监测'],
+			step:0,
+			date:'2019-11-21',
+			bank:'建行江苏省分行小企业业务部',
+			active:0,
+			noticePan1_text:'人行口径',
+			data:[
 					{
-						'bank':'建行徐州泉山支行(汇总)',
-						'rate':'35.80%',
-						'isOver':true,
-					},{
-						'bank':'建行徐州泉山支行(汇总)',
-						'rate':'25.80%',
-						'isOver':true,
-					},{
-						'bank':'建行徐州泉山支行(汇总)',
-						'rate':'1.80%',
-						'isOver':false,
-					},{
-						'bank':'建行徐州泉山支行',
-						'rate':'1.01%',
-						'isOver':false,
-					}
-				]
-			},
-			{
-				'title':'经办行不良率',
-				data:[
+						'title':"贷款金额  (亿元)",
+					},
 					{
-						'bank':'建行徐州泉山支行(汇总)',
-						'rate':'35.80%',
+						'title':'贷款客户数(户)',
+					},
+					{
+						'title':'不良贷款额(亿元)',
+					},
+					{
+						'title':'不良贷款率',
+					},
+					{
+						'title':'逾期贷款额',
+					},
+					{
+						'title':'逾期客户数(户)',
+					},
+					{
+						'title':'逾期非不良额(亿元)',
+					},
+					{
+						'title':'逾期非不良率',
 					}
-				]
-			}
-		]
-	}
-  },
+			],
+		}
+	},
 
   //数据预加载
   created(){
@@ -96,13 +89,6 @@
   methods : {
       onClickLeft:function(){
 		  this.$router.go(-1);
-	  },
-	  gotoBankDetail:function(){
-		  this.$router.push({path:'/index3/businessMonitorBankDetail'})
-	  },
-	  gotoDetail:function(obj){
-		this.$router.push({path:'/index3/businessMonitorDetail', query: obj})
-		 
 	  }
   },
   //引入组件
@@ -180,5 +166,29 @@
 	}
 	.redColor .van-cell__value span{
 		color: rgb(232,86,93);
+	}
+	
+	.table{
+		text-align: center;
+	}
+	.table .table-hearder{
+		text-align:  center;
+		color: #fff;
+		padding: 16px 0px;;
+		background-image: linear-gradient(to right, #4bb0ff, #6149f6);
+	}
+	.table-left-title{
+		padding: 6px 0px;
+		line-height: 20px;
+		vertical-align: middle; 
+		
+	}
+	.table-content {
+		height: 48px;
+		line-height: 48px;
+		
+	}
+	.table-content>div:nth-child(2n+2){
+		background-color: lightgray;
 	}
 </style>

@@ -659,6 +659,14 @@ export default new Router({
 			title: '催收管理'
 		},
 	},
+	{
+		name: 'myCustomer',
+		path: '/index3/collectionManagement/myCustomer',
+		component: () => import('@/pages/index3/collectionManagement/myCustomer'),
+		meta: {
+			title: '我的客户'
+		},
+	},
 		{
 			name: 'businessData',
 			path: '/index4/businessData',
@@ -673,6 +681,22 @@ export default new Router({
 			component: () => import('@/pages/index3/businessMonitor'),
 			meta: {
 				title: '经营数据'
+			},
+		},
+		{
+			name: 'businessMonitorDetail',
+			path: '/index3/businessMonitorDetail',
+			component: () => import('@/pages/index3/businessMonitorDetail'),
+			meta: {
+				title: '经营数据详情'
+			},
+		},
+		{
+			name: 'businessMonitorBankDetail',
+			path: '/index3/businessMonitorBankDetail',
+			component: () => import('@/pages/index3/businessMonitorBankDetail'),
+			meta: {
+				title: '经营数据详情'
 			},
 		},
 		

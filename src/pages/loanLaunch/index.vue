@@ -12,7 +12,7 @@
 			 <van-cell-group class="bg-grey pan2">
 			  	<div class="cell-container">
 					<br>
-					<van-cell class="cell-box" v-for="(item,index) in infos" v-show="item.step==2">
+					<van-cell class="cell-box" v-for="(item,index) in infos" v-show="item.step==2 && index == 1">
 						<div class="dk-pan">
 							<van-col span="15"><img class="company" src="../../assets/images/38/Companyname@2x.png" alt="">&nbsp;{{item.company_info.company_name}}</van-col>
 							<van-col span="9" class="subText">采集:{{item.collect_time}} </van-col>
@@ -95,7 +95,6 @@
 	  var infos =  sessionStorage.getItem('userinfo')
 	  if(null != infos && undefined != infos && '' != infos){
 	  	this.infos = JSON.parse(infos)
-		console.log(this.infos)
 	  }
 
 	  //检查待申请已申请选中状态 

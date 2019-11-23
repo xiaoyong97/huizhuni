@@ -5,8 +5,8 @@
             <img src="../../../../assets/images/38/return@2x.png" class="img_return" @click="openOverlay(-1)" >
             <van-nav-bar  >
             </van-nav-bar>
-            <p class="craema_text">请拍摄征信查询授权协议</p>
-            <img src="../../../../assets/images/other/02130521.png" class="img_shoot"  >
+            <p class="craema_text">{{text}}</p>
+            <img src="../../../../assets/images/other/file.png" class="img_shoot"  >
             <p style="line-height: 10px"></p>
             <img src="../../../../assets/images/other/Takeaphoto@2x.png" class="img_cmarea"  @click="add_img">
 
@@ -24,10 +24,10 @@
             </van-row>
             <van-row  class="picture_div" >
                 <van-col  class="picture_col gray_border" span="7"  v-for="(item) in list[0]">
-                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/other/02130521.png" class="img_file"  >
                     <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0)" >
                 </van-col>
-                <van-col class="picture_col blue_border" span="7" @click="openOverlay(0)" >
+                <van-col class="picture_col blue_border" span="7" @click="openOverlay(0,'请拍摄征信查询授权协议')" >
                     <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
                     <p class="add_text">点击拍摄</p>
                 </van-col>
@@ -37,10 +37,10 @@
             </van-row>
             <van-row  class="picture_div" >
                 <van-col  class="picture_col gray_border" span="7"  v-for="(item) in list[1]">
-                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/other/shouchi.jpg" class="img_file"  >
                     <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(1)" >
                 </van-col>
-                <van-col class="picture_col blue_border" span="7" @click="openOverlay(1)" >
+                <van-col class="picture_col blue_border" span="7" @click="openOverlay(1,'请拍摄手持征信查询授权协议的影像')" >
                     <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
                     <p class="add_text">点击拍摄</p>
                 </van-col>
@@ -53,10 +53,10 @@
             </van-row>
             <van-row  class="picture_div" >
                 <van-col  class="picture_col gray_border" span="7"  v-for="(item) in list[2]">
-                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/other/02130521.png" class="img_file"  >
                     <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(2)" >
                 </van-col>
-                <van-col class="picture_col blue_border" span="7" @click="openOverlay(2)" >
+                <van-col class="picture_col blue_border" span="7" @click="openOverlay(2,'请拍摄业务申请书的影像')" >
                     <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
                     <p class="add_text">点击拍摄</p>
                 </van-col>
@@ -66,10 +66,10 @@
             </van-row>
             <van-row  class="picture_div" >
                 <van-col  class="picture_col gray_border" span="7"  v-for="(item) in list[3]">
-                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/other/shouchi.jpg" class="img_file"  >
                     <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(3)" >
                 </van-col>
-                <van-col class="picture_col blue_border" span="7" @click="openOverlay(3)" >
+                <van-col class="picture_col blue_border" span="7" @click="openOverlay(3,'请拍摄手持业务申请书的影像')" >
                     <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
                     <p class="add_text">点击拍摄</p>
                 </van-col>
@@ -82,10 +82,10 @@
             </van-row>
             <van-row  class="picture_div" >
                 <van-col  class="picture_col gray_border" span="7"  v-for="(item) in list[4]">
-                    <img src="../../../../assets/images/other/file.png" class="img_file"  >
+                    <img src="../../../../assets/images/other/certificate.jpg" class="img_file"  >
                     <img src="../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(4)" >
                 </van-col>
-                <van-col class="picture_col blue_border" span="7" @click="openOverlay(4)" >
+                <van-col class="picture_col blue_border" span="7" @click="openOverlay(4,'请拍摄企业主手持本人身份证的影像')" >
                     <img src="../../../../assets/images/84/Shooting@2x.png" class="img_cmarea2"  >
                     <p class="add_text">点击拍摄</p>
                 </van-col>
@@ -105,6 +105,7 @@
 
         data() {
             return {
+				text:'请拍摄征信查询授权协议',
                 info:{},
                 Indexe1:'',
                 Indexe2:'',
@@ -164,7 +165,10 @@
             go : function(url){
                 this.$router.push({name: url})
             },
-            openOverlay : function(i){
+            openOverlay : function(i,text){
+				if (text) {
+				    this.text = text;
+				}
                 if (i!==-1) {
                     this.type = i;
                 }

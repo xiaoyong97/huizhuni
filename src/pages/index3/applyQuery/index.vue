@@ -32,11 +32,11 @@
             <div class="card_div" v-show="type==0|type==1">
                 <van-row style="padding: 4px 12px 0">
                     <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
-                    <van-col class="" span="18"><p class="card_list2_test" >北京京东金融有限公司</p></van-col>
+                    <van-col class="" span="18"><p class="card_list2_test" >广州市睿智防水电器股份有限公司</p></van-col>
                 </van-row>
                 <van-row style="padding: 4px 12px 0">
                     <van-col class="" span="8"><p class="card_list1_test_left" >企业主</p></van-col>
-                    <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >张三</p></van-col>
+                    <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >艾仲华</p></van-col>
                 </van-row>
                 <van-row style="padding: 4px 12px 0">
                     <van-col class="" span="8"><p class="card_list1_test_left" >申贷序列号</p></van-col>
@@ -84,7 +84,7 @@
                 </van-row>
                 <img src="../../../assets/images/other/Label9@2x.png" class="img_ispass" >
             </div>
-            <div class="card_div" v-show="type==0|type==3">
+            <!-- <div class="card_div" v-show="type==0|type==3">
                 <van-row style="padding: 4px 12px 0">
                     <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
                     <van-col class="" span="18"><p class="card_list2_test" >北京京东金融有限公司</p></van-col>
@@ -108,7 +108,7 @@
                     <van-col class="" span="6" style="text-align: left"><p class="card_list1_test_small" >2019/08/15</p></van-col>
                 </van-row>
                 <img src="../../../assets/images/other/Label8@2x.png" class="img_ispass" >
-            </div>
+            </div> -->
 
             <div style="height: 8px"></div>
 
