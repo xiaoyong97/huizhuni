@@ -659,6 +659,14 @@ export default new Router({
 			title: '催收管理'
 		},
 	},
+	{
+		name: 'myCustomer',
+		path: '/index3/collectionManagement/myCustomer',
+		component: () => import('@/pages/index3/collectionManagement/myCustomer'),
+		meta: {
+			title: '我的客户'
+		},
+	},
 		{
 			name: 'businessData',
 			path: '/index4/businessData',
