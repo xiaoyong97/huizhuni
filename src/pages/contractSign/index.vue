@@ -49,19 +49,23 @@
                     </van-row>
                     <van-row>
                         <van-col span="8" class="left-text">企业名称:</van-col>
-                        <van-col class="right-text">{{item.company_info.company_name}}</van-col>
+                        <!-- <van-col class="right-text">{{item.company_info.company_name}}</van-col> -->
+                        <van-col class="right-text">北京京东金融有限公司</van-col>
                     </van-row>
                     <van-row>
                         <van-col span="8" class="left-text">统一社会信用代码:</van-col>
-                        <van-col class="right-text">{{item.company_info.unified_social_credit_code}}</van-col>
+                        <!-- <van-col class="right-text">{{item.company_info.unified_social_credit_code}}</van-col> -->
+                        <van-col class="right-text">92320226MA05A2307C</van-col>
                     </van-row>
                     <van-row>
                         <van-col span="8" class="left-text">企业主姓名:</van-col>
-                        <van-col class="right-text">{{item.company_info.legal_representative}}</van-col>
+                        <!-- <van-col class="right-text">{{item.company_info.legal_representative}}</van-col> -->
+                        <van-col class="right-text">张三</van-col>
                     </van-row>
                     <van-row>
                         <van-col span="8" class="left-text">产品代码:</van-col>
-                        <van-col class="right-text">{{item.company_info.customer_id}}</van-col>
+                        <!-- <van-col class="right-text">{{item.company_info.customer_id}}</van-col> -->
+                        <van-col class="right-text">252841000000526649</van-col>
                     </van-row>
                     <!-- <van-row>
                         <van-col span="8" class="left-text">签约时间:</van-col>

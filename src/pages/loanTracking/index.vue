@@ -139,9 +139,9 @@
                         date: '2019-08-08'
                     },
                     {
-                        company: '广州可可有限公司',
+                        company: '广州市睿智防水电器股份有限公司',
                         delayDays: 12,
-                        userName: '张三',
+                        userName: '艾仲华',
                         productCode: 9613,
                         amount: '200,000',
                         date: '2019-09-01'
@@ -149,8 +149,8 @@
                 ],
                 tabList2: [
                     {
-                        company: '北京京东金融有限公司',
-                        userName: '张三',
+                        company: '广州市睿智防水电器股份有限公司',
+                        userName: '艾仲华',
                         productCode: 9613,
                         amount: '2,000,000',
                         date: '2019-08-08',
@@ -159,7 +159,7 @@
                         tag: require('../../assets/images/other/blacklist@2x.png')
                     },
                     {
-                        company: '北京京东金融有限公司',
+                        company: '广州可可有限公司',
                         userName: '张三',
                         productCode: 9613,
                         amount: '2,000,000',
@@ -179,8 +179,8 @@
                         tag: require('../../assets/images/other/Greylist@2x.png')
                     },
                     {
-                        company: '北京京东金融有限公司',
-                        userName: '张三',
+                        company: '广州智康科技有限公司',
+                        userName: '张康',
                         productCode: 9613,
                         amount: '2,000,000',
                         date: '2019-08-08',
@@ -189,8 +189,8 @@
                         tag: require('../../assets/images/other/Bluelist@2x.png')
                     },
                     {
-                        company: '北京京东金融有限公司',
-                        userName: '张三',
+                        company: '广州智融科技有限公司',
+                        userName: '李智磊',
                         productCode: 9613,
                         amount: '2,000,000',
                         date: '2019-08-08',
@@ -211,8 +211,8 @@
                         tag: require('../../assets/images/other/blacklist@2x.png')
                     },
                     {
-                        company: '北京京东金融有限公司',
-                        userName: '张三',
+                        company: '公司三安',
+                        userName: '孙二九',
                         productCode: 9613,
                         amount: '2,000,000',
                         date: '2019-08-08',
@@ -231,8 +231,8 @@
                         tag: require('../../assets/images/other/Greylist@2x.png')
                     },
                     {
-                        company: '北京京东金融有限公司',
-                        userName: '张三',
+                        company: '广州智康科技有限公司',
+                        userName: '张康',
                         productCode: 9613,
                         amount: '2,000,000',
                         date: '2019-08-08',
@@ -241,8 +241,8 @@
                         tag: require('../../assets/images/other/Bluelist@2x.png')
                     },
                     {
-                        company: '北京京东金融有限公司',
-                        userName: '张三',
+                        company: '广州智融科技有限公司',
+                        userName: '李智磊',
                         productCode: 9613,
                         amount: '2,000,000',
                         date: '2019-08-08',

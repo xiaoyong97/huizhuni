@@ -24,7 +24,7 @@
                                     </van-row>
                                     <van-row style="padding: 4px 12px 0">
                                         <van-col class="" span="8"><p class="card_list1_test_left" >企业主</p></van-col>
-                                        <van-col class="" span="16" style="text-align: left"><p class="card_list1_test_right" >张三</p></van-col>
+                                        <van-col class="" span="16" style="text-align: left"><p class="card_list1_test_right" >{{item.nameValue}}</p></van-col>
                                     </van-row>
                                     <van-row style="padding: 4px 12px 0">
                                         <van-col class="" span="8"><p class="card_list1_test_left" >房产证号</p></van-col>
@@ -64,7 +64,7 @@
                                 </van-row>
                                 <van-row style="padding: 4px 12px 0">
                                     <van-col class="" span="12"><p class="card_list1_test_left" >企业主</p></van-col>
-                                    <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >张三</p></van-col>
+                                    <van-col class="" span="12" style="text-align: left"><p class="card_list1_test_right" >{{item.nameValue}}</p></van-col>
                                 </van-row>
                                 <van-row style="padding: 4px 12px 0">
                                     <van-col class="" span="12"><p class="card_list1_test_left" >房产证号</p></van-col>
@@ -234,10 +234,10 @@
                 right_width:65,
                 result:0,
                 list:[
-                    {name:'北京市丰台区南三环西路10号',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
-                    {name:'北京市朝阳区三里屯马家大院',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
-                    {name:'北京市丰台区南三环西路10号',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
-                    {name:'北京市朝阳区三里屯马家大院',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
+                    {nameValue:'艾仲华',name:'广东省广州市天河区花城大道中海花城湾4号楼3门201',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
+                    {nameValue:'张三',name:'北京市朝阳区三里屯马家大院',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
+                    {nameValue:'张三',name:'北京市丰台区南三环西路10号',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''},
+                    /* {nameValue:'张三',name:'北京市朝阳区三里屯马家大院',huakuai_value:null,huakuai_value1:null,huakuai_value2:null,huakuai_title:'滑动接单',confirmGet:'确认取件',confirmSend:'确认送件',radio3:'',radio1:'',radio2:''}, */
                 ],
                 list2:[],
                 list3:[],
