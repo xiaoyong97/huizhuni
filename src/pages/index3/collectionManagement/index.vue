@@ -6,7 +6,7 @@
 			<van-col span="12" class="text-center">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
 			<van-col span="12" class="text-center">
 				<van-col span="18" class="text-left"> {{bank}}</van-col>
-				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
+				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 			</van-col>
 		</van-row>
 		<img src="../../../assets/images/other/banner2.png" alt="" class="banner">
@@ -20,9 +20,9 @@
 					  <img src="../../../assets/images/84/Creditcheck1@2x.png" alt="">
 					   <p>到逾期管理</p>
 		  </van-col>
-		  <van-col class="col-modules" @click="go('loanLaunch')">
+		  <van-col class="col-modules" @click="go('collectVisit')">
 						<img src="../../../assets/images/84/Loaninitiation1@2x.png" alt="">
-					   <p>贷款发起</p>
+					   <p>催收访场</p>
 		  </van-col>
 		</van-row>
 		

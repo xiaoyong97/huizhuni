@@ -660,6 +660,30 @@ export default new Router({
 		},
 	},
 	{
+		name: 'collectVisit',
+		path: '/index3/collectionManagement/collectVisit',
+		component: () => import('@/pages/index3/collectionManagement/collectVisit'),
+		meta: {
+			title: '催收访场'
+		},
+	},
+	{
+		name: 'collectTask',
+		path: '/index3/collectionManagement/collectVisit/collectTask',
+		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask'),
+		meta: {
+			title: '催收任务'
+		},
+	},
+	{
+		name: 'newCollectTask',
+		path: '/index3/collectionManagement/collectVisit/collectTask/newCollectTask',
+		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask/newCollectTask'),
+		meta: {
+			title: '催收任务'
+		},
+	},
+	{
 		name: 'myCustomer',
 		path: '/index3/collectionManagement/myCustomer',
 		component: () => import('@/pages/index3/collectionManagement/myCustomer'),
