@@ -1,7 +1,7 @@
 <template>
 	<div class="newCollectTask">
 	 <!--头部导航-->
-		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="go('newCollectTask')" right-text="提交审核"></van-nav-bar>
+		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="go('onSiteSign')" right-text="提交审核"></van-nav-bar>
 		<van-tabs v-model="active" color="#4c62e7" line-width="33%" title-active-color="#4c62e7">
 		  <van-tab title="催收现场取证" >
 			  <van-collapse v-model="activeNames" class="collapse">
@@ -16,7 +16,7 @@
 					 	<van-icon name="location-o" class="sign-icon"/>
 					 </van-col>
 					 <van-col span="6" class="">
-					 	<button class="sign-button">现场签到</button>
+					 	<button class="sign-button" @click="go('onSiteSign')">现场签到</button>
 					 </van-col>
 					 </van-row>
 				 </div>
@@ -54,6 +54,9 @@
 			    color="#389BF6" size="24px"
 			   />
 			</van-cell>
+			<van-row style="text-align: center;">
+				<van-button round type="info" class="save-buttom">保存</van-button>
+			</van-row>
 		  </van-tab>
 		  <van-tab title="催收信息维护" >
 		  		123	  
@@ -78,9 +81,7 @@
 		step:0,
 		active:0,
 		activeNames: ['1'],
-		infos:[
-		   {data:'2019-11-10',fankui:'无力还款', account:'0',status:'结束'},
-		],
+
 	}
   },
 
@@ -154,6 +155,12 @@
 	.dot-border-span{
 		font-size: 18px;
 		color: #389BF6;
+	}
+	.save-buttom{
+		width: 120px;
+		position: fixed;
+		bottom: 8px;
+		transform: translateX(-50%);
 	}
 
 </style>

@@ -676,6 +676,14 @@ export default new Router({
 		},
 	},
 	{
+		name: 'onSiteSign',
+		path: '/index3/collectionManagement/collectVisit/collectTask/newCollectTask/onSiteSign',
+		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask/newCollectTask/onSiteSign'),
+		meta: {
+			title: '现场签到'
+		},
+	},
+	{
 		name: 'newCollectTask',
 		path: '/index3/collectionManagement/collectVisit/collectTask/newCollectTask',
 		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask/newCollectTask'),
