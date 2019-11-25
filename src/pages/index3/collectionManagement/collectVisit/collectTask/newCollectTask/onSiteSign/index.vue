@@ -14,7 +14,7 @@
 			 <van-col span="15" class=" col border"><span class="">厦门市思明区环岛路233号乐视</span></van-col>
 		</van-row>
 		<van-row style="text-align: center;">
-			<van-button round type="info" class="save-buttom">确认签到</van-button>
+			<van-button round type="info" class="save-buttom" @click="onSubmit()">确认签到</van-button>
 		</van-row>
 		<van-row style="text-align: center;">
 			<van-button round type="info" class="save-buttom">加载地图</van-button>
@@ -25,6 +25,7 @@
 
 <script>
 	// import '@/assets/resetui.scss'
+	import eventBus from '@/assets/js/eventbus.js';
 	import NavBar from '@/components/navBar'
 	import Vue from 'vue';
 	import { Grid, GridItem,Image,Panel,Cell, CellGroup,Row, Col,Dialog,Toast ,Tab, Tabs } from 'vant';
@@ -60,6 +61,10 @@
 	  go : function(url,item){
 	    this.$router.push({name:url,params:item});
 	  },
+	  onSubmit() {
+		  this.$router.go(-1);
+		  eventBus.$emit("sign",true);
+	  }
   },
   //引入组件
   components: {
