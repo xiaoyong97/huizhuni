@@ -12,11 +12,11 @@
 		<img src="../../../assets/images/other/banner2.png" alt="" class="banner">
 
 		<van-row class="row-modules">  
-		  <van-col class="col-modules"  @click="go('informationAcquisition')">
+		  <van-col class="col-modules"  @click="go('myCustomerList')">
 			  <img src="../../../assets/images/84/InformationCollection@2x.png" alt="">
 			   <p>我的客户</p>
 		  </van-col>
-		  <van-col class="col-modules"  @click="go('creditCheck')">
+		  <van-col class="col-modules"  @click="go('overdueManagement')">
 					  <img src="../../../assets/images/84/Creditcheck1@2x.png" alt="">
 					   <p>到逾期管理</p>
 		  </van-col>

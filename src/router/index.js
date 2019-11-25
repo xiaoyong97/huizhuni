@@ -668,6 +668,14 @@ export default new Router({
 		},
 	},
 	{
+		name: 'overdueManagement',
+		path: '/index3/collectionManagement/overdueManagement',
+		component: () => import('@/pages/index3/collectionManagement/overdueManagement'),
+		meta: {
+			title: '逾期管理'
+		},
+	},
+	{
 		name: 'collectTask',
 		path: '/index3/collectionManagement/collectVisit/collectTask',
 		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask'),
@@ -721,6 +729,14 @@ export default new Router({
 		component: () => import('@/pages/index3/collectionManagement/myCustomer'),
 		meta: {
 			title: '我的客户'
+		},
+	},
+	{
+		name: 'myCustomerList',
+		path: '/index3/collectionManagement/myCustomerList',
+		component: () => import('@/pages/index3/collectionManagement/myCustomerList'),
+		meta: {
+			title: '催收客户'
 		},
 	},
 		{
