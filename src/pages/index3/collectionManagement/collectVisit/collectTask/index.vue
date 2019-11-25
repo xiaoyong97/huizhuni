@@ -70,9 +70,10 @@
 		let msg = this.$route.params.info;
 		if (msg) {
 			this.info = this.$route.params.info;
-			sessionStorage.setItem('collectTask',msg);
+			sessionStorage.setItem('collectTask',JSON.stringify(msg));
 		} else {
-			this.info = sessionStorage.getItem('collectTask',msg);
+			var infos = sessionStorage.getItem('collectTask');
+			this.info = JSON.parse(infos);
 		}
   },
 
