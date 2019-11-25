@@ -1,5 +1,5 @@
 <template>
-	<div class="newCollectTask">
+	<div class="newCollectTask text-14">
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="submit" right-text="提交审核"></van-nav-bar>
 		<img src="../../../../../../assets/images/other/luyin1.png" alt="" class="luyin" v-show="luyin==1" @click="nextStep">
@@ -317,7 +317,7 @@
 		color: #389BF6;
 	}
 	.collapse-text{
-		font-size: 16px;
+		font-size: 14px;
 		padding-left: 4px
 	}
 	.sign-icon{
@@ -381,7 +381,7 @@
 		height: 44px;
 	}
 	.theme{
-		color: rgb(109,95,175);
+		color: #4C62E8;
 	}
 	.select_row{
 		height: 44px;
@@ -434,7 +434,6 @@
 	    right:8px ;
 	    height: 24px;
 	    width: 24px;
-	    z-index: 10;
 	}
 	.img_file{
 	    width: 90%;
@@ -444,5 +443,8 @@
 	}
 	.van-overlay{
 		z-index: 2;
+	}
+	.text-14{
+		font-size: 14px;
 	}
 </style>

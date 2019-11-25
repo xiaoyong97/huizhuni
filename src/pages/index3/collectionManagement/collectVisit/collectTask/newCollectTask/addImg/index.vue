@@ -1,5 +1,5 @@
 <template>
-	<div class="main">
+	<div class="main text-14">
 		<div v-show="show" class="pop">
 			<div class="pop-div">
 				<van-row class="pop-row" @click="showPopup()">拍照</van-row>
@@ -140,5 +140,8 @@
 		line-height: 34px;
 		width: 100%;
 		margin: 4px 5%;
+	}
+	.text-14{
+		font-size: 14px;
 	}
 </style>

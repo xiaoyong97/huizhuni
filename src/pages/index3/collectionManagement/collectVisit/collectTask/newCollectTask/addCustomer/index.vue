@@ -1,5 +1,5 @@
 <template>
-	<div class="addCustomer">
+	<div class="addCustomer text-14">
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<van-row  class="select_row">
 			   <van-col class="col" span="8" dot>与借款人关系</van-col>
@@ -110,6 +110,9 @@
 	.save-buttom{
 		width: 160px;
 		margin: 8px 0 4px;
+	}
+	.text-14{
+		font-size: 14px;
 	}
 	
 	

@@ -1,5 +1,5 @@
 <template>
-	<div class="newCollectTask">
+	<div class="newCollectTask text-14">
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<div class="map-content">
@@ -97,5 +97,8 @@
 	.save-buttom{
 		width: 240px;
 		margin: 8px 0 4px;
+	}
+	.text-14{
+		font-size: 14px;
 	}
 </style>
