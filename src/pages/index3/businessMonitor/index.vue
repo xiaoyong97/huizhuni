@@ -2,14 +2,14 @@
     <div class="main">
      <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
-		<van-row class="toolbar">
+		<van-row class="toolbar" >
 			<van-col span="12" class="text-center">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
 			<van-col span="12" class="text-center">
 				<van-col span="18" class="text-left"> {{bank}}</van-col>
 				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 			</van-col>
 		</van-row>
-		<van-row class="noticeBar">
+		<van-row class="noticeBar" @click="changeTag">
 			<van-col span="12" class="text-center">
 				<div class="noticePan1" @click="gotoBankDetail">{{noticePan[type].kj}}</div>
 				<div class="noticePan2">不良率</div>
@@ -45,7 +45,7 @@
 		date:'2019-11-21',
 		bank:'建行江苏省分行小企业业务部',
 		active:0,
-		type:2,
+		type:0,
 		noticePan:[
 			{
 				kj:'人行口径',
@@ -338,6 +338,13 @@
 	  gotoDetail:function(obj){
 		this.$router.push({path:'/index3/businessMonitorDetail', query: obj})
 		 
+	  },
+	  changeTag(){
+		  if(this.type >2){
+				this.type = 0;
+				return;
+		  }
+		  this.type++;
 	  }
   },
   //引入组件
