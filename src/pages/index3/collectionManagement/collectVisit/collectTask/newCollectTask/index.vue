@@ -94,7 +94,7 @@
 		  <van-tab title="催收信息维护" name="tab2">
 		  		<van-row >
 		  		  <van-col class="col-title padding-left" span="18">行内人员</van-col>
-				    <van-col class="col-title theme" span="3">新增</van-col>
+				    <van-col class="col-title theme" span="3" @click="go('addCustomer',{type:0})">新增</van-col>
 					  <van-col class="col-title theme" span="3">删除</van-col>
 		  		</van-row>
 				<table class="table" rules=none >
@@ -111,7 +111,7 @@
 				</table>
 		  		<van-row >
 		  		  <van-col class="col-title padding-left" span="18">客户人员</van-col>
-		  		    <van-col class="col-title theme" span="3" @click="go('addCustomer')">新增</van-col>
+		  		    <van-col class="col-title theme" span="3" @click="go('addCustomer',{type:1})">新增</van-col>
 		  			  <van-col class="col-title theme" span="3">删除</van-col>
 		  		</van-row>
 		  		<table class="table" rules=none >

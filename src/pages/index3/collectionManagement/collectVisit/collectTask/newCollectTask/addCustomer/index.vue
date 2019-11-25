@@ -1,27 +1,53 @@
 <template>
 	<div class="addCustomer text-14">
-		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
-		<van-row  class="select_row">
-			   <van-col class="col" span="8" dot>与借款人关系</van-col>
-			   <van-col class="select border" span="12">
-				   
-				   <select  class=" " name="" id="">
-					   <option >实际控制人</option>
-				   </select>
-			   </van-col>
-		</van-row>
-		<van-row  class="select_row">
-			   <van-col class="col" span="8" dot>客户名称</van-col>
-			   <van-col class="" span="12">
-				   <input  class="border" type="text" v-model="value2" placeholder="请输入客户名称" />
-			   </van-col>
-		</van-row>
-		<van-row  class="select_row">
-			   <van-col class="col" span="8" dot>联系方式</van-col>
-			   <van-col class="" span="12">
-				   <input class="border" type="text" v-model="value3" placeholder="请输入客户名称" />
-			   </van-col>
-		</van-row>
+		<van-nav-bar :title="title[type]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
+		<div v-show="type == 1">
+			<van-row  class="select_row">
+				   <van-col class="col" span="8" dot>与借款人关系</van-col>
+				   <van-col class="select border" span="12">
+					   
+					   <select  class=" " name="" id="">
+						   <option >实际控制人</option>
+					   </select>
+				   </van-col>
+			</van-row>
+			<van-row  class="select_row">
+				   <van-col class="col" span="8" dot>客户名称</van-col>
+				   <van-col class="" span="12">
+					   <input  class="border" type="text" v-model="value2" placeholder="请输入客户名称" />
+				   </van-col>
+			</van-row>
+			<van-row  class="select_row">
+				   <van-col class="col" span="8" dot>联系方式</van-col>
+				   <van-col class="" span="12">
+					   <input class="border" type="text" v-model="value3" placeholder="请输入客户名称" />
+				   </van-col>
+			</van-row>
+			
+		</div>
+		<div v-show="type == 0">
+			<van-row  class="select_row">
+				   <van-col class="col" span="8" dot>员工编号</van-col>
+				   <van-col class="select border" span="12">
+					   
+					   <select  class=" " name="" id="">
+						   <option >72707632</option>
+					   </select>
+				   </van-col>
+			</van-row>
+			<van-row  class="select_row">
+				   <van-col class="col" span="8" dot>客户名称</van-col>
+				   <van-col class="" span="12">
+					   <input  class="border" type="text" value="客户名称_72707632" placeholder="请输入客户名称" />
+				   </van-col>
+			</van-row>
+			<van-row  class="select_row">
+				   <van-col class="col" span="8" dot>职务</van-col>
+				   <van-col class="" span="12">
+					   <input class="border" type="text" value="ABCDEF" placeholder="请输入客户名称" />
+				   </van-col>
+			</van-row>
+		</div>	
 		<van-row  class="select_row">
 			   <van-col class="col" span="8" dot>所在单位</van-col>
 			   <van-col class="" span="12">
@@ -43,13 +69,13 @@
 	export default {
   data() {
     return {
-		title:['新增客户人员'],
-		step:0,
+		title:['新增行内人员','新增客户人员'],
 		show: false,
 		value1: 0,
-		value2: '',
-		value3: '',
-		value4: '',
+		value2: '贾跃亭',
+		value3: '13433433864',
+		value4: 'ABCDEF',
+		type:0,
 	  option1: [
 		{ text: '实际控制人', value: 0 },
 	  ],
@@ -63,6 +89,7 @@
 
   //网页加载完成
   mounted () {
+	this.type = this.$route.params.type;
 
   },
 
