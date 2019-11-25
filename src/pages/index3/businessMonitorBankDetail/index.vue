@@ -341,4 +341,7 @@
 			
 
 		}
+		table tr td{
+			padding:0px
+		}
 </style>

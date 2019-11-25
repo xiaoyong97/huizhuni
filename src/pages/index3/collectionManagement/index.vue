@@ -25,13 +25,15 @@
 					   <p>催收访场</p>
 		  </van-col>
 		</van-row>
-		<div class="bgWhite"><p class="title">催收客户列表</p></div>
+		
+		<div class="bgWhite">
+			<strong class="title margin-top"><van-tag type="danger" class="left_tag">&nbsp;</van-tag>催收客户列表</strong></div>
 		
 		<div class="card_div" v-for="(item,index) in this.infos" @click="go('myCustomer')">
 		    <van-row style="padding: 4px 12px 0">
 		        <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
 		        <van-col class="" span="19"><p class="card_list2_test" >{{item.gongsi}}</p></van-col>
-				<van-col class="" span="1"><van-icon name="arrow" class="arrow-right"/></van-col>
+				<van-col class="" span="2"><van-icon name="arrow" class="arrow-right"/></van-col>
 			</van-row>
 			<van-row style="padding: 4px 12px 0" v-if="index==0">
 			    <van-col class="" span="2"></van-col>
@@ -116,6 +118,8 @@
 	}
 	.toolbar{
 		background-color: white;
+		margin-bottom: 8px;
+		padding: 16p 0px 16px 0px;;
 	}
 	.text-center{
 		text-align: center;
@@ -170,7 +174,7 @@
 		margin-right: 8px;
 	}	
 	.yuqi span{
-		font-size: 16px;
+		font-size: 14px;
 	}
 	.card_div{
 	    position: relative;
@@ -191,11 +195,11 @@
 		}
 		.arrow-right{
 			position: absolute;
-			font-size: 24px;
+			font-size: 16px;
 			font-weight: bolder;
 			color:#999999;
-			top:6px;
-			right:0px;
+			top:10px;
+			right:12px;
 		}
 		.img_location{
 		    height: 18px;
@@ -231,6 +235,8 @@
 	}
 	.bgWhite{
 		background-color: white;
+		height: 38px;
+		line-height: 44px;
 	}
 	.text-14{
 		font-size: 14px;
@@ -239,5 +245,14 @@
 	.padding-left{
 		padding-left: 16px;
 	}
-
+	.margin-top{
+		
+	}
+	.left_tag{
+		background-color: rgb(90,75,234);
+		padding: 0px 3px;
+		border-radius: 0px;;
+		height: 16px;
+		margin-right: 8px;
+	}
 </style>

@@ -143,7 +143,7 @@
 		color: white;
 	}
 	.card-title{
-		color: rgb(146,199,42);
+		color: #f6df50;
 		font-size: 24px;
 	}
 	.card-num{

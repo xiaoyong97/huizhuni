@@ -212,7 +212,7 @@
 		type:0,
 		show: false,
 		infoDetail:{num:'351009115600660828',pz:'短期小微企业信用快贷',bz:'人民币元',je:'16,000.00',date1:'2018-07-23',date2:'2019-07-23',date3:'2019-03-2116',ye:'16,000.00',fs:'按固定周期付息，任意还本',bj:'0.00'},
-		info:{name:'广州利整宾馆有限公司',num:278860472062624278,status:"本金逾期",level:'',guimo:'小型',address:'中国福建省广州市思明区吕岭路78号鹭江新城二层',bumen:'小企业业务部',hangye:'其他住宿业',kzr:'张翼'},
+		info:{name:'厦门利整宾馆有限公司',num:278860472062624278,status:"本金逾期",level:'',guimo:'小型',address:'中国福建省厦门市思明区吕岭路78号鹭江新城二层',bumen:'小企业业务部',hangye:'其他住宿业',kzr:'张翼'},
 		infos:[
 		       {msg:'短湖小微企业信用快货',account:'16000', date:'2019-07-23'},
 		       {msg:'短期小微企业信用快贷',account:'37000', date:'2019-06-21'},
@@ -339,7 +339,7 @@
 	    margin: 10px auto;
 	    border: #4c62e7 1px solid;
 	    width: 280px;
-	    height: 38px;
+	    height: 32px;
 	    border-radius: 10px;
 	}
 	.top_bar_box_col_left{
@@ -349,7 +349,7 @@
 	}
 	.top_bar_box_text_left{
 	    font-size: 14px;
-	    line-height: 38px;
+	    line-height: 32px;
 	    color: rgb(76,98,231);
 	    margin-block-start:0;
 	    margin-block-end:0;
@@ -359,7 +359,7 @@
 	}
 	.top_bar_box_text_right{
 	    font-size: 14px;
-	    line-height: 38px;
+	    line-height: 32px;
 	    color: rgb(76,98,231);
 	    margin-block-start:0;
 	    margin-block-end:0;
@@ -380,6 +380,7 @@
 		position: relative;
 		min-height: 130px;;
 		background-color: #fff;
+		
 		.card{
 		    color:#4C62E7;
 		}
@@ -403,8 +404,9 @@
 			border: 1px #4C62E7 solid;
 			color: #4C62E7;
 			width: 120px;
-			font-size: 20px;
-			line-height: 32px;
+			font-size: 16px;
+			line-height: 24px;
+			margin-top: 8px;
 			margin-left: 18px;
 			margin-bottom: 8px;
 		}
@@ -414,7 +416,7 @@
 		}
 		.card_list2_test{
 		    color: #333333;
-		    font-size: 18px;
+		    font-size: 14px;
 			font-weight: bold;
 		    margin-block-start:0;
 		    margin-block-end:0;
@@ -456,22 +458,24 @@
 		text-align: center;
 		
 		.tab3_buttom_col{
-			line-height: 40px;
-			height: 40px;
+			line-height: 32px;
+			height: 32px;
 		}
 		.tab3_buttom_col span{
-			line-height: 40px;
-			height: 40px;
+			line-height: 32px;
+			height: 32px;
 		}
 		.dropdown-menu{
 			border: #999999 1px solid;
 			border-radius: 34px;
-			line-height: 40px;
-			height: 40px;
+			line-height: 32px;
+			height: 32px;
 		}
 		.save-button{
 			width: 180px;
-			margin-top: 18px;
+			margin-top: 24px;
+			height: 36px;
+			line-height: 36px;
 		}
 	}
 	

@@ -99,12 +99,13 @@
 		padding: 16px;
 		border-radius: 16px;
 		color: #FFFFFF;
+		margin-top: 8px;
 	}
 	.noticePan1{
 		background-color: rgb(87,92,236);
 		margin-left: -16px;
 		border-radius:0px 16px 16px  0px ;
-		padding: 4px 36px 4px 4px;
+		padding: 4px 32px 4px 4px;
 		width: 60%;
 		text-align: right;
 		border: 1px lightgray solid;
@@ -145,7 +146,7 @@
 		text-align: center;
 	}
 	table tr td{
-		padding: 16px 0px;
+		padding: 10px 0px;
 	}
 	table tr:first-child{
 		text-align:  center;
@@ -169,5 +170,8 @@
 	}
 	.padding-left{
 		padding-left: 16px;
+		}
+		.toolbar{
+			margin-bottom: 8px;
 		}
 </style>
