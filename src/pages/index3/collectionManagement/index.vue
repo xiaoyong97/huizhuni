@@ -68,11 +68,11 @@
 		date:'2019-11-21',
 		bank:'建行江苏省分行小企业业务部',
 		infos:[
-			{gongsi:'厦门利室宾馆有限公司',yuer:108000,benjin:106902.2,lixi:2814.7,fangshi:'上门催收'},
-			{gongsi:'厦门丽思贝斯建筑设计有限公司',yuer:500000,benjin:0,lixi:684.7,fangshi:'上门催收'},
-			{gongsi:'厦门聚迈通电子商务有限公司',yuer:423600,benjin:0,lixi:0,fangshi:''},
-			{gongsi:'厦门篮鑫贸易有限公司',yuer:950000,benjin:0,lixi:0,fangshi:''},
-			{gongsi:'厦门德宇天成科技有限公司',yuer:108000,benjin:106902.2,lixi:2814.7,fangshi:'上门催收'},
+			{gongsi:'广州利室宾馆有限公司',yuer:108000,benjin:106902.2,lixi:2814.7,fangshi:'上门催收'},
+			{gongsi:'广州丽思贝斯建筑设计有限公司',yuer:500000,benjin:0,lixi:684.7,fangshi:'上门催收'},
+			{gongsi:'广州聚迈通电子商务有限公司',yuer:423600,benjin:0,lixi:0,fangshi:''},
+			{gongsi:'广州篮鑫贸易有限公司',yuer:950000,benjin:0,lixi:0,fangshi:''},
+			{gongsi:'广州德宇天成科技有限公司',yuer:108000,benjin:106902.2,lixi:2814.7,fangshi:'上门催收'},
 		]
 		
 	}

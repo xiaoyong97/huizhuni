@@ -158,31 +158,31 @@ export default {
         {
           center: "113.27147,23.131669",
           showFlag: false,
-          pname: "厦门连平方科技有限公司",
+          pname: "广州连平方科技有限公司",
           pSbNum: 3
         },
         {
           center: "113.263423,23.131963",
           showFlag: false,
-          pname: "厦门连平方科技有限公司",
+          pname: "广州连平方科技有限公司",
           pSbNum: 4
         },
         {
           center: "113.298996,23.099108",
           showFlag: false,
-          pname: "厦门连平方科技有限公司",
+          pname: "广州连平方科技有限公司",
           pSbNum: 5
         },
         {
           center: "113.241863,23.091626",
           showFlag: false,
-          pname: "厦门连平方科技有限公司",
+          pname: "广州连平方科技有限公司",
           pSbNum: 7
         },
         {
           center: "113.214159,23.074407",
           showFlag: false,
-          pname: "厦门连平方科技有限公司",
+          pname: "广州连平方科技有限公司",
           pSbNum: 9
         }
       ],

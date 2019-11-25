@@ -108,7 +108,7 @@
             </van-row>
             <!-- <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">客户名称：厦门链平方科技有限公司</p>
+                <p class="list_test">客户名称：广州链平方科技有限公司</p>
               </van-col>
             </van-row>
             <van-row class="list_row">
@@ -118,12 +118,12 @@
             </van-row>
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">注册地址：厦门市思明区</p>
+                <p class="list_test">注册地址：广州市思明区</p>
               </van-col>
             </van-row>
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">企业地址：厦门市软件园近日路34号</p>
+                <p class="list_test">企业地址：广州市软件园近日路34号</p>
               </van-col>
             </van-row>
             <van-row class="list_row">
@@ -158,7 +158,7 @@
             </van-row>
             <van-row class="list_row">
               <van-col class="list_left" style="text-align: left;width:100%;">
-                <p class="list_test">发证单位：厦门市市场监督管理局</p>
+                <p class="list_test">发证单位：广州市市场监督管理局</p>
               </van-col>
             </van-row>
             <van-row class="list_row">

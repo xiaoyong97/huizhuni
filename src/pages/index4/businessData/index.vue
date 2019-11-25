@@ -196,7 +196,7 @@
 	        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png'
 	      },
 	 level:0,
-	  bank_title:'建行厦门金山支行',
+	  bank_title:'建行广州金山支行',
 
     }
   },

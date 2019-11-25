@@ -7,11 +7,11 @@
 		</div>
 		<van-row class="">
 			 <van-col span="8" class="col"><span class="">当前系统定位</span></van-col>
-			 <van-col span="16" class="col"><span class="">福建省厦门市思明区</span></van-col>
+			 <van-col span="16" class="col"><span class="">福建省广州市思明区</span></van-col>
 		</van-row>
 		<van-row >
 			 <van-col span="8" class="col"><span class="">位置信息确认</span></van-col>
-			 <van-col span="15" class=" col border"><span class="">厦门市思明区环岛路233号乐视</span></van-col>
+			 <van-col span="15" class=" col border"><span class="">广州市思明区环岛路233号乐视</span></van-col>
 		</van-row>
 		<van-row style="text-align: center;">
 			<van-button round type="info" class="save-buttom" @click="onSubmit()">确认签到</van-button>
