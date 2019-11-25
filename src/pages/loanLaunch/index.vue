@@ -125,7 +125,8 @@
 	},
 	onClickLeft:function() {
 	  // this.$router.push('backhome');
-		this.$router.go(-1);
+	  this.$router.push({name:'index3'});
+		// this.$router.go(-1);
 	},
 	checkTask:function(id){
 		localStorage.setItem('id',id);

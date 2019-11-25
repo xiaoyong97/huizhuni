@@ -58,7 +58,6 @@
 	  },
 	  onSubmit() {
 		  this.$router.go(-1);
-		  eventBus.$emit("sign",true);
 	  },
 	  
 	  
