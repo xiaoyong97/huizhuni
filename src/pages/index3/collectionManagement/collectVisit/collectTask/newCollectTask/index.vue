@@ -6,7 +6,7 @@
 		   <img src="../../../../../../assets/images/other/luyin2.png" alt="" class="luyin"  v-show="luyin==2" @click="nextStep"> 
 		    <img src="../../../../../../assets/images/other/luyin3.png" alt="" class="luyin"  v-show="luyin==3" @click="nextStep"> 
 		
-		<van-overlay :show="show" @click="show = false">
+		<van-overlay :show="show" @click="show = false" style="z-index: 2;">
 		  <div class="wrapper" @click.stop>
 		    <div class="block" >
 				<div >下一审核人</div>
@@ -366,7 +366,7 @@
 		top:44px;;
 		width: 100%;
 		height: 100%;
-		z-index: 1;
+		z-index: 2;
 	}
 	.table{
 		width: 100%;
@@ -441,5 +441,8 @@
 	    height: 95%;
 	    margin: 2px auto;
 	
+	}
+	.van-overlay{
+		z-index: 2;
 	}
 </style>
