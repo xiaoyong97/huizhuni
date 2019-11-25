@@ -3,8 +3,8 @@
      <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<van-row class="toolbar">
-			<van-col span="12" class="text-center text-14">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
-			<van-col span="12" class="text-center text-14">
+			<van-col span="12" class="text-left text-14 padding-left">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
+			<van-col span="12" class="text-left text-14">
 				<van-col span="18" class="text-left"> {{bank}}</van-col>
 				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 			</van-col>
@@ -35,8 +35,8 @@
 			</van-row>
 			<van-row style="padding: 4px 12px 0" v-if="index==0">
 			    <van-col class="" span="2"></van-col>
-				<van-col class="yuqi" span="7" ><span>本金逾期</span></van-col>
-				<van-col class="yuqi" span="7" ><span>利息逾期</span></van-col>
+				<van-col class="yuqi" span="6" ><span>本金逾期</span></van-col>
+				<van-col class="yuqi" span="6" ><span>利息逾期</span></van-col>
 			</van-row>
 		    <van-row style="padding: 4px 12px 0">
 		        <van-col class="" span="6"><p class="card_list1_test_left" >信贷余额</p></van-col>
@@ -153,7 +153,7 @@
 		}
 	}
 	.title{
-		padding-left: 12px;
+		padding-left: 16px;
 		padding-bottom: 4px;
 		// font-weight: bold;
 		font-size: 14px;
@@ -167,7 +167,7 @@
 		color: sandybrown;
 		padding: 2px 0px;
 		text-align: center;
-		margin-right: 4px;
+		margin-right: 8px;
 	}	
 	.yuqi span{
 		font-size: 16px;
@@ -236,7 +236,8 @@
 		font-size: 14px;
 	}
 	
-
-
+	.padding-left{
+		padding-left: 16px;
+	}
 
 </style>

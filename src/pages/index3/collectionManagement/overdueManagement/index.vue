@@ -329,6 +329,7 @@
 		white-space:nowrap;/*内容横向排列不换行*/ 
 		overflow-x:auto;
 		overflow-y:hidden;
+		padding-left: 8px;;
 	}
 	.cell_container div{
 		display: inline-block;
