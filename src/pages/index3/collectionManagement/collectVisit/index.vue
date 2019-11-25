@@ -3,12 +3,12 @@
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<van-search placeholder="请输入客户名称或客户编号查询" v-model="value" />
-		<van-row class="title">
+		<van-row class="title text-14">
 		  <van-col class="col-title" span="10">客户名称</van-col>
 			<van-col class="col-title" span="7" ><span>本金逾期</span><span class="span-min">(元)</span></van-col>
 			<van-col class="col-title" span="7" ><span>利息逾期</span><span class="span-min">(元)</span></van-col>
 		</van-row>
-		<van-row :class="index%2==0?'white':'gray'" class="text"  v-for="(item,index) in this.infos" @click="go('collectTask',{info:infos[index]})">
+		<van-row :class="index%2==0?'white':'gray'" class="text text-14"  v-for="(item,index) in this.infos" @click="go('collectTask',{info:infos[index]})">
 		  <van-col class="col-word" span="10">{{item.msg}}</van-col>
 			<van-col class="col-word" span="7" >{{item.account}}</van-col>
 			<van-col class="col-word" span="7" >{{item.lixi}}</van-col>
@@ -91,6 +91,9 @@
 	.text{
 		line-height: 38px;
 		text-align: center;
+	}
+	.text-14{
+		font-size: 14px;
 	}
 
 </style>

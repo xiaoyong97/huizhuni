@@ -3,8 +3,8 @@
      <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<van-row class="toolbar">
-			<van-col span="12" class="text-center">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
-			<van-col span="12" class="text-center">
+			<van-col span="12" class="text-center text-14">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
+			<van-col span="12" class="text-center text-14">
 				<van-col span="18" class="text-left"> {{bank}}</van-col>
 				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 			</van-col>
@@ -13,20 +13,20 @@
 
 		<van-row class="row-modules">  
 		  <van-col class="col-modules"  @click="go('myCustomerList')">
-			  <img src="../../../assets/images/84/InformationCollection@2x.png" alt="">
+			  <img src="../../../assets/images/84/03.png" alt="" class="">
 			   <p>我的客户</p>
 		  </van-col>
 		  <van-col class="col-modules"  @click="go('overdueManagement')">
-					  <img src="../../../assets/images/84/Creditcheck1@2x.png" alt="">
+					  <img src="../../../assets/images/84/04.png" alt="" class="">
 					   <p>到逾期管理</p>
 		  </van-col>
 		  <van-col class="col-modules" @click="go('collectVisit')">
-						<img src="../../../assets/images/84/Loaninitiation1@2x.png" alt="">
+						<img src="../../../assets/images/84/05.png" alt="" class="">
 					   <p>催收访场</p>
 		  </van-col>
 		</van-row>
+		<div class="bgWhite"><p class="title">催收客户列表</p></div>
 		
-		<h3 class="title">催收客户列表</h3>
 		<div class="card_div" v-for="(item,index) in this.infos" @click="go('myCustomer')">
 		    <van-row style="padding: 4px 12px 0">
 		        <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
@@ -69,7 +69,10 @@
 		bank:'建行江苏省分行小企业业务部',
 		infos:[
 			{gongsi:'厦门利室宾馆有限公司',yuer:108000,benjin:106902.2,lixi:2814.7,fangshi:'上门催收'},
-			{gongsi:'厦门利室宾馆有限公司',yuer:108000,benjin:106902.2,lixi:2814.7,fangshi:'上门催收'},
+			{gongsi:'厦门丽思贝斯建筑设计有限公司',yuer:500000,benjin:0,lixi:684.7,fangshi:'上门催收'},
+			{gongsi:'厦门聚迈通电子商务有限公司',yuer:423600,benjin:0,lixi:0,fangshi:''},
+			{gongsi:'厦门篮鑫贸易有限公司',yuer:950000,benjin:0,lixi:0,fangshi:''},
+			{gongsi:'厦门德宇天成科技有限公司',yuer:108000,benjin:106902.2,lixi:2814.7,fangshi:'上门催收'},
 		]
 		
 	}
@@ -103,10 +106,16 @@
 </script>
 
 <style lang="scss" scoped>
+	.main{
+		background-color: rgb(238,238,238);
+	}
 	.content{
 		padding: 0px;
 		background-color: rgb(238,238,238);
 		min-height: 600px;
+	}
+	.toolbar{
+		background-color: white;
 	}
 	.text-center{
 		text-align: center;
@@ -128,29 +137,35 @@
 		height: auto;
 	}
 	.row-modules{
+		background-color: white;
 		padding: 8px ;
 		.col-modules{
 			width: 25%;
 			text-align: center;
 		}
 		.col-modules img{
-			width: 70%;
+			width: 44px;
+			height: 44px;
 		}
 		.col-modules p{
-			font-size: 16px;
+			font-size: 14px;
 			margin: 0;
 		}
 	}
 	.title{
 		padding-left: 12px;
-		font-weight: bold;
-		margin: 8px 0;
+		padding-bottom: 4px;
+		// font-weight: bold;
+		font-size: 14px;
+		margin: 0px 0 8px;
+		color: #333333;
+		background-color: white;
 	}
 	.yuqi{
 		border: 1px sandybrown solid;
 		border-radius: 8px;
 		color: sandybrown;
-		padding: 4px 0px;
+		padding: 2px 0px;
 		text-align: center;
 		margin-right: 4px;
 	}	
@@ -163,8 +178,8 @@
 	    padding:0px;
 	    background-color: white;
 	    margin: 8px 10px 0;
-		border-top: rgb(235,235,235) solid 1px;
-		border-bottom: rgb(235,235,235) solid 1px;
+		border: rgb(235,235,235) solid 1px;
+		border-radius: 8px;
 		.card_div van-row{
 			padding: 4px 12px 0
 		}
@@ -188,8 +203,8 @@
 		}
 		.card_list2_test{
 		    color: #333333;
-		    font-size: 18px;
-			font-weight: bold;
+		    font-size: 14px;
+			// font-weight: bold;
 		    margin-block-start:0;
 		    margin-block-end:0;
 		    line-height: 30px;
@@ -209,6 +224,16 @@
 		    margin-block-end:0;
 		    line-height: 30px;
 		}
+		.col-img{
+			width: 62px;
+			height: 62px;
+		}
+	}
+	.bgWhite{
+		background-color: white;
+	}
+	.text-14{
+		font-size: 14px;
 	}
 	
 

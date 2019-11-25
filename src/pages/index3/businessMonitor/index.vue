@@ -377,7 +377,7 @@
 	}
 	.noticeBar{
 		height: 130px;;
-		background-image: linear-gradient(to right, #4bb0ff, #6149f6);
+		background-image: url('../../../assets/images/other/bg1125.png');
 		background-size: 100% 100%;
 		margin: 0px 16px;
 		padding: 16px;

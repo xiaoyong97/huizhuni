@@ -47,11 +47,11 @@
 			  </van-grid-item>
 
 			  <van-grid-item icon="photo-o" text="文字" @click="go('businessMonitor')">
-			  		<img src="../../assets/images/84/signacontract@2x.png" alt="">
+			  		<img src="../../assets/images/84/02.png" alt="">
 			  			   <p>业务监测</p>
 			  </van-grid-item>
 			  <van-grid-item icon="photo-o" text="文字" @click="go('collectionManagement')">
-			  		<img src="../../assets/images/84/signacontract@2x.png" alt="">
+			  		<img src="../../assets/images/84/01.png" alt="">
 			  			   <p>催收管理</p>
 			  </van-grid-item>
 			</van-grid>

@@ -1,5 +1,5 @@
 <template>
-	<div class="main">
+	<div class="main text-14">
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="go('newCollectTask')" :right-text="infos[0].status=='结束'?'新建':''"></van-nav-bar>
 		<van-row class="noticeBar" >
@@ -159,6 +159,12 @@
 	.left-border{
 		border-left: white 1px solid;
 		padding-left: 4px;
+	}
+	.text-14{
+		font-size: 14px;
+	}
+	.padding-left16{
+		padding-left:16px;
 	}
 
 </style>
