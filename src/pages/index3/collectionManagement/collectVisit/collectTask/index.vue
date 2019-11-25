@@ -107,7 +107,7 @@
 		
 	}
 	.col-title{
-		line-height: 38px;
+		// line-height: 38px;
 		text-align: center;
 	}	
 	.span-min{
@@ -127,10 +127,11 @@
 		color: white;
 	}
 	.text{
-		line-height: 38px;
+		// line-height: 38px;
 		text-align: center;
 		color: black;
 		font-size: 14px;
+		padding: 8px 0px;
 	}
 	.noticeBar{
 		height: auto;

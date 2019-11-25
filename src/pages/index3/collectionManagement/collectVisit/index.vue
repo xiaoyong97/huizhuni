@@ -89,8 +89,9 @@
 		background-color: white;
 	}
 	.text{
-		line-height: 38px;
+		// line-height: 38px;
 		text-align: center;
+		padding: 8px 0px;
 	}
 	.text-14{
 		font-size: 14px;
