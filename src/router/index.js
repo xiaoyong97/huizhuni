@@ -707,6 +707,14 @@ export default new Router({
 			title: '我的客户'
 		},
 	},
+	{
+		name: 'myCustomerList',
+		path: '/index3/collectionManagement/myCustomerList',
+		component: () => import('@/pages/index3/collectionManagement/myCustomerList'),
+		meta: {
+			title: '催收客户'
+		},
+	},
 		{
 			name: 'businessData',
 			path: '/index4/businessData',
