@@ -132,7 +132,7 @@
 			  
 			  <div class="card_div" >
 			     
-			  	<van-row style="padding: 14px 12px 0">
+			  	<van-row style="padding: 14px 0px ">
 			  	    <van-col class="card" span="20"><span class="bold">代扣帐号:</span><span>35101558001052516104</span></van-col>
 			  	    <van-col class="tag" ><span>正常</span></van-col>
 			  	</van-row>
@@ -318,7 +318,7 @@
 	}
 	.col-word{
 		line-height: 38px;
-		padding-left: 6px;
+		padding-left: 16px;
 	}
 	.gray{
 		background-color: rgb(245,245,245);
@@ -333,6 +333,7 @@
 		background-color: white;
 	    width: 100%;
 	    justify-content: center;align-items: center;text-align: center;
+		background-color: rgb(238,238,238);
 	}
 	.top_bar_box{
 	    margin: 10px auto;
@@ -377,6 +378,8 @@
 	    padding:0px;
 		border: rgb(235,235,235) solid 1px;
 		position: relative;
+		min-height: 130px;;
+		background-color: #fff;
 		.card{
 		    color:#4C62E7;
 		}

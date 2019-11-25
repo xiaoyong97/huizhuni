@@ -3,11 +3,13 @@
      <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<van-row class="toolbar" >
-			<van-col span="12" class="text-center">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
-			<van-col span="12" class="text-center">
-				<van-col span="18" class="text-left"> {{bank}}</van-col>
-				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-			</van-col>
+		
+				<van-col span="12" class="text-left padding-left">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
+				<van-col span="12" class="text-left">
+					<van-col span="18" class="text-left"> {{bank}}</van-col>
+					<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
+				</van-col>
+			
 		</van-row>
 		<van-row class="noticeBar" @click="changeTag">
 			<van-col span="12" class="text-center">
@@ -366,6 +368,10 @@
 	}
 	.text-left{
 		text-align: left;
+		
+	}
+	.padding-left{
+		padding-left: 16px;
 	}
 	.no-border{
 		border: 0px;
@@ -415,7 +421,7 @@
 		padding: 10px 0px 10px 0px;
 	}
 	.tip{
-		padding: 0px 32px ;
+		padding: 0px 16px ;
 	}
 	.van-cell__value span{
 		padding-right: 16px;;
