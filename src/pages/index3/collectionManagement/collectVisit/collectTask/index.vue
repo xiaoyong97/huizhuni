@@ -102,9 +102,10 @@
 	.title{
 		background-image: linear-gradient(to right, #4bb0ff, #6149f6);
 		height: 38px;
-		margin-top: 8px;
+		// margin-top: 8px;
+		line-height: 38px;
 		font-size: 14px;
-		
+		padding: 4px 0px;
 	}
 	.col-title{
 		// line-height: 38px;
@@ -142,6 +143,7 @@
 		padding: 16px;
 		border-radius: 16px;
 		color: white;
+		margin-bottom: 16px;
 	}
 	.card-title{
 		color: #f6df50;
