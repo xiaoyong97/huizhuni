@@ -668,6 +668,14 @@ export default new Router({
 		},
 	},
 	{
+		name: 'overdueManagement',
+		path: '/index3/collectionManagement/overdueManagement',
+		component: () => import('@/pages/index3/collectionManagement/overdueManagement'),
+		meta: {
+			title: '逾期管理'
+		},
+	},
+	{
 		name: 'collectTask',
 		path: '/index3/collectionManagement/collectVisit/collectTask',
 		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask'),
