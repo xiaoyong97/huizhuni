@@ -1,18 +1,19 @@
 <template>
 	<div class="newCollectTask">
+		<router-view @sign="signBack"></router-view>
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="go('onSiteSign')" right-text="提交审核"></van-nav-bar>
 		<van-tabs v-model="active" color="#4c62e7" line-width="33%" title-active-color="#4c62e7">
 		  <van-tab title="催收现场取证" >
 			  <van-collapse v-model="activeNames" class="collapse">
 			    <van-collapse-item  name="1" >
-					 <van-row slot="title">
+					 <van-row slot="title" >
 						 <van-col span="2" class=""><van-icon name="location-o" color="#389BF6" size="24px"/></van-col>
 						 <van-col span="6" class=""><span class="collapse-text">现场签到</span></van-col>
 					 </van-row>
-				 <div style="display: inline-block;height: 38px;">
+				 <div v-show="signShow==1">
 					 <van-row>
-					 <van-col span="6" class="">
+					 <van-col span="3" class="">
 					 	<van-icon name="location-o" class="sign-icon"/>
 					 </van-col>
 					 <van-col span="6" class="">
@@ -80,6 +81,7 @@
 		title:['催收任务'],
 		step:0,
 		active:0,
+		signShow:1,//1：未签到，2：已签到
 		activeNames: ['1'],
 
 	}
@@ -103,6 +105,11 @@
 	  go : function(url,item){
 	    this.$router.push({name:url,params:item});
 	  },
+	  signBack(value) {
+		  if (value) {
+			  
+		  }
+	  }
   },
   //引入组件
   components: {
