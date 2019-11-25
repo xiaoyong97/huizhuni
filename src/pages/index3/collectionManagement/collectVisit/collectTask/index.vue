@@ -2,7 +2,7 @@
 	<div class="main">
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="go('newCollectTask')" :right-text="infos[0].status=='结束'?'新建':''"></van-nav-bar>
-		<van-row class="noticeBar">
+		<van-row class="noticeBar" >
 			<van-col span="24" >
 				<span class="card-title">{{info.msg}}</span>
 			</van-col>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-	
+	import img1 from '@/assets/images/other/bg1125.png';
 	import NavBar from '@/components/navBar'
 	import Vue from 'vue';
 	import { Grid, GridItem,Image,Panel,Cell, CellGroup,Row, Col,Dialog,Toast ,Tab, Tabs } from 'vant';
@@ -48,6 +48,7 @@
 		title:['催收任务'],
 		step:0,
 		value:'',
+		img1:img1,
 		infos:[
 		   {data:'2019-11-09',fankui:'承诺分期还款', account:'0',status:'结束'},
 		   {data:'2019-11-09',fankui:'', account:'0',status:'结束'},
@@ -134,6 +135,7 @@
 	.noticeBar{
 		height: auto;
 		background-image: linear-gradient(to right, #4bb0ff, #6149f6);
+		// background-image: img1 ;
 		background-size: 100% 100%;
 		margin: 0px 16px;
 		padding: 16px;
