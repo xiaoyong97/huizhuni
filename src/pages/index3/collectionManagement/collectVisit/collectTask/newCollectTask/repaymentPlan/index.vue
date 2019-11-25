@@ -90,6 +90,8 @@
 	.save-buttom{
 		width: 160px;
 		margin: 8px 0 4px;
+		height: 36px;
+		line-height: 36px;
 	}
 	.text-14{
 		font-size: 14px;

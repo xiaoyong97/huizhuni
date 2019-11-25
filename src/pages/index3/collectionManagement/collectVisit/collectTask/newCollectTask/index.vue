@@ -229,6 +229,7 @@
 				<van-row style="text-align: center;margin-top: 30px;">
 					<van-button round type="info" class="save-buttom" @click="onSubmit()">保存</van-button>
 				</van-row>
+				<br>
 		  </van-tab>
 		  </van-tabs>
 		
@@ -356,6 +357,8 @@
 	}
 	.save-buttom{
 		width: 120px;
+		height: 36px;
+		line-height: 36px;
 		// position: fixed;
 		// bottom: 8px;
 		// transform: translateX(-50%);

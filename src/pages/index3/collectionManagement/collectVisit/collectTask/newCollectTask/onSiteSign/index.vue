@@ -19,6 +19,7 @@
 		<van-row style="text-align: center;">
 			<van-button round type="info" class="save-buttom">加载地图</van-button>
 		</van-row>
+		<br>
 	</div>
 	
 </template>
