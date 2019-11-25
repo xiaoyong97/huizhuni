@@ -103,12 +103,13 @@
 	.title{
 		background-image: linear-gradient(to right, #4bb0ff, #6149f6);
 		height: 38px;
-		margin-top: 8px;
+		// margin-top: 8px;
+		line-height: 38px;
 		font-size: 14px;
-		
+		padding: 4px 0px;
 	}
 	.col-title{
-		line-height: 38px;
+		// line-height: 38px;
 		text-align: center;
 	}	
 	.span-min{
@@ -128,10 +129,11 @@
 		color: white;
 	}
 	.text{
-		line-height: 38px;
+		// line-height: 38px;
 		text-align: center;
 		color: black;
 		font-size: 14px;
+		padding: 8px 0px;
 	}
 	.noticeBar{
 		height: auto;
@@ -142,9 +144,10 @@
 		padding: 16px;
 		border-radius: 16px;
 		color: white;
+		margin-bottom: 16px;
 	}
 	.card-title{
-		color: rgb(146,199,42);
+		color: #f6df50;
 		font-size: 24px;
 	}
 	.card-num{

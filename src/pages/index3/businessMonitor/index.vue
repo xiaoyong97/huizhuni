@@ -4,12 +4,12 @@
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<van-row class="toolbar" >
 		
-				<van-col span="12" class="text-left padding-left">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
-				<van-col span="12" class="text-left">
-					<van-col span="18" class="text-left"> {{bank}}</van-col>
-					<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
-				</van-col>
-			
+			<van-col span="12" class="text-left padding-left">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
+			<van-col span="12" class="text-left">
+				<van-col span="18" class="text-left"> {{bank}}</van-col>
+				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
+			</van-col>
+
 		</van-row>
 		<van-row class="noticeBar" @click="changeTag">
 			<van-col span="12" class="text-center">
@@ -382,20 +382,22 @@
 		vertical-align: sub;
 	}
 	.noticeBar{
+		
 		height: 130px;;
-		background-image: url('../../../assets/images/other/bg1125.png');
+		background-image: linear-gradient(to right, #4bb0ff, #6149f6);
 		background-size: 100% 100%;
 		margin: 0px 16px;
 		padding: 16px;
 		border-radius: 16px;
 		color: #FFFFFF;
+		margin-top: 8px;
 	}
 	.noticePan1{
 		background-color: rgb(87,92,236);
 		margin-left: -16px;
 		border-radius:0px 16px 16px  0px ;
 		padding: 4px 36px 4px 4px;
-		width: 60%;
+		width: 65%;
 		text-align: right;
 		border: 1px lightgray solid;
 	}

@@ -109,6 +109,7 @@
 	}
 	.col-first-word{
 		line-height: 38px;
+		font-size: 14px;
 		padding-left: 16px;
 	}
 	.blue-word{
