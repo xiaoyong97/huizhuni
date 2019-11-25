@@ -3,13 +3,11 @@
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<van-row  class="select_row">
 			   <van-col class="col" span="8" dot>与借款人关系</van-col>
-			   <van-col class="" span="12">
-				   <van-dropdown-menu class="border">
-				     <van-dropdown-item v-model="value1" :options="option1" />
-				   </van-dropdown-menu>
-				   <!-- <select  class="border" name="" id="">
-					   <option value="">实际控制人</option>
-				   </select> -->
+			   <van-col class="select border" span="12">
+				   
+				   <select  class=" " name="" id="">
+					   <option >实际控制人</option>
+				   </select>
 			   </van-col>
 		</van-row>
 		<van-row  class="select_row">
@@ -92,20 +90,20 @@
 
 <style lang="scss" scoped>
 	.border{
-		width: 100%;
+		width: 200px;
 		border: 1px solid #999999;
 		border-radius: 34px;
 		line-height: 34px;
 		height: 34px;
 		margin-top: 8px;
-		padding-left: 10px;
+		padding-left: 12px;
 		align-items: left;
 		justify-content: left;
 	}
 	.col{
 		line-height: 34px;
 		margin-top: 8px;
-		padding-left: 8px;
+		padding-left: 16px;
 	}
 	.save-buttom{
 		width: 160px;
@@ -114,7 +112,21 @@
 	.text-14{
 		font-size: 14px;
 	}
-	
+	.select{
+		width: 215px;
+		height: 38px;
+	}
+	.select select{
+		width: 186px;
+		background-color: #fff;
+		appearance:none;
+		-moz-appearance:none;
+		-webkit-appearance:none;
+		border: 0px;
+		/*在选择框的最右侧中间显示小箭头图片*/
+		background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+		padding-right: 16px;
+	}
 	
 	
 	

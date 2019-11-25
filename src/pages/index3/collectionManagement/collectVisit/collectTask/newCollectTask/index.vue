@@ -93,7 +93,7 @@
 		  </van-tab>
 		  <van-tab title="催收信息维护" name="tab2">
 		  		<van-row >
-		  		  <van-col class="col-title" span="18">&nbsp;&nbsp;&nbsp;&nbsp;行内人员</van-col>
+		  		  <van-col class="col-title padding-left" span="18">行内人员</van-col>
 				    <van-col class="col-title theme" span="3">新增</van-col>
 					  <van-col class="col-title theme" span="3">删除</van-col>
 		  		</van-row>
@@ -110,7 +110,7 @@
 					</tr>
 				</table>
 		  		<van-row >
-		  		  <van-col class="col-title" span="18">&nbsp;&nbsp;&nbsp;&nbsp;客户人员</van-col>
+		  		  <van-col class="col-title padding-left" span="18">客户人员</van-col>
 		  		    <van-col class="col-title theme" span="3" @click="go('addCustomer')">新增</van-col>
 		  			  <van-col class="col-title theme" span="3">删除</van-col>
 		  		</van-row>
@@ -188,7 +188,7 @@
 				</van-collapse>
 				
 				<van-row >
-				  <van-col class="col-title" span="18">&nbsp;&nbsp;&nbsp;&nbsp;承认还款计划</van-col>
+				  <van-col class="col-title padding-left" span="18">承认还款计划</van-col>
 				    <van-col class="col-title theme" span="3" @click="go('repaymentPlan')">新增</van-col>
 					  <van-col class="col-title theme" span="3">删除</van-col>
 				</van-row>
@@ -370,11 +370,12 @@
 	}
 	.table{
 		width: 100%;
-		text-align: center;
+		text-align: left;
 		margin-top: 10px;
+		
 	}
 	.table tr *{
-		padding: 8px 0px;
+		padding: 8px 0px 8px 16px;
 	}
 	.table tr td{
 		background-color: rgb(232,232,232);
@@ -446,5 +447,11 @@
 	}
 	.text-14{
 		font-size: 14px;
+	}
+	.padding-left{
+		padding-left: 16px;
+	}
+	.col-title{
+		padding-top: 8px;;
 	}
 </style>
