@@ -684,6 +684,30 @@ export default new Router({
 		},
 	},
 	{
+		name: 'addImg',
+		path: '/index3/collectionManagement/collectVisit/collectTask/newCollectTask/addImg',
+		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask/newCollectTask/addImg'),
+		meta: {
+			title: '添加照片'
+		},
+	},
+	{
+		name: 'addCustomer',
+		path: '/index3/collectionManagement/collectVisit/collectTask/newCollectTask/addCustomer',
+		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask/newCollectTask/addCustomer'),
+		meta: {
+			title: '新增客户人员'
+		},
+	},
+	{
+		name: 'repaymentPlan',
+		path: '/index3/collectionManagement/collectVisit/collectTask/newCollectTask/repaymentPlan',
+		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask/newCollectTask/repaymentPlan'),
+		meta: {
+			title: '新增还款计划'
+		},
+	},
+	{
 		name: 'newCollectTask',
 		path: '/index3/collectionManagement/collectVisit/collectTask/newCollectTask',
 		component: () => import('@/pages/index3/collectionManagement/collectVisit/collectTask/newCollectTask'),

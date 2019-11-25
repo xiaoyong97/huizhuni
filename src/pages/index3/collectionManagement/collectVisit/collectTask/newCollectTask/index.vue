@@ -18,8 +18,8 @@
 			</div>
 		  </div>
 		</van-overlay>
-		<van-tabs v-model="active" color="#4c62e7" line-width="33%" title-active-color="#4c62e7">
-		  <van-tab title="催收现场取证" >
+		<van-tabs @click="onTabClick" v-model="active" color="#4c62e7" line-width="33%" title-active-color="#4c62e7">
+		  <van-tab title="催收现场取证" name="tab1">
 			  <van-collapse v-model="activeNames" class="collapse">
 			    <van-collapse-item  name="1" >
 					 <van-row slot="title" >
@@ -42,24 +42,37 @@
 				 
 				 </van-collapse-item>
 			    <van-collapse-item name="2">
-						 <van-row slot="title">
-							 <van-col span="2" class=""><van-icon name="photo-o" color="#389BF6" size="24px"/></van-col>
-							 <van-col span="12" class=""><span class="collapse-text">经营情况影像</span></van-col>
-						 </van-row>
-					<div class="dot-border">
-						<div><van-icon name="photo-o" class="dot-border-icon"/></div>
-						<div><span class="dot-border-span">拍摄/上传</span></div>
-					</div>
+					 <van-row slot="title">
+						 <van-col span="2" class=""><van-icon name="photo-o" color="#389BF6" size="24px"/></van-col>
+						 <van-col span="12" class=""><span class="collapse-text">经营情况影像</span></van-col>
+					 </van-row>
+					 <van-row  class="picture_div" >
+						 <van-col  class="dot-border" span="11"  v-for="(item) in list[0]">
+							 <img src="../../../../../../assets/images/other/certificate.jpg" class="img_file"  >
+							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0)" >
+						 </van-col>
+						 <van-col class="dot-border" span="11" @click="go('addImg')">
+						 	<div><van-icon name="photo-o" class="dot-border-icon"/></div>
+						 	<div><span class="dot-border-span">拍摄/上传</span></div>
+						 </van-col>
+					 </van-row>
+					
 				</van-collapse-item>
 			    <van-collapse-item  name="3">
 					<van-row slot="title">
 						 <van-col span="2" class=""><van-icon name="photo-o" color="#389BF6" size="24px"/></van-col>
 						 <van-col span="12" class=""><span class="collapse-text">抵押物情况</span></van-col>
 					</van-row>
-					<div class="dot-border">
-						<div><van-icon name="photo-o" class="dot-border-icon"/></div>
-						<div><span class="dot-border-span">拍摄/上传</span></div>
-					</div>
+					<van-row  class="picture_div" >
+						 <van-col  class="dot-border" span="11"  v-for="(item) in list[0]">
+							 <img src="../../../../../../assets/images/other/certificate.jpg" class="img_file"  >
+							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0)" >
+						 </van-col>
+						 <van-col class="dot-border" span="11" @click="go('addImg')">
+							<div><van-icon name="photo-o" class="dot-border-icon"/></div>
+							<div><span class="dot-border-span">拍摄/上传</span></div>
+						 </van-col>
+					</van-row>
 				</van-collapse-item>
 			  </van-collapse>
 			  
@@ -78,11 +91,11 @@
 				<van-button round type="info" class="save-buttom">保存</van-button>
 			</van-row>
 		  </van-tab>
-		  <van-tab title="催收信息维护" >
+		  <van-tab title="催收信息维护" name="tab2">
 		  		<van-row >
-		  		  <van-col class="col-title" span="20">&nbsp;&nbsp;&nbsp;&nbsp;行内人员</van-col>
-				    <van-col class="col-title theme" span="2">新增</van-col>
-					  <van-col class="col-title theme" span="2">删除</van-col>
+		  		  <van-col class="col-title" span="18">&nbsp;&nbsp;&nbsp;&nbsp;行内人员</van-col>
+				    <van-col class="col-title theme" span="3">新增</van-col>
+					  <van-col class="col-title theme" span="3">删除</van-col>
 		  		</van-row>
 				<table class="table" rules=none >
 					<tr>
@@ -97,9 +110,9 @@
 					</tr>
 				</table>
 		  		<van-row >
-		  		  <van-col class="col-title" span="20">&nbsp;&nbsp;&nbsp;&nbsp;客户人员</van-col>
-		  		    <van-col class="col-title theme" span="2" >新增</van-col>
-		  			  <van-col class="col-title theme" span="2">删除</van-col>
+		  		  <van-col class="col-title" span="18">&nbsp;&nbsp;&nbsp;&nbsp;客户人员</van-col>
+		  		    <van-col class="col-title theme" span="3" @click="go('addCustomer')">新增</van-col>
+		  			  <van-col class="col-title theme" span="3">删除</van-col>
 		  		</van-row>
 		  		<table class="table" rules=none >
 		  			<tr>
@@ -116,10 +129,10 @@
 				<van-collapse  v-model="activeNames">
 				  <van-collapse-item name="2">
 				  		 <van-row slot="title">
-				  			 <van-col span="12" class=""><span class="collapse-text">客户接触反馈情况</span></van-col>
+				  			 <van-col span="11" class=""><span class="collapse-text">客户接触反馈情况</span></van-col>
 				  		 </van-row>
 						<van-row  class="select_row">
-							   <van-col class="" span="12" dot>执行上门催收原因</van-col>
+							   <van-col class="" span="11" dot>执行上门催收原因</van-col>
 							   <van-col class="" span="12">
 								   <select name="" id="">
 									   <option value="">本金逾期</option>
@@ -129,7 +142,7 @@
 							   </van-col>
 						</van-row>
 						<van-row class="select_row">
-							   <van-col class="" span="12">接触情况</van-col>
+							   <van-col class="" span="11">接触情况</van-col>
 							   <van-col class="" span="12">
 								   <select name="" id="">
 									   <option value="">实际控制人接触成功</option>
@@ -141,7 +154,7 @@
 							   </van-col>
 						</van-row>
 						<van-row class="select_row">
-							   <van-col class="" span="12">客户态度</van-col>
+							   <van-col class="" span="11">客户态度</van-col>
 							   <van-col class="" span="12">
 								   <select name="" id="">
 										<option value="">积极配合</option>
@@ -152,7 +165,7 @@
 							   </van-col>
 						</van-row>
 						<van-row class="select_row">
-							   <van-col class="" span="12">反馈情况</van-col>
+							   <van-col class="" span="11">反馈情况</van-col>
 							   <van-col class="" span="12">
 								   <select name="" id="">
 										<option value="">承诺一次性还款</option>
@@ -164,7 +177,7 @@
 							   </van-col>
 						</van-row>
 						<van-row  class="select_row">
-							   <van-col class="" span="12" dot>具体情况描述</van-col>
+							   <van-col class="" span="11" dot>具体情况描述</van-col>
 							   <van-col class="" span="12">
 								  <textarea name="" id="" cols="26" rows="6">
 									  
@@ -175,9 +188,9 @@
 				</van-collapse>
 				
 				<van-row >
-				  <van-col class="col-title" span="20">&nbsp;&nbsp;&nbsp;&nbsp;承认还款计划</van-col>
-				    <van-col class="col-title theme" span="2" >新增</van-col>
-					  <van-col class="col-title theme" span="2">删除</van-col>
+				  <van-col class="col-title" span="18">&nbsp;&nbsp;&nbsp;&nbsp;承认还款计划</van-col>
+				    <van-col class="col-title theme" span="3" @click="go('repaymentPlan')">新增</van-col>
+					  <van-col class="col-title theme" span="3">删除</van-col>
 				</van-row>
 				<table class="table" rules=none >
 					<tr>
@@ -196,7 +209,7 @@
 				  			 <van-col span="12" class=""><span class="collapse-text">催收检查结论</span></van-col>
 				  		 </van-row>
 					<van-row  class="select_row">
-						   <van-col class="" span="12" dot>总体判断描述</van-col>
+						   <van-col class="" span="11" dot>总体判断描述</van-col>
 						   <van-col class="" span="12">
 							  <textarea name="" id="" cols="26" rows="6">
 								  
@@ -204,7 +217,7 @@
 						   </van-col>
 					</van-row>
 					<van-row  class="select_row">
-						   <van-col class="" span="12" dot>下一次措施建议</van-col>
+						   <van-col class="" span="11" dot>下一次措施建议</van-col>
 						   <van-col class="" span="12">
 							  <textarea name="" id="" cols="26" rows="6">
 								  
@@ -226,7 +239,8 @@
 	import NavBar from '@/components/navBar'
 	import Vue from 'vue';
 	import { Grid, GridItem,Image,Panel,Cell, CellGroup,Row, Col,Dialog,Toast ,Tab, Tabs } from 'vant';
-	
+	import img1 from '@/assets/images/other/certificate.jpg';
+	import img2 from '@/assets/images/24/Empty@2x.png';
 	export default {
   data() {
     return {
@@ -234,30 +248,31 @@
 		step:0,
 		active:0,
 		signShow:'',//1：未签到，2：已签到
-		activeNames: ['1'],
+		activeNames: ['4'],
 		luyin:0,
 		show:false,
+		img1:img1,
+		img2:img2,
+		list:[
+		    [1],[1],
+		],
 	}
   },
 
   //数据预加载
   created(){
-		this.signShow = 1;
+		
   },
 
   //网页加载完成
   mounted () {
+	  var collectTabName = sessionStorage.getItem("collectTabName");
+	  if (collectTabName == 'tab2') {
+		  console.log('mounted');
+		  this.active = 1;
+	  }
 	  
-	  console.log('mounted',this.signShow);
   },
-	activated() {
-		eventBus.$on('sign', function(data){
-				  if (data) {
-						  this.signShow = 2;
-				  }
-				  console.log('sign',this.signShow);
-		}.bind(this));
-	},
   //声明方法
   methods : {
       onClickLeft:function(){
@@ -277,7 +292,13 @@
 	  submit:function(){
 		  this.show = !this.show;
 
-	  }
+	  },
+	  remove_img(i) {
+	      this.list[i].pop();
+	  },
+	  onTabClick(name, title) {
+		  sessionStorage.setItem("collectTabName",name);
+	  },
   },
   //引入组件
   components: {
@@ -314,6 +335,7 @@
 		color: white;
 	}
 	.dot-border{
+		position: relative;
 		border: 1px dashed #389BF6;
 		border-radius: 6px;
 		flex-direction: column;
@@ -390,5 +412,33 @@
 	.block>div:first-child{
 		background-color: #4C62E7;
 		color: #fff;
+	}
+	.picture_div p{
+	    margin: 0;
+	    padding: 0;
+	    line-height: 40px;
+	
+	}
+	.picture_col{
+	    text-align: center;
+	    position: relative;
+	    padding: 4px auto;
+	    margin: 8px 4px;
+	    height: 155px;
+	    margin-right: 4px;
+	}
+	.img_close{
+	    position: absolute;
+	    top: 5px;
+	    right:8px ;
+	    height: 24px;
+	    width: 24px;
+	    z-index: 10;
+	}
+	.img_file{
+	    width: 90%;
+	    height: 95%;
+	    margin: 2px auto;
+	
 	}
 </style>

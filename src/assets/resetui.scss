@@ -10,12 +10,21 @@
 	}
 }
 
-.newCollectTask{
-	.collapse{
-		.van-collapse-item__content{
-			padding:4px 8px;
+.addCustomer{
+	
+	.border{
+		.van-dropdown-menu__item{
+			text-align: left;
+			align-items: left;
+			justify-content: left;
+		}
+		.van-dropdown-menu__title{
+			text-align: left;
+			align-items: left;
+			justify-content: left;
 		}
 	}
+	
 }
 
 .addTask{
