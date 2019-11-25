@@ -2,7 +2,16 @@
     <div class="main">
      <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
+		<van-row class="table-hearder" v-show="this.type == 2">
+			
+			<van-col span="12" class="text-center" @click="showAll">全部商品</van-col>
+			<van-col span="12" class="text-center">贷款余额</van-col>
+			
+		</van-row>
 		<div id="myChart"></div>
+		<div></div>
+		
+		
 		<div class="table">
 			<van-row class="table-hearder">
 				<van-col span="8" >口径 </van-col>
@@ -28,6 +37,7 @@
 	import { Grid, GridItem,Image,Panel,Cell, CellGroup,Row, Col,Dialog,Toast ,Tab, Tabs } from 'vant';
 	let echarts = require('echarts/lib/echarts');
 	require('echarts/lib/chart/line');
+	require('echarts/lib/chart/bar');
 	require('echarts/lib/component/title');
 	require('echarts/lib/component/legend')
 	export default {
@@ -46,9 +56,10 @@
 				xAxis:['贷款余额','不良贷款余额'],
 				yAxis:['助学贷款',' 建档立卡货款','创业担保贷款','农户经营性贷款','小欲企业主货款','个体工商户贷款','微型企业货款','小型企业贷款'],
 				data:[
-					[320,320, 302, 101, 34, 90,50, 40],
-					[120, 132, 101, 34, 90, 50, 20],
+					// [101, 34, 90,50, 40,320,320, 302],
+					[820, 932, 901, 934, 1290, 1330, 1320],
 				],
+				
 			},
 			
 			data:[
@@ -85,11 +96,14 @@
 
   //网页加载完成
   mounted () {
+	 
+	this.type = this.$route.query.type ;
+	 
   	var that = this ;
   	setTimeout(function () {
   		that.createChart();
   	},100)
-  
+	
   },
 
   //声明方法
@@ -102,113 +116,120 @@
 	  	if(this.myChart == null){
 	  		// 基于准备好的dom，初始化echarts实例
 	  		this.myChart = echarts.init(document.getElementById('myChart'))
-	  		let option1 =  {
-				color: this.barData.color,
-				tooltip : {
-						trigger: 'axis',
-						axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-							type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-						}
-					},
-					  title: {
-							text: this.barData.title,
-							 subtext: this.barData.subText ,
-							x: '20%',
-							textAlign: 'center'
-						}, 
-				legend: {
-					data: this.barData.xAxis,
-					x: '40%',
-				},
-				grid: {
-					left: '3%',
-					right: '24%',
-					bottom: '3%',
-					top:'20%',
-					containLabel: true
-				},
-				xAxis:  {
-					type: 'value'
-				},
-				yAxis: {
-					type: 'category',
-					data: this.barData.yAxis,
-					
-				},
-				 barWidth : 10,//柱图宽度
-				series: []
-			};
-			var option = {
-				color: this.barData.color,
-				xAxis: {
-				        type: 'time',
-				        splitLine: {
-				            show: false
-				        }
-				    },
-				    yAxis: {
-				        type: 'value',
-				    },
-				    grid: {
-				        top: 110,
-				        left: 35,
-				        right: 15,
-				        height: 160
-				    },
-					
-				    series: []
-			};
-					
-			this.barData.data.forEach((item,index)=>{  
-				option.series.push(
-					// {
-					// 	name: this.barData.xAxis[index],
-					// 	type: 'bar',
-					// 	stack: '总量',
-					// 	label: {
-					// 		normal: {
-					// 			show: true,
-					// 			position: 'insideRight'
-					// 		}
-					// 	},
-					// 	data: item
-					// },
-					
-					 {
-						name:this.barData.xAxis[index],
-						type:'line',
-						smooth: true,
-						symbol: 'circle',
-						symbolSize: 5,
-						sampling: 'average',
-						itemStyle: {
-							normal: {
-								color: '#8ec6ad'
-							}
-						},
-						areaStyle: {
-						    normal: {
-						        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-						            offset: 0,
-						            color: '#8ec6ad'
-						        }, {
-						            offset: 1,
-						            color: '#ffe'
-						        }])
-						    }
-						},
-						stack: 'a',
-						data: item
-					}
-					
-				);
+			switch (this.type){
 				
-			});
-			
-	  		// 绘制图表
-	  		this.myChart.setOption(option);
+				case 2:{
+					
+					let option = {
+						
+						xAxis: {
+						        type: 'category',
+						        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+						    },
+						    yAxis: {
+						        type: 'value'
+						    },
+							grid: {
+								left: '3%',
+								right: '24%',
+								bottom: '3%',
+								top:'10%',
+								containLabel: true
+							},
+							 lineStyle: {
+							                color: '#004E52',
+							                opacity: 0.5,
+							                width: 2
+							            },
+						    series: [{
+						        data: [1320, 1320, 1330, 1320,820, 932, 901, 934, 1290],
+						        type: 'line',
+								areaStyle: {
+								    normal: {
+								        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+								            offset: 0,
+								            color: '#9696f8'
+								        }, {
+								            offset: 1,
+								            color: '#ffe'
+								        }])
+								    }
+								},
+						    }]
+							
+							};
+					
+					
+					// 绘制图表
+					this.myChart.setOption(option);
+				}
+					break;
+				default:{
+					let option =  {
+						color: this.barData.color,
+						tooltip : {
+								trigger: 'axis',
+								axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+									type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+								}
+							},
+							  title: {
+									text: this.barData.title,
+									 subtext: this.barData.subText ,
+									x: '20%',
+									textAlign: 'center'
+								}, 
+						legend: {
+							data: this.barData.xAxis,
+							x: '40%',
+						},
+						grid: {
+							left: '3%',
+							right: '24%',
+							bottom: '3%',
+							top:'20%',
+							containLabel: true
+						},
+						xAxis:  {
+							type: 'value'
+						},
+						yAxis: {
+							type: 'category',
+							data: this.barData.yAxis,
+							
+						},
+						 // barWidth : 10,//柱图宽度
+						series: []
+					};
+					this.barData.data.forEach((item,index)=>{
+						if(index != 0) return;
+						option.series.push(
+							{
+								name: this.barData.xAxis[index],
+								type: 'bar',
+								stack: '总量',
+								label: {
+									normal: {
+										show: true,
+										position: 'insideRight'
+									}
+								},
+								data: item
+							},
+							
+						);
+						
+					});
+					// 绘制图表
+					this.myChart.setOption(option);
+				}
+					break;
+			}	
 	  	}
 	  },
+	  showAll(){
+	  	alert('123')
+	  }
   },
   //引入组件
   components: {

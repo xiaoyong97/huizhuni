@@ -1,7 +1,23 @@
 <template>
 	<div class="newCollectTask">
 	 <!--头部导航-->
-		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="go('onSiteSign')" right-text="提交审核"></van-nav-bar>
+		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="submit" right-text="提交审核"></van-nav-bar>
+		<img src="../../../../../../assets/images/other/luyin1.png" alt="" class="luyin" v-show="luyin==1" @click="nextStep">
+		   <img src="../../../../../../assets/images/other/luyin2.png" alt="" class="luyin"  v-show="luyin==2" @click="nextStep"> 
+		    <img src="../../../../../../assets/images/other/luyin3.png" alt="" class="luyin"  v-show="luyin==3" @click="nextStep"> 
+		
+		<van-overlay :show="show" @click="show = false">
+		  <div class="wrapper" @click.stop>
+		    <div class="block" >
+				<div >下一审核人</div>
+				<div @click="submit">客户_10753888</div>
+				<div  @click="submit">客户_10763282</div>
+				<div  @click="submit">客户_10732237</div>
+				<div  @click="submit">客户_10758543</div>
+				<div  @click="submit">客户_10755615</div>
+			</div>
+		  </div>
+		</van-overlay>
 		<van-tabs v-model="active" color="#4c62e7" line-width="33%" title-active-color="#4c62e7">
 		  <van-tab title="催收现场取证" >
 			  <van-collapse v-model="activeNames" class="collapse">
@@ -52,15 +68,149 @@
 			     name="add-o"
 			     style="line-height: inherit;"
 			    color="#389BF6" size="24px"
+				@click="nextStep"
 			   />
-			</van-cell>
+		</van-cell>
 			<van-row style="text-align: center;">
 				<van-button round type="info" class="save-buttom">保存</van-button>
 			</van-row>
 		  </van-tab>
 		  <van-tab title="催收信息维护" >
-		  		123	  
-		  			 
+		  		<van-row >
+		  		  <van-col class="col-title" span="20">&nbsp;&nbsp;&nbsp;&nbsp;行内人员</van-col>
+				    <van-col class="col-title theme" span="2">新增</van-col>
+					  <van-col class="col-title theme" span="2">删除</van-col>
+		  		</van-row>
+				<table class="table" rules=none >
+					<tr>
+						<th>员工名称</th>
+						<th>职务</th>
+						<th>所在单位</th>
+					</tr>
+					<tr>
+						<td>客户名<br/>_72707632</td>
+						<td>ABCDEFG</td>
+						<td>ABCDEFG</td>
+					</tr>
+				</table>
+		  		<van-row >
+		  		  <van-col class="col-title" span="20">&nbsp;&nbsp;&nbsp;&nbsp;客户人员</van-col>
+		  		    <van-col class="col-title theme" span="2" >新增</van-col>
+		  			  <van-col class="col-title theme" span="2">删除</van-col>
+		  		</van-row>
+		  		<table class="table" rules=none >
+		  			<tr>
+		  				<th>员工名称</th>
+		  				<th>与债权人关系</th>
+		  				<th>联系方式</th>
+		  			</tr>
+		  			<tr>
+		  				<td>贾跃亭</td>
+		  				<td>实际控制人</td>
+		  				<td>1369733232</td>
+		  			</tr>
+		  		</table>	
+				<van-collapse  v-model="activeNames">
+				  <van-collapse-item name="2">
+				  		 <van-row slot="title">
+				  			 <van-col span="12" class=""><span class="collapse-text">客户接触反馈情况</span></van-col>
+				  		 </van-row>
+						<van-row  class="select_row">
+							   <van-col class="" span="12" dot>执行上门催收原因</van-col>
+							   <van-col class="" span="12">
+								   <select name="" id="">
+									   <option value="">本金逾期</option>
+									   <option value="">欠息</option>
+									   <option value="">非逾期欠息原因</option>
+								   </select>
+							   </van-col>
+						</van-row>
+						<van-row class="select_row">
+							   <van-col class="" span="12">接触情况</van-col>
+							   <van-col class="" span="12">
+								   <select name="" id="">
+									   <option value="">实际控制人接触成功</option>
+									   <option value="">实际控制人安排其他人接触</option>
+									   <option value="">实际控制人因故未能接触</option>
+									   <option value="">实际控制人拒绝接触</option>
+									   <option value="">实际控制人失去联系</option>
+								   </select>
+							   </van-col>
+						</van-row>
+						<van-row class="select_row">
+							   <van-col class="" span="12">客户态度</van-col>
+							   <van-col class="" span="12">
+								   <select name="" id="">
+										<option value="">积极配合</option>
+										<option value="">配合</option>
+										<option value="">拒绝配合</option>
+										<option value="">无</option>
+								   </select>
+							   </van-col>
+						</van-row>
+						<van-row class="select_row">
+							   <van-col class="" span="12">反馈情况</van-col>
+							   <van-col class="" span="12">
+								   <select name="" id="">
+										<option value="">承诺一次性还款</option>
+										<option value="">承诺分期还款</option>
+										<option value="">无明确回复</option>
+										<option value="">无力还款</option>
+										<option value="">无</option>
+								   </select>
+							   </van-col>
+						</van-row>
+						<van-row  class="select_row">
+							   <van-col class="" span="12" dot>具体情况描述</van-col>
+							   <van-col class="" span="12">
+								  <textarea name="" id="" cols="26" rows="6">
+									  
+								  </textarea>
+							   </van-col>
+						</van-row>
+				  </van-collapse-item>
+				</van-collapse>
+				
+				<van-row >
+				  <van-col class="col-title" span="20">&nbsp;&nbsp;&nbsp;&nbsp;承认还款计划</van-col>
+				    <van-col class="col-title theme" span="2" >新增</van-col>
+					  <van-col class="col-title theme" span="2">删除</van-col>
+				</van-row>
+				<table class="table" rules=none >
+					<tr>
+						<th>还款日期</th>
+						<th>还款金额</th>
+					</tr>
+					<tr>
+						<td>2019-11-13</td>
+						<td>10000</td>
+					</tr>
+				</table>
+				
+				<van-collapse  v-model="activeNames">
+				  <van-collapse-item name="3">
+				  		 <van-row slot="title">
+				  			 <van-col span="12" class=""><span class="collapse-text">催收检查结论</span></van-col>
+				  		 </van-row>
+					<van-row  class="select_row">
+						   <van-col class="" span="12" dot>总体判断描述</van-col>
+						   <van-col class="" span="12">
+							  <textarea name="" id="" cols="26" rows="6">
+								  
+							  </textarea>
+						   </van-col>
+					</van-row>
+					<van-row  class="select_row">
+						   <van-col class="" span="12" dot>下一次措施建议</van-col>
+						   <van-col class="" span="12">
+							  <textarea name="" id="" cols="26" rows="6">
+								  
+							  </textarea>
+						   </van-col>
+					</van-row>
+				  </van-collapse-item>
+				</van-collapse>
+				
 		  </van-tab>
 		  </van-tabs>
 		
@@ -81,7 +231,8 @@
 		step:0,
 		active:0,
 		activeNames: ['1'],
-
+		luyin:0,
+		show:false,
 	}
   },
 
@@ -103,6 +254,16 @@
 	  go : function(url,item){
 	    this.$router.push({name:url,params:item});
 	  },
+	  nextStep:function(){
+		  if(this.luyin>2){
+			   this.luyin  = 0;
+			   return;
+		  }
+		   this.luyin ++;
+	  },
+	  submit:function(){
+		  this.show = !this.show;
+	  }
   },
   //引入组件
   components: {
@@ -162,5 +323,58 @@
 		bottom: 8px;
 		transform: translateX(-50%);
 	}
-
+	.luyin{
+		position: absolute;
+		left: 0px;
+		top:44px;;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+	.table{
+		width: 100%;
+		text-align: center;
+		margin-top: 10px;
+	}
+	.table tr *{
+		padding: 8px 0px;
+	}
+	.table tr td{
+		background-color: rgb(232,232,232);
+		height: 44px;
+	}
+	.theme{
+		color: rgb(109,95,175);
+	}
+	.select_row{
+		height: 44px;
+	}
+	.select_row select{
+		border: 1px solid gray;
+		padding: 4px;
+	}
+	textarea{
+		border: 1px solid lightgray;
+		border-radius: 8px;
+	}
+	.wrapper {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  height: 100%;
+	  z-index: 100;
+	}
+	
+	.block {
+		width: 280px;
+		height: 240px;
+		background-color: #fff;
+		z-index: 100;
+		line-height: 40px;;
+		text-align: center;
+	}
+	.block>div:first-child{
+		background-color: #4C62E7;
+		color: #fff;
+	}
 </style>

@@ -9,25 +9,12 @@
 				<van-col span="6"><img class="icon-date" src="../../../assets/images/38/Companyname@2x.png" alt=""></van-col>
 			</van-col>
 		</van-row>
-		<div class="table">
-			<van-row class="table-hearder">
-				<van-col span="7" >指标 </van-col>
-				<van-col span="4" >指标值</van-col>
-				<van-col span="4" >比年初</van-col>
-				<van-col span="4" >比上月</van-col>
-				<van-col span="4" >比上旬</van-col>
-			</van-row>
-			<van-row class="table-content">
-				<van-col span="24" v-for="item in data" >
-					<van-col span="7" class="table-left-title">{{item.title}}</van-col>
-					<van-col span="4" >21.37</van-col>
-					<van-col span="4" >7.39</van-col>
-					<van-col span="4" >0.05</van-col>
-					<van-col span="4" >-0.18</van-col>
-				</van-col>
-			</van-row>
-		</div>
-		
+		<table class="table" rules=rows>
+				
+			  <tr v-for="item in data"  >
+				<td v-for="value in item">{{value}}</td>
+			  </tr>
+		</table>
     </div>
 </template>
 
@@ -47,30 +34,15 @@
 			active:0,
 			noticePan1_text:'人行口径',
 			data:[
-					{
-						'title':"贷款金额  (亿元)",
-					},
-					{
-						'title':'贷款客户数(户)',
-					},
-					{
-						'title':'不良贷款额(亿元)',
-					},
-					{
-						'title':'不良贷款率',
-					},
-					{
-						'title':'逾期贷款额',
-					},
-					{
-						'title':'逾期客户数(户)',
-					},
-					{
-						'title':'逾期非不良额(亿元)',
-					},
-					{
-						'title':'逾期非不良率',
-					}
+				['指标','指标值','比年初','比上月','比上旬'],
+				['贷款余额','21.37','7.39','0.05','-0.18'],
+				['贷款客户数(户)','2018','770','36','10'],
+				['不良贷款额(亿元)','1.18','0.03','0.02','0.1'],
+				['不良贷款率','5.54','-2.73%','0.06%','0.09%'],
+				['逾期贷款额','1.19','0.04','0.01','0.10'],
+				['逾期客户数(户)','39','12','1','-2'],
+				['逾期非不良额(亿元)','83.30','89.30','-89.20','-1051.51'],
+				['逾期非不良率','0.04%','0.04%','-0.04%','-0.49%'],	
 			],
 		}
 	},
@@ -168,27 +140,31 @@
 		color: rgb(232,86,93);
 	}
 	
-	.table{
+	table{
+		width: 100%;
 		text-align: center;
 	}
-	.table .table-hearder{
+	table tr td{
+		padding: 16px 0px;
+	}
+	table tr:first-child{
 		text-align:  center;
 		color: #fff;
 		padding: 16px 0px;;
 		background-image: linear-gradient(to right, #4bb0ff, #6149f6);
 	}
-	.table-left-title{
-		padding: 6px 0px;
-		line-height: 20px;
-		vertical-align: middle; 
+	// .table-left-title{
+	// 	padding: 6px 0px;
+	// 	line-height: 20px;
+	// 	vertical-align: middle; 
 		
-	}
-	.table-content {
-		height: 48px;
-		line-height: 48px;
+	// }
+	// .table-content {
+	// 	height: 48px;
+	// 	line-height: 48px;
 		
-	}
-	.table-content>div:nth-child(2n+2){
+	// }
+	table tr:nth-child(2n+1){
 		background-color: lightgray;
 	}
 </style>

@@ -11,19 +11,19 @@
 		</van-row>
 		<van-row class="noticeBar">
 			<van-col span="12" class="text-center">
-				<div class="noticePan1" @click="gotoBankDetail">{{noticePan1_text}}</div>
+				<div class="noticePan1" @click="gotoBankDetail">{{noticePan[type].kj}}</div>
 				<div class="noticePan2">不良率</div>
-				<div class="noticePan3">比年初: <span>-0.60%</span></div>
+				<div class="noticePan3">比年初: <span>{{noticePan[type].bnc}}</span></div>
 			</van-col>
 			<van-col span="12" class="text-center">
-				<div class="noticePan4">2019/07/03</div>
-				<div class="noticePan5">1.54%</div>
-				<div class="noticePan6">比上月: <span>-0.08%</span></div>
+				<div class="noticePan4">{{noticePan[type].date}}</div>
+				<div class="noticePan5">{{noticePan[type].bll}}</div>
+				<div class="noticePan6">比上月: <span>{{noticePan[type].bsy}}</span></div>
 			</van-col>
 		</van-row>
 		<p class="tip">责任口径不良排名</p>
 		<van-tabs v-model="active" color="#4c62e7" line-width="150"   >
-		  <van-tab v-bind:title="item.title" v-for="item in data" >
+		  <van-tab v-bind:title="item.title" v-for="item in noticePan[type].list" >
 			  <van-cell v-bind:class="{redColor:item1.isOver}" v-bind:title="item1.bank" v-for="item1 in item.data"  is-link  @click="gotoDetail(item1)" v-bind:value="item1.rate"  />
 		  </van-tab>
 		 
@@ -45,40 +45,274 @@
 		date:'2019-11-21',
 		bank:'建行江苏省分行小企业业务部',
 		active:0,
-		noticePan1_text:'人行口径',
-		data:[
+		type:2,
+		noticePan:[
 			{
-				'title':'二级分行不良率',
-				data:[
-					{
-						'bank':'建行徐州泉山支行(汇总)',
-						'rate':'35.80%',
-						'isOver':true,
-					},{
-						'bank':'建行徐州泉山支行(汇总)',
-						'rate':'25.80%',
-						'isOver':true,
-					},{
-						'bank':'建行徐州泉山支行(汇总)',
-						'rate':'1.80%',
-						'isOver':false,
-					},{
-						'bank':'建行徐州泉山支行',
-						'rate':'1.01%',
-						'isOver':false,
-					}
-				]
+				kj:'人行口径',
+				date:'2019/07/03',
+				bll:'1.54%',
+				bnc:'-0.60%',
+				bsy:'-0.08%',
+				list:[
+						{
+						'title':'二级分行不良率',
+						data:[
+							{
+								'bank':'建行邳州支行（汇总)',
+								'rate':'35.80%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行徐州泉山支行（汇总）',
+								'rate':'10.19%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行建湖支行（汇总）',
+								'rate':'9.81%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行江闹临港新城支行（汇总）',
+								'rate':'9.73%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行场州琼花支行（汇总）',
+								'rate':'9.34%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行泰州海陵支行',
+								'rate':'7.49%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行丹阳支行（汇总）',
+								'rate':'7.36%',
+								'isOver':true,
+							},	
+						]
+						},
+						{
+							'title':'经办行不良率',
+							data:[
+								{
+									'bank':'建行徐州泉山支行(汇总)',
+									'rate':'35.80%',
+								}
+							]
+						}
+					]	
 			},
 			{
-				'title':'经办行不良率',
-				data:[
-					{
-						'bank':'建行徐州泉山支行(汇总)',
-						'rate':'35.80%',
-					}
-				]
-			}
-		]
+				kj:'银保监会口径',
+				date:'2019/07/03',
+				bll:'1.46%',
+				bnc:'-0.62%',
+				bsy:'-0.08%',
+				list:[
+						{
+						'title':'二级分行不良率',
+						data:[
+							{
+								'bank':'建行邳州支行（汇总)',
+								'rate':'35.80%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行徐州泉山支行（汇总）',
+								'rate':'10.19%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行建湖支行（汇总）',
+								'rate':'9.81%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行江闹临港新城支行（汇总）',
+								'rate':'9.73%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行场州琼花支行（汇总）',
+								'rate':'9.34%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行泰州海陵支行',
+								'rate':'7.49%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行丹阳支行（汇总）',
+								'rate':'7.36%',
+								'isOver':true,
+							},	
+						]
+						},
+						{
+							'title':'经办行不良率',
+							data:[
+								{
+									'bank':'建行邳州支行（汇总)',
+									'rate':'35.80%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行徐州泉山支行（汇总）',
+									'rate':'10.19%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行建湖支行（汇总）',
+									'rate':'9.81%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行江闹临港新城支行（汇总）',
+									'rate':'9.73%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行场州琼花支行（汇总）',
+									'rate':'9.34%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行泰州海陵支行',
+									'rate':'7.49%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行丹阳支行（汇总）',
+									'rate':'7.36%',
+									'isOver':true,
+								},	
+							]
+						}
+					]
+			},{
+				kj:'责任部门口径',
+				date:'',
+				bll:'1.73%',
+				bnc:'-1.23%',
+				bsy:'-0.01%',
+				list:[
+						{
+						'title':'二级分行不良率',
+						data:[
+							{
+								'bank':'建行邳州支行（汇总)',
+								'rate':'35.80%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行徐州泉山支行（汇总）',
+								'rate':'10.19%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行建湖支行（汇总）',
+								'rate':'9.81%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行江闹临港新城支行（汇总）',
+								'rate':'9.73%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行场州琼花支行（汇总）',
+								'rate':'9.34%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行泰州海陵支行',
+								'rate':'7.49%',
+								'isOver':true,
+							},
+							{
+								'bank':'建行丹阳支行（汇总）',
+								'rate':'7.36%',
+								'isOver':true,
+							},	
+							{
+								'bank':'建行徐州泉山分行(汇总)',
+								'rate':'5.54%',
+								'isOver':true,
+							},{
+								'bank':'建行泰州分行(汇总)',
+								'rate':'2.91%',
+								'isOver':true,
+							},{
+								'bank':'建行镇江分行(汇总)',
+								'rate':'2.90%',
+								'isOver':true,
+							},{
+								'bank':'建行宿迁分行',
+								'rate':'2.28%',
+								'isOver':true,
+							},{
+								'bank':'建行盐城分行',
+								'rate':'2.12%',
+								'isOver':true,
+							},{
+								'bank':'建行无锡分行',
+								'rate':'1.93%',
+								'isOver':false,
+							},{
+								'bank':'建行淮安分行',
+								'rate':'1.86%',
+								'isOver':false,
+							}
+						]
+						},
+						{
+							'title':'经办行不良率',
+							data:[
+								{
+									'bank':'建行邳州支行（汇总)',
+									'rate':'35.80%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行徐州泉山支行（汇总）',
+									'rate':'10.19%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行建湖支行（汇总）',
+									'rate':'9.81%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行江闹临港新城支行（汇总）',
+									'rate':'9.73%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行场州琼花支行（汇总）',
+									'rate':'9.34%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行泰州海陵支行',
+									'rate':'7.49%',
+									'isOver':true,
+								},
+								{
+									'bank':'建行丹阳支行（汇总）',
+									'rate':'7.36%',
+									'isOver':true,
+								}
+							]
+						}
+					]
+			},
+			
+		],
 	}
   },
 
@@ -98,7 +332,8 @@
 		  this.$router.go(-1);
 	  },
 	  gotoBankDetail:function(){
-		  this.$router.push({path:'/index3/businessMonitorBankDetail'})
+		 
+		  this.$router.push({path:'/index3/businessMonitorBankDetail', query: {type:this.type}})
 	  },
 	  gotoDetail:function(obj){
 		this.$router.push({path:'/index3/businessMonitorDetail', query: obj})
