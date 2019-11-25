@@ -18,7 +18,7 @@
 			</div>
 		  </div>
 		</van-overlay>
-		<van-tabs @click="onTabClick" v-model="active" color="#4c62e7" line-width="33%" title-active-color="#4c62e7">
+		<van-tabs @click="onTabClick" v-model="activeTab" color="#4c62e7" line-width="33%" title-active-color="#4c62e7">
 		  <van-tab title="催收现场取证" name="tab1">
 			  <van-collapse v-model="activeNames" class="collapse">
 			    <van-collapse-item  name="1" >
@@ -26,7 +26,7 @@
 						 <van-col span="2" class=""><van-icon name="location-o" color="#389BF6" size="24px"/></van-col>
 						 <van-col span="6" class=""><span class="collapse-text">现场签到</span></van-col>
 					 </van-row>
-				 <div v-show="signShow==1">
+				 <div >
 					 <van-row>
 					 <van-col span="3" class="">
 					 	<van-icon name="location-o" class="sign-icon"/>
@@ -48,7 +48,7 @@
 					 </van-row>
 					 <van-row  class="picture_div" >
 						 <van-col  class="dot-border" span="11"  v-for="(item) in list[0]">
-							 <img src="../../../../../../assets/images/other/certificate.jpg" class="img_file"  >
+							 <img src="../../../../../../assets/images/other/0191125155504.png" class="img_file"  >
 							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0)" >
 						 </van-col>
 						 <van-col class="dot-border" span="11" @click="go('addImg')">
@@ -65,7 +65,7 @@
 					</van-row>
 					<van-row  class="picture_div" >
 						 <van-col  class="dot-border" span="11"  v-for="(item) in list[0]">
-							 <img src="../../../../../../assets/images/other/certificate.jpg" class="img_file"  >
+							 <img src="../../../../../../assets/images/other/125155704.png" class="img_file"  >
 							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0)" >
 						 </van-col>
 						 <van-col class="dot-border" span="11" @click="go('addImg')">
@@ -226,7 +226,9 @@
 					</van-row>
 				  </van-collapse-item>
 				</van-collapse>
-				
+				<van-row style="text-align: center;margin-top: 30px;">
+					<van-button round type="info" class="save-buttom" @click="onSubmit()">保存</van-button>
+				</van-row>
 		  </van-tab>
 		  </van-tabs>
 		
@@ -246,7 +248,7 @@
     return {
 		title:['催收任务'],
 		step:0,
-		active:0,
+		activeTab:'tab1',
 		signShow:'',//1：未签到，2：已签到
 		activeNames: ['4'],
 		luyin:0,
@@ -268,8 +270,7 @@
   mounted () {
 	  var collectTabName = sessionStorage.getItem("collectTabName");
 	  if (collectTabName == 'tab2') {
-		  console.log('mounted');
-		  this.active = 1;
+		  this.activeTab = collectTabName;
 	  }
 	  
   },
@@ -355,9 +356,9 @@
 	}
 	.save-buttom{
 		width: 120px;
-		position: fixed;
-		bottom: 8px;
-		transform: translateX(-50%);
+		// position: fixed;
+		// bottom: 8px;
+		// transform: translateX(-50%);
 	}
 	.luyin{
 		position: absolute;
