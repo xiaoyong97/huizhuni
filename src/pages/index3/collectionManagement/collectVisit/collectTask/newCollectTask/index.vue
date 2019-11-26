@@ -37,25 +37,26 @@
 		  </div>
 		</van-overlay>
 		<van-tabs @click="onTabClick" v-model="activeTab" color="#4c62e7" line-width="33%" title-active-color="#4c62e7">
-		  <van-tab title="催收现场取证" name="tab1">
+		  <van-tab title="催收现场取证" name="tab1" >
 			  <van-collapse v-model="activeNames" class="collapse">
 			    <van-collapse-item  name="1" >
 					 <van-row slot="title" >
 						 <van-col span="2" class=""><van-icon name="location-o" color="#389BF6" size="24px"/></van-col>
 						 <van-col span="6" class=""><span class="collapse-text">现场签到</span></van-col>
 					 </van-row>
-				 <div >
+				 <div v-show="signShow==1">
 					 <van-row>
 					 <van-col span="3" class="">
 					 	<van-icon name="location-o" class="sign-icon"/>
 					 </van-col>
 					 <van-col span="6" class="">
-					 	<button class="sign-button" @click="go('onSiteSign')">现场签到</button>
+					 	<button class="sign-button" @click="go('onSiteSign',{activeNames:'1'})">现场签到</button>
 					 </van-col>
 					 </van-row>
 				 </div>
-				 <div v-show="signShow==2">
-				 					 123
+				 <div v-show="signShow==2" style="font-size: 14px;line-height: 20px;color: #323233;">
+					 <van-row >系统定位地址：福建省厦门市思明区</van-row>
+					 <van-row >上门签到地址：厦门市思明区环岛路233号乐视</van-row>
 				 </div>
 
 				 </van-collapse-item>
@@ -69,7 +70,7 @@
 							 <img src="../../../../../../assets/images/other/0191125155504.png" class="img_file"  >
 							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0)" >
 						 </van-col>
-						 <van-col class="dot-border" span="11" @click="go('addImg')">
+						 <van-col class="dot-border" span="11" @click="go('addImg',{activeNames:'2'})">
 						 	<div><van-icon name="photo-o" class="dot-border-icon"/></div>
 						 	<div><span class="dot-border-span">拍摄/上传</span></div>
 						 </van-col>
@@ -82,11 +83,11 @@
 						 <van-col span="12" class=""><span class="collapse-text">抵押物情况</span></van-col>
 					</van-row>
 					<van-row  class="picture_div" >
-						 <van-col  class="dot-border" span="11"  v-for="(item) in list[0]">
+						 <van-col  class="dot-border" span="11"  v-for="(item) in list[1]">
 							 <img src="../../../../../../assets/images/other/125155704.png" class="img_file"  >
-							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0)" >
+							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(1)" >
 						 </van-col>
-						 <van-col class="dot-border" span="11" @click="go('addImg')">
+						 <van-col class="dot-border" span="11" @click="go('addImg',{activeNames:'3'})">
 							<div><van-icon name="photo-o" class="dot-border-icon"/></div>
 							<div><span class="dot-border-span">拍摄/上传</span></div>
 						 </van-col>
@@ -234,7 +235,7 @@
 		title:['催收任务'],
 		step:0,
 		activeTab:'tab1',
-		signShow:'',//1：未签到，2：已签到
+		signShow:1,//1：未签到，2：已签到
 		activeNames: ['4'],
 		luyin:0,
 		show:false,
@@ -244,7 +245,7 @@
 		img1:img1,
 		img2:img2,
 		list:[
-		    [1],[1],
+		    [],[],
 		],
 		data:[
 			{value:'',title:'执行上门催收原因',radio: '',select:[
@@ -279,7 +280,22 @@
 
   //数据预加载
   created(){
-
+	var value = sessionStorage.getItem('activeNames');
+	if (value) {
+		this.activeNames.splice(0,1,JSON.parse(value));
+	}
+	var value1 = sessionStorage.getItem('collect1');
+	if (value1) {
+		this.signShow = 2;
+	}
+	var value2 = sessionStorage.getItem('collect2');
+	if (value2) {
+		this.list[0] = [1];
+	}
+	var value3 = sessionStorage.getItem('collect3');
+	if (value3) {
+		this.list[1] = [1];
+	}
   },
 
   //网页加载完成
@@ -294,6 +310,10 @@
   methods : {
       onClickLeft:function(){
 		  this.$router.go(-1);
+		  sessionStorage.removeItem("activeNames");
+		  sessionStorage.removeItem("collect1");
+		  sessionStorage.removeItem("collect2");
+		  sessionStorage.removeItem("collect3");
 	  },
 	  go : function(url,item){
 	    this.$router.push({name:url,params:item});
@@ -311,7 +331,8 @@
 
 	  },
 	  remove_img(i) {
-	      this.list[i].pop();
+		  console.log(i);
+	      this.list[i] = [];
 	  },
 	  onTabClick(name, title) {
 		  sessionStorage.setItem("collectTabName",name);

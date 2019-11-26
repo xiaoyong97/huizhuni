@@ -51,7 +51,12 @@
 
   //网页加载完成
   mounted () {
-
+	var value = this.$route.params;
+	console.log(value.activeNames);
+	if (value.activeNames) {
+		sessionStorage.setItem('activeNames',JSON.stringify(value.activeNames));
+	}
+	
   },
 
   //声明方法
@@ -64,7 +69,7 @@
 	  },
 	  onSubmit() {
 		  this.$router.go(-1);
-		  eventBus.$emit("sign",true);
+		  sessionStorage.setItem('collect1','1');
 	  }
   },
   //引入组件

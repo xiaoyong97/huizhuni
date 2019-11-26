@@ -35,6 +35,7 @@
 		title:['添加照片'],
 		step:0,
 		show: false,
+		type:'',
 
 	}
   },
@@ -46,7 +47,11 @@
 
   //网页加载完成
   mounted () {
-
+var value = this.$route.params;
+this.type = value;
+	if (value.activeNames) {
+		sessionStorage.setItem('activeNames',JSON.stringify(value.activeNames));
+	}
   },
 
   //声明方法
@@ -59,7 +64,11 @@
 	  },
 	  onSubmit() {
 		  this.$router.go(-1);
-		  eventBus.$emit("sign",true);
+		  if (parseInt(this.type.activeNames) == 2) {
+			  sessionStorage.setItem('collect2','1');
+		  } else {
+			  sessionStorage.setItem('collect3','1');
+		  }
 	  },
 	  showPopup() {
 		this.show = !this.show;
