@@ -15,8 +15,8 @@
 				<van-row class="">{{info.account}}</van-row>
 			</van-col>
 			<van-col span="12" class="left-border margin-top">
-				<van-row class="">拖欠利息<span></span></van-row>
-				<van-row class="">{{info.lixi}}<span></span></van-row>
+				<van-row class="">&nbsp;&nbsp;拖欠利息<span></span></van-row>
+				<van-row class="">&nbsp;&nbsp;{{info.lixi}}<span></span></van-row>
 			</van-col>
 			</van-row>
 		</van-row>
