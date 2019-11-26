@@ -6,27 +6,27 @@
 		<div class="cell_container">
 			<div @click="changTag(1)">
 				<img src="../../../../assets/images/other/08.png" alt="">
-				<p>备付金不足</p>
+				<p v-bind:class="{theme:type==1}">备付金不足</p>
 			</div>	
 			<div @click="changTag(2)">
 				<img src="../../../../assets/images/other/06.png" alt="">
-				<p>本金逾期</p>
+				<p v-bind:class="{theme:type==2}">本金逾期</p>
 			</div>	
 			<div @click="changTag(3)">
 				<img src="../../../../assets/images/other/10.png" alt="">
-				<p>利息逾期</p>
+				<p v-bind:class="{theme:type==3}">利息逾期</p>
 			</div>	
 			<div @click="changTag(4)">
 				<img src="../../../../assets/images/other/09.png" alt="">
-				<p>结息失败</p>
+				<p v-bind:class="{theme:type==4}">结息失败</p>
 			</div>	
 			<div @click="changTag(5)">
 				<img src="../../../../assets/images/other/07.png" alt="">
-				<p>到期提醒</p>
+				<p v-bind:class="{theme:type==5}">到期提醒</p>
 			</div>	
 			<div @click="changTag(6)">
 				<img src="../../../../assets/images/other/11.png" alt="">
-				<p>账户变动</p>
+				<p v-bind:class="{theme:type==6}">账户变动</p>
 			</div>
 		</div>
 		<div class="table_container">
@@ -342,7 +342,8 @@
 		width: 40px;
 		height: 32px;
 		display: block;
-		margin: 0px auto;
+		margin: 8px auto 4px auto;
+		
 	}
 	
 	.title{
@@ -370,5 +371,8 @@
 	}
 	table tr{
 		height: 44px;
+	}
+	.theme{
+		color:#4C62E7;
 	}
 </style>

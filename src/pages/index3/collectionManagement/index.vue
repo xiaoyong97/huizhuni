@@ -29,7 +29,7 @@
 		<div class="bgWhite">
 			<strong class="title margin-top"><van-tag type="danger" class="left_tag">&nbsp;</van-tag>催收客户列表</strong></div>
 		
-		<div class="card_div" v-for="(item,index) in this.infos" @click="go('myCustomer')">
+		<div class="card_div" v-for="(item,index) in this.infos" @click="go('myCustomer',item)">
 		    <van-row style="padding: 4px 12px 0">
 		        <van-col class="icon_box" span="2"><img src="../../../assets/images/38/Companyname@2x.png" class="img_location" ></van-col>
 		        <van-col class="" span="19"><p class="card_list2_test" >{{item.gongsi}}</p></van-col>
@@ -95,8 +95,8 @@
       onClickLeft:function(){
 		  this.$router.go(-1);
 	  },
-	  go : function(url){
-	    this.$router.push({name:url});
+	  go : function(url,item){
+	    this.$router.push({name:url,params:item});
 	  },
   },
   //引入组件
