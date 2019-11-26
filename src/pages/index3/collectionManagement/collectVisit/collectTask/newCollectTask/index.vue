@@ -76,7 +76,7 @@
 				</van-collapse-item>
 			  </van-collapse>
 			  
-			 <van-cell  >
+			 <van-cell  style="border: 0 solid #ebedf0;">
 				 <van-icon slot="icon" name="play-circle-o" color="#389BF6" size="24px"/>
 			 <span class="collapse-text">访问录音</span> 
 			 <van-icon
@@ -87,6 +87,7 @@
 				@click="nextStep"
 			   />
 		</van-cell>
+		<br/>
 			<van-row style="text-align: center;">
 				<van-button round type="info" class="save-buttom">保存</van-button>
 			</van-row>
