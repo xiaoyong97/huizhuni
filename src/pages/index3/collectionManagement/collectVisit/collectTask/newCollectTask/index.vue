@@ -3,9 +3,24 @@
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" @click-right="submit" right-text="提交审核"></van-nav-bar>
 		<img src="../../../../../../assets/images/other/luyin1.png" alt="" class="luyin" v-show="luyin==1" @click="nextStep">
-		   <img src="../../../../../../assets/images/other/luyin2.png" alt="" class="luyin"  v-show="luyin==2" @click="nextStep"> 
-		    <img src="../../../../../../assets/images/other/luyin3.png" alt="" class="luyin"  v-show="luyin==3" @click="nextStep"> 
-		
+		   <img src="../../../../../../assets/images/other/luyin2.png" alt="" class="luyin"  v-show="luyin==2" @click="nextStep">
+		    <img src="../../../../../../assets/images/other/luyin3.png" alt="" class="luyin"  v-show="luyin==3" @click="nextStep">
+		<!-- 选择器 -->
+			<div class="pop" v-show="show2">
+				<div class="pop-div">
+					<van-row class="pop-row">
+					  <van-col class="col-title padding-left" span="22">{{data[this.index].title}}</van-col>
+					    <van-col span="2" @click="show2=false"><van-icon class="pop-icon" name="cross" /></van-col>
+					</van-row>
+<!--					<van-radio-group v-model="data[index].radio" >-->
+<!--						<van-radio name="item.radio" v-for="(item,index) in dataselect" @click="close(index)">{{item.choose}}</van-radio>-->
+<!--					</van-radio-group>-->
+					<van-row class="pop-row" v-for="(item,index) in dataselect" @click="close(index)">
+					  <van-col class=" " span="3"><van-radio class="pop-radio" v-model="item.radio"></van-radio></van-col>
+					    <van-col span="20" >{{item.choose}}</van-col>
+					</van-row>
+				</div>
+			</div>
 		<van-overlay :show="show" @click="show = false" style="z-index: 2;">
 		  <div class="wrapper" @click.stop>
 		    <div class="block" >
@@ -39,7 +54,7 @@
 				 <div v-show="signShow==2">
 				 					 123
 				 </div>
-				 
+
 				 </van-collapse-item>
 			    <van-collapse-item name="2">
 					 <van-row slot="title">
@@ -56,7 +71,7 @@
 						 	<div><span class="dot-border-span">拍摄/上传</span></div>
 						 </van-col>
 					 </van-row>
-					
+
 				</van-collapse-item>
 			    <van-collapse-item  name="3">
 					<van-row slot="title">
@@ -75,10 +90,11 @@
 					</van-row>
 				</van-collapse-item>
 			  </van-collapse>
-			  
-			 <van-cell  style="border: 0 solid #ebedf0;">
+
+				<div class="link-top"></div>
+			 <van-cell  style="border-top: 1 solid #999999;height: 51px;">
 				 <van-icon slot="icon" name="play-circle-o" color="#389BF6" size="24px"/>
-			 <span class="collapse-text">访问录音</span> 
+			 <span class="collapse-text">访问录音</span>
 			 <van-icon
 				slot="right-icon"
 			     name="add-o"
@@ -126,68 +142,32 @@
 		  				<td>实际控制人</td>
 		  				<td>1369733232</td>
 		  			</tr>
-		  		</table>	
+		  		</table>
 				<van-collapse  v-model="activeNames">
 				  <van-collapse-item name="2">
 				  		 <van-row slot="title">
 				  			 <van-col span="11" class=""><span class="collapse-text">客户接触反馈情况</span></van-col>
 				  		 </van-row>
+						<van-row  class="select_row" v-for="(item,index) in data">
+							   <van-col class="" span="10" dot>{{item.title}}</van-col>
+							   <van-col class="col-select" span="13" @click="showSelect(index)">
+								   {{item.value}}
+								   <van-icon name="arrow-down" class="col-select-icon"/>
+							   </van-col>
+						</van-row>
+
+
 						<van-row  class="select_row">
-							   <van-col class="" span="11" dot>执行上门催收原因</van-col>
-							   <van-col class="" span="12">
-								   <select name="" id="">
-									   <option value="">本金逾期</option>
-									   <option value="">欠息</option>
-									   <option value="">非逾期欠息原因</option>
-								   </select>
-							   </van-col>
-						</van-row>
-						<van-row class="select_row">
-							   <van-col class="" span="11">接触情况</van-col>
-							   <van-col class="" span="12">
-								   <select name="" id="">
-									   <option value="">实际控制人接触成功</option>
-									   <option value="">实际控制人安排其他人接触</option>
-									   <option value="">实际控制人因故未能接触</option>
-									   <option value="">实际控制人拒绝接触</option>
-									   <option value="">实际控制人失去联系</option>
-								   </select>
-							   </van-col>
-						</van-row>
-						<van-row class="select_row">
-							   <van-col class="" span="11">客户态度</van-col>
-							   <van-col class="" span="12">
-								   <select name="" id="">
-										<option value="">积极配合</option>
-										<option value="">配合</option>
-										<option value="">拒绝配合</option>
-										<option value="">无</option>
-								   </select>
-							   </van-col>
-						</van-row>
-						<van-row class="select_row">
-							   <van-col class="" span="11">反馈情况</van-col>
-							   <van-col class="" span="12">
-								   <select name="" id="">
-										<option value="">承诺一次性还款</option>
-										<option value="">承诺分期还款</option>
-										<option value="">无明确回复</option>
-										<option value="">无力还款</option>
-										<option value="">无</option>
-								   </select>
-							   </van-col>
-						</van-row>
-						<van-row  class="select_row">
-							   <van-col class="" span="11" dot>具体情况描述</van-col>
-							   <van-col class="" span="12">
-								  <textarea name="" id="" cols="26" rows="6">
-									  
+							   <van-col class="" span="10" dot>具体情况描述</van-col>
+							   <van-col class="" span="13" style="padding-top: 8px">
+								  <textarea name="" id="" cols="26" rows="5">
+
 								  </textarea>
 							   </van-col>
 						</van-row>
 				  </van-collapse-item>
 				</van-collapse>
-				
+
 				<van-row >
 				  <van-col class="col-title padding-left" span="18">承认还款计划</van-col>
 				    <van-col class="col-title theme" span="3" @click="go('repaymentPlan')">新增</van-col>
@@ -203,7 +183,7 @@
 						<td>10000</td>
 					</tr>
 				</table>
-				
+
 				<van-collapse  v-model="activeNames">
 				  <van-collapse-item name="3">
 				  		 <van-row slot="title">
@@ -213,7 +193,7 @@
 						   <van-col class="" span="11" dot>总体判断描述</van-col>
 						   <van-col class="" span="12">
 							  <textarea name="" id="" cols="26" rows="6">
-								  
+
 							  </textarea>
 						   </van-col>
 					</van-row>
@@ -221,7 +201,7 @@
 						   <van-col class="" span="11" dot>下一次措施建议</van-col>
 						   <van-col class="" span="12">
 							  <textarea name="" id="" cols="26" rows="6">
-								  
+
 							  </textarea>
 						   </van-col>
 					</van-row>
@@ -233,13 +213,13 @@
 				<br>
 		  </van-tab>
 		  </van-tabs>
-		
+
 	</div>
-	
+
 </template>
 
 <script>
-	import eventBus from '@/assets/js/eventbus.js';
+	import '@/assets/resetui.scss';
 	import NavBar from '@/components/navBar'
 	import Vue from 'vue';
 	import { Grid, GridItem,Image,Panel,Cell, CellGroup,Row, Col,Dialog,Toast ,Tab, Tabs } from 'vant';
@@ -255,17 +235,47 @@
 		activeNames: ['4'],
 		luyin:0,
 		show:false,
+		show2:false,
+		index:0,
+		choose:'',
 		img1:img1,
 		img2:img2,
 		list:[
 		    [1],[1],
 		],
+		data:[
+			{value:'',title:'执行上门催收原因',radio: '',select:[
+				{radio:'1',choose:'本金逾期'},
+				{radio:'2',choose:'欠息'},
+				{radio:'3',choose:'非逾期欠息原因'},]},
+			{value:'',title:'接触情况',radio: '',select:[
+				{radio:1,choose:'实际控制人接触成功'},
+				{radio:2,choose:'实际控制人安排其他人接触'},
+				{radio:3,choose:'实际控制人拒绝接触'},
+				{radio:4,choose:'实际控制人失去联系'},
+				{radio:5,choose:'实际控制人因故未能接触'},]},
+			{value:'',title:'客户态度',radio: '',select:[
+					{radio:1,choose:'积极配合'},
+					{radio:2,choose:'配合'},
+					{radio:3,choose:'拒绝配合'},
+					{radio:4,choose:'无'},]},
+			{value:'',title:'反馈情况',radio: '',select:[
+					{radio:1,choose:'承诺一次性还款'},
+					{radio:2,choose:'承诺分期还款'},
+					{radio:3,choose:'无明确回复'},
+					{radio:4,choose:'无力还款'},
+					{radio:5,choose:'无'},]},
+		],
+		dataselect:[
+			{radio:false,choose:'本金逾期'},
+			{radio:false,choose:'欠息'},
+			{radio:false,choose:'非逾期欠息原因'},]
 	}
   },
 
   //数据预加载
   created(){
-		
+
   },
 
   //网页加载完成
@@ -274,7 +284,7 @@
 	  if (collectTabName == 'tab2') {
 		  this.activeTab = collectTabName;
 	  }
-	  
+
   },
   //声明方法
   methods : {
@@ -302,6 +312,26 @@
 	  onTabClick(name, title) {
 		  sessionStorage.setItem("collectTabName",name);
 	  },
+	  showSelect(i) {
+		  this.index = i;
+		  this.show2 = true;
+		  this.dataselect = this.data[i].select;
+	  },
+	  close(i) {
+		  this.show2 = false;
+		  this.choose = this.dataselect[i].choose;
+		   this.data[this.index].value = this.choose;
+		  for (let j = 0; j < this.dataselect.length; j++) {
+			  if (j == parseInt(i) ) {
+				  console.log('11');
+				  this.data[this.index].select[j].radio = true;
+			  } else {
+				  console.log('22');
+				  this.data[this.index].select[j].radio = false;
+			  }
+			  console.log(this.data[this.index].select[j].radio);
+		  }
+	  }
   },
   //引入组件
   components: {
@@ -376,7 +406,7 @@
 		width: 100%;
 		text-align: left;
 		margin-top: 10px;
-		
+
 	}
 	.table tr *{
 		padding: 8px 0px 8px 16px;
@@ -390,6 +420,7 @@
 	}
 	.select_row{
 		height: 44px;
+		line-height:34px ;
 	}
 	.select_row select{
 		border: 1px solid gray;
@@ -406,7 +437,7 @@
 	  height: 100%;
 	  z-index: 100;
 	}
-	
+
 	.block {
 		width: 280px;
 		height: 240px;
@@ -423,7 +454,7 @@
 	    margin: 0;
 	    padding: 0;
 	    line-height: 40px;
-	
+
 	}
 	.picture_col{
 	    text-align: center;
@@ -444,7 +475,7 @@
 	    width: 90%;
 	    height: 95%;
 	    margin: 2px auto;
-	
+
 	}
 	.van-overlay{
 		z-index: 2;
@@ -457,5 +488,52 @@
 	}
 	.col-title{
 		padding-top: 8px;;
+	}
+	.link-top{
+		width: 100%;
+		            height: 0px;
+		            border-top: solid rgb(242, 242, 242) 0.5px;
+	}
+	.col-select{
+		border: 1px solid #999999;
+		position: relative;
+		border-radius: 34px;
+		height: 34px;
+		padding-left: 8px;
+		.col-select-icon{
+			position: absolute;
+			right: 8px;
+			top:10px;
+		}
+	}
+	.pop{
+		position: fixed;
+		top: 46px;
+		bottom: 0;
+		height: 100%;
+		left: 0;
+		right: 0;
+		width: 100%;
+		background-color: rgba(0,0,0,0.3);
+		z-index: 10;
+
+	}
+	.pop-div{
+		background-color: white;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+	}
+	.pop-icon{
+		font-size: 24px;
+		line-height: 34px;
+	}
+	.pop-radio{
+		color: #389BF6;
+		padding: 7px 8px;
+	}
+	.pop-row{
+		font-size: 14px;
+		line-height: 34px;
 	}
 </style>
