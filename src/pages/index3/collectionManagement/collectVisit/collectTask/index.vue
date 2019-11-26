@@ -138,13 +138,14 @@
 	.noticeBar{
 		height: auto;
 		// background-image: linear-gradient(to right, #4bb0ff, #6149f6);
-		background-image: url('../../../../../assets/images/other/bg1125.png');
+		background-image: url('../../../../../assets/images/other/bg1125.png') ;
+		background-repeat:no-repeat;
 		background-size: 100% 100%;
-		margin: 0px 16px;
+		margin: 8px 16px;
 		padding: 16px;
 		border-radius: 16px;
 		color: white;
-		margin-bottom: 16px;
+
 	}
 	.card-title{
 		color: #f6df50;
@@ -154,7 +155,7 @@
 		line-height: 30px;
 	}
 	.margin-top{
-		margin-top:14px;
+		margin-top:4px;
 	}
 	.card-bottom-row{
 		

@@ -2,7 +2,7 @@
 	<div class="newCollectTask">
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
-		
+		<br/>
 		<div class="cell_container">
 			<div @click="changTag(1)">
 				<img src="../../../../assets/images/other/08.png" alt="">

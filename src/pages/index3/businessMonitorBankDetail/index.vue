@@ -22,7 +22,8 @@
 			<van-row class="table-content">
 				<van-col span="24" v-for="item in data"  class="table-row">
 					<van-col span="8" class="table-left-title">{{item.title}}</van-col>
-					<van-col span="5" v-for="item1 in item.value">{{item1}}</van-col>	
+					<van-col span="5" >{{item.value1}}%</van-col>
+					<van-col span="5" :class="item1>0?'red':'green'" v-for="item1 in item.value2">{{item1}}%</van-col>	
 				</van-col>
 			</van-row>
 		</div>
@@ -65,23 +66,28 @@
 			data:[
 					{
 						'title':"合计",
-						'value':["1.54%","-0.08%","-0.60%" ]
+						'value1':"1.54",
+						'value2':["0.08","-0.60" ]
 					},
 					{
 						'title':'小型企业贷款',
-						'value':["1.54%","-0.08%","-0.60%" ]
+						'value1':"1.54",
+						'value2':["-0.08","-0.60" ]
 					},
 					{
 						'title':'微型企业贷款',
-						'value':["1.54%","-0.08%","-0.60%" ]
+						'value1':"1.54",
+						'value2':["0.08","-0.60" ]
 					},
 					{
 						'title':'个体工商户贷款',
-						'value':["1.54%","-0.08%","-0.60%" ]
+						'value1':"1.54",
+						'value2':["-0.08","0.60" ]
 					},
 					{
 						'title':'小微企业主贷款',
-						'value':["1.54%","-0.08%","-0.60%" ]
+						'value1':"1.54",
+						'value2':["-0.08","-0.60" ]
 					},
 				
 			],
@@ -334,6 +340,12 @@
 	}
 	.table-row div:nth-child(2) {
 		color: rgb(116,165,223);
+	}
+	.red{
+		color: red;
+	}
+	.green{
+		color: green;
 	}
 	#myChart{
 			width: 120%;

@@ -787,7 +787,7 @@
 						{name:"业绩展示",icon:require('../../assets/images/84/resultsshow@2x.png'),url:'myperformance',isChecked:false},
 						{name:"客户抢单",icon:require('../../assets/images/84/Custmerrobsingle.png'),url:'index2',isChecked:false},
 						{name:"咕咕管理",icon:require('../../assets/images/84/gugu@2x.png'),url:'gugu',isChecked:true},
-						{name:"贷款催收",icon:require('../../assets/images/84/daikuancuishou.png'),url:'index3',isChecked:false},
+						{name:"贷款催收",icon:require('../../assets/images/84/daikuancuishou.png'),url:'index3/collectionManagement',isChecked:false},
 						{name:"商机管理",icon:require('../../assets/images/84/shangjiguanli.png'),url:'index2',isChecked:false},
 						{name:"贷款查询",icon:require('../../assets/images/84/daikuanguanli.png'),url:'index3',isChecked:false},
 					]
