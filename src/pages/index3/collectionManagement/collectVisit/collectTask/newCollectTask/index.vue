@@ -8,17 +8,20 @@
 		<!-- 选择器 -->
 			<div class="pop" v-show="show2">
 				<div class="pop-div">
+					
 					<van-row class="pop-row">
 					  <van-col class="col-title padding-left" span="22">{{data[this.index].title}}</van-col>
-					    <van-col span="2" @click="show2=false"><van-icon class="pop-icon" name="cross" /></van-col>
+					    <van-col span="2" @click="show2=false">
+							<van-icon class="pop-icon" name="cross" />
+						</van-col>
 					</van-row>
+
 <!--					<van-radio-group v-model="data[index].radio" >-->
 <!--						<van-radio name="item.radio" v-for="(item,index) in dataselect" @click="close(index)">{{item.choose}}</van-radio>-->
 <!--					</van-radio-group>-->
-					<van-row class="pop-row" v-for="(item,index) in dataselect" @click="close(index)">
-					  <van-col class=" " span="3"><van-radio class="pop-radio" v-model="item.radio"></van-radio></van-col>
-					    <van-col span="20" >{{item.choose}}</van-col>
-					</van-row>
+					<van-radio-group v-model="radio" >
+						<van-radio class="radio" v-bind:name="item.choose"  v-for="(item,index) in dataselect" @click="close(index)">{{item.choose}}</van-radio>
+					</van-radio-group>
 				</div>
 			</div>
 		<van-overlay :show="show" @click="show = false" style="z-index: 2;">
@@ -269,7 +272,8 @@
 		dataselect:[
 			{radio:false,choose:'本金逾期'},
 			{radio:false,choose:'欠息'},
-			{radio:false,choose:'非逾期欠息原因'},]
+			{radio:false,choose:'非逾期欠息原因'},],
+		radio: '1'	
 	}
   },
 
@@ -318,19 +322,23 @@
 		  this.dataselect = this.data[i].select;
 	  },
 	  close(i) {
-		  this.show2 = false;
-		  this.choose = this.dataselect[i].choose;
-		   this.data[this.index].value = this.choose;
-		  for (let j = 0; j < this.dataselect.length; j++) {
-			  if (j == parseInt(i) ) {
-				  console.log('11');
-				  this.data[this.index].select[j].radio = true;
-			  } else {
-				  console.log('22');
-				  this.data[this.index].select[j].radio = false;
+		  var that = this;
+		  setTimeout(function() {
+			  that.show2 = false;
+			  that.choose = that.dataselect[i].choose;
+			   that.data[that.index].value = that.choose;
+			  for (let j = 0; j < that.dataselect.length; j++) {
+			  			  if (j == parseInt(i) ) {
+			  				  console.log('11');
+			  				  that.data[that.index].select[j].radio = true;
+			  			  } else {
+			  				  console.log('22');
+			  				  that.data[that.index].select[j].radio = false;
+			  			  }
+			  			  console.log(that.data[that.index].select[j].radio);
 			  }
-			  console.log(this.data[this.index].select[j].radio);
-		  }
+		  }, 500);
+
 	  }
   },
   //引入组件
@@ -535,5 +543,11 @@
 	.pop-row{
 		font-size: 14px;
 		line-height: 34px;
+	}
+	.radio{
+		height: 34px;
+		line-height: 34px;
+		font-size: 14px;
+		padding-left: 16px;;
 	}
 </style>
