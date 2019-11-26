@@ -57,8 +57,9 @@
 				xAxis:['贷款余额','不良贷款余额'],
 				yAxis:['助学贷款',' 建档立卡货款','创业担保贷款','农户经营性贷款','小欲企业主货款','个体工商户贷款','微型企业货款','小型企业贷款'],
 				data:[
-					// [101, 34, 90,50, 40,320,320, 302],
-					[820, 932, 901, 934, 1290, 1330, 1320],
+					
+					[820, 932, 901, 934, 1290, 1330, 1320, 302],
+					[101, 34, 90,50, 40,320,320, 32],
 				],
 				
 			},
@@ -122,6 +123,7 @@
 	  	if(this.myChart == null){
 	  		// 基于准备好的dom，初始化echarts实例
 	  		this.myChart = echarts.init(document.getElementById('myChart'))
+			
 			switch (this.type){
 				
 				case 2:{
@@ -162,15 +164,14 @@
 								    }
 								},
 						    }]
-							
-							};
-					
-					
+						};
+
 					// 绘制图表
 					this.myChart.setOption(option);
 				}
 					break;
 				default:{
+					
 					let option =  {
 						color: this.barData.color,
 						tooltip : {
@@ -179,12 +180,12 @@
 									type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
 								}
 							},
-							  title: {
-									text: this.barData.title,
-									 subtext: this.barData.subText ,
-									x: '20%',
-									textAlign: 'center'
-								}, 
+					  title: {
+							text: this.barData.title,
+							 subtext: this.barData.subText ,
+							x: '20%',
+							textAlign: 'center'
+						}, 
 						legend: {
 							data: this.barData.xAxis,
 							x: '40%',
@@ -208,7 +209,8 @@
 						series: []
 					};
 					this.barData.data.forEach((item,index)=>{
-						if(index != 0) return;
+						// if(index != 0) return;
+						
 						option.series.push(
 							{
 								name: this.barData.xAxis[index],
@@ -222,9 +224,7 @@
 								},
 								data: item
 							},
-							
 						);
-						
 					});
 					// 绘制图表
 					this.myChart.setOption(option);

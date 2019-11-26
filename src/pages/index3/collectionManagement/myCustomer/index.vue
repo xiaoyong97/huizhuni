@@ -223,13 +223,18 @@
 	   list2:[{checked:false,object:'借款人实际控制人'},{checked:false,object:'借款人法定代表人'},{checked:false,object:'借款人财务经理'},],
 	   value1: '人工坐席电话催收',
 	   option1: [ '无', '短信催收', '催收通知书催收', '人工坐席电话催收', '上门催收', ],
-		
 	}
   },
   //数据预加载
   created(){},
   //网页加载完成
-  mounted () {},
+  mounted () {
+	 
+	if(this.$route.params){
+		this.info.name = this.$route.params.gongsi;
+		this.info.status = this.$route.params.fangshi;
+	}
+  },
   //声明方法
   methods : {
       onClickLeft:function(){

@@ -2,6 +2,7 @@
     <div class="main">
      <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
+		<van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
 		<van-row class="toolbar" >
 		
 			<van-col span="12" class="text-left padding-left">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
@@ -11,7 +12,7 @@
 			</van-col>
 
 		</van-row>
-		<van-row class="noticeBar" @click="changeTag">
+		<van-row class="noticeBar" >
 			<van-col span="12" class="text-center">
 				<div class="noticePan1" @click="gotoBankDetail">{{noticePan[type].kj}}</div>
 				<div class="noticePan2">不良率</div>
@@ -195,7 +196,8 @@
 							]
 						}
 					]
-			},{
+			},
+			{
 				kj:'责任部门口径',
 				date:'',
 				bll:'1.73%',
@@ -315,6 +317,12 @@
 			},
 			
 		],
+		show: true,
+		actions: [
+			{ name: '人行口径' ,index:0},
+			{ name: '银保监会口径' ,index:1},
+			{ name: '责任部门口径',index:2}
+		]
 	}
   },
 
@@ -325,7 +333,7 @@
 
   //网页加载完成
   mounted () {
-  
+	
   },
 
   //声明方法
@@ -347,7 +355,14 @@
 				return;
 		  }
 		  this.type++;
-	  }
+	  },
+		onSelect(item) {
+			// 默认情况下，点击选项时不会自动关闭菜单
+			// 可以通过 close-on-click-action 属性开启自动关闭
+			this.show = false;
+			this.type = item.index
+			
+		  }
   },
   //引入组件
   components: {
