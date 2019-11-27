@@ -11,23 +11,26 @@
 		   @search="onSearch"
 		  >
 		  </van-search>
-		 <div class="content-bar margin-top">
-			 <van-row class="tab-title tab-list">
-			  <van-col class="col-title" span="8">客户名称</van-col>
-			  <van-col class="col-title" span="4">逾期金额</van-col>
-			  <van-col class="col-title" span="4">欠息金额</van-col>
-			  <van-col class="col-title" span="4">回收金额</van-col>
-			  <van-col class="col-title" span="4">催收方式</van-col>
-			 </van-row>
-			 <van-row class="tab-list" v-for="(item,index) in this.customerList" @click="go('myCustomer')">
-			  <van-col class="col-first-word" span="8">{{item.name}}</van-col>
-			  <van-col class="col-word blue-word" span="4">{{item.overdueAmount}}</van-col>
-			  <van-col class="col-word green-word" span="4">{{item.oweInterestAmount}}</van-col>
-			  <van-col class="col-word red-word" span="4">{{item.recoveryAmount}}</van-col>
-			  <van-col class="col-word" span="4">{{item.collectionWay}}</van-col>
-			 </van-row>
-		 </div>
-    </div>
+		 <div class="content-bar">
+			<table class=" margin-top" id="table">
+				 <tr class="tab-title tab-list">
+					 <th class="col-title">客户名称</th>
+					 <th class="col-title">逾期金额</th>
+					 <th class="col-title">欠息金额</th>
+					 <th class="col-title">回收金额</th>
+					 <th class="col-title">催收方式</th>
+				 </tr>
+				 
+				 <tr class="tab-list" v-for="(item,index) in this.customerList" @click="go('myCustomer')">
+				  <td class="col-first-word" span="8">{{item.name}}</td>
+				  <td class="col-word blue-word" span="4">{{item.overdueAmount}}</td>
+				  <td class="col-word green-word" span="4">{{item.oweInterestAmount}}</td>
+				  <td class="col-word red-word" span="4">{{item.recoveryAmount}}</td>
+				  <td class="col-word" span="4">{{item.collectionWay}}</td>
+				 </tr>
+			 </table>	
+		 </div> 
+	</div>
 </template>
 
 <script>
@@ -70,7 +73,9 @@
   //数据预加载
   created(){},
   //网页加载完成
-  mounted () {},
+  mounted () {
+	    this.creatDrag('table');
+  },
   //声明方法
   methods : {
 	  onClickLeft:function(){
@@ -79,6 +84,54 @@
       go : function(url){
         this.$router.push({name:url});
       },
+	  isMobile:function(){
+	  		  var ua = navigator.userAgent;
+	  		  
+	  		  var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+	  		  
+	  		  isIphone =!ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+	  		  
+	  		  isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+	  		  
+	  		  isMobile = isIphone || isAndroid;
+	  		  return isMobile? true :false;
+	  },
+	  creatDrag:function(id){
+				
+	  			if(this.isMobile()){
+	  				return;
+	  			}
+	  		    var oBox = document.getElementById(id);
+	  			var Toleft = 0;
+	  		      oBox.onmousedown = function(ev) {
+	  			
+	  		          var ev = ev || event;
+	  		          var Y = ev.clientY;
+	  		          var X = ev.clientX;
+	  		   			var maxWidth = 	document.getElementById(id).offsetWidth - document.body.clientWidth;
+	  		          if( Toleft == 0){
+	  						Toleft = document.getElementById(id).scrollLeft;
+	  					}
+	  		          console.log(maxWidth)
+	  		          oBox.onmousemove = function(ev) {
+	  		              ev = ev || event;
+	  		              var subY = ev.clientY - Y;
+	  		              var subX = ev.clientX - X ;
+	  		              Y = ev.clientY;
+	  		              X = ev.clientX;
+	  		             
+	  		              Toleft -= (subX);
+	  						if(Toleft>maxWidth) Toleft = maxWidth;
+	  					  document.getElementById(id).style.transform = 'translateX(-' + Toleft + 'px)';
+	  		          }
+	  		          document.onmouseup = function() {
+	  		              oBox.onmousemove = function() {
+	  		                  null;
+	  		              }
+	  		          }
+	  		      }
+	  }
+	  
   },
   //引入组件
   components: {NavBar,}
@@ -88,7 +141,12 @@
 <style lang="scss" scoped>
 	.content-bar{
 		width: 100%;
-		overflow-x:scroll;
+		white-space:nowrap;/*内容横向排列不换行*/ 
+		overflow-x:auto;
+		overflow-y:hidden;
+	}
+	table tr th,table tr td{
+		padding: 2px 16px;
 	}
 	.tab-title{
 		margin-top: 8px;

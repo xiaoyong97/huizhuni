@@ -3,34 +3,50 @@
 	 <!--头部导航-->
 		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<br/>
-		<div class="cell_container">
-			<div @click="changTag(1)">
-				<img src="../../../../assets/images/other/08.png" alt="">
-				<p v-bind:class="{theme:type==1}">备付金不足</p>
-			</div>	
-			<div @click="changTag(2)">
-				<img src="../../../../assets/images/other/06.png" alt="">
-				<p v-bind:class="{theme:type==2}">本金逾期</p>
-			</div>	
-			<div @click="changTag(3)">
-				<img src="../../../../assets/images/other/10.png" alt="">
-				<p v-bind:class="{theme:type==3}">利息逾期</p>
-			</div>	
-			<div @click="changTag(4)">
-				<img src="../../../../assets/images/other/09.png" alt="">
-				<p v-bind:class="{theme:type==4}">结息失败</p>
-			</div>	
-			<div @click="changTag(5)">
-				<img src="../../../../assets/images/other/07.png" alt="">
-				<p v-bind:class="{theme:type==5}">到期提醒</p>
-			</div>	
-			<div @click="changTag(6)">
-				<img src="../../../../assets/images/other/11.png" alt="">
-				<p v-bind:class="{theme:type==6}">账户变动</p>
-			</div>
+		<div class="cell_container" >
+			<table id="table_tool">
+				<tr>
+					<th>
+						<div @click="changTag(1)">
+							<img src="../../../../assets/images/other/08.png" alt="">
+							<p v-bind:class="{theme:type==1}">备付金不足</p>
+						</div>	
+					</th>
+					<th>
+						<div @click="changTag(2)">
+							<img src="../../../../assets/images/other/06.png" alt="">
+							<p v-bind:class="{theme:type==2}">本金逾期</p>
+						</div>	
+					</th>
+					<th>
+						<div @click="changTag(3)">
+							<img src="../../../../assets/images/other/10.png" alt="">
+							<p v-bind:class="{theme:type==3}">利息逾期</p>
+						</div>	
+					</th>
+					<th>
+						<div @click="changTag(4)">
+							<img src="../../../../assets/images/other/09.png" alt="">
+							<p v-bind:class="{theme:type==4}">结息失败</p>
+						</div>	
+					</th>
+					<th>
+						<div @click="changTag(5)">
+							<img src="../../../../assets/images/other/07.png" alt="">
+							<p v-bind:class="{theme:type==5}">到期提醒</p>
+						</div>	
+					</th>
+					<th>
+						<div @click="changTag(6)">
+							<img src="../../../../assets/images/other/11.png" alt="">
+							<p v-bind:class="{theme:type==6}">账户变动</p>
+						</div>
+					</th>
+				</tr>
+			</table>		
 		</div>
 		<div class="table_container">
-			<table v-show="type == 1">
+			<table v-show="type == 1" id="table1">
 				<tr class="title">
 					<th>客户名称</th>
 					<th>授信品种</th>
@@ -42,7 +58,7 @@
 					<td class="col-word" v-for="item1 in item">{{item1}}</td>	
 				</tr>
 			</table>
-			<table v-show="type == 2">
+			<table v-show="type == 2" id="table2">
 				<tr class="title">
 					<th>客户名称</th>
 					<th>授信品种</th>
@@ -50,11 +66,11 @@
 					<th>拖欠天数</th>
 					<th>拖欠天数</th>
 				</tr>
-				<tr v-for="(item,index) in this.infos[type-1]">
+				<tr v-for="(item,index) in this.infos[type-1]" >
 					<td class="col-word" v-for="item1 in item">{{item1}}</td>	
 				</tr>
 			</table>
-			<table v-show="type == 3">
+			<table v-show="type == 3" id="table3">
 				<tr class="title">
 					<th>客户名称</th>
 					<th>授信品种</th>
@@ -66,7 +82,7 @@
 					<td class="col-word" v-for="item1 in item">{{item1}}</td>	
 				</tr>
 			</table>
-			<table v-show="type == 4">
+			<table v-show="type == 4" id="table4">
 				<tr class="title">
 					<th>客户名称</th>
 					<th>授信品种</th>
@@ -77,7 +93,7 @@
 					<td class="col-word" v-for="item1 in item">{{item1}}</td>	
 				</tr>
 			</table>
-			<table v-show="type == 5">
+			<table v-show="type == 5" id="table5">
 				<tr class="title">
 					<th>客户名称</th>
 					<th>授信品种</th>
@@ -88,7 +104,7 @@
 					<td class="col-word" v-for="item1 in item">{{item1}}</td>	
 				</tr>
 			</table>
-			<table v-show="type == 6">
+			<table v-show="type == 6" id="table6">
 				<tr class="title">
 					<th>客户名称</th>
 					<th>存款账号</th>
@@ -169,8 +185,6 @@
 			],
 		],
 		type:1,
-		
-		
 	}
   },
 
@@ -182,7 +196,8 @@
   //网页加载完成
   mounted () {
 	  
-	  console.log('mounted',this.signShow);
+	  this.creatDrag('table_tool');
+	  this.creatDrag('table1');
   },
 	activated() {
 		eventBus.$on('sign', function(data){
@@ -213,7 +228,55 @@
 
 	  },
 	  changTag:function( index){
-		  this.type = index
+		  this.type = index;
+		  this.creatDrag('table'+index);
+	  },
+	  isMobile:function(){
+		  var ua = navigator.userAgent;
+		  
+		  var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+		  
+		  isIphone =!ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+		  
+		  isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+		  
+		  isMobile = isIphone || isAndroid;
+		  return isMobile? true :false;
+	  },
+	  creatDrag:function(id){
+			
+			if(this.isMobile()){
+				return;
+			}
+		    var oBox = document.getElementById(id);
+			var Toleft = 0;
+		      oBox.onmousedown = function(ev) {
+			
+		          var ev = ev || event;
+		          var Y = ev.clientY;
+		          var X = ev.clientX;
+		   			var maxWidth = 	document.getElementById(id).offsetWidth - document.body.clientWidth;
+		          if( Toleft == 0){
+						Toleft = document.getElementById(id).scrollLeft;
+					}
+		          console.log(maxWidth)
+		          oBox.onmousemove = function(ev) {
+		              ev = ev || event;
+		              var subY = ev.clientY - Y;
+		              var subX = ev.clientX - X ;
+		              Y = ev.clientY;
+		              X = ev.clientX;
+		             
+		              Toleft -= (subX);
+						if(Toleft>maxWidth) Toleft = maxWidth;
+					  document.getElementById(id).style.transform = 'translateX(-' + Toleft + 'px)';
+		          }
+		          document.onmouseup = function() {
+		              oBox.onmousemove = function() {
+		                  null;
+		              }
+		          }
+		      }
 	  }
   },
   //引入组件
@@ -369,10 +432,12 @@
 		overflow-x:auto;
 		overflow-y:hidden;
 	}
+	
 	table tr{
 		height: 44px;
 	}
 	.theme{
 		color:#4C62E7;
 	}
+	
 </style>
