@@ -55,40 +55,59 @@
 				subText:'单元(亿元)',
 				color:['#525EFF', '#F58220'],
 				xAxis:['贷款余额','不良贷款余额'],
-				yAxis:['助学贷款',' 建档立卡货款','创业担保贷款','农户经营性贷款','小欲企业主货款','个体工商户贷款','微型企业货款','小型企业贷款'],
+				// yAxis:['助学贷款',' 建档立卡货款','创业担保贷款','农户经营性贷款','小欲企业主货款','个体工商户贷款','微型企业货款','小型企业贷款'],
+				yAxis:['小型企业贷款',' 微型企业货款','个体工商户贷款','小欲企业主货款','农户经营性贷款','创业担保贷款','建档立卡货款','助学贷款'],
 				data:[
 					
-					[820, 932, 901, 934, 1290, 1330, 1320, 302],
-					[101, 34, 90,50, 40,320,320, 32],
+					[495, 300, 80, 70, 60, 10, 10, 0],
+					[10, 8, 6,4, 3,2,1, 0],
 				],
+				
 				
 			},
 			
-			data:[
+			
+			data: this.type==1?[
+					{
+						'title':"合计",
+						'value1':"1.46",
+						'value2':["-0.08","-0.62" ]
+					},
+					{
+						'title':'小微企业法人',
+						'value1':"1.53",
+						'value2':["-0.11","-0.69" ]
+					},
+					{
+						'title':'工商户和企业主',
+						'value1':"1.17",
+						'value2':["0.00","-0.44" ]
+					},
+			]:[
 					{
 						'title':"合计",
 						'value1':"1.54",
-						'value2':["0.08","-0.60" ]
+						'value2':["-0.08","-0.60" ]
 					},
 					{
 						'title':'小型企业贷款',
-						'value1':"1.54",
-						'value2':["-0.08","-0.60" ]
+						'value1':"1.96",
+						'value2':["-0.13","-0.82" ]
 					},
 					{
 						'title':'微型企业贷款',
-						'value1':"1.54",
-						'value2':["0.08","-0.60" ]
+						'value1':"0.26",
+						'value2':["-0.01","0.06" ]
 					},
 					{
 						'title':'个体工商户贷款',
-						'value1':"1.54",
-						'value2':["-0.08","0.60" ]
+						'value1':"0.70",
+						'value2':["0.05","-0.09" ]
 					},
 					{
 						'title':'小微企业主贷款',
-						'value1':"1.54",
-						'value2':["-0.08","-0.60" ]
+						'value1':"1.74",
+						'value2':["-0.04","-0.75" ]
 					},
 				
 			],
@@ -125,7 +144,63 @@
 	  		this.myChart = echarts.init(document.getElementById('myChart'))
 			
 			switch (this.type){
-				
+				case 1:{
+					
+					let option = {
+						color: this.barData.color,
+							title: {
+								text: '银保监会口径资产质量情况',
+								subtext: '单位(亿元)'
+							},
+							tooltip: {
+								trigger: 'axis',
+								axisPointer: {
+									type: 'shadow'
+								}
+							},
+							legend: {
+								data: ['贷款余额', '不良贷款余额'],
+								top: 30
+							},
+							grid: {
+								left: '3%',
+								right: '24%',
+								bottom: '3%',
+								top:'20%',
+								containLabel: true
+							},
+							xAxis: {
+								type: 'value',
+								// boundaryGap: [0, 0.01]
+							},
+							yAxis: {
+								type: 'category',
+								data:  ['合计',' 小微企业法人','工商户和企业主'],
+							},
+							series: [
+								{
+									name: '贷款余额',
+									type: 'bar',
+									data:[485, 395, 90 ],
+									label: {   // 图形上的文本标签
+									        show: false,
+									        position: 'insideTop', // 相对位置
+									        rotate: 0,  // 旋转角度
+									        color: '#eee'
+									      },
+								},
+								{
+									name: '不良贷款余额',
+									type: 'bar',
+									data: [10, 8, 0 ],
+								}
+							]
+						}
+						
+						// 绘制图表
+						this.myChart.setOption(option);
+				}	
+				break;
 				case 2:{
 					
 					let option = {

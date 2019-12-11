@@ -64,7 +64,7 @@
 					<th>授信品种</th>
 					<th>债项余额</th>
 					<th>拖欠天数</th>
-					<th>拖欠天数</th>
+					<th>逾期本金</th>
 				</tr>
 				<tr v-for="(item,index) in this.infos[type-1]" >
 					<td class="col-word" v-for="item1 in item">{{item1}}</td>	

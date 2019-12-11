@@ -50,7 +50,8 @@
 					 	<van-icon name="location-o" class="sign-icon"/>
 					 </van-col>
 					 <van-col span="6" class="">
-					 	<button class="sign-button" @click="go('onSiteSign',{activeNames:'1'})">现场签到</button>
+						 <van-button round type="info" @click="go('onSiteSign',{activeNames:'1'})" class="save-buttom">现场签到</van-button>
+					 	<!-- <button class="sign-button" @click="go('onSiteSign',{activeNames:'1'})">现场签到</button> -->
 					 </van-col>
 					 </van-row>
 				 </div>
@@ -244,9 +245,7 @@
 		choose:'',
 		img1:img1,
 		img2:img2,
-		list:[
-		    [],[],
-		],
+		list:[[],[]],
 		data:[
 			{value:'',title:'执行上门催收原因',radio: '',select:[
 				{radio:'1',choose:'本金逾期'},
@@ -290,12 +289,19 @@
 	}
 	var value2 = sessionStorage.getItem('collect2');
 	if (value2) {
-		this.list[0] = [1];
+		this.list[0] = JSON.parse(value2);
 	}
 	var value3 = sessionStorage.getItem('collect3');
+		
 	if (value3) {
-		this.list[1] = [1];
+		this.list[1] = JSON.parse(value3);
 	}
+	
+		
+	
+	console.log(this.list1);
+	console.log(this.list2);	
+	
   },
 
   //网页加载完成
@@ -331,8 +337,17 @@
 
 	  },
 	  remove_img(i) {
-		  console.log(i);
-	      this.list[i] = [];
+		  if (i == 0) {
+			   console.log(this.list[0]);
+			  this.list[0] = this.list[0].pop();
+			  console.log(this.list[0]);
+			  sessionStorage.setItem('collect2',this.list[0]);
+		  } else {
+			  console.log(this.list[1]);
+			  this.list[1] = this.list[1].pop();
+			   console.log(this.list[1]);
+			  sessionStorage.setItem('collect3',this.list[1]);
+		  }
 	  },
 	  onTabClick(name, title) {
 		  sessionStorage.setItem("collectTabName",name);

@@ -188,7 +188,7 @@
 					</div>
 				</van-col>
 				<van-row class="" >
-					<van-button class="save-button" round type="info">保存</van-button>
+					<van-button class="save-button" round type="info" @click="save()">保存</van-button>
 				</van-row>
 			  </van-row>
 		  </van-tab>
@@ -252,6 +252,9 @@
 		  this.value1 = value;
 		  this.show = !this.show;
 	  },
+	  save() {
+		  this.$router.go(-1);
+	  }
   },
   //引入组件
   components: {NavBar,}

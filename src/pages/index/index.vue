@@ -700,7 +700,6 @@
 				sessionStorage.setItem('userinfo',JSON.stringify(infos));
 			}
 
-
 		},
 
 		//网页加载完成
