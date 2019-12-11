@@ -69,7 +69,7 @@
 					 <van-row  class="picture_div" >
 						 <van-col  class="dot-border" span="11"  v-for="(item) in list[0]">
 							 <img src="../../../../../../assets/images/other/0191125155504.png" class="img_file"  >
-							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(0)" >
+							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(2)" >
 						 </van-col>
 						 <van-col class="dot-border" span="11" @click="go('addImg',{activeNames:'2'})">
 						 	<div><van-icon name="photo-o" class="dot-border-icon"/></div>
@@ -86,7 +86,7 @@
 					<van-row  class="picture_div" >
 						 <van-col  class="dot-border" span="11"  v-for="(item) in list[1]">
 							 <img src="../../../../../../assets/images/other/125155704.png" class="img_file"  >
-							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(1)" >
+							 <img src="../../../../../../assets/images/24/Empty@2x.png" class="img_close" @click="remove_img(3)" >
 						 </van-col>
 						 <van-col class="dot-border" span="11" @click="go('addImg',{activeNames:'3'})">
 							<div><van-icon name="photo-o" class="dot-border-icon"/></div>
@@ -332,14 +332,18 @@
 
 	  },
 	  remove_img(i) {
-		  if (i == 0) {
+		  if (i == 2) {
 			  // this.list[0].pop();
 			  this.list[0].splice(0,1);
-			  sessionStorage.setItem('collect2',this.list[0]);
-		  } else {
+			  sessionStorage.setItem('collect2',JSON.stringify(this.list[0]) );
+		  } ;
+		  if (i == 3) {
 			  this.list[1].pop();
-			  sessionStorage.setItem('collect3',this.list[1]);
+			  sessionStorage.setItem('collect3',JSON.stringify(this.list[1]));
 		  }
+		  console.log('i',i);
+		  this.activeNames =  ['4'];
+		  this.activeNames =  [i+""];
 	  },
 	  onTabClick(name, title) {
 		  sessionStorage.setItem("collectTabName",name);
