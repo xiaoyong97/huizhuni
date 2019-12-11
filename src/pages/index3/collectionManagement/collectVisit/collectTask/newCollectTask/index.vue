@@ -110,7 +110,7 @@
 		</van-cell>
 		<br/>
 			<van-row style="text-align: center;">
-				<van-button round type="info" class="save-buttom">保存</van-button>
+				<van-button round type="info" class="save-buttom" @click="onClickLeft()">保存</van-button>
 			</van-row>
 		  </van-tab>
 		  <van-tab title="催收信息维护" name="tab2">
@@ -154,7 +154,7 @@
 				  			 <van-col span="11" class=""><span class="collapse-text">客户接触反馈情况</span></van-col>
 				  		 </van-row>
 						<van-row  class="select_row" v-for="(item,index) in data">
-							   <van-col class="" span="10" dot>{{item.title}}</van-col>
+							   <van-col class="" span="10" dot>{{item.title}}<span class="bitian">*</span></van-col>
 							   <van-col class="col-select" span="13" @click="showSelect(index)">
 								   {{item.value}}
 								   <van-icon name="arrow-down" class="col-select-icon"/>
@@ -163,7 +163,7 @@
 
 
 						<van-row  class="select_row">
-							   <van-col class="" span="10" dot>具体情况描述</van-col>
+							   <van-col class="" span="10" dot>具体情况描述<span class="bitian">*</span></van-col>
 							   <van-col class="" span="13" style="padding-top: 8px">
 								  <textarea name="" id="" cols="26" rows="5">
 
@@ -213,7 +213,7 @@
 				  </van-collapse-item>
 				</van-collapse>
 				<van-row style="text-align: center;margin-top: 30px;">
-					<van-button round type="info" class="save-buttom" @click="onSubmit()">保存</van-button>
+					<van-button round type="info" class="save-buttom" @click="onClickLeft()">保存</van-button>
 				</van-row>
 				<br>
 		  </van-tab>
@@ -267,7 +267,8 @@
 					{radio:2,choose:'承诺分期还款'},
 					{radio:3,choose:'无明确回复'},
 					{radio:4,choose:'无力还款'},
-					{radio:5,choose:'无'},]},
+					{radio:5,choose:'拒绝还款'},
+					{radio:6,choose:'无'},]},
 		],
 		dataselect:[
 			{radio:false,choose:'本金逾期'},
@@ -296,12 +297,6 @@
 	if (value3) {
 		this.list[1] = JSON.parse(value3);
 	}
-	
-		
-	
-	console.log(this.list1);
-	console.log(this.list2);	
-	
   },
 
   //网页加载完成
@@ -318,8 +313,8 @@
 		  this.$router.go(-1);
 		  sessionStorage.removeItem("activeNames");
 		  sessionStorage.removeItem("collect1");
-		  sessionStorage.removeItem("collect2");
-		  sessionStorage.removeItem("collect3");
+		 sessionStorage.setItem('collect2',JSON.stringify([]));
+		 sessionStorage.setItem('collect3',JSON.stringify([]));
 	  },
 	  go : function(url,item){
 	    this.$router.push({name:url,params:item});
@@ -338,14 +333,11 @@
 	  },
 	  remove_img(i) {
 		  if (i == 0) {
-			   console.log(this.list[0]);
-			  this.list[0] = this.list[0].pop();
-			  console.log(this.list[0]);
+			  // this.list[0].pop();
+			  this.list[0].splice(0,1);
 			  sessionStorage.setItem('collect2',this.list[0]);
 		  } else {
-			  console.log(this.list[1]);
-			  this.list[1] = this.list[1].pop();
-			   console.log(this.list[1]);
+			  this.list[1].pop();
 			  sessionStorage.setItem('collect3',this.list[1]);
 		  }
 	  },
@@ -365,13 +357,10 @@
 			   that.data[that.index].value = that.choose;
 			  for (let j = 0; j < that.dataselect.length; j++) {
 			  			  if (j == parseInt(i) ) {
-			  				  console.log('11');
 			  				  that.data[that.index].select[j].radio = true;
 			  			  } else {
-			  				  console.log('22');
 			  				  that.data[that.index].select[j].radio = false;
 			  			  }
-			  			  console.log(that.data[that.index].select[j].radio);
 			  }
 		  }, 500);
 
@@ -585,5 +574,11 @@
 		line-height: 34px;
 		font-size: 14px;
 		padding-left: 16px;;
+	}
+	.bitian{
+		color: red;
+		line-height: 24px;
+		padding-left: 4px;
+		font-size: 8px;
 	}
 </style>

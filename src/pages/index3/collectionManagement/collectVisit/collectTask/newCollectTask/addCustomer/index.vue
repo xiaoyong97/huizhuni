@@ -8,6 +8,12 @@
 					   
 					   <select  class=" " name="" id="">
 						   <option >实际控制人</option>
+						   <option >实际控制人配偶</option>
+						   <option >企业法人</option>
+						   <option >企业法人配偶</option>
+						   <option >实际控制人亲属</option>
+						   <option >企业员工</option>
+						   <option >担保人</option> 
 					   </select>
 				   </van-col>
 			</van-row>

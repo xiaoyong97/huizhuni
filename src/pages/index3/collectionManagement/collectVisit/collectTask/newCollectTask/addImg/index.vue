@@ -63,18 +63,18 @@ this.type = value;
 	    this.$router.push({name:url,params:item});
 	  },
 	  onSubmit() {
-		  this.$router.go(-1);
 		  if (parseInt(this.type.activeNames) == 2) {
 			  var value1 = sessionStorage.getItem('collect2');
 			  let arr = JSON.parse(value1);
-			  arr.push(1);
+			  arr.push('1');
 			  sessionStorage.setItem('collect2',JSON.stringify(arr));
 		  } else {
 			  var value2 = sessionStorage.getItem('collect3');
 			  let arr = JSON.parse(value2);
-			  arr.push(1);
+			  arr.push('1');
 			  sessionStorage.setItem('collect3',JSON.stringify(arr));
 		  }
+		  this.$router.go(-1);
 	  },
 	  showPopup() {
 		this.show = !this.show;

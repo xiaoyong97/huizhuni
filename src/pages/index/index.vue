@@ -698,6 +698,9 @@
 				];
 
 				sessionStorage.setItem('userinfo',JSON.stringify(infos));
+				
+				sessionStorage.setItem('collect2',JSON.stringify([]));
+				sessionStorage.setItem('collect3',JSON.stringify([]));
 			}
 
 		},
