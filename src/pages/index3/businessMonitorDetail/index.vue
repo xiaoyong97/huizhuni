@@ -1,7 +1,7 @@
 <template>
     <div class="main">
      <!--头部导航-->
-		<van-nav-bar :title="title[step]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
+		<van-nav-bar :title="title[type]"  left-arrow @click-left="onClickLeft" ></van-nav-bar>
 		<van-row class="toolbar">
 			<van-col span="12" class="text-left padding-left ">{{date}}<img class="icon-date" src="../../../assets/images/38/date.png" alt=""></van-col>
 			<van-col span="12" class="text-left padding-left">
@@ -27,7 +27,7 @@
 	export default {
 	data() {
 		return {
-			title:['业务监测'],
+			title:['业务监测','银保监会口径','小企业责任部门口径'],
 			step:0,
 			date:'2019-11-21',
 			bank:'建行江苏省分行小企业业务部',
