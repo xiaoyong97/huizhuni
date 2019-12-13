@@ -55,7 +55,9 @@
 				       </div>
 				     </van-dropdown-item>
 				   </van-dropdown-menu>
-				  
+				    <div @click="showDropdownMenu(1)" style="position: absolute;background-color: rgba(0,0,0,0);width: 50%;height: 50px;left: 0px;top:40px;z-index: 2008;"></div>
+					<div @click="showDropdownMenu(2)"style="position: absolute;background-color: rgba(0,0,0,0);width: 50%;height: 50px;left: 50%;top:40px;z-index: 2008;"></div>
+					
 				  <div id="myChart2" ></div>
 				  <div></div>
 				<div class="table">
@@ -98,6 +100,8 @@
 				         </div>
 				       </van-dropdown-item>
 				     </van-dropdown-menu>
+				    <div @click="showDropdownMenu(3)" style="position: absolute;background-color: rgba(0,0,0,0);width: 50%;height: 50px;left: 0px;top:40px;z-index: 2008;"></div>
+				    <div @click="showDropdownMenu(4)"style="position: absolute;background-color: rgba(0,0,0,0);width: 50%;height: 50px;left: 50%;top:40px;z-index: 2008;"></div>
 				    
 				    <div id="myChart3" ></div>
 				    <div></div>
@@ -122,7 +126,15 @@
 			  </van-tab>
 			</van-tabs>			
 		</div>
-    </div>
+		<van-popup v-model="show">
+			<div class="cell-container">
+				<div class="cell-header">产品</div>
+				<van-cell class="cell-content" v-for="item in showData" :title="item" @click="product(item)" />
+				<div class="cell-footer" @click="product('cancel')">取消</div>
+			</div>	
+			
+		</van-popup>
+	</div>
 </template>
 
 <script>
@@ -283,6 +295,9 @@
 			] ,
 			myChart:null,
 			isLoadChart:false,
+			show: false,
+			modalIndex:0,
+			showData:[],
 		}
 	},
 
@@ -511,7 +526,13 @@
 	  showAll(){
 	  	console.log('showALl')
 	  },
-	  product(index,name){
+	  product(name){
+		  var index = this.modalIndex;
+		   this.show = false;
+		 
+		  if(name == 'cancel'){
+			  return;
+		  }
 		 switch (index){
 		 	case 1:
 				this.switch1 = name
@@ -530,10 +551,9 @@
 				this.$refs.item4.toggle();
 				break;
 		 	default:
-				this.switch1 = name
-				this.$refs.item1.toggle();
 		 		break;
 		 }
+		 
 		 
 	  },
 	  changTab(){
@@ -545,6 +565,19 @@
 					that.createChart(true);
 				},100)
 		  }
+	  },
+	  showDropdownMenu(index){
+		  this.show = true;
+		  this.modalIndex = index;
+		  var data = [
+			  ['全部产品','小微快贷','信用快贷','抵押快贷','云税贷'],
+			  ['客户余额','贷款客户数','逾期贷款额','逾期客户数','逾期非不良额'],
+			  ['小微快贷','小微快贷','信用快贷','抵押快贷','云税贷'],
+			  ['贷款余额','贷款客户数','逾期贷款额','逾期客户数','逾期非不良额']
+		  ];
+		  
+		 this.showData = data[index-1];
+		
 	  }
   },
   //引入组件
@@ -678,5 +711,15 @@
 		margin-top: 100px;
 		background-color: #fff;
 	}
-	
+	.cell-container{
+		width: 280px;
+	}
+	.cell-header,.cell-footer{
+		text-align: center;
+		height: 60px;
+		line-height: 60px;
+	}
+	.cell-footer{
+		color: #389BF6;
+	}
 </style>
