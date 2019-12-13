@@ -296,7 +296,7 @@
                 <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="12"><p class="card_list1_test_left" >建行每周沙龙会</p></van-col>
                 </van-row>
-                <van-row style="padding: 16px 12px 0">Label 3.2@2x
+                <van-row style="padding: 16px 12px 0">
                     <van-col class="" span="2" style="justify-content: center;align-items: center;"><img src="../../assets/image/my/address@2x.png" class="img_location" ></van-col>
                     <van-col class="" span="16" style="text-align: left"><p class="card_list2_test" >建行杭州分行营业部</p></van-col>
                 </van-row>
