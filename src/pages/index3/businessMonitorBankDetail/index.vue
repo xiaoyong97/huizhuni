@@ -35,24 +35,24 @@
 			  <van-tab title="历史趋势" name="a">
 				   <van-dropdown-menu  v-bind:class="over">
 				    <van-dropdown-item v-bind:title="switch1" ref="item1" >
-						<div style=" background-color: rgba(0,0,0,0);">
+						<!-- <div style=" background-color: rgba(0,0,0,0);">
 							<van-cell title="全部产品"  @click="product(1,'全部产品')" />
 							<van-cell title="小微快贷" @click="product(1,'小微快贷')" />
 							<van-cell title="信用快贷" @click="product(1,'信用快贷')" /> 
 							<van-cell title="抵押快贷"  @click="product(1,'抵押快贷')"/>
 							<van-cell title="云税贷"  @click="product(1,'云税贷')"/>
-						</div>
+						</div> -->
 				    </van-dropdown-item>
 					<van-dropdown-item disabled ></van-dropdown-item> 
 					  <div style="position: absolute;background-color: #fff;width: 100px;height: 40px;left: 40%;"></div>
 				     <van-dropdown-item v-bind:title="switch2" ref="item2">
-				       <div style=" background-color: #323233;">
+				       <!-- <div style=" background-color: #323233;">
 							<van-cell title="客户余额" @click="product(2,'客户余额')" />
 							<van-cell title="贷款客户数" @click="product(2,'贷款客户数')" />
 							<van-cell title="逾期贷款额" @click="product(2,'逾期贷款额')" /> 
 							<van-cell title="逾期客户数" @click="product(2,'逾期客户数')" />
 							<van-cell title="逾期非不良额" @click="product(2,'逾期非不良额')" />
-				       </div>
+				       </div> -->
 				     </van-dropdown-item>
 				   </van-dropdown-menu>
 				    <div @click="showDropdownMenu(1)" style="position: absolute;background-color: rgba(0,0,0,0);width: 50%;height: 50px;left: 0px;top:40px;z-index: 2008;"></div>
@@ -128,7 +128,7 @@
 		</div>
 		<van-popup v-model="show">
 			<div class="cell-container">
-				<div class="cell-header">指标</div>
+				<div class="cell-header">{{menuTitle}}</div>
 				<van-cell class="cell-content" v-for="item in showData" :title="item" @click="product(item)" />
 				<div class="cell-footer" @click="product('cancel')">取消</div>
 			</div>	
@@ -150,6 +150,7 @@
 	export default {
 	data() {
 		return {
+			menuTitle:'产品',
 			title:['业务监测','银保监会口径','小企业责任部门口径'],
 			step:0,
 			date:'2019-11-21',
@@ -568,6 +569,7 @@
 	  },
 	  showDropdownMenu(index){
 		  this.show = true;
+		  this.menuTitle = index%2 == 1?'产品':'指标';
 		  this.modalIndex = index;
 		  var data = [
 			  ['全部产品','小微快贷','信用快贷','抵押快贷','云税贷'],
