@@ -348,7 +348,8 @@
                     <van-col class="text-left" span="2"><img src="../../assets/images/38/Reviewer.png" class="img_location" ></van-col>
                     <van-col class="text-left" span="12"><p class="card_list2_test">已被<font color="#4c62e7">张三</font>拒绝</p></van-col>
                 </van-row>
-                <img  src="../../assets/images/other/Label3.2@2x.png" class="img_task" >
+                <!-- <img  src="../../assets/images/other/Label3.2@2x.png" class="img_task" > -->
+				<div class="img_task img_div"><span>拒绝新建</span></div>
             </div>
 
           </van-tab>
@@ -1757,5 +1758,19 @@ export default {
 		height: 24px;
 		line-height: 24px;
 	}
-
+	.img_div{
+		background-image:linear-gradient(90deg,#3C8FDC,#6149f6);
+		width: 54px;
+		height: 26px;
+		text-align: center;
+		line-height: 28px;
+	}
+	.img_div span{
+		color: rgba(255,255,255,0.9);
+		-webkit-transform:scale(0.8);
+		display:block;
+		font-size: 8px;
+		text-align: center;
+		line-height: 26px;
+	}
 </style>

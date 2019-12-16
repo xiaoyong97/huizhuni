@@ -195,7 +195,7 @@
 				  			 <van-col span="12" class=""><span class="collapse-text">催收检查结论</span></van-col>
 				  		 </van-row>
 					<van-row  class="select_row">
-						   <van-col class="" span="11" dot>总体判断描述</van-col>
+						   <van-col class="" span="11" dot>总体判断描述<span class="bitian">*</span></van-col>
 						   <van-col class="" span="12">
 							  <textarea name="" id="" cols="26" rows="6">
 
@@ -203,7 +203,7 @@
 						   </van-col>
 					</van-row>
 					<van-row  class="select_row">
-						   <van-col class="" span="11" dot>下一次措施建议</van-col>
+						   <van-col class="" span="11" dot>下一次措施建议<span class="bitian">*</span></van-col>
 						   <van-col class="" span="12">
 							  <textarea name="" id="" cols="26" rows="6">
 

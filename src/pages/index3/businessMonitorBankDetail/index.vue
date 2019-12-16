@@ -17,8 +17,8 @@
 				<van-row class="table-content">
 					<van-col span="24" v-for="item in data[type]"  class="table-row">
 						<van-col span="8" class="table-left-title">{{item.title}}</van-col>
-						<van-col span="5" >{{item.value1}}</van-col>
-						<van-col span="5" :class="item1>0?'red':'green'" v-for="item1 in item.value2">{{item1}}</van-col>	
+						<van-col span="5" >{{item.value1}}%</van-col>
+						<van-col span="5" :class="item1>0?'red':'green'" v-for="item1 in item.value2">{{item1}}%</van-col>	
 					</van-col>
 				</van-row>
 			</div>
@@ -128,7 +128,7 @@
 		</div>
 		<van-popup v-model="show">
 			<div class="cell-container">
-				<div class="cell-header">产品</div>
+				<div class="cell-header">指标</div>
 				<van-cell class="cell-content" v-for="item in showData" :title="item" @click="product(item)" />
 				<div class="cell-footer" @click="product('cancel')">取消</div>
 			</div>	
